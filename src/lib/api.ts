@@ -60,6 +60,7 @@ async function apiRequest<T>(
   return res.json();
 }
 
+// -- Auth API --
 export const authApi = {
   async register(data: RegisterData): Promise<TokenResponse> {
     return apiRequest("/api/auth/register", {
@@ -85,4 +86,102 @@ export const authApi = {
 
   getToken,
   setToken,
+};
+
+// -- Tools API --
+
+interface UploadResult {
+  task_id: string;
+  output_file_url: string;
+  credits_used: number;
+}
+
+async function uploadFile(toolId: string, file: File): Promise<UploadResult> {
+  const token = getToken();
+  if (!token) throw new Error("Not authenticated");
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const res = await fetch(`${API_BASE}/api/upload/${toolId}`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+    body: formData,
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: "Upload failed" }));
+    throw new Error(err.detail || err.message || "Upload failed");
+  }
+
+  return res.json();
+}
+
+async function uploadFileWithPrompt(
+  toolId: string,
+  file: File,
+  prompt?: string,
+): Promise<UploadResult> {
+  const token = getToken();
+  if (!token) throw new Error("Not authenticated");
+
+  const formData = new FormData();
+  formData.append("file", file);
+  if (prompt) formData.append("prompt", prompt);
+
+  const res = await fetch(`${API_BASE}/api/upload/${toolId}`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+    body: formData,
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: "Upload failed" }));
+    throw new Error(err.detail || err.message || "Upload failed");
+  }
+
+  return res.json();
+}
+
+// PDF to Word: file upload with page-based credit
+async function uploadPdfToWord(file: File): Promise<UploadResult> {
+  const token = getToken();
+  if (!token) throw new Error("Not authenticated");
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const res = await fetch(`${API_BASE}/api/upload/pdf-to-word`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+    body: formData,
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: "Conversion failed" }));
+    throw new Error(err.detail || err.message || "PDF conversion failed");
+  }
+
+  return res.json();
+}
+
+// Payment API
+interface CheckoutResult {
+  checkout_url: string;
+  session_id: string;
+}
+
+async function createCheckoutSession(priceId: string): Promise<CheckoutResult> {
+  return apiRequest("/api/payments/create-checkout-session", {
+    method: "POST",
+    body: JSON.stringify({ price_id: priceId }),
+  });
+}
+
+export const toolsApi = {
+  uploadFile,
+  uploadFileWithPrompt,
+  uploadPdfToWord,
+  createCheckoutSession,
+  API_BASE,
 };
