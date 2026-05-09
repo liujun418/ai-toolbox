@@ -52,7 +52,7 @@ export default function PhotoRestorerPage() {
       : "Restore this damaged photo, fix scratches, blur, and noise.";
 
     try {
-      const data = await toolsApi.uploadFileWithPrompt("photo-restorer", file, prompt);
+      const data = await toolsApi.uploadFile("photo-restorer", file, prompt);
       setStatus("done");
       setResultUrl(data.output_file_url);
       setCreditsUsed(data.credits_used || 5);

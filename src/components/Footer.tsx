@@ -34,14 +34,6 @@ export function Footer() {
             <Link href="/terms" className="hover:text-zinc-900 dark:hover:text-white">
               Terms
             </Link>
-            <a
-              href="https://www.toolboxonline.club"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-zinc-900 dark:hover:text-white"
-            >
-              Free Tools →
-            </a>
           </div>
         </div>
       </div>

@@ -2,9 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
-import { authApi } from "@/lib/api";
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://ai-toolbox-api-production.up.railway.app";
+import { toolsApi } from "@/lib/api";
 
 const packages = [
   { id: "50_credits", credits: 50, price: "$4.99", stripePriceId: "price_50credits", popular: false },
@@ -23,23 +21,8 @@ export default function PricingClient() {
     }
 
     try {
-      const token = authApi.getToken()!;
-      const res = await fetch(`${API_BASE}/api/payments/create-checkout-session`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ price_id: stripePriceId }),
-      });
-
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({ detail: "Failed" }));
-        throw new Error(err.detail || "Failed to create checkout session");
-      }
-
-      const data = await res.json();
-      window.location.href = data.checkout_url;
+      const { checkout_url } = await toolsApi.createCheckoutSession(stripePriceId);
+      window.location.assign(checkout_url);
     } catch (err) {
       alert(err instanceof Error ? err.message : "Payment failed");
     }

@@ -49,7 +49,7 @@ export default function PdfToWordPage() {
     setErrorMsg("");
 
     try {
-      const data = await toolsApi.uploadPdfToWord(file);
+      const data = await toolsApi.uploadFile("pdf-to-word", file);
       setStatus("done");
       setResultUrl(data.output_file_url);
       setCreditsUsed(data.credits_used || 1);

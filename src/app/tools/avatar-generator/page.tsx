@@ -60,7 +60,7 @@ export default function AvatarGeneratorPage() {
     const stylePrompt = `Generate a ${selectedStyle} style avatar from this photo. ${prompt}`;
 
     try {
-      const data = await toolsApi.uploadFileWithPrompt("avatar-generator", file, stylePrompt);
+      const data = await toolsApi.uploadFile("avatar-generator", file, stylePrompt);
       setStatus("done");
       setResultUrl(data.output_file_url);
       setCreditsUsed(data.credits_used || 5);

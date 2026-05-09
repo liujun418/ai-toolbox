@@ -1,4 +1,8 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://ai-toolbox-api-production.up.railway.app";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL;
+
+if (!API_BASE) {
+  throw new Error("NEXT_PUBLIC_API_URL must be set");
+}
 
 interface RegisterData {
   email: string;
@@ -96,32 +100,7 @@ interface UploadResult {
   credits_used: number;
 }
 
-async function uploadFile(toolId: string, file: File): Promise<UploadResult> {
-  const token = getToken();
-  if (!token) throw new Error("Not authenticated");
-
-  const formData = new FormData();
-  formData.append("file", file);
-
-  const res = await fetch(`${API_BASE}/api/upload/${toolId}`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${token}` },
-    body: formData,
-  });
-
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({ detail: "Upload failed" }));
-    throw new Error(err.detail || err.message || "Upload failed");
-  }
-
-  return res.json();
-}
-
-async function uploadFileWithPrompt(
-  toolId: string,
-  file: File,
-  prompt?: string,
-): Promise<UploadResult> {
+async function uploadFile(toolId: string, file: File, prompt?: string): Promise<UploadResult> {
   const token = getToken();
   if (!token) throw new Error("Not authenticated");
 
@@ -143,28 +122,6 @@ async function uploadFileWithPrompt(
   return res.json();
 }
 
-// PDF to Word: file upload with page-based credit
-async function uploadPdfToWord(file: File): Promise<UploadResult> {
-  const token = getToken();
-  if (!token) throw new Error("Not authenticated");
-
-  const formData = new FormData();
-  formData.append("file", file);
-
-  const res = await fetch(`${API_BASE}/api/upload/pdf-to-word`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${token}` },
-    body: formData,
-  });
-
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({ detail: "Conversion failed" }));
-    throw new Error(err.detail || err.message || "PDF conversion failed");
-  }
-
-  return res.json();
-}
-
 // Payment API
 interface CheckoutResult {
   checkout_url: string;
@@ -180,8 +137,6 @@ async function createCheckoutSession(priceId: string): Promise<CheckoutResult> {
 
 export const toolsApi = {
   uploadFile,
-  uploadFileWithPrompt,
-  uploadPdfToWord,
   createCheckoutSession,
   API_BASE,
 };
