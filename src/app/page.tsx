@@ -48,6 +48,56 @@ const tools = [
   },
 ];
 
+const features = [
+  {
+    icon: "⚡",
+    title: "Instant Results",
+    description: "Upload your file and get processed results in seconds — no waiting in queues.",
+  },
+  {
+    icon: "🔒",
+    title: "Privacy First",
+    description: "All files are automatically deleted after 1 hour. We never store or share your data.",
+  },
+  {
+    icon: "🎯",
+    title: "AI-Powered Quality",
+    description: "Powered by industry-leading models including Stable Diffusion and GFPGAN.",
+  },
+  {
+    icon: "💳",
+    title: "Pay Only for What You Use",
+    description: "Get 5 free credits every month. No forced subscriptions — buy credits as needed.",
+  },
+];
+
+const faqs = [
+  {
+    q: "What can I do with free credits?",
+    a: "You get 5 free credits every month. That's enough to remove 2 backgrounds, convert 5 PDFs, or generate 1 avatar.",
+  },
+  {
+    q: "Do unused credits roll over?",
+    a: "Free tier credits reset monthly. Paid plan credits refresh with your billing cycle.",
+  },
+  {
+    q: "Is my data safe?",
+    a: "All uploaded files are automatically deleted from our servers after 1 hour. We never store or share your images.",
+  },
+  {
+    q: "What AI models do you use?",
+    a: "We use industry-leading models via Replicate API, including Stable Diffusion for image generation and GFPGAN for photo restoration.",
+  },
+  {
+    q: "Can I use the results commercially?",
+    a: "Yes. You retain full ownership of all input and output files. Use them for personal or commercial projects.",
+  },
+  {
+    q: "What file formats are supported?",
+    a: "We accept PNG, JPG, and WebP for image tools. PDF files up to 20MB for document conversion.",
+  },
+];
+
 export default function Home() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
@@ -118,11 +168,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Features */}
+      <section className="mt-16">
+        <h2 className="mb-2 text-center text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          Why Choose AI ToolBox Online?
+        </h2>
+        <p className="mx-auto mb-8 max-w-xl text-center text-zinc-500 dark:text-zinc-400">
+          Powerful AI tools built for speed, quality, and privacy.
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {features.map((feature) => (
+            <div
+              key={feature.title}
+              className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900"
+            >
+              <span className="text-3xl">{feature.icon}</span>
+              <h3 className="mt-3 font-semibold text-zinc-900 dark:text-white">{feature.title}</h3>
+              <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Pricing Preview */}
       <section className="mt-16">
         <h2 className="mb-6 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
           Simple, Transparent Pricing
         </h2>
+        <p className="mb-8 text-zinc-500 dark:text-zinc-400">
+          Start free. Upgrade when you need more. No hidden fees.
+        </p>
         <div className="grid gap-4 sm:grid-cols-3">
           <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
             <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">Free</h3>
@@ -163,30 +238,35 @@ export default function Home() {
         </div>
       </section>
 
+      {/* How It Works */}
+      <section className="mt-16">
+        <h2 className="mb-8 text-center text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          How It Works
+        </h2>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {[
+            { step: "1", title: "Upload", desc: "Upload your file — image or PDF." },
+            { step: "2", title: "Process", desc: "Our AI models process your file instantly." },
+            { step: "3", title: "Download", desc: "Get your result and download it." },
+          ].map((item) => (
+            <div key={item.step} className="text-center">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-lg font-bold text-white dark:bg-white dark:text-zinc-900">
+                {item.step}
+              </div>
+              <h3 className="mt-4 font-semibold text-zinc-900 dark:text-white">{item.title}</h3>
+              <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="mt-16 max-w-3xl">
         <h2 className="mb-6 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
           Frequently Asked Questions
         </h2>
         <div className="space-y-4">
-          {[
-            {
-              q: "What can I do with free credits?",
-              a: "You get 5 free credits every month. That's enough to remove 2 backgrounds, convert 5 PDFs, or generate 1 avatar.",
-            },
-            {
-              q: "Do unused credits roll over?",
-              a: "Free tier credits reset monthly. Paid plan credits refresh with your billing cycle.",
-            },
-            {
-              q: "Is my data safe?",
-              a: "All uploaded files are automatically deleted from our servers after 1 hour. We never store or share your images.",
-            },
-            {
-              q: "What AI models do you use?",
-              a: "We use industry-leading models via Replicate API, including Stable Diffusion for image generation and GFPGAN for photo restoration.",
-            },
-          ].map((item) => (
+          {faqs.map((item) => (
             <details
               key={item.q}
               className="group rounded-xl border border-zinc-200 bg-white px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900"
@@ -205,6 +285,22 @@ export default function Home() {
             </details>
           ))}
         </div>
+      </section>
+
+      {/* CTA */}
+      <section className="mt-16 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-12 text-center">
+        <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+          Ready to Get Started?
+        </h2>
+        <p className="mx-auto mt-3 max-w-md text-white/80">
+          Sign up today and get 5 free credits — no credit card required.
+        </p>
+        <Link
+          href="/signup"
+          className="mt-6 inline-block rounded-lg bg-white px-8 py-3 text-sm font-semibold text-zinc-900 shadow-sm transition-colors hover:bg-zinc-100"
+        >
+          Create Free Account
+        </Link>
       </section>
     </div>
   );

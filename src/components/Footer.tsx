@@ -14,6 +14,12 @@ export function Footer() {
             <Link href="/pricing" className="hover:text-zinc-900 dark:hover:text-white">
               Pricing
             </Link>
+            <Link href="/about" className="hover:text-zinc-900 dark:hover:text-white">
+              About
+            </Link>
+            <Link href="/contact" className="hover:text-zinc-900 dark:hover:text-white">
+              Contact
+            </Link>
             <Link href="/privacy" className="hover:text-zinc-900 dark:hover:text-white">
               Privacy
             </Link>

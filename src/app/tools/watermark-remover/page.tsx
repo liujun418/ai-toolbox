@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { toolsApi } from "@/lib/api";
+import { useUsageTracker } from "@/hooks/useUsageTracker";
 import Link from "next/link";
 
 export default function WatermarkRemoverPage() {
@@ -14,7 +15,16 @@ export default function WatermarkRemoverPage() {
   const [status, setStatus] = useState<"idle" | "uploading" | "done" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
+  const [creditsUsed, setCreditsUsed] = useState(0);
   const fileRef = useRef<HTMLInputElement>(null);
+
+  useUsageTracker({
+    toolId: "watermark-remover",
+    toolName: "Watermark Remover",
+    icon: "🧹",
+    creditsUsed,
+    trigger: creditsUsed > 0,
+  });
 
   if (!user) {
     router.push("/login");
@@ -40,6 +50,7 @@ export default function WatermarkRemoverPage() {
       const data = await toolsApi.uploadFile("watermark-remover", file);
       setStatus("done");
       setResultUrl(data.output_file_url);
+      setCreditsUsed(data.credits_used || 3);
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Unknown error");

@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { toolsApi } from "@/lib/api";
+import { useUsageTracker } from "@/hooks/useUsageTracker";
 import Link from "next/link";
 
 export default function PhotoRestorerPage() {
@@ -15,7 +16,16 @@ export default function PhotoRestorerPage() {
   const [status, setStatus] = useState<"idle" | "uploading" | "done" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
+  const [creditsUsed, setCreditsUsed] = useState(0);
   const fileRef = useRef<HTMLInputElement>(null);
+
+  useUsageTracker({
+    toolId: "photo-restorer",
+    toolName: "Photo Restorer",
+    icon: "📷",
+    creditsUsed,
+    trigger: creditsUsed > 0,
+  });
 
   if (!user) {
     router.push("/login");
@@ -45,6 +55,7 @@ export default function PhotoRestorerPage() {
       const data = await toolsApi.uploadFileWithPrompt("photo-restorer", file, prompt);
       setStatus("done");
       setResultUrl(data.output_file_url);
+      setCreditsUsed(data.credits_used || 5);
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Unknown error");

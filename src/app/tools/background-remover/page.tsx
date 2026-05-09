@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { authApi } from "@/lib/api";
+import { useUsageTracker } from "@/hooks/useUsageTracker";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://ai-toolbox-api-production.up.railway.app";
 
@@ -15,7 +16,16 @@ export default function BackgroundRemoverPage() {
   const [status, setStatus] = useState<"idle" | "uploading" | "processing" | "done" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
+  const [creditsUsed, setCreditsUsed] = useState(0);
   const fileRef = useRef<HTMLInputElement>(null);
+
+  useUsageTracker({
+    toolId: "background-remover",
+    toolName: "Background Remover",
+    icon: "✂️",
+    creditsUsed,
+    trigger: creditsUsed > 0,
+  });
 
   // Redirect if not logged in
   if (loading) return <div className="mx-auto max-w-4xl px-4 py-16 text-center text-zinc-400">Loading...</div>;
@@ -58,6 +68,7 @@ export default function BackgroundRemoverPage() {
       const data = await res.json();
       setStatus("done");
       setResultUrl(data.output_file_url);
+      setCreditsUsed(data.credits_used || 2);
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Unknown error");
