@@ -39,16 +39,15 @@ export function Header() {
             </Link>
           ))}
 
-          <a
-            href="https://www.toolboxonline.club"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden text-xs text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 sm:inline"
-          >
-            Free Tools →
-          </a>
-
           <div className="ms-2 flex items-center gap-2 border-s border-zinc-200 ps-4 dark:border-zinc-800">
+            <a
+              href="https://www.toolboxonline.club"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400"
+            >
+              Free Tools →
+            </a>
             {loading ? (
               <span className="text-sm text-zinc-400">...</span>
             ) : user ? (

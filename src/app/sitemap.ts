@@ -23,5 +23,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/tools/pdf-to-word`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
   ];
 
-  return [...publicPages, ...toolPages];
+  // ToolBoxOnline sibling site pages
+  const siblingBase = "https://www.toolboxonline.club";
+  const siblingLocales = ["en", "es", "ar"];
+  const siblingPages: MetadataRoute.Sitemap = [];
+  for (const locale of siblingLocales) {
+    siblingPages.push({
+      url: `${siblingBase}/${locale}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    });
+    for (const page of ["privacy", "terms", "contact"]) {
+      siblingPages.push({
+        url: `${siblingBase}/${locale}/${page}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.3,
+      });
+    }
+  }
+
+  return [...publicPages, ...toolPages, ...siblingPages];
 }

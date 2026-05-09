@@ -11,6 +11,14 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-6 text-sm text-zinc-500 dark:text-zinc-400">
+            <a
+              href="https://www.toolboxonline.club"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-zinc-900 dark:hover:text-white"
+            >
+              Free Tools →
+            </a>
             <Link href="/pricing" className="hover:text-zinc-900 dark:hover:text-white">
               Pricing
             </Link>
