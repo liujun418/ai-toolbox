@@ -11,6 +11,9 @@ const tools = [
   { id: "watermark-remover", name: "Watermark Remover", icon: "🧹", href: "/tools/watermark-remover" },
   { id: "photo-restorer", name: "Photo Restorer", icon: "📷", href: "/tools/photo-restorer" },
   { id: "pdf-to-word", name: "PDF to Word", icon: "📄", href: "/tools/pdf-to-word" },
+  { id: "image-upscaler", name: "Image Upscaler", icon: "🔍", href: "/tools/image-upscaler" },
+  { id: "style-transfer", name: "Style Transfer", icon: "🖼️", href: "/tools/style-transfer" },
+  { id: "text-polish", name: "Text Polish", icon: "✨", href: "/tools/text-polish" },
 ];
 
 interface UsageEntry {
@@ -64,6 +67,9 @@ export default function DashboardPage() {
     "watermark-remover": 3,
     "photo-restorer": 5,
     "pdf-to-word": 1,
+    "image-upscaler": 2,
+    "style-transfer": 4,
+    "text-polish": 3,
   };
 
   return (

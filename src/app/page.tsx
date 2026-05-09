@@ -46,6 +46,33 @@ const tools = [
     href: "/tools/pdf-to-word",
     badge: null,
   },
+  {
+    id: "image-upscaler",
+    name: "Image Upscaler",
+    description: "Enhance image resolution with 2x or 4x AI super-resolution.",
+    icon: "🔍",
+    credits: 2,
+    href: "/tools/image-upscaler",
+    badge: "New",
+  },
+  {
+    id: "style-transfer",
+    name: "Image Style Transfer",
+    description: "Transform photos into oil paintings, watercolors, anime art.",
+    icon: "🖼️",
+    credits: 4,
+    href: "/tools/style-transfer",
+    badge: "New",
+  },
+  {
+    id: "text-polish",
+    name: "Text Polish & Rewrite",
+    description: "Polish, rewrite, shorten, or expand text with AI.",
+    icon: "✨",
+    credits: 3,
+    href: "/tools/text-polish",
+    badge: "New",
+  },
 ];
 
 const features = [

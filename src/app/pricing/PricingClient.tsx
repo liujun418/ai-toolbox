@@ -5,23 +5,23 @@ import { useAuth } from "@/lib/auth-context";
 import { toolsApi } from "@/lib/api";
 
 const packages = [
-  { id: "50_credits", credits: 50, price: "$4.99", stripePriceId: "price_50credits", popular: false },
-  { id: "100_credits", credits: 100, price: "$9.99", stripePriceId: "price_100credits", popular: true },
-  { id: "500_credits", credits: 500, price: "$24.99", stripePriceId: "price_500credits", popular: false },
+  { id: "50_credits", credits: 50, price: "$4.99", popular: false },
+  { id: "100_credits", credits: 100, price: "$9.99", popular: true },
+  { id: "500_credits", credits: 500, price: "$24.99", popular: false },
 ];
 
 export default function PricingClient() {
   const { user } = useAuth();
   const router = useRouter();
 
-  async function handlePurchase(stripePriceId: string) {
+  async function handlePurchase(packageId: string) {
     if (!user) {
       router.push("/signup");
       return;
     }
 
     try {
-      const { checkout_url } = await toolsApi.createCheckoutSession(stripePriceId);
+      const { checkout_url } = await toolsApi.createCheckoutSession(packageId);
       window.location.assign(checkout_url);
     } catch (err) {
       alert(err instanceof Error ? err.message : "Payment failed");
@@ -62,7 +62,7 @@ export default function PricingClient() {
               <li>✓ No watermark on outputs</li>
             </ul>
             <button
-              onClick={() => handlePurchase(pkg.stripePriceId)}
+              onClick={() => handlePurchase(pkg.id)}
               className={`mt-6 block w-full rounded-lg px-4 py-2.5 text-center text-sm font-medium ${
                 pkg.popular
                   ? "bg-blue-600 text-white hover:bg-blue-700"
@@ -95,6 +95,9 @@ export default function PricingClient() {
                 ["Photo Restorer", "5", "$0.50"],
                 ["PDF to Word (≤10 pages)", "1", "$0.10"],
                 ["PDF to Word (>10 pages)", "2", "$0.20"],
+                ["Image Upscaler", "2", "$0.20"],
+                ["Image Style Transfer", "4", "$0.40"],
+                ["Text Polish & Rewrite", "3", "$0.30"],
               ].map(([tool, credits, cost]) => (
                 <tr key={tool}>
                   <td className="px-4 py-3 text-zinc-700 dark:text-zinc-300">{tool}</td>
