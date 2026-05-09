@@ -3,10 +3,8 @@
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
-import { authApi } from "@/lib/api";
+import { toolsApi } from "@/lib/api";
 import { useUsageTracker } from "@/hooks/useUsageTracker";
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://ai-toolbox-api-production.up.railway.app";
 
 export default function BackgroundRemoverPage() {
   const { user, loading } = useAuth();
@@ -45,27 +43,12 @@ export default function BackgroundRemoverPage() {
   }
 
   async function handleUpload() {
-    if (!file || !user) return;
+    if (!file) return;
     setStatus("uploading");
     setErrorMsg("");
 
-    const formData = new FormData();
-    formData.append("file", file);
-
     try {
-      const token = authApi.getToken()!;
-      const res = await fetch(`${API_BASE}/api/upload/background-remover`, {
-        method: "POST",
-        headers: { Authorization: `Bearer ${token}` },
-        body: formData,
-      });
-
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({ detail: "Upload failed" }));
-        throw new Error(err.detail || err.message || "Upload failed");
-      }
-
-      const data = await res.json();
+      const data = await toolsApi.uploadFile("background-remover", file);
       setStatus("done");
       setResultUrl(data.output_file_url);
       setCreditsUsed(data.credits_used || 2);
