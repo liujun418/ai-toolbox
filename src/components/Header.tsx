@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -8,6 +9,21 @@ import { useAuth } from "@/lib/auth-context";
 export function Header() {
   const pathname = usePathname();
   const { user, logout, loading } = useAuth();
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    setDark(document.documentElement.classList.contains("dark"));
+    const observer = new MutationObserver(() => {
+      setDark(document.documentElement.classList.contains("dark"));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
+
+  const toggleDark = () => {
+    document.documentElement.classList.toggle("dark");
+    setDark((d) => !d);
+  };
 
   const navItems = [
     { label: "Tools", href: "/" },
@@ -19,14 +35,25 @@ export function Header() {
     <header className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <Link href="/" className="flex items-center">
-          <Image
-            src="/logo.png"
-            alt="AI Toolbox"
-            width={180}
-            height={40}
-            className="h-9 w-auto"
-            priority
-          />
+          {!dark ? (
+            <Image
+              src="/logo.png"
+              alt="AI Toolbox"
+              width={180}
+              height={40}
+              className="h-9 w-auto"
+              priority
+            />
+          ) : (
+            <Image
+              src="/logo-dark.png"
+              alt="AI Toolbox"
+              width={180}
+              height={40}
+              className="h-9 w-auto"
+              priority
+            />
+          )}
         </Link>
 
         <nav className="flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400">
@@ -87,9 +114,7 @@ export function Header() {
               </>
             )}
             <button
-              onClick={() =>
-                document.documentElement.classList.toggle("dark")
-              }
+              onClick={toggleDark}
               className="rounded-lg p-1.5 text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800"
               aria-label="Toggle dark mode"
             >
