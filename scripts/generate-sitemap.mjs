@@ -28,22 +28,16 @@ let xml = '<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns=
 
 for (const l of LOCALES) {
   // Home
-  xml += `<url><loc>${esc(BASE)}/${l}</loc><lastmod>${lm}</lastmod><priority>1.0</priority><changefreq>daily</changefreq>`;
-  for (const ol of LOCALES) if (ol !== l) xml += `<xhtml:link rel="alternate" hreflang="${ol}" href="${esc(BASE)}/${ol}"/>`;
-  xml += `</url>`;
+  xml += `<url><loc>${esc(BASE)}/${l}</loc><lastmod>${lm}</lastmod><priority>1.0</priority><changefreq>daily</changefreq></url>`;
 
   // Static
   for (const [pg, pri] of staticPages) {
-    xml += `<url><loc>${esc(BASE)}/${l}/${pg}</loc><lastmod>${lm}</lastmod><priority>${pri}</priority><changefreq>monthly</changefreq>`;
-    for (const ol of LOCALES) if (ol !== l) xml += `<xhtml:link rel="alternate" hreflang="${ol}" href="${esc(BASE)}/${ol}/${pg}"/>`;
-    xml += `</url>`;
+    xml += `<url><loc>${esc(BASE)}/${l}/${pg}</loc><lastmod>${lm}</lastmod><priority>${pri}</priority><changefreq>monthly</changefreq></url>`;
   }
 
   // Tools
   for (const t of tools) {
-    xml += `<url><loc>${esc(BASE)}/${l}/tools/${t}</loc><lastmod>${lm}</lastmod><priority>0.8</priority><changefreq>weekly</changefreq>`;
-    for (const ol of LOCALES) if (ol !== l) xml += `<xhtml:link rel="alternate" hreflang="${ol}" href="${esc(BASE)}/${ol}/tools/${t}"/>`;
-    xml += `</url>`;
+    xml += `<url><loc>${esc(BASE)}/${l}/tools/${t}</loc><lastmod>${lm}</lastmod><priority>0.8</priority><changefreq>weekly</changefreq></url>`;
   }
 }
 
