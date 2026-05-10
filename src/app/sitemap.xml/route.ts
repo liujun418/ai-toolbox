@@ -9,7 +9,7 @@ function iso(offsetHours: number): string {
   return d.toISOString().replace(/\.\d{3}Z$/, `${sign}${h}:00`);
 }
 
-const now = iso(8); // Asia/Shanghai
+const now = iso(0);
 
 function urlEl(
   loc: string,
