@@ -1,0 +1,410 @@
+{
+  "nav": {
+    "tools": "Tools",
+    "pricing": "Pricing",
+    "about": "About",
+    "freeTools": "Free Tools →",
+    "credits": "credits",
+    "login": "Log in",
+    "logout": "Log out",
+    "signup": "Sign up",
+    "toggleDark": "Toggle dark mode",
+    "loading": "..."
+  },
+  "footer": {
+    "copyright": "AI ToolBox Online. All rights reserved.",
+    "freeTools": "Free Tools →",
+    "pricing": "Pricing",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "home": {
+    "heroTitle": "Free AI Tools for",
+    "heroTitleHighlight": " Every",
+    "heroDescription": "Remove backgrounds, generate avatars, restore old photos, convert PDFs — all powered by AI, all in your browser.",
+    "getFreeCredits": "Get 5 Free Credits",
+    "viewPricing": "View Pricing",
+    "allTools": "All Tools",
+    "credits": "credits",
+    "free": "Free",
+    "popular": "Popular",
+    "new": "New",
+    "whyChooseTitle": "Why Choose AI ToolBox Online?",
+    "whyChooseSubtitle": "Powerful AI tools built for speed, quality, and privacy.",
+    "pricingTitle": "Simple, Transparent Pricing",
+    "pricingSubtitle": "Start free. Upgrade when you need more. No hidden fees.",
+    "howItWorks": "How It Works",
+    "upload": "Upload",
+    "uploadDesc": "Upload your file — image or PDF.",
+    "process": "Process",
+    "processDesc": "Our AI models process your file instantly.",
+    "download": "Download",
+    "downloadDesc": "Get your result and download it.",
+    "faqTitle": "Frequently Asked Questions",
+    "ctaTitle": "Ready to Get Started?",
+    "ctaSubtitle": "Sign up today and get 5 free credits — no credit card required.",
+    "ctaButton": "Create Free Account"
+  },
+  "features": [
+    { "icon": "", "title": "Instant Results", "description": "Upload your file and get processed results in seconds — no waiting in queues." },
+    { "icon": "🔒", "title": "Privacy First", "description": "All files are automatically deleted after 1 hour. We never store or share your data." },
+    { "icon": "🎯", "title": "AI-Powered Quality", "description": "Powered by industry-leading models including Stable Diffusion and GFPGAN." },
+    { "icon": "💳", "title": "Pay Only for What You Use", "description": "Get 5 free credits every month. No forced subscriptions — buy credits as needed." }
+  ],
+  "faqs": [
+    { "q": "What can I do with free credits?", "a": "You get 5 free credits every month. That's enough to remove 2 backgrounds, convert 5 PDFs, or generate 1 avatar." },
+    { "q": "Do unused credits roll over?", "a": "Free tier credits reset monthly. Paid plan credits refresh with your billing cycle." },
+    { "q": "Is my data safe?", "a": "All uploaded files are automatically deleted from our servers after 1 hour. We never store or share your images." },
+    { "q": "What AI models do you use?", "a": "We use industry-leading models via Replicate API, including Stable Diffusion for image generation and GFPGAN for photo restoration." },
+    { "q": "Can I use the results commercially?", "a": "Yes. You retain full ownership of all input and output files. Use them for personal or commercial projects." },
+    { "q": "What file formats are supported?", "a": "We accept PNG, JPG, and WebP for image tools. PDF files up to 20MB for document conversion." }
+  ],
+  "tools": {
+    "avatar-generator": { "name": "AI Avatar Generator", "description": "Transform your photos into cartoon, anime, or professional avatars.", "badge": "Popular" },
+    "background-remover": { "name": "Background Remover", "description": "Remove image backgrounds instantly with one click.", "badge": "Free" },
+    "watermark-remover": { "name": "Watermark Remover", "description": "Erase watermarks, logos, and text from images intelligently." },
+    "photo-restorer": { "name": "Photo Restorer", "description": "Restore and colorize old, blurry, or damaged photos." },
+    "pdf-to-word": { "name": "PDF to Word", "description": "Convert PDF documents to editable Word files instantly." },
+    "image-upscaler": { "name": "Image Upscaler", "description": "Enhance image resolution with 2x or 4x AI super-resolution." },
+    "style-transfer": { "name": "Image Style Transfer", "description": "Transform photos into oil paintings, watercolors, anime art." },
+    "text-polish": { "name": "Text Polish & Rewrite", "description": "Polish, rewrite, shorten, or expand text with AI." }
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "creditsRemaining": "You have",
+    "credits": "credits",
+    "buyMore": "Buy more credits →",
+    "creditsUsed": "Credits Used (All Time)",
+    "toolsUsed": "Tools Used",
+    "memberSince": "Member Since",
+    "yourTools": "Your Tools",
+    "used": "Used {{count}}x",
+    "creditsPerUse": "{{credits}} credits per use",
+    "recentActivity": "Recent Activity",
+    "noActivity": "No activity yet. Try a tool to get started!",
+    "browseTools": "Browse Tools",
+    "tool": "Tool",
+    "date": "Date",
+    "credits_col": "Credits"
+  },
+  "pricing": {
+    "title": "Simple, Transparent Pricing",
+    "subtitle": "Start free. Upgrade when you need more.",
+    "popular": "Popular",
+    "allTools": "All AI tools included",
+    "filesDeleted": "Files deleted after 1 hour",
+    "noWatermark": "No watermark on outputs",
+    "getStarted": "Get Started",
+    "subscribe": "Subscribe",
+    "costPerTool": "Cost per Tool",
+    "tool": "Tool",
+    "credits": "Credits",
+    "usdCost": "USD Cost",
+    "tools": [
+      ["Background Remover", "2", "$0.20"],
+      ["Watermark Remover", "3", "$0.30"],
+      ["AI Avatar Generator", "5", "$0.50"],
+      ["Photo Restorer", "5", "$0.50"],
+      ["PDF to Word (≤10 pages)", "1", "$0.10"],
+      ["PDF to Word (>10 pages)", "2", "$0.20"],
+      ["Image Upscaler", "2", "$0.20"],
+      ["Image Style Transfer", "4", "$0.40"],
+      ["Text Polish & Rewrite", "3", "$0.30"]
+    ]
+  },
+  "login": {
+    "title": "Log in",
+    "subtitle": "Sign in to access your AI tools and credits.",
+    "email": "Email",
+    "password": "Password",
+    "emailPlaceholder": "you@example.com",
+    "button": "Log in",
+    "loading": "Logging in...",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "loginFailed": "Login failed"
+  },
+  "signup": {
+    "title": "Sign up",
+    "subtitle": "Get 5 free credits to start. No credit card required.",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "namePlaceholder": "John Doe",
+    "emailPlaceholder": "you@example.com",
+    "button": "Create account",
+    "loading": "Creating account...",
+    "hasAccount": "Already have an account?",
+    "logIn": "Log in",
+    "registrationFailed": "Registration failed"
+  },
+  "about": {
+    "title": "About AI ToolBox Online",
+    "subtitle": "Our mission and story",
+    "mission": "Our Mission",
+    "missionText": "AI ToolBox Online was built with a simple idea: everyone should have access to powerful AI tools without expensive software subscriptions or technical expertise. Whether you're a small business owner creating professional avatars, a student converting PDFs for assignments, or a designer removing watermarks — our tools are designed to be fast, intuitive, and accessible from any device.",
+    "offer": "What We Offer",
+    "offerIntro": "We provide AI-powered tools:",
+    "offerItems": [
+      "Background Remover — One-click background removal for any image",
+      "AI Avatar Generator — Transform photos into cartoon, anime, or professional avatars",
+      "Watermark Remover — Erase watermarks, logos, and text from images",
+      "Photo Restorer — Restore and colorize old, blurry, or damaged photos",
+      "PDF to Word — Convert PDF documents to editable Word files"
+    ],
+    "howItWorks": "How It Works",
+    "howItWorksText": "We use industry-leading AI models via Replicate API — including Stable Diffusion for image generation and GFPGAN for photo restoration. All processing happens in the cloud; you just upload your file and get results in seconds. Files are automatically deleted after 1 hour to protect your privacy.",
+    "pricingPhilosophy": "Pricing Philosophy",
+    "pricingText": "We believe in transparent, pay-as-you-go pricing. No monthly subscriptions forced on you. Get 5 free credits every month, and only pay when you need more. Every tool shows its credit cost upfront so there are no surprises.",
+    "contact": "Contact",
+    "contactText": "Have questions or feedback? Reach us at jzerov@live.com or visit our contact page."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We'd love to hear from you",
+    "email": "Email",
+    "emailDesc": "For general inquiries, support, or feedback:",
+    "responseTime": "Response Time",
+    "responseText": "We aim to respond to all inquiries within 24 hours. For urgent matters, please include \"URGENT\" in your email subject line.",
+    "commonQuestions": "Common Questions",
+    "faq": [
+      { "q": "How do I get more credits?", "a": "Visit our Pricing page to purchase credits starting from $4.99 for 50 credits." },
+      { "q": "My file processing failed. What should I do?", "a": "Please email us with the tool name, file type, and any error message you received. We'll investigate and refund credits if needed." },
+      { "q": "Can I use the outputs commercially?", "a": "Yes. You retain full ownership of all files you upload and generate through our tools." }
+    ]
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: May 2026",
+    "sections": [
+      {
+        "title": "1. Information We Collect",
+        "text": "We collect minimal information necessary to provide our services:",
+        "list": [
+          "Account Information: Email address and name when you create an account.",
+          "Usage Data: Tool usage logs for billing and credit management.",
+          "Payment Data: Processed securely by Stripe. We do not store your payment card details."
+        ]
+      },
+      {
+        "title": "2. File Handling",
+        "text": "All uploaded files and processed outputs are automatically deleted from our servers within 1 hour of processing. We do not store, share, or use your images for training AI models. You retain full ownership of all files you upload and generate."
+      },
+      {
+        "title": "3. Third-Party Services",
+        "text": "We use the following third-party services to deliver our platform:",
+        "list": [
+          "Replicate API: For AI image processing (avatar generation, background removal, photo restoration).",
+          "Stripe: For secure payment processing.",
+          "Cloudflare R2: For temporary file storage during processing."
+        ],
+        "note": "Each service operates under its own privacy policy."
+      },
+      {
+        "title": "4. Data Security",
+        "text": "We use industry-standard encryption (HTTPS/TLS) for all data in transit. Authentication tokens are stored securely in your browser's local storage. We regularly review our security practices."
+      },
+      {
+        "title": "5. Your Rights",
+        "text": "You have the right to access, correct, or delete your personal data at any time. To request account deletion, contact us at jzerov@live.com."
+      },
+      {
+        "title": "6. Contact",
+        "text": "For privacy-related inquiries, contact us at jzerov@live.com."
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: May 2026",
+    "sections": [
+      {
+        "title": "1. Service Description",
+        "text": "AI ToolBox Online provides AI-powered image processing and document conversion tools, including background removal, avatar generation, watermark removal, photo restoration, and PDF-to-Word conversion. Service availability is subject to third-party API availability."
+      },
+      {
+        "title": "2. Acceptable Use",
+        "text": "You may use our tools for personal and commercial purposes. You retain full ownership of your input and output files. You agree not to:",
+        "list": [
+          "Use our service to process content that violates applicable laws or infringes on others' rights.",
+          "Automate or scrape our service without permission.",
+          "Share your account credentials or resell our credits."
+        ]
+      },
+      {
+        "title": "3. Credits and Billing",
+        "text": "Free accounts receive 5 credits per month. Paid credits are purchased via Stripe and refresh with your billing cycle. Unused paid credits roll over within the same billing cycle. Free tier credits reset monthly. Unused credits are non-refundable."
+      },
+      {
+        "title": "4. Refunds",
+        "text": "Unused credits are non-refundable. If you experience issues with our service, please contact us at jzerov@live.com for a resolution. We will make every reasonable effort to address your concerns."
+      },
+      {
+        "title": "5. Limitation of Liability",
+        "text": "AI ToolBox Online is provided \"as is\" without warranties of any kind. We do not guarantee uninterrupted or error-free service. We are not liable for any indirect, incidental, or consequential damages arising from use of our service."
+      },
+      {
+        "title": "6. Intellectual Property",
+        "text": "The AI ToolBox Online platform, including its design, code, and branding, is protected by intellectual property rights. You retain ownership of your uploaded files and generated outputs."
+      },
+      {
+        "title": "7. Changes to Terms",
+        "text": "We may update these terms from time to time. Continued use of the service after changes constitutes acceptance of the updated terms."
+      },
+      {
+        "title": "8. Contact",
+        "text": "For any questions regarding these terms, contact us at jzerov@live.com."
+      }
+    ]
+  },
+  "notFound": {
+    "title": "404",
+    "heading": "Page Not Found",
+    "description": "The page you are looking for doesn't exist or has been moved.",
+    "goHome": "Go Home",
+    "viewPricing": "View Pricing"
+  },
+  "paymentSuccess": {
+    "title": "Payment Successful!",
+    "description": "Your credits have been added to your account.",
+    "creditsAvailable": "credits available",
+    "goToDashboard": "Go to Dashboard",
+    "seconds": "s"
+  },
+  "paymentCancel": {
+    "title": "Payment Cancelled",
+    "description": "Your payment was not completed. No charges have been made.",
+    "tryAgain": "Try Again",
+    "backToDashboard": "Back to Dashboard"
+  },
+  "toolPage": {
+    "home": "Home",
+    "clickToUpload": "Click to upload",
+    "uploadPhoto": "Upload a photo",
+    "uploadImage": "Upload an image to upscale",
+    "uploadPdf": "Upload a PDF document",
+    "supportedFormats": "PNG, JPG, WebP — max 10MB",
+    "supportedFormatsPdf": "PDF — max 20MB",
+    "original": "Original",
+    "result": "Result",
+    "processing": "Processing...",
+    "cancel": "Cancel",
+    "tryAgain": "Try Again",
+    "downloadResult": "Download Result",
+    "startOver": "Start Over",
+    "tryAnother": "Try Another",
+    "style": "Style",
+    "customPrompt": "Custom prompt (optional)",
+    "mode": "Mode",
+    "upscaleFactor": "Upscale Factor",
+    "loading": "Loading..."
+  },
+  "avatarGenerator": {
+    "title": "AI Avatar Generator",
+    "description": "Transform your photo into cartoon, anime, or professional avatars.",
+    "cost": "5 credits",
+    "button": "Generate Avatar (5 credits)",
+    "styles": {
+      "cartoon": "Cartoon",
+      "anime": "Anime",
+      "professional": "Professional",
+      "pixel-art": "Pixel Art",
+      "watercolor": "Watercolor",
+      "oil-painting": "Oil Painting"
+    },
+    "promptPlaceholder": "e.g., Make me look like a wizard with blue hair",
+    "generating": "Generating avatar...",
+    "resultReady": "Configure style and generate to see result",
+    "download": "Download Avatar",
+    "tryAnother": "Try Another Photo"
+  },
+  "backgroundRemover": {
+    "title": "Background Remover",
+    "description": "Remove image backgrounds instantly with AI.",
+    "cost": "2 credits",
+    "button": "Remove Background (2 credits)",
+    "processing": "Processing...",
+    "uploadToSee": "Upload to see result"
+  },
+  "watermarkRemover": {
+    "title": "Watermark Remover",
+    "description": "Erase watermarks, logos, and text from images.",
+    "cost": "3 credits",
+    "button": "Remove Watermark (3 credits)",
+    "processing": "Processing...",
+    "uploadToSee": "Upload to see result"
+  },
+  "photoRestorer": {
+    "title": "Photo Restorer",
+    "description": "Restore and colorize old, blurry, or damaged photos.",
+    "cost": "5 credits",
+    "colorize": "Colorize photo",
+    "button": "Restore Photo (5 credits)",
+    "processing": "Restoring photo...",
+    "uploadToSee": "Upload to see result",
+    "download": "Download Restored Photo",
+    "tryAnother": "Try Another Photo"
+  },
+  "pdfToWord": {
+    "title": "PDF to Word",
+    "description": "Convert PDF documents to editable Word files.",
+    "cost1": "1 credit (≤10 pages)",
+    "cost2": "2 credits (>10 pages)",
+    "button": "Convert to Word",
+    "processing": "Converting PDF...",
+    "pageCount": "Pages",
+    "download": "Download Word File"
+  },
+  "imageUpscaler": {
+    "title": "Image Upscaler",
+    "description": "Enhance image resolution with AI super-resolution.",
+    "cost": "2 credits",
+    "button": "Upscale Image (2 credits)",
+    "processing": "Upscaling image...",
+    "uploadToSee": "Select scale and upscale to see result",
+    "scales": { "2x": "2×", "4x": "4×" },
+    "tryAnother": "Try Another Image"
+  },
+  "styleTransfer": {
+    "title": "Image Style Transfer",
+    "description": "Transform photos into oil paintings, watercolors, anime art, and more.",
+    "cost": "4 credits",
+    "button": "Transform (4 credits)",
+    "processing": "Transferring style...",
+    "uploadToSee": "Select style and transform to see result",
+    "styles": {
+      "oil-painting": "Oil Painting",
+      "watercolor": "Watercolor",
+      "anime": "Anime",
+      "sketch": "Sketch"
+    },
+    "promptPlaceholder": "e.g., Make it look like a sunset painting with bold colors",
+    "tryAnother": "Try Another Photo"
+  },
+  "textPolish": {
+    "title": "Text Polish & Rewrite",
+    "description": "Polish, rewrite, shorten, or expand your text with AI.",
+    "cost": "3 credits",
+    "originalText": "Original Text",
+    "resultLabel": "Result",
+    "placeholder": "Paste or type your text here...",
+    "characters": "characters",
+    "processedAppear": "Processed text will appear here",
+    "modes": {
+      "polish": { "label": "Polish", "desc": "Improve grammar and clarity" },
+      "rewrite": { "label": "Rewrite", "desc": "Rephrase with same meaning" },
+      "shorten": { "label": "Shorten", "desc": "Make it more concise" },
+      "expand": { "label": "Expand", "desc": "Add more detail" }
+    },
+    "button": "Process Text (3 credits)",
+    "processing": "Processing text...",
+    "copy": "Copy to Clipboard",
+    "clear": "Clear",
+    "tryAnother": "Try Another Text"
+  },
+  "language": {
+    "select": "Language"
+  }
+}

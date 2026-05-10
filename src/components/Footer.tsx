@@ -1,13 +1,20 @@
 import Link from "next/link";
 
-export function Footer() {
+interface FooterProps {
+  locale?: string;
+  dict?: Record<string, unknown>;
+}
+
+export function Footer({ locale = "en", dict }: FooterProps) {
+  const t = (dict as any)?.footer || {};
+
   return (
     <footer className="border-t border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
           <div className="flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
             <span className="text-lg">✨</span>
-            <span>© {new Date().getFullYear()} AI ToolBox Online</span>
+            <span>© {new Date().getFullYear()} {t.copyright || "AI ToolBox Online. All rights reserved."}</span>
           </div>
 
           <div className="flex items-center gap-6 text-sm text-zinc-500 dark:text-zinc-400">
@@ -17,22 +24,22 @@ export function Footer() {
               rel="noopener noreferrer"
               className="hover:text-zinc-900 dark:hover:text-white"
             >
-              Free Tools →
+              {t.freeTools || "Free Tools →"}
             </a>
-            <Link href="/pricing" className="hover:text-zinc-900 dark:hover:text-white">
-              Pricing
+            <Link href={`/${locale}/pricing`} className="hover:text-zinc-900 dark:hover:text-white">
+              {t.pricing || "Pricing"}
             </Link>
-            <Link href="/about" className="hover:text-zinc-900 dark:hover:text-white">
-              About
+            <Link href={`/${locale}/about`} className="hover:text-zinc-900 dark:hover:text-white">
+              {t.about || "About"}
             </Link>
-            <Link href="/contact" className="hover:text-zinc-900 dark:hover:text-white">
-              Contact
+            <Link href={`/${locale}/contact`} className="hover:text-zinc-900 dark:hover:text-white">
+              {t.contact || "Contact"}
             </Link>
-            <Link href="/privacy" className="hover:text-zinc-900 dark:hover:text-white">
-              Privacy
+            <Link href={`/${locale}/privacy`} className="hover:text-zinc-900 dark:hover:text-white">
+              {t.privacy || "Privacy"}
             </Link>
-            <Link href="/terms" className="hover:text-zinc-900 dark:hover:text-white">
-              Terms
+            <Link href={`/${locale}/terms`} className="hover:text-zinc-900 dark:hover:text-white">
+              {t.terms || "Terms"}
             </Link>
           </div>
         </div>
