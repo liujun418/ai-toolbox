@@ -11,9 +11,8 @@ const tools = [
 ];
 
 const staticPages = [
-  ["about", "0.6"], ["pricing", "0.8"], ["dashboard", "0.7"],
+  ["about", "0.6"], ["pricing", "0.8"],
   ["privacy", "0.3"], ["terms", "0.3"], ["contact", "0.5"],
-  ["login", "0.4"], ["signup", "0.5"],
 ];
 
 function esc(s) {
