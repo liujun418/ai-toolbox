@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Suspense } from "react";
-import { Noto_Sans_Arabic } from "next/font/google";
 import { notFound } from "next/navigation";
-import "@/app/globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AuthProvider } from "@/lib/auth-context";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
-import { locales, defaultLocale, isValidLocale, localeDir, getDictionary } from "@/lib/i18n";
-
-const notoSansArabic = Noto_Sans_Arabic({
-  variable: "--font-noto-sans-arabic",
-  subsets: ["arabic"],
-});
+import { locales, defaultLocale, isValidLocale, getDictionary } from "@/lib/i18n";
 
 const SITE_URL = "https://ai.toolboxonline.club";
 const SITE_NAME = "AI ToolBox Online";
@@ -74,13 +67,9 @@ export default async function LocaleLayout({
   if (!isValidLocale(locale)) notFound();
 
   const dict = await getDictionary(locale);
-  const dir = localeDir[locale];
-  const fontClass = locale === "ar"
-    ? `--font-geist-sans --font-geist-mono ${notoSansArabic.variable}`
-    : "--font-geist-sans --font-geist-mono";
 
   return (
-    <div className={`h-full antialiased ${fontClass}`}>
+    <div className="h-full">
       <Script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-B17KH1S3VM"

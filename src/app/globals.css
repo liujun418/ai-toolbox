@@ -36,3 +36,14 @@ body {
   transition-duration: 150ms;
   transition-timing-function: ease;
 }
+
+/* RTL support for Arabic */
+[dir="rtl"] input,
+[dir="rtl"] textarea {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .ms-2 {
+  margin-inline-start: 0.5rem;
+}
