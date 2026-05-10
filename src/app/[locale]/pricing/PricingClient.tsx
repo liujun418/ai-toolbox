@@ -36,8 +36,10 @@ export default function PricingClient() {
       <h1 className="text-center text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
         Simple, Transparent Pricing
       </h1>
-      <p className="mx-auto mt-2 max-w-lg text-center text-zinc-600 dark:text-zinc-400">
-        Start free. Upgrade when you need more.
+      <p className="mx-auto mt-2 max-w-2xl text-center text-zinc-600 dark:text-zinc-400">
+        AI ToolBox Online offers AI-powered image processing and document conversion tools.
+        You purchase credits to use these tools — each tool costs a set number of credits per use.
+        All prices in USD. No hidden fees.
       </p>
 
       <div className="mt-12 grid gap-4 sm:grid-cols-3">
@@ -111,6 +113,57 @@ export default function PricingClient() {
             </tbody>
           </table>
         </div>
+      </div>
+
+      {/* Important Information */}
+      <div className="mt-12 space-y-6 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+        <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">Important Information</h3>
+
+        <div className="space-y-4 text-sm text-zinc-600 dark:text-zinc-400">
+          <div>
+            <h4 className="font-semibold text-zinc-900 dark:text-white">What Are Credits?</h4>
+            <p className="mt-1">
+              Credits are a virtual currency used within AI ToolBox Online to access our AI tools.
+              Each tool use deducts a set number of credits from your account balance.
+              Credit costs are shown before each use so there are no surprises.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-zinc-900 dark:text-white">Credit Expiration</h4>
+            <p className="mt-1">
+              Free tier credits (5 per month) reset at the start of each calendar month and do not roll over.
+              Purchased credits are valid for 12 months from the date of purchase.
+              Unused purchased credits expire after 12 months unless otherwise stated.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-zinc-900 dark:text-white">Refund Policy</h4>
+            <p className="mt-1">
+              Credits are non-refundable and non-transferable once purchased.
+              If you experience a technical issue (e.g., tool failure, error during processing),
+              contact us at <a href="mailto:jzerov@live.com" className="text-blue-600 hover:underline">jzerov@live.com</a> with details and we will investigate.
+              We will refund credits to your account if the issue was caused by our service.
+              Refund requests are processed within 5 business days.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-zinc-900 dark:text-white">Usage Restrictions</h4>
+            <p className="mt-1">
+              Credits are for personal use only and cannot be resold, shared, or transferred to another account.
+              Automated access, scraping, or misuse of our tools may result in account suspension.
+              Uploaded files are automatically deleted within 1 hour of processing.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact */}
+      <div className="mt-8 text-center text-sm text-zinc-500 dark:text-zinc-400">
+        <p>Questions about pricing? Contact us at <a href="mailto:jzerov@live.com" className="text-blue-600 hover:underline">jzerov@live.com</a></p>
+        <p className="mt-1">Read our <a href={`/${locale}/terms`} className="text-blue-600 hover:underline">Terms of Service</a> and <a href={`/${locale}/privacy`} className="text-blue-600 hover:underline">Privacy Policy</a>.</p>
       </div>
     </div>
   );

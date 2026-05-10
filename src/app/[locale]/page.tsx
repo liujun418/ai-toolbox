@@ -130,8 +130,8 @@ export default async function HomePage({
         <div className="grid gap-4 sm:grid-cols-3">
           {[
             { name: "Free", price: "$0", desc: "5 credits/month", cta: home.getFreeCredits || "Get Started", href: `/${locale}/signup`, popular: false },
-            { name: "Basic", price: "$9.99", desc: "100 credits/month", cta: home.pricingSubtitle || "Subscribe", href: `/${locale}/pricing`, popular: true },
-            { name: "Pro", price: "$24.99", desc: "500 credits/month", cta: home.pricingSubtitle || "Subscribe", href: `/${locale}/pricing`, popular: false },
+            { name: "Basic", price: "$9.99", desc: "100 credits", cta: home.viewPricing || "View Plans", href: `/${locale}/pricing`, popular: true },
+            { name: "Pro", price: "$24.99", desc: "500 credits", cta: home.viewPricing || "View Plans", href: `/${locale}/pricing`, popular: false },
           ].map((plan) => (
             <div key={plan.name} className={`rounded-2xl ${plan.popular ? "border-2 border-blue-600 bg-white p-6 shadow-sm dark:border-blue-500 dark:bg-zinc-900" : "border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900"}`}>
               {plan.popular && <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">{t.home?.popular || "Popular"}</span>}
