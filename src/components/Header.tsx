@@ -5,7 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
-import { locales, defaultLocale } from "@/lib/i18n";
+import { locales, defaultLocale, localeNames } from "@/lib/i18n";
+import { useRouter } from "next/navigation";
+import type { Locale } from "@/lib/i18n";
 
 interface HeaderProps {
   locale?: string;
@@ -14,8 +16,10 @@ interface HeaderProps {
 
 export function Header({ locale = defaultLocale, dict }: HeaderProps) {
   const pathname = usePathname();
+  const router = useRouter();
   const { user, logout, loading } = useAuth();
   const [dark, setDark] = useState(false);
+  const [showLang, setShowLang] = useState(false);
 
   useEffect(() => {
     setDark(document.documentElement.classList.contains("dark"));
@@ -29,6 +33,17 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
   const toggleDark = () => {
     document.documentElement.classList.toggle("dark");
     setDark((d) => !d);
+  };
+
+  const switchLocale = (newLocale: Locale) => {
+    document.cookie = `locale=${newLocale}; path=/; max-age=31536000`;
+    const segments = pathname.split("/").filter(Boolean);
+    if (segments.length > 0 && ["en", "es", "ar"].includes(segments[0])) {
+      segments[0] = newLocale;
+    } else {
+      segments.unshift(newLocale);
+    }
+    router.push("/" + segments.join("/"));
   };
 
   const t = (dict as any)?.nav || {};
@@ -121,6 +136,31 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
                 </Link>
               </>
             )}
+            {/* Language Switcher */}
+            <div className="relative">
+              <button
+                onClick={() => setShowLang(!showLang)}
+                className="rounded px-2 py-1.5 text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                aria-label="Switch language"
+              >
+                {(localeNames as Record<string, string>)[locale as string] || "English"}
+              </button>
+              {showLang && (
+                <div className="absolute right-0 z-50 mt-1 min-w-[120px] rounded-lg border border-zinc-200 bg-white py-1 shadow-lg dark:border-zinc-700 dark:bg-zinc-900">
+                  {locales.map((l) => (
+                    <button
+                      key={l}
+                      onClick={() => { switchLocale(l); setShowLang(false); }}
+                      className={`block w-full px-4 py-1.5 text-left text-sm ${
+                        l === locale ? "font-semibold text-zinc-900 dark:text-white" : "text-zinc-600 dark:text-zinc-400"
+                      } hover:bg-zinc-100 dark:hover:bg-zinc-800`}
+                    >
+                      {(localeNames as Record<string, string>)[l]}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <button
               onClick={toggleDark}
               className="rounded-lg p-1.5 text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800"
