@@ -6,7 +6,13 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AuthProvider } from "@/lib/auth-context";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
-import { locales, defaultLocale, isValidLocale, getDictionary } from "@/lib/i18n";
+import { locales, defaultLocale, isValidLocale, localeDir, getDictionary } from "@/lib/i18n";
+import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans_Arabic } from "next/font/google";
+
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
+const notoSansArabic = Noto_Sans_Arabic({ variable: "--font-noto-sans-arabic", subsets: ["arabic"], display: "swap" });
 
 const SITE_URL = "https://ai.toolboxonline.club";
 const SITE_NAME = "AI ToolBox Online";
@@ -67,30 +73,37 @@ export default async function LocaleLayout({
   if (!isValidLocale(locale)) notFound();
 
   const dict = await getDictionary(locale);
+  const dir = localeDir[locale];
+
+  const fontClass = locale === "ar"
+    ? `${geistSans.variable} ${geistMono.variable} ${notoSansArabic.variable}`
+    : `${geistSans.variable} ${geistMono.variable}`;
 
   return (
-    <div className="h-full">
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-B17KH1S3VM"
-        strategy="afterInteractive"
-      />
-      <Script id="ga4-init" strategy="afterInteractive" dangerouslySetInnerHTML={{
-        __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-B17KH1S3VM');
-        `,
-      }} />
-      <AuthProvider>
-        <Header locale={locale} dict={dict} />
-        <main className="flex-1">{children}</main>
-        <Footer locale={locale} dict={dict} />
-        <Suspense fallback={null}>
-          <GoogleAnalytics />
-        </Suspense>
-      </AuthProvider>
-    </div>
+    <html suppressHydrationWarning dir={dir} lang={locale} className={fontClass}>
+      <body className="min-h-full flex flex-col bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-B17KH1S3VM"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive" dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-B17KH1S3VM');
+          `,
+        }} />
+        <AuthProvider>
+          <Header locale={locale} dict={dict} />
+          <main className="flex-1">{children}</main>
+          <Footer locale={locale} dict={dict} />
+          <Suspense fallback={null}>
+            <GoogleAnalytics />
+          </Suspense>
+        </AuthProvider>
+      </body>
+    </html>
   );
 }
