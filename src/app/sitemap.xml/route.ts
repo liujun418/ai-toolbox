@@ -79,17 +79,6 @@ export async function GET(): Promise<Response> {
     }
   }
 
-  // ToolBoxOnline sibling site
-  const siblingBase = "https://toolboxonline.club/en";
-  const siblingPages: [string, string, string][] = [
-    ["", "0.9", "weekly"], ["/about", "0.6", "monthly"],
-    ["/privacy", "0.3", "monthly"], ["/terms", "0.3", "monthly"],
-    ["/contact", "0.5", "monthly"],
-  ];
-  for (const [path, priority, freq] of siblingPages) {
-    parts.push(urlEl(`${siblingBase}${path}`, priority, freq, now, null));
-  }
-
   const body = `<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${parts.join("")}</urlset>`;
 
   return new Response(body, {
