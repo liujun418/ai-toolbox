@@ -1,48 +1,96 @@
 import { MetadataRoute } from "next";
 
+const BASE_URL = "https://ai.toolboxonline.club";
+const LOCALES = ["en", "es", "ar"];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://ai.toolboxonline.club";
+  const entries: MetadataRoute.Sitemap = [];
   const now = new Date();
 
-  const publicPages: MetadataRoute.Sitemap = [
-    { url: baseUrl, lastModified: now, changeFrequency: "daily", priority: 1.0 },
-    { url: `${baseUrl}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${baseUrl}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
-    { url: `${baseUrl}/pricing`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${baseUrl}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${baseUrl}/login`, lastModified: now, changeFrequency: "monthly", priority: 0.4 },
-    { url: `${baseUrl}/signup`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
-  ];
+  for (const locale of LOCALES) {
+    const base = `${BASE_URL}/${locale}`;
 
-  const toolPages: MetadataRoute.Sitemap = [
-    { url: `${baseUrl}/tools/background-remover`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${baseUrl}/tools/avatar-generator`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${baseUrl}/tools/watermark-remover`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
-    { url: `${baseUrl}/tools/photo-restorer`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
-    { url: `${baseUrl}/tools/pdf-to-word`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
-  ];
-
-  // ToolBoxOnline sibling site pages
-  const siblingBase = "https://www.toolboxonline.club";
-  const siblingLocales = ["en", "es", "ar"];
-  const siblingPages: MetadataRoute.Sitemap = [];
-  for (const locale of siblingLocales) {
-    siblingPages.push({
-      url: `${siblingBase}/${locale}`,
+    // Home
+    entries.push({
+      url: base,
       lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
+      changeFrequency: "daily",
+      priority: 1.0,
+      alternates: {
+        languages: Object.fromEntries(
+          LOCALES.filter((l) => l !== locale).map((l) => [l, `${BASE_URL}/${l}`])
+        ),
+      },
     });
-    for (const page of ["privacy", "terms", "contact"]) {
-      siblingPages.push({
-        url: `${siblingBase}/${locale}/${page}`,
+
+    // Static pages
+    const staticPages: { path: string; priority: number }[] = [
+      { path: "/about", priority: 0.6 },
+      { path: "/pricing", priority: 0.8 },
+      { path: "/dashboard", priority: 0.7 },
+      { path: "/privacy", priority: 0.3 },
+      { path: "/terms", priority: 0.3 },
+      { path: "/contact", priority: 0.5 },
+      { path: "/login", priority: 0.4 },
+      { path: "/signup", priority: 0.5 },
+    ];
+    for (const p of staticPages) {
+      entries.push({
+        url: `${base}${p.path}`,
         lastModified: now,
         changeFrequency: "monthly",
-        priority: 0.3,
+        priority: p.priority,
+        alternates: {
+          languages: Object.fromEntries(
+            LOCALES.filter((l) => l !== locale).map((l) => [l, `${BASE_URL}/${l}${p.path}`])
+          ),
+        },
+      });
+    }
+
+    // Tool pages
+    const toolPages: { path: string; priority: number }[] = [
+      { path: "/tools/background-remover", priority: 0.8 },
+      { path: "/tools/watermark-remover", priority: 0.7 },
+      { path: "/tools/photo-restorer", priority: 0.7 },
+      { path: "/tools/avatar-generator", priority: 0.8 },
+      { path: "/tools/pdf-to-word", priority: 0.7 },
+      { path: "/tools/image-upscaler", priority: 0.8 },
+      { path: "/tools/style-transfer", priority: 0.8 },
+      { path: "/tools/text-polish", priority: 0.8 },
+    ];
+    for (const t of toolPages) {
+      entries.push({
+        url: `${base}${t.path}`,
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: t.priority,
+        alternates: {
+          languages: Object.fromEntries(
+            LOCALES.filter((l) => l !== locale).map((l) => [l, `${BASE_URL}/${l}${t.path}`])
+          ),
+        },
       });
     }
   }
 
-  return [...publicPages, ...toolPages, ...siblingPages];
+  // ToolBoxOnline sibling site pages (en locale primary)
+  const siblingBase = "https://toolboxonline.club/en";
+  const siblingPages: { path: string; priority: number }[] = [
+    { path: "", priority: 0.9 },
+    { path: "/about", priority: 0.6 },
+    { path: "/privacy", priority: 0.3 },
+    { path: "/terms", priority: 0.3 },
+    { path: "/contact", priority: 0.5 },
+  ];
+  for (const p of siblingPages) {
+    entries.push({
+      url: `${siblingBase}${p.path}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: p.priority,
+    });
+  }
+
+  return entries;
 }
