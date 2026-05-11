@@ -84,20 +84,29 @@ export default function BackgroundRemoverPage() {
     if (ctx) ctx.clearRect(0, 0, canvasRef.current!.width, canvasRef.current!.height);
   }
 
-  async function getKeepMask(): Promise<Blob | null> {
+  function getKeepMask(): Blob | null {
     const canvas = canvasRef.current; if (!canvas) return null;
+    // Convert green overlay to binary mask (white=keep, black=remove)
     const maskCanvas = document.createElement("canvas");
     maskCanvas.width = canvas.width; maskCanvas.height = canvas.height;
     const mCtx = maskCanvas.getContext("2d"); if (!mCtx) return null;
     const imageData = canvas.getContext("2d")!.getImageData(0, 0, canvas.width, canvas.height);
     const maskData = mCtx.createImageData(canvas.width, canvas.height);
+    let hasPainted = false;
     for (let i = 0; i < imageData.data.length; i += 4) {
       if (imageData.data[i + 3] > 0) {
-        maskData.data[i] = maskData.data[i+1] = maskData.data[i+2] = maskData.data[i+3] = 255;
+        maskData.data[i] = maskData.data[i+1] = maskData.data[i+2] = 255;
+        maskData.data[i+3] = 255;
+        hasPainted = true;
       }
     }
+    if (!hasPainted) return null; // Nothing painted
     mCtx.putImageData(maskData, 0, 0);
-    return new Promise<Blob | null>(r => maskCanvas.toBlob(b => r(b), "image/png"));
+    const dataUrl = maskCanvas.toDataURL("image/png");
+    const binaryStr = atob(dataUrl.split(",")[1]);
+    const bytes = new Uint8Array(binaryStr.length);
+    for (let i = 0; i < binaryStr.length; i++) bytes[i] = binaryStr.charCodeAt(i);
+    return new Blob([bytes], { type: "image/png" });
   }
 
   function handleUploadClick() { if (!file) return; setShowConfirm(true); }
@@ -108,7 +117,7 @@ export default function BackgroundRemoverPage() {
     setStatus("uploading");
     setErrorMsg("");
     try {
-      const keepMask = mode === "manual" ? await getKeepMask() : null;
+      const keepMask = mode === "manual" ? getKeepMask() : null;
       const data = await toolsApi.uploadFile(TOOL_ID, file, undefined, keepMask || undefined);
       if (!data.output_file_url) { setStatus("error"); setErrorMsg("Processing failed. Please try again."); return; }
       setStatus("done");
