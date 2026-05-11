@@ -101,13 +101,19 @@ interface UploadResult {
   credits_used: number;
 }
 
-async function uploadFile(toolId: string, file: File, prompt?: string): Promise<UploadResult> {
+async function uploadFile(
+  toolId: string,
+  file: File,
+  prompt?: string,
+  mask?: Blob,
+): Promise<UploadResult> {
   const token = getToken();
   if (!token) throw new Error("Not authenticated");
 
   const formData = new FormData();
   formData.append("file", file);
   if (prompt) formData.append("prompt", prompt);
+  if (mask) formData.append("mask", mask, "mask.png");
 
   const res = await fetch(`${API_BASE}/api/upload/${toolId}`, {
     method: "POST",
