@@ -87,18 +87,21 @@ export default function BackgroundRemoverPage() {
 
   function getKeepMask(): Blob | null {
     const canvas = canvasRef.current; if (!canvas) return null;
-    // Convert green overlay to binary mask (white=keep, black=remove)
     const maskCanvas = document.createElement("canvas");
     maskCanvas.width = canvas.width; maskCanvas.height = canvas.height;
     const mCtx = maskCanvas.getContext("2d"); if (!mCtx) return null;
+    // Start with all white (keep everything by default), then mark unpainted as black
+    mCtx.fillStyle = "white";
+    mCtx.fillRect(0, 0, maskCanvas.width, maskCanvas.height);
     const imageData = canvas.getContext("2d")!.getImageData(0, 0, canvas.width, canvas.height);
-    const maskData = mCtx.createImageData(canvas.width, canvas.height);
+    const maskData = mCtx.getImageData(0, 0, maskCanvas.width, maskCanvas.height);
     let hasPainted = false;
     for (let i = 0; i < imageData.data.length; i += 4) {
       if (imageData.data[i + 3] > 0) {
-        maskData.data[i] = maskData.data[i+1] = maskData.data[i+2] = 255;
-        maskData.data[i+3] = 255;
         hasPainted = true;
+      } else {
+        maskData.data[i] = maskData.data[i+1] = maskData.data[i+2] = 0;
+        maskData.data[i+3] = 255;
       }
     }
     if (!hasPainted) return null;
