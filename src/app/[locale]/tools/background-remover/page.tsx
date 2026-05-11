@@ -32,6 +32,7 @@ export default function BackgroundRemoverPage() {
   const [showConfirm, setShowConfirm] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [maskPixels, setMaskPixels] = useState(0);
+  const [userPrompt, setUserPrompt] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
   const drawRef = useRef<HTMLCanvasElement>(null);
   const maskRef = useRef<HTMLCanvasElement>(null);
@@ -112,7 +113,8 @@ export default function BackgroundRemoverPage() {
     setShowConfirm(false); setStatus("uploading"); setErrorMsg("");
     try {
       const keepMask = mode === "manual" ? await getKeepMask() : null;
-      const data = await toolsApi.uploadFile(TOOL_ID, file, undefined, keepMask || undefined);
+      const prompt = mode === "manual" && userPrompt.trim() ? `Keep only: ${userPrompt.trim()}` : undefined;
+      const data = await toolsApi.uploadFile(TOOL_ID, file, prompt, keepMask || undefined);
       if (!data.output_file_url) { setStatus("error"); setErrorMsg("Processing failed."); return; }
       setStatus("done"); setResultUrl(data.output_file_url);
       setCreditsUsed(data.credits_used || CREDIT_COST); setShowToast(true);
@@ -182,6 +184,7 @@ export default function BackgroundRemoverPage() {
                   {BRUSH_SIZES.map(s => <button key={s} onClick={() => setBrushSize(s)} className={`rounded-lg border px-3 py-1.5 text-xs font-medium ${brushSize===s?"border-green-600 bg-green-50 text-green-700 dark:border-green-500 dark:bg-green-900/20 dark:text-green-300":"border-zinc-200 text-zinc-600"}`}>{s}px</button>)}
                   <button onClick={() => { drawRef.current?.getContext("2d")?.clearRect(0,0,drawRef.current.width,drawRef.current.height); setMaskPixels(0); }} className="rounded-lg border border-zinc-200 px-3 py-1.5 text-xs font-medium text-zinc-500 hover:border-red-300 hover:text-red-600">Clear</button>
                 </div>
+                <input type="text" value={userPrompt} onChange={(e) => setUserPrompt(e.target.value)} placeholder="Describe what to keep (e.g. only the text, just the person...)" className="mt-3 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-800" />
               </div>
             )}
 
