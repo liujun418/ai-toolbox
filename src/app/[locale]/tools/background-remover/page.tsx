@@ -7,6 +7,11 @@ import { useAuth } from "@/lib/auth-context";
 import { toolsApi } from "@/lib/api";
 import { useUsageTracker } from "@/hooks/useUsageTracker";
 import { getLocaleFromPathname } from "@/lib/locale";
+import { CreditConfirmDialog, CreditsUsedToast } from "@/components/CreditGuard";
+
+const TOOL_ID = "background-remover";
+const TOOL_NAME = "Background Remover";
+const CREDIT_COST = 2;
 
 export default function BackgroundRemoverPage() {
   const { user, loading } = useAuth();
@@ -19,6 +24,8 @@ export default function BackgroundRemoverPage() {
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
   const [creditsUsed, setCreditsUsed] = useState(0);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
   useUsageTracker({
@@ -46,16 +53,23 @@ export default function BackgroundRemoverPage() {
     setErrorMsg("");
   }
 
+  function handleUploadClick() {
+    if (!file) return;
+    setShowConfirm(true);
+  }
+
   async function handleUpload() {
     if (!file) return;
+    setShowConfirm(false);
     setStatus("uploading");
     setErrorMsg("");
 
     try {
-      const data = await toolsApi.uploadFile("background-remover", file);
+      const data = await toolsApi.uploadFile(TOOL_ID, file);
       setStatus("done");
       setResultUrl(data.output_file_url);
-      setCreditsUsed(data.credits_used || 2);
+      setCreditsUsed(data.credits_used || CREDIT_COST);
+      setShowToast(true);
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Unknown error");
@@ -148,10 +162,10 @@ export default function BackgroundRemoverPage() {
         {preview && status === "idle" && (
           <div className="mt-6 flex gap-3">
             <button
-              onClick={handleUpload}
+              onClick={handleUploadClick}
               className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
             >
-              Remove Background (2 credits)
+              Remove Background ({CREDIT_COST} credits)
             </button>
             <button
               onClick={() => { setPreview(null); setFile(null); }}
@@ -187,7 +201,7 @@ export default function BackgroundRemoverPage() {
         {status === "error" && (
           <div className="mt-6 flex gap-3">
             <button
-              onClick={handleUpload}
+              onClick={handleUploadClick}
               className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
             >
               Try Again
@@ -201,6 +215,24 @@ export default function BackgroundRemoverPage() {
           </div>
         )}
       </div>
+
+      <CreditConfirmDialog
+        isOpen={showConfirm}
+        creditsNeeded={CREDIT_COST}
+        currentCredits={user?.credits || 0}
+        toolName={TOOL_NAME}
+        locale={locale}
+        onConfirm={handleUpload}
+        onCancel={() => setShowConfirm(false)}
+      />
+
+      {showToast && (
+        <CreditsUsedToast
+          creditsUsed={creditsUsed}
+          remaining={user?.credits || 0}
+          onClose={() => setShowToast(false)}
+        />
+      )}
     </div>
   );
 }

@@ -7,11 +7,16 @@ import { toolsApi } from "@/lib/api";
 import { useUsageTracker } from "@/hooks/useUsageTracker";
 import Link from "next/link";
 import { getLocaleFromPathname } from "@/lib/locale";
+import { CreditConfirmDialog, CreditsUsedToast } from "@/components/CreditGuard";
 
 const scales = [
   { id: "2x", label: "2×", icon: "🔍" },
   { id: "4x", label: "4×", icon: "🔎" },
 ];
+
+const TOOL_ID = "image-upscaler";
+const TOOL_NAME = "Image Upscaler";
+const CREDIT_COST = 2;
 
 export default function ImageUpscalerPage() {
   const { user, loading } = useAuth();
@@ -26,6 +31,8 @@ export default function ImageUpscalerPage() {
   const [errorMsg, setErrorMsg] = useState("");
   const [creditsUsed, setCreditsUsed] = useState(0);
   const fileRef = useRef<HTMLInputElement>(null);
+const [showConfirm, setShowConfirm] = useState(false);
+const [showToast, setShowToast] = useState(false);
 
   useUsageTracker({
     toolId: "image-upscaler",
@@ -51,18 +58,25 @@ export default function ImageUpscalerPage() {
     setErrorMsg("");
   }
 
-  async function handleUpscale() {
+  function handleUploadClick() {
     if (!file) return;
+    setShowConfirm(true);
+  }
+
+  async function handleUpload() {
+    if (!file) return;
+    setShowConfirm(false);
     setStatus("uploading");
     setErrorMsg("");
 
     const prompt = `Upscale image by ${selectedScale}. Enhance details and quality.`;
 
     try {
-      const data = await toolsApi.uploadFile("image-upscaler", file, prompt);
+      const data = await toolsApi.uploadFile(TOOL_ID, file, prompt);
       setStatus("done");
       setResultUrl(data.output_file_url);
-      setCreditsUsed(data.credits_used || 2);
+      setCreditsUsed(data.credits_used || CREDIT_COST);
+      setShowToast(true);
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Unknown error");
@@ -168,10 +182,10 @@ export default function ImageUpscalerPage() {
             {status === "idle" && (
               <div className="flex gap-3">
                 <button
-                  onClick={handleUpscale}
+                  onClick={handleUploadClick}
                   className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
                 >
-                  Upscale Image (2 credits)
+                  Upscale Image ({CREDIT_COST} credits)
                 </button>
                 <button
                   onClick={() => { setPreview(null); setFile(null); }}
@@ -207,7 +221,7 @@ export default function ImageUpscalerPage() {
             {status === "error" && (
               <div className="flex gap-3">
                 <button
-                  onClick={handleUpscale}
+                  onClick={handleUploadClick}
                   className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
                 >
                   Try Again
@@ -223,6 +237,23 @@ export default function ImageUpscalerPage() {
           </div>
         )}
       </div>
+      <CreditConfirmDialog
+        isOpen={showConfirm}
+        creditsNeeded={CREDIT_COST}
+        currentCredits={user?.credits || 0}
+        toolName={TOOL_NAME}
+        locale={locale}
+        onConfirm={handleUpload}
+        onCancel={() => setShowConfirm(false)}
+      />
+
+      {showToast && (
+        <CreditsUsedToast
+          creditsUsed={creditsUsed}
+          remaining={user?.credits || 0}
+          onClose={() => setShowToast(false)}
+        />
+      )}
     </div>
   );
 }

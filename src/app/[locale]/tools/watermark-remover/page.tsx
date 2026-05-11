@@ -7,8 +7,12 @@ import { toolsApi } from "@/lib/api";
 import { useUsageTracker } from "@/hooks/useUsageTracker";
 import Link from "next/link";
 import { getLocaleFromPathname } from "@/lib/locale";
+import { CreditConfirmDialog, CreditsUsedToast } from "@/components/CreditGuard";
 
 const BRUSH_SIZES = [20, 40, 70];
+const TOOL_ID = "watermark-remover";
+const TOOL_NAME = "Watermark Remover";
+const CREDIT_COST = 3;
 
 export default function WatermarkRemoverPage() {
   const { user } = useAuth();
@@ -27,6 +31,8 @@ export default function WatermarkRemoverPage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const drawingRef = useRef(false);
+const [showConfirm, setShowConfirm] = useState(false);
+const [showToast, setShowToast] = useState(false);
 
   useUsageTracker({
     toolId: "watermark-remover",
@@ -153,18 +159,25 @@ export default function WatermarkRemoverPage() {
     });
   }
 
-  async function handleRemove() {
+  function handleUploadClick() {
     if (!file) return;
+    setShowConfirm(true);
+  }
+
+  async function handleUpload() {
+    if (!file) return;
+    setShowConfirm(false);
     setStatus("uploading");
     setErrorMsg("");
 
     const maskBlob = await getMaskBlob();
 
     try {
-      const data = await toolsApi.uploadFile("watermark-remover", file, undefined, maskBlob || undefined);
+      const data = await toolsApi.uploadFile(TOOL_ID, file, undefined, maskBlob || undefined);
       setStatus("done");
       setResultUrl(data.output_file_url);
-      setCreditsUsed(data.credits_used || 3);
+      setCreditsUsed(data.credits_used || CREDIT_COST);
+      setShowToast(true);
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Unknown error");
@@ -254,7 +267,7 @@ export default function WatermarkRemoverPage() {
               <div className="py-8 text-center">
                 <p className="text-sm text-red-500 mb-4">{errorMsg}</p>
                 <div className="flex justify-center gap-3">
-                  <button onClick={handleRemove} className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">Try Again</button>
+                  <button onClick={handleUploadClick} className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">Try Again</button>
                   <button onClick={reset} className="rounded-lg border border-zinc-300 px-6 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300">Cancel</button>
                 </div>
               </div>
@@ -286,8 +299,8 @@ export default function WatermarkRemoverPage() {
 
                 {/* Actions */}
                 <div className="flex gap-3">
-                  <button onClick={handleRemove} className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">
-                    Remove Watermark (3 credits)
+                  <button onClick={handleUploadClick} className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">
+                    Remove Watermark ({CREDIT_COST} credits)
                   </button>
                   <button onClick={() => { setPreview(null); setFile(null); setStatus("idle"); }} className="rounded-lg border border-zinc-300 px-6 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300">
                     Cancel
@@ -298,6 +311,23 @@ export default function WatermarkRemoverPage() {
           </div>
         )}
       </div>
+      <CreditConfirmDialog
+        isOpen={showConfirm}
+        creditsNeeded={CREDIT_COST}
+        currentCredits={user?.credits || 0}
+        toolName={TOOL_NAME}
+        locale={locale}
+        onConfirm={handleUpload}
+        onCancel={() => setShowConfirm(false)}
+      />
+
+      {showToast && (
+        <CreditsUsedToast
+          creditsUsed={creditsUsed}
+          remaining={user?.credits || 0}
+          onClose={() => setShowToast(false)}
+        />
+      )}
     </div>
   );
 }

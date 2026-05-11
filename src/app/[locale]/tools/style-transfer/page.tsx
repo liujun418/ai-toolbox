@@ -7,6 +7,7 @@ import { toolsApi } from "@/lib/api";
 import { useUsageTracker } from "@/hooks/useUsageTracker";
 import Link from "next/link";
 import { getLocaleFromPathname } from "@/lib/locale";
+import { CreditConfirmDialog, CreditsUsedToast } from "@/components/CreditGuard";
 
 const styles = [
   { id: "oil-painting", label: "Oil Painting", icon: "🖼️" },
@@ -14,6 +15,10 @@ const styles = [
   { id: "anime", label: "Anime", icon: "🌸" },
   { id: "sketch", label: "Sketch", icon: "✏️" },
 ];
+
+const TOOL_ID = "style-transfer";
+const TOOL_NAME = "Style Transfer";
+const CREDIT_COST = 4;
 
 export default function StyleTransferPage() {
   const { user, loading } = useAuth();
@@ -29,6 +34,8 @@ export default function StyleTransferPage() {
   const [errorMsg, setErrorMsg] = useState("");
   const [creditsUsed, setCreditsUsed] = useState(0);
   const fileRef = useRef<HTMLInputElement>(null);
+const [showConfirm, setShowConfirm] = useState(false);
+const [showToast, setShowToast] = useState(false);
 
   useUsageTracker({
     toolId: "style-transfer",
@@ -54,18 +61,25 @@ export default function StyleTransferPage() {
     setErrorMsg("");
   }
 
-  async function handleTransfer() {
+  function handleUploadClick() {
     if (!file) return;
+    setShowConfirm(true);
+  }
+
+  async function handleUpload() {
+    if (!file) return;
+    setShowConfirm(false);
     setStatus("uploading");
     setErrorMsg("");
 
     const stylePrompt = `Transform this image into ${selectedStyle} style. ${prompt}`;
 
     try {
-      const data = await toolsApi.uploadFile("style-transfer", file, stylePrompt);
+      const data = await toolsApi.uploadFile(TOOL_ID, file, stylePrompt);
       setStatus("done");
       setResultUrl(data.output_file_url);
-      setCreditsUsed(data.credits_used || 4);
+      setCreditsUsed(data.credits_used || CREDIT_COST);
+      setShowToast(true);
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Unknown error");
@@ -187,10 +201,10 @@ export default function StyleTransferPage() {
             {status === "idle" && (
               <div className="flex gap-3">
                 <button
-                  onClick={handleTransfer}
+                  onClick={handleUploadClick}
                   className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
                 >
-                  Transform (4 credits)
+                  Transform ({CREDIT_COST} credits)
                 </button>
                 <button
                   onClick={() => { setPreview(null); setFile(null); }}
@@ -226,7 +240,7 @@ export default function StyleTransferPage() {
             {status === "error" && (
               <div className="flex gap-3">
                 <button
-                  onClick={handleTransfer}
+                  onClick={handleUploadClick}
                   className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
                 >
                   Try Again
@@ -242,6 +256,23 @@ export default function StyleTransferPage() {
           </div>
         )}
       </div>
+      <CreditConfirmDialog
+        isOpen={showConfirm}
+        creditsNeeded={CREDIT_COST}
+        currentCredits={user?.credits || 0}
+        toolName={TOOL_NAME}
+        locale={locale}
+        onConfirm={handleUpload}
+        onCancel={() => setShowConfirm(false)}
+      />
+
+      {showToast && (
+        <CreditsUsedToast
+          creditsUsed={creditsUsed}
+          remaining={user?.credits || 0}
+          onClose={() => setShowToast(false)}
+        />
+      )}
     </div>
   );
 }

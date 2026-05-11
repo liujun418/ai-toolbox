@@ -7,6 +7,7 @@ import { toolsApi } from "@/lib/api";
 import { useUsageTracker } from "@/hooks/useUsageTracker";
 import Link from "next/link";
 import { getLocaleFromPathname } from "@/lib/locale";
+import { CreditConfirmDialog, CreditsUsedToast } from "@/components/CreditGuard";
 
 const styles = [
   { id: "cartoon", label: "Cartoon", icon: "🎨" },
@@ -16,6 +17,10 @@ const styles = [
   { id: "watercolor", label: "Watercolor", icon: "🖌️" },
   { id: "oil-painting", label: "Oil Painting", icon: "🖼️" },
 ];
+
+const TOOL_ID = "avatar-generator";
+const TOOL_NAME = "AI Avatar Generator";
+const CREDIT_COST = 5;
 
 export default function AvatarGeneratorPage() {
   const { user } = useAuth();
@@ -31,6 +36,8 @@ export default function AvatarGeneratorPage() {
   const [errorMsg, setErrorMsg] = useState("");
   const [creditsUsed, setCreditsUsed] = useState(0);
   const fileRef = useRef<HTMLInputElement>(null);
+const [showConfirm, setShowConfirm] = useState(false);
+const [showToast, setShowToast] = useState(false);
 
   useUsageTracker({
     toolId: "avatar-generator",
@@ -55,18 +62,25 @@ export default function AvatarGeneratorPage() {
     setErrorMsg("");
   }
 
-  async function handleGenerate() {
+  function handleUploadClick() {
     if (!file) return;
+    setShowConfirm(true);
+  }
+
+  async function handleUpload() {
+    if (!file) return;
+    setShowConfirm(false);
     setStatus("uploading");
     setErrorMsg("");
 
     const stylePrompt = `Generate a ${selectedStyle} style avatar from this photo. ${prompt}`;
 
     try {
-      const data = await toolsApi.uploadFile("avatar-generator", file, stylePrompt);
+      const data = await toolsApi.uploadFile(TOOL_ID, file, stylePrompt);
       setStatus("done");
       setResultUrl(data.output_file_url);
-      setCreditsUsed(data.credits_used || 5);
+      setCreditsUsed(data.credits_used || CREDIT_COST);
+      setShowToast(true);
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Unknown error");
@@ -188,10 +202,10 @@ export default function AvatarGeneratorPage() {
             {status === "idle" && (
               <div className="flex gap-3">
                 <button
-                  onClick={handleGenerate}
+                  onClick={handleUploadClick}
                   className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
                 >
-                  Generate Avatar (5 credits)
+                  Generate Avatar ({CREDIT_COST} credits)
                 </button>
                 <button
                   onClick={() => { setPreview(null); setFile(null); }}
@@ -227,7 +241,7 @@ export default function AvatarGeneratorPage() {
             {status === "error" && (
               <div className="flex gap-3">
                 <button
-                  onClick={handleGenerate}
+                  onClick={handleUploadClick}
                   className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
                 >
                   Try Again
@@ -243,6 +257,23 @@ export default function AvatarGeneratorPage() {
           </div>
         )}
       </div>
+      <CreditConfirmDialog
+        isOpen={showConfirm}
+        creditsNeeded={CREDIT_COST}
+        currentCredits={user?.credits || 0}
+        toolName={TOOL_NAME}
+        locale={locale}
+        onConfirm={handleUpload}
+        onCancel={() => setShowConfirm(false)}
+      />
+
+      {showToast && (
+        <CreditsUsedToast
+          creditsUsed={creditsUsed}
+          remaining={user?.credits || 0}
+          onClose={() => setShowToast(false)}
+        />
+      )}
     </div>
   );
 }

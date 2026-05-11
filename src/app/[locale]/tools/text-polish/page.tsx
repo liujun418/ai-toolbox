@@ -7,6 +7,7 @@ import { toolsApi } from "@/lib/api";
 import { useUsageTracker } from "@/hooks/useUsageTracker";
 import Link from "next/link";
 import { getLocaleFromPathname } from "@/lib/locale";
+import { CreditConfirmDialog, CreditsUsedToast } from "@/components/CreditGuard";
 
 const modes = [
   { id: "polish", label: "Polish", icon: "✨", desc: "Improve grammar and clarity" },
@@ -14,6 +15,10 @@ const modes = [
   { id: "shorten", label: "Shorten", icon: "✂️", desc: "Make it more concise" },
   { id: "expand", label: "Expand", icon: "📝", desc: "Add more detail" },
 ];
+
+const TOOL_ID = "text-polish";
+const TOOL_NAME = "Text Polish";
+const CREDIT_COST = 3;
 
 export default function TextPolishPage() {
   const { user, loading } = useAuth();
@@ -27,6 +32,8 @@ export default function TextPolishPage() {
   const [resultContent, setResultContent] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [creditsUsed, setCreditsUsed] = useState(0);
+const [showConfirm, setShowConfirm] = useState(false);
+const [showToast, setShowToast] = useState(false);
 
   useUsageTracker({
     toolId: "text-polish",
@@ -42,8 +49,14 @@ export default function TextPolishPage() {
     return null;
   }
 
-  async function handlePolish() {
+  function handleUploadClick() {
     if (!text.trim()) return;
+    setShowConfirm(true);
+  }
+
+  async function handleUpload() {
+    if (!text.trim()) return;
+    setShowConfirm(false);
     setStatus("processing");
     setErrorMsg("");
 
@@ -54,11 +67,12 @@ export default function TextPolishPage() {
     const file = new File([blob], "input.txt", { type: "text/plain" });
 
     try {
-      const data = await toolsApi.uploadFile("text-polish", file, prompt);
+      const data = await toolsApi.uploadFile(TOOL_ID, file, prompt);
       setStatus("done");
       setResultContent(data.result_content || "");
       setResult(data.output_file_url);
-      setCreditsUsed(data.credits_used || 3);
+      setCreditsUsed(data.credits_used || CREDIT_COST);
+      setShowToast(true);
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Unknown error");
@@ -167,11 +181,11 @@ export default function TextPolishPage() {
         {status === "idle" && (
           <div className="mt-6 flex gap-3">
             <button
-              onClick={handlePolish}
+              onClick={handleUploadClick}
               disabled={!text.trim()}
               className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {modes.find((m) => m.id === selectedMode)?.label} Text (3 credits)
+              {modes.find((m) => m.id === selectedMode)?.label} Text ({CREDIT_COST} credits)
             </button>
             <button
               onClick={() => setText("")}
@@ -213,7 +227,7 @@ export default function TextPolishPage() {
         {status === "error" && (
           <div className="mt-6 flex gap-3">
             <button
-              onClick={handlePolish}
+              onClick={handleUploadClick}
               className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
             >
               Try Again
@@ -227,6 +241,23 @@ export default function TextPolishPage() {
           </div>
         )}
       </div>
+      <CreditConfirmDialog
+        isOpen={showConfirm}
+        creditsNeeded={CREDIT_COST}
+        currentCredits={user?.credits || 0}
+        toolName={TOOL_NAME}
+        locale={locale}
+        onConfirm={handleUpload}
+        onCancel={() => setShowConfirm(false)}
+      />
+
+      {showToast && (
+        <CreditsUsedToast
+          creditsUsed={creditsUsed}
+          remaining={user?.credits || 0}
+          onClose={() => setShowToast(false)}
+        />
+      )}
     </div>
   );
 }

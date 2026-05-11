@@ -7,6 +7,11 @@ import { toolsApi } from "@/lib/api";
 import { useUsageTracker } from "@/hooks/useUsageTracker";
 import Link from "next/link";
 import { getLocaleFromPathname } from "@/lib/locale";
+import { CreditConfirmDialog, CreditsUsedToast } from "@/components/CreditGuard";
+
+const TOOL_ID = "photo-restorer";
+const TOOL_NAME = "Photo Restorer";
+const CREDIT_COST = 5;
 
 export default function PhotoRestorerPage() {
   const { user } = useAuth();
@@ -21,6 +26,8 @@ export default function PhotoRestorerPage() {
   const [errorMsg, setErrorMsg] = useState("");
   const [creditsUsed, setCreditsUsed] = useState(0);
   const fileRef = useRef<HTMLInputElement>(null);
+const [showConfirm, setShowConfirm] = useState(false);
+const [showToast, setShowToast] = useState(false);
 
   useUsageTracker({
     toolId: "photo-restorer",
@@ -45,8 +52,14 @@ export default function PhotoRestorerPage() {
     setErrorMsg("");
   }
 
-  async function handleRestore() {
+  function handleUploadClick() {
     if (!file) return;
+    setShowConfirm(true);
+  }
+
+  async function handleUpload() {
+    if (!file) return;
+    setShowConfirm(false);
     setStatus("uploading");
     setErrorMsg("");
 
@@ -55,10 +68,11 @@ export default function PhotoRestorerPage() {
       : "Restore this damaged photo, fix scratches, blur, and noise.";
 
     try {
-      const data = await toolsApi.uploadFile("photo-restorer", file, prompt);
+      const data = await toolsApi.uploadFile(TOOL_ID, file, prompt);
       setStatus("done");
       setResultUrl(data.output_file_url);
-      setCreditsUsed(data.credits_used || 5);
+      setCreditsUsed(data.credits_used || CREDIT_COST);
+      setShowToast(true);
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Unknown error");
@@ -157,10 +171,10 @@ export default function PhotoRestorerPage() {
             {status === "idle" && (
               <div className="flex gap-3">
                 <button
-                  onClick={handleRestore}
+                  onClick={handleUploadClick}
                   className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
                 >
-                  Restore Photo (5 credits)
+                  Restore Photo ({CREDIT_COST} credits)
                 </button>
                 <button
                   onClick={() => { setPreview(null); setFile(null); }}
@@ -196,7 +210,7 @@ export default function PhotoRestorerPage() {
             {status === "error" && (
               <div className="flex gap-3">
                 <button
-                  onClick={handleRestore}
+                  onClick={handleUploadClick}
                   className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
                 >
                   Try Again
@@ -212,6 +226,23 @@ export default function PhotoRestorerPage() {
           </div>
         )}
       </div>
+      <CreditConfirmDialog
+        isOpen={showConfirm}
+        creditsNeeded={CREDIT_COST}
+        currentCredits={user?.credits || 0}
+        toolName={TOOL_NAME}
+        locale={locale}
+        onConfirm={handleUpload}
+        onCancel={() => setShowConfirm(false)}
+      />
+
+      {showToast && (
+        <CreditsUsedToast
+          creditsUsed={creditsUsed}
+          remaining={user?.credits || 0}
+          onClose={() => setShowToast(false)}
+        />
+      )}
     </div>
   );
 }
