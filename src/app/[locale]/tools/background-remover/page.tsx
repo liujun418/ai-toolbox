@@ -133,15 +133,18 @@ export default function BackgroundRemoverPage() {
           <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500">← Back to Tools</Link>
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">✂️ {TOOL_NAME}</h1>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">Remove image backgrounds with AI. <strong>Auto</strong> or <strong>Manual</strong> keep-area. Costs <span className="font-semibold text-blue-600">{CREDIT_COST} credits</span>.</p>
+        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">AI-powered portrait & product background removal. Auto-detect subject or manually paint keep-area. Costs <span className="font-semibold text-blue-600">{CREDIT_COST} credits</span>.</p>
         <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/50 p-4 dark:border-blue-900/30 dark:bg-blue-950/20">
           <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 How to Use</p>
           <ol className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
             <li>1. Upload — <strong>PNG,JPG,WebP</strong> max 5MB</li>
-            <li>2. <strong>Auto</strong>: AI detects · <strong>Manual</strong>: paint green to KEEP</li>
+            <li>2. <strong>Auto</strong>: AI detects subject · <strong>Manual</strong>: paint green to KEEP</li>
             <li>3. Click Remove Background ~3-5s</li>
             <li>4. Download transparent PNG</li>
           </ol>
+          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-500">
+            🎯 <strong>Best for portraits, selfies, and people photos.</strong> Works well with products and animals too. For text/logos, use Manual mode and describe what to keep. Busy, low-contrast backgrounds may leave artifacts.
+          </p>
         </div>
       </div>
 
