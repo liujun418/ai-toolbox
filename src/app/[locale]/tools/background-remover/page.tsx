@@ -75,8 +75,9 @@ export default function BackgroundRemoverPage() {
     if (!drawingRef.current) return; e.preventDefault();
     const ctx = canvasRef.current?.getContext("2d"); if (!ctx) return;
     const pos = getCanvasPos(e);
-    ctx.fillStyle = "rgba(0, 200, 100, 0.5)";
-    ctx.lineWidth = brushSize; ctx.lineCap = "round";
+    ctx.fillStyle = "rgba(0, 220, 80, 0.7)";
+    ctx.strokeStyle = "rgba(0, 220, 80, 0.7)";
+    ctx.lineWidth = brushSize; ctx.lineCap = "round"; ctx.lineJoin = "round";
     ctx.beginPath(); ctx.arc(pos.x, pos.y, brushSize / 2, 0, Math.PI * 2); ctx.fill();
   }
   function clearMark() {
@@ -100,13 +101,14 @@ export default function BackgroundRemoverPage() {
         hasPainted = true;
       }
     }
-    if (!hasPainted) return null; // Nothing painted
+    if (!hasPainted) return null;
     mCtx.putImageData(maskData, 0, 0);
     const dataUrl = maskCanvas.toDataURL("image/png");
     const binaryStr = atob(dataUrl.split(",")[1]);
     const bytes = new Uint8Array(binaryStr.length);
     for (let i = 0; i < binaryStr.length; i++) bytes[i] = binaryStr.charCodeAt(i);
-    return new Blob([bytes], { type: "image/png" });
+    const blob = new Blob([bytes], { type: "image/png" });
+    return blob.size > 0 ? blob : null;
   }
 
   function handleUploadClick() { if (!file) return; setShowConfirm(true); }
