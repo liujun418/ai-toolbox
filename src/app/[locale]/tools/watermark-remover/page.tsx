@@ -68,6 +68,9 @@ export default function WatermarkRemoverPage() {
           <Link href={`/${locale}`} className="hover:text-blue-600">Home</Link>
           <span>/</span>
           <span>Watermark Remover</span>
+          <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500 transition-colors">
+            ← Back to Tools
+          </Link>
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
           🧹 Watermark Remover
@@ -77,13 +80,16 @@ export default function WatermarkRemoverPage() {
         </p>
 
         <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/50 p-4 dark:border-blue-900/30 dark:bg-blue-950/20">
-          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 Usage Tips</p>
-          <ul className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
-            <li>• Supported: <strong>PNG, JPG, WebP</strong> — max <strong>10MB</strong></li>
-            <li>• Best for <strong>semi-transparent watermarks, logos, and text overlays</strong> on simple backgrounds</li>
-            <li>• AI targets the watermark area only — the rest of the image stays unchanged</li>
-            <li>• Complex or full-image watermarks may leave slight artifacts</li>
-          </ul>
+          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 How to Use</p>
+          <ol className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+            <li>1. Click to upload an image with watermark — <strong>PNG, JPG, WebP</strong> (max 5MB)</li>
+            <li>2. Click <strong>Remove Watermark</strong> and wait ~3–10 seconds</li>
+            <li>3. Download the processed image</li>
+          </ol>
+          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-500">
+            💡 Best for <strong>semi-transparent watermarks and logos</strong> on simple backgrounds.
+            AI targets the marked area only — rest of image stays unchanged. Original proportions are preserved.
+          </p>
         </div>
       </div>
 
@@ -98,7 +104,7 @@ export default function WatermarkRemoverPage() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
             </svg>
             <p className="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">Upload an image with watermark</p>
-            <p className="mt-1 text-xs text-zinc-400">PNG, JPG, WebP — max 10MB</p>
+            <p className="mt-1 text-xs text-zinc-400">PNG, JPG, WebP — max 5MB</p>
             <input ref={fileRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
           </div>
         ) : (

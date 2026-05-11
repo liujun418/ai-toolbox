@@ -70,6 +70,9 @@ export default function PdfToWordPage() {
           <Link href={`/${locale}`} className="hover:text-blue-600">Home</Link>
           <span>/</span>
           <span>PDF to Word</span>
+          <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500 transition-colors">
+            ← Back to Tools
+          </Link>
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
           📄 PDF to Word
@@ -79,14 +82,17 @@ export default function PdfToWordPage() {
         </p>
 
         <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/50 p-4 dark:border-blue-900/30 dark:bg-blue-950/20">
-          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 Usage Tips</p>
-          <ul className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
-            <li>• Only <strong>PDF files</strong> are accepted — max <strong>20MB</strong></li>
-            <li>• Pricing: <strong>≤5 pages = 1 credit</strong>, 6–20 pages = 2 credits, &gt;20 pages = 3 credits</li>
-            <li>• <strong>Text, tables, and basic formatting</strong> are preserved in the output .docx file</li>
-            <li>• Scanned/image-based PDFs and complex layouts may not convert perfectly</li>
-            <li>• Processing takes ~5–30 seconds depending on page count</li>
-          </ul>
+          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 How to Use</p>
+          <ol className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+            <li>1. Upload a <strong>PDF document</strong> — max 20MB</li>
+            <li>2. Click <strong>Convert to Word</strong> — processing takes ~5–30 seconds</li>
+            <li>3. Download the .docx file</li>
+          </ol>
+          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-500">
+            💡 <strong>Text, tables, and basic formatting</strong> are preserved.
+            Pricing: ≤5 pages = 1 credit, 6–20 pages = 2 cr, &gt;20 pages = 3 cr.
+            Scanned PDFs and complex layouts may not convert perfectly.
+          </p>
         </div>
       </div>
 

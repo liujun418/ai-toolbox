@@ -80,6 +80,9 @@ export default function StyleTransferPage() {
           <Link href={`/${locale}`} className="hover:text-blue-600">Home</Link>
           <span>/</span>
           <span>Style Transfer</span>
+          <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500 transition-colors">
+            ← Back to Tools
+          </Link>
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
           🖼️ Image Style Transfer
@@ -89,14 +92,17 @@ export default function StyleTransferPage() {
         </p>
 
         <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/50 p-4 dark:border-blue-900/30 dark:bg-blue-950/20">
-          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 Usage Tips</p>
-          <ul className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
-            <li>• Supported: <strong>PNG, JPG, WebP</strong> — max <strong>10MB</strong></li>
-            <li>• Choose from 4 styles: <strong>Oil Painting, Watercolor, Anime, Sketch</strong></li>
-            <li>• Add a <strong>custom prompt</strong> to blend styles (e.g., &quot;Van Gogh style&quot;)</li>
-            <li>• Processing takes ~10–30 seconds depending on image size</li>
-            <li>• Best results with landscape, portrait, and still-life photos</li>
-          </ul>
+          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 How to Use</p>
+          <ol className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+            <li>1. Upload an image — <strong>PNG, JPG, WebP</strong> (max 5MB)</li>
+            <li>2. Select a style: <strong>Oil Painting, Watercolor, Anime, Sketch</strong></li>
+            <li>3. Optionally add a custom prompt (e.g., &quot;Van Gogh style&quot;)</li>
+            <li>4. Click <strong>Transform Style</strong> and wait ~10–30 seconds</li>
+            <li>5. Download the stylized image</li>
+          </ol>
+          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-500">
+            💡 Best with <strong>landscapes, portraits, and still-life</strong>. Processing time depends on image size.
+          </p>
         </div>
       </div>
 
@@ -111,7 +117,7 @@ export default function StyleTransferPage() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
             </svg>
             <p className="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">Upload a photo</p>
-            <p className="mt-1 text-xs text-zinc-400">PNG, JPG, WebP — max 10MB</p>
+            <p className="mt-1 text-xs text-zinc-400">PNG, JPG, WebP — max 5MB</p>
             <input ref={fileRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
           </div>
         ) : (

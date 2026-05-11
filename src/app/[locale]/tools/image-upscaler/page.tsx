@@ -77,6 +77,9 @@ export default function ImageUpscalerPage() {
           <Link href={`/${locale}`} className="hover:text-blue-600">Home</Link>
           <span>/</span>
           <span>Image Upscaler</span>
+          <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500 transition-colors">
+            ← Back to Tools
+          </Link>
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
           🔍 Image Upscaler
@@ -86,13 +89,16 @@ export default function ImageUpscalerPage() {
         </p>
 
         <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/50 p-4 dark:border-blue-900/30 dark:bg-blue-950/20">
-          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 Usage Tips</p>
-          <ul className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
-            <li>• Supported: <strong>PNG, JPG, WebP</strong> — max <strong>10MB</strong></li>
-            <li>• Choose <strong>2×</strong> for balanced quality or <strong>4×</strong> for maximum enlargement</li>
-            <li>• Best for photos, digital art, screenshots, and illustrations</li>
-            <li>• Already high-resolution images will see minimal improvement</li>
-          </ul>
+          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 How to Use</p>
+          <ol className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+            <li>1. Upload an image — <strong>PNG, JPG, WebP</strong> (max 5MB)</li>
+            <li>2. Select <strong>2×</strong> (balanced) or <strong>4×</strong> (maximum) upscale factor</li>
+            <li>3. Click <strong>Upscale Image</strong> and wait ~5–15 seconds</li>
+            <li>4. Download the enhanced high-resolution image</li>
+          </ol>
+          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-500">
+            💡 Best for <strong>photos, digital art, and screenshots</strong>. Already hi-res images show minimal improvement. 4× takes longer but gives maximum detail.
+          </p>
         </div>
       </div>
 
@@ -107,7 +113,7 @@ export default function ImageUpscalerPage() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
             </svg>
             <p className="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">Upload an image to upscale</p>
-            <p className="mt-1 text-xs text-zinc-400">PNG, JPG, WebP — max 10MB</p>
+            <p className="mt-1 text-xs text-zinc-400">PNG, JPG, WebP — max 5MB</p>
             <input ref={fileRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
           </div>
         ) : (

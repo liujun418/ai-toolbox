@@ -24,6 +24,7 @@ export default function TextPolishPage() {
   const [selectedMode, setSelectedMode] = useState("polish");
   const [status, setStatus] = useState<"idle" | "processing" | "done" | "error">("idle");
   const [result, setResult] = useState<string | null>(null);
+  const [resultContent, setResultContent] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [creditsUsed, setCreditsUsed] = useState(0);
 
@@ -54,8 +55,8 @@ export default function TextPolishPage() {
 
     try {
       const data = await toolsApi.uploadFile("text-polish", file, prompt);
-      // Try to read the result as text if it's a text file
       setStatus("done");
+      setResultContent(data.result_content || "");
       setResult(data.output_file_url);
       setCreditsUsed(data.credits_used || 3);
     } catch (err) {
@@ -72,6 +73,9 @@ export default function TextPolishPage() {
           <Link href={`/${locale}`} className="hover:text-blue-600">Home</Link>
           <span>/</span>
           <span>Text Polish</span>
+          <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500 transition-colors">
+            ← Back to Tools
+          </Link>
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
           ✨ Text Polish & Rewrite
@@ -81,13 +85,16 @@ export default function TextPolishPage() {
         </p>
 
         <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/50 p-4 dark:border-blue-900/30 dark:bg-blue-950/20">
-          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 Usage Tips</p>
-          <ul className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
-            <li>• Paste or type your text — supports up to <strong>~4,000 words</strong></li>
-            <li>• Choose from 4 modes: <strong>Polish</strong> (improve grammar), <strong>Rewrite</strong> (rephrase), <strong>Shorten</strong> (summarize), <strong>Expand</strong> (add detail)</li>
-            <li>• Best for emails, articles, social media posts, and business documents</li>
-            <li>• Processing takes ~3–10 seconds depending on text length</li>
-          </ul>
+          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 How to Use</p>
+          <ol className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+            <li>1. Paste or type your text in the left panel (up to ~4,000 words)</li>
+            <li>2. Select a mode: <strong>Polish</strong> (grammar), <strong>Rewrite</strong> (rephrase), <strong>Shorten</strong> (summarize), <strong>Expand</strong> (add detail)</li>
+            <li>3. Click the mode button to process — result appears in the right panel</li>
+            <li>4. Copy to clipboard or download as .txt file</li>
+          </ol>
+          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-500">
+            💡 Best for <strong>emails, articles, social posts, and business docs</strong>. Processing takes ~3–10 seconds.
+          </p>
         </div>
       </div>
 
@@ -136,10 +143,10 @@ export default function TextPolishPage() {
               Result
             </label>
             <div className="flex min-h-[240px] w-full items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 dark:border-zinc-700 dark:bg-zinc-800">
-              {status === "done" && result ? (
+              {status === "done" && (resultContent || result) ? (
                 <div className="w-full overflow-auto">
                   <pre className="whitespace-pre-wrap text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">
-                    {result}
+                    {resultContent || "Loading result..."}
                   </pre>
                 </div>
               ) : status === "processing" ? (
@@ -179,7 +186,7 @@ export default function TextPolishPage() {
         {status === "done" && result && (
           <div className="mt-6 flex gap-3">
             <button
-              onClick={() => { navigator.clipboard.writeText(result); }}
+              onClick={() => { navigator.clipboard.writeText(resultContent); }}
               className="rounded-lg border border-zinc-300 px-6 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300"
             >
               Copy to Clipboard
@@ -194,7 +201,7 @@ export default function TextPolishPage() {
               Download Result
             </a>
             <button
-              onClick={() => { setText(""); setResult(null); setStatus("idle"); }}
+              onClick={() => { setText(""); setResult(null); setResultContent(""); setStatus("idle"); }}
               className="rounded-lg border border-zinc-300 px-6 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300"
             >
               Try Another Text
