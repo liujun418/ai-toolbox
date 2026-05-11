@@ -77,6 +77,11 @@ const [showToast, setShowToast] = useState(false);
 
     try {
       const data = await toolsApi.uploadFile(TOOL_ID, file, stylePrompt);
+      if (!data.output_file_url) {
+        setStatus("error");
+        setErrorMsg("Processing failed. This may be due to content filtering or the AI service being busy. Please try again with a different photo.");
+        return;
+      }
       setStatus("done");
       setResultUrl(data.output_file_url);
       setCreditsUsed(data.credits_used || CREDIT_COST);

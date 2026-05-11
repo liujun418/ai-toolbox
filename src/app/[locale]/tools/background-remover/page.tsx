@@ -66,6 +66,7 @@ export default function BackgroundRemoverPage() {
 
     try {
       const data = await toolsApi.uploadFile(TOOL_ID, file);
+      if (!data.output_file_url) { setStatus("error"); setErrorMsg("Processing failed. Please try again."); return; }
       setStatus("done");
       setResultUrl(data.output_file_url);
       setCreditsUsed(data.credits_used || CREDIT_COST);
