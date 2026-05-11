@@ -88,6 +88,17 @@ export default function AvatarGeneratorPage() {
         <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
           Transform your photo into cartoon, anime, or professional avatars. Costs <span className="font-semibold text-blue-600">5 credits</span>.
         </p>
+
+        <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/50 p-4 dark:border-blue-900/30 dark:bg-blue-950/20">
+          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 Usage Tips</p>
+          <ul className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+            <li>• Supported: <strong>PNG, JPG, WebP</strong> — max <strong>10MB</strong></li>
+            <li>• Use a <strong>clear front-facing portrait</strong> for best results</li>
+            <li>• Choose from 6 styles: Cartoon, Anime, Professional, Pixel Art, Watercolor, Oil Painting</li>
+            <li>• Add a <strong>custom prompt</strong> to fine-tune the style (e.g., &quot;blue hair, glasses&quot;)</li>
+            <li>• Avoid group photos, side profiles, and low-light images</li>
+          </ul>
+        </div>
       </div>
 
       {/* Upload Area */}

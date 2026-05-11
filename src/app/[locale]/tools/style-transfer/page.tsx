@@ -87,6 +87,17 @@ export default function StyleTransferPage() {
         <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
           Transform photos into oil paintings, watercolors, anime art, and more. Costs <span className="font-semibold text-blue-600">4 credits</span>.
         </p>
+
+        <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/50 p-4 dark:border-blue-900/30 dark:bg-blue-950/20">
+          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 Usage Tips</p>
+          <ul className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+            <li>• Supported: <strong>PNG, JPG, WebP</strong> — max <strong>10MB</strong></li>
+            <li>• Choose from 4 styles: <strong>Oil Painting, Watercolor, Anime, Sketch</strong></li>
+            <li>• Add a <strong>custom prompt</strong> to blend styles (e.g., &quot;Van Gogh style&quot;)</li>
+            <li>• Processing takes ~10–30 seconds depending on image size</li>
+            <li>• Best results with landscape, portrait, and still-life photos</li>
+          </ul>
+        </div>
       </div>
 
       {/* Upload Area */}

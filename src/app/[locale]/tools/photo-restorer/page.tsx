@@ -80,6 +80,16 @@ export default function PhotoRestorerPage() {
         <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
           Restore and enhance old, blurry, or damaged photos. Optionally add color to black & white images. Costs <span className="font-semibold text-blue-600">5 credits</span>.
         </p>
+
+        <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/50 p-4 dark:border-blue-900/30 dark:bg-blue-950/20">
+          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 Usage Tips</p>
+          <ul className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+            <li>• Supported: <strong>PNG, JPG, WebP</strong> — max <strong>10MB</strong></li>
+            <li>• Best for <strong>old scanned photos, blurry images, and faded pictures</strong></li>
+            <li>• Enable <strong>Colorize</strong> to add natural colors to black & white photos</li>
+            <li>• Heavily damaged areas may be smoothed rather than perfectly reconstructed</li>
+          </ul>
+        </div>
       </div>
 
       {/* Upload Area */}

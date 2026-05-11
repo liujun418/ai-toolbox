@@ -84,6 +84,16 @@ export default function ImageUpscalerPage() {
         <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
           Enhance image resolution with AI super-resolution. Costs <span className="font-semibold text-blue-600">2 credits</span>.
         </p>
+
+        <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/50 p-4 dark:border-blue-900/30 dark:bg-blue-950/20">
+          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 Usage Tips</p>
+          <ul className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+            <li>• Supported: <strong>PNG, JPG, WebP</strong> — max <strong>10MB</strong></li>
+            <li>• Choose <strong>2×</strong> for balanced quality or <strong>4×</strong> for maximum enlargement</li>
+            <li>• Best for photos, digital art, screenshots, and illustrations</li>
+            <li>• Already high-resolution images will see minimal improvement</li>
+          </ul>
+        </div>
       </div>
 
       {/* Upload Area */}

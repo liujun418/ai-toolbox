@@ -75,6 +75,16 @@ export default function WatermarkRemoverPage() {
         <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
           Erase watermarks, logos, and text from images intelligently using AI. Costs <span className="font-semibold text-blue-600">3 credits</span>.
         </p>
+
+        <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/50 p-4 dark:border-blue-900/30 dark:bg-blue-950/20">
+          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 Usage Tips</p>
+          <ul className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+            <li>• Supported: <strong>PNG, JPG, WebP</strong> — max <strong>10MB</strong></li>
+            <li>• Best for <strong>semi-transparent watermarks, logos, and text overlays</strong> on simple backgrounds</li>
+            <li>• AI targets the watermark area only — the rest of the image stays unchanged</li>
+            <li>• Complex or full-image watermarks may leave slight artifacts</li>
+          </ul>
+        </div>
       </div>
 
       {/* Upload Area */}

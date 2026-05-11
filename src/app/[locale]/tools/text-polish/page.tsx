@@ -79,6 +79,16 @@ export default function TextPolishPage() {
         <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
           Polish, rewrite, shorten, or expand your text with AI. Costs <span className="font-semibold text-blue-600">3 credits</span>.
         </p>
+
+        <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/50 p-4 dark:border-blue-900/30 dark:bg-blue-950/20">
+          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 Usage Tips</p>
+          <ul className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+            <li>• Paste or type your text — supports up to <strong>~4,000 words</strong></li>
+            <li>• Choose from 4 modes: <strong>Polish</strong> (improve grammar), <strong>Rewrite</strong> (rephrase), <strong>Shorten</strong> (summarize), <strong>Expand</strong> (add detail)</li>
+            <li>• Best for emails, articles, social media posts, and business documents</li>
+            <li>• Processing takes ~3–10 seconds depending on text length</li>
+          </ul>
+        </div>
       </div>
 
       {/* Input Area */}

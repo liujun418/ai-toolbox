@@ -77,6 +77,17 @@ export default function PdfToWordPage() {
         <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
           Convert PDF documents to editable Word (.docx) files. Costs <span className="font-semibold text-blue-600">1-2 credits</span> depending on page count.
         </p>
+
+        <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/50 p-4 dark:border-blue-900/30 dark:bg-blue-950/20">
+          <p className="text-sm font-medium text-blue-800 dark:text-blue-300">📋 Usage Tips</p>
+          <ul className="mt-2 space-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+            <li>• Only <strong>PDF files</strong> are accepted — max <strong>20MB</strong></li>
+            <li>• Pricing: <strong>≤5 pages = 1 credit</strong>, 6–20 pages = 2 credits, &gt;20 pages = 3 credits</li>
+            <li>• <strong>Text, tables, and basic formatting</strong> are preserved in the output .docx file</li>
+            <li>• Scanned/image-based PDFs and complex layouts may not convert perfectly</li>
+            <li>• Processing takes ~5–30 seconds depending on page count</li>
+          </ul>
+        </div>
       </div>
 
       {/* Upload Area */}
