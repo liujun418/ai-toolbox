@@ -265,9 +265,9 @@ export default function WatermarkRemoverPage() {
                   <p className="mb-2 text-sm font-medium text-zinc-500 dark:text-zinc-400">
                     Paint over the watermark — brush: {brushSize}px
                   </p>
-                  <div className="relative inline-block max-w-full">
-                    <img ref={imgRef} src={preview} alt="Mark watermark" className="max-h-[400px] rounded-xl border" onLoad={initCanvas} />
-                    <canvas ref={canvasRef} onMouseDown={startDraw} onMouseMove={draw} onMouseUp={stopDraw} onMouseLeave={stopDraw} onTouchStart={startDraw} onTouchMove={draw} onTouchEnd={stopDraw} className="absolute inset-0 w-full h-full cursor-crosshair rounded-xl" style={{ touchAction: "none" }} />
+                  <div className="relative block max-w-full" style={{ lineHeight: 0 }}>
+                    <img ref={imgRef} src={preview} alt="Mark watermark" className="max-h-[400px] max-w-full rounded-xl border" onLoad={initCanvas} />
+                    <canvas ref={canvasRef} onMouseDown={startDraw} onMouseMove={draw} onMouseUp={stopDraw} onMouseLeave={stopDraw} onTouchStart={startDraw} onTouchMove={draw} onTouchEnd={stopDraw} className="absolute inset-0 cursor-crosshair rounded-xl" style={{ touchAction: "none", width: "100%", height: "100%" }} />
                   </div>
                   <p className="mt-1 text-xs text-zinc-400">The yellow overlay marks areas to be removed by AI</p>
                 </div>
