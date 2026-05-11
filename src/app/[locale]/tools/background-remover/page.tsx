@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { toolsApi } from "@/lib/api";
@@ -65,7 +66,12 @@ export default function BackgroundRemoverPage() {
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
+        <div className="flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
+          <Link href={`/${locale}`} className="hover:text-blue-600">Home</Link>
+          <span>/</span>
+          <span>Background Remover</span>
+        </div>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
           ✂️ Background Remover
         </h1>
         <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
