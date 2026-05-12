@@ -18,7 +18,7 @@ export function Footer({ locale = "en", dict }: FooterProps) {
           </div>
 
           <div className="flex flex-col items-center gap-2 sm:items-end">
-            <div className="flex items-center gap-6 text-sm text-zinc-500 dark:text-zinc-400">
+            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-zinc-500 dark:text-zinc-400 sm:gap-6">
               <a
                 href="https://www.toolboxonline.club"
                 target="_blank"
