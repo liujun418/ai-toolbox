@@ -55,7 +55,17 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
   ];
 
   return (
-    <header className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+    <>
+      {/* Email verification banner */}
+      {user && !user.email_verified && pathname !== `/${locale}/verify-email` && (
+        <div className="flex items-center justify-center gap-3 bg-yellow-50 px-4 py-2 text-sm text-yellow-800 dark:bg-yellow-950 dark:text-yellow-300">
+          <span>Please verify your email address for full account access.</span>
+          <Link href={`/${locale}/settings`} className="font-medium underline hover:no-underline">
+            Settings
+          </Link>
+        </div>
+      )}
+      <header className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <Link href={`/${locale}`} className="flex items-center">
           {!dark ? (
@@ -112,6 +122,12 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
                 >
                   {user.credits} {t.credits || "credits"}
                 </span>
+                <Link
+                  href={`/${locale}/settings`}
+                  className="rounded-lg px-3 py-1.5 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                >
+                  Settings
+                </Link>
                 <button
                   onClick={logout}
                   className="rounded-lg px-3 py-1.5 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
@@ -173,5 +189,6 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
         </nav>
       </div>
     </header>
+    </>
   );
 }

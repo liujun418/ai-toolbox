@@ -47,6 +47,9 @@ export default function LoginPage() {
         <div>
           <label htmlFor="password" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Password</label>
           <input type="password" id="password" name="password" required minLength={6} className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-800" placeholder="••••••••" />
+          <Link href={`/${locale}/forgot-password`} className="mt-1 inline-block text-xs text-blue-600 hover:text-blue-500">
+            Forgot password?
+          </Link>
         </div>
         <button type="submit" disabled={loading} className="w-full rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-zinc-800 disabled:opacity-50 dark:bg-white dark:text-zinc-900">
           {loading ? "Logging in..." : "Log in"}

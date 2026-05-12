@@ -20,12 +20,40 @@ interface User {
   email: string;
   name: string | null;
   credits: number;
+  email_verified: boolean;
   created_at: string;
 }
 
 interface TokenResponse {
   access_token: string;
   user: User;
+}
+
+export interface TaskItem {
+  id: string;
+  tool_type: string;
+  status: string;
+  credits_cost: number;
+  created_at: string;
+  completed_at: string | null;
+}
+
+interface TaskListResult {
+  tasks: TaskItem[];
+  total: number;
+}
+
+export interface TransactionItem {
+  id: string;
+  type: string;
+  amount: number;
+  description: string | null;
+  created_at: string;
+}
+
+interface TransactionListResult {
+  transactions: TransactionItem[];
+  total: number;
 }
 
 function getToken(): string | null {
@@ -82,6 +110,52 @@ export const authApi = {
 
   async me(): Promise<User> {
     return apiRequest("/api/auth/me");
+  },
+
+  async forgotPassword(email: string): Promise<{ message: string }> {
+    return apiRequest("/api/auth/forgot-password", {
+      method: "POST",
+      body: JSON.stringify({ email }),
+    });
+  },
+
+  async resetPassword(token: string, newPassword: string): Promise<{ message: string }> {
+    return apiRequest("/api/auth/reset-password", {
+      method: "POST",
+      body: JSON.stringify({ token, new_password: newPassword }),
+    });
+  },
+
+  async changePassword(oldPassword: string, newPassword: string): Promise<{ message: string }> {
+    return apiRequest("/api/auth/change-password", {
+      method: "PATCH",
+      body: JSON.stringify({ old_password: oldPassword, new_password: newPassword }),
+    });
+  },
+
+  async updateProfile(name?: string, email?: string): Promise<User> {
+    return apiRequest("/api/auth/profile", {
+      method: "PATCH",
+      body: JSON.stringify({ name, email }),
+    });
+  },
+
+  async sendVerification(): Promise<{ message: string }> {
+    return apiRequest("/api/auth/send-verification", {
+      method: "POST",
+    });
+  },
+
+  async verifyEmail(token: string): Promise<{ message: string; email: string }> {
+    return apiRequest(`/api/auth/verify-email?token=${token}`);
+  },
+
+  async getTasks(page = 1, size = 20): Promise<TaskListResult> {
+    return apiRequest(`/api/auth/me/tasks?page=${page}&size=${size}`);
+  },
+
+  async getTransactions(page = 1, size = 20): Promise<TransactionListResult> {
+    return apiRequest(`/api/auth/me/transactions?page=${page}&size=${size}`);
   },
 
   logout(): void {
