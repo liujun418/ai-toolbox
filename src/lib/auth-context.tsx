@@ -7,6 +7,7 @@ interface User {
   id: string;
   email: string;
   name: string | null;
+  role: string;
   credits: number;
   email_verified: boolean;
   created_at: string;

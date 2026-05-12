@@ -19,6 +19,7 @@ interface User {
   id: string;
   email: string;
   name: string | null;
+  role: string;
   credits: number;
   email_verified: boolean;
   created_at: string;
@@ -220,4 +221,155 @@ export const toolsApi = {
   uploadFile,
   createCheckoutSession,
   API_BASE,
+};
+
+// -- Admin API --
+
+export interface AdminDashboardStats {
+  total_users: number;
+  new_users_today: number;
+  new_users_this_week: number;
+  new_users_this_month: number;
+  total_revenue: number;
+  total_credits_sold: number;
+  total_credits_consumed: number;
+  tasks_today: number;
+  tasks_this_week: number;
+  failed_tasks: number;
+  top_tools: { tool_type: string; count: number }[];
+  top_users: { id: string; email: string; credits: number }[];
+}
+
+export interface AdminUser {
+  id: string;
+  email: string;
+  name: string | null;
+  role: string;
+  credits: number;
+  email_verified: boolean;
+  created_at: string;
+}
+
+export interface AdminUserListResult {
+  users: AdminUser[];
+  total: number;
+  page: number;
+  size: number;
+}
+
+export interface AdminTask {
+  id: string;
+  user_id: string;
+  user_email: string;
+  tool_type: string;
+  status: string;
+  credits_cost: number;
+  error_message: string | null;
+  created_at: string;
+  completed_at: string | null;
+}
+
+export interface AdminTaskListResult {
+  tasks: AdminTask[];
+  total: number;
+  page: number;
+  size: number;
+}
+
+export interface AdminTransaction {
+  id: string;
+  user_id: string;
+  user_email: string;
+  type: string;
+  amount: number;
+  description: string | null;
+  created_at: string;
+}
+
+export interface AdminTransactionListResult {
+  transactions: AdminTransaction[];
+  total: number;
+  page: number;
+  size: number;
+}
+
+export const adminApi = {
+  async getDashboard(): Promise<AdminDashboardStats> {
+    return apiRequest("/api/admin/dashboard");
+  },
+
+  async listUsers(params?: {
+    page?: number;
+    size?: number;
+    search?: string;
+    sort_by?: string;
+    sort_order?: "asc" | "desc";
+  }): Promise<AdminUserListResult> {
+    const qs = new URLSearchParams();
+    if (params?.page) qs.set("page", String(params.page));
+    if (params?.size) qs.set("size", String(params.size));
+    if (params?.search) qs.set("search", params.search);
+    if (params?.sort_by) qs.set("sort_by", params.sort_by);
+    if (params?.sort_order) qs.set("sort_order", params.sort_order);
+    return apiRequest(`/api/admin/users?${qs.toString()}`);
+  },
+
+  async getUserDetail(userId: string): Promise<{
+    user: AdminUser;
+    recent_tasks: AdminTask[];
+    recent_transactions: AdminTransaction[];
+  }> {
+    return apiRequest(`/api/admin/users/${userId}`);
+  },
+
+  async adjustCredits(
+    userId: string,
+    amount: number,
+    reason: string,
+  ): Promise<{ message: string; new_balance: number }> {
+    return apiRequest(`/api/admin/users/${userId}/credits`, {
+      method: "PATCH",
+      body: JSON.stringify({ amount, reason }),
+    });
+  },
+
+  async setUserRole(
+    userId: string,
+    role: string,
+  ): Promise<{ message: string }> {
+    return apiRequest(`/api/admin/users/${userId}/role`, {
+      method: "PATCH",
+      body: JSON.stringify({ role }),
+    });
+  },
+
+  async listTasks(params?: {
+    page?: number;
+    size?: number;
+    status?: string;
+    tool_type?: string;
+    user_id?: string;
+  }): Promise<AdminTaskListResult> {
+    const qs = new URLSearchParams();
+    if (params?.page) qs.set("page", String(params.page));
+    if (params?.size) qs.set("size", String(params.size));
+    if (params?.status) qs.set("status", params.status);
+    if (params?.tool_type) qs.set("tool_type", params.tool_type);
+    if (params?.user_id) qs.set("user_id", params.user_id);
+    return apiRequest(`/api/admin/tasks?${qs.toString()}`);
+  },
+
+  async listTransactions(params?: {
+    page?: number;
+    size?: number;
+    type?: string;
+    user_id?: string;
+  }): Promise<AdminTransactionListResult> {
+    const qs = new URLSearchParams();
+    if (params?.page) qs.set("page", String(params.page));
+    if (params?.size) qs.set("size", String(params.size));
+    if (params?.type) qs.set("type", params.type);
+    if (params?.user_id) qs.set("user_id", params.user_id);
+    return apiRequest(`/api/admin/transactions?${qs.toString()}`);
+  },
 };
