@@ -160,6 +160,9 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
                 aria-label="Switch language"
               >
                 {(localeNames as Record<string, string>)[locale as string] || "English"}
+                <svg className="ms-1 inline-block h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
               </button>
               {showLang && (
                 <div className="absolute right-0 z-50 mt-1 min-w-[120px] rounded-lg border border-zinc-200 bg-white py-1 shadow-lg dark:border-zinc-700 dark:bg-zinc-900">

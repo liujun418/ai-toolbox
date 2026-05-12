@@ -190,6 +190,9 @@ export default function MobileMenu({ locale = defaultLocale, dict }: MobileMenuP
               className="rounded-lg px-3 py-2 text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
             >
               {(localeNames as Record<string, string>)[locale as string] || "English"}
+              <svg className="ms-1 inline-block h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
             </button>
             {showLang && (
               <div
