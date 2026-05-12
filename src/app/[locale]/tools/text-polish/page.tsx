@@ -230,13 +230,13 @@ const [showToast, setShowToast] = useState(false);
               onClick={handleUploadClick}
               className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
             >
-              Try Again
+              Try Again ({CREDIT_COST} credits)
             </button>
             <button
-              onClick={() => { setErrorMsg(""); setStatus("idle"); }}
+              onClick={() => { setText(""); setErrorMsg(""); setResult(null); setResultContent(""); setStatus("idle"); }}
               className="rounded-lg border border-zinc-300 px-6 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300"
             >
-              Cancel
+              Clear & Reset
             </button>
           </div>
         )}

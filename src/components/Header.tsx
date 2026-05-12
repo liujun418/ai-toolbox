@@ -107,12 +107,11 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
               <span className="text-sm text-zinc-400">{t.loading || "..."}</span>
             ) : user ? (
               <>
-                <Link
-                  href={`/${locale}/dashboard`}
-                  className="rounded-lg px-3 py-1.5 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                <span
+                  className="rounded-lg px-3 py-1.5 text-sm font-medium text-zinc-700"
                 >
                   {user.credits} {t.credits || "credits"}
-                </Link>
+                </span>
                 <button
                   onClick={logout}
                   className="rounded-lg px-3 py-1.5 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
