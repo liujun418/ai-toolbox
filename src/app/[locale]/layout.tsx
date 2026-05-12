@@ -82,6 +82,12 @@ export default async function LocaleLayout({
 
   return (
     <html suppressHydrationWarning dir={dir} lang={locale} className={fontClass}>
+      <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="512x512" href="/favicon-512.png" />
+      </head>
       <body className="min-h-full flex flex-col bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
         <Script
           async
