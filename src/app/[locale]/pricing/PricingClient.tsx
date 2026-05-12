@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { toolsApi } from "@/lib/api";
@@ -16,6 +17,7 @@ export default function PricingClient() {
   const router = useRouter();
   const pathname = usePathname();
   const locale = getLocaleFromPathname(pathname);
+  const [error, setError] = useState("");
 
   async function handlePurchase(packageId: string) {
     if (!user) {
@@ -27,12 +29,18 @@ export default function PricingClient() {
       const { checkout_url } = await toolsApi.createCheckoutSession(packageId);
       window.location.assign(checkout_url);
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Payment failed");
+      setError(err instanceof Error ? err.message : "Payment failed");
     }
   }
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
+      {error && (
+        <div className="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-300">
+          {error}
+          <button onClick={() => setError("")} className="ml-3 font-medium underline hover:no-underline">Dismiss</button>
+        </div>
+      )}
       <h1 className="text-center text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
         Simple, Transparent Pricing
       </h1>

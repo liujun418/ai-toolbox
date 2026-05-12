@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
@@ -88,20 +87,7 @@ export default async function LocaleLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="512x512" href="/favicon-512.png" />
       </head>
-      <body className="min-h-full flex flex-col bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-B17KH1S3VM"
-          strategy="afterInteractive"
-        />
-        <Script id="ga4-init" strategy="afterInteractive" dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-B17KH1S3VM');
-          `,
-        }} />
+      <body className="min-h-full flex-col bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
         <AuthProvider>
           <Header locale={locale} dict={dict} />
           <main className="flex-1">{children}</main>
