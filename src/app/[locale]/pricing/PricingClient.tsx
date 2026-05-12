@@ -6,6 +6,8 @@ import { useAuth } from "@/lib/auth-context";
 import { toolsApi } from "@/lib/api";
 import { getLocaleFromPathname } from "@/lib/locale";
 
+const CONTACT_EMAIL = "jzerov@live.com";
+
 const packages = [
   { id: "50_credits", credits: 50, price: "$4.99", popular: false },
   { id: "100_credits", credits: 100, price: "$9.99", popular: true },
@@ -151,7 +153,7 @@ export default function PricingClient() {
             <p className="mt-1">
               Credits are non-refundable and non-transferable once purchased.
               If you experience a technical issue (e.g., tool failure, error during processing),
-              contact us at <a href="mailto:jzerov@live.com" className="text-blue-600 hover:underline">jzerov@live.com</a> with details and we will investigate.
+              contact us at <a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-600 hover:underline">{CONTACT_EMAIL}</a> with details and we will investigate.
               We will refund credits to your account if the issue was caused by our service.
               Refund requests are processed within 5 business days.
             </p>
@@ -170,7 +172,7 @@ export default function PricingClient() {
 
       {/* Contact */}
       <div className="mt-8 text-center text-sm text-zinc-500 dark:text-zinc-400">
-        <p>Questions about pricing? Contact us at <a href="mailto:jzerov@live.com" className="text-blue-600 hover:underline">jzerov@live.com</a></p>
+        <p>Questions about pricing? Contact us at <a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-600 hover:underline">{CONTACT_EMAIL}</a></p>
         <p className="mt-1">Read our <a href={`/${locale}/terms`} className="text-blue-600 hover:underline">Terms of Service</a> and <a href={`/${locale}/privacy`} className="text-blue-600 hover:underline">Privacy Policy</a>.</p>
       </div>
     </div>

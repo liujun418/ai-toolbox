@@ -20,7 +20,7 @@ export default async function ContactPage({
         <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
           <h2 className="text-lg font-semibold text-zinc-900 dark:text-white">{t.email || "Email"}</h2>
           <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{t.emailDesc || "For general inquiries, support, or feedback:"}</p>
-          <a href="mailto:jzerov@live.com" className="mt-2 inline-block text-blue-600 hover:underline">jzerov@live.com</a>
+          <a href={`mailto:${(dict as any).footer?.email || "jzerov@live.com"}`} className="mt-2 inline-block text-blue-600 hover:underline">{(dict as any).footer?.email || "jzerov@live.com"}</a>
         </div>
 
         <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">

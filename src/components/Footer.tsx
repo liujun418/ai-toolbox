@@ -44,7 +44,7 @@ export function Footer({ locale = "en", dict }: FooterProps) {
               </Link>
             </div>
             <p className="text-xs text-zinc-400 dark:text-zinc-500">
-              Contact: <a href="mailto:jzerov@live.com" className="hover:text-blue-600">jzerov@live.com</a>
+              Contact: <a href={`mailto:${t.email || "jzerov@live.com"}`} className="hover:text-blue-600">{t.email || "jzerov@live.com"}</a>
             </p>
           </div>
         </div>

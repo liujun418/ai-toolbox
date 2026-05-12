@@ -10,6 +10,7 @@ import { getLocaleFromPathname } from "@/lib/locale";
 import { CreditConfirmDialog, CreditsUsedToast } from "@/components/CreditGuard";
 import type { Locale } from "@/lib/i18n";
 
+import { getCreditCost } from "@/lib/creditCosts";
 const TOOL_ID = "avatar-generator";
 const CREDIT_COST = 5;
 const styleIds = ["cartoon", "anime", "professional", "pixel-art", "watercolor", "oil-painting"] as const;

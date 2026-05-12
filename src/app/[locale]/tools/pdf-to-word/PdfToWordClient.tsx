@@ -10,10 +10,11 @@ import { getLocaleFromPathname } from "@/lib/locale";
 import { CreditConfirmDialog, CreditsUsedToast } from "@/components/CreditGuard";
 import type { Locale } from "@/lib/i18n";
 
+import { getCreditCost } from "@/lib/creditCosts";
 const TOOL_ID = "pdf-to-word";
-const CREDIT_COST = 2;
 
 export default function PdfToWordClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
+  const CREDIT_COST = getCreditCost(TOOL_ID);
   const { user, loading } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
