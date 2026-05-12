@@ -1,0 +1,181 @@
+"use client";
+
+import { useState, useRef, useCallback } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { useAuth } from "@/lib/auth-context";
+import { toolsApi, authApi } from "@/lib/api";
+import { useUsageTracker } from "@/hooks/useUsageTracker";
+import { validateImageFile } from "@/lib/fileValidation";
+import type { Locale } from "@/lib/i18n";
+
+export interface UseToolOptions {
+  toolId: string;
+  creditCost: number;
+  /** Build the prompt from tool-specific options. Return undefined for tools without prompt. */
+  buildPrompt?: (options: Record<string, unknown>) => string | undefined;
+  /** For tools that use canvas masks (background-remover, watermark-remover). */
+  getMask?: () => Promise<Blob | null>;
+  onSuccess?: (resultUrl: string) => void;
+  locale: Locale;
+  dict?: Record<string, unknown>;
+}
+
+export interface UseToolReturn {
+  file: File | null;
+  preview: string | null;
+  status: "idle" | "uploading" | "done" | "error";
+  resultUrl: string | null;
+  errorMsg: string;
+  creditsUsed: number;
+  showConfirm: boolean;
+  showToast: boolean;
+  fileRef: React.RefObject<HTMLInputElement | null>;
+  handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleUploadClick: () => void;
+  handleUpload: (promptOptions: Record<string, unknown>) => Promise<void>;
+  reset: () => void;
+  setShowConfirm: (v: boolean) => void;
+  setShowToast: (v: boolean) => void;
+  fileError: string | null;
+}
+
+export function useTool(options: UseToolOptions): UseToolReturn {
+  const { toolId, creditCost, buildPrompt, getMask, onSuccess, locale } = options;
+  const { user, updateUser } = useAuth();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [file, setFile] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [status, setStatus] = useState<"idle" | "uploading" | "done" | "error">("idle");
+  const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [fileError, setFileError] = useState<string | null>(null);
+  const [creditsUsed, setCreditsUsed] = useState(0);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  // Track usage when credits are consumed
+  const toolName = ((options.dict as any)?.[toolId.replace(/-/g, "_")] as any)?.title || toolId;
+  useUsageTracker({
+    toolId,
+    toolName,
+    icon: "⚡",
+    creditsUsed,
+    trigger: creditsUsed > 0,
+  });
+
+  const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const f = e.target.files?.[0];
+    if (!f) return;
+
+    // Validate file
+    const error = validateImageFile(f);
+    if (error) {
+      setFileError(error);
+      setFile(null);
+      setPreview(null);
+      return;
+    }
+
+    setFileError(null);
+    setFile(f);
+    const url = URL.createObjectURL(f);
+    setPreview(url);
+    setStatus("idle");
+    setResultUrl(null);
+    setErrorMsg("");
+  }, []);
+
+  const handleUploadClick = useCallback(() => {
+    if (!file) return;
+    setShowConfirm(true);
+  }, [file]);
+
+  const handleUpload = useCallback(async (promptOptions: Record<string, unknown>) => {
+    if (!file) return;
+    setShowConfirm(false);
+    setStatus("uploading");
+    setErrorMsg("");
+    setFileError(null);
+
+    try {
+      let prompt = buildPrompt?.(promptOptions);
+      let mask: Blob | undefined;
+      if (getMask) {
+        mask = await getMask() ?? undefined;
+      }
+
+      const data = await toolsApi.uploadFile(toolId, file, prompt, mask);
+
+      if (!data.output_file_url) {
+        setStatus("error");
+        setErrorMsg("Processing failed. Please try again with a different image.");
+        return;
+      }
+
+      setStatus("done");
+      setResultUrl(data.output_file_url);
+      const cost = data.credits_used || creditCost;
+      setCreditsUsed(cost);
+
+      // Optimistic credit update
+      if (user) {
+        updateUser({ credits: user.credits - cost });
+      }
+
+      // Background refresh to correct any discrepancies
+      authApi.me().then((u) => updateUser(u)).catch(() => {});
+
+      setShowToast(true);
+      onSuccess?.(data.output_file_url);
+    } catch (err) {
+      setStatus("error");
+      const msg = err instanceof Error ? err.message : "Unknown error occurred";
+      // Map common API errors to friendly messages
+      if (msg.includes("Not enough credits")) {
+        setErrorMsg("Insufficient credits. Please purchase more credits.");
+      } else if (msg.includes("File too large")) {
+        setErrorMsg("File is too large. Please try a smaller image.");
+      } else if (msg.includes("Unsupported") || msg.includes("format")) {
+        setErrorMsg("Unsupported file format. Please use PNG, JPG, or WebP.");
+      } else {
+        setErrorMsg(msg);
+      }
+    }
+  }, [file, toolId, creditCost, buildPrompt, getMask, onSuccess, user, updateUser]);
+
+  const reset = useCallback(() => {
+    if (preview) URL.revokeObjectURL(preview);
+    setPreview(null);
+    setFile(null);
+    setResultUrl(null);
+    setStatus("idle");
+    setErrorMsg("");
+    setFileError(null);
+    setCreditsUsed(0);
+    setShowToast(false);
+    if (fileRef.current) fileRef.current.value = "";
+  }, [preview]);
+
+  return {
+    file,
+    preview,
+    status,
+    resultUrl,
+    errorMsg,
+    creditsUsed,
+    showConfirm,
+    showToast,
+    fileRef,
+    handleFileChange,
+    handleUploadClick,
+    handleUpload,
+    reset,
+    setShowConfirm,
+    setShowToast,
+    fileError,
+  };
+}

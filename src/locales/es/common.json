@@ -471,5 +471,20 @@
     "amount": "Monto",
     "type": "Tipo",
     "description": "Descripción"
+  },
+  "creditGuard": {
+    "confirmTitle": "Confirmar uso de créditos",
+    "confirmMessage": "{toolName} requiere {credits} créditos",
+    "currentBalance": "Saldo actual",
+    "cost": "Costo",
+    "after": "Después",
+    "useCredits": "Usar {credits} créditos",
+    "cancel": "Cancelar",
+    "insufficientTitle": "Créditos insuficientes",
+    "insufficientMessage": "{toolName} necesita {needed} créditos pero solo tienes {current}",
+    "needMore": "Necesitas {needed} créditos más",
+    "buyCredits": "Comprar créditos",
+    "creditsUsed": "Créditos usados",
+    "remaining": "restantes"
   }
 }

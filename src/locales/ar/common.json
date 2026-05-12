@@ -471,5 +471,20 @@
     "amount": "المبلغ",
     "type": "النوع",
     "description": "الوصف"
+  },
+  "creditGuard": {
+    "confirmTitle": "تأكيد استخدام الرصيد",
+    "confirmMessage": "تتطلب {toolName} {credits} رصيد",
+    "currentBalance": "الرصيد الحالي",
+    "cost": "التكلفة",
+    "after": "بعد",
+    "useCredits": "استخدام {credits} رصيد",
+    "cancel": "إلغاء",
+    "insufficientTitle": "رصيد غير كافٍ",
+    "insufficientMessage": "تتطلب {toolName} {needed} رصيد ولكن لديك فقط {current}",
+    "needMore": "تحتاج {needed} رصيد إضافي",
+    "buyCredits": "شراء رصيد",
+    "creditsUsed": "الرصيد المستخدم",
+    "remaining": "المتبقي"
   }
 }

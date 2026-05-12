@@ -529,5 +529,20 @@
     "amount": "Amount",
     "type": "Type",
     "description": "Description"
+  },
+  "creditGuard": {
+    "confirmTitle": "Confirm Credit Usage",
+    "confirmMessage": "{toolName} requires {credits} credits",
+    "currentBalance": "Current balance",
+    "cost": "Cost",
+    "after": "After",
+    "useCredits": "Use {credits} Credits",
+    "cancel": "Cancel",
+    "insufficientTitle": "Insufficient Credits",
+    "insufficientMessage": "{toolName} needs {needed} credits but you only have {current}",
+    "needMore": "You need {needed} more credits",
+    "buyCredits": "Buy Credits",
+    "creditsUsed": "Credits Used",
+    "remaining": "remaining"
   }
 }
