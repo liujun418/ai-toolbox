@@ -37,6 +37,11 @@ body {
   transition-timing-function: ease;
 }
 
+/* Prevent horizontal overflow on mobile */
+html {
+  overflow-x: hidden;
+}
+
 /* RTL support for Arabic */
 [dir="rtl"] input,
 [dir="rtl"] textarea {

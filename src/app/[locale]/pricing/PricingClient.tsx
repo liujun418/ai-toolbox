@@ -93,8 +93,8 @@ export default function PricingClient() {
       {/* Cost per tool */}
       <div className="mt-12">
         <h3 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">Cost per Tool</h3>
-        <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
-          <table className="w-full text-sm">
+        <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <table className="w-full min-w-[400px] text-sm">
             <thead className="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900">
               <tr>
                 <th className="px-4 py-3 text-start font-medium text-zinc-500 dark:text-zinc-400">Tool</th>

@@ -162,12 +162,12 @@ export default function SettingsPage() {
       </h1>
 
       {/* Tabs */}
-      <div className="mt-6 flex gap-1 border-b border-zinc-200 dark:border-zinc-800">
+      <div className="mt-6 flex gap-1 overflow-x-auto border-b border-zinc-200 pb-px dark:border-zinc-800">
         {tabs.map((t) => (
           <button
             key={t.key}
             onClick={() => setTab(t.key)}
-            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+            className={`shrink-0 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
               tab === t.key
                 ? "border-zinc-900 text-zinc-900 dark:border-white dark:text-white"
                 : "border-transparent text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300"

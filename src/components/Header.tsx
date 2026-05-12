@@ -8,6 +8,7 @@ import { useAuth } from "@/lib/auth-context";
 import { locales, defaultLocale, localeNames } from "@/lib/i18n";
 import { useRouter } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
+import MobileMenu from "@/components/MobileMenu";
 
 interface HeaderProps {
   locale?: string;
@@ -67,7 +68,7 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
       )}
       <header className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <Link href={`/${locale}`} className="flex items-center">
+        <Link href={`/${locale}`} className="flex shrink-0 items-center">
           {!dark ? (
             <Image
               src="/logo.png"
@@ -89,7 +90,7 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
           )}
         </Link>
 
-        <nav className="flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400">
+        <nav className="hidden items-center gap-4 text-sm text-zinc-600 md:flex dark:text-zinc-400">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -187,6 +188,9 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
             </button>
           </div>
         </nav>
+
+        {/* Mobile menu */}
+        <MobileMenu locale={locale} dict={dict} />
       </div>
     </header>
     </>

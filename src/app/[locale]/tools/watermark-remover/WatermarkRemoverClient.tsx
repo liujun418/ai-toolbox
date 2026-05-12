@@ -143,7 +143,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
       <div className="mb-8">
-        <div className="flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
+        <div className="flex flex-wrap items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
           <Link href={`/${locale}`} className="hover:text-blue-600">{tp.home || "Home"}</Link><span>/</span><span>{t.title || "Watermark Remover"}</span>
           <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
         </div>
