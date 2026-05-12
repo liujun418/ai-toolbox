@@ -127,9 +127,12 @@ export default function MobileMenu({ locale = defaultLocale, dict }: MobileMenuP
             href="https://www.toolboxonline.club"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg px-3 py-2 text-sm text-zinc-500 hover:bg-zinc-50 hover:text-blue-600 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-blue-400"
+            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-emerald-600 hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-950/50"
           >
-            {t.freeTools || "Free Tools →"}
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            {t.freeTools || "Free Tools"}
           </a>
         </nav>
 
@@ -141,24 +144,37 @@ export default function MobileMenu({ locale = defaultLocale, dict }: MobileMenuP
             <span className="text-sm text-zinc-400">{t.loading || "..."}</span>
           ) : user ? (
             <div className="space-y-3">
-              <div className="rounded-lg bg-zinc-50 px-3 py-2 text-sm dark:bg-zinc-900">
-                <div className="font-medium text-zinc-900 dark:text-white">
-                  {user.name || user.email}
-                </div>
-                <div className="mt-1 text-zinc-500 dark:text-zinc-400">
-                  {user.credits.toFixed(1)} {t.credits || "credits"}
+              <div className="flex items-center justify-between rounded-lg bg-amber-50 px-3 py-2 text-sm dark:bg-amber-950/50">
+                <div>
+                  <div className="font-medium text-zinc-900 dark:text-white">
+                    {user.name || user.email}
+                  </div>
+                  <div className="mt-0.5 flex items-center gap-1 text-sm font-semibold text-amber-700 dark:text-amber-300">
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {user.credits.toFixed(0)} {t.credits || "credits"}
+                  </div>
                 </div>
               </div>
               <Link
                 href={`/${locale}/settings`}
-                className="block w-full rounded-lg px-3 py-2 text-left text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
               >
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
                 {t.settings || "Settings"}
               </Link>
               <button
                 onClick={() => { logout(); setOpen(false); }}
-                className="block w-full rounded-lg px-3 py-2 text-left text-sm font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/50"
               >
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m-8 4a7 7 0 110-14 7 7 0 010 14z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12H3" />
+                </svg>
                 {t.logout || "Log out"}
               </button>
             </div>
@@ -166,14 +182,22 @@ export default function MobileMenu({ locale = defaultLocale, dict }: MobileMenuP
             <div className="space-y-2">
               <Link
                 href={`/${locale}/login`}
-                className="block w-full rounded-lg border border-zinc-300 px-3 py-2 text-center text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                className="flex items-center justify-center gap-2 rounded-lg border border-zinc-300 px-3 py-2 text-center text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
               >
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M11 16l-4-4m0 0l4-4m8 4a7 7 0 110-14 7 7 0 010 14z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H3" />
+                </svg>
                 {t.login || "Log in"}
               </Link>
               <Link
                 href={`/${locale}/signup`}
-                className="block w-full rounded-lg bg-zinc-900 px-3 py-2 text-center text-sm font-medium text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                className="flex items-center justify-center gap-2 rounded-lg bg-zinc-900 px-3 py-2 text-center text-sm font-medium text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M18 9v3m0 0v3m0-6h3m-3 0h-3m-7-1v7m0 0v2m-1.5-4h3m2.5 2v2m-2-2v-2m-2 2v-2" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 9V6a3 3 0 00-6 0v3" />
+                </svg>
                 {t.signup || "Sign up"}
               </Link>
             </div>
