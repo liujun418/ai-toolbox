@@ -105,7 +105,6 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   if (loading) return <ToolSkeleton />;
 
   const showLoginPrompt = !user && tool.showConfirm;
-  const needsMask = maskPixels === 0 && tool.status === "idle";
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
@@ -159,14 +158,14 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
           </div>
         ) : (
           <>
-            {needsMask && (
-              <div className="mb-3 rounded-lg bg-yellow-50 p-3 text-sm text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-400">
-                Paint over the watermark area so the AI knows what to remove.
+            {maskPixels === 0 && tool.status === "idle" && (
+              <div className="mb-3 rounded-lg bg-blue-50 p-3 text-sm text-blue-700 dark:bg-blue-900/20 dark:text-blue-400">
+                Paint over the watermark for precise removal, or click Remove to let AI auto-detect.
               </div>
             )}
             <div>
               <p className="mb-2 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-                Paint over the watermark — brush: {brushSize}px
+                Paint over the watermark (optional) — brush: {brushSize}px
                 {maskPixels > 0 && <span className="ml-1 text-green-600">({maskPixels.toLocaleString()} px marked)</span>}
               </p>
               <div className="relative block max-w-full" style={{ lineHeight: 0 }}>
@@ -191,10 +190,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
 
             <div className="mt-4 flex gap-3">
               <button onClick={handleProcess}
-                disabled={needsMask}
-                className={`rounded-lg px-6 py-2.5 text-sm font-semibold transition-all ${needsMask
-                  ? "cursor-not-allowed bg-zinc-300 text-zinc-500 dark:bg-zinc-700 dark:text-zinc-500"
-                  : "bg-blue-600 text-white hover:bg-blue-700"}`}>
+                className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-blue-700">
                 {t.button || `Remove Watermark (${getCreditCost(TOOL_ID)} credits)`}
               </button>
               <button onClick={tool.reset}
