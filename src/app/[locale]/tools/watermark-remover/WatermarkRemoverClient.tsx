@@ -120,7 +120,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
           <Link href={`/${locale}`} className="hover:text-blue-600">{tp.home || "Home"}</Link><span>/</span><span>{t.title || "Watermark Remover"}</span>
           <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
         </div>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">🧹 {t.title || "Watermark Remover"}</h1>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">{t.title || "Watermark Remover"}</h1>
         <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{t.description || "Erase watermarks, logos, and text from images."} <span className="font-semibold text-blue-600">{t.cost || `${getCreditCost(TOOL_ID)} credits`}</span>.</p>
       </div>
 
@@ -153,7 +153,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
           <div className="py-16 text-center">
             <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
             <p className="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">{t.processing || "Removing watermark..."}</p>
-            <p className="mt-1 text-xs text-zinc-400">This takes ~10–30 seconds</p>
+            <p className="mt-1 text-xs text-zinc-400">Inpainting takes ~15–30 seconds</p>
           </div>
         ) : tool.status === "error" ? (
           <div className="py-8 text-center">
@@ -167,7 +167,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
           <>
             {maskPixels === 0 && tool.status === "idle" && (
               <div className="mb-3 rounded-lg bg-blue-50 p-3 text-sm text-blue-700 dark:bg-blue-900/20 dark:text-blue-400">
-                Paint over the watermark for precise removal, or click Remove to let AI auto-detect.
+                Paint over the watermark/logo/text for precise removal, or click Remove and AI will auto-detect and inpaint.
               </div>
             )}
             <div>
