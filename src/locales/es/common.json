@@ -486,5 +486,11 @@
     "buyCredits": "Comprar créditos",
     "creditsUsed": "Créditos usados",
     "remaining": "restantes"
+  },
+  "loginPrompt": {
+    "title": "Iniciar sesión requerido",
+    "description": "Inicia sesión o regístrate para usar esta herramienta. ¡Las cuentas nuevas obtienen 5 créditos gratis!",
+    "login": "Iniciar sesión",
+    "signup": "Registrarse — Gratis"
   }
 }

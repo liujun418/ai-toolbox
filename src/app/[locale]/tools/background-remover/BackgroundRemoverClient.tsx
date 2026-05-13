@@ -2,11 +2,10 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { useTool } from "@/hooks/useTool";
 import { ToolSkeleton } from "@/components/LoadingSkeleton";
-import { CreditConfirmDialog, CreditsUsedToast } from "@/components/CreditGuard";
+import { CreditConfirmDialog, CreditsUsedToast, LoginPromptDialog } from "@/components/CreditGuard";
 import type { Locale } from "@/lib/i18n";
 
 import { getCreditCost } from "@/lib/creditCosts";
@@ -17,7 +16,6 @@ const BRUSH_SIZES = [20, 40, 60];
 type Mode = "auto" | "manual";
 
 export default function BackgroundRemoverClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
-  const router = useRouter();
   const { user, loading } = useAuth();
   const [mode, setMode] = useState<Mode>("auto");
   const [brushSize, setBrushSize] = useState(40);
@@ -118,8 +116,8 @@ export default function BackgroundRemoverClient({ locale = "en" as Locale, dict 
   }, [tool.status]);
 
   if (loading) return <ToolSkeleton />;
-  if (!user) { router.push(`/${locale}/login`); return null; }
 
+  const showLoginPrompt = !user && tool.showConfirm;
   const displayStatus = tool.status;
 
   return (
@@ -193,8 +191,9 @@ export default function BackgroundRemoverClient({ locale = "en" as Locale, dict 
         )}
       </div>
 
-      <CreditConfirmDialog isOpen={tool.showConfirm} creditsNeeded={CREDIT_COST} currentCredits={user?.credits||0} toolName={t.title || TOOL_ID} locale={locale} dict={dict} onConfirm={handleUpload} onCancel={()=>tool.setShowConfirm(false)}/>
-      {tool.showToast && <CreditsUsedToast creditsUsed={tool.creditsUsed} remaining={user?.credits||0} onClose={()=>tool.setShowToast(false)} dict={dict}/>}
+      <CreditConfirmDialog isOpen={!!user && tool.showConfirm} creditsNeeded={CREDIT_COST} currentCredits={user?.credits||0} toolName={t.title || TOOL_ID} locale={locale} dict={dict} onConfirm={handleUpload} onCancel={()=>tool.setShowConfirm(false)}/>
+      <LoginPromptDialog isOpen={showLoginPrompt} locale={locale} dict={dict} />
+      {tool.showToast && <CreditsUsedToast creditsUsed={tool.creditsUsed} remaining={user?.credits ?? 0} onClose={()=>tool.setShowToast(false)} dict={dict}/>}
     </div>
   );
 }

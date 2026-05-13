@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { useTool } from "@/hooks/useTool";
 import { ToolSkeleton } from "@/components/LoadingSkeleton";
-import { CreditConfirmDialog, CreditsUsedToast } from "@/components/CreditGuard";
+import { CreditConfirmDialog, CreditsUsedToast, LoginPromptDialog } from "@/components/CreditGuard";
 import type { Locale } from "@/lib/i18n";
 
 import { getCreditCost } from "@/lib/creditCosts";
@@ -17,7 +16,6 @@ const styleIcons: Record<string, string> = { cartoon: "🎨", anime: "🌸", pro
 
 export default function AvatarGeneratorClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
   const { user, loading } = useAuth();
-  const router = useRouter();
   const [selectedStyle, setSelectedStyle] = useState("cartoon");
   const [prompt, setPrompt] = useState("");
 
@@ -38,7 +36,8 @@ export default function AvatarGeneratorClient({ locale = "en" as Locale, dict }:
   const nav = (dict as any)?.nav || {};
 
   if (loading) return <ToolSkeleton />;
-  if (!user) { router.push(`/${locale}/login`); return null; }
+
+  const showLoginPrompt = !user && tool.showConfirm;
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
@@ -135,8 +134,9 @@ export default function AvatarGeneratorClient({ locale = "en" as Locale, dict }:
         )}
       </div>
 
-      <CreditConfirmDialog isOpen={tool.showConfirm} creditsNeeded={CREDIT_COST} currentCredits={user?.credits || 0} toolName={t.title || TOOL_ID} locale={locale} dict={dict} onConfirm={() => tool.handleUpload({ style: selectedStyle, customPrompt: prompt })} onCancel={() => tool.setShowConfirm(false)} />
-      {tool.showToast && <CreditsUsedToast creditsUsed={tool.creditsUsed} remaining={user?.credits || 0} onClose={() => tool.setShowToast(false)} dict={dict} />}
+      <CreditConfirmDialog isOpen={!!user && tool.showConfirm} creditsNeeded={CREDIT_COST} currentCredits={user?.credits || 0} toolName={t.title || TOOL_ID} locale={locale} dict={dict} onConfirm={() => tool.handleUpload({ style: selectedStyle, customPrompt: prompt })} onCancel={() => tool.setShowConfirm(false)} />
+      <LoginPromptDialog isOpen={showLoginPrompt} locale={locale} dict={dict} />
+      {tool.showToast && <CreditsUsedToast creditsUsed={tool.creditsUsed} remaining={user?.credits ?? 0} onClose={() => tool.setShowToast(false)} dict={dict} />}
     </div>
   );
 }

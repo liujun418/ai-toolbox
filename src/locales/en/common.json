@@ -544,5 +544,11 @@
     "buyCredits": "Buy Credits",
     "creditsUsed": "Credits Used",
     "remaining": "remaining"
+  },
+  "loginPrompt": {
+    "title": "Login Required",
+    "description": "Please login or register to use this tool. New accounts get 5 free credits!",
+    "login": "Log in",
+    "signup": "Sign up — Free"
   }
 }

@@ -121,6 +121,47 @@ export function CreditConfirmDialog({
   );
 }
 
+interface LoginPromptProps {
+  isOpen: boolean;
+  locale: string;
+  dict?: Record<string, unknown>;
+}
+
+export function LoginPromptDialog({ isOpen, locale, dict }: LoginPromptProps) {
+  if (!isOpen) return null;
+  const lp = (dict as any)?.loginPrompt || {};
+  const t2 = (key: string, fallback: string) => (typeof lp[key] === "string" ? lp[key] : fallback);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" role="dialog" aria-modal="true">
+      <div className="mx-4 w-full max-w-sm animate-[fadeIn_0.2s_ease-out] rounded-2xl bg-white p-6 shadow-xl dark:bg-zinc-900">
+        <div className="mb-4 text-center">
+          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30">
+            <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </div>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">
+            {t2("title", "Login Required")}
+          </h3>
+          <p className="mt-1 text-sm text-zinc-500">
+            {t2("description", "Please login or register to use this tool. New accounts get 5 free credits!")}
+          </p>
+        </div>
+
+        <div className="flex gap-3">
+          <Link href={`/${locale}/login`} className="flex-1 rounded-lg border border-zinc-300 px-4 py-2.5 text-center text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300">
+            {t2("login", "Log in")}
+          </Link>
+          <Link href={`/${locale}/signup`} className="flex-1 rounded-lg bg-blue-600 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-blue-700">
+            {t2("signup", "Sign up — Free")}
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function CreditsUsedToast({
   creditsUsed,
   remaining,
