@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
 import { useTool } from "@/hooks/useTool";
@@ -80,26 +80,51 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
     setMaskPixels(0);
   }, []);
 
-  const getCanvasPos = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+  const getCanvasPos = useCallback((e: MouseEvent | TouchEvent | React.MouseEvent) => {
     const canvas = canvasRef.current;
     if (!canvas) return { x: 0, y: 0 };
     const rect = canvas.getBoundingClientRect();
     const sx = canvas.width / rect.width, sy = canvas.height / rect.height;
-    if ("touches" in e) return { x: (e.touches[0].clientX - rect.left) * sx, y: (e.touches[0].clientY - rect.top) * sy };
-    return { x: (e.clientX - rect.left) * sx, y: (e.clientY - rect.top) * sy };
+    const te = e as TouchEvent;
+    if (te.touches && te.touches.length > 0)
+      return { x: (te.touches[0].clientX - rect.left) * sx, y: (te.touches[0].clientY - rect.top) * sy };
+    if (te.changedTouches && te.changedTouches.length > 0)
+      return { x: (te.changedTouches[0].clientX - rect.left) * sx, y: (te.changedTouches[0].clientY - rect.top) * sy };
+    const me = e as React.MouseEvent;
+    return { x: (me.clientX - rect.left) * sx, y: (me.clientY - rect.top) * sy };
   }, []);
 
-  const startDraw = useCallback((e: React.MouseEvent | React.TouchEvent) => { e.preventDefault(); drawingRef.current = true; doDraw(e); }, []);
-  const stopDraw = useCallback(() => { drawingRef.current = false; }, []);
-  const doDraw = useCallback((e: React.MouseEvent | React.TouchEvent) => {
-    if (!drawingRef.current) return; e.preventDefault();
+  const doDraw = useCallback((e: MouseEvent | TouchEvent | React.MouseEvent) => {
+    if (!drawingRef.current) return;
+    e.preventDefault();
     const canvas = canvasRef.current; if (!canvas) return;
     const ctx = canvas.getContext("2d"); if (!ctx) return;
     const pos = getCanvasPos(e);
     ctx.fillStyle = "rgba(255, 255, 0, 0.5)";
     ctx.lineWidth = brushSize; ctx.lineCap = "round";
     ctx.beginPath(); ctx.arc(pos.x, pos.y, brushSize / 2, 0, Math.PI * 2); ctx.fill();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brushSize, getCanvasPos]);
+
+  const startDraw = useCallback((e: React.MouseEvent) => { e.preventDefault(); drawingRef.current = true; doDraw(e); }, [doDraw]);
+  const stopDraw = useCallback(() => { drawingRef.current = false; }, []);
+
+  // Native touch listeners with {passive: false} to allow preventDefault
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const onTouchStart = (e: TouchEvent) => { drawingRef.current = true; doDraw(e); };
+    const onTouchMove = (e: TouchEvent) => { doDraw(e); };
+    const onTouchEnd = () => { stopDraw(); setMaskPixels(countMaskPixels()); };
+    canvas.addEventListener("touchstart", onTouchStart, { passive: false });
+    canvas.addEventListener("touchmove", onTouchMove, { passive: false });
+    canvas.addEventListener("touchend", onTouchEnd);
+    return () => {
+      canvas.removeEventListener("touchstart", onTouchStart);
+      canvas.removeEventListener("touchmove", onTouchMove);
+      canvas.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [doDraw, stopDraw, countMaskPixels]);
 
   const clearMask = useCallback(() => {
     canvasRef.current?.getContext("2d")?.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
@@ -183,7 +208,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
               </p>
               <div className="relative block max-w-full" style={{ lineHeight: 0 }}>
                 <img ref={imgRef} src={tool.preview} alt="Mark watermark" className="max-h-[400px] max-w-full rounded-xl border" onLoad={initCanvas} />
-                <canvas ref={canvasRef} onMouseDown={startDraw} onMouseMove={doDraw} onMouseUp={() => { stopDraw(); setMaskPixels(countMaskPixels()); }} onMouseLeave={() => { stopDraw(); setMaskPixels(countMaskPixels()); }} onTouchStart={startDraw} onTouchMove={doDraw} onTouchEnd={() => { stopDraw(); setMaskPixels(countMaskPixels()); }}
+                <canvas ref={canvasRef} onMouseDown={startDraw} onMouseMove={doDraw} onMouseUp={() => { stopDraw(); setMaskPixels(countMaskPixels()); }} onMouseLeave={() => { stopDraw(); setMaskPixels(countMaskPixels()); }}
                   className="absolute inset-0 cursor-crosshair rounded-xl" style={{ touchAction: "none", width: "100%", height: "100%" }} />
               </div>
             </div>
