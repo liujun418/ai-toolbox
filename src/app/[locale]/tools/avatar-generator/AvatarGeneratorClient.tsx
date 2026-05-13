@@ -47,7 +47,7 @@ export default function AvatarGeneratorClient({ locale = "en" as Locale, dict }:
           <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">🎨 {t.title || "AI Avatar Generator"}</h1>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{t.description || "Transform your photo into cartoon, anime, or professional avatars."} {nav.credits ? `Costs ${nav.credits}:` : "Costs"} <span className="font-semibold text-blue-600">{CREDIT_COST} {t.cost || "credits"}</span>.</p>
+        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{t.description || "Transform your photo into cartoon, anime, or professional avatars."} <span className="font-semibold text-blue-600">{t.cost || `${CREDIT_COST} credits`}</span>.</p>
       </div>
 
       {tool.fileError && (
@@ -116,7 +116,7 @@ export default function AvatarGeneratorClient({ locale = "en" as Locale, dict }:
             {tool.status === "idle" && (
               <div className="flex gap-3">
                 <button onClick={() => tool.handleUpload({ style: selectedStyle, customPrompt: prompt })}
-                  className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">{t.button || "Generate Avatar"} ({CREDIT_COST} {t.cost || "credits"})</button>
+                  className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">{t.button || `Generate Avatar (${CREDIT_COST} credits)`}</button>
                 <button onClick={tool.reset}
                   className="rounded-lg border border-zinc-300 px-6 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300">{tp.cancel || "Cancel"}</button>
               </div>

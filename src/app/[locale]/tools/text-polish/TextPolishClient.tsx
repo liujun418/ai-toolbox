@@ -75,7 +75,7 @@ export default function TextPolishClient({ locale = "en" as Locale, dict }: { lo
           <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">✨ {t.title || "Text Polish & Rewrite"}</h1>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{t.description || "Polish, rewrite, shorten, or expand your text with AI."} {nav.credits ? `Costs ${nav.credits}:` : "Costs"} <span className="font-semibold text-blue-600">{CREDIT_COST} {t.cost || "credits"}</span>.</p>
+        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{t.description || "Polish, rewrite, shorten, or expand your text with AI."} <span className="font-semibold text-blue-600">{t.cost || `${CREDIT_COST} credits`}</span>.</p>
       </div>
 
       <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
@@ -129,7 +129,7 @@ export default function TextPolishClient({ locale = "en" as Locale, dict }: { lo
           <div className="mt-6 flex gap-3">
             <button onClick={handleUploadClick} disabled={!text.trim()}
               className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50">
-              {(modes[selectedMode]?.label) || selectedMode} ({CREDIT_COST} {t.cost || "credits"})
+              {`${(modes[selectedMode]?.label) || selectedMode} (${CREDIT_COST} credits)`}
             </button>
             <button onClick={() => setText("")}
               className="rounded-lg border border-zinc-300 px-6 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300">
@@ -159,7 +159,7 @@ export default function TextPolishClient({ locale = "en" as Locale, dict }: { lo
           <div className="mt-6 flex gap-3">
             <button onClick={handleUploadClick}
               className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">
-              {tp.tryAgain || "Try Again"} ({CREDIT_COST} {t.cost || "credits"})
+              {tp.tryAgain || "Try Again"} ({CREDIT_COST} credits)
             </button>
             <button onClick={resetAll}
               className="rounded-lg border border-zinc-300 px-6 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300">
