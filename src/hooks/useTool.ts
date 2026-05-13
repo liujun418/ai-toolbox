@@ -13,6 +13,8 @@ export interface UseToolOptions {
   creditCost: number;
   /** Build the prompt from tool-specific options. Return undefined for tools without prompt. */
   buildPrompt?: (options: Record<string, unknown>) => string | undefined;
+  /** Build a style string sent as a dedicated form field (used by avatar-generator). */
+  getStyle?: (options: Record<string, unknown>) => string | undefined;
   /** For tools that use canvas masks (background-remover, watermark-remover). */
   getMask?: () => Promise<Blob | null>;
   onSuccess?: (resultUrl: string) => void;
@@ -40,7 +42,7 @@ export interface UseToolReturn {
 }
 
 export function useTool(options: UseToolOptions): UseToolReturn {
-  const { toolId, creditCost, buildPrompt, getMask, onSuccess, locale } = options;
+  const { toolId, creditCost, buildPrompt, getStyle, getMask, onSuccess, locale } = options;
   const { user, updateUser } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
@@ -116,12 +118,13 @@ export function useTool(options: UseToolOptions): UseToolReturn {
 
     try {
       let prompt = buildPrompt?.(promptOptions);
+      let style = getStyle?.(promptOptions);
       let mask: Blob | undefined;
       if (getMask) {
         mask = await getMask() ?? undefined;
       }
 
-      const data = await toolsApi.uploadFile(toolId, file, prompt, mask);
+      const data = await toolsApi.uploadFile(toolId, file, prompt, mask, style);
 
       if (!data.output_file_url) {
         setStatus("error");

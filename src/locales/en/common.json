@@ -374,11 +374,11 @@
       "watercolor": "Watercolor",
       "oil-painting": "Oil Painting"
     },
-    "promptPlaceholder": "e.g., Make me look like a wizard with blue hair",
     "generating": "Generating avatar...",
-    "resultReady": "Configure style and generate to see result",
+    "resultReady": "Select a style and generate to see the result",
     "download": "Download Avatar",
-    "tryAnother": "Try Another Photo"
+    "tryAnother": "Try Another Photo",
+    "selectBest": "Choose your favorite"
   },
   "backgroundRemover": {
     "title": "Background Remover",

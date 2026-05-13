@@ -316,11 +316,11 @@
       "watercolor": "Acuarela",
       "oil-painting": "Pintura al Óleo"
     },
-    "promptPlaceholder": "ej., Haz que parezca un mago con pelo azul",
     "generating": "Generando avatar...",
-    "resultReady": "Configura el estilo y genera para ver el resultado",
+    "resultReady": "Selecciona un estilo y genera para ver el resultado",
     "download": "Descargar Avatar",
-    "tryAnother": "Probar Otra Foto"
+    "tryAnother": "Probar Otra Foto",
+    "selectBest": "Elige tu favorito"
   },
   "backgroundRemover": {
     "title": "Eliminador de Fondos",

@@ -316,11 +316,11 @@
       "watercolor": "ألوان مائية",
       "oil-painting": "رسم زيتي"
     },
-    "promptPlaceholder": "مثال، اجعلني أبدو كساحر بشعر أزرق",
     "generating": "جارٍ توليد الصورة الرمزية...",
-    "resultReady": "قم بتكوين النمط والتوليد لرؤية النتيجة",
+    "resultReady": "اختر نمطًا وابدأ التوليد لرؤية النتيجة",
     "download": "تحميل الصورة الرمزية",
-    "tryAnother": "جرّب صورة أخرى"
+    "tryAnother": "جرّب صورة أخرى",
+    "selectBest": "اختر المفضلة لديك"
   },
   "backgroundRemover": {
     "title": "مزيل الخلفيات",
