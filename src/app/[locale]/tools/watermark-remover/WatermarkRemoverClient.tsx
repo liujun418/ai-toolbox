@@ -99,7 +99,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
           <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">🧹 {t.title || "Watermark Remover"}</h1>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{t.description || "Erase watermarks, logos, and text from images."} {nav.credits ? `Costs ${nav.credits}:` : "Costs"} <span className="font-semibold text-blue-600">{getCreditCost(TOOL_ID)} {t.cost || "credits"}</span>.</p>
+        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{t.description || "Erase watermarks, logos, and text from images."} <span className="font-semibold text-blue-600">{t.cost || `${getCreditCost(TOOL_ID)} credits`}</span>.</p>
       </div>
 
       {tool.fileError && (
@@ -152,7 +152,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="mt-4 flex flex-wrap items-center gap-2">
               {BRUSH_SIZES.map((s) => (
                 <button key={s} onClick={() => setBrushSize(s)}
                   className={`rounded-lg border px-4 py-2 text-sm font-medium transition-all ${brushSize === s ? "border-blue-600 bg-blue-50 text-blue-700 dark:border-blue-500 dark:bg-blue-900/20 dark:text-blue-300" : "border-zinc-200 text-zinc-600 hover:border-zinc-300 dark:border-zinc-700 dark:text-zinc-400"}`}>
@@ -161,13 +161,13 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
               ))}
               <button onClick={clearMask}
                 className="rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-600 hover:border-red-300 hover:text-red-600 dark:border-zinc-700 dark:text-zinc-400">
-                {tp.cancel || "Clear Marks"}
+                {t.clearMarks || "Clear Marks"}
               </button>
             </div>
 
-            <div className="flex gap-3">
+            <div className="mt-4 flex gap-3">
               <button onClick={() => tool.handleUpload({})}
-                className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">{t.button || "Remove Watermark"} ({getCreditCost(TOOL_ID)} {t.cost || "credits"})</button>
+                className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">{t.button || `Remove Watermark (${getCreditCost(TOOL_ID)} credits)`}</button>
               <button onClick={tool.reset}
                 className="rounded-lg border border-zinc-300 px-6 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300">{tp.cancel || "Cancel"}</button>
             </div>
