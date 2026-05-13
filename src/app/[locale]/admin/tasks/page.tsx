@@ -51,40 +51,49 @@ export default function AdminTasksPage() {
   return (
     <div className="space-y-4">
       {/* Filters */}
-      <div className="flex flex-wrap gap-2">
-        <select
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm
-            focus:outline-none focus:ring-2 focus:ring-indigo-400 bg-white"
-          value={filterStatus}
-          onChange={(e) => { setFilterStatus(e.target.value); setPage(1); }}
-        >
-          <option value="">All Status</option>
-          <option value="completed">Completed</option>
-          <option value="processing">Processing</option>
-          <option value="failed">Failed</option>
-        </select>
-        <select
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm
-            focus:outline-none focus:ring-2 focus:ring-indigo-400 bg-white"
-          value={filterTool}
-          onChange={(e) => { setFilterTool(e.target.value); setPage(1); }}
-        >
-          <option value="">All Tools</option>
-          <option value="background-remover">Background Remover</option>
-          <option value="watermark-remover">Watermark Remover</option>
-          <option value="photo-restorer">Photo Restorer</option>
-          <option value="avatar-generator">Avatar Generator</option>
-          <option value="image-upscaler">Image Upscaler</option>
-          <option value="style-transfer">Style Transfer</option>
-        </select>
-        <input
-          type="text"
-          placeholder="Filter by user ID..."
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm
-            focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          value={filterUserId}
-          onChange={(e) => { setFilterUserId(e.target.value); setPage(1); }}
-        />
+      <div className="flex flex-wrap gap-4 items-end">
+        <div>
+          <label className="text-xs text-gray-500 mb-1 block">Status</label>
+          <select
+            className="px-3 py-2 border border-gray-300 rounded-lg text-sm
+              focus:outline-none focus:ring-2 focus:ring-indigo-400 bg-white"
+            value={filterStatus}
+            onChange={(e) => { setFilterStatus(e.target.value); setPage(1); }}
+          >
+            <option value="">All</option>
+            <option value="completed">Completed</option>
+            <option value="processing">Processing</option>
+            <option value="failed">Failed</option>
+          </select>
+        </div>
+        <div>
+          <label className="text-xs text-gray-500 mb-1 block">Tool</label>
+          <select
+            className="px-3 py-2 border border-gray-300 rounded-lg text-sm
+              focus:outline-none focus:ring-2 focus:ring-indigo-400 bg-white"
+            value={filterTool}
+            onChange={(e) => { setFilterTool(e.target.value); setPage(1); }}
+          >
+            <option value="">All</option>
+            <option value="background-remover">Background Remover</option>
+            <option value="watermark-remover">Watermark Remover</option>
+            <option value="photo-restorer">Photo Restorer</option>
+            <option value="avatar-generator">Avatar Generator</option>
+            <option value="image-upscaler">Image Upscaler</option>
+            <option value="style-transfer">Style Transfer</option>
+          </select>
+        </div>
+        <div>
+          <label className="text-xs text-gray-500 mb-1 block">User</label>
+          <input
+            type="text"
+            placeholder="User ID"
+            className="px-3 py-2 border border-gray-300 rounded-lg text-sm
+              focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            value={filterUserId}
+            onChange={(e) => { setFilterUserId(e.target.value); setPage(1); }}
+          />
+        </div>
         {hasFilters && (
           <button
             onClick={clearFilters}
