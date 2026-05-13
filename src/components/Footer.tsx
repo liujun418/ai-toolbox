@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useAuth } from "@/lib/auth-context";
 
 interface FooterProps {
   locale?: string;
@@ -7,6 +10,8 @@ interface FooterProps {
 
 export function Footer({ locale = "en", dict }: FooterProps) {
   const t = (dict as any)?.footer || {};
+  const { user } = useAuth();
+  const isAdmin = user?.role === "admin";
 
   return (
     <footer className="border-t border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
@@ -42,6 +47,11 @@ export function Footer({ locale = "en", dict }: FooterProps) {
               <Link href={`/${locale}/terms`} className="hover:text-zinc-900 dark:hover:text-white">
                 {t.terms || "Terms"}
               </Link>
+              {isAdmin && (
+                <Link href={`/${locale}/admin`} className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
+                  {t.admin || "Admin"}
+                </Link>
+              )}
             </div>
             <p className="text-xs text-zinc-400 dark:text-zinc-500">
               Contact: <a href={`mailto:${t.email || "jzerov@live.com"}`} className="hover:text-blue-600">{t.email || "jzerov@live.com"}</a>
