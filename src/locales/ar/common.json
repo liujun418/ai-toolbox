@@ -327,8 +327,17 @@
     "description": "أزل خلفيات الصور فوراً بالذكاء الاصطناعي.",
     "cost": "رصيدان",
     "button": "إزالة الخلفية (رصيدان)",
-    "processing": "جارٍ المعالجة...",
-    "uploadToSee": "ارفع لرؤية النتيجة"
+    "processing": "جارٍ إزالة الخلفية...",
+    "uploadToSee": "ارفع صورة لإزالة الخلفية",
+    "bgColor": "لون الخلفية",
+    "transparent": "شفاف",
+    "white": "أبيض",
+    "black": "أسود",
+    "custom": "مخصص",
+    "advanced": "متقدم",
+    "download": "تحميل PNG",
+    "autoMode": "إزالة تلقائية",
+    "manualMode": "تحديد يدوي"
   },
   "watermarkRemover": {
     "title": "مزيل العلامات المائية",

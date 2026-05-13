@@ -327,8 +327,17 @@
     "description": "Elimina fondos de imágenes al instante con IA.",
     "cost": "2 créditos",
     "button": "Eliminar Fondo (2 créditos)",
-    "processing": "Procesando...",
-    "uploadToSee": "Sube para ver el resultado"
+    "processing": "Eliminando fondo...",
+    "uploadToSee": "Sube una imagen para eliminar el fondo",
+    "bgColor": "Color de Fondo",
+    "transparent": "Transparente",
+    "white": "Blanco",
+    "black": "Negro",
+    "custom": "Personalizado",
+    "advanced": "Avanzado",
+    "download": "Descargar PNG",
+    "autoMode": "Auto Eliminar",
+    "manualMode": "Pintar Manual"
   },
   "watermarkRemover": {
     "title": "Eliminador de Marcas de Agua",

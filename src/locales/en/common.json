@@ -385,8 +385,17 @@
     "description": "Remove image backgrounds instantly with AI.",
     "cost": "2 credits",
     "button": "Remove Background (2 credits)",
-    "processing": "Processing...",
-    "uploadToSee": "Upload to see result"
+    "processing": "Removing background...",
+    "uploadToSee": "Upload an image to remove background",
+    "bgColor": "Background Color",
+    "transparent": "Transparent",
+    "white": "White",
+    "black": "Black",
+    "custom": "Custom",
+    "advanced": "Advanced",
+    "download": "Download PNG",
+    "autoMode": "Auto Remove",
+    "manualMode": "Manual Paint"
   },
   "watermarkRemover": {
     "title": "Watermark Remover",

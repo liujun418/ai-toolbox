@@ -185,6 +185,7 @@ async function uploadFile(
   prompt?: string,
   mask?: Blob,
   style?: string,
+  bgColor?: string,
 ): Promise<UploadResult> {
   const token = getToken();
   if (!token) throw new Error("Not authenticated");
@@ -193,6 +194,7 @@ async function uploadFile(
   formData.append("file", file);
   if (prompt) formData.append("prompt", prompt);
   if (style) formData.append("style", style);
+  if (bgColor) formData.append("bg_color", bgColor);
   if (mask) formData.append("mask", mask, "mask.png");
 
   const res = await fetch(`${API_BASE}/api/upload/${toolId}`, {

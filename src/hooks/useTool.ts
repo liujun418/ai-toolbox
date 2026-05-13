@@ -15,6 +15,8 @@ export interface UseToolOptions {
   buildPrompt?: (options: Record<string, unknown>) => string | undefined;
   /** Build a style string sent as a dedicated form field (used by avatar-generator). */
   getStyle?: (options: Record<string, unknown>) => string | undefined;
+  /** Build a background color string sent as form field (used by background-remover). */
+  getBgColor?: (options: Record<string, unknown>) => string | undefined;
   /** For tools that use canvas masks (background-remover, watermark-remover). */
   getMask?: () => Promise<Blob | null>;
   onSuccess?: (resultUrl: string) => void;
@@ -42,7 +44,7 @@ export interface UseToolReturn {
 }
 
 export function useTool(options: UseToolOptions): UseToolReturn {
-  const { toolId, creditCost, buildPrompt, getStyle, getMask, onSuccess, locale } = options;
+  const { toolId, creditCost, buildPrompt, getStyle, getBgColor, getMask, onSuccess, locale } = options;
   const { user, updateUser } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
@@ -119,12 +121,13 @@ export function useTool(options: UseToolOptions): UseToolReturn {
     try {
       let prompt = buildPrompt?.(promptOptions);
       let style = getStyle?.(promptOptions);
+      let bgColor = getBgColor?.(promptOptions);
       let mask: Blob | undefined;
       if (getMask) {
         mask = await getMask() ?? undefined;
       }
 
-      const data = await toolsApi.uploadFile(toolId, file, prompt, mask, style);
+      const data = await toolsApi.uploadFile(toolId, file, prompt, mask, style, bgColor);
 
       if (!data.output_file_url) {
         setStatus("error");
