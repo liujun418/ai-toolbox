@@ -336,7 +336,12 @@
     "cost": "3 créditos",
     "button": "Eliminar Marca de Agua (3 créditos)",
     "processing": "Procesando...",
-    "uploadToSee": "Sube para ver el resultado"
+    "uploadToSee": "Sube para ver el resultado",
+    "autoDetect": "Auto Detectar",
+    "manual": "Manual",
+    "autoHint": "La IA detectará y eliminará automáticamente marcas de agua, logotipos y texto.",
+    "manualHint": "Pinta sobre el área de la marca de agua para que la IA sepa qué eliminar.",
+    "clearMarks": "Borrar Marcas"
   },
   "photoRestorer": {
     "title": "Restaurador de Fotos",

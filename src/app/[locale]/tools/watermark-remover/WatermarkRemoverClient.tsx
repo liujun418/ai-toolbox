@@ -27,12 +27,19 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
     getMask: async () => {
       const canvas = canvasRef.current;
       if (!canvas) return null;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return null;
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      let hasPaint = false;
+      for (let i = 3; i < imageData.data.length; i += 4) {
+        if (imageData.data[i] > 0) { hasPaint = true; break; }
+      }
+      if (!hasPaint) return null;
       const maskCanvas = document.createElement("canvas");
       maskCanvas.width = canvas.width;
       maskCanvas.height = canvas.height;
       const mCtx = maskCanvas.getContext("2d");
       if (!mCtx) return null;
-      const imageData = canvas.getContext("2d")!.getImageData(0, 0, canvas.width, canvas.height);
       const maskData = mCtx.createImageData(canvas.width, canvas.height);
       for (let i = 0; i < imageData.data.length; i += 4) {
         if (imageData.data[i + 3] > 0) {

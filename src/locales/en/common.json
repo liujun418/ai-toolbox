@@ -394,7 +394,12 @@
     "cost": "3 credits",
     "button": "Remove Watermark (3 credits)",
     "processing": "Processing...",
-    "uploadToSee": "Upload to see result"
+    "uploadToSee": "Upload to see result",
+    "autoDetect": "Auto Detect",
+    "manual": "Manual",
+    "autoHint": "AI will automatically detect and remove watermarks, logos, and text.",
+    "manualHint": "Paint over the watermark area so the AI knows what to remove.",
+    "clearMarks": "Clear Marks"
   },
   "photoRestorer": {
     "title": "Photo Restorer",
