@@ -16,6 +16,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   const { user, loading } = useAuth();
   const [brushSize, setBrushSize] = useState(40);
   const [maskPixels, setMaskPixels] = useState(0);
+  const [canvasKey, setCanvasKey] = useState(0);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -90,6 +91,8 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
     if (ctx) ctxRef.current = ctx;
     ctx?.clearRect(0, 0, canvas.width, canvas.height);
     setMaskPixels(0);
+    // Force canvas remount so React attaches fresh event handlers
+    setCanvasKey(k => k + 1);
   }, []);
 
   const getCanvasPos = useCallback((e: React.MouseEvent | MouseEvent | TouchEvent) => {
@@ -244,7 +247,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
               </p>
               <div className="relative block max-w-full" style={{ lineHeight: 0 }}>
                 <img ref={imgRef} src={tool.preview} alt="Mark watermark" className="max-h-[400px] max-w-full rounded-xl border" onLoad={initCanvas}/>
-                <canvas ref={canvasRef}
+                <canvas ref={canvasRef} key={canvasKey}
                   onMouseDown={startDraw}
                   onMouseMove={doDraw}
                   onMouseUp={() => { stopDraw(); setMaskPixels(countMaskPixels()); }}
