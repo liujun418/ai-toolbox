@@ -137,7 +137,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
           <div className="py-8 text-center">
             <p className="mb-4 text-sm text-red-500">{tool.errorMsg}</p>
             <div className="flex justify-center gap-3">
-              <button onClick={() => tool.setShowConfirm(true)} className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">{tp.tryAgain || "Try Again"}</button>
+              <button onClick={() => tool.handleUpload({})} className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">{tp.tryAgain || "Try Again"}</button>
               <button onClick={tool.reset} className="rounded-lg border border-zinc-300 px-6 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300">{tp.cancel || "Cancel"}</button>
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
             </div>
 
             <div className="flex gap-3">
-              <button onClick={() => tool.setShowConfirm(true)}
+              <button onClick={() => tool.handleUpload({})}
                 className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">{t.button || "Remove Watermark"} ({getCreditCost(TOOL_ID)} {t.cost || "credits"})</button>
               <button onClick={tool.reset}
                 className="rounded-lg border border-zinc-300 px-6 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300">{tp.cancel || "Cancel"}</button>

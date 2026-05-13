@@ -2,12 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { toolsApi } from "@/lib/api";
 import { useUsageTracker } from "@/hooks/useUsageTracker";
-import { getLocaleFromPathname } from "@/lib/locale";
-import { CreditConfirmDialog, CreditsUsedToast } from "@/components/CreditGuard";
+import { CreditConfirmDialog, CreditsUsedToast, LoginPromptDialog } from "@/components/CreditGuard";
 import type { Locale } from "@/lib/i18n";
 
 import { getCreditCost } from "@/lib/creditCosts";
@@ -18,8 +16,6 @@ const modeIds = ["polish", "rewrite", "shorten", "expand"] as const;
 export default function TextPolishClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
   const CREDIT_COST = getCreditCost(TOOL_ID);
   const { user, loading } = useAuth();
-  const router = useRouter();
-  const pathname = usePathname();
   const [text, setText] = useState("");
   const [selectedMode, setSelectedMode] = useState("polish");
   const [status, setStatus] = useState<"idle" | "processing" | "done" | "error">("idle");
@@ -38,7 +34,8 @@ export default function TextPolishClient({ locale = "en" as Locale, dict }: { lo
   useUsageTracker({ toolId: TOOL_ID, toolName: t.title || "Text Polish", icon: "✨", creditsUsed, trigger: creditsUsed > 0 });
 
   if (loading) return <div className="mx-auto max-w-4xl px-4 py-16 text-center text-zinc-400">{tp.loading || "Loading..."}</div>;
-  if (!user) { router.push(`/${locale}/login`); return null; }
+
+  const showLoginPrompt = !user && showConfirm;
 
   function handleUploadClick() {
     if (!text.trim()) return;
@@ -172,8 +169,9 @@ export default function TextPolishClient({ locale = "en" as Locale, dict }: { lo
         )}
       </div>
 
-      <CreditConfirmDialog isOpen={showConfirm} creditsNeeded={CREDIT_COST} currentCredits={user?.credits || 0} toolName={t.title || TOOL_ID} locale={locale} onConfirm={handleUpload} onCancel={() => setShowConfirm(false)} />
-      {showToast && <CreditsUsedToast creditsUsed={creditsUsed} remaining={user?.credits || 0} onClose={() => setShowToast(false)} />}
+      <CreditConfirmDialog isOpen={!!user && showConfirm} creditsNeeded={CREDIT_COST} currentCredits={user?.credits || 0} toolName={t.title || TOOL_ID} locale={locale} dict={dict} onConfirm={handleUpload} onCancel={() => setShowConfirm(false)} />
+      <LoginPromptDialog isOpen={showLoginPrompt} locale={locale} dict={dict} />
+      {showToast && <CreditsUsedToast creditsUsed={creditsUsed} remaining={user?.credits ?? 0} onClose={() => setShowToast(false)} dict={dict} />}
     </div>
   );
 }

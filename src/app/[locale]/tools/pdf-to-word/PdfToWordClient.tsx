@@ -2,12 +2,10 @@
 
 import { useState, useRef } from "react";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { toolsApi } from "@/lib/api";
 import { useUsageTracker } from "@/hooks/useUsageTracker";
-import { getLocaleFromPathname } from "@/lib/locale";
-import { CreditConfirmDialog, CreditsUsedToast } from "@/components/CreditGuard";
+import { CreditConfirmDialog, CreditsUsedToast, LoginPromptDialog } from "@/components/CreditGuard";
 import type { Locale } from "@/lib/i18n";
 
 import { getCreditCost } from "@/lib/creditCosts";
@@ -16,8 +14,6 @@ const TOOL_ID = "pdf-to-word";
 export default function PdfToWordClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
   const CREDIT_COST = getCreditCost(TOOL_ID);
   const { user, loading } = useAuth();
-  const router = useRouter();
-  const pathname = usePathname();
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<"idle" | "uploading" | "done" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
@@ -34,7 +30,8 @@ export default function PdfToWordClient({ locale = "en" as Locale, dict }: { loc
   useUsageTracker({ toolId: TOOL_ID, toolName: t.title || "PDF to Word", icon: "📄", creditsUsed, trigger: creditsUsed > 0 });
 
   if (loading) return <div className="mx-auto max-w-4xl px-4 py-16 text-center text-zinc-400">{tp.loading || "Loading..."}</div>;
-  if (!user) { router.push(`/${locale}/login`); return null; }
+
+  const showLoginPrompt = !user && showConfirm;
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0];
@@ -159,8 +156,9 @@ export default function PdfToWordClient({ locale = "en" as Locale, dict }: { loc
         )}
       </div>
 
-      <CreditConfirmDialog isOpen={showConfirm} creditsNeeded={CREDIT_COST} currentCredits={user?.credits || 0} toolName={t.title || TOOL_ID} locale={locale} onConfirm={doConvert} onCancel={() => setShowConfirm(false)} />
-      {showToast && <CreditsUsedToast creditsUsed={creditsUsed} remaining={user?.credits || 0} onClose={() => setShowToast(false)} />}
+      <CreditConfirmDialog isOpen={!!user && showConfirm} creditsNeeded={CREDIT_COST} currentCredits={user?.credits || 0} toolName={t.title || TOOL_ID} locale={locale} dict={dict} onConfirm={doConvert} onCancel={() => setShowConfirm(false)} />
+      <LoginPromptDialog isOpen={showLoginPrompt} locale={locale} dict={dict} />
+      {showToast && <CreditsUsedToast creditsUsed={creditsUsed} remaining={user?.credits ?? 0} onClose={() => setShowToast(false)} dict={dict} />}
     </div>
   );
 }

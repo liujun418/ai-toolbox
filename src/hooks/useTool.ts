@@ -96,6 +96,19 @@ export function useTool(options: UseToolOptions): UseToolReturn {
 
   const handleUpload = useCallback(async (promptOptions: Record<string, unknown>) => {
     if (!file) return;
+    // Not authenticated: show login prompt
+    if (!user) {
+      setShowConfirm(true);
+      return;
+    }
+
+    // Insufficient credits: go directly to purchase
+    if (user.credits < creditCost) {
+      setShowConfirm(true);
+      return;
+    }
+
+    // Authenticated with enough credits — proceed with upload
     setShowConfirm(false);
     setStatus("uploading");
     setErrorMsg("");
