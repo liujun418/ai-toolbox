@@ -26,28 +26,34 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
     creditCost: getCreditCost(TOOL_ID),
     getMask: async () => {
       const canvas = canvasRef.current;
-      if (!canvas) return null;
+      if (!canvas) { console.log("[WM] getMask: no canvas ref"); return null; }
       const ctx = canvas.getContext("2d");
-      if (!ctx) return null;
+      if (!ctx) { console.log("[WM] getMask: no 2d context"); return null; }
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       let hasPaint = false;
       for (let i = 3; i < imageData.data.length; i += 4) {
         if (imageData.data[i] > 0) { hasPaint = true; break; }
       }
-      if (!hasPaint) return null;
+      if (!hasPaint) { console.log("[WM] getMask: no paint detected, canvas=" + canvas.width + "x" + canvas.height); return null; }
       const maskCanvas = document.createElement("canvas");
       maskCanvas.width = canvas.width;
       maskCanvas.height = canvas.height;
       const mCtx = maskCanvas.getContext("2d");
-      if (!mCtx) return null;
+      if (!mCtx) { console.log("[WM] getMask: no mask ctx"); return null; }
       const maskData = mCtx.createImageData(canvas.width, canvas.height);
+      let whiteCount = 0;
       for (let i = 0; i < imageData.data.length; i += 4) {
         if (imageData.data[i + 3] > 0) {
           maskData.data[i] = maskData.data[i + 1] = maskData.data[i + 2] = maskData.data[i + 3] = 255;
+          whiteCount++;
         }
       }
       mCtx.putImageData(maskData, 0, 0);
-      return new Promise<Blob | null>((resolve) => maskCanvas.toBlob((blob) => resolve(blob), "image/png"));
+      console.log("[WM] getMask: created mask " + canvas.width + "x" + canvas.height + ", white px=" + whiteCount);
+      return new Promise<Blob | null>((resolve) => maskCanvas.toBlob((blob) => {
+        console.log("[WM] getMask: blob size=" + (blob?.size || 0) + " bytes");
+        resolve(blob);
+      }, "image/png"));
     },
     locale,
     dict,
