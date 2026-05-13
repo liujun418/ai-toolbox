@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { useTool } from "@/hooks/useTool";
 import { ToolSkeleton } from "@/components/LoadingSkeleton";
@@ -26,12 +27,13 @@ export default function PhotoRestorerClient({ locale = "en" as Locale, dict }: {
     dict,
   });
 
+  const router = useRouter();
   const t = (dict as any)?.photoRestorer || {};
   const tp = (dict as any)?.toolPage || {};
   const nav = (dict as any)?.nav || {};
 
   if (loading) return <ToolSkeleton />;
-  if (!user) return null;
+  if (!user) { router.push(`/${locale}/login`); return null; }
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">

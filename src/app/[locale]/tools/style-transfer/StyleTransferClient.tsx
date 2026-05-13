@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { useTool } from "@/hooks/useTool";
 import { ToolSkeleton } from "@/components/LoadingSkeleton";
@@ -15,6 +16,7 @@ const styleIcons: Record<string, string> = { "oil-painting": "🖼️", watercol
 
 export default function StyleTransferClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
   const CREDIT_COST = getCreditCost(TOOL_ID);
+  const router = useRouter();
   const { user, loading } = useAuth();
   const [selectedStyle, setSelectedStyle] = useState("oil-painting");
   const [prompt, setPrompt] = useState("");
@@ -36,7 +38,7 @@ export default function StyleTransferClient({ locale = "en" as Locale, dict }: {
   const nav = (dict as any)?.nav || {};
 
   if (loading) return <ToolSkeleton />;
-  if (!user) return null;
+  if (!user) { router.push(`/${locale}/login`); return null; }
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">

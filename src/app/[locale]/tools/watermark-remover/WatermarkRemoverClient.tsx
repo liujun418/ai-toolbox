@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { useTool } from "@/hooks/useTool";
 import { ToolSkeleton } from "@/components/LoadingSkeleton";
@@ -13,6 +14,7 @@ const BRUSH_SIZES = [20, 40, 70];
 const TOOL_ID = "watermark-remover";
 
 export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
+  const router = useRouter();
   const { user, loading } = useAuth();
   const [brushSize, setBrushSize] = useState(40);
 
@@ -88,7 +90,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   }, [tool.handleFileChange, clearMask]);
 
   if (loading) return <ToolSkeleton />;
-  if (!user) return null;
+  if (!user) { router.push(`/${locale}/login`); return null; }
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">

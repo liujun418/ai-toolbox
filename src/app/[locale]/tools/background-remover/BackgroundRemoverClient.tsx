@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { useTool } from "@/hooks/useTool";
 import { ToolSkeleton } from "@/components/LoadingSkeleton";
@@ -16,6 +17,7 @@ const BRUSH_SIZES = [20, 40, 60];
 type Mode = "auto" | "manual";
 
 export default function BackgroundRemoverClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
+  const router = useRouter();
   const { user, loading } = useAuth();
   const [mode, setMode] = useState<Mode>("auto");
   const [brushSize, setBrushSize] = useState(40);
@@ -116,7 +118,7 @@ export default function BackgroundRemoverClient({ locale = "en" as Locale, dict 
   }, [tool.status]);
 
   if (loading) return <ToolSkeleton />;
-  if (!user) return null;
+  if (!user) { router.push(`/${locale}/login`); return null; }
 
   const displayStatus = tool.status;
 
