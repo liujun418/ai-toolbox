@@ -16,6 +16,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   const { user, loading } = useAuth();
   const [brushSize, setBrushSize] = useState(40);
   const [maskPixels, setMaskPixels] = useState(0);
+  const [autoMode, setAutoMode] = useState(true);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -25,6 +26,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
     toolId: TOOL_ID,
     creditCost: getCreditCost(TOOL_ID),
     getMask: async () => {
+      if (autoMode) return null;
       const canvas = canvasRef.current;
       if (!canvas) return null;
       const maskCanvas = document.createElement("canvas");
@@ -105,7 +107,6 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   if (loading) return <ToolSkeleton />;
 
   const showLoginPrompt = !user && tool.showConfirm;
-  const needsMask = maskPixels === 0 && tool.status === "idle";
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
@@ -159,42 +160,64 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
           </div>
         ) : (
           <>
-            {needsMask && (
-              <div className="mb-3 rounded-lg bg-yellow-50 p-3 text-sm text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-400">
-                Paint over the watermark area so the AI knows what to remove.
-              </div>
-            )}
-            <div>
-              <p className="mb-2 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-                Paint over the watermark — brush: {brushSize}px
-                {maskPixels > 0 && <span className="ml-1 text-green-600">({maskPixels.toLocaleString()} px marked)</span>}
-              </p>
-              <div className="relative block max-w-full" style={{ lineHeight: 0 }}>
-                <img ref={imgRef} src={tool.preview} alt="Mark watermark" className="max-h-[400px] max-w-full rounded-xl border" onLoad={initCanvas} />
-                <canvas ref={canvasRef} onMouseDown={startDraw} onMouseMove={doDraw} onMouseUp={() => { stopDraw(); setMaskPixels(countMaskPixels()); }} onMouseLeave={() => { stopDraw(); setMaskPixels(countMaskPixels()); }} onTouchStart={startDraw} onTouchMove={doDraw} onTouchEnd={() => { stopDraw(); setMaskPixels(countMaskPixels()); }}
-                  className="absolute inset-0 cursor-crosshair rounded-xl" style={{ touchAction: "none", width: "100%", height: "100%" }} />
-              </div>
-            </div>
-
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              {BRUSH_SIZES.map((s) => (
-                <button key={s} onClick={() => setBrushSize(s)}
-                  className={`rounded-lg border px-4 py-2 text-sm font-medium transition-all ${brushSize === s ? "border-blue-600 bg-blue-50 text-blue-700 dark:border-blue-500 dark:bg-blue-900/20 dark:text-blue-300" : "border-zinc-200 text-zinc-600 hover:border-zinc-300 dark:border-zinc-700 dark:text-zinc-400"}`}>
-                  {s}px
-                </button>
-              ))}
-              <button onClick={clearMask}
-                className="rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-600 hover:border-red-300 hover:text-red-600 dark:border-zinc-700 dark:text-zinc-400">
-                {t.clearMarks || "Clear Marks"}
+            {/* Auto / Manual toggle */}
+            <div className="mb-4 flex gap-2">
+              <button onClick={() => setAutoMode(true)}
+                className={`rounded-lg border px-4 py-2 text-sm font-medium transition-all ${autoMode ? "border-blue-600 bg-blue-50 text-blue-700 dark:border-blue-500 dark:bg-blue-900/20 dark:text-blue-300" : "border-zinc-200 text-zinc-600 hover:border-zinc-300 dark:border-zinc-700 dark:text-zinc-400"}`}>
+                {t.autoDetect || "Auto Detect"}
+              </button>
+              <button onClick={() => setAutoMode(false)}
+                className={`rounded-lg border px-4 py-2 text-sm font-medium transition-all ${!autoMode ? "border-blue-600 bg-blue-50 text-blue-700 dark:border-blue-500 dark:bg-blue-900/20 dark:text-blue-300" : "border-zinc-200 text-zinc-600 hover:border-zinc-300 dark:border-zinc-700 dark:text-zinc-400"}`}>
+                {t.manual || "Manual"}
               </button>
             </div>
 
+            {autoMode && (
+              <div className="mb-3 rounded-lg bg-blue-50 p-3 text-sm text-blue-700 dark:bg-blue-900/20 dark:text-blue-400">
+                {t.autoHint || "AI will automatically detect and remove watermarks, logos, and text."}
+              </div>
+            )}
+
+            {!autoMode && maskPixels === 0 && (
+              <div className="mb-3 rounded-lg bg-yellow-50 p-3 text-sm text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-400">
+                {t.manualHint || "Paint over the watermark area so the AI knows what to remove."}
+              </div>
+            )}
+
+            {!autoMode && (
+              <>
+                <p className="mb-2 text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                  Paint over the watermark — brush: {brushSize}px
+                  {maskPixels > 0 && <span className="ml-1 text-green-600">({maskPixels.toLocaleString()} px marked)</span>}
+                </p>
+                <div className="relative block max-w-full" style={{ lineHeight: 0 }}>
+                  <img ref={imgRef} src={tool.preview} alt="Mark watermark" className="max-h-[400px] max-w-full rounded-xl border" onLoad={initCanvas} />
+                  <canvas ref={canvasRef} onMouseDown={startDraw} onMouseMove={doDraw} onMouseUp={() => { stopDraw(); setMaskPixels(countMaskPixels()); }} onMouseLeave={() => { stopDraw(); setMaskPixels(countMaskPixels()); }} onTouchStart={startDraw} onTouchMove={doDraw} onTouchEnd={() => { stopDraw(); setMaskPixels(countMaskPixels()); }}
+                    className="absolute inset-0 cursor-crosshair rounded-xl" style={{ touchAction: "none", width: "100%", height: "100%" }} />
+                </div>
+
+                <div className="mt-4 flex flex-wrap items-center gap-2">
+                  {BRUSH_SIZES.map((s) => (
+                    <button key={s} onClick={() => setBrushSize(s)}
+                      className={`rounded-lg border px-4 py-2 text-sm font-medium transition-all ${brushSize === s ? "border-blue-600 bg-blue-50 text-blue-700 dark:border-blue-500 dark:bg-blue-900/20 dark:text-blue-300" : "border-zinc-200 text-zinc-600 hover:border-zinc-300 dark:border-zinc-700 dark:text-zinc-400"}`}>
+                      {s}px
+                    </button>
+                  ))}
+                  <button onClick={clearMask}
+                    className="rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-600 hover:border-red-300 hover:text-red-600 dark:border-zinc-700 dark:text-zinc-400">
+                    {t.clearMarks || "Clear Marks"}
+                  </button>
+                </div>
+              </>
+            )}
+
+            {autoMode && (
+              <img src={tool.preview} alt="Preview" className="max-h-[400px] max-w-full rounded-xl border object-contain" />
+            )}
+
             <div className="mt-4 flex gap-3">
               <button onClick={handleProcess}
-                disabled={needsMask}
-                className={`rounded-lg px-6 py-2.5 text-sm font-semibold transition-all ${needsMask
-                  ? "cursor-not-allowed bg-zinc-300 text-zinc-500 dark:bg-zinc-700 dark:text-zinc-500"
-                  : "bg-blue-600 text-white hover:bg-blue-700"}`}>
+                className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-all">
                 {t.button || `Remove Watermark (${getCreditCost(TOOL_ID)} credits)`}
               </button>
               <button onClick={tool.reset}
