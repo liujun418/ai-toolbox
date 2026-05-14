@@ -23,12 +23,20 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
 
   const initCanvasNow = (canvas: HTMLCanvasElement, img: HTMLImageElement) => {
-    canvas.width = img.naturalWidth;
-    canvas.height = img.naturalHeight;
+    // Cap resolution to 2048px max for consistent mask size and brush behavior
+    const MAX = 2048;
+    let w = img.naturalWidth, h = img.naturalHeight;
+    if (Math.max(w, h) > MAX) {
+      const ratio = MAX / Math.max(w, h);
+      w = Math.round(w * ratio);
+      h = Math.round(h * ratio);
+    }
+    canvas.width = w;
+    canvas.height = h;
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (ctx) {
       ctxRef.current = ctx;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, w, h);
     }
     setMaskPixels(0);
   };
