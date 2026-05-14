@@ -16,19 +16,22 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   const { user, loading } = useAuth();
   const [brushSize, setBrushSize] = useState(40);
   const [maskPixels, setMaskPixels] = useState(0);
-  const [canvasKey, setCanvasKey] = useState(0);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const drawingRef = useRef(false);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
 
-  // Initialize canvas context with willReadFrequently (re-run on canvas remount)
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    ctxRef.current = canvas.getContext("2d", { willReadFrequently: true });
-  }, [canvasKey]);
+  const initCanvasNow = (canvas: HTMLCanvasElement, img: HTMLImageElement) => {
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (ctx) {
+      ctxRef.current = ctx;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    setMaskPixels(0);
+  };
 
   const tool = useTool({
     toolId: TOOL_ID,
@@ -82,17 +85,10 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
     return n;
   }, []);
 
-  const initCanvas = useCallback(() => {
-    const img = imgRef.current, canvas = canvasRef.current;
-    if (!img || !canvas) return;
-    canvas.width = img.naturalWidth;
-    canvas.height = img.naturalHeight;
-    const ctx = canvas.getContext("2d", { willReadFrequently: true });
-    if (ctx) ctxRef.current = ctx;
-    ctx?.clearRect(0, 0, canvas.width, canvas.height);
-    setMaskPixels(0);
-    // Force canvas remount so React attaches fresh event handlers
-    setCanvasKey(k => k + 1);
+  const handleImgLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    initCanvasNow(canvas, e.currentTarget);
   }, []);
 
   const getCanvasPos = useCallback((e: React.MouseEvent | MouseEvent | TouchEvent) => {
@@ -161,7 +157,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
       canvas.removeEventListener("touchmove", handleTouchMove);
       canvas.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [doDraw, stopDraw, countMaskPixels, canvasKey]);
+  }, [doDraw, stopDraw, countMaskPixels]);
 
   const clearMask = useCallback(() => {
     const ctx = ctxRef.current || canvasRef.current?.getContext("2d", { willReadFrequently: true });
@@ -246,8 +242,8 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
                 {maskPixels > 0 && <span className="ml-1 text-green-600">({maskPixels.toLocaleString()} px marked)</span>}
               </p>
               <div className="relative block max-w-full" style={{ lineHeight: 0 }}>
-                <img ref={imgRef} src={tool.preview} alt="Mark watermark" className="max-h-[400px] max-w-full rounded-xl border" onLoad={initCanvas}/>
-                <canvas ref={canvasRef} key={canvasKey}
+                <img ref={imgRef} src={tool.preview} alt="Mark watermark" className="max-h-[400px] max-w-full rounded-xl border" onLoad={handleImgLoad}/>
+                <canvas ref={canvasRef}
                   onMouseDown={startDraw}
                   onMouseMove={doDraw}
                   onMouseUp={() => { stopDraw(); setMaskPixels(countMaskPixels()); }}
