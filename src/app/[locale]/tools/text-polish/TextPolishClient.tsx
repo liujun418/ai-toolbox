@@ -52,6 +52,11 @@ export default function TextPolishClient({ locale = "en" as Locale, dict }: { lo
     const prompt = `Mode: ${selectedMode}. Text: ${text}`;
     try {
       const data = await toolsApi.uploadFile(TOOL_ID, file, prompt);
+      if (data.status === "failed" || data.error_message) {
+        setStatus("error");
+        setErrorMsg(data.error_message || "Processing failed. Please try again.");
+        return;
+      }
       setStatus("done");
       setResultContent(data.result_content || "");
       setResult(data.output_file_url);
@@ -111,10 +116,19 @@ export default function TextPolishClient({ locale = "en" as Locale, dict }: { lo
           <div>
             <label className="mb-2 block text-sm font-medium text-zinc-500 dark:text-zinc-400">{t.resultLabel || "Result"}</label>
             <div className="flex min-h-[240px] w-full items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 dark:border-zinc-700 dark:bg-zinc-800">
-              {status === "done" && (resultContent || result) ? (
-                <div className="w-full overflow-auto">
-                  <pre className="whitespace-pre-wrap text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">{resultContent}</pre>
-                </div>
+              {status === "done" ? (
+                resultContent ? (
+                  <div className="w-full overflow-auto">
+                    <pre className="whitespace-pre-wrap text-sm leading-relaxed text-zinc-900 dark:text-zinc-100">{resultContent}</pre>
+                  </div>
+                ) : result ? (
+                  <div className="text-center">
+                    <p className="text-sm text-zinc-600 dark:text-zinc-300">{t.done || "Processing complete!"}</p>
+                    <a href={result} download target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-sm font-medium text-blue-600 hover:text-blue-500">{tp.downloadResult || "Download Result"}</a>
+                  </div>
+                ) : (
+                  <p className="text-sm text-zinc-500">{t.noOutput || "Processing complete. Check the download button below."}</p>
+                )
               ) : status === "processing" ? (
                 <div className="text-center">
                   <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />

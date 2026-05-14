@@ -174,7 +174,8 @@ export const authApi = {
 
 interface UploadResult {
   task_id: string;
-  output_file_url: string;
+  status: string;
+  output_file_url: string | null;
   result_content?: string | null;
   error_message?: string | null;
   credits_used: number;
