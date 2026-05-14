@@ -452,10 +452,10 @@
     "tryAnother": "Try Another Image",
     "tipsTitle": "💡 Pro Tips",
     "tips": [
-      "Low-res pics get the glow-up! Best for images under 2000px — already crisp photos won't see much change.",
-      "Keep files under 1MB / 2000px. Bigger images can overwhelm the AI — even robots have limits!",
-      "Portraits? Photo mode adds face magic. Illustrations or anime? Anime mode keeps those lines crisp!",
-      "2× is your go-to hero. 4× works best on tiny images under 1000px — go big or go home!"
+      { "icon": "📏", "text": "Low-res pics get the glow-up! Best for images under 2000px — already crisp photos won't see much change." },
+      { "icon": "📦", "text": "Keep files under 1MB / 2000px. Bigger images can overwhelm the AI — even robots have limits!" },
+      { "icon": "🎯", "text": "Portraits? Photo mode adds face magic. Illustrations or anime? Anime mode keeps those lines crisp!" },
+      { "icon": "🔢", "text": "2× is your go-to hero. 4× works best on tiny images under 1000px — go big or go home!" }
     ]
   },
   "styleTransfer": {
@@ -475,10 +475,10 @@
     },
     "tipsTitle": "💡 Pro Tips",
     "tips": [
-      "Solo subject, stunning result! Single portraits work best — busy backgrounds can confuse our AI artist.",
-      "We'll square-crop your photo auto-magically. Centered composition = perfect style makeover!",
-      "No settings, no stress! Every style has its secret sauce pre-tuned for consistent awesomeness.",
-      "Bright lighting, clear face, centered frame = style magic. Our AI paints best from a great photo!"
+      { "icon": "👤", "text": "Solo subject, stunning result! Single portraits work best — busy backgrounds can confuse our AI artist." },
+      { "icon": "✂️", "text": "We'll square-crop your photo auto-magically. Centered composition = perfect style makeover!" },
+      { "icon": "🎨", "text": "No settings, no stress! Every style has its secret sauce pre-tuned for consistent awesomeness." },
+      { "icon": "💡", "text": "Bright lighting, clear face, centered frame = style magic. Our AI paints best from a great photo!" }
     ],
     "tryAnother": "Try Another Photo"
   },

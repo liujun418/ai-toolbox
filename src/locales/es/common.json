@@ -394,10 +394,10 @@
     "tryAnother": "Probar Otra Imagen",
     "tipsTitle": "💡 Consejos Pro",
     "tips": [
-      "¡Las fotos pequeñas ganan más! Ideal para menos de 2000px — las que ya son nítidas no cambiarán mucho.",
-      "Mantén archivos bajo 1MB / 2000px. Imágenes enormes pueden saturar la IA — ¡hasta los robots tienen límites!",
-      "¿Retratos? Modo Foto añade magia facial. ¿Ilustraciones? Modo Anime mantiene las líneas definidas.",
-      "2× es tu hélogo cotidiano. 4× funciona mejor en imágenes pequeñas (menos de 1000px) — ¡a lo grande!"
+      { "icon": "📏", "text": "¡Las fotos pequeñas ganan más! Ideal para menos de 2000px — las que ya son nítidas no cambiarán mucho." },
+      { "icon": "📦", "text": "Mantén archivos bajo 1MB / 2000px. Imágenes enormes pueden saturar la IA — ¡hasta los robots tienen límites!" },
+      { "icon": "🎯", "text": "¿Retratos? Modo Foto añade magia facial. ¿Ilustraciones? Modo Anime mantiene las líneas definidas." },
+      { "icon": "🔢", "text": "2× es tu héroe cotidiano. 4× funciona mejor en imágenes pequeñas (menos de 1000px) — ¡a lo grande!" }
     ]
   },
   "styleTransfer": {
@@ -417,10 +417,10 @@
     },
     "tipsTitle": "💡 Consejos Pro",
     "tips": [
-      "¡Un solo sujeto, un resultado espectacular! Los retratos individuales funcionan mejor — fondos complejos confunden al artista IA.",
-      "Recortamos tu foto en cuadrado automáticamente. Composición centrada = ¡cambio de look perfecto!",
-      "¡Cero ajustes, cero estrés! Cada estilo tiene su salsa secreta pre-ajustada para resultados consistentes.",
-      "Buena luz, rostro nítido, encuadre centrado = magia estilística. ¡Nuestro artista IA pinta mejor con fotos claras!"
+      { "icon": "👤", "text": "¡Un solo sujeto, un resultado espectacular! Los retratos individuales funcionan mejor — fondos complejos confunden al artista IA." },
+      { "icon": "✂️", "text": "Recortamos tu foto en cuadrado automáticamente. Composición centrada = ¡cambio de look perfecto!" },
+      { "icon": "🎨", "text": "¡Cero ajustes, cero estrés! Cada estilo tiene su salsa secreta pre-ajustada para resultados consistentes." },
+      { "icon": "💡", "text": "Buena luz, rostro nítido, encuadre centrado = magia estilística. ¡Nuestro artista IA pinta mejor con fotos claras!" }
     ],
     "tryAnother": "Probar Otra Foto"
   },
