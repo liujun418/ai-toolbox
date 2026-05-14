@@ -10,7 +10,7 @@ import type { Locale } from "@/lib/i18n";
 
 import { getCreditCost } from "@/lib/creditCosts";
 const TOOL_ID = "photo-restorer";
-const STRENGTHS = ["light", "medium", "heavy"] as const;
+const STRENGTHS = ["light", "medium", "heavy", "face"] as const;
 type Strength = (typeof STRENGTHS)[number];
 
 export default function PhotoRestorerClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
@@ -91,7 +91,7 @@ export default function PhotoRestorerClient({ locale = "en" as Locale, dict }: {
             {/* Restoration strength selector */}
             <div>
               <label className="mb-2 block text-sm font-semibold text-zinc-700 dark:text-zinc-300">{t.strength || "Restoration Strength"}</label>
-              <div className="grid gap-2 sm:grid-cols-3">
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                 {STRENGTHS.map((s) => {
                   const info = strengths[s] || {};
                   return (

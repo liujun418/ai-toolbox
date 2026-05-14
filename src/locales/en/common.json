@@ -423,7 +423,8 @@
     "strengths": {
       "light": { "label": "Light", "desc": "Subtle cleanup, preserves original feel" },
       "medium": { "label": "Medium", "desc": "Balanced restoration with face enhancement" },
-      "heavy": { "label": "Heavy", "desc": "Deep restoration for severely damaged photos" }
+      "heavy": { "label": "Heavy", "desc": "Deep restoration for severely damaged photos" },
+      "face": { "label": "Face Pro", "desc": "Dedicated face enhancement with GFPGAN" }
     }
   },
   "pdfToWord": {
