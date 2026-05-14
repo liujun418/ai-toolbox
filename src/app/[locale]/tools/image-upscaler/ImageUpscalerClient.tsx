@@ -44,8 +44,13 @@ export default function ImageUpscalerClient({ locale = "en" as Locale, dict }: {
           <Link href={`/${locale}`} className="hover:text-blue-600">{tp.home || "Home"}</Link><span>/</span><span>{t.title || "Image Upscaler"}</span>
           <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
         </div>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">{t.title || "Image Upscaler"}</h1>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{t.description || "Enhance image resolution with AI super-resolution."} <span className="font-semibold text-blue-600">{t.cost || `${CREDIT_COST} credits`}</span>.</p>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">🔍 {t.title || "Image Upscaler"}</h1>
+        <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{t.description || "Enhance image resolution with AI super-resolution."}</p>
+        <div className="mt-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-50 to-yellow-100 px-3 py-1 text-sm font-semibold text-amber-800 shadow-sm ring-1 ring-amber-200/60 dark:from-amber-900/20 dark:to-yellow-900/20 dark:text-amber-300 dark:ring-amber-700/40">
+            💎 {t.cost || `${CREDIT_COST} credits`}
+          </span>
+        </div>
 
         {/* Usage tips */}
         <div className="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm dark:border-blue-800 dark:bg-blue-900/20">

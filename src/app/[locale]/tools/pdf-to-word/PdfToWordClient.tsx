@@ -75,7 +75,12 @@ export default function PdfToWordClient({ locale = "en" as Locale, dict }: { loc
           <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">📄 {t.title || "PDF to Word"}</h1>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{t.description || "Convert PDF documents to editable Word (.docx) files."} {nav.credits ? `Costs ${nav.credits}:` : "Costs"} <span className="font-semibold text-blue-600">{t.cost1 || t.cost2 || "1-2 credits"}</span>.</p>
+        <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{t.description || "Convert PDF documents to editable Word (.docx) files."}</p>
+        <div className="mt-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-50 to-yellow-100 px-3 py-1 text-sm font-semibold text-amber-800 shadow-sm ring-1 ring-amber-200/60 dark:from-amber-900/20 dark:to-yellow-900/20 dark:text-amber-300 dark:ring-amber-700/40">
+            💎 {t.cost1 || t.cost2 || "1-2 credits"}
+          </span>
+        </div>
       </div>
 
       <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">

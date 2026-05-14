@@ -363,7 +363,7 @@
   },
   "avatarGenerator": {
     "title": "AI Avatar Generator",
-    "description": "Transform your photo into cartoon, anime, or professional avatars.",
+    "description": "Turn your selfie into a cartoon star, anime hero, or professional headshot — like magic!",
     "cost": "5 credits",
     "button": "Generate Avatar (5 credits)",
     "styles": {
@@ -382,7 +382,7 @@
   },
   "backgroundRemover": {
     "title": "Background Remover",
-    "description": "Remove image backgrounds instantly with AI.",
+    "description": "Snip snip! Backgrounds vanish with one click. Clean cut, every time.",
     "cost": "2 credits",
     "button": "Remove Background (2 credits)",
     "processing": "Removing background...",
@@ -399,7 +399,7 @@
   },
   "watermarkRemover": {
     "title": "Watermark Remover",
-    "description": "Erase watermarks, logos, and text from images.",
+    "description": "Sweep away watermarks, logos, and text — your image, squeaky clean.",
     "cost": "3 credits",
     "button": "Remove Watermark (3 credits)",
     "processing": "Processing...",
@@ -412,7 +412,7 @@
   },
   "photoRestorer": {
     "title": "Photo Restorer",
-    "description": "Restore old, blurry, or damaged photos with AI face enhancement.",
+    "description": "Give old photos a time machine makeover. Scratches, dust, blur — poof, gone!",
     "cost": "5 credits",
     "button": "Restore Photo (5 credits)",
     "processing": "Restoring photo...",
@@ -427,7 +427,7 @@
   },
   "pdfToWord": {
     "title": "PDF to Word",
-    "description": "Convert PDF documents to editable Word files.",
+    "description": "Unlock your PDFs! Turn locked documents into editable Word files in a snap.",
     "cost1": "1 credit (≤10 pages)",
     "cost2": "2 credits (>10 pages)",
     "button": "Convert to Word",
@@ -437,7 +437,7 @@
   },
   "imageUpscaler": {
     "title": "Image Upscaler",
-    "description": "Enhance image resolution with AI super-resolution.",
+    "description": "Zoom and enhance! Turn tiny, blurry pics into crisp, detailed images.",
     "cost": "2 credits",
     "supportedFormats": "PNG, JPG, WebP — max 1MB",
     "button": "Upscale Image (2 credits)",
@@ -460,7 +460,7 @@
   },
   "styleTransfer": {
     "title": "Image Style Transfer",
-    "description": "Transform photos into oil paintings, watercolors, cartoons, and more.",
+    "description": "Paint your photo into a masterpiece — oil, sketch, cyberpunk, fantasy & more!",
     "cost": "4 credits",
     "button": "Transform (4 credits)",
     "processing": "Transferring style...",
@@ -484,7 +484,7 @@
   },
   "textPolish": {
     "title": "Text Polish & Rewrite",
-    "description": "Polish, rewrite, shorten, or expand your text with AI.",
+    "description": "Give your words a spa day. Polish, rewrite, shorten, or expand with AI magic.",
     "cost": "3 credits",
     "originalText": "Original Text",
     "resultLabel": "Result",

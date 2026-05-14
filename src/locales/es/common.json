@@ -305,7 +305,7 @@
   },
   "avatarGenerator": {
     "title": "Generador de Avatares con IA",
-    "description": "Transforma tu foto en avatares de dibujos animados, anime o profesionales.",
+    "description": "¡Convierte tu selfie en estrella cartoon, héroe anime o foto profesional — como por arte de magia!",
     "cost": "5 créditos",
     "button": "Generar Avatar (5 créditos)",
     "styles": {
@@ -324,7 +324,7 @@
   },
   "backgroundRemover": {
     "title": "Eliminador de Fondos",
-    "description": "Elimina fondos de imágenes al instante con IA.",
+    "description": "¡Zas! Fondos que desaparecen con un clic. Corte limpio, siempre perfecto.",
     "cost": "2 créditos",
     "button": "Eliminar Fondo (2 créditos)",
     "processing": "Eliminando fondo...",
@@ -341,7 +341,7 @@
   },
   "watermarkRemover": {
     "title": "Eliminador de Marcas de Agua",
-    "description": "Elimina marcas de agua, logotipos y texto de imágenes.",
+    "description": "Barre marcas de agua, logos y texto — tu imagen queda impecable, como nueva.",
     "cost": "3 créditos",
     "button": "Eliminar Marca de Agua (3 créditos)",
     "processing": "Procesando...",
@@ -354,7 +354,7 @@
   },
   "photoRestorer": {
     "title": "Restaurador de Fotos",
-    "description": "Restaura fotos antiguas, borrosas o dañadas con mejora facial IA.",
+    "description": "¡Dale a tus fotos viejas un viaje en el tiempo! Arañazos, polvo, desenfoque — ¡desaparecidos!",
     "cost": "5 créditos",
     "button": "Restaurar Foto (5 créditos)",
     "processing": "Restaurando foto...",
@@ -369,7 +369,7 @@
   },
   "pdfToWord": {
     "title": "PDF a Word",
-    "description": "Convierte documentos PDF a archivos Word editables.",
+    "description": "¡Desbloquea tus PDFs! Convierte documentos cerrados en Word editable en un instante.",
     "cost1": "1 crédito (≤10 páginas)",
     "cost2": "2 créditos (>10 páginas)",
     "button": "Convertir a Word",
@@ -379,7 +379,7 @@
   },
   "imageUpscaler": {
     "title": "Mejorador de Imágenes",
-    "description": "Mejora la resolución de imágenes con super-resolución IA.",
+    "description": "¡Zoom y mejora! Convierte imágenes pequeñas y borrosas en fotos nítidas y detalladas.",
     "cost": "2 créditos",
     "supportedFormats": "PNG, JPG, WebP — máx. 1MB",
     "button": "Mejorar Imagen (2 créditos)",
@@ -402,7 +402,7 @@
   },
   "styleTransfer": {
     "title": "Transferencia de Estilo de Imagen",
-    "description": "Transforma fotos en pinturas al óleo, acuarelas, caricaturas y más.",
+    "description": "¡Convierte tu foto en arte! Óleo, acuarela, boceto, cyberpunk, fantasía y más.",
     "cost": "4 créditos",
     "button": "Transformar (4 créditos)",
     "processing": "Transfiriendo estilo...",
@@ -426,7 +426,7 @@
   },
   "textPolish": {
     "title": "Pulir y Reescribir Texto",
-    "description": "Pule, reescribe, acorta o expande tu texto con IA.",
+    "description": "Dale a tus palabras un día de spa. Pule, reescribe, acorta o expande con magia IA.",
     "cost": "3 créditos",
     "originalText": "Texto Original",
     "resultLabel": "Resultado",
