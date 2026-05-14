@@ -23,12 +23,12 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   const drawingRef = useRef(false);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
 
-  // Initialize canvas context with willReadFrequently for fast getImageData
+  // Initialize canvas context with willReadFrequently (re-run on canvas remount)
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     ctxRef.current = canvas.getContext("2d", { willReadFrequently: true });
-  }, []);
+  }, [canvasKey]);
 
   const tool = useTool({
     toolId: TOOL_ID,
@@ -161,7 +161,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
       canvas.removeEventListener("touchmove", handleTouchMove);
       canvas.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [doDraw, stopDraw, countMaskPixels]);
+  }, [doDraw, stopDraw, countMaskPixels, canvasKey]);
 
   const clearMask = useCallback(() => {
     const ctx = ctxRef.current || canvasRef.current?.getContext("2d", { willReadFrequently: true });
