@@ -41,7 +41,7 @@ export default function PhotoRestorerClient({ locale = "en" as Locale, dict }: {
           <Link href={`/${locale}`} className="hover:text-blue-600">{tp.home || "Home"}</Link><span>/</span><span>{t.title || "Photo Restorer"}</span>
           <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
         </div>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">✨ {t.title || "Photo Restorer"}</h1>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">📷 {t.title || "Photo Restorer"}</h1>
         <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{t.description || "Restore old, blurry, or damaged photos with AI face enhancement."}</p>
         <div className="mt-2">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-50 to-yellow-100 px-3 py-1 text-sm font-semibold text-amber-800 shadow-sm ring-1 ring-amber-200/60 dark:from-amber-900/20 dark:to-yellow-900/20 dark:text-amber-300 dark:ring-amber-700/40">

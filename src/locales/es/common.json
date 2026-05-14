@@ -392,12 +392,12 @@
     },
     "scales": { "2": "2×", "4": "4×" },
     "tryAnother": "Probar Otra Imagen",
-    "tipsTitle": "Consejos para mejores resultados",
+    "tipsTitle": "💡 Consejos Pro",
     "tips": [
-      "Ideal para imágenes de baja resolución (menos de 2000px) — las fotos grandes no mejorarán.",
-      "Para un procesamiento fiable, mantén las imágenes por debajo de 1MB / 2000px. Archivos más grandes suelen fallar por límites de memoria.",
-      "Modo Foto para retratos (mejora facial automática). Modo Anime para ilustraciones y dibujos.",
-      "2× es seguro para la mayoría. 4× funciona mejor en imágenes de menos de 1000px."
+      "¡Las fotos pequeñas ganan más! Ideal para menos de 2000px — las que ya son nítidas no cambiarán mucho.",
+      "Mantén archivos bajo 1MB / 2000px. Imágenes enormes pueden saturar la IA — ¡hasta los robots tienen límites!",
+      "¿Retratos? Modo Foto añade magia facial. ¿Ilustraciones? Modo Anime mantiene las líneas definidas.",
+      "2× es tu hélogo cotidiano. 4× funciona mejor en imágenes pequeñas (menos de 1000px) — ¡a lo grande!"
     ]
   },
   "styleTransfer": {
@@ -415,12 +415,12 @@
       "cyberpunk": { "label": "Cyberpunk", "desc": "Neón, estética synthwave futurista" },
       "fantasy": { "label": "Fantasía", "desc": "Elementos mágicos, atmósfera etérea" }
     },
-    "tipsTitle": "Consejos para mejores resultados",
+    "tipsTitle": "💡 Consejos Pro",
     "tips": [
-      "Los retratos o fotos de un solo sujeto funcionan mejor — escenas complejas pueden perder detalle.",
-      "Las fotos se recortarán automáticamente en formato cuadrado para un procesamiento óptimo.",
-      "Cada estilo usa parámetros fijos para garantizar consistencia — no necesitas ajustar nada.",
-      "Para mejores resultados, usa fotos bien iluminadas con el sujeto centrado en el encuadre."
+      "¡Un solo sujeto, un resultado espectacular! Los retratos individuales funcionan mejor — fondos complejos confunden al artista IA.",
+      "Recortamos tu foto en cuadrado automáticamente. Composición centrada = ¡cambio de look perfecto!",
+      "¡Cero ajustes, cero estrés! Cada estilo tiene su salsa secreta pre-ajustada para resultados consistentes.",
+      "Buena luz, rostro nítido, encuadre centrado = magia estilística. ¡Nuestro artista IA pinta mejor con fotos claras!"
     ],
     "tryAnother": "Probar Otra Foto"
   },

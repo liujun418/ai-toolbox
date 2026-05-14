@@ -450,12 +450,12 @@
     },
     "scales": { "2": "2×", "4": "4×" },
     "tryAnother": "Try Another Image",
-    "tipsTitle": "Tips for best results",
+    "tipsTitle": "💡 Pro Tips",
     "tips": [
-      "Best for low-resolution images under 2000px — already large photos won't benefit from upscaling.",
-      "For reliable processing, keep images under 1MB / 2000px. Larger files often exceed AI memory limits and will fail.",
-      "Choose Photo mode for portraits (auto face enhancement). Choose Anime mode for illustrations, line art, or animation.",
-      "2× is safe for most images. 4× works best on images under 1000px."
+      "Low-res pics get the glow-up! Best for images under 2000px — already crisp photos won't see much change.",
+      "Keep files under 1MB / 2000px. Bigger images can overwhelm the AI — even robots have limits!",
+      "Portraits? Photo mode adds face magic. Illustrations or anime? Anime mode keeps those lines crisp!",
+      "2× is your go-to hero. 4× works best on tiny images under 1000px — go big or go home!"
     ]
   },
   "styleTransfer": {
@@ -473,12 +473,12 @@
       "cyberpunk": { "label": "Cyberpunk", "desc": "Neon lights, futuristic synthwave aesthetic" },
       "fantasy": { "label": "Fantasy", "desc": "Magical glowing elements, ethereal atmosphere" }
     },
-    "tipsTitle": "Tips for best results",
+    "tipsTitle": "💡 Pro Tips",
     "tips": [
-      "Portrait or single-subject photos work best — complex scenes may lose detail during style transfer.",
-      "Photos will be automatically center-cropped to a square format for optimal AI processing.",
-      "Each style uses fixed parameters to ensure consistency — no need to adjust settings manually.",
-      "For best results, use well-lit, clear photos with the subject centered in the frame."
+      "Solo subject, stunning result! Single portraits work best — busy backgrounds can confuse our AI artist.",
+      "We'll square-crop your photo auto-magically. Centered composition = perfect style makeover!",
+      "No settings, no stress! Every style has its secret sauce pre-tuned for consistent awesomeness.",
+      "Bright lighting, clear face, centered frame = style magic. Our AI paints best from a great photo!"
     ],
     "tryAnother": "Try Another Photo"
   },
