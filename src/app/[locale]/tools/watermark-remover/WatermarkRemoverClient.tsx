@@ -19,6 +19,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   const [maskPixels, setMaskPixels] = useState(0);
   const [maskPreviewUrl, setMaskPreviewUrl] = useState<string | null>(null);
   const [canvasReady, setCanvasReady] = useState(false);
+  const [canvasLoading, setCanvasLoading] = useState(false);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const bgCanvasRef = useRef<HTMLCanvasElement | null>(null); // hidden canvas holding the clean image
@@ -44,14 +45,14 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
 
       // Draw image onto canvas
       const ctx = canvas.getContext("2d", { willReadFrequently: true });
-      if (!ctx) return;
+      if (!ctx) { setCanvasLoading(false); return; }
       ctx.drawImage(img, 0, 0, w, h);
       ctxRef.current = ctx;
 
       // Store clean background
       imageDataRef.current = ctx.getImageData(0, 0, w, h);
 
-      // Also keep a hidden copy for mask generation
+      // Hidden copy for mask generation
       const bg = document.createElement("canvas");
       bg.width = w; bg.height = h;
       const bgCtx = bg.getContext("2d");
@@ -60,7 +61,9 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
 
       setMaskPixels(0);
       setCanvasReady(true);
+      setCanvasLoading(false);
     };
+    img.onerror = () => { setCanvasLoading(false); };
     img.src = URL.createObjectURL(file);
   }, []);
 
@@ -230,6 +233,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
     const f = e.target.files?.[0];
     if (!f) return;
     setCanvasReady(false);
+    setCanvasLoading(true);
     setMaskPreviewUrl(null);
     loadImage(f);
     tool.handleFileChange(e);
@@ -259,7 +263,12 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
       )}
 
       <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-        {!canvasReady ? (
+        {canvasLoading ? (
+          <div className="flex flex-col items-center justify-center py-16">
+            <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-blue-600 border-t-transparent"/>
+            <p className="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">Loading image...</p>
+          </div>
+        ) : !canvasReady ? (
           <div onClick={() => tool.fileRef.current?.click()} className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-zinc-300 py-16 dark:border-zinc-700">
             <svg className="h-12 w-12 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
             <p className="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">{tp.uploadPhoto || "Upload an image with watermark"}</p>
