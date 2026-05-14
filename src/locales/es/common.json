@@ -390,7 +390,14 @@
       "anime": { "label": "Anime / Ilustración", "desc": "Optimizado para arte lineal, animación e ilustraciones" }
     },
     "scales": { "2": "2×", "4": "4×" },
-    "tryAnother": "Probar Otra Imagen"
+    "tryAnother": "Probar Otra Imagen",
+    "tipsTitle": "Consejos para mejores resultados",
+    "tips": [
+      "Ideal para imágenes de baja resolución o pequeñas — las fotos ya en alta resolución no mejorarán.",
+      "Tamaño máximo: 10MB. Resolución recomendada: menos de 3000px en el lado más largo.",
+      "Modo Foto para retratos (mejora facial automática). Modo Anime para ilustraciones y dibujos.",
+      "2× es seguro para la mayoría. 4× funciona mejor en imágenes de menos de 1000px."
+    ]
   },
   "styleTransfer": {
     "title": "Transferencia de Estilo de Imagen",

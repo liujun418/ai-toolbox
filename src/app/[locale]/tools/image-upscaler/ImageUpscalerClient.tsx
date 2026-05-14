@@ -46,6 +46,21 @@ export default function ImageUpscalerClient({ locale = "en" as Locale, dict }: {
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">{t.title || "Image Upscaler"}</h1>
         <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{t.description || "Enhance image resolution with AI super-resolution."} <span className="font-semibold text-blue-600">{t.cost || `${CREDIT_COST} credits`}</span>.</p>
+
+        {/* Usage tips */}
+        <div className="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm dark:border-blue-800 dark:bg-blue-900/20">
+          <p className="font-semibold text-blue-800 dark:text-blue-300">{t.tipsTitle || "Tips for best results"}</p>
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-blue-700 dark:text-blue-400">
+            {(t.tips || [
+              "Best for low-resolution or small images that need enlargement — already high-res photos won't benefit.",
+              "Maximum file size: 10MB. Recommended resolution: under 3000px on the longest side.",
+              "Choose Photo mode for portraits (auto face enhancement). Choose Anime mode for illustrations, line art, or animation.",
+              "2× is safe for most images. 4× works best on images under 1000px."
+            ]).map((tip: string, i: number) => (
+              <li key={i}>{tip}</li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {tool.fileError && (
