@@ -460,7 +460,7 @@
   },
   "styleTransfer": {
     "title": "Image Style Transfer",
-    "description": "Transform photos into oil paintings, watercolors, anime art, and more.",
+    "description": "Transform photos into oil paintings, watercolors, cartoons, and more.",
     "cost": "4 credits",
     "button": "Transform (4 credits)",
     "processing": "Transferring style...",
@@ -468,10 +468,10 @@
     "styles": {
       "oil-painting": { "label": "Oil Painting", "desc": "Thick brush strokes, rich warm palette" },
       "watercolor": { "label": "Watercolor", "desc": "Soft translucent washes, delicate edges" },
-      "anime": { "label": "Anime", "desc": "Cel shading, clean lines, vibrant colors" },
-      "sketch": { "label": "Sketch", "desc": "Pencil graphite, fine cross-hatching" },
-      "chinese-painting": { "label": "Chinese Painting", "desc": "Ink wash, guochao illustration style" },
-      "cartoon": { "label": "3D Cartoon", "desc": "Pixar-style, polished 3D render" }
+      "sketch": { "label": "Pencil Sketch", "desc": "Graphite drawing, fine cross-hatching" },
+      "cartoon": { "label": "3D Cartoon", "desc": "Pixar-style, polished 3D render" },
+      "cyberpunk": { "label": "Cyberpunk", "desc": "Neon lights, futuristic synthwave aesthetic" },
+      "fantasy": { "label": "Fantasy", "desc": "Magical glowing elements, ethereal atmosphere" }
     },
     "tipsTitle": "Tips for best results",
     "tips": [

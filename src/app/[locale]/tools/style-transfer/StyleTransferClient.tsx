@@ -10,10 +10,10 @@ import type { Locale } from "@/lib/i18n";
 
 import { getCreditCost } from "@/lib/creditCosts";
 const TOOL_ID = "style-transfer";
-const STYLE_IDS = ["oil-painting", "watercolor", "anime", "sketch", "chinese-painting", "cartoon"] as const;
+const STYLE_IDS = ["oil-painting", "watercolor", "sketch", "cartoon", "cyberpunk", "fantasy"] as const;
 type StyleId = (typeof STYLE_IDS)[number];
 const STYLE_ICONS: Record<string, string> = {
-  "oil-painting": "🖼️", watercolor: "🎨", anime: "🌸", sketch: "✏️", "chinese-painting": "🏮", cartoon: "🎬",
+  "oil-painting": "🖼️", watercolor: "🎨", sketch: "✏️", cartoon: "🎬", cyberpunk: "🌆", fantasy: "✨",
 };
 
 export default function StyleTransferClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {

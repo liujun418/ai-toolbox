@@ -402,18 +402,18 @@
   },
   "styleTransfer": {
     "title": "Transferencia de Estilo de Imagen",
-    "description": "Transforma fotos en pinturas al óleo, acuarelas, arte anime y más.",
+    "description": "Transforma fotos en pinturas al óleo, acuarelas, caricaturas y más.",
     "cost": "4 créditos",
     "button": "Transformar (4 créditos)",
     "processing": "Transfiriendo estilo...",
     "uploadToSee": "Selecciona un estilo y transforma para ver el resultado",
     "styles": {
-      "oil-painting": { "label": "Pintura al Óleo", "desc": "Pinceladas gruesas, paleta cálida" },
+      "oil-painting": { "label": "Óleo", "desc": "Pinceladas gruesas, paleta cálida" },
       "watercolor": { "label": "Acuarela", "desc": "Lavados translúcidos, bordes suaves" },
-      "anime": { "label": "Anime", "desc": "Sombreado cel, líneas limpias, colores vivos" },
-      "sketch": { "label": "Boceto", "desc": "Grafito a lápiz, fino sombreado cruzado" },
-      "chinese-painting": { "label": "Pintura China", "desc": "Tinta y aguada, estilo guochao" },
-      "cartoon": { "label": "Caricatura 3D", "desc": "Estilo Pixar, render 3D pulido" }
+      "sketch": { "label": "Lápiz", "desc": "Dibujo a grafito, fino sombreado" },
+      "cartoon": { "label": "3D Cartoon", "desc": "Estilo Pixar, render 3D pulido" },
+      "cyberpunk": { "label": "Cyberpunk", "desc": "Neón, estética synthwave futurista" },
+      "fantasy": { "label": "Fantasía", "desc": "Elementos mágicos, atmósfera etérea" }
     },
     "tipsTitle": "Consejos para mejores resultados",
     "tips": [
