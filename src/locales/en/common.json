@@ -441,8 +441,13 @@
     "cost": "2 credits",
     "button": "Upscale Image (2 credits)",
     "processing": "Upscaling image...",
-    "uploadToSee": "Select scale and upscale to see result",
-    "scales": { "2x": "2×", "4x": "4×" },
+    "uploadToSee": "Select options and upscale to see result",
+    "imageType": "Image Type",
+    "types": {
+      "photo": { "label": "Photo", "desc": "General model + face enhancement for portraits" },
+      "anime": { "label": "Anime / Illustration", "desc": "Optimized for line art, animation, and illustrations" }
+    },
+    "scales": { "2": "2×", "4": "4×" },
     "tryAnother": "Try Another Image"
   },
   "styleTransfer": {

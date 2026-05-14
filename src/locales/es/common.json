@@ -383,8 +383,13 @@
     "cost": "2 créditos",
     "button": "Mejorar Imagen (2 créditos)",
     "processing": "Mejorando imagen...",
-    "uploadToSee": "Selecciona la escala y mejora para ver el resultado",
-    "scales": { "2x": "2×", "4x": "4×" },
+    "uploadToSee": "Selecciona opciones para mejorar",
+    "imageType": "Tipo de Imagen",
+    "types": {
+      "photo": { "label": "Foto", "desc": "Modelo general + mejora facial para retratos" },
+      "anime": { "label": "Anime / Ilustración", "desc": "Optimizado para arte lineal, animación e ilustraciones" }
+    },
+    "scales": { "2": "2×", "4": "4×" },
     "tryAnother": "Probar Otra Imagen"
   },
   "styleTransfer": {

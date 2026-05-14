@@ -10,24 +10,28 @@ import type { Locale } from "@/lib/i18n";
 
 import { getCreditCost } from "@/lib/creditCosts";
 const TOOL_ID = "image-upscaler";
+const SCALES = ["2", "4"] as const;
+const IMAGE_TYPES = ["photo", "anime"] as const;
+type ImageType = (typeof IMAGE_TYPES)[number];
 
 export default function ImageUpscalerClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
   const CREDIT_COST = getCreditCost(TOOL_ID);
   const { user, loading } = useAuth();
-  const [selectedScale, setSelectedScale] = useState("2x");
+  const [selectedScale, setSelectedScale] = useState("2");
+  const [imageType, setImageType] = useState<ImageType>("photo");
 
   const tool = useTool({
     toolId: TOOL_ID,
     creditCost: CREDIT_COST,
-    buildPrompt: ({ scale }) => `Upscale image by ${scale}. Enhance details and quality.`,
+    buildPrompt: ({ scale, imageType: type }) => `${(type as string) || "photo"}:${(scale as string) || "2"}`,
     locale,
     dict,
   });
 
   const t = (dict as any)?.imageUpscaler || {};
   const tp = (dict as any)?.toolPage || {};
-  const scales = (dict as any)?.imageUpscaler?.scales || {};
-  const nav = (dict as any)?.nav || {};
+  const scales = t.scales || {};
+  const types = t.types || {};
 
   if (loading) return <ToolSkeleton />;
 
@@ -40,7 +44,7 @@ export default function ImageUpscalerClient({ locale = "en" as Locale, dict }: {
           <Link href={`/${locale}`} className="hover:text-blue-600">{tp.home || "Home"}</Link><span>/</span><span>{t.title || "Image Upscaler"}</span>
           <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
         </div>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">🔍 {t.title || "Image Upscaler"}</h1>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">{t.title || "Image Upscaler"}</h1>
         <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{t.description || "Enhance image resolution with AI super-resolution."} <span className="font-semibold text-blue-600">{t.cost || `${CREDIT_COST} credits`}</span>.</p>
       </div>
 
@@ -66,24 +70,47 @@ export default function ImageUpscalerClient({ locale = "en" as Locale, dict }: {
                   {tool.status === "done" && tool.resultUrl ? (
                     <img src={tool.resultUrl} alt="Result" className="w-full rounded-xl object-contain" />
                   ) : tool.status === "uploading" ? (
-                    <div className="text-center"><div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" /><p className="mt-2 text-sm text-zinc-500">{t.processing || "Upscaling..."}</p></div>
+                    <div className="text-center"><div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" /><p className="mt-2 text-sm text-zinc-500">{t.processing || "Upscaling image..."}</p></div>
                   ) : tool.status === "error" ? (
                     <p className="text-sm text-red-500">{tool.errorMsg}</p>
                   ) : (
-                    <p className="text-sm text-zinc-400">{t.uploadToSee || "Select scale and upscale to see result"}</p>
+                    <p className="text-sm text-zinc-400">{t.uploadToSee || "Select options and upscale to see result"}</p>
                   )}
                 </div>
               </div>
             </div>
 
+            {/* Image type selector */}
             <div>
-              <label className="mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300">{tp.upscaleFactor || "Upscale Factor"}</label>
-              <div className="flex gap-3">
-                {["2x", "4x"].map((id) => (
-                  <button key={id} onClick={() => setSelectedScale(id)}
-                    className={`flex-1 rounded-lg border p-4 text-center transition-all ${selectedScale === id ? "border-blue-600 bg-blue-50 dark:border-blue-500 dark:bg-blue-900/20" : "border-zinc-200 hover:border-zinc-300 dark:border-zinc-700 dark:hover:border-zinc-600"}`}>
-                    <span className="block text-2xl">{id === "2x" ? "🔍" : "🔎"}</span>
-                    <span className="mt-1 text-sm font-semibold text-zinc-700 dark:text-zinc-300">{scales[id] || id}</span>
+              <label className="mb-2 block text-sm font-semibold text-zinc-700 dark:text-zinc-300">{t.imageType || "Image Type"}</label>
+              <div className="grid grid-cols-2 gap-2">
+                {IMAGE_TYPES.map((id) => {
+                  const info = types[id] || {};
+                  return (
+                    <button key={id} onClick={() => setImageType(id)}
+                      className={`rounded-lg border px-4 py-3 text-left transition-all ${
+                        imageType === id
+                          ? "border-blue-600 bg-blue-50 dark:border-blue-500 dark:bg-blue-900/20"
+                          : "border-zinc-200 hover:border-zinc-300 dark:border-zinc-700 dark:hover:border-zinc-600"
+                      }`}>
+                      <div className={`text-sm font-semibold ${imageType === id ? "text-blue-700 dark:text-blue-300" : "text-zinc-700 dark:text-zinc-300"}`}>
+                        {info.label || id}
+                      </div>
+                      <div className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">{info.desc || ""}</div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Scale selector */}
+            <div>
+              <label className="mb-2 block text-sm font-semibold text-zinc-700 dark:text-zinc-300">{tp.upscaleFactor || "Upscale Factor"}</label>
+              <div className="grid grid-cols-2 gap-2">
+                {SCALES.map((s) => (
+                  <button key={s} onClick={() => setSelectedScale(s)}
+                    className={`rounded-lg border px-4 py-3 text-center transition-all ${selectedScale === s ? "border-blue-600 bg-blue-50 dark:border-blue-500 dark:bg-blue-900/20" : "border-zinc-200 hover:border-zinc-300 dark:border-zinc-700 dark:hover:border-zinc-600"}`}>
+                    <span className={`text-lg font-bold ${selectedScale === s ? "text-blue-700 dark:text-blue-300" : "text-zinc-700 dark:text-zinc-300"}`}>{scales[s] || `${s}x`}</span>
                   </button>
                 ))}
               </div>
@@ -91,7 +118,7 @@ export default function ImageUpscalerClient({ locale = "en" as Locale, dict }: {
 
             {tool.status === "idle" && (
               <div className="flex gap-3">
-                <button onClick={() => tool.handleUpload({ scale: selectedScale })}
+                <button onClick={() => tool.handleUpload({ scale: selectedScale, imageType })}
                   className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">{t.button || `Upscale Image (${CREDIT_COST} credits)`}</button>
                 <button onClick={tool.reset}
                   className="rounded-lg border border-zinc-300 px-6 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300">{tp.cancel || "Cancel"}</button>
@@ -109,7 +136,7 @@ export default function ImageUpscalerClient({ locale = "en" as Locale, dict }: {
 
             {tool.status === "error" && (
               <div className="flex gap-3">
-                <button onClick={() => tool.handleUpload({ scale: selectedScale })}
+                <button onClick={() => tool.handleUpload({ scale: selectedScale, imageType })}
                   className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">{tp.tryAgain || "Try Again"}</button>
                 <button onClick={tool.reset}
                   className="rounded-lg border border-zinc-300 px-6 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300">{tp.cancel || "Cancel"}</button>
@@ -119,7 +146,7 @@ export default function ImageUpscalerClient({ locale = "en" as Locale, dict }: {
         )}
       </div>
 
-      <CreditConfirmDialog isOpen={!!user && tool.showConfirm} creditsNeeded={CREDIT_COST} currentCredits={user?.credits || 0} toolName={t.title || TOOL_ID} locale={locale} dict={dict} onConfirm={() => tool.handleUpload({ scale: selectedScale })} onCancel={() => tool.setShowConfirm(false)} />
+      <CreditConfirmDialog isOpen={!!user && tool.showConfirm} creditsNeeded={CREDIT_COST} currentCredits={user?.credits || 0} toolName={t.title || TOOL_ID} locale={locale} dict={dict} onConfirm={() => tool.handleUpload({ scale: selectedScale, imageType })} onCancel={() => tool.setShowConfirm(false)} />
       <LoginPromptDialog isOpen={showLoginPrompt} locale={locale} dict={dict} />
       {tool.showToast && <CreditsUsedToast creditsUsed={tool.creditsUsed} remaining={user?.credits ?? 0} onClose={() => tool.setShowToast(false)} dict={dict} />}
     </div>
