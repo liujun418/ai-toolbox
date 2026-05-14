@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
 import { useTool } from "@/hooks/useTool";
@@ -9,45 +9,99 @@ import { CreditConfirmDialog, CreditsUsedToast, LoginPromptDialog } from "@/comp
 import type { Locale } from "@/lib/i18n";
 
 import { getCreditCost } from "@/lib/creditCosts";
-const BRUSH_SIZES = [20, 40, 70];
+// Brush sizes in canvas pixels — scaled ~3x larger to ensure sufficient mask coverage
+// regardless of viewport width (narrow iPhone vs wide Desktop/Surface)
+const BRUSH_SIZES = [60, 120, 200];
 const TOOL_ID = "watermark-remover";
 
 export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
   const { user, loading } = useAuth();
-  const [brushSize, setBrushSize] = useState(40);
+  const [brushSize, setBrushSize] = useState(120);
   const [maskPixels, setMaskPixels] = useState(0);
+  const [maskPreviewUrl, setMaskPreviewUrl] = useState<string | null>(null);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const drawingRef = useRef(false);
+  const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
+
+  const initCanvasNow = (canvas: HTMLCanvasElement, img: HTMLImageElement) => {
+    // Cap resolution to 2048px max for consistent mask size and brush behavior
+    const MAX = 2048;
+    let w = img.naturalWidth, h = img.naturalHeight;
+    if (Math.max(w, h) > MAX) {
+      const ratio = MAX / Math.max(w, h);
+      w = Math.round(w * ratio);
+      h = Math.round(h * ratio);
+    }
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (ctx) {
+      ctxRef.current = ctx;
+      ctx.clearRect(0, 0, w, h);
+    }
+    setMaskPixels(0);
+  };
 
   const tool = useTool({
     toolId: TOOL_ID,
     creditCost: getCreditCost(TOOL_ID),
     getMask: async () => {
       const canvas = canvasRef.current;
-      if (!canvas) return null;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return null;
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      if (!canvas) { console.log("[WM] getMask: no canvas"); return null; }
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });
+      if (!ctx) { console.log("[WM] getMask: no ctx"); return null; }
+      const w = canvas.width, h = canvas.height;
+      const imageData = ctx.getImageData(0, 0, w, h);
       let hasPaint = false;
       for (let i = 3; i < imageData.data.length; i += 4) {
         if (imageData.data[i] > 0) { hasPaint = true; break; }
       }
-      if (!hasPaint) return null;
+      if (!hasPaint) { console.log("[WM] getMask: no paint, canvas=" + w + "x" + h); return null; }
       const maskCanvas = document.createElement("canvas");
-      maskCanvas.width = canvas.width;
-      maskCanvas.height = canvas.height;
-      const mCtx = maskCanvas.getContext("2d");
+      maskCanvas.width = w; maskCanvas.height = h;
+      const mCtx = maskCanvas.getContext("2d", { willReadFrequently: true });
       if (!mCtx) return null;
-      const maskData = mCtx.createImageData(canvas.width, canvas.height);
+      const maskData = mCtx.createImageData(w, h);
+      let whiteCount = 0;
       for (let i = 0; i < imageData.data.length; i += 4) {
         if (imageData.data[i + 3] > 0) {
           maskData.data[i] = maskData.data[i + 1] = maskData.data[i + 2] = maskData.data[i + 3] = 255;
+          whiteCount++;
         }
       }
       mCtx.putImageData(maskData, 0, 0);
-      return new Promise<Blob | null>((resolve) => maskCanvas.toBlob((blob) => resolve(blob), "image/png"));
+
+      // Dilate mask: blur then threshold to expand white areas by ~8px
+      // This ensures mask coverage is sufficient regardless of brush size
+      mCtx.save();
+      mCtx.filter = "blur(8px)";
+      mCtx.globalCompositeOperation = "source-over";
+      mCtx.drawImage(maskCanvas, 0, 0);
+      mCtx.filter = "none";
+      mCtx.restore();
+      // Threshold back to binary (any non-zero pixel → white)
+      const dilated = mCtx.getImageData(0, 0, w, h);
+      let dilatedWhite = 0;
+      for (let i = 0; i < dilated.data.length; i += 4) {
+        if (dilated.data[i] > 10) { // >10 to filter noise
+          dilated.data[i] = dilated.data[i + 1] = dilated.data[i + 2] = dilated.data[i + 3] = 255;
+          dilatedWhite++;
+        }
+      }
+      mCtx.putImageData(dilated, 0, 0);
+      console.log("[WM] getMask: " + w + "x" + h + ", white=" + whiteCount + " → dilated=" + dilatedWhite);
+
+      // Generate preview URL for diagnostics
+      const previewUrl = maskCanvas.toDataURL("image/png");
+      setMaskPreviewUrl(previewUrl);
+      console.log("[WM] getMask: preview dataURL len=" + previewUrl.length);
+
+      return new Promise<Blob | null>((resolve) => maskCanvas.toBlob((blob) => {
+        console.log("[WM] getMask: blob=" + (blob?.size || 0));
+        resolve(blob);
+      }, "image/png"));
     },
     locale,
     dict,
@@ -59,44 +113,97 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   const countMaskPixels = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return 0;
-    const data = canvas.getContext("2d")!.getImageData(0, 0, canvas.width, canvas.height);
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (!ctx) return 0;
+    const data = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let n = 0;
     for (let i = 3; i < data.data.length; i += 4) if (data.data[i] > 0) n++;
     return n;
   }, []);
 
-  const initCanvas = useCallback(() => {
-    const img = imgRef.current, canvas = canvasRef.current;
-    if (!img || !canvas) return;
-    canvas.width = img.naturalWidth;
-    canvas.height = img.naturalHeight;
-    canvas.getContext("2d")?.clearRect(0, 0, canvas.width, canvas.height);
-    setMaskPixels(0);
+  const handleImgLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    initCanvasNow(canvas, e.currentTarget);
   }, []);
 
-  const getCanvasPos = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+  const getCanvasPos = useCallback((e: React.MouseEvent | MouseEvent | TouchEvent) => {
     const canvas = canvasRef.current;
     if (!canvas) return { x: 0, y: 0 };
-    const rect = canvas.getBoundingClientRect();
-    const sx = canvas.width / rect.width, sy = canvas.height / rect.height;
-    if ("touches" in e) return { x: (e.touches[0].clientX - rect.left) * sx, y: (e.touches[0].clientY - rect.top) * sy };
-    return { x: (e.clientX - rect.left) * sx, y: (e.clientY - rect.top) * sy };
+    // Touch events: use clientX/Y relative to bounding rect
+    const te = e as TouchEvent;
+    if (te.touches?.length || te.changedTouches?.length) {
+      const rect = canvas.getBoundingClientRect();
+      const sx = canvas.width / rect.width;
+      const sy = canvas.height / rect.height;
+      const t = te.touches?.[0] || te.changedTouches?.[0];
+      if (!t) return { x: 0, y: 0 };
+      return { x: (t.clientX - rect.left) * sx, y: (t.clientY - rect.top) * sy };
+    }
+    // Mouse events: use native offsetX/offsetY (relative to canvas element)
+    const ne = (e as React.MouseEvent).nativeEvent || (e as MouseEvent);
+    const sx = canvas.width / (canvas.clientWidth || 1);
+    const sy = canvas.height / (canvas.clientHeight || 1);
+    return { x: ne.offsetX * sx, y: ne.offsetY * sy };
   }, []);
 
-  const startDraw = useCallback((e: React.MouseEvent | React.TouchEvent) => { e.preventDefault(); drawingRef.current = true; doDraw(e); }, []);
-  const stopDraw = useCallback(() => { drawingRef.current = false; }, []);
-  const doDraw = useCallback((e: React.MouseEvent | React.TouchEvent) => {
-    if (!drawingRef.current) return; e.preventDefault();
-    const canvas = canvasRef.current; if (!canvas) return;
-    const ctx = canvas.getContext("2d"); if (!ctx) return;
+  const doDraw = useCallback((e: React.MouseEvent | MouseEvent | TouchEvent) => {
+    if (!drawingRef.current) return;
+    e.preventDefault();
+    const ctx = ctxRef.current || canvasRef.current?.getContext("2d", { willReadFrequently: true });
+    if (!ctx) return;
     const pos = getCanvasPos(e);
     ctx.fillStyle = "rgba(255, 255, 0, 0.5)";
-    ctx.lineWidth = brushSize; ctx.lineCap = "round";
-    ctx.beginPath(); ctx.arc(pos.x, pos.y, brushSize / 2, 0, Math.PI * 2); ctx.fill();
+    ctx.lineWidth = brushSize;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, brushSize / 2, 0, Math.PI * 2);
+    ctx.fill();
   }, [brushSize, getCanvasPos]);
 
+  const startDraw = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    drawingRef.current = true;
+    doDraw(e);
+  }, [doDraw]);
+
+  const stopDraw = useCallback(() => { drawingRef.current = false; }, []);
+
+  // Attach native touch listeners with passive:false on the canvas element
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      e.preventDefault();
+      drawingRef.current = true;
+      doDraw(e);
+    };
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+      doDraw(e);
+    };
+    const handleTouchEnd = (e: TouchEvent) => {
+      e.preventDefault();
+      stopDraw();
+      setMaskPixels(countMaskPixels());
+    };
+
+    canvas.addEventListener("touchstart", handleTouchStart, { passive: false });
+    canvas.addEventListener("touchmove", handleTouchMove, { passive: false });
+    canvas.addEventListener("touchend", handleTouchEnd, { passive: false });
+
+    return () => {
+      canvas.removeEventListener("touchstart", handleTouchStart);
+      canvas.removeEventListener("touchmove", handleTouchMove);
+      canvas.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [doDraw, stopDraw, countMaskPixels]);
+
   const clearMask = useCallback(() => {
-    canvasRef.current?.getContext("2d")?.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    const ctx = ctxRef.current || canvasRef.current?.getContext("2d", { willReadFrequently: true });
+    const canvas = canvasRef.current;
+    if (ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
     setMaskPixels(0);
   }, []);
 
@@ -120,7 +227,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
           <Link href={`/${locale}`} className="hover:text-blue-600">{tp.home || "Home"}</Link><span>/</span><span>{t.title || "Watermark Remover"}</span>
           <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
         </div>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">🧹 {t.title || "Watermark Remover"}</h1>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">{t.title || "Watermark Remover"}</h1>
         <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{t.description || "Erase watermarks, logos, and text from images."} <span className="font-semibold text-blue-600">{t.cost || `${getCreditCost(TOOL_ID)} credits`}</span>.</p>
       </div>
 
@@ -131,17 +238,25 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
       <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
         {!tool.preview ? (
           <div onClick={() => tool.fileRef.current?.click()} className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-zinc-300 py-16 dark:border-zinc-700">
-            <svg className="h-12 w-12 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" /></svg>
+            <svg className="h-12 w-12 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
             <p className="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">{tp.uploadPhoto || "Upload an image with watermark"}</p>
             <p className="mt-1 text-xs text-zinc-400">{tp.supportedFormats || "PNG, JPG, WebP — max 10MB"}</p>
-            <input ref={tool.fileRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
+            <input ref={tool.fileRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden"/>
           </div>
         ) : tool.status === "done" && tool.resultUrl ? (
           <div className="space-y-6">
             <div className="grid gap-6 sm:grid-cols-2">
-              <div><p className="mb-2 text-sm font-medium text-zinc-500">{tp.original || "Original"}</p><img src={tool.preview} alt="Original" className="w-full rounded-xl object-contain border" /></div>
-              <div><p className="mb-2 text-sm font-medium text-zinc-500">{tp.result || "Result"}</p><img src={tool.resultUrl} alt="Result" className="w-full rounded-xl object-contain border" /></div>
+              <div><p className="mb-2 text-sm font-medium text-zinc-500">{tp.original || "Original"}</p><img src={tool.preview} alt="Original" className="w-full rounded-xl object-contain border"/></div>
+              <div><p className="mb-2 text-sm font-medium text-zinc-500">{tp.result || "Result"}</p><img src={tool.resultUrl} alt="Result" className="w-full rounded-xl object-contain border"/></div>
             </div>
+            {maskPreviewUrl && (
+              <div>
+                <p className="mb-2 text-sm font-medium text-zinc-500">Mask sent to backend</p>
+                <div className="rounded-xl border bg-zinc-100 dark:bg-zinc-800 p-2">
+                  <img src={maskPreviewUrl} alt="Mask preview" className="max-h-[200px] rounded" />
+                </div>
+              </div>
+            )}
             <div className="flex gap-3">
               <a href={tool.resultUrl} download target="_blank" rel="noopener noreferrer"
                 className="rounded-lg bg-green-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-green-700">{tp.downloadResult || "Download Result"}</a>
@@ -151,9 +266,9 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
           </div>
         ) : tool.status === "uploading" ? (
           <div className="py-16 text-center">
-            <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
+            <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-blue-600 border-t-transparent"/>
             <p className="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">{t.processing || "Removing watermark..."}</p>
-            <p className="mt-1 text-xs text-zinc-400">This takes ~10–30 seconds</p>
+            <p className="mt-1 text-xs text-zinc-400">Inpainting takes ~15–30 seconds</p>
           </div>
         ) : tool.status === "error" ? (
           <div className="py-8 text-center">
@@ -167,7 +282,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
           <>
             {maskPixels === 0 && tool.status === "idle" && (
               <div className="mb-3 rounded-lg bg-blue-50 p-3 text-sm text-blue-700 dark:bg-blue-900/20 dark:text-blue-400">
-                Paint over the watermark for precise removal, or click Remove to let AI auto-detect.
+                Paint over the watermark/logo/text for precise removal, or click Remove and AI will auto-detect and inpaint.
               </div>
             )}
             <div>
@@ -176,9 +291,14 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
                 {maskPixels > 0 && <span className="ml-1 text-green-600">({maskPixels.toLocaleString()} px marked)</span>}
               </p>
               <div className="relative block max-w-full" style={{ lineHeight: 0 }}>
-                <img ref={imgRef} src={tool.preview} alt="Mark watermark" className="max-h-[400px] max-w-full rounded-xl border" onLoad={initCanvas} />
-                <canvas ref={canvasRef} onMouseDown={startDraw} onMouseMove={doDraw} onMouseUp={() => { stopDraw(); setMaskPixels(countMaskPixels()); }} onMouseLeave={() => { stopDraw(); setMaskPixels(countMaskPixels()); }} onTouchStart={startDraw} onTouchMove={doDraw} onTouchEnd={() => { stopDraw(); setMaskPixels(countMaskPixels()); }}
-                  className="absolute inset-0 cursor-crosshair rounded-xl" style={{ touchAction: "none", width: "100%", height: "100%" }} />
+                <img ref={imgRef} src={tool.preview} alt="Mark watermark" className="max-h-[400px] max-w-full rounded-xl border" onLoad={handleImgLoad}/>
+                <canvas ref={canvasRef}
+                  onMouseDown={startDraw}
+                  onMouseMove={doDraw}
+                  onMouseUp={() => { stopDraw(); setMaskPixels(countMaskPixels()); }}
+                  onMouseLeave={() => { stopDraw(); setMaskPixels(countMaskPixels()); }}
+                  className="absolute inset-0 cursor-crosshair rounded-xl"
+                  style={{ touchAction: "none", width: "100%", height: "100%" }}/>
               </div>
             </div>
 
@@ -192,6 +312,16 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
               <button onClick={clearMask}
                 className="rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-600 hover:border-red-300 hover:text-red-600 dark:border-zinc-700 dark:text-zinc-400">
                 {t.clearMarks || "Clear Marks"}
+              </button>
+              <button onClick={async () => {
+                const canvas = canvasRef.current;
+                if (!canvas) return;
+                // Quickly generate mask preview without submitting
+                const dataUrl = canvas.toDataURL("image/png");
+                setMaskPreviewUrl(dataUrl);
+              }}
+                className="rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-600 hover:border-amber-300 hover:text-amber-600 dark:border-zinc-700 dark:text-zinc-400">
+                Preview Mask
               </button>
             </div>
 
@@ -207,9 +337,9 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
         )}
       </div>
 
-      <CreditConfirmDialog isOpen={!!user && tool.showConfirm} creditsNeeded={getCreditCost(TOOL_ID)} currentCredits={user?.credits || 0} toolName={t.title || TOOL_ID} locale={locale} dict={dict} onConfirm={handleProcess} onCancel={() => tool.setShowConfirm(false)} />
+      <CreditConfirmDialog isOpen={!!user && tool.showConfirm} creditsNeeded={getCreditCost(TOOL_ID)} currentCredits={user?.credits || 0} toolName={t.title || TOOL_ID} locale={locale} dict={dict} onConfirm={handleProcess} onCancel={() => tool.setShowConfirm(false)}/>
       <LoginPromptDialog isOpen={showLoginPrompt} locale={locale} dict={dict} />
-      {tool.showToast && <CreditsUsedToast creditsUsed={tool.creditsUsed} remaining={user?.credits ?? 0} onClose={() => tool.setShowToast(false)} dict={dict} />}
+      {tool.showToast && <CreditsUsedToast creditsUsed={tool.creditsUsed} remaining={user?.credits ?? 0} onClose={() => tool.setShowToast(false)} dict={dict}/>}
     </div>
   );
 }
