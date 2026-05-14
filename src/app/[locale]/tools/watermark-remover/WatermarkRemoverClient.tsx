@@ -130,16 +130,21 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   const getCanvasPos = useCallback((e: React.MouseEvent | MouseEvent | TouchEvent) => {
     const canvas = canvasRef.current;
     if (!canvas) return { x: 0, y: 0 };
-    const rect = canvas.getBoundingClientRect();
-    const sx = canvas.width / rect.width;
-    const sy = canvas.height / rect.height;
+    // Touch events: use clientX/Y relative to bounding rect
     const te = e as TouchEvent;
-    if (te.touches?.length)
-      return { x: (te.touches[0].clientX - rect.left) * sx, y: (te.touches[0].clientY - rect.top) * sy };
-    if (te.changedTouches?.length)
-      return { x: (te.changedTouches[0].clientX - rect.left) * sx, y: (te.changedTouches[0].clientY - rect.top) * sy };
-    const me = e as React.MouseEvent;
-    return { x: (me.clientX - rect.left) * sx, y: (me.clientY - rect.top) * sy };
+    if (te.touches?.length || te.changedTouches?.length) {
+      const rect = canvas.getBoundingClientRect();
+      const sx = canvas.width / rect.width;
+      const sy = canvas.height / rect.height;
+      const t = te.touches?.[0] || te.changedTouches?.[0];
+      if (!t) return { x: 0, y: 0 };
+      return { x: (t.clientX - rect.left) * sx, y: (t.clientY - rect.top) * sy };
+    }
+    // Mouse events: use native offsetX/offsetY (relative to canvas element)
+    const ne = (e as React.MouseEvent).nativeEvent || (e as MouseEvent);
+    const sx = canvas.width / (canvas.clientWidth || 1);
+    const sy = canvas.height / (canvas.clientHeight || 1);
+    return { x: ne.offsetX * sx, y: ne.offsetY * sy };
   }, []);
 
   const doDraw = useCallback((e: React.MouseEvent | MouseEvent | TouchEvent) => {
