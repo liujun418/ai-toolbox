@@ -492,10 +492,12 @@
     "characters": "characters",
     "processedAppear": "Processed text will appear here",
     "modes": {
-      "polish": { "label": "Polish", "desc": "Improve grammar and clarity" },
-      "rewrite": { "label": "Rewrite", "desc": "Rephrase with same meaning" },
-      "shorten": { "label": "Shorten", "desc": "Make it more concise" },
-      "expand": { "label": "Expand", "desc": "Add more detail" }
+      "polish": { "label": "Polish", "desc": "Fix grammar & flow", "icon": "✨" },
+      "rewrite": { "label": "Rewrite", "desc": "Fresh words, same meaning", "icon": "🔄" },
+      "shorten": { "label": "Shorten", "desc": "Cut the fluff, keep the point", "icon": "✂️" },
+      "expand": { "label": "Expand", "desc": "Add detail & depth", "icon": "📝" },
+      "academic": { "label": "Academic", "desc": "Formal scholarly style", "icon": "🎓" },
+      "business": { "label": "Business", "desc": "Professional & polished", "icon": "💼" }
     },
     "button": "Process Text (3 credits)",
     "processing": "Processing text...",

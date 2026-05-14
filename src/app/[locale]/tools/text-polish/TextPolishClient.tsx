@@ -11,7 +11,7 @@ import type { Locale } from "@/lib/i18n";
 import { getCreditCost } from "@/lib/creditCosts";
 const TOOL_ID = "text-polish";
 
-const modeIds = ["polish", "rewrite", "shorten", "expand"] as const;
+const modeIds = ["polish", "rewrite", "shorten", "expand", "academic", "business"] as const;
 
 export default function TextPolishClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
   const CREDIT_COST = getCreditCost(TOOL_ID);
@@ -87,11 +87,11 @@ export default function TextPolishClient({ locale = "en" as Locale, dict }: { lo
         {/* Mode Selection */}
         <div className="mb-4">
           <label className="mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300">{tp.mode || "Mode"}</label>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <div className="grid grid-cols-3 gap-2">
             {modeIds.map((id) => (
               <button key={id} onClick={() => setSelectedMode(id)}
                 className={`rounded-lg border p-3 text-center transition-all ${selectedMode === id ? "border-blue-600 bg-blue-50 dark:border-blue-500 dark:bg-blue-900/20" : "border-zinc-200 hover:border-zinc-300 dark:border-zinc-700 dark:hover:border-zinc-600"}`}>
-                <span className="block text-xl">{modes[id]?.icon || (id === "polish" ? "✨" : id === "rewrite" ? "🔄" : id === "shorten" ? "✂️" : "📝")}</span>
+                <span className="block text-xl">{modes[id]?.icon || { polish: "✨", rewrite: "🔄", shorten: "✂️", expand: "📝", academic: "🎓", business: "💼" }[id]}</span>
                 <span className="mt-1 text-xs font-semibold text-zinc-700 dark:text-zinc-300">{modes[id]?.label || id}</span>
                 <span className="mt-0.5 block text-xs text-zinc-400">{modes[id]?.desc || ""}</span>
               </button>

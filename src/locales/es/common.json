@@ -434,10 +434,12 @@
     "characters": "caracteres",
     "processedAppear": "El texto procesado aparecerá aquí",
     "modes": {
-      "polish": { "label": "Pulir", "desc": "Mejorar gramática y claridad" },
-      "rewrite": { "label": "Reescribir", "desc": "Reformular con el mismo significado" },
-      "shorten": { "label": "Acortar", "desc": "Hacerlo más conciso" },
-      "expand": { "label": "Expandir", "desc": "Añadir más detalles" }
+      "polish": { "label": "Pulir", "desc": "Corrige gramática y fluidez", "icon": "✨" },
+      "rewrite": { "label": "Reescribir", "desc": "Palabras frescas, mismo sentido", "icon": "🔄" },
+      "shorten": { "label": "Acortar", "desc": "Quita paja, guarda la idea", "icon": "✂️" },
+      "expand": { "label": "Expandir", "desc": "Añade detalle y profundidad", "icon": "📝" },
+      "academic": { "label": "Académico", "desc": "Estilo formal erudito", "icon": "🎓" },
+      "business": { "label": "Negocios", "desc": "Profesional y pulido", "icon": "💼" }
     },
     "button": "Procesar Texto (3 créditos)",
     "processing": "Procesando texto...",
