@@ -427,13 +427,18 @@
   },
   "pdfToWord": {
     "title": "PDF to Word",
-    "description": "Unlock your PDFs! Turn locked documents into editable Word files in a snap.",
-    "cost1": "1 credit (≤10 pages)",
-    "cost2": "2 credits (>10 pages)",
+    "description": "Unlock your PDFs! Text or scanned — convert any PDF into a squeaky-clean editable Word doc.",
+    "cost1": "1-3 credits (text PDF)",
+    "cost2": "3-7 credits (scanned)",
+    "scannedBadge": "+OCR for scanned PDFs",
     "button": "Convert to Word",
     "processing": "Converting PDF...",
+    "processingOcr": "Scanning & recognizing text (OCR + AI restructuring)...",
     "pageCount": "Pages",
-    "download": "Download Word File"
+    "download": "Download Word File",
+    "downloadText": "Your Word document is ready for download.",
+    "done": "Conversion Complete!",
+    "tryAnother": "Convert Another File"
   },
   "imageUpscaler": {
     "title": "Image Upscaler",

@@ -369,13 +369,18 @@
   },
   "pdfToWord": {
     "title": "PDF a Word",
-    "description": "¡Desbloquea tus PDFs! Convierte documentos cerrados en Word editable en un instante.",
-    "cost1": "1 crédito (≤10 páginas)",
-    "cost2": "2 créditos (>10 páginas)",
+    "description": "¡Desbloquea tus PDFs! Convierte cualquier PDF — con texto o escaneado — en un Word editable impecable.",
+    "cost1": "1-3 créditos (PDF de texto)",
+    "cost2": "3-7 créditos (escaneado)",
+    "scannedBadge": "+OCR para PDFs escaneados",
     "button": "Convertir a Word",
     "processing": "Convirtiendo PDF...",
+    "processingOcr": "Escaneando y reconociendo texto (OCR + reestructuración IA)...",
     "pageCount": "Páginas",
-    "download": "Descargar Archivo Word"
+    "download": "Descargar Archivo Word",
+    "downloadText": "Tu documento Word está listo para descargar.",
+    "done": "¡Conversión Completa!",
+    "tryAnother": "Convertir Otro Archivo"
   },
   "imageUpscaler": {
     "title": "Mejorador de Imágenes",
