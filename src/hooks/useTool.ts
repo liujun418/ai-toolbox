@@ -162,7 +162,7 @@ export function useTool(options: UseToolOptions): UseToolReturn {
       if (msg.includes("Not enough credits")) {
         setErrorMsg("Not enough credits. Please purchase more to continue.");
       } else if (msg.includes("File too large")) {
-        setErrorMsg("This file is too large. Maximum size is 10MB. Try a smaller image.");
+        setErrorMsg("This file is too large. Maximum size is 3MB. Try a smaller image.");
       } else if (msg.includes("Empty file")) {
         setErrorMsg("The uploaded file appears to be empty. Please select a valid image.");
       } else if (msg.includes("Unsupported") || msg.includes("format")) {

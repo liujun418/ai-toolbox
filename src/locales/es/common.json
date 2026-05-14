@@ -287,7 +287,7 @@
     "uploadPhoto": "Subir una foto",
     "uploadImage": "Subir una imagen para mejorar",
     "uploadPdf": "Subir un documento PDF",
-    "supportedFormats": "PNG, JPG, WebP — máx. 10MB",
+    "supportedFormats": "PNG, JPG, WebP — máx. 3MB",
     "supportedFormatsPdf": "PDF — máx. 20MB",
     "original": "Original",
     "result": "Resultado",

@@ -345,7 +345,7 @@
     "uploadPhoto": "Upload a photo",
     "uploadImage": "Upload an image to upscale",
     "uploadPdf": "Upload a PDF document",
-    "supportedFormats": "PNG, JPG, WebP — max 10MB",
+    "supportedFormats": "PNG, JPG, WebP — max 3MB",
     "supportedFormatsPdf": "PDF — max 20MB",
     "original": "Original",
     "result": "Result",

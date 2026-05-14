@@ -287,7 +287,7 @@
     "uploadPhoto": "رفع صورة",
     "uploadImage": "رفع صورة لتكبيرها",
     "uploadPdf": "رفع مستند PDF",
-    "supportedFormats": "PNG, JPG, WebP — الحد الأقصى 10 ميجابايت",
+    "supportedFormats": "PNG, JPG, WebP — الحد الأقصى 3 ميجابايت",
     "supportedFormatsPdf": "PDF — الحد الأقصى 20 ميجابايت",
     "original": "الأصلي",
     "result": "النتيجة",
