@@ -393,8 +393,8 @@
     "tryAnother": "Probar Otra Imagen",
     "tipsTitle": "Consejos para mejores resultados",
     "tips": [
-      "Ideal para imágenes de baja resolución o pequeñas — las fotos ya en alta resolución no mejorarán.",
-      "Tamaño máximo: 10MB. Resolución recomendada: menos de 3000px en el lado más largo.",
+      "Ideal para imágenes de baja resolución (menos de 2000px) — las fotos grandes no mejorarán.",
+      "Para un procesamiento fiable, mantén las imágenes por debajo de 1MB / 2000px. Archivos más grandes suelen fallar por límites de memoria.",
       "Modo Foto para retratos (mejora facial automática). Modo Anime para ilustraciones y dibujos.",
       "2× es seguro para la mayoría. 4× funciona mejor en imágenes de menos de 1000px."
     ]
