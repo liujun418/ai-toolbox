@@ -16,6 +16,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   const { user, loading } = useAuth();
   const [brushSize, setBrushSize] = useState(40);
   const [maskPixels, setMaskPixels] = useState(0);
+  const [maskPreviewUrl, setMaskPreviewUrl] = useState<string | null>(null);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -70,6 +71,12 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
       }
       mCtx.putImageData(maskData, 0, 0);
       console.log("[WM] getMask: " + w + "x" + h + ", white=" + whiteCount);
+
+      // Generate preview URL for diagnostics
+      const previewUrl = maskCanvas.toDataURL("image/png");
+      setMaskPreviewUrl(previewUrl);
+      console.log("[WM] getMask: preview dataURL len=" + previewUrl.length);
+
       return new Promise<Blob | null>((resolve) => maskCanvas.toBlob((blob) => {
         console.log("[WM] getMask: blob=" + (blob?.size || 0));
         resolve(blob);
@@ -216,6 +223,14 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
               <div><p className="mb-2 text-sm font-medium text-zinc-500">{tp.original || "Original"}</p><img src={tool.preview} alt="Original" className="w-full rounded-xl object-contain border"/></div>
               <div><p className="mb-2 text-sm font-medium text-zinc-500">{tp.result || "Result"}</p><img src={tool.resultUrl} alt="Result" className="w-full rounded-xl object-contain border"/></div>
             </div>
+            {maskPreviewUrl && (
+              <div>
+                <p className="mb-2 text-sm font-medium text-zinc-500">Mask sent to backend</p>
+                <div className="rounded-xl border bg-zinc-100 dark:bg-zinc-800 p-2">
+                  <img src={maskPreviewUrl} alt="Mask preview" className="max-h-[200px] rounded" />
+                </div>
+              </div>
+            )}
             <div className="flex gap-3">
               <a href={tool.resultUrl} download target="_blank" rel="noopener noreferrer"
                 className="rounded-lg bg-green-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-green-700">{tp.downloadResult || "Download Result"}</a>
@@ -271,6 +286,16 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
               <button onClick={clearMask}
                 className="rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-600 hover:border-red-300 hover:text-red-600 dark:border-zinc-700 dark:text-zinc-400">
                 {t.clearMarks || "Clear Marks"}
+              </button>
+              <button onClick={async () => {
+                const canvas = canvasRef.current;
+                if (!canvas) return;
+                // Quickly generate mask preview without submitting
+                const dataUrl = canvas.toDataURL("image/png");
+                setMaskPreviewUrl(dataUrl);
+              }}
+                className="rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-600 hover:border-amber-300 hover:text-amber-600 dark:border-zinc-700 dark:text-zinc-400">
+                Preview Mask
               </button>
             </div>
 
