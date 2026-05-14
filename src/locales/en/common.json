@@ -412,14 +412,19 @@
   },
   "photoRestorer": {
     "title": "Photo Restorer",
-    "description": "Restore and colorize old, blurry, or damaged photos.",
+    "description": "Restore old, blurry, or damaged photos with AI face enhancement.",
     "cost": "5 credits",
-    "colorize": "Colorize photo",
     "button": "Restore Photo (5 credits)",
     "processing": "Restoring photo...",
-    "uploadToSee": "Upload to see result",
+    "uploadToSee": "Select strength and restore to see result",
     "download": "Download Restored Photo",
-    "tryAnother": "Try Another Photo"
+    "tryAnother": "Try Another Photo",
+    "strength": "Restoration Strength",
+    "strengths": {
+      "light": { "label": "Light", "desc": "Subtle cleanup, preserves original feel" },
+      "medium": { "label": "Medium", "desc": "Balanced restoration with face enhancement" },
+      "heavy": { "label": "Heavy", "desc": "Deep restoration for severely damaged photos" }
+    }
   },
   "pdfToWord": {
     "title": "PDF to Word",

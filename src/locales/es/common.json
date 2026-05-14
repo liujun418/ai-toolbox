@@ -354,14 +354,19 @@
   },
   "photoRestorer": {
     "title": "Restaurador de Fotos",
-    "description": "Restaura y colorea fotos antiguas, borrosas o dañadas.",
+    "description": "Restaura fotos antiguas, borrosas o dañadas con mejora facial IA.",
     "cost": "5 créditos",
-    "colorize": "Colorear foto",
     "button": "Restaurar Foto (5 créditos)",
     "processing": "Restaurando foto...",
-    "uploadToSee": "Sube para ver el resultado",
+    "uploadToSee": "Selecciona intensidad para restaurar",
     "download": "Descargar Foto Restaurada",
-    "tryAnother": "Probar Otra Foto"
+    "tryAnother": "Probar Otra Foto",
+    "strength": "Intensidad de Restauración",
+    "strengths": {
+      "light": { "label": "Suave", "desc": "Limpieza sutil, conserva el aspecto original" },
+      "medium": { "label": "Media", "desc": "Restauración equilibrada con mejora facial" },
+      "heavy": { "label": "Fuerte", "desc": "Restauración profunda para fotos muy dañadas" }
+    }
   },
   "pdfToWord": {
     "title": "PDF a Word",
