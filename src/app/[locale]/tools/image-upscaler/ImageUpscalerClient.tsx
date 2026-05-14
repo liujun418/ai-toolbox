@@ -72,7 +72,7 @@ export default function ImageUpscalerClient({ locale = "en" as Locale, dict }: {
           <div onClick={() => tool.fileRef.current?.click()} className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-zinc-300 py-16 dark:border-zinc-700">
             <svg className="h-12 w-12 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" /></svg>
             <p className="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">{tp.uploadImage || "Upload an image"}</p>
-            <p className="mt-1 text-xs text-zinc-400">{tp.supportedFormats || "PNG, JPG, WebP — max 10MB"}</p>
+            <p className="mt-1 text-xs text-zinc-400">{t.supportedFormats || tp.supportedFormats || "PNG, JPG, WebP — max 1MB"}</p>
             <input ref={tool.fileRef} type="file" accept="image/*" onChange={tool.handleFileChange} className="hidden" />
           </div>
         ) : (

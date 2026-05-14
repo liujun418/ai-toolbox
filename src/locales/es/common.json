@@ -381,6 +381,7 @@
     "title": "Mejorador de Imágenes",
     "description": "Mejora la resolución de imágenes con super-resolución IA.",
     "cost": "2 créditos",
+    "supportedFormats": "PNG, JPG, WebP — máx. 1MB",
     "button": "Mejorar Imagen (2 créditos)",
     "processing": "Mejorando imagen...",
     "uploadToSee": "Selecciona opciones para mejorar",

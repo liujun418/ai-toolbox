@@ -439,6 +439,7 @@
     "title": "Image Upscaler",
     "description": "Enhance image resolution with AI super-resolution.",
     "cost": "2 credits",
+    "supportedFormats": "PNG, JPG, WebP — max 1MB",
     "button": "Upscale Image (2 credits)",
     "processing": "Upscaling image...",
     "uploadToSee": "Select options and upscale to see result",
