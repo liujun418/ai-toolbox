@@ -176,6 +176,7 @@ interface UploadResult {
   task_id: string;
   output_file_url: string;
   result_content?: string | null;
+  error_message?: string | null;
   credits_used: number;
 }
 

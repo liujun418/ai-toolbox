@@ -131,7 +131,12 @@ export function useTool(options: UseToolOptions): UseToolReturn {
 
       if (!data.output_file_url) {
         setStatus("error");
-        setErrorMsg("Processing failed. Please try again with a different image.");
+        // Use backend error message if available, otherwise give a helpful default
+        if (data.error_message) {
+          setErrorMsg(data.error_message);
+        } else {
+          setErrorMsg("The AI couldn't process this image. The file may be corrupted, too small, or in an unsupported format. Try a different image — PNG or JPG works best.");
+        }
         return;
       }
 
@@ -152,14 +157,16 @@ export function useTool(options: UseToolOptions): UseToolReturn {
       onSuccess?.(data.output_file_url);
     } catch (err) {
       setStatus("error");
-      const msg = err instanceof Error ? err.message : "Unknown error occurred";
+      const msg = err instanceof Error ? err.message : "Something went wrong. Please try again.";
       // Map common API errors to friendly messages
       if (msg.includes("Not enough credits")) {
-        setErrorMsg("Insufficient credits. Please purchase more credits.");
+        setErrorMsg("Not enough credits. Please purchase more to continue.");
       } else if (msg.includes("File too large")) {
-        setErrorMsg("File is too large. Please try a smaller image.");
+        setErrorMsg("This file is too large. Maximum size is 10MB. Try a smaller image.");
+      } else if (msg.includes("Empty file")) {
+        setErrorMsg("The uploaded file appears to be empty. Please select a valid image.");
       } else if (msg.includes("Unsupported") || msg.includes("format")) {
-        setErrorMsg("Unsupported file format. Please use PNG, JPG, or WebP.");
+        setErrorMsg("This file format isn't supported. Please use PNG, JPG, or WebP.");
       } else {
         setErrorMsg(msg);
       }
