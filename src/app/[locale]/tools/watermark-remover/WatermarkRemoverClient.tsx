@@ -9,12 +9,14 @@ import { CreditConfirmDialog, CreditsUsedToast, LoginPromptDialog } from "@/comp
 import type { Locale } from "@/lib/i18n";
 
 import { getCreditCost } from "@/lib/creditCosts";
-const BRUSH_SIZES = [20, 40, 70];
+// Brush sizes in canvas pixels — scaled ~3x larger to ensure sufficient mask coverage
+// regardless of viewport width (narrow iPhone vs wide Desktop/Surface)
+const BRUSH_SIZES = [60, 120, 200];
 const TOOL_ID = "watermark-remover";
 
 export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
   const { user, loading } = useAuth();
-  const [brushSize, setBrushSize] = useState(40);
+  const [brushSize, setBrushSize] = useState(120);
   const [maskPixels, setMaskPixels] = useState(0);
   const [maskPreviewUrl, setMaskPreviewUrl] = useState<string | null>(null);
 
@@ -70,7 +72,26 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
         }
       }
       mCtx.putImageData(maskData, 0, 0);
-      console.log("[WM] getMask: " + w + "x" + h + ", white=" + whiteCount);
+
+      // Dilate mask: blur then threshold to expand white areas by ~8px
+      // This ensures mask coverage is sufficient regardless of brush size
+      mCtx.save();
+      mCtx.filter = "blur(8px)";
+      mCtx.globalCompositeOperation = "source-over";
+      mCtx.drawImage(maskCanvas, 0, 0);
+      mCtx.filter = "none";
+      mCtx.restore();
+      // Threshold back to binary (any non-zero pixel → white)
+      const dilated = mCtx.getImageData(0, 0, w, h);
+      let dilatedWhite = 0;
+      for (let i = 0; i < dilated.data.length; i += 4) {
+        if (dilated.data[i] > 10) { // >10 to filter noise
+          dilated.data[i] = dilated.data[i + 1] = dilated.data[i + 2] = dilated.data[i + 3] = 255;
+          dilatedWhite++;
+        }
+      }
+      mCtx.putImageData(dilated, 0, 0);
+      console.log("[WM] getMask: " + w + "x" + h + ", white=" + whiteCount + " → dilated=" + dilatedWhite);
 
       // Generate preview URL for diagnostics
       const previewUrl = maskCanvas.toDataURL("image/png");
