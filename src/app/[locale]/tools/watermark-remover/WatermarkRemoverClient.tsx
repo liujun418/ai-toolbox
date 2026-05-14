@@ -206,7 +206,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
                 Paint over the watermark (optional) — brush: {brushSize}px
                 {maskPixels > 0 && <span className="ml-1 text-green-600">({maskPixels.toLocaleString()} px marked)</span>}
               </p>
-              <div className="relative block max-w-full" style={{ lineHeight: 0 }}>
+              <div className="relative inline-block max-w-full" style={{ lineHeight: 0 }}>
                 <img ref={imgRef} src={tool.preview} alt="Mark watermark" className="max-h-[400px] max-w-full rounded-xl border" onLoad={initCanvas} />
                 <canvas ref={canvasRef} onMouseDown={startDraw} onMouseMove={doDraw} onMouseUp={() => { stopDraw(); setMaskPixels(countMaskPixels()); }} onMouseLeave={() => { stopDraw(); setMaskPixels(countMaskPixels()); }}
                   className="absolute inset-0 cursor-crosshair rounded-xl" style={{ touchAction: "none", width: "100%", height: "100%" }} />
