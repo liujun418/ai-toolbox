@@ -19,96 +19,43 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   const [maskPixels, setMaskPixels] = useState(0);
   const [maskPreviewUrl, setMaskPreviewUrl] = useState<string | null>(null);
   const [canvasReady, setCanvasReady] = useState(false);
-  const [canvasLoading, setCanvasLoading] = useState(false);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const bgCanvasRef = useRef<HTMLCanvasElement | null>(null); // hidden canvas holding the clean image
+  const imgDisplayRef = useRef<HTMLImageElement>(null);
   const drawingRef = useRef(false);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
-  const imageDataRef = useRef<ImageData | null>(null); // clean background for redraw
-
-  // Load image into canvas
-  const loadImage = useCallback((file: File) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const img = new Image();
-    img.onload = () => {
-      // Cap resolution
-      let w = img.naturalWidth, h = img.naturalHeight;
-      if (Math.max(w, h) > MAX_RES) {
-        const r = MAX_RES / Math.max(w, h);
-        w = Math.round(w * r);
-        h = Math.round(h * r);
-      }
-      canvas.width = w;
-      canvas.height = h;
-
-      // Draw image onto canvas
-      const ctx = canvas.getContext("2d", { willReadFrequently: true });
-      if (!ctx) { setCanvasLoading(false); return; }
-      ctx.drawImage(img, 0, 0, w, h);
-      ctxRef.current = ctx;
-
-      // Store clean background
-      imageDataRef.current = ctx.getImageData(0, 0, w, h);
-
-      // Hidden copy for mask generation
-      const bg = document.createElement("canvas");
-      bg.width = w; bg.height = h;
-      const bgCtx = bg.getContext("2d");
-      if (bgCtx) bgCtx.drawImage(img, 0, 0, w, h);
-      bgCanvasRef.current = bg;
-
-      setMaskPixels(0);
-      setCanvasReady(true);
-      setCanvasLoading(false);
-    };
-    img.onerror = () => { setCanvasLoading(false); };
-    img.src = URL.createObjectURL(file);
-  }, []);
 
   const tool = useTool({
     toolId: TOOL_ID,
     creditCost: getCreditCost(TOOL_ID),
     getMask: async () => {
-      const main = canvasRef.current;
-      const bg = bgCanvasRef.current;
-      if (!main || !bg) { console.log("[WM] getMask: no canvas"); return null; }
-      const w = main.width, h = main.height;
+      const canvas = canvasRef.current;
+      if (!canvas) { console.log("[WM] getMask: no canvas"); return null; }
+      const w = canvas.width, h = canvas.height;
       if (w === 0 || h === 0) { console.log("[WM] getMask: zero size"); return null; }
-
-      // Get current painted state
-      const ctx = main.getContext("2d", { willReadFrequently: true });
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });
       if (!ctx) return null;
-      const currentData = ctx.getImageData(0, 0, w, h);
-
-      // Get clean background
-      const bgCtx = bg.getContext("2d", { willReadFrequently: true });
-      if (!bgCtx) return null;
-      const bgData = bgCtx.getImageData(0, 0, w, h);
-
-      // Compare: any pixel that differs from background = paint
-      let whiteCount = 0;
-      const maskData = new ImageData(w, h);
-      for (let i = 0; i < currentData.data.length; i += 4) {
-        const cr = currentData.data[i], cg = currentData.data[i + 1], cb = currentData.data[i + 2];
-        const br = bgData.data[i], bg_g = bgData.data[i + 1], bb = bgData.data[i + 2];
-        // If pixel differs from clean background → user painted here
-        if (Math.abs(cr - br) > 20 || Math.abs(cg - bg_g) > 20 || Math.abs(cb - bb) > 20) {
-          maskData.data[i] = maskData.data[i + 1] = maskData.data[i + 2] = maskData.data[i + 3] = 255;
-          whiteCount++;
-        }
+      const imageData = ctx.getImageData(0, 0, w, h);
+      let hasPaint = false;
+      for (let i = 3; i < imageData.data.length; i += 4) {
+        if (imageData.data[i] > 0) { hasPaint = true; break; }
       }
-      if (whiteCount === 0) { console.log("[WM] getMask: no paint diff"); return null; }
-
-      // Create mask canvas and dilate
+      if (!hasPaint) { console.log("[WM] getMask: no paint, canvas=" + w + "x" + h); return null; }
       const maskCanvas = document.createElement("canvas");
       maskCanvas.width = w; maskCanvas.height = h;
       const mCtx = maskCanvas.getContext("2d", { willReadFrequently: true });
       if (!mCtx) return null;
+      const maskData = mCtx.createImageData(w, h);
+      let whiteCount = 0;
+      for (let i = 0; i < imageData.data.length; i += 4) {
+        if (imageData.data[i + 3] > 0) {
+          maskData.data[i] = maskData.data[i + 1] = maskData.data[i + 2] = maskData.data[i + 3] = 255;
+          whiteCount++;
+        }
+      }
       mCtx.putImageData(maskData, 0, 0);
 
-      // Dilate
+      // Dilate mask
       mCtx.filter = "blur(8px)";
       mCtx.drawImage(maskCanvas, 0, 0);
       mCtx.filter = "none";
@@ -138,6 +85,35 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   const t = (dict as any)?.watermarkRemover || {};
   const tp = (dict as any)?.toolPage || {};
 
+  const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setCanvasReady(false);
+    setMaskPreviewUrl(null);
+    tool.handleFileChange(e);
+  }, [tool.handleFileChange]);
+
+  // Init canvas when preview image loads
+  const initCanvas = useCallback(() => {
+    const img = imgDisplayRef.current;
+    const canvas = canvasRef.current;
+    if (!img || !canvas) return;
+    // Cap resolution for mask consistency
+    let w = img.naturalWidth, h = img.naturalHeight;
+    if (Math.max(w, h) > MAX_RES) {
+      const r = MAX_RES / Math.max(w, h);
+      w = Math.round(w * r);
+      h = Math.round(h * r);
+    }
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (!ctx) return;
+    // Draw the image onto canvas at capped resolution
+    ctx.drawImage(img, 0, 0, w, h);
+    ctxRef.current = ctx;
+    setMaskPixels(0);
+    setCanvasReady(true);
+  }, []);
+
   const getCanvasPos = useCallback((e: MouseEvent | TouchEvent | React.MouseEvent) => {
     const canvas = canvasRef.current;
     if (!canvas) return { x: 0, y: 0 };
@@ -151,7 +127,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
         y: (t.clientY - rect.top) * (canvas.height / rect.height),
       };
     }
-    // Mouse: use offset from canvas element scaled to natural size
+    // Mouse: offsetX/offsetY relative to canvas element content
     const ne = (e as React.MouseEvent).nativeEvent || (e as MouseEvent);
     return {
       x: ne.offsetX * (canvas.width / rect.width),
@@ -162,7 +138,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
   const doDraw = useCallback((e: MouseEvent | TouchEvent | React.MouseEvent) => {
     if (!drawingRef.current) return;
     e.preventDefault?.();
-    const ctx = ctxRef.current;
+    const ctx = ctxRef.current || canvasRef.current?.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
     const pos = getCanvasPos(e);
     ctx.fillStyle = "rgba(255, 255, 0, 0.5)";
@@ -181,23 +157,17 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
 
   const stopDraw = useCallback(() => {
     drawingRef.current = false;
+  }, []);
+
+  const countMaskPixels = useCallback(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) return 0;
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
-    if (!ctx) return;
-    // Count painted pixels by comparing with clean background
-    const currentData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const bgData = imageDataRef.current;
-    if (!bgData) return;
+    if (!ctx) return 0;
+    const data = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let n = 0;
-    for (let i = 0; i < currentData.data.length; i += 4) {
-      if (Math.abs(currentData.data[i] - bgData.data[i]) > 20 ||
-          Math.abs(currentData.data[i + 1] - bgData.data[i + 1]) > 20 ||
-          Math.abs(currentData.data[i + 2] - bgData.data[i + 2]) > 20) {
-        n++;
-      }
-    }
-    setMaskPixels(n);
+    for (let i = 3; i < data.data.length; i += 4) if (data.data[i] > 0) n++;
+    return n;
   }, []);
 
   // Native touch listeners
@@ -206,7 +176,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
     if (!canvas) return;
     const ts = (e: TouchEvent) => { e.preventDefault(); drawingRef.current = true; doDraw(e); };
     const tm = (e: TouchEvent) => { e.preventDefault(); doDraw(e); };
-    const te = (e: TouchEvent) => { e.preventDefault(); stopDraw(); };
+    const te = (e: TouchEvent) => { e.preventDefault(); stopDraw(); setMaskPixels(countMaskPixels()); };
     canvas.addEventListener("touchstart", ts, { passive: false });
     canvas.addEventListener("touchmove", tm, { passive: false });
     canvas.addEventListener("touchend", te, { passive: false });
@@ -215,29 +185,26 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
       canvas.removeEventListener("touchmove", tm);
       canvas.removeEventListener("touchend", te);
     };
-  }, [doDraw, stopDraw]);
+  }, [doDraw, stopDraw, countMaskPixels]);
 
   const clearMask = useCallback(() => {
     const canvas = canvasRef.current;
-    const bg = imageDataRef.current;
-    if (!canvas || !bg) return;
+    const img = imgDisplayRef.current;
+    if (!canvas || !img) return;
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
-    ctx.putImageData(bg, 0, 0);
+    // Re-draw clean image onto canvas
+    let w = img.naturalWidth, h = img.naturalHeight;
+    if (Math.max(w, h) > MAX_RES) {
+      const r = MAX_RES / Math.max(w, h);
+      w = Math.round(w * r);
+      h = Math.round(h * r);
+    }
+    ctx.drawImage(img, 0, 0, w, h);
     ctxRef.current = ctx;
     setMaskPixels(0);
     setMaskPreviewUrl(null);
   }, []);
-
-  const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const f = e.target.files?.[0];
-    if (!f) return;
-    setCanvasReady(false);
-    setCanvasLoading(true);
-    setMaskPreviewUrl(null);
-    loadImage(f);
-    tool.handleFileChange(e);
-  }, [loadImage, tool.handleFileChange]);
 
   const handleProcess = useCallback(() => {
     tool.handleUpload({});
@@ -263,12 +230,7 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
       )}
 
       <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-        {canvasLoading ? (
-          <div className="flex flex-col items-center justify-center py-16">
-            <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-blue-600 border-t-transparent"/>
-            <p className="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">Loading image...</p>
-          </div>
-        ) : !canvasReady ? (
+        {!tool.preview ? (
           <div onClick={() => tool.fileRef.current?.click()} className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-zinc-300 py-16 dark:border-zinc-700">
             <svg className="h-12 w-12 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
             <p className="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">{tp.uploadPhoto || "Upload an image with watermark"}</p>
@@ -321,14 +283,19 @@ export default function WatermarkRemoverClient({ locale = "en" as Locale, dict }
                 Paint over the watermark — brush: {brushSize}px
                 {maskPixels > 0 && <span className="ml-1 text-green-600">({maskPixels.toLocaleString()} px marked)</span>}
               </p>
-              <div className="max-w-full">
+              <div className="relative block max-w-full" style={{ lineHeight: 0 }}>
+                {/* Display image (hidden, just for sizing the container) */}
+                <img ref={imgDisplayRef} src={tool.preview ?? undefined} alt="Mark watermark"
+                  className="invisible max-h-[400px] max-w-full rounded-xl border"
+                  onLoad={initCanvas} />
+                {/* Canvas for painting — same size as the image display */}
                 <canvas ref={canvasRef}
                   onMouseDown={startDraw}
                   onMouseMove={doDraw}
-                  onMouseUp={stopDraw}
-                  onMouseLeave={stopDraw}
-                  className="max-h-[400px] max-w-full cursor-crosshair rounded-xl border"
-                  style={{ touchAction: "none", display: "block" }}/>
+                  onMouseUp={() => { stopDraw(); setMaskPixels(countMaskPixels()); }}
+                  onMouseLeave={() => { stopDraw(); setMaskPixels(countMaskPixels()); }}
+                  className="absolute inset-0 cursor-crosshair rounded-xl border"
+                  style={{ touchAction: "none", width: "100%", height: "100%" }}/>
               </div>
             </div>
 
