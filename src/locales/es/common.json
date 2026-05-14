@@ -363,9 +363,7 @@
     "tryAnother": "Probar Otra Foto",
     "strength": "Intensidad de Restauración",
     "strengths": {
-      "light": { "label": "Suave", "desc": "Limpieza sutil, conserva el aspecto original" },
-      "medium": { "label": "Media", "desc": "Restauración equilibrada con mejora facial" },
-      "heavy": { "label": "Fuerte", "desc": "Restauración profunda para fotos muy dañadas" },
+      "auto": { "label": "Auto Restaurar", "desc": "IA elimina rayones, polvo e imperfecciones automáticamente" },
       "face": { "label": "Rostro Pro", "desc": "Mejora facial dedicada con GFPGAN" }
     }
   },

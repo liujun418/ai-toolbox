@@ -421,9 +421,7 @@
     "tryAnother": "Try Another Photo",
     "strength": "Restoration Strength",
     "strengths": {
-      "light": { "label": "Light", "desc": "Subtle cleanup, preserves original feel" },
-      "medium": { "label": "Medium", "desc": "Balanced restoration with face enhancement" },
-      "heavy": { "label": "Heavy", "desc": "Deep restoration for severely damaged photos" },
+      "auto": { "label": "Auto Restore", "desc": "AI removes scratches, dust, and blemishes automatically" },
       "face": { "label": "Face Pro", "desc": "Dedicated face enhancement with GFPGAN" }
     }
   },
