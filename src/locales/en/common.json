@@ -464,14 +464,22 @@
     "cost": "4 credits",
     "button": "Transform (4 credits)",
     "processing": "Transferring style...",
-    "uploadToSee": "Select style and transform to see result",
+    "uploadToSee": "Select a style and transform to see result",
     "styles": {
-      "oil-painting": "Oil Painting",
-      "watercolor": "Watercolor",
-      "anime": "Anime",
-      "sketch": "Sketch"
+      "oil-painting": { "label": "Oil Painting", "desc": "Thick brush strokes, rich warm palette" },
+      "watercolor": { "label": "Watercolor", "desc": "Soft translucent washes, delicate edges" },
+      "anime": { "label": "Anime", "desc": "Cel shading, clean lines, vibrant colors" },
+      "sketch": { "label": "Sketch", "desc": "Pencil graphite, fine cross-hatching" },
+      "chinese-painting": { "label": "Chinese Painting", "desc": "Ink wash, guochao illustration style" },
+      "cartoon": { "label": "3D Cartoon", "desc": "Pixar-style, polished 3D render" }
     },
-    "promptPlaceholder": "e.g., Make it look like a sunset painting with bold colors",
+    "tipsTitle": "Tips for best results",
+    "tips": [
+      "Portrait or single-subject photos work best — complex scenes may lose detail during style transfer.",
+      "Photos will be automatically center-cropped to a square format for optimal AI processing.",
+      "Each style uses fixed parameters to ensure consistency — no need to adjust settings manually.",
+      "For best results, use well-lit, clear photos with the subject centered in the frame."
+    ],
     "tryAnother": "Try Another Photo"
   },
   "textPolish": {

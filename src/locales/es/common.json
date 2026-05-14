@@ -406,14 +406,22 @@
     "cost": "4 créditos",
     "button": "Transformar (4 créditos)",
     "processing": "Transfiriendo estilo...",
-    "uploadToSee": "Selecciona el estilo y transforma para ver el resultado",
+    "uploadToSee": "Selecciona un estilo y transforma para ver el resultado",
     "styles": {
-      "oil-painting": "Pintura al Óleo",
-      "watercolor": "Acuarela",
-      "anime": "Anime",
-      "sketch": "Boceto"
+      "oil-painting": { "label": "Pintura al Óleo", "desc": "Pinceladas gruesas, paleta cálida" },
+      "watercolor": { "label": "Acuarela", "desc": "Lavados translúcidos, bordes suaves" },
+      "anime": { "label": "Anime", "desc": "Sombreado cel, líneas limpias, colores vivos" },
+      "sketch": { "label": "Boceto", "desc": "Grafito a lápiz, fino sombreado cruzado" },
+      "chinese-painting": { "label": "Pintura China", "desc": "Tinta y aguada, estilo guochao" },
+      "cartoon": { "label": "Caricatura 3D", "desc": "Estilo Pixar, render 3D pulido" }
     },
-    "promptPlaceholder": "ej., Haz que parezca una pintura de atardecer con colores intensos",
+    "tipsTitle": "Consejos para mejores resultados",
+    "tips": [
+      "Los retratos o fotos de un solo sujeto funcionan mejor — escenas complejas pueden perder detalle.",
+      "Las fotos se recortarán automáticamente en formato cuadrado para un procesamiento óptimo.",
+      "Cada estilo usa parámetros fijos para garantizar consistencia — no necesitas ajustar nada.",
+      "Para mejores resultados, usa fotos bien iluminadas con el sujeto centrado en el encuadre."
+    ],
     "tryAnother": "Probar Otra Foto"
   },
   "textPolish": {
