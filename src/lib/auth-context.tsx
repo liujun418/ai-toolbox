@@ -18,7 +18,7 @@ interface AuthContextType {
   loading: boolean;
   logout: () => void;
   refresh: () => Promise<void>;
-  updateUser: (updates: Partial<User>) => void;
+  updateUser: (updates: Partial<User> | ((prev: User) => Partial<User>)) => void;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -54,8 +54,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const updateUser = (updates: Partial<User>) => {
-    setUser((prev) => (prev ? { ...prev, ...updates } : null));
+  const updateUser = (updates: Partial<User> | ((prev: User) => Partial<User>)) => {
+    setUser((prev) => {
+      if (!prev) return null;
+      const patch = typeof updates === "function" ? updates(prev) : updates;
+      return { ...prev, ...patch };
+    });
   };
 
   return (

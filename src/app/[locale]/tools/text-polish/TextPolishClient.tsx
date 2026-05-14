@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
-import { toolsApi } from "@/lib/api";
+import { toolsApi, authApi } from "@/lib/api";
 import { useUsageTracker } from "@/hooks/useUsageTracker";
 import { CreditConfirmDialog, CreditsUsedToast, LoginPromptDialog } from "@/components/CreditGuard";
 import type { Locale } from "@/lib/i18n";
@@ -15,7 +15,7 @@ const modeIds = ["polish", "rewrite", "shorten", "expand", "academic", "business
 
 export default function TextPolishClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
   const CREDIT_COST = getCreditCost(TOOL_ID);
-  const { user, loading } = useAuth();
+  const { user, loading, updateUser } = useAuth();
   const [text, setText] = useState("");
   const [selectedMode, setSelectedMode] = useState("polish");
   const [status, setStatus] = useState<"idle" | "processing" | "done" | "error">("idle");
@@ -60,7 +60,10 @@ export default function TextPolishClient({ locale = "en" as Locale, dict }: { lo
       setStatus("done");
       setResultContent(data.result_content || "");
       setResult(data.output_file_url);
-      setCreditsUsed(data.credits_used || CREDIT_COST);
+      const cost = data.credits_used || CREDIT_COST;
+      setCreditsUsed(cost);
+      updateUser((prev) => ({ credits: prev.credits - cost }));
+      authApi.me().then((u) => updateUser(u)).catch(() => {});
       setShowToast(true);
     } catch (err) {
       setStatus("error");

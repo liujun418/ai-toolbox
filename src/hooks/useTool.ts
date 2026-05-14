@@ -145,10 +145,8 @@ export function useTool(options: UseToolOptions): UseToolReturn {
       const cost = data.credits_used || creditCost;
       setCreditsUsed(cost);
 
-      // Optimistic credit update
-      if (user) {
-        updateUser({ credits: user.credits - cost });
-      }
+      // Optimistic credit update (use functional form to avoid stale closure)
+      updateUser((prev) => ({ credits: prev.credits - cost }));
 
       // Background refresh to correct any discrepancies
       authApi.me().then((u) => updateUser(u)).catch(() => {});
