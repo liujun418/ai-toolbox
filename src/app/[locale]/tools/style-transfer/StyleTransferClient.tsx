@@ -51,36 +51,6 @@ export default function StyleTransferClient({ locale = "en" as Locale, dict }: {
             💎 {t.cost || `${CREDIT_COST} credits`}
           </span>
         </div>
-
-        {/* Tips */}
-        <div className="mt-4 rounded-xl border border-blue-200/80 bg-gradient-to-br from-blue-50 to-indigo-50 p-4 text-sm shadow-sm dark:border-blue-800/60 dark:from-blue-950/30 dark:to-indigo-950/20">
-          <p className="flex items-center gap-1.5 font-semibold text-blue-800 dark:text-blue-300">
-            <span className="text-base">💡</span> {t.tipsTitle || "Pro Tips"}
-          </p>
-          <div className="mt-3 space-y-2">
-            {(t.tips || [
-              "Portrait or single-subject photos work best — complex scenes may lose detail during style transfer.",
-              "Photos will be automatically center-cropped to a square format for optimal AI processing.",
-              "Each style uses fixed parameters to ensure consistency — no need to adjust settings manually.",
-              "For best results, use well-lit, clear photos with the subject centered in the frame."
-            ]).map((tip: any, i: number) => {
-              const icon = tip?.icon;
-              const text = tip?.text || tip;
-              const accentColors = [
-                "bg-blue-100/70 dark:bg-blue-900/30 border-l-blue-400",
-                "bg-purple-100/70 dark:bg-purple-900/30 border-l-purple-400",
-                "bg-emerald-100/70 dark:bg-emerald-900/30 border-l-emerald-400",
-                "bg-amber-100/70 dark:bg-amber-900/30 border-l-amber-400",
-              ];
-              return (
-                <div key={i} className={`flex items-start gap-2.5 rounded-lg border-l-2 px-3 py-2 ${accentColors[i % 4]}`}>
-                  {icon && <span className="mt-0.5 shrink-0 text-base leading-none">{icon}</span>}
-                  <span className="text-blue-900 dark:text-blue-200">{text}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
       </div>
 
       {tool.fileError && (
@@ -171,6 +141,36 @@ export default function StyleTransferClient({ locale = "en" as Locale, dict }: {
             )}
           </div>
         )}
+      </div>
+
+      {/* Tips */}
+      <div className="mt-8 rounded-xl border border-blue-200/80 bg-gradient-to-br from-blue-50 to-indigo-50 p-4 text-sm shadow-sm dark:border-blue-800/60 dark:from-blue-950/30 dark:to-indigo-950/20">
+        <p className="flex items-center gap-1.5 font-semibold text-blue-800 dark:text-blue-300">
+          <span className="text-base">💡</span> {t.tipsTitle || "Pro Tips"}
+        </p>
+        <div className="mt-3 space-y-2">
+          {(t.tips || [
+            "Portrait or single-subject photos work best — complex scenes may lose detail during style transfer.",
+            "Photos will be automatically center-cropped to a square format for optimal AI processing.",
+            "Each style uses fixed parameters to ensure consistency — no need to adjust settings manually.",
+            "For best results, use well-lit, clear photos with the subject centered in the frame."
+          ]).map((tip: any, i: number) => {
+            const icon = tip?.icon;
+            const text = tip?.text || tip;
+            const accentColors = [
+              "bg-blue-100/70 dark:bg-blue-900/30 border-l-blue-400",
+              "bg-purple-100/70 dark:bg-purple-900/30 border-l-purple-400",
+              "bg-emerald-100/70 dark:bg-emerald-900/30 border-l-emerald-400",
+              "bg-amber-100/70 dark:bg-amber-900/30 border-l-amber-400",
+            ];
+            return (
+              <div key={i} className={`flex items-start gap-2.5 rounded-lg border-l-2 px-3 py-2 ${accentColors[i % 4]}`}>
+                {icon && <span className="mt-0.5 shrink-0 text-base leading-none">{icon}</span>}
+                <span className="text-blue-900 dark:text-blue-200">{text}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       <CreditConfirmDialog isOpen={!!user && tool.showConfirm} creditsNeeded={CREDIT_COST} currentCredits={user?.credits || 0} toolName={t.title || TOOL_ID} locale={locale} dict={dict} onConfirm={() => tool.handleUpload({ style: selectedStyle })} onCancel={() => tool.setShowConfirm(false)} />
