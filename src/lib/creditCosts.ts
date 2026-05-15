@@ -7,7 +7,7 @@ export const CREDIT_COSTS: Record<string, number> = {
   "background-remover": 2,
   "watermark-remover": 3,
   "photo-restorer": 5,
-  "pdf-to-word": 1,
+  "pdf-to-word": 0, // free — local processing only
   "image-upscaler": 2,
   "style-transfer": 4,
   "text-polish": 3,
