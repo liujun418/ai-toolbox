@@ -20,27 +20,6 @@ type AspectRatio = (typeof ASPECT_RATIOS)[number];
 const FORMATS = ["png", "webp", "jpeg"] as const;
 type Format = (typeof FORMATS)[number];
 
-// Scene configuration — metadata only. Prompt templates live in backend prompt_templates.py.
-// To add a new scene: add an entry here + in AI_IMAGE_GENERATOR_SCENES (backend).
-interface SceneConfig {
-  id: string;
-  icon: string;
-  recommendedRatio: AspectRatio | null;
-  lockRatio: boolean;
-}
-const SCENES: SceneConfig[] = [
-  { id: "free",             icon: "🎨", recommendedRatio: null,    lockRatio: false },
-  { id: "portrait",         icon: "📸", recommendedRatio: "2:3",   lockRatio: true  },
-  { id: "ecommerce",        icon: "🛍️", recommendedRatio: "1:1",   lockRatio: true  },
-  { id: "social-media",     icon: "📱", recommendedRatio: "1:1",   lockRatio: true  },
-  { id: "short-video-cover",icon: "▶️", recommendedRatio: "3:2",   lockRatio: false },
-  { id: "app-ui",           icon: "📲", recommendedRatio: "2:3",   lockRatio: true  },
-  { id: "live-stream-ui",   icon: "🎥", recommendedRatio: "3:2",   lockRatio: false },
-  { id: "anime",            icon: "🌸", recommendedRatio: "2:3",   lockRatio: true  },
-  { id: "landscape",        icon: "🏔️", recommendedRatio: "3:2",   lockRatio: true  },
-  { id: "business",         icon: "💼", recommendedRatio: "3:2",   lockRatio: true  },
-];
-
 function calcCredits(quality: Quality, numImages: number, hasReference: boolean): number {
   const base = { low: 1, medium: 2, high: 3 }[quality];
   const extra = Math.max(0, numImages - 1);
@@ -54,7 +33,6 @@ export default function AiImageGeneratorClient({ locale = "en" as Locale, dict }
   const tp = (dict as any)?.toolPage || {};
 
   const [prompt, setPrompt] = useState("");
-  const [scene, setScene] = useState("free");
   const [quality, setQuality] = useState<Quality>("medium");
   const [aspectRatio, setAspectRatio] = useState<AspectRatio>("1:1");
   const [format, setFormat] = useState<Format>("png");
@@ -109,15 +87,6 @@ export default function AiImageGeneratorClient({ locale = "en" as Locale, dict }
     if (fileRef.current) fileRef.current.value = "";
   }, [refPreview]);
 
-  const handleSceneChange = useCallback((sceneId: string) => {
-    setScene(sceneId);
-    setStatus("idle");
-    const cfg = SCENES.find((s) => s.id === sceneId);
-    if (cfg?.lockRatio && cfg.recommendedRatio) {
-      setAspectRatio(cfg.recommendedRatio);
-    }
-  }, []);
-
   const handleGenerate = useCallback(() => {
     if (!prompt.trim()) return;
     if (!user) { setShowLoginPrompt(true); return; }
@@ -141,7 +110,6 @@ export default function AiImageGeneratorClient({ locale = "en" as Locale, dict }
       formData.append("aspect_ratio", aspectRatio);
       formData.append("output_format", format);
       formData.append("num_images", String(numImages));
-      formData.append("scene", scene);
 
       const res = await fetch(`${API_BASE}/api/upload/${TOOL_ID}`, {
         method: "POST",
@@ -200,12 +168,10 @@ export default function AiImageGeneratorClient({ locale = "en" as Locale, dict }
         setErrorMsg(msg);
       }
     }
-  }, [prompt, scene, quality, aspectRatio, format, numImages, refFile, creditsNeeded, user, updateUser, t]);
+  }, [prompt, quality, aspectRatio, format, numImages, refFile, creditsNeeded, user, updateUser, t]);
 
   const reset = useCallback(() => {
     setPrompt("");
-    setScene("free");
-    setAspectRatio("1:1");
     setStatus("idle");
     setResultUrls([]);
     setErrorMsg("");
@@ -270,33 +236,6 @@ export default function AiImageGeneratorClient({ locale = "en" as Locale, dict }
 
       {/* Main card */}
       <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-        {/* Scene selector */}
-        <div className="mb-6">
-          <label className="mb-2 block text-sm font-semibold text-zinc-700 dark:text-zinc-300">
-            {t.sceneLabel || "Creative Scene"}
-          </label>
-          <select
-            value={scene}
-            onChange={(e) => handleSceneChange(e.target.value)}
-            disabled={status === "uploading"}
-            className="w-full rounded-xl border border-zinc-300 px-4 py-2.5 text-sm text-zinc-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
-          >
-            {SCENES.map((s) => {
-              const sceneName = (t.scenes as any)?.[s.id] || s.id;
-              return (
-                <option key={s.id} value={s.id}>
-                  {s.icon} {sceneName}{s.lockRatio ? ` (${s.recommendedRatio})` : ""}
-                </option>
-              );
-            })}
-          </select>
-          {scene !== "free" && (
-            <p className="mt-1 text-xs text-zinc-400">
-              {t.sceneHint || "AI will auto-enhance your prompt with scene-specific composition and style keywords."}
-            </p>
-          )}
-        </div>
-
         {/* Prompt input — always visible */}
         <div className="mb-6">
           <label className="mb-2 block text-sm font-semibold text-zinc-700 dark:text-zinc-300">
