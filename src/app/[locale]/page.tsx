@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { getDictionary } from "@/lib/i18n";
+import HeroBanner from "@/components/HeroBanner";
+import type { Slide } from "@/components/HeroBanner";
 
 export default async function HomePage({
   params,
@@ -14,6 +16,18 @@ export default async function HomePage({
   const features = t.features || [];
   const faqs = t.faqs || [];
   const pricing = t.pricing || {};
+
+  const slides: Slide[] = [
+    { type: "hero" },
+    {
+      type: "image",
+      image: "/banner-ai-image-generator.png",
+      href: `/${locale}/tools/ai-image-generator`,
+      alt: "AI Image Generator",
+      title: "AI Image Generator",
+      subtitle: "Turn any text into stunning AI images — try it now!",
+    },
+  ];
 
   const toolList = [
     { id: "ai-image-generator", name: tools["ai-image-generator"]?.name || "AI Image Generator", description: tools["ai-image-generator"]?.description || "", icon: "🎨", credits: 1, href: `/${locale}/tools/ai-image-generator`, badge: t.home?.new || "New" },
@@ -31,30 +45,16 @@ export default async function HomePage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-      {/* Hero Section */}
-      <section className="mb-16 text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-5xl lg:text-6xl">
-          {home.heroTitle || "Free AI Tools for"}
-          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{home.heroTitleHighlight || " Every"}</span> Task
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-          {home.heroDescription || "Remove backgrounds, generate avatars, restore old photos, convert PDFs — all powered by AI, all in your browser."}
-        </p>
-        <div className="mt-6 flex justify-center gap-3">
-          <Link
-            href={`/${locale}/signup`}
-            className="rounded-xl bg-zinc-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
-          >
-            {home.getFreeCredits || "Get 5 Free Credits"}
-          </Link>
-          <Link
-            href={`/${locale}/pricing`}
-            className="rounded-xl border border-zinc-300 px-6 py-3 text-sm font-semibold text-zinc-700 shadow-sm transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
-          >
-            {home.viewPricing || "View Pricing"}
-          </Link>
-        </div>
-      </section>
+      {/* Hero Banner Carousel */}
+      <HeroBanner
+        locale={locale}
+        slides={slides}
+        heroTitle={home.heroTitle || "Free AI Tools for"}
+        heroHighlight={home.heroTitleHighlight || " Every"}
+        heroDescription={home.heroDescription || "Remove backgrounds, generate avatars, restore old photos, convert PDFs — all powered by AI, all in your browser."}
+        signupLabel={home.getFreeCredits || "Get 5 Free Credits"}
+        pricingLabel={home.viewPricing || "View Pricing"}
+      />
 
       {/* Tools Grid */}
       <section>
