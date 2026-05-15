@@ -64,6 +64,7 @@
     { "q": "¿Qué formatos de archivo son compatibles?", "a": "Aceptamos PNG, JPG y WebP para herramientas de imagen. Archivos PDF de hasta 20MB para conversión de documentos." }
   ],
   "tools": {
+    "ai-image-generator": { "name": "Generador de Imágenes IA", "description": "Convierte texto en imágenes increíbles. Sin marca de agua, descarga instantánea.", "badge": "Nuevo" },
     "avatar-generator": { "name": "Generador de Avatares con IA", "description": "Transforma tus fotos en avatares de dibujos animados, anime o profesionales.", "badge": "Popular" },
     "background-remover": { "name": "Eliminador de Fondos", "description": "Elimina fondos de imágenes al instante con un clic.", "badge": "Gratis" },
     "watermark-remover": { "name": "Eliminador de Marcas de Agua", "description": "Elimina marcas de agua, logotipos y texto de imágenes de forma inteligente." },
@@ -366,6 +367,53 @@
       "auto": { "label": "Auto Restaurar", "desc": "IA elimina rayones, polvo e imperfecciones automáticamente" },
       "face": { "label": "Rostro Pro", "desc": "Mejora facial dedicada con GFPGAN" }
     }
+  },
+  "aiImageGenerator": {
+    "title": "Generador de Imágenes IA",
+    "description": "Descríbelo. Míralo. Descárgalo. ¡Convierte cualquier texto en una increíble imagen generada por IA — sin marca de agua, pago solo por lo que creas!",
+    "cost": "desde 1 crédito",
+    "promptLabel": "Describe la imagen que quieres",
+    "promptPlaceholder": "Un paisaje montañoso majestuoso al atardecer, con un lago cristalino reflejando los picos...",
+    "generateButton": "Generar Imagen",
+    "generating": "Generando...",
+    "qualityLabel": "Calidad",
+    "quality": {
+      "low": { "label": "Baja", "desc": "Rápido y económico" },
+      "medium": { "label": "Media", "desc": "Buen equilibrio" },
+      "high": { "label": "Alta", "desc": "Máximo detalle" }
+    },
+    "aspectRatioLabel": "Relación de Aspecto",
+    "aspectRatio": {
+      "1:1": "Cuadrado (1:1)",
+      "3:2": "Horizontal (3:2)",
+      "2:3": "Vertical (2:3)"
+    },
+    "formatLabel": "Formato",
+    "format": {
+      "png": "PNG — sin pérdida, archivo grande",
+      "webp": "WebP — moderno, tamaño pequeño",
+      "jpeg": "JPEG — universal, comprimido"
+    },
+    "imagesLabel": "Imágenes",
+    "images": "imágenes",
+    "referenceLabel": "Imagen de Referencia (opcional)",
+    "referenceDesc": "Sube una foto para guiar estilo y composición. Añade 1 crédito extra.",
+    "uploadReference": "Clic para subir referencia",
+    "removeReference": "Quitar",
+    "creditSummary": "créditos para esta generación",
+    "result": "Tu Imagen Generada",
+    "results": "Tus Imágenes Generadas",
+    "downloadAll": "Descargar Todas",
+    "tryAnother": "Generar Otra",
+    "errorTitle": "Generación Fallida",
+    "noImages": "La IA no pudo generar imágenes. Prueba con otro texto o ajustes.",
+    "tipsTitle": "Consejos Pro",
+    "tips": [
+      { "icon": "📝", "text": "¡Sé específico! \"Un gato naranja peludo durmiendo en un alféizar al atardecer\" funciona mejor que \"gato\"." },
+      { "icon": "⚡", "text": "Calidad baja es ideal para borradores rápidos. Alta calidad usa más pasos para mayor detalle." },
+      { "icon": "🖼️", "text": "Sube una imagen de referencia para guiar la composición. La IA mezcla tu foto con la descripción." },
+      { "icon": "🎨", "text": "Genera varias imágenes a la vez para comparar variaciones. Cada imagen extra cuesta solo 1 crédito más." }
+    ]
   },
   "pdfToWord": {
     "title": "PDF a Word",

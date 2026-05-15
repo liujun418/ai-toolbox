@@ -104,12 +104,12 @@ export default function PricingClient() {
             </thead>
             <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
               {[
+                ["AI Image Generator", "1-7", "$0.10-$0.70"],
                 ["Background Remover", "2", "$0.20"],
                 ["Watermark Remover", "3", "$0.30"],
                 ["AI Avatar Generator", "5", "$0.50"],
                 ["Photo Restorer", "5", "$0.50"],
-                ["PDF to Word (≤10 pages)", "1", "$0.10"],
-                ["PDF to Word (>10 pages)", "2", "$0.20"],
+                ["PDF to Word", "0", "Free"],
                 ["Image Upscaler", "2", "$0.20"],
                 ["Image Style Transfer", "4", "$0.40"],
                 ["Text Polish & Rewrite", "3", "$0.30"],

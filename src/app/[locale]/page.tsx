@@ -16,7 +16,8 @@ export default async function HomePage({
   const pricing = t.pricing || {};
 
   const toolList = [
-    { id: "avatar-generator", name: tools["avatar-generator"]?.name || "AI Avatar Generator", description: tools["avatar-generator"]?.description || "", icon: "🎨", credits: 5, href: `/${locale}/tools/avatar-generator`, badge: t.home?.popular || "Popular" },
+    { id: "ai-image-generator", name: tools["ai-image-generator"]?.name || "AI Image Generator", description: tools["ai-image-generator"]?.description || "", icon: "🎨", credits: 1, href: `/${locale}/tools/ai-image-generator`, badge: t.home?.new || "New" },
+    { id: "avatar-generator", name: tools["avatar-generator"]?.name || "AI Avatar Generator", description: tools["avatar-generator"]?.description || "", icon: "🤖", credits: 5, href: `/${locale}/tools/avatar-generator`, badge: t.home?.popular || "Popular" },
     { id: "background-remover", name: tools["background-remover"]?.name || "Background Remover", description: tools["background-remover"]?.description || "", icon: "✂️", credits: 2, href: `/${locale}/tools/background-remover`, badge: t.home?.free || "Free" },
     { id: "watermark-remover", name: tools["watermark-remover"]?.name || "Watermark Remover", description: tools["watermark-remover"]?.description || "", icon: "🧹", credits: 3, href: `/${locale}/tools/watermark-remover`, badge: null },
     { id: "photo-restorer", name: tools["photo-restorer"]?.name || "Photo Restorer", description: tools["photo-restorer"]?.description || "", icon: "📷", credits: 5, href: `/${locale}/tools/photo-restorer`, badge: null },

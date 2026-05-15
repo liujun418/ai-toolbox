@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import { getLocaleFromPathname } from "@/lib/locale";
 
 const tools = [
-  { id: "avatar-generator", name: "AI Avatar Generator", icon: "🎨" },
+  { id: "ai-image-generator", name: "AI Image Generator", icon: "🎨" },
+  { id: "avatar-generator", name: "AI Avatar Generator", icon: "🤖" },
   { id: "background-remover", name: "Background Remover", icon: "✂️" },
   { id: "watermark-remover", name: "Watermark Remover", icon: "🧹" },
   { id: "photo-restorer", name: "Photo Restorer", icon: "📷" },
@@ -65,11 +66,12 @@ export default function DashboardPage() {
   const recentHistory = history.slice(0, 10);
 
   const toolCredits: Record<string, number> = {
+    "ai-image-generator": 1,
     "avatar-generator": 5,
     "background-remover": 2,
     "watermark-remover": 3,
     "photo-restorer": 5,
-    "pdf-to-word": 1,
+    "pdf-to-word": 0,
     "image-upscaler": 2,
     "style-transfer": 4,
     "text-polish": 3,

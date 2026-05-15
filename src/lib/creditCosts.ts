@@ -3,6 +3,7 @@
  * Keep in sync with ai-toolbox-api/app/schemas.py CREDIT_COSTS.
  */
 export const CREDIT_COSTS: Record<string, number> = {
+  "ai-image-generator": 1, // base cost; actual varies by quality/count/reference
   "avatar-generator": 5,
   "background-remover": 2,
   "watermark-remover": 3,

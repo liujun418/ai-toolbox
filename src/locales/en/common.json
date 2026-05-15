@@ -64,6 +64,7 @@
     { "q": "What file formats are supported?", "a": "We accept PNG, JPG, and WebP for image tools. PDF files up to 20MB for document conversion." }
   ],
   "tools": {
+    "ai-image-generator": { "name": "AI Image Generator", "description": "Turn text into stunning AI images. No watermark, instant download.", "badge": "New" },
     "avatar-generator": { "name": "AI Avatar Generator", "description": "Transform your photos into cartoon, anime, or professional avatars.", "badge": "Popular" },
     "background-remover": { "name": "Background Remover", "description": "Remove image backgrounds instantly with one click.", "badge": "Free" },
     "watermark-remover": { "name": "Watermark Remover", "description": "Erase watermarks, logos, and text from images intelligently." },
@@ -424,6 +425,53 @@
       "auto": { "label": "Auto Restore", "desc": "AI removes scratches, dust, and blemishes automatically" },
       "face": { "label": "Face Pro", "desc": "Dedicated face enhancement with GFPGAN" }
     }
+  },
+  "aiImageGenerator": {
+    "title": "AI Image Generator",
+    "description": "Describe it. See it. Download it. Turn any text prompt into a stunning AI-generated image — no watermark, instant delivery, pay only for what you create!",
+    "cost": "from 1 credit",
+    "promptLabel": "Describe the image you want",
+    "promptPlaceholder": "A majestic mountain landscape at golden hour, with a crystal-clear lake reflecting the peaks...",
+    "generateButton": "Generate Image",
+    "generating": "Generating...",
+    "qualityLabel": "Quality",
+    "quality": {
+      "low": { "label": "Low", "desc": "Fast & affordable" },
+      "medium": { "label": "Medium", "desc": "Good balance" },
+      "high": { "label": "High", "desc": "Best detail" }
+    },
+    "aspectRatioLabel": "Aspect Ratio",
+    "aspectRatio": {
+      "1:1": "Square (1:1)",
+      "3:2": "Landscape (3:2)",
+      "2:3": "Portrait (2:3)"
+    },
+    "formatLabel": "Format",
+    "format": {
+      "png": "PNG — lossless, larger file",
+      "webp": "WebP — modern, small size",
+      "jpeg": "JPEG — universal, compressed"
+    },
+    "imagesLabel": "Images",
+    "images": "images",
+    "referenceLabel": "Reference Image (optional)",
+    "referenceDesc": "Upload a photo to guide style & composition. Adds 1 extra credit.",
+    "uploadReference": "Click to upload reference",
+    "removeReference": "Remove",
+    "creditSummary": "credits for this generation",
+    "result": "Your Generated Image",
+    "results": "Your Generated Images",
+    "downloadAll": "Download All",
+    "tryAnother": "Generate Another",
+    "errorTitle": "Generation Failed",
+    "noImages": "The AI couldn't generate images. Try a different prompt or settings.",
+    "tipsTitle": "Pro Tips",
+    "tips": [
+      { "icon": "📝", "text": "Be specific! \"A fluffy orange cat sleeping on a windowsill at sunset\" beats \"cat\" every time." },
+      { "icon": "⚡", "text": "Low quality is great for quick drafts & brainstorming. High quality uses more steps for finer detail." },
+      { "icon": "🖼️", "text": "Upload a reference image to guide composition. The AI blends your photo with the text description." },
+      { "icon": "🎨", "text": "Generate multiple images at once to compare variations. Each extra image costs just 1 more credit." }
+    ]
   },
   "pdfToWord": {
     "title": "PDF to Word",
