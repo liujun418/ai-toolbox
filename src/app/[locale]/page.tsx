@@ -44,7 +44,7 @@ export default async function HomePage({
   const creditsLabel = (credits: number) => credits === 0 ? (t.home?.free || "Free") : `${credits} ${t.home?.credits || "credits"}`;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
       {/* Hero Banner Carousel */}
       <HeroBanner
         locale={locale}

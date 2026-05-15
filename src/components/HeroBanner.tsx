@@ -56,7 +56,7 @@ export default function HeroBanner({
 
   return (
     <section
-      className="relative mb-16 overflow-hidden rounded-2xl bg-zinc-50 dark:bg-zinc-900"
+      className="relative mb-10 overflow-hidden rounded-2xl bg-zinc-50 dark:bg-zinc-900"
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >
