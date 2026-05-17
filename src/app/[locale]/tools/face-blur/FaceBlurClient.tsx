@@ -166,8 +166,8 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
       <CreditConfirmDialog
         isOpen={!!user && tool.showConfirm && !tool.fileError}
         toolName={t.name || "Face Privacy Blur"}
-        credits={tool.creditsUsed || getCreditCost(TOOL_ID)}
-        userCredits={user?.credits ?? 0}
+        creditsNeeded={getCreditCost(TOOL_ID)}
+        currentCredits={user?.credits ?? 0}
         locale={locale}
         dict={dict}
         onConfirm={() => tool.handleUpload({})}
