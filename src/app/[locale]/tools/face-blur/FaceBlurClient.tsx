@@ -64,9 +64,48 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
     if (tool.resultUrl) setPreviewMode("after");
   }, [tool.resultUrl]);
 
-  if (loading) return <ToolSkeleton />;
+  // Render manual region overlays — must be BEFORE early return (Rules of Hooks)
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const img = imgRef.current;
+    if (!canvas || !img || !tool.file) return;
+    const rect = img.getBoundingClientRect();
+    const containerRect = containerRef.current?.getBoundingClientRect();
+    if (!containerRect) return;
+    canvas.style.left = (rect.left - containerRect.left) + "px";
+    canvas.style.top = (rect.top - containerRect.top) + "px";
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Mouse/touch drawing handlers
+    ctx.strokeStyle = "#3b82f6";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "rgba(59,130,246,0.15)";
+    for (const r of manualRegions) {
+      const rx = (r.x / img.naturalWidth) * rect.width;
+      const ry = (r.y / img.naturalHeight) * rect.height;
+      const rw = (r.w / img.naturalWidth) * rect.width;
+      const rh = (r.h / img.naturalHeight) * rect.height;
+      ctx.fillRect(rx, ry, rw, rh);
+      ctx.strokeRect(rx, ry, rw, rh);
+    }
+
+    if (drawing && drawRect) {
+      ctx.strokeStyle = "#ef4444";
+      ctx.lineWidth = 2;
+      ctx.fillStyle = "rgba(239,68,68,0.15)";
+      const rx = drawRect.x * rect.width;
+      const ry = drawRect.y * rect.height;
+      const rw = drawRect.w * rect.width;
+      const rh = drawRect.h * rect.height;
+      ctx.fillRect(rx, ry, rw, rh);
+      ctx.strokeRect(rx, ry, rw, rh);
+    }
+  }, [manualRegions, drawing, drawRect, tool.file]);
+
+  if (loading) return <ToolSkeleton />;
   const getImageCoords = (clientX: number, clientY: number) => {
     if (!imgRef.current) return null;
     const rect = imgRef.current.getBoundingClientRect();
@@ -117,49 +156,6 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
   };
 
   const undoLast = () => setManualRegions((prev) => prev.slice(0, -1));
-
-  // Render manual region overlays
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const img = imgRef.current;
-    if (!canvas || !img || !tool.file) return;
-    const rect = img.getBoundingClientRect();
-    const containerRect = containerRef.current?.getBoundingClientRect();
-    if (!containerRect) return;
-    canvas.style.left = (rect.left - containerRect.left) + "px";
-    canvas.style.top = (rect.top - containerRect.top) + "px";
-    canvas.width = rect.width;
-    canvas.height = rect.height;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Draw existing manual regions
-    ctx.strokeStyle = "#3b82f6";
-    ctx.lineWidth = 2;
-    ctx.fillStyle = "rgba(59,130,246,0.15)";
-    for (const r of manualRegions) {
-      const rx = (r.x / img.naturalWidth) * rect.width;
-      const ry = (r.y / img.naturalHeight) * rect.height;
-      const rw = (r.w / img.naturalWidth) * rect.width;
-      const rh = (r.h / img.naturalHeight) * rect.height;
-      ctx.fillRect(rx, ry, rw, rh);
-      ctx.strokeRect(rx, ry, rw, rh);
-    }
-
-    // Draw in-progress rectangle
-    if (drawing && drawRect) {
-      ctx.strokeStyle = "#ef4444";
-      ctx.lineWidth = 2;
-      ctx.fillStyle = "rgba(239,68,68,0.15)";
-      const rx = drawRect.x * rect.width;
-      const ry = drawRect.y * rect.height;
-      const rw = drawRect.w * rect.width;
-      const rh = drawRect.h * rect.height;
-      ctx.fillRect(rx, ry, rw, rh);
-      ctx.strokeRect(rx, ry, rw, rh);
-    }
-  }, [manualRegions, drawing, drawRect, tool.file]);
 
   return (
     <ToolLayout toolId={TOOL_ID} locale={locale} dict={dict}>
