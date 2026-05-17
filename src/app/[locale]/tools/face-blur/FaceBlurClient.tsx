@@ -10,19 +10,37 @@ import { getCreditCost } from "@/lib/creditCosts";
 import type { Locale } from "@/lib/i18n";
 
 const TOOL_ID = "face-blur";
+
 const BLUR_STYLES = [
   { id: "mosaic", label: "Mosaic", icon: "🔲" },
   { id: "gaussian", label: "Gaussian", icon: "🌫️" },
   { id: "pixelate", label: "Pixelate", icon: "🧊" },
+  { id: "emoji", label: "Cute Icon", icon: "😊" },
 ];
+
+const EMOJI_ICONS = [
+  { id: "smile", icon: "😊" },
+  { id: "mask", icon: "😷" },
+  { id: "cat", icon: "🐱" },
+  { id: "dog", icon: "🐶" },
+  { id: "bear", icon: "🐻" },
+  { id: "star", icon: "⭐" },
+];
+
+type Mode = "auto" | "manual";
 
 export default function FaceBlurClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
   const { user, loading } = useAuth();
   const t = ((dict as any)?.tools?.[TOOL_ID] as Record<string, string>) || {};
   const tp = (dict as any)?.toolPage || {};
 
+  const [mode, setMode] = useState<Mode>("auto");
   const [blurStyle, setBlurStyle] = useState("mosaic");
+  const [emojiType, setEmojiType] = useState("smile");
   const [previewMode, setPreviewMode] = useState<"before" | "after">("after");
+  const [faceCount, setFaceCount] = useState(0);
+
+  // Manual drawing state
   const [manualRegions, setManualRegions] = useState<{ x: number; y: number; w: number; h: number }[]>([]);
   const [drawing, setDrawing] = useState(false);
   const [drawStart, setDrawStart] = useState({ x: 0, y: 0 });
@@ -31,24 +49,19 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
   const imgRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const previewUrlRef = useRef<string | null>(null);
 
-  const buildPrompt = useCallback(() => blurStyle, [blurStyle]);
+  // buildPrompt: encodes style + emoji type
+  const buildPrompt = useCallback(() => {
+    return blurStyle === "emoji" ? `emoji|${emojiType}` : blurStyle;
+  }, [blurStyle, emojiType]);
 
+  // getMask: sends auto_only flag + manual regions
   const getMask = useCallback(async (): Promise<Blob | null> => {
-    if (manualRegions.length === 0) return null;
-    const data = manualRegions.map((r) => {
-      const img = imgRef.current;
-      if (!img) return { x: r.x, y: r.y, w: r.w, h: r.h };
-      return {
-        x: Math.round((r.x / img.naturalWidth) * img.naturalWidth),
-        y: Math.round((r.y / img.naturalHeight) * img.naturalHeight),
-        w: Math.round((r.w / img.naturalWidth) * img.naturalWidth),
-        h: Math.round((r.h / img.naturalHeight) * img.naturalHeight),
-      };
-    });
-    return new Blob([JSON.stringify(data)], { type: "application/json" });
-  }, [manualRegions]);
+    const payload = mode === "auto"
+      ? { auto: true, regions: null }
+      : { auto: false, regions: manualRegions.length > 0 ? manualRegions : null };
+    return new Blob([JSON.stringify(payload)], { type: "application/json" });
+  }, [mode, manualRegions]);
 
   const tool = useTool({
     toolId: TOOL_ID,
@@ -64,7 +77,15 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
     if (tool.resultUrl) setPreviewMode("after");
   }, [tool.resultUrl]);
 
-  // Render manual region overlays — must be BEFORE early return (Rules of Hooks)
+  // Quick face count on file select (auto mode)
+  useEffect(() => {
+    if (!tool.file || mode !== "auto") { setFaceCount(0); return; }
+    // We don't actually call the count API here — the backend will handle it
+    // Just reset the count display
+    setFaceCount(0);
+  }, [tool.file, mode]);
+
+  // Render manual region overlays on canvas — must be before early return
   useEffect(() => {
     const canvas = canvasRef.current;
     const img = imgRef.current;
@@ -106,6 +127,7 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
   }, [manualRegions, drawing, drawRect, tool.file]);
 
   if (loading) return <ToolSkeleton />;
+
   const getImageCoords = (clientX: number, clientY: number) => {
     if (!imgRef.current) return null;
     const rect = imgRef.current.getBoundingClientRect();
@@ -116,7 +138,7 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
   };
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    if (!tool.file || tool.status === "uploading") return;
+    if (mode !== "manual" || !tool.file || tool.status === "uploading") return;
     const coords = getImageCoords(e.clientX, e.clientY);
     if (!coords) return;
     (e.target as HTMLElement).setPointerCapture(e.pointerId);
@@ -129,12 +151,7 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
     if (!drawing || !drawRect) return;
     const coords = getImageCoords(e.clientX, e.clientY);
     if (!coords) return;
-    setDrawRect({
-      x: Math.min(drawStart.x, coords.x),
-      y: Math.min(drawStart.y, coords.y),
-      w: Math.abs(coords.x - drawStart.x),
-      h: Math.abs(coords.y - drawStart.y),
-    });
+    setDrawRect({ x: Math.min(drawStart.x, coords.x), y: Math.min(drawStart.y, coords.y), w: Math.abs(coords.x - drawStart.x), h: Math.abs(coords.y - drawStart.y) });
   };
 
   const handlePointerUp = () => {
@@ -143,15 +160,12 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
     if (drawRect.w < 0.02 || drawRect.h < 0.02) { setDrawRect(null); return; }
     const img = imgRef.current;
     if (!img) { setDrawRect(null); return; }
-    setManualRegions((prev) => [
-      ...prev,
-      {
-        x: Math.round(drawRect.x * img.naturalWidth),
-        y: Math.round(drawRect.y * img.naturalHeight),
-        w: Math.round(drawRect.w * img.naturalWidth),
-        h: Math.round(drawRect.h * img.naturalHeight),
-      },
-    ]);
+    setManualRegions((prev) => [...prev, {
+      x: Math.round(drawRect.x * img.naturalWidth),
+      y: Math.round(drawRect.y * img.naturalHeight),
+      w: Math.round(drawRect.w * img.naturalWidth),
+      h: Math.round(drawRect.h * img.naturalHeight),
+    }]);
     setDrawRect(null);
   };
 
@@ -169,22 +183,12 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
         onConfirm={() => tool.handleUpload({})}
         onCancel={() => tool.setShowConfirm(false)}
       />
-      <LoginPromptDialog
-        isOpen={!user && tool.showConfirm}
-        locale={locale}
-        dict={dict}
-      />
+      <LoginPromptDialog isOpen={!user && tool.showConfirm} locale={locale} dict={dict} />
       {tool.showToast && (
-        <CreditsUsedToast
-          creditsUsed={tool.creditsUsed}
-          remaining={user?.credits ?? 0}
-          dict={dict}
-          onClose={() => tool.setShowToast(false)}
-        />
+        <CreditsUsedToast creditsUsed={tool.creditsUsed} remaining={user?.credits ?? 0} dict={dict} onClose={() => tool.setShowToast(false)} />
       )}
 
       <div className="space-y-6">
-        {/* Upload area */}
         {!tool.file ? (
           <div
             onClick={() => tool.fileRef.current?.click()}
@@ -196,15 +200,42 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
           </div>
         ) : (
           <>
+            {/* Mode tabs */}
+            <div className="flex rounded-xl bg-zinc-100 p-1 dark:bg-zinc-800">
+              <button
+                onClick={() => { setMode("auto"); setManualRegions([]); }}
+                className={`flex-1 rounded-lg px-4 py-2.5 text-sm font-medium transition-all ${
+                  mode === "auto" ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-700 dark:text-white" : "text-zinc-500 dark:text-zinc-400"
+                }`}
+              >
+                🤖 {t.autoMode || "Auto Detect"}
+              </button>
+              <button
+                onClick={() => setMode("manual")}
+                className={`flex-1 rounded-lg px-4 py-2.5 text-sm font-medium transition-all ${
+                  mode === "manual" ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-700 dark:text-white" : "text-zinc-500 dark:text-zinc-400"
+                }`}
+              >
+                ✏️ {t.manualMode || "Manual Select"}
+              </button>
+            </div>
+
+            {/* Mode description */}
+            <p className="text-xs text-zinc-400 dark:text-zinc-500">
+              {mode === "auto"
+                ? (t.autoDesc || "AI automatically detects all faces in your image. Just pick a style and process.")
+                : (t.manualDesc || "Click and drag on the image to draw rectangles over faces. Add as many regions as you need.")}
+            </p>
+
             {/* Blur style selector */}
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="text-sm font-medium text-zinc-600 dark:text-zinc-300">{t.style || "Blur Style"}:</span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-sm font-medium text-zinc-600 dark:text-zinc-300">{t.style || "Style"}:</span>
               {BLUR_STYLES.map((s) => (
                 <button
                   key={s.id}
                   onClick={() => setBlurStyle(s.id)}
                   disabled={tool.status === "uploading"}
-                  className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                  className={`rounded-full px-3.5 py-2 text-sm font-medium transition-all ${
                     blurStyle === s.id
                       ? "bg-blue-600 text-white shadow-md"
                       : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
@@ -214,7 +245,27 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
                 </button>
               ))}
 
-              <div className="ml-auto flex items-center gap-2">
+              {/* Emoji selector when emoji style is active */}
+              {blurStyle === "emoji" && (
+                <div className="flex items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1.5 dark:bg-zinc-800">
+                  {EMOJI_ICONS.map((e) => (
+                    <button
+                      key={e.id}
+                      onClick={() => setEmojiType(e.id)}
+                      className={`rounded-full p-1.5 text-lg transition-all ${
+                        emojiType === e.id ? "scale-125 bg-white shadow-sm ring-2 ring-blue-400 dark:bg-zinc-700" : "opacity-60 hover:opacity-100"
+                      }`}
+                    >
+                      {e.icon}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Manual controls */}
+            {mode === "manual" && (
+              <div className="flex items-center gap-2">
                 {manualRegions.length > 0 && (
                   <>
                     <button onClick={undoLast} className="rounded-lg px-3 py-1.5 text-xs font-medium text-zinc-500 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800">
@@ -225,24 +276,20 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
                     </button>
                   </>
                 )}
+                {manualRegions.length === 0 && (
+                  <span className="text-xs text-amber-600 dark:text-amber-400">⚠️ {t.drawFirst || "Draw regions on the image first"}</span>
+                )}
               </div>
-            </div>
+            )}
 
             {/* Image preview */}
-            <div ref={containerRef} className="relative flex-1 overflow-hidden rounded-xl border border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
-              {/* Before/After toggle */}
+            <div ref={containerRef} className="relative overflow-hidden rounded-xl border border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
               {tool.resultUrl && (
                 <div className="absolute left-3 top-3 z-20 flex rounded-lg border border-zinc-200 bg-white/90 shadow-sm backdrop-blur dark:border-zinc-700 dark:bg-zinc-900/90">
-                  <button
-                    onClick={() => setPreviewMode("before")}
-                    className={`rounded-l-lg px-3 py-1.5 text-xs font-medium ${previewMode === "before" ? "bg-blue-600 text-white" : "text-zinc-600 dark:text-zinc-400"}`}
-                  >
+                  <button onClick={() => setPreviewMode("before")} className={`rounded-l-lg px-3 py-1.5 text-xs font-medium ${previewMode === "before" ? "bg-blue-600 text-white" : "text-zinc-600 dark:text-zinc-400"}`}>
                     {t.before || "Before"}
                   </button>
-                  <button
-                    onClick={() => setPreviewMode("after")}
-                    className={`rounded-r-lg px-3 py-1.5 text-xs font-medium ${previewMode === "after" ? "bg-blue-600 text-white" : "text-zinc-600 dark:text-zinc-400"}`}
-                  >
+                  <button onClick={() => setPreviewMode("after")} className={`rounded-r-lg px-3 py-1.5 text-xs font-medium ${previewMode === "after" ? "bg-blue-600 text-white" : "text-zinc-600 dark:text-zinc-400"}`}>
                     {t.after || "After"}
                   </button>
                 </div>
@@ -259,14 +306,13 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
 
               <canvas
                 ref={canvasRef}
-                className="absolute inset-0 z-10 cursor-crosshair"
+                className={`absolute inset-0 z-10 ${mode === "manual" ? "cursor-crosshair" : "pointer-events-none"}`}
                 onPointerDown={handlePointerDown}
                 onPointerMove={handlePointerMove}
                 onPointerUp={handlePointerUp}
                 onPointerLeave={() => { setDrawing(false); setDrawRect(null); }}
               />
 
-              {/* Processing overlay */}
               {tool.status === "uploading" && (
                 <div className="absolute inset-0 z-30 flex items-center justify-center bg-white/60 backdrop-blur-sm dark:bg-zinc-950/60">
                   <div className="text-center">
@@ -277,36 +323,24 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
               )}
             </div>
 
-            {/* Manual region hint */}
-            {!tool.resultUrl && (
-              <p className="text-xs text-zinc-400 dark:text-zinc-500">
-                ✏️ {t.drawHint || "Click and drag on the image to add manual blur regions."}
-              </p>
-            )}
-
             {/* Action buttons */}
             <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={() => tool.handleUploadClick()}
-                disabled={tool.status === "uploading"}
+                disabled={tool.status === "uploading" || (mode === "manual" && manualRegions.length === 0)}
                 className="rounded-xl bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-blue-700 active:scale-95 disabled:opacity-50"
               >
-                😷 {tool.resultUrl ? (t.reprocess || "Re-process") : (t.process || "Apply Face Blur")}
-                {tool.resultUrl ? ` — ${getCreditCost(TOOL_ID)} ${tp.credits || "credits"}` : ""}
+                😷 {tool.resultUrl ? (t.reprocess || "Re-process") : (mode === "manual" && manualRegions.length === 0 ? (t.drawFirst || "Draw regions first") : (t.process || "Apply Face Blur"))}
               </button>
 
               {tool.resultUrl && (
-                <a
-                  href={tool.resultUrl}
-                  download={`face-blur-${Date.now()}.png`}
-                  className="rounded-xl bg-green-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-green-700 active:scale-95"
-                >
+                <a href={tool.resultUrl} download={`face-blur-${Date.now()}.png`} className="rounded-xl bg-green-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-green-700 active:scale-95">
                   ⬇ {tp.download || "Download"}
                 </a>
               )}
 
               <button
-                onClick={() => { tool.reset(); setManualRegions([]); }}
+                onClick={() => { tool.reset(); setManualRegions([]); setFaceCount(0); }}
                 className="rounded-xl border border-zinc-300 px-4 py-3 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-50 dark:border-zinc-600 dark:text-zinc-400 dark:hover:bg-zinc-800"
               >
                 🗑️ {tp.clear || "Clear"}
@@ -315,20 +349,10 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
           </>
         )}
 
-        <input
-          ref={tool.fileRef}
-          type="file"
-          accept="image/jpeg,image/png,image/webp"
-          className="hidden"
-          onChange={tool.handleFileChange}
-        />
+        <input ref={tool.fileRef} type="file" accept="image/jpeg,image/png,image/webp" className="hidden" onChange={tool.handleFileChange} />
 
-        {tool.fileError && (
-          <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">{tool.fileError}</div>
-        )}
-        {tool.errorMsg && (
-          <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">{tool.errorMsg}</div>
-        )}
+        {tool.fileError && <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">{tool.fileError}</div>}
+        {tool.errorMsg && <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">{tool.errorMsg}</div>}
       </div>
     </ToolLayout>
   );

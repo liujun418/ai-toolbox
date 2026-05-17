@@ -73,7 +73,7 @@
     "image-upscaler": { "name": "Mejorador de Imágenes", "description": "Mejora la resolución de imágenes con super-resolución IA de 2x o 4x." },
     "style-transfer": { "name": "Transferencia de Estilo de Imagen", "description": "Transforma fotos en pinturas al óleo, acuarelas, arte anime." },
     "text-polish": { "name": "Pulir y Reescribir Texto", "description": "Pule, reescribe, acorta o expande texto con IA." },
-    "face-blur": { "name": "Difuminado Facial", "description": "Detecta rostros y aplica desenfoque para privacidad.", "cost": "2 créditos", "cost1": "Prueba Gratis" }
+    "face-blur": { "name": "Difuminado Facial", "description": "Detecta rostros y aplica desenfoque para privacidad.", "cost": "2 créditos", "cost1": "Prueba Gratis", "autoMode": "Detección Auto", "manualMode": "Selección Manual", "autoDesc": "La IA detecta todos los rostros automáticamente.", "manualDesc": "Dibuja rectángulos sobre los rostros en la imagen.", "drawFirst": "Dibuja regiones primero", "uploadTitle": "Sube una foto con rostros", "style": "Estilo", "before": "Antes", "after": "Después", "process": "Aplicar Desenfoque", "reprocess": "Re-procesar", "undo": "Deshacer", "clearAll": "Limpiar", "maxSize": "hasta 10MB" }
   },
   "dashboard": {
     "welcome": "Bienvenido de nuevo",
