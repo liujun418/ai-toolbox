@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import ToolLayout from "@/components/ToolLayout";
 import { useAuth } from "@/lib/auth-context";
 import { useTool } from "@/hooks/useTool";
 import { ToolSkeleton } from "@/components/LoadingSkeleton";
@@ -42,20 +42,8 @@ export default function AvatarGeneratorClient({ locale = "en" as Locale, dict }:
   const showLoginPrompt = !user && tool.showConfirm;
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
-      <div className="mb-8">
-        <div className="flex flex-wrap items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
-          <Link href={`/${locale}`} className="hover:text-blue-600">{tp.home || "Home"}</Link><span>/</span><span>{t.title || "AI Avatar Generator"}</span>
-          <Link href={`/${locale}`} className="ml-auto text-sm text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
-        </div>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">🎨 {t.title || "AI Avatar Generator"}</h1>
-        <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{t.description || "Transform your photo into cartoon, anime, or professional avatars."}</p>
-        <div className="mt-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-50 to-yellow-100 px-3 py-1 text-sm font-semibold text-amber-800 shadow-sm ring-1 ring-amber-200/60 dark:from-amber-900/20 dark:to-yellow-900/20 dark:text-amber-300 dark:ring-amber-700/40">
-            💎 {t.cost || `${CREDIT_COST} credits`}
-          </span>
-        </div>
-      </div>
+        <ToolLayout toolId="avatar-generator" locale={locale as string} dict={dict}>
+
 
       {tool.fileError && (
         <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">{tool.fileError}</div>
@@ -165,6 +153,7 @@ export default function AvatarGeneratorClient({ locale = "en" as Locale, dict }:
       <CreditConfirmDialog isOpen={!!user && tool.showConfirm} creditsNeeded={CREDIT_COST} currentCredits={user?.credits || 0} toolName={t.title || TOOL_ID} locale={locale} dict={dict} onConfirm={() => tool.handleUpload({ style: selectedStyle })} onCancel={() => tool.setShowConfirm(false)} />
       <LoginPromptDialog isOpen={showLoginPrompt} locale={locale} dict={dict} />
       {tool.showToast && <CreditsUsedToast creditsUsed={tool.creditsUsed} remaining={user?.credits ?? 0} onClose={() => tool.setShowToast(false)} dict={dict} />}
-    </div>
+        </ToolLayout>
+
   );
 }

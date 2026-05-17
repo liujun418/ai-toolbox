@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import Link from "next/link";
+import ToolLayout from "@/components/ToolLayout";
 import { useAuth } from "@/lib/auth-context";
 import { toolsApi } from "@/lib/api";
 import { useUsageTracker } from "@/hooks/useUsageTracker";
@@ -63,23 +63,8 @@ export default function PdfToWordClient({ locale = "en" as Locale, dict }: { loc
   function reset() { setFile(null); setResultUrl(null); setStatus("idle"); setErrorMsg(""); }
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
-      <div className="mb-8">
-        <div className="flex flex-wrap items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
-          <Link href={`/${locale}`} className="hover:text-blue-600">{tp.home || "Home"}</Link><span>/</span><span>{t.title || "PDF to Word"}</span>
-          <Link href={`/${locale}`} className="ml-auto text-sm text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
-        </div>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">📄 {t.title || "PDF to Word"}</h1>
-        <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{t.description || "Convert PDF documents to editable Word (.docx) files."}</p>
-        <div className="mt-2 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-green-50 to-emerald-100 px-3 py-1 text-sm font-semibold text-green-800 shadow-sm ring-1 ring-green-200/60 dark:from-green-900/20 dark:to-emerald-900/20 dark:text-green-300 dark:ring-green-700/40">
-            🆓 {t.cost1 || "Free"}
-          </span>
-          <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs text-blue-700 ring-1 ring-blue-200/60 dark:bg-blue-900/20 dark:text-blue-300 dark:ring-blue-700/40">
-            {t.scannedBadge || "No AI credits needed"}
-          </span>
-        </div>
-      </div>
+        <ToolLayout toolId="pdf-to-word" locale={locale as string} dict={dict}>
+
 
       <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
         {!resultUrl ? (
@@ -163,6 +148,7 @@ export default function PdfToWordClient({ locale = "en" as Locale, dict }: { loc
       </div>
 
       <LoginPromptDialog isOpen={showLoginPrompt} locale={locale} dict={dict} />
-    </div>
+        </ToolLayout>
+
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
-import Link from "next/link";
+import ToolLayout from "@/components/ToolLayout";
 import { useAuth } from "@/lib/auth-context";
 import { useUsageTracker } from "@/hooks/useUsageTracker";
 import { authApi } from "@/lib/api";
@@ -183,23 +183,8 @@ export default function AiImageGeneratorClient({ locale = "en" as Locale, dict }
   if (loading) return <ToolSkeleton />;
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
-      {/* Header */}
-      <div className="mb-8">
-        <div className="flex flex-wrap items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
-          <Link href={`/${locale}`} className="hover:text-blue-600">{tp.home || "Home"}</Link>
-          <span>/</span>
-          <span>{t.title || "AI Image Generator"}</span>
-          <Link href={`/${locale}`} className="ml-auto text-sm text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
-        </div>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">🎨 {t.title || "AI Image Generator"}</h1>
-        <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{t.description || "Turn text into stunning AI images."}</p>
-        <div className="mt-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-50 to-yellow-100 px-3 py-1 text-sm font-semibold text-amber-800 shadow-sm ring-1 ring-amber-200/60 dark:from-amber-900/20 dark:to-yellow-900/20 dark:text-amber-300 dark:ring-amber-700/40">
-            💎 {t.cost || "from 1 credit"}
-          </span>
-        </div>
-      </div>
+        <ToolLayout toolId="ai-image-generator" locale={locale as string} dict={dict}>
+
 
       {/* Error display */}
       {errorMsg && status === "error" && (
@@ -456,6 +441,7 @@ export default function AiImageGeneratorClient({ locale = "en" as Locale, dict }
           dict={dict}
         />
       )}
-    </div>
+        </ToolLayout>
+
   );
 }

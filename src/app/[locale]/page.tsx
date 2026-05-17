@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { getDictionary } from "@/lib/i18n";
+import { tools as allTools } from "@/lib/tools";
+import { getCreditCost } from "@/lib/creditCosts";
 import HeroBanner from "@/components/HeroBanner";
 import type { Slide } from "@/components/HeroBanner";
 
@@ -29,17 +31,15 @@ export default async function HomePage({
     },
   ];
 
-  const toolList = [
-    { id: "ai-image-generator", name: tools["ai-image-generator"]?.name || "AI Image Generator", description: tools["ai-image-generator"]?.description || "", icon: "🎨", credits: 1, href: `/${locale}/tools/ai-image-generator`, badge: t.home?.new || "New" },
-    { id: "avatar-generator", name: tools["avatar-generator"]?.name || "AI Avatar Generator", description: tools["avatar-generator"]?.description || "", icon: "🤖", credits: 5, href: `/${locale}/tools/avatar-generator`, badge: t.home?.popular || "Popular" },
-    { id: "background-remover", name: tools["background-remover"]?.name || "Background Remover", description: tools["background-remover"]?.description || "", icon: "✂️", credits: 2, href: `/${locale}/tools/background-remover`, badge: t.home?.free || "Free" },
-    { id: "watermark-remover", name: tools["watermark-remover"]?.name || "Watermark Remover", description: tools["watermark-remover"]?.description || "", icon: "🧹", credits: 3, href: `/${locale}/tools/watermark-remover`, badge: null },
-    { id: "photo-restorer", name: tools["photo-restorer"]?.name || "Photo Restorer", description: tools["photo-restorer"]?.description || "", icon: "📷", credits: 5, href: `/${locale}/tools/photo-restorer`, badge: null },
-    { id: "pdf-to-word", name: tools["pdf-to-word"]?.name || "PDF to Word", description: tools["pdf-to-word"]?.description || "", icon: "📄", credits: 1, href: `/${locale}/tools/pdf-to-word`, badge: null },
-    { id: "image-upscaler", name: tools["image-upscaler"]?.name || "Image Upscaler", description: tools["image-upscaler"]?.description || "", icon: "🔍", credits: 2, href: `/${locale}/tools/image-upscaler`, badge: t.home?.new || "New" },
-    { id: "style-transfer", name: tools["style-transfer"]?.name || "Image Style Transfer", description: tools["style-transfer"]?.description || "", icon: "🖼️", credits: 4, href: `/${locale}/tools/style-transfer`, badge: t.home?.new || "New" },
-    { id: "text-polish", name: tools["text-polish"]?.name || "Text Polish & Rewrite", description: tools["text-polish"]?.description || "", icon: "✨", credits: 3, href: `/${locale}/tools/text-polish`, badge: t.home?.new || "New" },
-  ];
+  const toolList = allTools.map((tool) => ({
+    id: tool.id,
+    name: tools[tool.id]?.name || tool.name,
+    description: tools[tool.id]?.description || tool.description,
+    icon: tool.icon,
+    credits: getCreditCost(tool.id),
+    href: `/${locale}/tools/${tool.id}`,
+    badge: tool.free ? (t.home?.free || "Free") : tool.badge || null,
+  }));
 
   const creditsLabel = (credits: number) => credits === 0 ? (t.home?.free || "Free") : `${credits} ${t.home?.credits || "credits"}`;
 
