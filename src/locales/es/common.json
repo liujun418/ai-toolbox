@@ -303,7 +303,9 @@
     "customPrompt": "Indicación personalizada (opcional)",
     "mode": "Modo",
     "upscaleFactor": "Factor de Escala",
-    "loading": "Cargando..."
+    "loading": "Cargando...",
+    "howToUse": "Cómo Usar Esta Herramienta",
+    "faq": "Preguntas Frecuentes"
   },
   "avatarGenerator": {
     "title": "Generador de Avatares con IA",

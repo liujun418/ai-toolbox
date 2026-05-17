@@ -361,7 +361,9 @@
     "customPrompt": "Custom prompt (optional)",
     "mode": "Mode",
     "upscaleFactor": "Upscale Factor",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "howToUse": "How to Use This Tool",
+    "faq": "Frequently Asked Questions"
   },
   "avatarGenerator": {
     "title": "AI Avatar Generator",

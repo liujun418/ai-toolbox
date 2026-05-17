@@ -114,6 +114,45 @@ export default function ToolLayout({
 
       {/* Tool content */}
       {children}
+
+      {/* How to Use */}
+      {tool?.howToUse && tool.howToUse.length > 0 && (() => {
+        const translatedSteps = (dict as any)?.tools?.[toolId]?.howToUse;
+        const steps: string[] = (Array.isArray(translatedSteps) && translatedSteps.length > 0) ? translatedSteps : tool.howToUse;
+        return (
+        <section className="mt-12 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-700 dark:bg-zinc-900">
+          <h2 className="mb-4 text-xl font-bold text-zinc-900 dark:text-white">
+            {getDictText(dict, "toolPage.howToUse", "How to Use This Tool")}
+          </h2>
+          <ol className="ml-5 list-decimal space-y-2">
+            {steps.map((step: string, i: number) => (
+              <li key={i} className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{step}</li>
+            ))}
+          </ol>
+        </section>
+        );
+      })()}
+
+      {/* FAQ */}
+      {tool?.faq && tool.faq.length > 0 && (() => {
+        const translatedFaq = (dict as any)?.tools?.[toolId]?.faq;
+        const items: Array<{ question: string; answer: string }> = (Array.isArray(translatedFaq) && translatedFaq.length > 0) ? translatedFaq : tool.faq;
+        return (
+        <section className="mt-8 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-700 dark:bg-zinc-900">
+          <h2 className="mb-4 text-xl font-bold text-zinc-900 dark:text-white">
+            {getDictText(dict, "toolPage.faq", "Frequently Asked Questions")}
+          </h2>
+          <div className="space-y-2">
+            {items.map((item: { question: string; answer: string }, i: number) => (
+              <details key={i} className="group rounded-xl border border-zinc-100 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-800/50">
+                <summary className="cursor-pointer text-sm font-semibold text-zinc-800 dark:text-zinc-200 marker:text-blue-500">{item.question}</summary>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+        );
+      })()}
     </div>
   );
 }
