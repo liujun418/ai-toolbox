@@ -72,7 +72,8 @@
     "pdf-to-word": { "name": "PDF to Word", "description": "Convert PDF documents to editable Word files instantly." },
     "image-upscaler": { "name": "Image Upscaler", "description": "Enhance image resolution with 2x or 4x AI super-resolution." },
     "style-transfer": { "name": "Image Style Transfer", "description": "Transform photos into oil paintings, watercolors, anime art." },
-    "text-polish": { "name": "Text Polish & Rewrite", "description": "Polish, rewrite, shorten, or expand text with AI." }
+    "text-polish": { "name": "Text Polish & Rewrite", "description": "Polish, rewrite, shorten, or expand text with AI." },
+    "face-blur": { "name": "Face Privacy Blur", "description": "Auto-detect faces and blur for privacy.", "cost": "2 credits", "cost1": "Free Trial" }
   },
   "dashboard": {
     "welcome": "Welcome back",
