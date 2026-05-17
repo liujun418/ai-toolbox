@@ -178,13 +178,14 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
         locale={locale}
         dict={dict}
       />
-      <CreditsUsedToast
-        isOpen={tool.showToast}
-        creditsUsed={tool.creditsUsed}
-        remaining={user?.credits ?? 0}
-        dict={dict}
-        onClose={() => tool.setShowToast(false)}
-      />
+      {tool.showToast && (
+        <CreditsUsedToast
+          creditsUsed={tool.creditsUsed}
+          remaining={user?.credits ?? 0}
+          dict={dict}
+          onClose={() => tool.setShowToast(false)}
+        />
+      )}
 
       <div className="space-y-6">
         {/* Upload area */}
