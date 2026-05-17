@@ -181,8 +181,7 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
       <CreditsUsedToast
         isOpen={tool.showToast}
         creditsUsed={tool.creditsUsed}
-        remainingCredits={user?.credits ?? 0}
-        locale={locale}
+        remaining={user?.credits ?? 0}
         dict={dict}
         onClose={() => tool.setShowToast(false)}
       />
