@@ -181,6 +181,11 @@ interface UploadResult {
   credits_used: number;
 }
 
+interface DetectFacesResult {
+  faces: Array<{ x: number; y: number; w: number; h: number }>;
+  face_count: number;
+}
+
 async function uploadFile(
   toolId: string,
   file: File,
@@ -226,9 +231,31 @@ async function createCheckoutSession(priceId: string): Promise<CheckoutResult> {
   });
 }
 
+async function detectFaces(file: File): Promise<DetectFacesResult> {
+  const token = getToken();
+  if (!token) throw new Error("Not authenticated");
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const res = await fetch(`${API_BASE}/api/upload/detect-faces`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+    body: formData,
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: "Detection failed" }));
+    throw new Error(err.detail || err.message || "Detection failed");
+  }
+
+  return res.json();
+}
+
 export const toolsApi = {
   uploadFile,
   createCheckoutSession,
+  detectFaces,
   API_BASE,
 };
 
