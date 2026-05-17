@@ -80,7 +80,7 @@ export default function TextPolishClient({ locale = "en" as Locale, dict }: { lo
       <div className="mb-8">
         <div className="flex flex-wrap items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
           <Link href={`/${locale}`} className="hover:text-blue-600">{tp.home || "Home"}</Link><span>/</span><span>{t.title || "Text Polish"}</span>
-          <Link href={`/${locale}`} className="ml-auto text-xs text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
+          <Link href={`/${locale}`} className="ml-auto text-sm text-blue-600 hover:text-blue-500">← {tp.startOver || "Back to Tools"}</Link>
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">✨ {t.title || "Text Polish & Rewrite"}</h1>
         <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{t.description || "Polish, rewrite, shorten, or expand your text with AI."}</p>

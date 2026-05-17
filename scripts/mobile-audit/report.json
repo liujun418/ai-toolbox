@@ -1,0 +1,198 @@
+[
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "homepage-en: 10 types ([icon](144x36), [icon](40x40), [icon](36x36), Tools(256x36), Pricing(256x36), About(256x36), Free Tools →(256x36), Log in(256x38), Sign up(256x36), English(86x36))",
+    "page": "homepage-en",
+    "viewport": "mobile"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "homepage-en: 5 types ([icon](144x36), Tools(52x28), Pricing(59x28), About(53x28), [icon](32x32))",
+    "page": "homepage-en",
+    "viewport": "tablet"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "homepage-ar-rtl: 10 types ([icon](144x36), [icon](40x40), [icon](36x36), الأدوات(256x36), الأسعار(256x36), حول(256x36), أدوات مجانية →(256x36), تسجيل الدخول(256x38), إنشاء حساب(256x36), العربية(70x36))",
+    "page": "homepage-ar-rtl",
+    "viewport": "mobile"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "homepage-ar-rtl: 5 types ([icon](144x36), الأدوات(49x28), الأسعار(50x28), حول(37x28), [icon](32x32))",
+    "page": "homepage-ar-rtl",
+    "viewport": "tablet"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "pricing: 11 types ([icon](144x36), [icon](40x40), [icon](36x36), Tools(256x36), Pricing(256x36), About(256x36), Free Tools →(256x36), Log in(256x38), Sign up(256x36), English(86x36), Get Started(293x42))",
+    "page": "pricing",
+    "viewport": "mobile"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "pricing: 8 types ([icon](144x36), Tools(49x28), Pricing(63x28), About(53x28), [icon](32x32), Get Started(179x42), Subscribe(177x40), Subscribe(179x42))",
+    "page": "pricing",
+    "viewport": "tablet"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "login: 19 types ([icon](144x36), [icon](40x40), [icon](36x36), Tools(256x36), Pricing(256x36), About(256x36), Free Tools →(256x36), Log in(256x38), Sign up(256x36), English(86x36), Forgot password?(96x16), Log in(343x40), Sign up(47x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20))",
+    "page": "login",
+    "viewport": "mobile"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "login: 15 types ([icon](144x36), Tools(49x28), Pricing(59x28), About(53x28), [icon](32x32), Forgot password?(96x16), Log in(400x40), Sign up(47x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20), jzerov@live.com(88x14))",
+    "page": "login",
+    "viewport": "tablet"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "signup: 19 types ([icon](144x36), [icon](40x40), [icon](36x36), Tools(256x36), Pricing(256x36), About(256x36), Free Tools →(256x36), Log in(256x38), Sign up(256x36), English(86x36), Create account(343x40), Log in(38x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20), jzerov@live.com(88x14))",
+    "page": "signup",
+    "viewport": "mobile"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "signup: 14 types ([icon](144x36), Tools(49x28), Pricing(59x28), About(53x28), [icon](32x32), Create account(400x40), Log in(38x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20), jzerov@live.com(88x14))",
+    "page": "signup",
+    "viewport": "tablet"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "ai-image-gen: 18 types ([icon](144x36), [icon](40x40), [icon](36x36), Tools(256x36), Pricing(256x36), About(256x36), Free Tools →(256x36), Log in(256x38), Sign up(256x36), English(86x36), Home(37x20), ← Start Over(70x16), LowFast & affordable(293x38), MediumGood balance(293x38), HighBest detail(293x38), Square (1:1)(293x38), Landscape (3:2)(293x38), Portrait (2:3)(293x38))",
+    "page": "ai-image-gen",
+    "viewport": "mobile"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "ai-image-gen: 20 types ([icon](144x36), Tools(49x28), Pricing(59x28), About(53x28), [icon](32x32), Home(37x20), ← Start Over(70x16), LowFast & affordable(323x38), MediumGood balance(323x38), HighBest detail(323x38), Square (1:1)(323x38), Landscape (3:2)(323x38), Portrait (2:3)(323x38), PNGPNG — lossless, larger(323x38), WEBPWebP — modern, small (323x38), JPEGJPEG — universal, com(323x38), 1(75x38), 2(75x38), 3(75x38), 4(75x38))",
+    "page": "ai-image-gen",
+    "viewport": "tablet"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "bg-remover: 18 types ([icon](144x36), [icon](40x40), [icon](36x36), Tools(256x36), Pricing(256x36), About(256x36), Free Tools →(256x36), Log in(256x38), Sign up(256x36), English(86x36), Home(37x20), ← Start Over(70x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20))",
+    "page": "bg-remover",
+    "viewport": "mobile"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "bg-remover: 14 types ([icon](144x36), Tools(49x28), Pricing(59x28), About(53x28), [icon](32x32), Home(37x20), ← Start Over(70x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20), jzerov@live.com(88x14))",
+    "page": "bg-remover",
+    "viewport": "tablet"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "avatar-gen: 19 types ([icon](144x36), [icon](40x40), [icon](36x36), Tools(256x36), Pricing(256x36), About(256x36), Free Tools →(256x36), Log in(256x38), Sign up(256x36), English(86x36), Home(37x20), ← Start Over(70x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20), jzerov@live.com(88x14))",
+    "page": "avatar-gen",
+    "viewport": "mobile"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "avatar-gen: 14 types ([icon](144x36), Tools(49x28), Pricing(59x28), About(53x28), [icon](32x32), Home(37x20), ← Start Over(70x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20), jzerov@live.com(88x14))",
+    "page": "avatar-gen",
+    "viewport": "tablet"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "photo-restorer: 19 types ([icon](144x36), [icon](40x40), [icon](36x36), Tools(256x36), Pricing(256x36), About(256x36), Free Tools →(256x36), Log in(256x38), Sign up(256x36), English(86x36), Home(37x20), ← Start Over(70x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20), jzerov@live.com(88x14))",
+    "page": "photo-restorer",
+    "viewport": "mobile"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "photo-restorer: 14 types ([icon](144x36), Tools(49x28), Pricing(59x28), About(53x28), [icon](32x32), Home(37x20), ← Start Over(70x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20), jzerov@live.com(88x14))",
+    "page": "photo-restorer",
+    "viewport": "tablet"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "image-upscaler: 12 types ([icon](144x36), [icon](40x40), [icon](36x36), Tools(256x36), Pricing(256x36), About(256x36), Free Tools →(256x36), Log in(256x38), Sign up(256x36), English(86x36), Home(37x20), ← Start Over(70x16))",
+    "page": "image-upscaler",
+    "viewport": "mobile"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "image-upscaler: 13 types ([icon](144x36), Tools(49x28), Pricing(59x28), About(53x28), [icon](32x32), Home(37x20), ← Start Over(70x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20))",
+    "page": "image-upscaler",
+    "viewport": "tablet"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "style-transfer: 12 types ([icon](144x36), [icon](40x40), [icon](36x36), Tools(256x36), Pricing(256x36), About(256x36), Free Tools →(256x36), Log in(256x38), Sign up(256x36), English(86x36), Home(37x20), ← Start Over(70x16))",
+    "page": "style-transfer",
+    "viewport": "mobile"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "style-transfer: 13 types ([icon](144x36), Tools(49x28), Pricing(59x28), About(53x28), [icon](32x32), Home(37x20), ← Start Over(70x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20))",
+    "page": "style-transfer",
+    "viewport": "tablet"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "text-polish: 12 types ([icon](144x36), [icon](40x40), [icon](36x36), Tools(256x36), Pricing(256x36), About(256x36), Free Tools →(256x36), Log in(256x38), Sign up(256x36), English(86x36), Home(37x20), ← Start Over(70x16))",
+    "page": "text-polish",
+    "viewport": "mobile"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "text-polish: 9 types ([icon](144x36), Tools(49x28), Pricing(59x28), About(53x28), [icon](32x32), Home(37x20), ← Start Over(70x16), Polish (3 credits)(161x42), Clear(83x42))",
+    "page": "text-polish",
+    "viewport": "tablet"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "pdf-to-word: 19 types ([icon](144x36), [icon](40x40), [icon](36x36), Tools(256x36), Pricing(256x36), About(256x36), Free Tools →(256x36), Log in(256x38), Sign up(256x36), English(86x36), Home(37x20), ← Start Over(70x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20), jzerov@live.com(88x14))",
+    "page": "pdf-to-word",
+    "viewport": "mobile"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "pdf-to-word: 14 types ([icon](144x36), Tools(49x28), Pricing(59x28), About(53x28), [icon](32x32), Home(37x20), ← Start Over(70x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20), jzerov@live.com(88x14))",
+    "page": "pdf-to-word",
+    "viewport": "tablet"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "watermark-remover: 19 types ([icon](144x36), [icon](40x40), [icon](36x36), Tools(256x36), Pricing(256x36), About(256x36), Free Tools →(256x36), Log in(256x38), Sign up(256x36), English(86x36), Home(37x20), ← Start Over(70x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20), jzerov@live.com(88x14))",
+    "page": "watermark-remover",
+    "viewport": "mobile"
+  },
+  {
+    "severity": "MEDIUM",
+    "type": "Small Touch Target < 44px",
+    "detail": "watermark-remover: 14 types ([icon](144x36), Tools(49x28), Pricing(59x28), About(53x28), [icon](32x32), Home(37x20), ← Start Over(70x16), Free Tools →(83x20), Pricing(43x20), About(37x20), Contact(48x20), Privacy(46x20), Terms(38x20), jzerov@live.com(88x14))",
+    "page": "watermark-remover",
+    "viewport": "tablet"
+  }
+]
