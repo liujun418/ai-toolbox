@@ -131,16 +131,16 @@ export default function TextToSpeechClient({ locale = "en" as Locale, dict }: { 
               {t.resultLabel || "Your Audio"}
             </label>
             <audio controls className="w-full" key={tool.resultUrl}>
-              <source src={tool.resultUrl} type="audio/wav" />
+              <source src={tool.resultUrl} type="audio/mpeg" />
               Your browser does not support the audio element.
             </audio>
             <div className="flex items-center gap-3">
               <a
                 href={tool.resultUrl}
-                download={`speech-${Date.now()}.wav`}
+                download={`speech-${Date.now()}.mp3`}
                 className="rounded-lg bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700"
               >
-                ⬇ {t.download || "Download WAV"}
+                ⬇ {t.download || "Download MP3"}
               </a>
               <button
                 onClick={tool.reset}

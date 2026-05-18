@@ -270,9 +270,9 @@ export const tools: Tool[] = [
       "Play the audio preview or download the WAV file.",
     ],
     faq: [
-      { question: "What languages are supported?", answer: "13 languages with native voice quality: English, Spanish, French, German, Italian, Japanese, Korean, Polish, Portuguese, Russian, Turkish, Chinese, and Hindi. Arabic, Dutch, Czech, and Hungarian are also supported via auto-detection." },
-      { question: "How long can the text be?", answer: "Up to 2000 characters per generation. For longer texts, break them into smaller segments. Bark processes 13-14 seconds of audio per generation." },
-      { question: "What format is the audio?", answer: "WAV format — universal compatibility with all media players and editing software." },
+      { question: "What languages are supported?", answer: "40+ languages including English, Spanish, Arabic, French, German, Italian, Japanese, Chinese, Korean, Portuguese, Russian, Turkish, Polish, Dutch, Czech, Hindi, and Hungarian." },
+      { question: "How long can the text be?", answer: "Up to 2000 characters per generation. For longer texts, break them into smaller segments." },
+      { question: "What format is the audio?", answer: "MP3 format — universal compatibility with all media players, phones, and editing software." },
     ],
     nameTranslations: { es: "Texto a Voz IA", ar: "النص إلى كلام" },
     descriptionTranslations: { es: "Convierte texto en voz natural con IA.", ar: "حول النص إلى كلام طبيعي بالذكاء الاصطناعي." },
