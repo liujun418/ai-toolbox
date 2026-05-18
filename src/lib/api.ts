@@ -204,7 +204,7 @@ interface DetectFacesResult {
 
 async function uploadFile(
   toolId: string,
-  file?: File,
+  file?: File | null,
   prompt?: string,
   mask?: Blob,
   style?: string,
