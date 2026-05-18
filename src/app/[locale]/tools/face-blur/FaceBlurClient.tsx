@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import ToolLayout from "@/components/ToolLayout";
 import { useAuth } from "@/lib/auth-context";
+import { ToolSkeleton } from "@/components/LoadingSkeleton";
 import { CreditConfirmDialog, CreditsUsedToast, LoginPromptDialog } from "@/components/CreditGuard";
 import { getCreditCost } from "@/lib/creditCosts";
 import { toolsApi, authApi } from "@/lib/api";
@@ -129,7 +130,7 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
     }
   }, [detectedFaces, manualRegions, drawing, drawRect, file]);
 
-  if (loading) return null;
+  if (loading) return <ToolSkeleton />;
 
   // ── Coordinate helpers ──
   const getImageCoords = (clientX: number, clientY: number) => {

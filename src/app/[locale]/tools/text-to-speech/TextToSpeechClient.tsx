@@ -4,6 +4,7 @@ import { useState } from "react";
 import ToolLayout from "@/components/ToolLayout";
 import { useAuth } from "@/lib/auth-context";
 import { useTool } from "@/hooks/useTool";
+import { ToolSkeleton } from "@/components/LoadingSkeleton";
 import { CreditConfirmDialog, CreditsUsedToast, LoginPromptDialog } from "@/components/CreditGuard";
 import { getCreditCost } from "@/lib/creditCosts";
 import type { Locale } from "@/lib/i18n";
@@ -50,7 +51,7 @@ export default function TextToSpeechClient({ locale = "en" as Locale, dict }: { 
     dict,
   });
 
-  if (loading) return null;
+  if (loading) return <ToolSkeleton />;
 
   return (
     <ToolLayout toolId={TOOL_ID} locale={locale} dict={dict}>
