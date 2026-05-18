@@ -11,6 +11,15 @@ import type { Locale } from "@/lib/i18n";
 
 const TOOL_ID = "text-to-speech";
 
+const VOICES = [
+  { id: "female", icon: "👩", label: "Female", desc: "Warm & natural" },
+  { id: "male", icon: "👨", label: "Male", desc: "Deep & calm" },
+  { id: "child", icon: "👶", label: "Child", desc: "Young & innocent" },
+  { id: "cute", icon: "🌸", label: "Cute", desc: "Sweet & lively" },
+  { id: "serious", icon: "🎙️", label: "Serious", desc: "Authoritative & bold" },
+  { id: "formal", icon: "💼", label: "Formal", desc: "Professional & clear" },
+];
+
 const LANGUAGES = [
   { id: "en", label: "English" },
   { id: "es", label: "Español" },
@@ -37,9 +46,10 @@ export default function TextToSpeechClient({ locale = "en" as Locale, dict }: { 
 
   const [text, setText] = useState("");
   const [language, setLanguage] = useState("en");
+  const [voiceCategory, setVoiceCategory] = useState("female");
 
   const buildPrompt = () => text.trim() || undefined;
-  const getStyle = () => language;
+  const getStyle = () => voiceCategory;
 
   const tool = useTool({
     toolId: TOOL_ID,
@@ -85,6 +95,30 @@ export default function TextToSpeechClient({ locale = "en" as Locale, dict }: { 
             className="w-full rounded-xl border border-zinc-300 px-4 py-3 text-base text-zinc-800 placeholder:text-zinc-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:placeholder:text-zinc-500"
           />
           <p className="mt-1 text-xs text-zinc-400">{text.length}/2000</p>
+        </div>
+
+        {/* Voice selector */}
+        <div>
+          <label className="mb-2 block text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+            {t.voiceLabel || "Voice"}
+          </label>
+          <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
+            {VOICES.map((v) => (
+              <button
+                key={v.id}
+                onClick={() => setVoiceCategory(v.id)}
+                className={`flex flex-col items-center rounded-xl border px-3 py-3 text-center transition-all ${
+                  voiceCategory === v.id
+                    ? "border-blue-600 bg-blue-50 shadow-sm dark:border-blue-500 dark:bg-blue-900/20"
+                    : "border-zinc-200 bg-white hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-zinc-600"
+                }`}
+              >
+                <span className="text-2xl">{v.icon}</span>
+                <span className="mt-1 text-sm font-medium text-zinc-700 dark:text-zinc-200">{v.label}</span>
+                <span className="mt-0.5 text-xs text-zinc-400">{v.desc}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Language selector */}
