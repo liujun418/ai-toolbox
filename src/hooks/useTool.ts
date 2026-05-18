@@ -174,7 +174,7 @@ export function useTool(options: UseToolOptions): UseToolReturn {
         setErrorMsg(msg);
       }
     }
-  }, [file, toolId, creditCost, buildPrompt, getMask, onSuccess, user, updateUser]);
+  }, [file, toolId, creditCost, buildPrompt, getStyle, getBgColor, getMask, onSuccess, user, updateUser, options.noFileRequired]);
 
   const reset = useCallback(() => {
     if (preview) URL.revokeObjectURL(preview);
