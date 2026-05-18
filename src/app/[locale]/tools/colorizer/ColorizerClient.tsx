@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useState, useCallback } from "react";
 import ToolLayout from "@/components/ToolLayout";
 import { useAuth } from "@/lib/auth-context";
 import { useTool } from "@/hooks/useTool";
@@ -11,14 +11,29 @@ import type { Locale } from "@/lib/i18n";
 
 const TOOL_ID = "colorizer";
 
+const STYLES = [
+  { id: "vibrant", label: "Vibrant", desc: "Rich, saturated colors" },
+  { id: "portrait", label: "Portrait", desc: "Natural skin tones" },
+  { id: "natural", label: "Natural", desc: "Realistic, balanced" },
+  { id: "classic", label: "Classic", desc: "Vintage film look" },
+];
+
 export default function ColorizerClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
   const { user, loading } = useAuth();
   const t = ((dict as any)?.tools?.[TOOL_ID] as Record<string, string>) || {};
   const tp = (dict as any)?.toolPage || {};
 
+  const [description, setDescription] = useState("");
+  const [colorStyle, setColorStyle] = useState("natural");
+
+  const buildPrompt = () => description.trim() || undefined;
+  const getStyle = () => colorStyle;
+
   const tool = useTool({
     toolId: TOOL_ID,
     creditCost: getCreditCost(TOOL_ID),
+    buildPrompt,
+    getStyle,
     locale,
     dict,
   });
@@ -69,7 +84,7 @@ export default function ColorizerClient({ locale = "en" as Locale, dict }: { loc
           <div className="py-16 text-center">
             <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
             <p className="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">{t.generating || "Colorizing your photo..."}</p>
-            <p className="mt-1 text-xs text-zinc-400">Colorization takes ~5-10 seconds</p>
+            <p className="mt-1 text-xs text-zinc-400">Colorization takes ~10-20 seconds</p>
           </div>
         ) : tool.status === "error" ? (
           <div className="py-8 text-center">
@@ -82,7 +97,41 @@ export default function ColorizerClient({ locale = "en" as Locale, dict }: { loc
         ) : (
           <>
             <img src={tool.preview} alt="Preview" className="max-h-[400px] w-full rounded-xl border object-contain" />
-            <div className="mt-4 flex gap-3">
+
+            {/* Style selector */}
+            <div className="mt-4">
+              <p className="mb-2 text-sm font-semibold text-zinc-700 dark:text-zinc-200">{t.styleLabel || "Color Style"}</p>
+              <div className="flex flex-wrap gap-2">
+                {STYLES.map((s) => (
+                  <button key={s.id} onClick={() => setColorStyle(s.id)}
+                    className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                      colorStyle === s.id
+                        ? "bg-blue-600 text-white shadow-md"
+                        : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+                    }`}
+                    title={s.desc}>
+                    {s.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Optional description */}
+            <div>
+              <label className="mb-2 block text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+                {t.descLabel || "Description (optional)"}
+              </label>
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder={t.descPlaceholder || "e.g., blue sky, green trees, red brick building, warm sunlight..."}
+                rows={3}
+                maxLength={500}
+                className="w-full rounded-xl border border-zinc-300 px-4 py-3 text-base text-zinc-800 placeholder:text-zinc-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:placeholder:text-zinc-500"
+              />
+            </div>
+
+            <div className="flex gap-3">
               <button onClick={handleProcess}
                 className="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-blue-700">
                 {t.button || `Colorize Photo (${getCreditCost(TOOL_ID)} credits)`}

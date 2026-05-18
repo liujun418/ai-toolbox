@@ -319,7 +319,8 @@ export const tools: Tool[] = [
     ],
     faq: [
       { question: "What types of photos work best?", answer: "Clear, well-lit black and white photos produce the best results. Portraits, landscapes, and historical photos all colorize well." },
-      { question: "How is this different from Photo Restorer?", answer: "Photo Restorer repairs damage like scratches and fading. Colorizer is specialized for adding realistic color to black and white images using DeOldify AI." },
+      { question: "How is this different from Photo Restorer?", answer: "Photo Restorer repairs damage like scratches and fading. Colorizer uses FLUX Kontext Pro — a state-of-the-art AI that adds realistic color while preserving every detail of the original photo." },
+      { question: "How do I get the best colorization results?", answer: "Choose a style that matches your photo. Add an optional description like 'blue sky, green grass, red car' to guide the AI. More specific descriptions produce more accurate colors." },
       { question: "Can it colorize any black and white image?", answer: "Yes — old photos, historical images, artistic B&W photos, and even screenshots. The AI understands context to assign plausible colors." },
     ],
     nameTranslations: { es: "Colorizador de Fotos B&N", ar: "تلوين الصور بالأبيض والأسود" },
