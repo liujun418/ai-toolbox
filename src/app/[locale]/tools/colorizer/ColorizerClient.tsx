@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useCallback } from "react";
 import ToolLayout from "@/components/ToolLayout";
 import { useAuth } from "@/lib/auth-context";
 import { useTool } from "@/hooks/useTool";
@@ -16,19 +16,12 @@ export default function ColorizerClient({ locale = "en" as Locale, dict }: { loc
   const t = ((dict as any)?.tools?.[TOOL_ID] as Record<string, string>) || {};
   const tp = (dict as any)?.toolPage || {};
 
-  const [showOriginal, setShowOriginal] = useState(true);
-
   const tool = useTool({
     toolId: TOOL_ID,
     creditCost: getCreditCost(TOOL_ID),
     locale,
     dict,
   });
-
-  const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    tool.handleFileChange(e);
-    setShowOriginal(true);
-  }, [tool.handleFileChange]);
 
   const handleProcess = useCallback(() => {
     tool.handleUpload({});
@@ -51,22 +44,19 @@ export default function ColorizerClient({ locale = "en" as Locale, dict }: { loc
             <svg className="h-12 w-12 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" /></svg>
             <p className="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">{tp.uploadPhoto || "Upload a black & white photo"}</p>
             <p className="mt-1 text-xs text-zinc-400">{tp.supportedFormats || "PNG, JPG, WebP — max 10MB"}</p>
-            <input ref={tool.fileRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
+            <input ref={tool.fileRef} type="file" accept="image/*" onChange={tool.handleFileChange} className="hidden" />
           </div>
         ) : tool.status === "done" && tool.resultUrl ? (
           <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <button onClick={() => setShowOriginal(true)}
-                className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${showOriginal ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900" : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400"}`}>
-                {t.before || "Before"}
-              </button>
-              <button onClick={() => setShowOriginal(false)}
-                className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${!showOriginal ? "bg-blue-600 text-white" : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400"}`}>
-                {t.after || "After"}
-              </button>
-            </div>
-            <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700">
-              <img src={showOriginal ? tool.preview : tool.resultUrl} alt={showOriginal ? "Original" : "Colorized"} className="max-h-96 w-full object-contain" />
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div>
+                <p className="mb-2 text-sm font-medium text-zinc-500">{tp.original || "Before"}</p>
+                <img src={tool.preview} alt="Original" className="w-full rounded-xl border object-contain" />
+              </div>
+              <div>
+                <p className="mb-2 text-sm font-medium text-zinc-500">{tp.result || "After"}</p>
+                <img src={tool.resultUrl} alt="Colorized" className="w-full rounded-xl border object-contain" />
+              </div>
             </div>
             <div className="flex gap-3">
               <a href={tool.resultUrl} download target="_blank" rel="noopener noreferrer"
