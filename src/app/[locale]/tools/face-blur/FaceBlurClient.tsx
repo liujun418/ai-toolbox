@@ -18,13 +18,14 @@ const BLUR_STYLES = [
   { id: "emoji", label: "Cute Icon", icon: "😊" },
 ];
 
+const TWEMOJI_BASE = "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72";
 const EMOJI_ICONS = [
-  { id: "smile", icon: "😊" },
-  { id: "mask", icon: "😷" },
-  { id: "cat", icon: "🐱" },
-  { id: "dog", icon: "🐶" },
-  { id: "bear", icon: "🐻" },
-  { id: "star", icon: "⭐" },
+  { id: "smile", src: `${TWEMOJI_BASE}/1f60a.png`, alt: "😊" },
+  { id: "mask",  src: `${TWEMOJI_BASE}/1f637.png`, alt: "😷" },
+  { id: "cat",   src: `${TWEMOJI_BASE}/1f431.png`, alt: "🐱" },
+  { id: "dog",   src: `${TWEMOJI_BASE}/1f436.png`, alt: "🐶" },
+  { id: "bear",  src: `${TWEMOJI_BASE}/1f43b.png`, alt: "🐻" },
+  { id: "star",  src: `${TWEMOJI_BASE}/2b50.png`, alt: "⭐" },
 ];
 
 type FaceRegion = { x: number; y: number; w: number; h: number };
@@ -453,11 +454,11 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
                         <button
                           key={e.id}
                           onClick={() => setEmojiType(e.id)}
-                          className={`rounded-lg p-2 text-xl transition-all ${
+                          className={`rounded-lg p-1.5 transition-all ${
                             emojiType === e.id ? "scale-125 bg-white shadow ring-2 ring-blue-400 dark:bg-zinc-700" : "opacity-60 hover:opacity-100"
                           }`}
                         >
-                          {e.icon}
+                          <img src={e.src} alt={e.alt} className="h-8 w-8" />
                         </button>
                       ))}
                     </div>
