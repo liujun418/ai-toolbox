@@ -36,7 +36,7 @@ export default async function HomePage({
       <HeroPdfDemo locale={locale} dict={dict} />
 
       {/* Tools Grid */}
-      <section>
+      <section className="mt-12 sm:mt-16">
         <h2 className="mb-6 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
           {home.allTools || "All Tools"}
         </h2>
@@ -105,13 +105,13 @@ export default async function HomePage({
           {home.pricingTitle || "Simple, Transparent Pricing"}
         </h2>
         <p className="mb-8 text-zinc-500 dark:text-zinc-400">
-          {home.pricingSubtitle || "Start free. Upgrade when you need more. No hidden fees."}
+          {home.pricingSubtitle || "Start free. Pay-as-you-go. No subscription lock-in."}
         </p>
         <div className="grid gap-4 sm:grid-cols-3">
           {[
-            { name: "Free", price: "$0", desc: "5 credits/month", cta: home.getFreeCredits || "Get Started", href: `/${locale}/signup`, popular: false },
-            { name: "Basic", price: "$9.99", desc: "100 credits", cta: home.viewPricing || "View Plans", href: `/${locale}/pricing`, popular: true },
-            { name: "Pro", price: "$24.99", desc: "500 credits", cta: home.viewPricing || "View Plans", href: `/${locale}/pricing`, popular: false },
+            { name: "Free", price: "$0", desc: "5 free credits", cta: home.getFreeCredits || "Get Started", href: `/${locale}/signup`, popular: false },
+            { name: "Standard", price: "$10", desc: "50 credits", cta: home.viewPricing || "View Plans", href: `/${locale}/pricing`, popular: true },
+            { name: "Value", price: "$25", desc: "200 credits", cta: home.viewPricing || "View Plans", href: `/${locale}/pricing`, popular: false },
           ].map((plan) => (
             <div key={plan.name} className={`rounded-2xl ${plan.popular ? "border-2 border-blue-600 bg-white p-6 shadow-sm dark:border-blue-500 dark:bg-zinc-900" : "border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900"}`}>
               {plan.popular && <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">{t.home?.popular || "Popular"}</span>}
