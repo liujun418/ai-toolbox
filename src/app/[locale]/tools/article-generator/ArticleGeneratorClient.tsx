@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import ToolLayout from "@/components/ToolLayout";
 import { useAuth } from "@/lib/auth-context";
 import { useTool } from "@/hooks/useTool";
@@ -41,17 +41,7 @@ export default function ArticleGeneratorClient({ locale = "en" as Locale, dict }
     dict,
   });
 
-  const [content, setContent] = useState<string | null>(null);
-  useEffect(() => {
-    if (tool.resultUrl) {
-      fetch(tool.resultUrl)
-        .then((r) => r.text())
-        .then(setContent)
-        .catch(() => setContent("Failed to load article."));
-    } else {
-      setContent(null);
-    }
-  }, [tool.resultUrl]);
+  const content = tool.resultContent;
 
   if (loading) return null;
 

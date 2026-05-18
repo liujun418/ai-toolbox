@@ -31,6 +31,7 @@ export interface UseToolReturn {
   preview: string | null;
   status: "idle" | "uploading" | "done" | "error";
   resultUrl: string | null;
+  resultContent: string | null;
   errorMsg: string;
   creditsUsed: number;
   showConfirm: boolean;
@@ -55,6 +56,7 @@ export function useTool(options: UseToolOptions): UseToolReturn {
   const [preview, setPreview] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "uploading" | "done" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [resultContent, setResultContent] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
   const [fileError, setFileError] = useState<string | null>(null);
   const [creditsUsed, setCreditsUsed] = useState(0);
@@ -144,6 +146,7 @@ export function useTool(options: UseToolOptions): UseToolReturn {
 
       setStatus("done");
       setResultUrl(data.output_file_url);
+      setResultContent(data.result_content ?? null);
       const cost = data.credits_used || creditCost;
       setCreditsUsed(cost);
 
@@ -178,6 +181,7 @@ export function useTool(options: UseToolOptions): UseToolReturn {
     setPreview(null);
     setFile(null);
     setResultUrl(null);
+    setResultContent(null);
     setStatus("idle");
     setErrorMsg("");
     setFileError(null);
@@ -191,6 +195,7 @@ export function useTool(options: UseToolOptions): UseToolReturn {
     preview,
     status,
     resultUrl,
+    resultContent,
     errorMsg,
     creditsUsed,
     showConfirm,
