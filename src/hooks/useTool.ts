@@ -19,6 +19,8 @@ export interface UseToolOptions {
   getBgColor?: (options: Record<string, unknown>) => string | undefined;
   /** For tools that use canvas masks (background-remover, watermark-remover). */
   getMask?: () => Promise<Blob | null>;
+  /** Set true for tools that don't require file upload (e.g., text-to-speech). */
+  noFileRequired?: boolean;
   onSuccess?: (resultUrl: string) => void;
   locale: Locale;
   dict?: Record<string, unknown>;
@@ -94,12 +96,12 @@ export function useTool(options: UseToolOptions): UseToolReturn {
   }, []);
 
   const handleUploadClick = useCallback(() => {
-    if (!file) return;
+    if (!options.noFileRequired && !file) return;
     setShowConfirm(true);
-  }, [file]);
+  }, [file, options.noFileRequired]);
 
   const handleUpload = useCallback(async (promptOptions: Record<string, unknown>) => {
-    if (!file) return;
+    if (!options.noFileRequired && !file) return;
     // Not authenticated: show login prompt
     if (!user) {
       setShowConfirm(true);
@@ -127,7 +129,7 @@ export function useTool(options: UseToolOptions): UseToolReturn {
         mask = await getMask() ?? undefined;
       }
 
-      const data = await toolsApi.uploadFile(toolId, file, prompt, mask, style, bgColor);
+      const data = await toolsApi.uploadFile(toolId, options.noFileRequired ? undefined : file, prompt, mask, style, bgColor);
 
       if (!data.output_file_url) {
         setStatus("error");

@@ -204,7 +204,7 @@ interface DetectFacesResult {
 
 async function uploadFile(
   toolId: string,
-  file: File,
+  file?: File,
   prompt?: string,
   mask?: Blob,
   style?: string,
@@ -214,7 +214,7 @@ async function uploadFile(
   if (!token) throw new Error("Not authenticated");
 
   const formData = new FormData();
-  formData.append("file", file);
+  if (file) formData.append("file", file);
   if (prompt) formData.append("prompt", prompt);
   if (style) formData.append("style", style);
   if (bgColor) formData.append("bg_color", bgColor);

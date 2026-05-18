@@ -14,6 +14,10 @@ export const CREDIT_COSTS: Record<string, number> = {
   "text-polish": 3,
   "face-blur": 2, // 2 for normal, 4 for HD/multi-face (dynamic in backend)
   "article-generator": 3,
+  "text-to-speech": 3,
+  "image-description": 2,
+  "colorizer": 2,
+  "object-remover": 3,
 } as const;
 
 export function getCreditCost(toolId: string): number {
