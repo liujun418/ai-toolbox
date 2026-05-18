@@ -5,9 +5,11 @@ const BASE = "https://ai.toolboxonline.club";
 const LOCALES = ["en", "es", "ar"];
 
 const tools = [
-  "background-remover", "watermark-remover", "photo-restorer",
-  "avatar-generator", "pdf-to-word", "image-upscaler",
-  "style-transfer", "text-polish",
+  "ai-image-generator", "avatar-generator", "background-remover",
+  "watermark-remover", "photo-restorer", "pdf-to-word",
+  "image-upscaler", "style-transfer", "text-polish",
+  "face-blur", "article-generator",
+  "text-to-speech", "image-description", "colorizer", "object-remover",
 ];
 
 const staticPages = [
