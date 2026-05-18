@@ -68,7 +68,7 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
     if (!canvas || !img || !file) return;
     const rect = img.getBoundingClientRect();
     const containerRect = containerRef.current?.getBoundingClientRect();
-    if (!containerRect) return;
+    if (!containerRect || !img.naturalWidth || !img.naturalHeight) return;
     canvas.style.left = (rect.left - containerRect.left) + "px";
     canvas.style.top = (rect.top - containerRect.top) + "px";
     canvas.width = rect.width;
@@ -77,11 +77,27 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
     if (!ctx) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // Account for object-fit:contain letterboxing
+    const naturalRatio = img.naturalWidth / img.naturalHeight;
+    const displayRatio = rect.width / rect.height;
+    let imgW: number, imgH: number, offX: number, offY: number;
+    if (naturalRatio > displayRatio) {
+      imgW = rect.width;
+      imgH = rect.width / naturalRatio;
+      offX = 0;
+      offY = (rect.height - imgH) / 2;
+    } else {
+      imgW = rect.height * naturalRatio;
+      imgH = rect.height;
+      offX = (rect.width - imgW) / 2;
+      offY = 0;
+    }
+
     const drawPixelRegion = (r: FaceRegion, stroke: string, fill: string) => {
-      const rx = (r.x / img.naturalWidth) * rect.width;
-      const ry = (r.y / img.naturalHeight) * rect.height;
-      const rw = (r.w / img.naturalWidth) * rect.width;
-      const rh = (r.h / img.naturalHeight) * rect.height;
+      const rx = (r.x / img.naturalWidth) * imgW + offX;
+      const ry = (r.y / img.naturalHeight) * imgH + offY;
+      const rw = (r.w / img.naturalWidth) * imgW;
+      const rh = (r.h / img.naturalHeight) * imgH;
       ctx.fillStyle = fill;
       ctx.fillRect(rx, ry, rw, rh);
       ctx.strokeStyle = stroke;
@@ -91,10 +107,10 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
 
     // Detected faces: normalized (0-1) from backend
     for (const r of detectedFaces) {
-      const rx = r.x * rect.width;
-      const ry = r.y * rect.height;
-      const rw = r.w * rect.width;
-      const rh = r.h * rect.height;
+      const rx = r.x * imgW + offX;
+      const ry = r.y * imgH + offY;
+      const rw = r.w * imgW;
+      const rh = r.h * imgH;
       ctx.fillStyle = "rgba(34,197,94,0.15)";
       ctx.fillRect(rx, ry, rw, rh);
       ctx.strokeStyle = "#22c55e";
