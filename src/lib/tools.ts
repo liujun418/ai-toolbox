@@ -294,7 +294,7 @@ export const tools: Tool[] = [
       "Get an ALT text for SEO and a detailed description of the image.",
     ],
     faq: [
-      { question: "What does the AI analyze?", answer: "It identifies objects, people, colors, composition, setting, mood, text in images, and more to generate accurate descriptions." },
+      { question: "What does the AI analyze?", answer: "Powered by Meta Llama 3.2 Vision — it identifies objects, people, colors, composition, setting, mood, text, and more to generate accurate descriptions." },
       { question: "Can I ask specific questions about the image?", answer: "Yes! Use the optional prompt field to ask custom questions like 'What brand is the car?' or 'Describe the facial expression.'" },
       { question: "Is this good for SEO?", answer: "Absolutely. The ALT text format is specifically designed for image SEO and accessibility compliance." },
     ],
