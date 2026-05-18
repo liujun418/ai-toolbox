@@ -233,15 +233,14 @@ async function createCheckoutSession(priceId: string): Promise<CheckoutResult> {
 
 async function detectFaces(file: File): Promise<DetectFacesResult> {
   const token = getToken();
+  if (!token) throw new Error("Not authenticated");
+
   const formData = new FormData();
   formData.append("file", file);
 
-  const headers: Record<string, string> = {};
-  if (token) headers["Authorization"] = `Bearer ${token}`;
-
   const res = await fetch(`${API_BASE}/api/upload/detect-faces`, {
     method: "POST",
-    headers,
+    headers: { Authorization: `Bearer ${token}` },
     body: formData,
   });
 

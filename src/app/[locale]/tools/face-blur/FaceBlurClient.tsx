@@ -48,6 +48,7 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
   const [errorMsg, setErrorMsg] = useState("");
   const [creditsUsed, setCreditsUsed] = useState(0);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [confirmAction, setConfirmAction] = useState<"detect" | "blur">("blur");
   const [showToast, setShowToast] = useState(false);
   const [detectError, setDetectError] = useState("");
 
@@ -157,8 +158,16 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
   };
 
   // ── Face detection ──
-  const handleDetectFaces = async () => {
+  const handleDetectFacesClick = () => {
     if (!file) return;
+    if (!user) { setConfirmAction("detect"); setShowConfirm(true); return; }
+    if (user.credits < getCreditCost(TOOL_ID)) { setConfirmAction("detect"); setShowConfirm(true); return; }
+    doDetectFaces();
+  };
+
+  const doDetectFaces = async () => {
+    if (!file) return;
+    setShowConfirm(false);
     setStep("detecting");
     setDetectError("");
     try {
@@ -173,9 +182,9 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
 
   // ── Apply blur ──
   const handleApplyBlurClick = () => {
-    if (!user) { setShowConfirm(true); return; }
-    const cost = getCreditCost(TOOL_ID);
-    if (user.credits < cost) { setShowConfirm(true); return; }
+    if (!user) { setConfirmAction("blur"); setShowConfirm(true); return; }
+    if (user.credits < getCreditCost(TOOL_ID)) { setConfirmAction("blur"); setShowConfirm(true); return; }
+    setConfirmAction("blur");
     setShowConfirm(true);
   };
 
@@ -295,7 +304,7 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
         currentCredits={user?.credits ?? 0}
         locale={locale}
         dict={dict}
-        onConfirm={doApplyBlur}
+        onConfirm={confirmAction === "detect" ? doDetectFaces : doApplyBlur}
         onCancel={() => setShowConfirm(false)}
       />
       <LoginPromptDialog isOpen={!user && showConfirm} locale={locale} dict={dict} />
@@ -374,7 +383,7 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
             {step === "upload" && (
               <div className="space-y-3">
                 <button
-                  onClick={handleDetectFaces}
+                  onClick={handleDetectFacesClick}
                   className="rounded-xl bg-green-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-green-700 active:scale-95"
                 >
                   🤖 {t.detectFaces || "Detect Faces"}
