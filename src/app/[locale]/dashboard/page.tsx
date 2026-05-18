@@ -9,14 +9,20 @@ import { getLocaleFromPathname } from "@/lib/locale";
 
 const tools = [
   { id: "ai-image-generator", name: "AI Image Generator", icon: "🎨" },
-  { id: "avatar-generator", name: "AI Avatar Generator", icon: "🤖" },
+  { id: "avatar-generator", name: "AI Avatar Generator", icon: "👤" },
   { id: "background-remover", name: "Background Remover", icon: "✂️" },
-  { id: "watermark-remover", name: "Watermark Remover", icon: "🧹" },
+  { id: "watermark-remover", name: "Watermark Remover", icon: "🖌️" },
   { id: "photo-restorer", name: "Photo Restorer", icon: "📷" },
   { id: "pdf-to-word", name: "PDF to Word", icon: "📄" },
   { id: "image-upscaler", name: "Image Upscaler", icon: "🔍" },
-  { id: "style-transfer", name: "Style Transfer", icon: "🖼️" },
+  { id: "style-transfer", name: "Style Transfer", icon: "🎭" },
   { id: "text-polish", name: "Text Polish", icon: "✨" },
+  { id: "face-blur", name: "Face Privacy Blur", icon: "😷" },
+  { id: "article-generator", name: "Article Generator", icon: "📝" },
+  { id: "text-to-speech", name: "Text to Speech", icon: "🎙️" },
+  { id: "image-description", name: "Image Describer", icon: "🖼️" },
+  { id: "colorizer", name: "B&W Colorizer", icon: "🎨" },
+  { id: "object-remover", name: "Object Remover", icon: "🧹" },
 ];
 
 interface UsageEntry {
@@ -81,6 +87,12 @@ export default function DashboardPage() {
     "image-upscaler": 2,
     "style-transfer": 4,
     "text-polish": 3,
+    "face-blur": 2,
+    "article-generator": 3,
+    "text-to-speech": 3,
+    "image-description": 2,
+    "colorizer": 2,
+    "object-remover": 3,
   };
 
   return (
