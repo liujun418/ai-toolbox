@@ -52,7 +52,8 @@
     "faqTitle": "Frequently Asked Questions",
     "ctaTitle": "Ready to Get Started?",
     "ctaSubtitle": "Sign up today and get 5 free credits — no credit card required.",
-    "ctaButton": "Create Free Account"
+    "ctaButton": "Create Free Account",
+    "relatedTools": "You Might Also Like"
   },
   "features": [
     { "icon": "", "title": "Instant Results", "description": "Upload your file and get processed results in seconds — no waiting in queues." },

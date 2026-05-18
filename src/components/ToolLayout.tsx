@@ -2,6 +2,7 @@ import Link from "next/link";
 import { tools } from "@/lib/tools";
 import type { Tool } from "@/lib/tools";
 import { getCreditCost } from "@/lib/creditCosts";
+import RelatedTools from "@/components/RelatedTools";
 
 interface ToolLayoutProps {
   toolId: string;
@@ -159,6 +160,8 @@ export default function ToolLayout({
           </div>
         </section>
       )}
+
+      <RelatedTools toolId={toolId} locale={locale} dict={dict as Record<string, unknown>} />
     </div>
   );
 }

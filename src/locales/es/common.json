@@ -52,7 +52,8 @@
     "faqTitle": "Preguntas frecuentes",
     "ctaTitle": "¿Listo para empezar?",
     "ctaSubtitle": "Regístrate hoy y obtén 5 créditos gratis — sin tarjeta de crédito.",
-    "ctaButton": "Crear cuenta gratis"
+    "ctaButton": "Crear cuenta gratis",
+    "relatedTools": "También te Puede Gustar"
   },
   "features": [
     { "icon": "", "title": "Resultados instantáneos", "description": "Sube tu archivo y obtén resultados procesados en segundos — sin esperar en colas." },
