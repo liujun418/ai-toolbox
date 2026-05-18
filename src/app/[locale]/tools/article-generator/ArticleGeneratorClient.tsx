@@ -36,6 +36,7 @@ export default function ArticleGeneratorClient({ locale = "en" as Locale, dict }
     toolId: TOOL_ID,
     creditCost: getCreditCost(TOOL_ID),
     buildPrompt,
+    noFileRequired: true,
     locale,
     dict,
   });
