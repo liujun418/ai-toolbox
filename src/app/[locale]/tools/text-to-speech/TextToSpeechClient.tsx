@@ -81,7 +81,7 @@ export default function TextToSpeechClient({ locale = "en" as Locale, dict }: { 
             placeholder={t.textPlaceholder || "Type or paste the text you want to convert to speech..."}
             rows={6}
             maxLength={2000}
-            className="w-full rounded-xl border border-zinc-300 px-4 py-3 text-sm text-zinc-800 placeholder:text-zinc-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:placeholder:text-zinc-500"
+            className="w-full rounded-xl border border-zinc-300 px-4 py-3 text-base text-zinc-800 placeholder:text-zinc-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:placeholder:text-zinc-500"
           />
           <p className="mt-1 text-xs text-zinc-400">{text.length}/2000</p>
         </div>
@@ -94,7 +94,7 @@ export default function TextToSpeechClient({ locale = "en" as Locale, dict }: { 
           <select
             value={language}
             onChange={(e) => setLanguage(e.target.value)}
-            className="w-full rounded-xl border border-zinc-300 px-4 py-3 text-sm text-zinc-800 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 sm:w-64"
+            className="w-full rounded-xl border border-zinc-300 px-4 py-3 text-base text-zinc-800 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 sm:w-64"
           >
             {LANGUAGES.map((l) => (
               <option key={l.id} value={l.id}>{l.label}</option>

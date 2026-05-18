@@ -172,7 +172,7 @@ export default function ObjectRemoverClient({ locale = "en" as Locale, dict }: {
               {hasMask && (
                 <button
                   onClick={clearMask}
-                  className="rounded-lg border border-zinc-300 px-3 py-1 text-xs font-medium text-zinc-600 hover:bg-zinc-50 dark:border-zinc-600 dark:text-zinc-400 dark:hover:bg-zinc-800"
+                  className="rounded-lg border border-zinc-300 px-3 py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-50 dark:border-zinc-600 dark:text-zinc-400 dark:hover:bg-zinc-800"
                 >
                   {t.clearMask || "Clear Mask"}
                 </button>

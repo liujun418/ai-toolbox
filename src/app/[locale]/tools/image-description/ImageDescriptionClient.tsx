@@ -92,7 +92,7 @@ export default function ImageDescriptionClient({ locale = "en" as Locale, dict }
             value={customPrompt}
             onChange={(e) => setCustomPrompt(e.target.value)}
             placeholder={t.promptPlaceholder || "e.g., What breed is the dog? How many people are there?"}
-            className="w-full rounded-xl border border-zinc-300 px-4 py-3 text-sm text-zinc-800 placeholder:text-zinc-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:placeholder:text-zinc-500"
+            className="w-full rounded-xl border border-zinc-300 px-4 py-3 text-base text-zinc-800 placeholder:text-zinc-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:placeholder:text-zinc-500"
           />
         </div>
 

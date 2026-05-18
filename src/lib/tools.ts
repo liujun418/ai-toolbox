@@ -1,3 +1,5 @@
+export type ToolCategory = "image-generation" | "image-editing" | "content-creation" | "document";
+
 export interface Tool {
   id: string;
   name: string;
@@ -7,12 +9,20 @@ export interface Tool {
   creditCost: number;
   free?: boolean;
   badge?: string;
+  category: ToolCategory;
   seoKeywords?: string[];
   howToUse?: string[];
   faq?: { question: string; answer: string }[];
   nameTranslations?: Record<string, string>;
   descriptionTranslations?: Record<string, string>;
 }
+
+export const CATEGORIES: { id: ToolCategory; icon: string; nameKey: string }[] = [
+  { id: "image-generation", icon: "🎨", nameKey: "categoryImageGeneration" },
+  { id: "image-editing", icon: "✂️", nameKey: "categoryImageEditing" },
+  { id: "content-creation", icon: "📝", nameKey: "categoryContentCreation" },
+  { id: "document", icon: "📄", nameKey: "categoryDocument" },
+];
 
 export const tools: Tool[] = [
   {
@@ -23,6 +33,7 @@ export const tools: Tool[] = [
     path: "/tools/ai-image-generator",
     creditCost: 1,
     badge: "New",
+    category: "image-generation",
     seoKeywords: ["ai image generator", "text to image", "ai art", "sdxl image generator"],
     howToUse: [
       "Write a detailed prompt describing the image you want to create.",
@@ -46,6 +57,7 @@ export const tools: Tool[] = [
     path: "/tools/avatar-generator",
     creditCost: 5,
     badge: "Popular",
+    category: "image-generation",
     seoKeywords: ["avatar generator", "ai avatar", "cartoon avatar", "anime avatar"],
     howToUse: [
       "Upload a clear front-facing photo of yourself.",
@@ -68,6 +80,7 @@ export const tools: Tool[] = [
     path: "/tools/background-remover",
     creditCost: 2,
     badge: "Free",
+    category: "image-editing",
     seoKeywords: ["remove background", "background remover", "ai background removal", "transparent background"],
     howToUse: [
       "Upload an image with a background you want to remove.",
@@ -88,6 +101,7 @@ export const tools: Tool[] = [
     icon: "🖌️",
     path: "/tools/watermark-remover",
     creditCost: 3,
+    category: "image-editing",
     seoKeywords: ["remove watermark", "watermark remover", "erase logo", "remove text from image"],
     howToUse: [
       "Upload an image with watermarks or unwanted objects.",
@@ -108,6 +122,7 @@ export const tools: Tool[] = [
     icon: "📷",
     path: "/tools/photo-restorer",
     creditCost: 5,
+    category: "image-editing",
     seoKeywords: ["photo restoration", "restore old photo", "photo colorizer", "ai photo repair"],
     howToUse: [
       "Upload a damaged or old photo.",
@@ -128,6 +143,7 @@ export const tools: Tool[] = [
     path: "/tools/pdf-to-word",
     creditCost: 0,
     free: true,
+    category: "document",
     seoKeywords: ["pdf to word", "pdf converter", "pdf to docx", "free pdf conversion"],
     howToUse: [
       "Upload a PDF file (up to 20MB).",
@@ -150,6 +166,7 @@ export const tools: Tool[] = [
     path: "/tools/image-upscaler",
     creditCost: 2,
     badge: "New",
+    category: "image-editing",
     seoKeywords: ["image upscaler", "upscale image", "ai upscale", "increase image resolution"],
     howToUse: [
       "Upload an image you want to enlarge.",
@@ -171,6 +188,7 @@ export const tools: Tool[] = [
     path: "/tools/style-transfer",
     creditCost: 4,
     badge: "New",
+    category: "image-generation",
     seoKeywords: ["style transfer", "ai art style", "photo to art", "neural style transfer"],
     howToUse: [
       "Upload a photo you want to stylize.",
@@ -192,6 +210,7 @@ export const tools: Tool[] = [
     path: "/tools/text-polish",
     creditCost: 3,
     badge: "New",
+    category: "content-creation",
     seoKeywords: ["text polisher", "ai rewrite", "text improver", "ai writing assistant"],
     howToUse: [
       "Paste or type your text in the input area.",
@@ -213,6 +232,7 @@ export const tools: Tool[] = [
     path: "/tools/face-blur",
     creditCost: 2,
     badge: "New",
+    category: "image-editing",
     seoKeywords: ["face blur", "privacy blur", "face pixelation", "blur faces online", "face mosaic", "hide face in photo", "ai face detection", "privacy photo tool"],
     howToUse: [
       "Upload a photo containing faces you want to obscure.",
@@ -241,6 +261,7 @@ export const tools: Tool[] = [
     path: "/tools/text-to-speech",
     creditCost: 3,
     badge: "New",
+    category: "content-creation",
     seoKeywords: ["text to speech", "ai voice generator", "text to audio", "tts", "speech synthesis"],
     howToUse: [
       "Type or paste the text you want to convert to speech.",
@@ -264,6 +285,7 @@ export const tools: Tool[] = [
     path: "/tools/image-description",
     creditCost: 2,
     badge: "New",
+    category: "content-creation",
     seoKeywords: ["image description", "alt text generator", "ai image caption", "image to text", "photo description"],
     howToUse: [
       "Upload an image you want to describe.",
@@ -287,6 +309,7 @@ export const tools: Tool[] = [
     path: "/tools/colorizer",
     creditCost: 2,
     badge: "New",
+    category: "image-editing",
     seoKeywords: ["colorize black and white photo", "ai colorizer", "bw to color", "photo colorization", "colorize old photos"],
     howToUse: [
       "Upload a black and white photo.",
@@ -310,6 +333,7 @@ export const tools: Tool[] = [
     path: "/tools/object-remover",
     creditCost: 3,
     badge: "New",
+    category: "image-editing",
     seoKeywords: ["remove objects from photo", "ai object remover", "remove person from photo", "inpainting", "clean up photos"],
     howToUse: [
       "Upload a photo with unwanted objects, people, or text.",
@@ -333,6 +357,7 @@ export const tools: Tool[] = [
     path: "/tools/article-generator",
     creditCost: 3,
     badge: "New",
+    category: "content-creation",
     seoKeywords: ["article generator", "ai writer", "content generator", "blog post writer", "seo article tool"],
     howToUse: [
       "Enter a topic for your article — be specific for best results.",

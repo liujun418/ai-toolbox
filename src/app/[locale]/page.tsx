@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { getDictionary } from "@/lib/i18n";
-import { tools as allTools } from "@/lib/tools";
-import { getCreditCost } from "@/lib/creditCosts";
 import HeroPdfDemo from "@/components/HeroPdfDemo";
+import ToolsGrid from "@/components/ToolsGrid";
 
 export default async function HomePage({
   params,
@@ -13,69 +12,17 @@ export default async function HomePage({
   const dict = await getDictionary(locale as any);
   const t = dict as any;
   const home = t.home || {};
-  const tools = t.tools || {};
   const features = t.features || [];
   const faqs = t.faqs || [];
   const pricing = t.pricing || {};
-
-  const toolList = allTools.map((tool) => ({
-    id: tool.id,
-    name: tools[tool.id]?.name || tool.name,
-    description: tools[tool.id]?.description || tool.description,
-    icon: tool.icon,
-    credits: getCreditCost(tool.id),
-    href: `/${locale}/tools/${tool.id}`,
-    badge: tool.free ? (t.home?.free || "Free") : tool.badge || null,
-  }));
-
-  const creditsLabel = (credits: number) => credits === 0 ? (t.home?.free || "Free") : `${credits} ${t.home?.credits || "credits"}`;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
       {/* Hero: PDF to Word Demo */}
       <HeroPdfDemo locale={locale} dict={dict} />
 
-      {/* Tools Grid */}
-      <section className="mt-12 sm:mt-16">
-        <h2 className="mb-6 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          {home.allTools || "All Tools"}
-        </h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {toolList.map((tool) => (
-            <Link
-              key={tool.id}
-              href={tool.href}
-              className="group relative rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all hover:border-zinc-300 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
-            >
-              {tool.badge && (
-                <span
-                  className={`absolute right-4 top-4 rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                    tool.badge === (t.home?.popular || "Popular")
-                      ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300"
-                      : tool.badge === (t.home?.free || "Free")
-                        ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
-                        : "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
-                  }`}
-                >
-                  {tool.badge}
-                </span>
-              )}
-              <span className="mb-3 block text-3xl">{tool.icon}</span>
-              <h3 className="font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
-                {tool.name}
-              </h3>
-              <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-                {tool.description}
-              </p>
-              <div className="mt-4 flex items-center text-xs font-medium text-zinc-400 dark:text-zinc-500">
-                <span className="rounded-full bg-zinc-100 px-2 py-0.5 dark:bg-zinc-800">
-                  {creditsLabel(tool.credits)}
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+      {/* Tools Grid with Category Filter */}
+      <ToolsGrid locale={locale} dict={dict} />
 
       {/* Features */}
       <section className="mt-16">
