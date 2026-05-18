@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import ToolLayout from "@/components/ToolLayout";
 import { useAuth } from "@/lib/auth-context";
 import { CreditConfirmDialog, CreditsUsedToast, LoginPromptDialog } from "@/components/CreditGuard";
@@ -116,7 +116,7 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
   };
 
   // ── File handling ──
-  const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
     if (!f) return;
     const err = validateImageFile(f);
@@ -130,7 +130,7 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
     setResultUrl(null);
     setErrorMsg("");
     setDetectError("");
-  }, []);
+  };
 
   // ── Face detection ──
   const handleDetectFaces = async () => {
