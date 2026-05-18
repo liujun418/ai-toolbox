@@ -162,6 +162,22 @@ export const authApi = {
     return apiRequest(`/api/auth/me/transactions?page=${page}&size=${size}`);
   },
 
+  async checkinStatus(): Promise<{ streak: number; checked_in_today: boolean; last_checkin: string | null }> {
+    return apiRequest("/api/auth/checkin-status");
+  },
+
+  async dailyCheckin(): Promise<{ message: string; credits_earned: number; bonus: number; streak: number; total_credits: number }> {
+    return apiRequest("/api/auth/daily-checkin", { method: "POST" });
+  },
+
+  async getReferralCode(): Promise<{ referral_code: string; share_url: string; total_referrals: number; credits_earned: number }> {
+    return apiRequest("/api/auth/referral-code");
+  },
+
+  async applyReferral(code: string): Promise<{ message: string; credits_earned: number; total_credits: number }> {
+    return apiRequest("/api/auth/apply-referral", { method: "POST", body: JSON.stringify({ code }) });
+  },
+
   logout(): void {
     clearToken();
   },
@@ -231,6 +247,13 @@ async function createCheckoutSession(priceId: string): Promise<CheckoutResult> {
   });
 }
 
+async function createSubscriptionSession(priceId: string): Promise<CheckoutResult> {
+  return apiRequest("/api/payments/create-subscription-session", {
+    method: "POST",
+    body: JSON.stringify({ price_id: priceId }),
+  });
+}
+
 async function detectFaces(file: File): Promise<DetectFacesResult> {
   const token = getToken();
   if (!token) throw new Error("Not authenticated");
@@ -255,6 +278,7 @@ async function detectFaces(file: File): Promise<DetectFacesResult> {
 export const toolsApi = {
   uploadFile,
   createCheckoutSession,
+  createSubscriptionSession,
   detectFaces,
   API_BASE,
 };

@@ -5,13 +5,20 @@ import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { toolsApi } from "@/lib/api";
 import { getLocaleFromPathname } from "@/lib/locale";
+import { tools } from "@/lib/tools";
+import { getCreditCost } from "@/lib/creditCosts";
 
 const CONTACT_EMAIL = "jzerov@live.com";
 
-const packages = [
-  { id: "50_credits", credits: 50, price: "$4.99", popular: false },
-  { id: "100_credits", credits: 100, price: "$9.99", popular: true },
-  { id: "500_credits", credits: 500, price: "$24.99", popular: false },
+const oneTimePacks = [
+  { id: "small_credits", credits: 10, price: "$3.00", popular: false },
+  { id: "standard_credits", credits: 50, price: "$10.00", popular: true },
+  { id: "value_credits", credits: 200, price: "$25.00", popular: false },
+];
+
+const subscriptionTiers = [
+  { id: "basic_monthly", credits: 40, price: "$8", popular: false },
+  { id: "pro_monthly", credits: 120, price: "$18", popular: true },
 ];
 
 export default function PricingClient() {
@@ -22,13 +29,11 @@ export default function PricingClient() {
   const [error, setError] = useState("");
 
   async function handlePurchase(packageId: string) {
-    if (!user) {
-      router.push(`/${locale}/signup`);
-      return;
-    }
-
+    if (!user) { router.push(`/${locale}/signup`); return; }
     try {
-      const { checkout_url } = await toolsApi.createCheckoutSession(packageId);
+      const isSub = packageId.endsWith("_monthly");
+      const fn = isSub ? toolsApi.createSubscriptionSession : toolsApi.createCheckoutSession;
+      const { checkout_url } = await fn(packageId);
       window.location.assign(checkout_url);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Payment failed");
@@ -43,17 +48,23 @@ export default function PricingClient() {
           <button onClick={() => setError("")} className="ml-3 font-medium underline hover:no-underline">Dismiss</button>
         </div>
       )}
+
       <h1 className="text-center text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
-        Simple, Transparent Pricing
+        Simple Pricing: Pay-as-You-Go
       </h1>
       <p className="mx-auto mt-2 max-w-2xl text-center text-zinc-600 dark:text-zinc-400">
-        AI ToolBox Online offers AI-powered image processing and document conversion tools.
-        You purchase credits to use these tools — each tool costs a set number of credits per use.
-        All prices in USD. No hidden fees.
+        Buy credits when you need them. No subscription lock-in. All prices in USD.
       </p>
 
-      <div className="mt-12 grid gap-4 sm:grid-cols-3">
-        {packages.map((pkg) => (
+      {/* One-Time Credit Packs */}
+      <h2 className="mt-12 mb-4 text-center text-xl font-bold text-zinc-900 dark:text-white">
+        One-Time Credit Packs
+      </h2>
+      <p className="mx-auto mb-6 max-w-xl text-center text-sm text-zinc-500 dark:text-zinc-400">
+        Buy credits that are valid for 12 months. Use them on any tool, anytime.
+      </p>
+      <div className="grid gap-4 sm:grid-cols-3">
+        {oneTimePacks.map((pkg) => (
           <div
             key={pkg.id}
             className={`rounded-2xl p-6 ${
@@ -67,13 +78,16 @@ export default function PricingClient() {
                 Popular
               </span>
             )}
-            <h2 className="mt-2 text-xl font-semibold text-zinc-900 dark:text-white">
+            <h3 className="mt-2 text-xl font-semibold text-zinc-900 dark:text-white">
               {pkg.credits} Credits
-            </h2>
+            </h3>
             <p className="mt-2 text-4xl font-bold text-zinc-900 dark:text-white">{pkg.price}</p>
+            <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">
+              ${(parseFloat(pkg.price.replace("$", "")) / pkg.credits).toFixed(2)}/credit
+            </p>
             <ul className="mt-6 space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
               <li>✓ All AI tools included</li>
-              <li>✓ Files deleted after 1 hour</li>
+              <li>✓ Valid for 12 months</li>
               <li>✓ No watermark on outputs</li>
             </ul>
             <button
@@ -84,13 +98,76 @@ export default function PricingClient() {
                   : "border border-zinc-300 text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
               }`}
             >
-              {pkg.credits === 50 ? "Get Started" : "Subscribe"}
+              Get {pkg.credits} Credits
             </button>
           </div>
         ))}
       </div>
 
-      {/* Cost per tool */}
+      {/* Why Pay-as-You-Go */}
+      <div className="mt-10 rounded-2xl border border-green-200 bg-green-50 p-6 dark:border-green-800 dark:bg-green-950/20">
+        <h3 className="text-lg font-semibold text-green-800 dark:text-green-300">
+          Why Pay-as-You-Go?
+        </h3>
+        <ul className="mt-3 space-y-2 text-sm text-green-700 dark:text-green-400">
+          <li>• No monthly subscription lock-in. Buy credits only when you need them.</li>
+          <li>• Purchased credits are valid for 12 months — no rush to use them.</li>
+          <li>• Each credit is worth the same across all tools. Full price transparency.</li>
+        </ul>
+      </div>
+
+      {/* Subscription Tiers */}
+      <h2 className="mt-12 mb-4 text-center text-xl font-bold text-zinc-900 dark:text-white">
+        Monthly Subscriptions
+      </h2>
+      <p className="mx-auto mb-6 max-w-xl text-center text-sm text-zinc-500 dark:text-zinc-400">
+        Get fresh credits every month, capped at your plan limit. Unused credits do not roll over.
+      </p>
+      <div className="mx-auto grid max-w-md gap-4 sm:max-w-none sm:grid-cols-2">
+        {subscriptionTiers.map((tier) => (
+          <div
+            key={tier.id}
+            className={`rounded-2xl p-6 ${
+              tier.popular
+                ? "border-2 border-purple-600 bg-white shadow-sm dark:border-purple-500 dark:bg-zinc-900"
+                : "border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900"
+            }`}
+          >
+            {tier.popular && (
+              <span className="rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">
+                Popular
+              </span>
+            )}
+            <h3 className="mt-2 text-xl font-semibold text-zinc-900 dark:text-white">
+              {tier.credits} Credits/mo
+            </h3>
+            <p className="mt-2 text-4xl font-bold text-zinc-900 dark:text-white">
+              {tier.price}<span className="text-base font-normal text-zinc-400">/month</span>
+            </p>
+            <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">
+              ${(parseFloat(tier.price.replace("$", "")) / tier.credits).toFixed(2)}/credit
+            </p>
+            <ul className="mt-6 space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
+              <li>✓ {tier.credits} credits/month (hard cap)</li>
+              <li>✓ All AI tools included</li>
+              <li>✓ Cancel anytime</li>
+              <li>⚠ Unused credits do not roll over</li>
+            </ul>
+            <button
+              onClick={() => handlePurchase(tier.id)}
+              className={`mt-6 block w-full rounded-lg px-4 py-2.5 text-center text-sm font-medium ${
+                tier.popular
+                  ? "bg-purple-600 text-white hover:bg-purple-700"
+                  : "border border-zinc-300 text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+              }`}
+            >
+              Subscribe
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* Cost per Tool */}
       <div className="mt-12">
         <h3 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">Cost per Tool</h3>
         <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
@@ -99,78 +176,51 @@ export default function PricingClient() {
               <tr>
                 <th className="px-4 py-3 text-start font-medium text-zinc-500 dark:text-zinc-400">Tool</th>
                 <th className="px-4 py-3 text-end font-medium text-zinc-500 dark:text-zinc-400">Credits</th>
-                <th className="px-4 py-3 text-end font-medium text-zinc-500 dark:text-zinc-400">USD Cost</th>
+                <th className="px-4 py-3 text-end font-medium text-zinc-500 dark:text-zinc-400">USD Cost*</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
-              {[
-                ["AI Image Generator", "1-7", "$0.10-$0.70"],
-                ["Background Remover", "2", "$0.20"],
-                ["Watermark Remover", "3", "$0.30"],
-                ["AI Avatar Generator", "5", "$0.50"],
-                ["Photo Restorer", "5", "$0.50"],
-                ["PDF to Word", "0", "Free"],
-                ["Image Upscaler", "2", "$0.20"],
-                ["Image Style Transfer", "4", "$0.40"],
-                ["Text Polish & Rewrite", "3", "$0.30"],
-              ].map(([tool, credits, cost]) => (
-                <tr key={tool}>
-                  <td className="px-4 py-3 text-zinc-700 dark:text-zinc-300">{tool}</td>
-                  <td className="px-4 py-3 text-end text-zinc-500 dark:text-zinc-400">{credits}</td>
-                  <td className="px-4 py-3 text-end text-zinc-500 dark:text-zinc-400">{cost}</td>
-                </tr>
-              ))}
+              {tools.filter(t => !t.free).map((tool) => {
+                const cost = getCreditCost(tool.id);
+                return (
+                  <tr key={tool.id}>
+                    <td className="px-4 py-3 text-zinc-700 dark:text-zinc-300">{tool.icon} {tool.name}</td>
+                    <td className="px-4 py-3 text-end text-zinc-500 dark:text-zinc-400">
+                      {cost > 0 ? `${cost}` : "Free"}
+                    </td>
+                    <td className="px-4 py-3 text-end text-zinc-500 dark:text-zinc-400">
+                      {cost > 0 ? `$${(cost * 0.10).toFixed(2)}` : "Free"}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
+        <p className="mt-2 text-xs text-zinc-400 dark:text-zinc-500">
+          * Based on Standard Pack ($10/50 credits = $0.20/credit). Free tools require login.
+        </p>
       </div>
 
       {/* Important Information */}
       <div className="mt-12 space-y-6 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
         <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">Important Information</h3>
-
         <div className="space-y-4 text-sm text-zinc-600 dark:text-zinc-400">
           <div>
             <h4 className="font-semibold text-zinc-900 dark:text-white">What Are Credits?</h4>
-            <p className="mt-1">
-              Credits are a virtual currency used within AI ToolBox Online to access our AI tools.
-              Each tool use deducts a set number of credits from your account balance.
-              Credit costs are shown before each use so there are no surprises.
-            </p>
+            <p className="mt-1">Credits are a virtual currency used to access our AI tools. Each tool use deducts a set number of credits. Credit costs are shown before each use.</p>
           </div>
-
           <div>
             <h4 className="font-semibold text-zinc-900 dark:text-white">Credit Expiration</h4>
-            <p className="mt-1">
-              Free tier credits (5 per month) reset at the start of each calendar month and do not roll over.
-              Purchased credits are valid for 12 months from the date of purchase.
-              Unused purchased credits expire after 12 months unless otherwise stated.
-            </p>
+            <p className="mt-1">Purchased credits are valid for 12 months. Subscription credits reset monthly and do not roll over.</p>
           </div>
-
           <div>
             <h4 className="font-semibold text-zinc-900 dark:text-white">Refund Policy</h4>
-            <p className="mt-1">
-              Credits are non-refundable and non-transferable once purchased.
-              If you experience a technical issue (e.g., tool failure, error during processing),
-              contact us at <a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-600 hover:underline">{CONTACT_EMAIL}</a> with details and we will investigate.
-              We will refund credits to your account if the issue was caused by our service.
-              Refund requests are processed within 5 business days.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-zinc-900 dark:text-white">Usage Restrictions</h4>
-            <p className="mt-1">
-              Credits are for personal use only and cannot be resold, shared, or transferred to another account.
-              Automated access, scraping, or misuse of our tools may result in account suspension.
-              Uploaded files are automatically deleted within 1 hour of processing.
-            </p>
+            <p className="mt-1">Credits are non-refundable once purchased. If you experience a technical issue, contact us at <a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-600 hover:underline">{CONTACT_EMAIL}</a> for investigation.</p>
           </div>
         </div>
       </div>
 
-      {/* Contact */}
       <div className="mt-8 text-center text-sm text-zinc-500 dark:text-zinc-400">
         <p>Questions about pricing? Contact us at <a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-600 hover:underline">{CONTACT_EMAIL}</a></p>
         <p className="mt-1">Read our <a href={`/${locale}/terms`} className="text-blue-600 hover:underline">Terms of Service</a> and <a href={`/${locale}/privacy`} className="text-blue-600 hover:underline">Privacy Policy</a>.</p>

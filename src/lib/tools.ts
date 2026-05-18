@@ -233,4 +233,27 @@ export const tools: Tool[] = [
     nameTranslations: { es: "Difuminado Facial IA", ar: "تمويه الوجه بالذكاء الاصطناعي" },
     descriptionTranslations: { es: "Detecta rostros automáticamente y aplica desenfoque mosaico, gaussiano o pixelado.", ar: "اكتشف الوجوه تلقائيًا وطبق التمويه الفسيفسائي أو الغاوسي أو المنقط." },
   },
+  {
+    id: "article-generator",
+    name: "AI Article Generator",
+    description: "Generate complete, well-structured articles from a topic and keywords with AI.",
+    icon: "📝",
+    path: "/tools/article-generator",
+    creditCost: 3,
+    badge: "New",
+    seoKeywords: ["article generator", "ai writer", "content generator", "blog post writer", "seo article tool"],
+    howToUse: [
+      "Enter a topic for your article — be specific for best results.",
+      "Optionally add keywords and select a tone (Neutral, Professional, Casual, etc.).",
+      "Click Generate and the AI will write a structured article with title, sections, and conclusion.",
+      "Review the article, copy to clipboard, or download as a text file.",
+    ],
+    faq: [
+      { question: "How do I get the best results?", answer: "Be specific with your topic. Instead of 'marketing', try 'how AI is transforming small business marketing in 2026'. Adding relevant keywords helps too." },
+      { question: "How long are the generated articles?", answer: "Articles are typically 500-1500 words with 3-5 main sections. The AI adapts length based on topic complexity." },
+      { question: "Can I use the articles commercially?", answer: "Yes! Content you generate belongs to you. Use it on your blog, website, or anywhere you need content." },
+    ],
+    nameTranslations: { es: "Generador de Artículos IA", ar: "مولد المقالات بالذكاء الاصطناعي" },
+    descriptionTranslations: { es: "Genera artículos completos y bien estructurados a partir de un tema con IA.", ar: "أنشئ مقالات كاملة ومنظمة من موضوعك باستخدام الذكاء الاصطناعي." },
+  },
 ];

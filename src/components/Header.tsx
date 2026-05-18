@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
+import { authApi } from "@/lib/api";
 import { locales, defaultLocale, localeNames } from "@/lib/i18n";
 import { useRouter } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
@@ -21,6 +22,22 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
   const { user, logout, loading } = useAuth();
   const [dark, setDark] = useState(false);
   const [showLang, setShowLang] = useState(false);
+  const [checkinStatus, setCheckinStatus] = useState<{ streak: number; checked_in_today: boolean } | null>(null);
+  const [checkingIn, setCheckingIn] = useState(false);
+
+  useEffect(() => {
+    if (user) { authApi.checkinStatus().then(setCheckinStatus).catch(() => {}); }
+    else { setCheckinStatus(null); }
+  }, [user]);
+
+  const handleCheckin = useCallback(async () => {
+    setCheckingIn(true);
+    try {
+      const result = await authApi.dailyCheckin();
+      setCheckinStatus({ streak: result.streak, checked_in_today: true });
+    } catch { /* already checked in or error */ }
+    setCheckingIn(false);
+  }, []);
 
   useEffect(() => {
     setDark(document.documentElement.classList.contains("dark"));
@@ -129,6 +146,20 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
                   </svg>
                   {user.credits.toFixed(0)}
                 </span>
+                {checkinStatus !== null && !checkinStatus.checked_in_today && (
+                  <button
+                    onClick={handleCheckin}
+                    disabled={checkingIn}
+                    className="flex items-center gap-1 rounded-lg bg-green-50 px-2 py-1 text-xs font-semibold text-green-700 hover:bg-green-100 dark:bg-green-950/50 dark:text-green-300 dark:hover:bg-green-900/50"
+                  >
+                    🔥 {checkingIn ? "..." : checkinStatus.streak > 0 ? `${checkinStatus.streak}d` : "+1"}
+                  </button>
+                )}
+                {checkinStatus !== null && checkinStatus.checked_in_today && (
+                  <span className="flex items-center gap-1 rounded-lg bg-zinc-100 px-2 py-1 text-xs text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+                    ✅ {checkinStatus.streak}d
+                  </span>
+                )}
                 <Link
                   href={`/${locale}/settings`}
                   className="flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"

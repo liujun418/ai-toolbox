@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
+import { authApi } from "@/lib/api";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getLocaleFromPathname } from "@/lib/locale";
@@ -58,6 +59,11 @@ export default function DashboardPage() {
     setHistory(getUsageHistory());
   }, []);
 
+  const [referralInfo, setReferralInfo] = useState<{ referral_code: string; share_url: string; total_referrals: number; credits_earned: number } | null>(null);
+  useEffect(() => {
+    if (user) { authApi.getReferralCode().then(setReferralInfo).catch(() => {}); }
+  }, [user]);
+
   if (loading) return <div className="mx-auto max-w-6xl px-4 py-16 text-center text-zinc-400">Loading...</div>;
   if (!user) return null;
 
@@ -112,6 +118,36 @@ export default function DashboardPage() {
           </p>
         </div>
       </div>
+
+      {/* Referral Section */}
+      {referralInfo && (
+        <div className="mb-8 rounded-xl border border-purple-200 bg-purple-50 p-5 dark:border-purple-800 dark:bg-purple-950/20">
+          <h3 className="text-lg font-semibold text-purple-800 dark:text-purple-300">
+            🎁 Refer & Earn 3 Free Credits
+          </h3>
+          <p className="mt-1 text-sm text-purple-600 dark:text-purple-400">
+            Share your referral code. You and your friend each get 3 credits!
+          </p>
+          <div className="mt-3 space-y-2">
+            <div className="flex items-center gap-2">
+              <input readOnly value={referralInfo.referral_code}
+                className="flex-1 rounded-lg border border-purple-200 px-3 py-2 text-sm font-mono dark:border-purple-800 dark:bg-zinc-800" />
+              <button onClick={() => navigator.clipboard.writeText(referralInfo.referral_code)}
+                className="rounded-lg bg-purple-600 px-3 py-2 text-xs font-medium text-white hover:bg-purple-700">Copy</button>
+            </div>
+            <div className="flex items-center gap-2">
+              <input readOnly value={referralInfo.share_url}
+                className="flex-1 rounded-lg border border-purple-200 px-3 py-2 text-xs font-mono dark:border-purple-800 dark:bg-zinc-800" />
+              <button onClick={() => navigator.clipboard.writeText(referralInfo.share_url)}
+                className="rounded-lg bg-purple-600 px-3 py-2 text-xs font-medium text-white hover:bg-purple-700">Copy</button>
+            </div>
+            <div className="flex gap-4 text-sm text-purple-600 dark:text-purple-400">
+              <span>{referralInfo.total_referrals} friends joined</span>
+              <span>+{referralInfo.credits_earned} credits earned</span>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Tools Grid */}
       <h2 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">Your Tools</h2>

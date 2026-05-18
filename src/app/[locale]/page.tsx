@@ -2,8 +2,7 @@ import Link from "next/link";
 import { getDictionary } from "@/lib/i18n";
 import { tools as allTools } from "@/lib/tools";
 import { getCreditCost } from "@/lib/creditCosts";
-import HeroBanner from "@/components/HeroBanner";
-import type { Slide } from "@/components/HeroBanner";
+import HeroPdfDemo from "@/components/HeroPdfDemo";
 
 export default async function HomePage({
   params,
@@ -19,18 +18,6 @@ export default async function HomePage({
   const faqs = t.faqs || [];
   const pricing = t.pricing || {};
 
-  const slides: Slide[] = [
-    { type: "hero" },
-    {
-      type: "image",
-      image: "/banner-ai-image-generator.png",
-      href: `/${locale}/tools/ai-image-generator`,
-      alt: "AI Image Generator",
-      title: "AI Image Generator",
-      subtitle: "Turn any text into stunning AI images — try it now!",
-    },
-  ];
-
   const toolList = allTools.map((tool) => ({
     id: tool.id,
     name: tools[tool.id]?.name || tool.name,
@@ -45,16 +32,8 @@ export default async function HomePage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
-      {/* Hero Banner Carousel */}
-      <HeroBanner
-        locale={locale}
-        slides={slides}
-        heroTitle={home.heroTitle || "Free AI Tools for"}
-        heroHighlight={home.heroTitleHighlight || " Every"}
-        heroDescription={home.heroDescription || "Remove backgrounds, generate avatars, restore old photos, convert PDFs — all powered by AI, all in your browser."}
-        signupLabel={home.getFreeCredits || "Get 5 Free Credits"}
-        pricingLabel={home.viewPricing || "View Pricing"}
-      />
+      {/* Hero: PDF to Word Demo */}
+      <HeroPdfDemo locale={locale} dict={dict} />
 
       {/* Tools Grid */}
       <section>
