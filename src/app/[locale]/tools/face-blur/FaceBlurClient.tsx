@@ -77,7 +77,7 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
     if (!ctx) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    const drawRegion = (r: FaceRegion, stroke: string, fill: string) => {
+    const drawPixelRegion = (r: FaceRegion, stroke: string, fill: string) => {
       const rx = (r.x / img.naturalWidth) * rect.width;
       const ry = (r.y / img.naturalHeight) * rect.height;
       const rw = (r.w / img.naturalWidth) * rect.width;
@@ -89,17 +89,25 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
       ctx.strokeRect(rx, ry, rw, rh);
     };
 
-    // Detected faces: green
+    // Detected faces: normalized (0-1) from backend
     for (const r of detectedFaces) {
-      drawRegion(r, "#22c55e", "rgba(34,197,94,0.15)");
+      const rx = r.x * rect.width;
+      const ry = r.y * rect.height;
+      const rw = r.w * rect.width;
+      const rh = r.h * rect.height;
+      ctx.fillStyle = "rgba(34,197,94,0.15)";
+      ctx.fillRect(rx, ry, rw, rh);
+      ctx.strokeStyle = "#22c55e";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(rx, ry, rw, rh);
     }
-    // Manual regions: blue
+    // Manual regions: pixel coordinates
     for (const r of manualRegions) {
-      drawRegion(r, "#3b82f6", "rgba(59,130,246,0.15)");
+      drawPixelRegion(r, "#3b82f6", "rgba(59,130,246,0.15)");
     }
-    // Drawing in progress: red
+    // Drawing in progress: normalized
     if (drawing && drawRect) {
-      drawRegion(drawRect, "#ef4444", "rgba(239,68,68,0.15)");
+      drawPixelRegion(drawRect, "#ef4444", "rgba(239,68,68,0.15)");
     }
   }, [detectedFaces, manualRegions, drawing, drawRect, file]);
 
@@ -163,8 +171,16 @@ export default function FaceBlurClient({ locale = "en" as Locale, dict }: { loca
 
     try {
       const stylePrompt = blurStyle === "emoji" ? `emoji|${emojiType}` : blurStyle;
+      // Convert normalized detected faces to pixel coords for the backend
+      const img = imgRef.current;
+      const pixelFaces = detectedFaces.map((r) => ({
+        x: Math.round(r.x * (img?.naturalWidth || 1)),
+        y: Math.round(r.y * (img?.naturalHeight || 1)),
+        w: Math.round(r.w * (img?.naturalWidth || 1)),
+        h: Math.round(r.h * (img?.naturalHeight || 1)),
+      }));
       const maskBlob = new Blob(
-        [JSON.stringify({ auto_regions: detectedFaces, manual_regions: manualRegions })],
+        [JSON.stringify({ auto_regions: pixelFaces, manual_regions: manualRegions })],
         { type: "application/json" }
       );
 
