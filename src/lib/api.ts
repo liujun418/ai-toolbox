@@ -353,6 +353,32 @@ export interface AdminTransactionListResult {
   size: number;
 }
 
+// -- Suggestions API --
+
+export interface SuggestionItem {
+  id: string;
+  text: string;
+  read: boolean;
+  created_at: string;
+}
+
+export const suggestionsApi = {
+  async submit(text: string): Promise<{ message: string; id: string }> {
+    const res = await fetch(`${API_BASE}/api/admin/public/suggestions`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text }),
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ detail: "Failed" }));
+      throw new Error(err.detail || "Failed to submit suggestion");
+    }
+    return res.json();
+  },
+};
+
+// -- Admin API --
+
 export const adminApi = {
   async getDashboard(): Promise<AdminDashboardStats> {
     return apiRequest("/api/admin/dashboard");
@@ -431,5 +457,17 @@ export const adminApi = {
     if (params?.type) qs.set("type", params.type);
     if (params?.user_id) qs.set("user_id", params.user_id);
     return apiRequest(`/api/admin/transactions?${qs.toString()}`);
+  },
+
+  async listSuggestions(page = 1, size = 50): Promise<{ suggestions: SuggestionItem[]; total: number }> {
+    return apiRequest(`/api/admin/suggestions?page=${page}&size=${size}`);
+  },
+
+  async deleteSuggestion(id: string): Promise<{ message: string }> {
+    return apiRequest(`/api/admin/suggestions/${id}`, { method: "DELETE" });
+  },
+
+  async markSuggestionRead(id: string): Promise<{ message: string }> {
+    return apiRequest(`/api/admin/suggestions/${id}/read`, { method: "PATCH" });
   },
 };

@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
-import { authApi } from "@/lib/api";
+import { authApi, suggestionsApi } from "@/lib/api";
 import { locales, defaultLocale, localeNames } from "@/lib/i18n";
 import { useRouter } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
@@ -38,6 +38,22 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
     } catch { /* already checked in or error */ }
     setCheckingIn(false);
   }, []);
+
+  const [showSuggest, setShowSuggest] = useState(false);
+  const [suggestText, setSuggestText] = useState("");
+  const [suggestStatus, setSuggestStatus] = useState<"idle" | "sending" | "done">("idle");
+
+  const handleSuggest = useCallback(async () => {
+    if (!suggestText.trim()) return;
+    setSuggestStatus("sending");
+    try {
+      await suggestionsApi.submit(suggestText.trim());
+      setSuggestStatus("done");
+      setTimeout(() => { setShowSuggest(false); setSuggestText(""); setSuggestStatus("idle"); }, 1500);
+    } catch {
+      setSuggestStatus("idle");
+    }
+  }, [suggestText]);
 
   useEffect(() => {
     setDark(document.documentElement.classList.contains("dark"));
@@ -203,6 +219,13 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
                   </svg>
                   {t.signup || "Sign up"}
                 </Link>
+                <button
+                  onClick={() => setShowSuggest(true)}
+                  className="hidden items-center gap-1 rounded-lg border border-zinc-300 px-3 py-1.5 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-100 dark:border-zinc-600 dark:text-zinc-400 dark:hover:bg-zinc-800 sm:flex"
+                  title="Suggest a feature"
+                >
+                  💡
+                </button>
               </>
             )}
             {/* Language Switcher */}
@@ -247,6 +270,36 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
 
         {/* Mobile menu */}
         <MobileMenu locale={locale} dict={dict} />
+
+        {/* Suggest modal */}
+        {showSuggest && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setShowSuggest(false)}>
+            <div className="mx-4 w-full max-w-md rounded-2xl bg-white p-6 shadow-xl dark:bg-zinc-900" onClick={(e) => e.stopPropagation()}>
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">💡 Suggest a Feature</h3>
+              <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">We'd love to hear your ideas!</p>
+              <textarea
+                value={suggestText}
+                onChange={(e) => setSuggestText(e.target.value)}
+                placeholder="I suggest..."
+                rows={4}
+                maxLength={1000}
+                disabled={suggestStatus === "sending" || suggestStatus === "done"}
+                className="mt-4 w-full rounded-xl border border-zinc-300 px-4 py-3 text-base text-zinc-800 placeholder:text-zinc-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:placeholder:text-zinc-500"
+              />
+              {suggestStatus === "done" ? (
+                <p className="mt-3 text-sm font-medium text-green-600 dark:text-green-400">✅ Thank you for your suggestion!</p>
+              ) : (
+                <button
+                  onClick={handleSuggest}
+                  disabled={!suggestText.trim() || suggestStatus === "sending"}
+                  className="mt-4 w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700 disabled:opacity-50"
+                >
+                  {suggestStatus === "sending" ? "Sending..." : "Submit"}
+                </button>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </header>
     </>
