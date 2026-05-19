@@ -107,12 +107,74 @@ export const blogPosts: BlogPost[] = [
 <h2>The Complete Pipeline</h2>
 <p>The full restoration workflow — repair, colorize, upscale — takes about 5-10 minutes per photo and costs just 9 credits total. Compare that to professional photo restoration services which charge $50-200 per photo and take weeks. Ready to start? <a href="/en/signup">Create a free account</a> and get 5 credits to try your first restoration.</p>`,
   },
+,{
+    slug: 'ai-image-generator-prompt-guide',
+    title: 'How to Write Better AI Image Prompts — Stop Getting Weird Results',
+    description: 'Getting six-fingered hands and melting faces from your AI image generator? The problem is your prompt. Here is how to write prompts that actually work.',
+    date: '2026-05-16',
+    category: 'Image Generation',
+    tags: ['AI image prompts', 'text to image prompts', 'SDXL prompt guide', 'AI image generator tips', 'prompt engineering'],
+    relatedTools: ['ai-image-generator', 'style-transfer'],
+    content: '<p>You type "a cat" into an AI image generator and get a blurry feline blob. Someone else types a paragraph and gets a magazine-cover-quality image. The difference is the prompt.</p><p>AI image generators are not mind readers. A good prompt tells the model exactly what to create: subject, style, lighting, composition, and details. Our <a href="/en/tools/ai-image-generator">AI image generator</a> uses SDXL, which responds well to detailed prompts.</p><h2>The four parts of a good prompt</h2><p><strong>Subject:</strong> What is in the image? Be specific. Instead of "a dog," try "a golden retriever puppy sitting on a wooden dock."</p><p><strong>Style:</strong> What should it look like? Add keywords like "photorealistic," "oil painting," "3D render," "cinematic lighting," or "watercolor sketch."</p><p><strong>Composition:</strong> How is the scene arranged? Try "close-up portrait," "wide landscape shot," "top-down view," or "subject centered with blurred background."</p><p><strong>Details:</strong> Colors, textures, mood, time of day. "Warm sunset light, misty atmosphere, detailed fur texture" adds specificity.</p><h2>Common mistakes</h2><p>Do not use negatives at first. Instead of saying what you do not want, describe what you do want. Too many conflicting styles confuse the model. Pick one direction.</p><p>Ready to try? <a href="/en/tools/ai-image-generator">Generate AI images</a> with your new prompting skills.</p>',
+  },
+  {
+    slug: 'remove-watermark-from-photo',
+    title: 'How to Remove a Watermark from a Photo — The Right Way',
+    description: 'Got a photo with a watermark or timestamp on it? Here is how to remove it cleanly without cropping or blurring the whole image.',
+    date: '2026-05-15',
+    category: 'Image Editing',
+    tags: ['remove watermark', 'watermark remover', 'erase logo from photo', 'remove timestamp', 'AI inpainting'],
+    relatedTools: ['watermark-remover', 'object-remover', 'background-remover'],
+    content: '<p>Cropping is the lazy way to remove a watermark, but it often ruins the composition. Blurring leaves an obvious smudge. <a href="/en/tools/watermark-remover">AI watermark removal</a> fills the removed area with content that matches the surrounding image.</p><h2>How AI watermark removal works</h2><p>Our <a href="/en/tools/watermark-remover">watermark remover</a> uses BRIA Eraser, an AI inpainting model. It analyzes the area around the watermark and generates new pixels that match the texture, color, and pattern of the surrounding image.</p><p>For semi-transparent watermarks, the AI works in one click. For solid logos or text overlays, use the canvas mask tool to paint over the area.</p><h2>What it can and cannot remove</h2><p>It handles: semi-transparent watermarks, timestamp overlays, small logo stamps, text captions. It struggles with: watermarks covering more than 30% of the image, complex patterns behind the watermark, very low-resolution images.</p><p>For removing larger objects, use the <a href="/en/tools/object-remover">object remover</a> instead.</p>',
+  },
+  {
+    slug: 'text-to-speech-for-content-creators',
+    title: 'Converting Articles to Audio: A Content Creator\'s Workflow',
+    description: 'Turn your blog posts into audio versions in minutes. Here is a practical text-to-speech workflow that sounds natural, not robotic.',
+    date: '2026-05-14',
+    category: 'Content Creation',
+    tags: ['text to speech', 'convert article to audio', 'AI voiceover', 'TTS for bloggers', 'audio content'],
+    relatedTools: ['text-to-speech', 'text-polish', 'article-generator'],
+    content: '<p>Adding audio versions of your articles is one of the easiest ways to increase engagement. Some readers prefer listening while commuting or doing chores. And podcast directories are less crowded than Google search results.</p><p>But hiring voice actors for every article is impractical. <a href="/en/tools/text-to-speech">AI text to speech</a> has gotten good enough that most listeners cannot tell the difference.</p><h2>The workflow that sounds natural</h2><p>First, <a href="/en/tools/text-polish">polish your text</a> for spoken delivery. Written sentences often use more complex structures than spoken ones. Run your article through the Polish tool in Casual mode — it shortens sentences and uses more natural phrasing.</p><p>Second, split your content into segments of 500-1000 characters. Shorter segments give you more control. You can redo individual sections without regenerating the whole thing.</p><h2>Languages and voice quality</h2><p>The <a href="/en/tools/text-to-speech">free text to speech tool</a> supports 17 languages. The voice sounds natural for English, Spanish, French, and most European languages. For tonal languages, the intonation is correct but not perfect.</p>',
+  },
+  {
+    slug: 'colorize-black-and-white-photos',
+    title: 'Colorizing Old Family Photos: Before and After Examples',
+    description: 'See what happens when you run black and white photos through an AI colorizer. The results are better than you would expect.',
+    date: '2026-05-13',
+    category: 'Photo Restoration',
+    tags: ['colorize photos', 'black and white to color', 'AI colorizer', 'old photo restoration', 'vintage photo colorization'],
+    relatedTools: ['colorizer', 'photo-restorer', 'image-upscaler'],
+    content: '<p>My grandmother\'s wedding photo sat in a drawer for 60 years. I ran it through an AI colorizer last week and saw the blue of her dress and the flowers in her bouquet for the first time.</p><p>Here is how to get the best results from an <a href="/en/tools/colorizer">AI photo colorizer</a>.</p><h2>Restore first, colorize second</h2><p>Before adding color, fix the damage. Use the <a href="/en/tools/photo-restorer">photo restorer</a> to clean up scratches, dust, and fading. Colorizing a damaged photo amplifies the flaws.</p><p>After restoration, choose the right color style. Natural works for everyday photos. Vibrant for landscapes. Portrait for skin tones. Classic for a vintage-film look.</p><p>Adding a text description helps: "blue dress, red flowers, wooden furniture, cream walls." The AI uses this to pick more accurate colors.</p><h2>When black and white is better</h2><p>High-contrast black and white portraits often lose their impact when colorized. If the original is already powerful in black and white, leave it alone.</p><p>Ready to try? <a href="/en/signup">Sign up free</a> and get credits to colorize your photos. The <a href="/en/tools/colorizer">B&W colorizer</a> costs 2 credits per use.</p>',
+  },
+  {
+    slug: 'ai-article-writing-vs-human',
+    title: 'AI Article Generator: What It Does Well and Where It Falls Short',
+    description: 'I tested an AI article generator on five different topics. Here is what worked, what did not, and how to use it as a drafting tool.',
+    date: '2026-05-12',
+    category: 'Content Creation',
+    tags: ['AI article generator', 'AI writer review', 'AI content creation', 'Llama article writing', 'AI blogging tool'],
+    relatedTools: ['article-generator', 'text-polish', 'text-to-speech'],
+    content: '<p>I fed our <a href="/en/tools/article-generator">AI article generator</a> five topics: a how-to guide, a product comparison, a news summary, a personal essay, and a technical tutorial. Here is the honest breakdown.</p><h2>What it does well</h2><p><strong>Structure.</strong> For informational articles, the AI nails the outline. Headings, subheadings, logical flow — it produces a skeleton that would take a human 20 minutes to plan. The 5-tone selector actually changes the output noticeably.</p><p><strong>Research-heavy topics.</strong> If the topic is well-documented online, the AI synthesizes it well. The word count control (50 to 5000 words) gives useful flexibility.</p><h2>Where it falls short</h2><p><strong>Original opinions.</strong> The AI cannot have a genuine hot take because it has no experiences. It will give you balanced, reasonable takes that sound like committee-written statements.</p><p><strong>Specific details.</strong> It confidently states facts that are wrong. Always verify claims and numbers.</p><p><strong>Humor and personality.</strong> The output is technically correct but flat. Running it through the <a href="/en/tools/text-polish">text polisher</a> in Casual mode helps, but it still needs human editing.</p><h2>The practical workflow</h2><p>Use the AI to generate a first draft. Rewrite the intro in your own voice. Add personal examples and specific data. Run a final polish pass for grammar. This gives you 80% of the output for 20% of the effort.</p>',
+  },
+  {
+    slug: 'upscale-images-without-losing-quality',
+    title: 'How to Upscale an Image Without Making It Look Terrible',
+    description: 'Enlarging a small image usually makes it pixelated and blurry. AI upscaling fixes that. Here is how it works and when to use it.',
+    date: '2026-05-11',
+    category: 'Image Editing',
+    tags: ['upscale image', 'AI upscaler', 'increase image resolution', 'enlarge photo', 'Real-ESRGAN'],
+    relatedTools: ['image-upscaler', 'ai-image-generator', 'photo-restorer'],
+    content: '<p>You have a 400-pixel-wide product photo and the printer needs it at 1600 pixels. Stretching it in Photoshop gives you a pixelated mess. <a href="/en/tools/image-upscaler">AI image upscaling</a> fills in the missing detail intelligently.</p><h2>How AI upscaling is different</h2><p>Regular resizing averages neighboring pixels. AI upscaling uses Real-ESRGAN, trained to reconstruct high-res images from low-res inputs. It adds plausible detail — hair texture, fabric weave, text sharpness — that simple resizing loses.</p><p>Our <a href="/en/tools/image-upscaler">image upscaler</a> has two modes. Photo mode for photographs. Anime mode for illustrations and line art. Using the wrong mode produces worse results.</p><h2>Practical limits</h2><p>2x upscaling almost always looks good. 4x is where quality depends on the source. A sharp, well-lit photo upscales beautifully. A grainy phone photo at 4x will show the AI\'s guesswork.</p><p>For best results: start with the highest quality source, choose the right mode, and upscale in stages rather than jumping straight to 4x.</p>',
+  },
+  {
+    slug: 'blur-faces-in-photos-privacy',
+    title: 'Blurring Faces in Photos for Privacy: A Quick Guide',
+    description: 'Need to share a photo publicly but protect people\'s identities? Face blurring tools make it easy — pick mosaic, gaussian, or fun emoji overlays.',
+    date: '2026-05-10',
+    category: 'Image Editing',
+    tags: ['blur faces', 'face privacy', 'pixelate faces', 'emoji face cover', 'photo privacy tool'],
+    relatedTools: ['face-blur', 'background-remover', 'image-description'],
+    content: '<p>You took a great photo at a school event and want to share it. But there are other people\'s kids in the shot. Or you are a journalist who needs to protect identities. Or selling something online and do not want your reflection visible.</p><p>A <a href="/en/tools/face-blur">face blur tool</a> handles this in seconds. Upload, the AI detects faces, and you pick how to cover them.</p><h2>How it works</h2><p>Our tool uses Grounding DINO to find faces at various angles and lighting conditions. Detection takes about 10 seconds on a cold start.</p><p>Four overlay options: Mosaic (pixelated grid, most common), Gaussian (smooth blur), Pixelate (larger blocks), and emoji (cute Twemoji icons for informal photos).</p><p>If the AI misses a face, add manual blur regions with the brush tool. If it detects something that is not a face, remove that region.</p><h2>Beyond face blurring</h2><p>Tattoos, name tags, license plates, and distinctive clothing can also identify people. For serious privacy needs, combine face blurring with manual review. And remove EXIF data — many phones embed GPS coordinates in photos by default.</p>',
+  },
 ];
-
-export function getBlogPosts(): BlogPost[] {
-  return blogPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-}
-
-export function getBlogPost(slug: string): BlogPost | undefined {
-  return blogPosts.find((p) => p.slug === slug);
-}
