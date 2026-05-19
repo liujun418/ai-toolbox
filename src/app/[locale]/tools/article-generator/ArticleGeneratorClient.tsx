@@ -19,11 +19,11 @@ const TONES = [
   { id: "enthusiastic", label: "Enthusiastic", desc: "Energetic and inspiring" },
 ];
 
-const WORD_COUNTS = [
-  { id: "short", label: "Short", desc: "~300 words" },
-  { id: "medium", label: "Medium", desc: "~600 words" },
-  { id: "long", label: "Long", desc: "~1000 words" },
-  { id: "detailed", label: "Detailed", desc: "~1500 words" },
+const WORD_PRESETS = [
+  { value: 300, label: "300" },
+  { value: 600, label: "600" },
+  { value: 1000, label: "1000" },
+  { value: 1500, label: "1500" },
 ];
 
 export default function ArticleGeneratorClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
@@ -34,7 +34,7 @@ export default function ArticleGeneratorClient({ locale = "en" as Locale, dict }
   const [topic, setTopic] = useState("");
   const [keywords, setKeywords] = useState("");
   const [tone, setTone] = useState("neutral");
-  const [wordCount, setWordCount] = useState("medium");
+  const [wordCount, setWordCount] = useState(600);
 
   const buildPrompt = () => {
     if (!topic.trim()) return undefined;
@@ -124,28 +124,37 @@ export default function ArticleGeneratorClient({ locale = "en" as Locale, dict }
           </div>
         </div>
 
-        {/* Word count selector */}
+        {/* Word count */}
         <div>
           <label className="mb-2 block text-sm font-semibold text-zinc-700 dark:text-zinc-200">
-            {t.wordCountLabel || "Length"}
+            {t.wordCountLabel || "Word Count"}
           </label>
-          <div className="flex flex-wrap gap-2">
-            {WORD_COUNTS.map((w) => (
-              <button
-                key={w.id}
-                onClick={() => setWordCount(w.id)}
-                disabled={tool.status === "uploading"}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
-                  wordCount === w.id
-                    ? "bg-blue-600 text-white shadow-md"
-                    : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
-                }`}
-                title={w.desc}
-              >
-                {w.label}
-                <span className="ml-1 text-xs opacity-70">({w.desc})</span>
-              </button>
-            ))}
+          <div className="flex items-center gap-3">
+            <input
+              type="number"
+              value={wordCount}
+              onChange={(e) => setWordCount(Math.max(50, Math.min(5000, parseInt(e.target.value) || 300)))}
+              min={50} max={5000} step={50}
+              disabled={tool.status === "uploading"}
+              className="w-28 rounded-xl border border-zinc-300 px-4 py-3 text-base text-zinc-800 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200"
+            />
+            <span className="text-sm text-zinc-500 dark:text-zinc-400">words</span>
+            <div className="flex gap-1">
+              {WORD_PRESETS.map((p) => (
+                <button
+                  key={p.value}
+                  onClick={() => setWordCount(p.value)}
+                  disabled={tool.status === "uploading"}
+                  className={`rounded-lg border px-2.5 py-1.5 text-xs font-medium transition-all ${
+                    wordCount === p.value
+                      ? "border-blue-600 bg-blue-50 text-blue-700 dark:border-blue-500 dark:bg-blue-900/20 dark:text-blue-300"
+                      : "border-zinc-200 text-zinc-500 hover:border-zinc-300 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-600"
+                  }`}
+                >
+                  {p.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
