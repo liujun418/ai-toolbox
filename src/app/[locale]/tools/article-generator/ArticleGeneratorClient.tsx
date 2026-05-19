@@ -132,8 +132,13 @@ export default function ArticleGeneratorClient({ locale = "en" as Locale, dict }
           <div className="flex items-center gap-3">
             <input
               type="number"
-              value={wordCount}
-              onChange={(e) => setWordCount(parseInt(e.target.value) || 0)}
+              value={wordCount || ""}
+              onChange={(e) => {
+                const raw = e.target.value;
+                if (raw === "") { setWordCount(0); return; }
+                const n = parseInt(raw);
+                if (!isNaN(n)) setWordCount(n);
+              }}
               onBlur={() => setWordCount((v) => Math.max(50, Math.min(5000, v || 600)))}
               min={50} max={5000}
               disabled={tool.status === "uploading"}
