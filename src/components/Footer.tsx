@@ -32,6 +32,9 @@ export function Footer({ locale = "en", dict }: FooterProps) {
               >
                 {t.freeTools || "Free Tools →"}
               </a>
+              <Link href={`/${locale}/blog`} className="hover:text-zinc-900 dark:hover:text-white">
+                {t.blog || "Blog"}
+              </Link>
               <Link href={`/${locale}/pricing`} className="hover:text-zinc-900 dark:hover:text-white">
                 {t.pricing || "Pricing"}
               </Link>

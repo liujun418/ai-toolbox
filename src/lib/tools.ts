@@ -56,7 +56,7 @@ export const tools: Tool[] = [
   {
     id: "ai-image-generator",
     name: "AI Image Generator",
-    description: "Turn text into stunning AI images. No watermark, instant download.",
+    description: "Turn text into stunning AI images with SDXL. No watermark, instant download in JPG, PNG, and WebP. Choose from 3 quality levels, 3 aspect ratios, and 1-4 output images per generation. Supports reference images for style guidance. Create photorealistic images, digital art, and illustrations from simple text prompts.",
     icon: "🎨",
     path: "/tools/ai-image-generator",
     creditCost: 1,
@@ -81,7 +81,7 @@ export const tools: Tool[] = [
   {
     id: "avatar-generator",
     name: "AI Avatar Generator",
-    description: "Transform your photos into cartoon, anime, or professional avatars.",
+    description: "Transform your photos into 6 unique AI avatar styles — 3D Cartoon, Anime, Professional, Pixel Art, Watercolor, and Sketch. Uses SDXL with per-style prompts for consistent high-quality results. Upload a clear front-facing photo and get 4 avatar variations. Perfect for social media profiles, gaming, and creative projects.",
     icon: "👤",
     path: "/tools/avatar-generator",
     creditCost: 5,
@@ -128,7 +128,7 @@ export const tools: Tool[] = [
   {
     id: "watermark-remover",
     name: "Watermark Remover",
-    description: "Erase watermarks, logos, and text from images intelligently.",
+    description: "Erase watermarks, logos, text overlays, and timestamp stamps from images using BRIA Eraser AI inpainting. Canvas mask tool for precise removal area selection with adjustable brush size. Works on semi-transparent watermarks, logo stamps, and photo-bombing objects.",
     icon: "🖌️",
     path: "/tools/watermark-remover",
     creditCost: 3,
@@ -171,7 +171,7 @@ export const tools: Tool[] = [
   {
     id: "pdf-to-word",
     name: "PDF to Word",
-    description: "Convert PDF documents to editable Word (.docx) files.",
+    description: "Convert PDF to editable Word (.docx) free — no watermarks, no registration. Smart text extraction preserves headings, paragraphs, and formatting. Auto-detects and converts PDF tables. Scanned PDF support with Google Cloud Vision OCR text extraction. Embedded images preserved in output.",
     icon: "📄",
     path: "/tools/pdf-to-word",
     creditCost: 0,
@@ -195,7 +195,7 @@ export const tools: Tool[] = [
   {
     id: "image-upscaler",
     name: "Image Upscaler",
-    description: "Upscale images to higher resolution with AI.",
+    description: "Increase image resolution up to 4x with Real-ESRGAN AI upscaling. Dedicated Photo and Anime modes for different image types. Choose 2x or 4x upscaling factor. Enhances old photos, AI-generated images, and low-res pictures to HD quality without losing detail. Perfect for printing and digital displays.",
     icon: "🔍",
     path: "/tools/image-upscaler",
     creditCost: 2,
@@ -264,7 +264,7 @@ export const tools: Tool[] = [
   {
     id: "face-blur",
     name: "AI Face Privacy Blur",
-    description: "Auto-detect faces and apply mosaic, gaussian, or pixelate blur. Add manual regions, undo, and download. Protect privacy instantly.",
+    description: "Auto-detect faces and apply privacy blur — mosaic, gaussian, pixelate, or cute emoji overlays. Uses Grounding DINO AI for face detection. Manual blur region support with undo. 4-step process: upload, detect, choose style, download. Ideal for journalism and sharing photos while protecting privacy.",
     icon: "😷",
     path: "/tools/face-blur",
     creditCost: 2,
@@ -294,7 +294,7 @@ export const tools: Tool[] = [
   {
     id: "text-to-speech",
     name: "AI Text to Speech",
-    description: "Convert text into natural, human-like speech with AI voice synthesis.",
+    description: "Convert text to natural speech in 17 languages using MiniMax speech AI. No file upload needed — just paste text and get instant MP3 audio. Supports up to 2000 characters per conversion. Perfect for voiceovers, podcast content, e-learning, and audio versions of articles.",
     icon: "🎙️",
     path: "/tools/text-to-speech",
     creditCost: 3,

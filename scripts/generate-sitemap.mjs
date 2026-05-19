@@ -59,6 +59,13 @@ for (const l of LOCALES) {
   for (const t of tools) {
     xml += `<url><loc>${esc(BASE)}/${l}/tools/${t}</loc><lastmod>${lm}</lastmod><priority>0.8</priority><changefreq>weekly</changefreq>${hreflangBlock(l, `tools/${t}`)}</url>`;
   }
+
+  // Blog
+  xml += `<url><loc>${esc(BASE)}/${l}/blog</loc><lastmod>${lm}</lastmod><priority>0.7</priority><changefreq>weekly</changefreq>${hreflangBlock(l, "blog")}</url>`;
+  const blogSlugs = ["how-to-remove-image-background-without-photoshop", "best-ai-tools-content-creators-2026", "restore-old-photos-ai-guide"];
+  for (const slug of blogSlugs) {
+    xml += `<url><loc>${esc(BASE)}/${l}/blog/${slug}</loc><lastmod>${lm}</lastmod><priority>0.6</priority><changefreq>monthly</changefreq>${hreflangBlock(l, `blog/${slug}`)}</url>`;
+  }
 }
 
 xml += `</urlset>`;

@@ -84,6 +84,7 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
 
   const navItems = [
     { label: t.tools || "Tools", href: `/${locale}` },
+    { label: t.blog || "Blog", href: `/${locale}/blog` },
     { label: t.pricing || "Pricing", href: `/${locale}/pricing` },
     { label: t.about || "About", href: `/${locale}/about` },
   ];
