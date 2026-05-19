@@ -95,30 +95,7 @@ export default function TextToSpeechClient({ locale = "en" as Locale, dict }: { 
           <p className="mt-1 text-xs text-zinc-400">{text.length}/2000</p>
         </div>
 
-        {/* Voice selector */}
-        <div>
-          <label className="mb-2 block text-sm font-semibold text-zinc-700 dark:text-zinc-200">
-            {t.voiceLabel || "Voice"}
-          </label>
-          <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
-            {VOICES.map((v) => (
-              <button
-                key={v.id}
-                onClick={() => setVoiceCategory(v.id)}
-                className={`flex flex-col items-center rounded-xl border px-3 py-3 text-center transition-all ${
-                  voiceCategory === v.id
-                    ? "border-blue-600 bg-blue-50 shadow-sm dark:border-blue-500 dark:bg-blue-900/20"
-                    : "border-zinc-200 bg-white hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-zinc-600"
-                }`}
-              >
-                <span className="text-2xl">{v.icon}</span>
-                <span className="mt-1 text-sm font-medium text-zinc-700 dark:text-zinc-200">{v.label}</span>
-                <span className="mt-0.5 text-xs text-zinc-400">{v.desc}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
+{/* Voice selector hidden — MiniMax on Replicate ignores voice param. Keep code for future model upgrade. */}
         {/* Language selector */}
         <div>
           <label className="mb-2 block text-sm font-semibold text-zinc-700 dark:text-zinc-200">
