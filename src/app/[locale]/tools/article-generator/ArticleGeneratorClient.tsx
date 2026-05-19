@@ -19,6 +19,13 @@ const TONES = [
   { id: "enthusiastic", label: "Enthusiastic", desc: "Energetic and inspiring" },
 ];
 
+const WORD_COUNTS = [
+  { id: "short", label: "Short", desc: "~300 words" },
+  { id: "medium", label: "Medium", desc: "~600 words" },
+  { id: "long", label: "Long", desc: "~1000 words" },
+  { id: "detailed", label: "Detailed", desc: "~1500 words" },
+];
+
 export default function ArticleGeneratorClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
   const { user, loading } = useAuth();
   const t = ((dict as any)?.tools?.[TOOL_ID] as Record<string, string>) || {};
@@ -27,10 +34,11 @@ export default function ArticleGeneratorClient({ locale = "en" as Locale, dict }
   const [topic, setTopic] = useState("");
   const [keywords, setKeywords] = useState("");
   const [tone, setTone] = useState("neutral");
+  const [wordCount, setWordCount] = useState("medium");
 
   const buildPrompt = () => {
     if (!topic.trim()) return undefined;
-    return `Topic: ${topic.trim()} | Keywords: ${keywords.trim()} | Tone: ${tone}`;
+    return `WordCount: ${wordCount} | Topic: ${topic.trim()} | Keywords: ${keywords.trim()} | Tone: ${tone}`;
   };
 
   const tool = useTool({
@@ -111,6 +119,31 @@ export default function ArticleGeneratorClient({ locale = "en" as Locale, dict }
                 title={s.desc}
               >
                 {s.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Word count selector */}
+        <div>
+          <label className="mb-2 block text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+            {t.wordCountLabel || "Length"}
+          </label>
+          <div className="flex flex-wrap gap-2">
+            {WORD_COUNTS.map((w) => (
+              <button
+                key={w.id}
+                onClick={() => setWordCount(w.id)}
+                disabled={tool.status === "uploading"}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                  wordCount === w.id
+                    ? "bg-blue-600 text-white shadow-md"
+                    : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+                }`}
+                title={w.desc}
+              >
+                {w.label}
+                <span className="ml-1 text-xs opacity-70">({w.desc})</span>
               </button>
             ))}
           </div>
