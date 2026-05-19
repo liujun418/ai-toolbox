@@ -133,7 +133,8 @@ export default function ArticleGeneratorClient({ locale = "en" as Locale, dict }
             <input
               type="number"
               value={wordCount}
-              onChange={(e) => setWordCount(Math.max(50, Math.min(5000, parseInt(e.target.value) || 300)))}
+              onChange={(e) => setWordCount(parseInt(e.target.value) || 0)}
+              onBlur={() => setWordCount((v) => Math.max(50, Math.min(5000, v || 600)))}
               min={50} max={5000}
               disabled={tool.status === "uploading"}
               className="w-28 rounded-xl border border-zinc-300 px-4 py-3 text-base text-zinc-800 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200"
