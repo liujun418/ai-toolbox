@@ -40,7 +40,6 @@ export const aiTopics: TopicData[] = [
       { question: "What languages does the text-to-speech tool support?", answer: "Our text-to-speech tool supports 17 languages including English, Spanish, French, German, Italian, Portuguese, Japanese, Chinese, Korean, Hindi, Russian, Turkish, Polish, Dutch, Czech, Hungarian, and Arabic. The AI produces natural-sounding speech with proper intonation for each language." },
       { question: "How accurate is AI image description?", answer: "Our image description tool uses NVIDIA Nemotron Nano VL, a vision-language model that analyzes images and generates both concise ALT text (for accessibility/SEO) and detailed descriptions. It works well for photographs, product images, landscapes, and everyday scenes." },
     ],
-,
     translations: {
       es: {
         title: 'Herramientas de Creacion de Contenido con IA',
@@ -53,7 +52,7 @@ export const aiTopics: TopicData[] = [
         intro: 'تساعدك أدوات إنشاء المحتوى بالذكاء الاصطناعي على إنتاج محتوى مكتوب وصوتي عالي الجودة في دقائق بدلا من ساعات. أنشئ مقالات كاملة من موضوع وكلمات مفتاحية، وصقل المسودات إلى نثر احترافي، وحول أي نص إلى كلام طبيعي بـ 17 لغة.',
       },
     },
-  }  },
+  },
   {
     id: "ai-photo-restoration",
     icon: "📷",
@@ -66,7 +65,6 @@ export const aiTopics: TopicData[] = [
       { question: "How does AI colorize black and white photos?", answer: "Our B&W Colorizer uses FLUX Kontext Pro — a state-of-the-art AI model that understands image context to assign realistic colors. It recognizes objects, materials, and scenes to determine appropriate colors (blue sky, green grass, skin tones). You can optionally provide a description like 'red dress, golden sunset' to guide the AI for more accurate results." },
       { question: "What is the difference between Photo Restorer and B&W Colorizer?", answer: "Photo Restorer repairs physical damage — scratches, dust, fading — while preserving the original colors (or lack thereof). B&W Colorizer adds realistic color to black and white photos. Use Photo Restorer first to clean up damage, then Colorizer to bring the restored photo to life with color." },
     ],
-,
     translations: {
       es: {
         title: 'Restauracion y Mejora de Fotos con IA',
@@ -79,7 +77,7 @@ export const aiTopics: TopicData[] = [
         intro: 'تحمل الصور القديمة ذكريات ثمينة، لكن الوقت يؤثر عليها. مجموعة أدوات استعادة الصور بالذكاء الاصطناعي تعكس الضرر. يستخدم مستعيد الصور نماذج Topaz Labs لإزالة الخدوش والغبار، و GFPGAN لتحسين تفاصيل الوجه. يستخدم الملون FLUX Kontext Pro لإضافة ألوان واقعية. ويرفع محسن الصور الدقة حتى 4x.',
       },
     },
-  }  },
+  },
   {
     id: "ai-image-generation",
     icon: "🎨",
@@ -92,7 +90,6 @@ export const aiTopics: TopicData[] = [
       { question: "What makes a good AI image prompt?", answer: "Good prompts are specific and descriptive. Include details about the subject, style, lighting, composition, and mood. For example, instead of 'a cat,' try 'a orange tabby cat sitting on a windowsill, warm sunset light, photorealistic, 4K.' The more detail you provide, the better the AI can match your vision." },
       { question: "Can I use AI-generated images commercially?", answer: "Images generated with our tools may be used for both personal and commercial purposes. However, we recommend reviewing the specific license terms of the underlying AI models (SDXL by Stability AI) for any jurisdiction-specific restrictions." },
     ],
-,
     translations: {
       es: {
         title: 'Herramientas de Generacion de Imagenes con IA',
@@ -105,5 +102,5 @@ export const aiTopics: TopicData[] = [
         intro: 'حول الخيال إلى صور باستخدام أدوات التوليد بالذكاء الاصطناعي. يستخدم مولد الصور نموذج SDXL من Stability AI لإنشاء صور عالية الجودة من أوامر نصية. يحول مولد الصور الرمزية صورك إلى ستة أنماط فريدة. يطبق نقل الأسلوب فلاتر فنية باستخدام تقنية IP-Adapter و ControlNet.',
       },
     },
-  }  },
+  },
 ];

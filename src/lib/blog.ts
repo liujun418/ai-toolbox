@@ -107,7 +107,7 @@ export const blogPosts: BlogPost[] = [
 <h2>The Complete Pipeline</h2>
 <p>The full restoration workflow — repair, colorize, upscale — takes about 5-10 minutes per photo and costs just 9 credits total. Compare that to professional photo restoration services which charge $50-200 per photo and take weeks. Ready to start? <a href="/en/signup">Create a free account</a> and get 5 credits to try your first restoration.</p>`,
   },
-,{
+  {
     slug: 'ai-image-generator-prompt-guide',
     title: 'How to Write Better AI Image Prompts — Stop Getting Weird Results',
     description: 'Getting six-fingered hands and melting faces from your AI image generator? The problem is your prompt. Here is how to write prompts that actually work.',
@@ -178,3 +178,11 @@ export const blogPosts: BlogPost[] = [
     content: '<p>You took a great photo at a school event and want to share it. But there are other people\'s kids in the shot. Or you are a journalist who needs to protect identities. Or selling something online and do not want your reflection visible.</p><p>A <a href="/en/tools/face-blur">face blur tool</a> handles this in seconds. Upload, the AI detects faces, and you pick how to cover them.</p><h2>How it works</h2><p>Our tool uses Grounding DINO to find faces at various angles and lighting conditions. Detection takes about 10 seconds on a cold start.</p><p>Four overlay options: Mosaic (pixelated grid, most common), Gaussian (smooth blur), Pixelate (larger blocks), and emoji (cute Twemoji icons for informal photos).</p><p>If the AI misses a face, add manual blur regions with the brush tool. If it detects something that is not a face, remove that region.</p><h2>Beyond face blurring</h2><p>Tattoos, name tags, license plates, and distinctive clothing can also identify people. For serious privacy needs, combine face blurring with manual review. And remove EXIF data — many phones embed GPS coordinates in photos by default.</p>',
   },
 ];
+
+export function getBlogPosts(): BlogPost[] {
+  return blogPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+export function getBlogPost(slug: string): BlogPost | undefined {
+  return blogPosts.find((p) => p.slug === slug);
+}
