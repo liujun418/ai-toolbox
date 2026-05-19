@@ -47,13 +47,28 @@ export default function ToolsGrid({ locale, dict }: ToolsGridProps) {
 
       {catList.map((cat) => (
         <section key={cat.id} id={cat.id} className="mb-12">
-          <div className="mb-5 flex items-baseline justify-between">
+          <div className="mb-5 flex flex-wrap items-baseline justify-between gap-2">
             <h3 className="flex items-baseline gap-3 text-xl font-semibold text-zinc-900 dark:text-white">
               {cat.icon} {catNames[cat.id]}
               <span className="text-sm font-normal text-zinc-400 dark:text-zinc-500">
                 {cat.catTools.length} {home.toolsCount || "tools"}
               </span>
             </h3>
+            {cat.id === "image-editing" && (
+              <Link href={`/${locale}/ai-image-editing`} className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                {home.exploreMore || "Explore AI photo editing tools →"}
+              </Link>
+            )}
+            {cat.id === "content-creation" && (
+              <Link href={`/${locale}/ai-content-creation`} className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                {home.exploreMore || "Explore AI content creation tools →"}
+              </Link>
+            )}
+            {cat.id === "image-generation" && (
+              <Link href={`/${locale}/ai-image-generation`} className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                {home.exploreMore || "Explore AI image generation tools →"}
+              </Link>
+            )}
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {cat.catTools.map((tool) => (
