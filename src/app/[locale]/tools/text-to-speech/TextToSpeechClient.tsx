@@ -48,14 +48,12 @@ export default function TextToSpeechClient({ locale = "en" as Locale, dict }: { 
   const [language, setLanguage] = useState("en");
   const [voiceCategory, setVoiceCategory] = useState("female");
 
-  const buildPrompt = () => text.trim() || undefined;
-  const getStyle = () => voiceCategory;
+  const buildPrompt = () => text.trim() ? `VOICE:${voiceCategory}|${text.trim()}` : undefined;
 
   const tool = useTool({
     toolId: TOOL_ID,
     creditCost: getCreditCost(TOOL_ID),
     buildPrompt,
-    getStyle,
     noFileRequired: true,
     locale,
     dict,
