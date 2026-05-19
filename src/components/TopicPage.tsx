@@ -23,9 +23,9 @@ function t(text: string, topic: TopicData, locale: string): string {
   if (locale === 'en') return text;
   const trans = topic.translations?.[locale];
   if (!trans) return text;
-  if (text === title) return trans.title || text;
-  if (text === description) return trans.description || text;
-  if (text === intro) return trans.intro || text;
+  if (text === topic.title) return trans.title || text;
+  if (text === topic.description) return trans.description || text;
+  if (text === topic.intro) return trans.intro || text;
   return text;
 }
 
@@ -34,9 +34,9 @@ export default function TopicPage({ topic, locale, dict }: TopicPageProps) {
   const home = (dict as any)?.home || {};
   const tp = (dict as any)?.toolPage || {};
 
-  const title = t(title, topic, locale);
-  const description = t(description, topic, locale);
-  const intro = t(intro, topic, locale);
+  const title = t(topic.title, topic, locale);
+  const description = t(topic.description, topic, locale);
+  const intro = t(topic.intro, topic, locale);
 
   const resolvedTools = topic.toolIds
     .map((id) => allTools.find((t) => t.id === id))
