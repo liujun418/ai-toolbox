@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { tools as allTools } from "@/lib/tools";
+import { tools as allTools, getRelatedTools } from "@/lib/tools";
 import { getCreditCost } from "@/lib/creditCosts";
 
 interface RelatedToolsProps {
@@ -10,13 +10,16 @@ interface RelatedToolsProps {
 
 export default function RelatedTools({ toolId, locale, dict }: RelatedToolsProps) {
   const tool = allTools.find((t) => t.id === toolId);
-  if (!tool?.relatedTools?.length) return null;
+  if (!tool) return null;
 
-  const related = tool.relatedTools
-    .map((id) => allTools.find((t) => t.id === id))
-    .filter(Boolean);
+  const entries = getRelatedTools(tool);
+  if (!entries.length) return null;
 
-  if (!related.length) return null;
+  const resolved = entries
+    .map((e) => ({ tool: allTools.find((t) => t.id === e.id), reason: e.reason }))
+    .filter((e) => e.tool);
+
+  if (!resolved.length) return null;
 
   const tools_i18n = (dict as any)?.tools || {};
   const home = (dict as any)?.home || {};
@@ -30,7 +33,7 @@ export default function RelatedTools({ toolId, locale, dict }: RelatedToolsProps
         {home.relatedTools || "You Might Also Like"}
       </h3>
       <div className="grid gap-3 sm:grid-cols-2">
-        {related.map((rt: any) => (
+        {resolved.map(({ tool: rt, reason }: any) => (
           <Link
             key={rt.id}
             href={`/${locale}/tools/${rt.id}`}
@@ -42,7 +45,7 @@ export default function RelatedTools({ toolId, locale, dict }: RelatedToolsProps
                 {tools_i18n[rt.id]?.name || rt.name}
               </p>
               <p className="truncate text-xs text-zinc-400 dark:text-zinc-500">
-                {tools_i18n[rt.id]?.description || rt.description}
+                {reason || tools_i18n[rt.id]?.description || rt.description}
               </p>
             </div>
             <span className="shrink-0 rounded-full bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-400 dark:bg-zinc-800 dark:text-zinc-500">

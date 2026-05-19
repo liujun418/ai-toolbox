@@ -18,6 +18,53 @@ export default async function HomePage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "AI ToolBox Online",
+            url: "https://ai.toolboxonline.club",
+            description: "AI-powered online tools for image generation, editing, content creation, and documents. Free to start, pay-as-you-go.",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: `https://ai.toolboxonline.club/${locale}/search?q={search_term_string}`,
+              "query-input": "required name=search_term_string",
+            },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "AI ToolBox Online",
+            url: "https://ai.toolboxonline.club",
+            sameAs: ["https://toolboxonline.club"],
+          }),
+        }}
+      />
+      {faqs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: faqs.map((item: any) => ({
+                "@type": "Question",
+                name: item.q,
+                acceptedAnswer: { "@type": "Answer", text: item.a },
+              })),
+            }),
+          }}
+        />
+      )}
+
       {/* Hero: PDF to Word Demo */}
       <HeroPdfDemo locale={locale} dict={dict} />
 

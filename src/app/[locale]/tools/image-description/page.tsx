@@ -1,6 +1,6 @@
 import { getDictionary } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
-import { tools } from "@/lib/tools";
+import { tools, generateToolMetadata } from "@/lib/tools";
 import ImageDescriptionClient from "./ImageDescriptionClient";
 
 const TOOL_ID = "image-description";
@@ -8,12 +8,7 @@ const TOOL_ID = "image-description";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const dict = await getDictionary(locale as Locale);
-  const tool = tools.find((t) => t.id === TOOL_ID);
-  const localeTools = (dict as any)?.tools?.[TOOL_ID] || {};
-  const name = localeTools.name || tool?.name || "";
-  const desc = localeTools.description || tool?.description || "";
-  const title = `${name} — AI ToolBox Online`;
-  return { title, description: desc, openGraph: { title, description: desc, url: `https://ai.toolboxonline.club/${locale}/tools/${TOOL_ID}`, type: "website" }, twitter: { card: "summary_large_image", title, description: desc } };
+  return generateToolMetadata(TOOL_ID, locale, dict as Record<string, unknown>);
 }
 
 export default async function ImageDescriptionPage({ params }: { params: Promise<{ locale: string }> }) {

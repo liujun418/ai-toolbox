@@ -17,8 +17,22 @@ const staticPages = [
   ["privacy", "0.3"], ["terms", "0.3"], ["contact", "0.5"],
 ];
 
+// Topic landing pages (long-tail keyword hubs)
+const topicPages = [
+  "ai-image-editing", "ai-content-creation",
+  "ai-photo-restoration", "ai-image-generation",
+];
+
 function esc(s) {
   return s.replace(/&/g, "&amp;").replace(/'/g, "&apos;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function hreflangUrl(locale, path) {
+  return `<xhtml:link rel="alternate" hreflang="${locale}" href="${esc(BASE)}/${locale}/${path}"/>`;
+}
+
+function hreflangBlock(locale, path) {
+  return LOCALES.map((l) => hreflangUrl(l, path)).join("") + hreflangUrl("x-default", path.replace(/^en/, "en"));
 }
 
 const d = new Date();
@@ -29,7 +43,12 @@ let xml = '<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns=
 
 for (const l of LOCALES) {
   // Home
-  xml += `<url><loc>${esc(BASE)}/${l}</loc><lastmod>${lm}</lastmod><priority>1.0</priority><changefreq>daily</changefreq></url>`;
+  xml += `<url><loc>${esc(BASE)}/${l}</loc><lastmod>${lm}</lastmod><priority>1.0</priority><changefreq>daily</changefreq>${hreflangBlock(l, "")}</url>`;
+
+  // Topic pages
+  for (const tp of topicPages) {
+    xml += `<url><loc>${esc(BASE)}/${l}/${tp}</loc><lastmod>${lm}</lastmod><priority>0.7</priority><changefreq>weekly</changefreq>${hreflangBlock(l, tp)}</url>`;
+  }
 
   // Static
   for (const [pg, pri] of staticPages) {
@@ -38,7 +57,7 @@ for (const l of LOCALES) {
 
   // Tools
   for (const t of tools) {
-    xml += `<url><loc>${esc(BASE)}/${l}/tools/${t}</loc><lastmod>${lm}</lastmod><priority>0.8</priority><changefreq>weekly</changefreq></url>`;
+    xml += `<url><loc>${esc(BASE)}/${l}/tools/${t}</loc><lastmod>${lm}</lastmod><priority>0.8</priority><changefreq>weekly</changefreq>${hreflangBlock(l, `tools/${t}`)}</url>`;
   }
 }
 
