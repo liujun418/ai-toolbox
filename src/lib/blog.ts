@@ -1,3 +1,5 @@
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://ai-toolbox-api-production.up.railway.app";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -6,11 +8,38 @@ export interface BlogPost {
   category: string;
   tags: string[];
   image?: string;
-  content: string; // HTML content
+  content: string;
   relatedTools?: string[];
-  translations?: Record<string, { title: string; description: string; content: string }>;
 }
 
+interface ApiBlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  content: string;
+  category: string;
+  tags: string; // comma-separated
+  related_tools: string | null;
+  published: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+function apiToBlogPost(api: ApiBlogPost): BlogPost {
+  return {
+    slug: api.slug,
+    title: api.title,
+    description: api.description,
+    date: api.created_at?.slice(0, 10) || "",
+    category: api.category,
+    tags: api.tags ? api.tags.split(",").map(s => s.trim()).filter(Boolean) : [],
+    content: api.content,
+    relatedTools: api.related_tools ? api.related_tools.split(",").map(s => s.trim()).filter(Boolean) : [],
+  };
+}
+
+// Static posts kept as fallback when API is unreachable
 export const blogPosts: BlogPost[] = [
   {
     slug: "how-to-remove-image-background-without-photoshop",
@@ -179,10 +208,34 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
+// Synchronous static accessors — used at build time (generateStaticParams)
 export function getBlogPosts(): BlogPost[] {
   return blogPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export function getBlogPost(slug: string): BlogPost | undefined {
   return blogPosts.find((p) => p.slug === slug);
+}
+
+// Async fetch from API — used at runtime for fresh content, with ISR
+export async function fetchBlogPosts(): Promise<BlogPost[]> {
+  try {
+    const res = await fetch(`${API_BASE}/api/blog`, { next: { revalidate: 300 } });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.posts?.length) return data.posts.map(apiToBlogPost);
+    }
+  } catch { /* fall through to static */ }
+  return getBlogPosts();
+}
+
+export async function fetchBlogPost(slug: string): Promise<BlogPost | undefined> {
+  try {
+    const res = await fetch(`${API_BASE}/api/blog/${slug}`, { next: { revalidate: 300 } });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.slug) return apiToBlogPost(data);
+    }
+  } catch { /* fall through to static */ }
+  return getBlogPost(slug);
 }

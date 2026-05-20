@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getDictionary } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
-import { getBlogPosts } from "@/lib/blog";
+import { fetchBlogPosts } from "@/lib/blog";
 import { tools as allTools } from "@/lib/tools";
 
 export const metadata = {
@@ -13,7 +13,7 @@ export const metadata = {
 export default async function BlogIndex({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const dict = await getDictionary(locale as Locale);
-  const posts = getBlogPosts();
+  const posts = await fetchBlogPosts();
   const home = (dict as any)?.home || {};
 
   return (

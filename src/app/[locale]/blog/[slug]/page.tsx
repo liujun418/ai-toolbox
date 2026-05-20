@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
-import { getBlogPost, getBlogPosts } from "@/lib/blog";
+import { getBlogPost, getBlogPosts, fetchBlogPost } from "@/lib/blog";
 import { tools as allTools } from "@/lib/tools";
 
 export function generateStaticParams() {
@@ -13,7 +13,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await fetchBlogPost(slug);
   if (!post) return {};
   return {
     title: `${post.title} — AI ToolBox Blog`,
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function BlogPostPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await fetchBlogPost(slug);
   if (!post) notFound();
 
   const related = (post.relatedTools || [])
