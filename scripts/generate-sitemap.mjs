@@ -6,7 +6,7 @@ const LOCALES = ["en", "es", "ar"];
 
 const tools = [
   "ai-image-generator", "avatar-generator", "background-remover",
-  "watermark-remover", "photo-restorer", "pdf-to-word",
+  "watermark-remover", "photo-restorer",
   "image-upscaler", "style-transfer", "text-polish",
   "face-blur", "article-generator",
   "text-to-speech", "image-description", "colorizer", "object-remover",

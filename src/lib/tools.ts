@@ -9,6 +9,7 @@ export interface Tool {
   creditCost: number;
   free?: boolean;
   badge?: string;
+  hidden?: boolean;
   category: ToolCategory;
   relatedTools?: (string | { id: string; reason: string })[];
   seoKeywords?: string[];
@@ -18,13 +19,18 @@ export interface Tool {
   descriptionTranslations?: Record<string, string>;
 }
 
-/** Resolve relatedTools to an array of {id, reason} */
+/** Resolve relatedTools to an array of {id, reason}, skipping hidden tools */
 export function getRelatedTools(tool: Tool): { id: string; reason?: string }[] {
   if (!tool.relatedTools) return [];
-  return tool.relatedTools.map((entry) => {
-    if (typeof entry === "string") return { id: entry };
-    return entry;
-  });
+  return tool.relatedTools
+    .map((entry) => {
+      if (typeof entry === "string") return { id: entry };
+      return entry;
+    })
+    .filter((e) => {
+      const t = tools.find((x) => x.id === e.id);
+      return t && !t.hidden;
+    });
 }
 
 /** Generate metadata for a tool page */
@@ -176,6 +182,7 @@ export const tools: Tool[] = [
     path: "/tools/pdf-to-word",
     creditCost: 0,
     free: true,
+    hidden: true,
     category: "document",
     relatedTools: [{id:"text-polish",reason:"Polish converted PDF text for better readability"}, {id:"article-generator",reason:"Generate articles from converted PDF research"}],
     seoKeywords: ["pdf to word", "pdf converter", "pdf to docx", "free pdf conversion"],

@@ -40,7 +40,7 @@ export default function TopicPage({ topic, locale, dict }: TopicPageProps) {
 
   const resolvedTools = topic.toolIds
     .map((id) => allTools.find((t) => t.id === id))
-    .filter(Boolean);
+    .filter((t): t is NonNullable<typeof t> => !!t && !t.hidden);
 
   const creditsLabel = (credits: number) =>
     credits === 0 ? (home.free || "Free") : `${credits} ${home.credits || "credits"}`;

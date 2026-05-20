@@ -13,7 +13,6 @@ const tools = [
   { id: "background-remover", name: "Background Remover", icon: "✂️" },
   { id: "watermark-remover", name: "Watermark Remover", icon: "🖌️" },
   { id: "photo-restorer", name: "Photo Restorer", icon: "📷" },
-  { id: "pdf-to-word", name: "PDF to Word", icon: "📄" },
   { id: "image-upscaler", name: "Image Upscaler", icon: "🔍" },
   { id: "style-transfer", name: "Style Transfer", icon: "🎭" },
   { id: "text-polish", name: "Text Polish", icon: "✨" },

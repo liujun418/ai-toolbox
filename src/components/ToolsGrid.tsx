@@ -26,7 +26,7 @@ export default function ToolsGrid({ locale, dict }: ToolsGridProps) {
 
   const catList = CATEGORIES.map((cat) => {
     const catTools = allTools
-      .filter((tool) => tool.category === cat.id)
+      .filter((tool) => tool.category === cat.id && !tool.hidden)
       .map((tool) => ({
         id: tool.id,
         name: tools_i18n[tool.id]?.name || tool.name,
