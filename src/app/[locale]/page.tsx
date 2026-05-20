@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { getDictionary } from "@/lib/i18n";
-import HeroPdfDemo from "@/components/HeroPdfDemo";
 import ToolsGrid from "@/components/ToolsGrid";
 
 export default async function HomePage({
@@ -18,6 +17,39 @@ export default async function HomePage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+      {/* Hero Banner */}
+      <section className="mb-12 rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 px-6 py-16 text-center sm:px-12 sm:py-20">
+        <h1 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
+          {home.heroTitle || "AI-Powered Tools for Images & Content"}
+        </h1>
+        <p className="mx-auto mt-4 max-w-2xl text-base text-zinc-400 sm:text-lg">
+          {home.heroSubtitle || "Generate, edit, and transform images with AI. Create articles, convert text to speech, and more. Free to start — no credit card needed."}
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <Link
+            href={`/${locale}/ai-image-editing`}
+            className="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-zinc-900 shadow-lg transition-all hover:bg-zinc-100 active:scale-95"
+          >
+            🎨 {home.heroImageEditing || "Edit Images"}
+          </Link>
+          <Link
+            href={`/${locale}/ai-content-creation`}
+            className="rounded-xl bg-white/10 px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/20 transition-all hover:bg-white/20 active:scale-95"
+          >
+            📝 {home.heroContentCreation || "Create Content"}
+          </Link>
+          <Link
+            href={`/${locale}/signup`}
+            className="rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:bg-blue-700 active:scale-95"
+          >
+            {home.heroSignup || "Get 5 Free Credits"}
+          </Link>
+        </div>
+        <p className="mt-6 text-xs text-zinc-500">
+          {home.heroHint || "No credit card · 15 AI tools · Pay only for what you use"}
+        </p>
+      </section>
+
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
@@ -64,9 +96,6 @@ export default async function HomePage({
           }}
         />
       )}
-
-      {/* Hero: PDF to Word Demo */}
-      <HeroPdfDemo locale={locale} dict={dict} />
 
       {/* Tools Grid with Category Filter */}
       <ToolsGrid locale={locale} dict={dict} />

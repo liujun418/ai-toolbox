@@ -23,7 +23,7 @@
     "admin": "Admin"
   },
   "home": {
-    "heroTitle": "Free AI Tools for",
+    "heroTitle": "AI-Powered Tools for Images & Content",
     "heroTitleHighlight": " Every",
     "heroDescription": "Remove backgrounds, generate avatars, restore old photos, convert PDFs — all powered by AI, all in your browser.",
     "getFreeCredits": "Get 5 Free Credits",
@@ -53,37 +53,145 @@
     "ctaTitle": "Ready to Get Started?",
     "ctaSubtitle": "Sign up today and get 5 free credits — no credit card required.",
     "ctaButton": "Create Free Account",
-    "relatedTools": "You Might Also Like"
+    "relatedTools": "You Might Also Like",
+    "heroSubtitle": "Generate, edit, and transform images with AI. Create articles, convert text to speech, and more. Free to start.",
+    "heroImageEditing": "Edit Images",
+    "heroContentCreation": "Create Content",
+    "heroSignup": "Get 5 Free Credits",
+    "heroHint": "No credit card · 15 AI tools · Pay only for what you use"
   },
   "features": [
-    { "icon": "", "title": "Instant Results", "description": "Upload your file and get processed results in seconds — no waiting in queues." },
-    { "icon": "🔒", "title": "Privacy First", "description": "All files are automatically deleted after 1 hour. We never store or share your data." },
-    { "icon": "🎯", "title": "AI-Powered Quality", "description": "Powered by industry-leading models including Stable Diffusion and GFPGAN." },
-    { "icon": "💳", "title": "Pay Only for What You Use", "description": "Get 5 free credits every month. No forced subscriptions — buy credits as needed." }
+    {
+      "icon": "",
+      "title": "Instant Results",
+      "description": "Upload your file and get processed results in seconds — no waiting in queues."
+    },
+    {
+      "icon": "🔒",
+      "title": "Privacy First",
+      "description": "All files are automatically deleted after 1 hour. We never store or share your data."
+    },
+    {
+      "icon": "🎯",
+      "title": "AI-Powered Quality",
+      "description": "Powered by industry-leading models including Stable Diffusion and GFPGAN."
+    },
+    {
+      "icon": "💳",
+      "title": "Pay Only for What You Use",
+      "description": "Get 5 free credits every month. No forced subscriptions — buy credits as needed."
+    }
   ],
   "faqs": [
-    { "q": "What can I do with free credits?", "a": "You get 5 free credits every month. That's enough to remove 2 backgrounds, convert 5 PDFs, or generate 1 avatar." },
-    { "q": "Do unused credits roll over?", "a": "Free tier credits reset monthly. Paid plan credits refresh with your billing cycle." },
-    { "q": "Is my data safe?", "a": "All uploaded files are automatically deleted from our servers after 1 hour. We never store or share your images." },
-    { "q": "What AI models do you use?", "a": "We use industry-leading models via Replicate API, including Stable Diffusion for image generation and GFPGAN for photo restoration." },
-    { "q": "Can I use the results commercially?", "a": "Yes. You retain full ownership of all input and output files. Use them for personal or commercial projects." },
-    { "q": "What file formats are supported?", "a": "We accept PNG, JPG, and WebP for image tools. PDF files up to 20MB for document conversion." }
+    {
+      "q": "What can I do with free credits?",
+      "a": "You get 5 free credits every month. That's enough to remove 2 backgrounds, convert 5 PDFs, or generate 1 avatar."
+    },
+    {
+      "q": "Do unused credits roll over?",
+      "a": "Free tier credits reset monthly. Paid plan credits refresh with your billing cycle."
+    },
+    {
+      "q": "Is my data safe?",
+      "a": "All uploaded files are automatically deleted from our servers after 1 hour. We never store or share your images."
+    },
+    {
+      "q": "What AI models do you use?",
+      "a": "We use industry-leading models via Replicate API, including Stable Diffusion for image generation and GFPGAN for photo restoration."
+    },
+    {
+      "q": "Can I use the results commercially?",
+      "a": "Yes. You retain full ownership of all input and output files. Use them for personal or commercial projects."
+    },
+    {
+      "q": "What file formats are supported?",
+      "a": "We accept PNG, JPG, and WebP for image tools. PDF files up to 20MB for document conversion."
+    }
   ],
   "tools": {
-    "ai-image-generator": { "name": "AI Image Generator", "description": "Turn text into stunning AI images. No watermark, instant download.", "badge": "New" },
-    "avatar-generator": { "name": "AI Avatar Generator", "description": "Transform your photos into cartoon, anime, or professional avatars.", "badge": "Popular" },
-    "background-remover": { "name": "Background Remover", "description": "Remove image backgrounds instantly with one click.", "badge": "Free" },
-    "watermark-remover": { "name": "Watermark Remover", "description": "Erase watermarks, logos, and text from images intelligently." },
-    "photo-restorer": { "name": "Photo Restorer", "description": "Restore and colorize old, blurry, or damaged photos." },
-    "pdf-to-word": { "name": "PDF to Word", "description": "Convert PDF documents to editable Word files instantly." },
-    "image-upscaler": { "name": "Image Upscaler", "description": "Enhance image resolution with 2x or 4x AI super-resolution." },
-    "style-transfer": { "name": "Image Style Transfer", "description": "Transform photos into oil paintings, watercolors, anime art." },
-    "text-polish": { "name": "Text Polish & Rewrite", "description": "Polish, rewrite, shorten, or expand text with AI." },
-    "face-blur": { "name": "Face Privacy Blur", "description": "Auto-detect faces and blur for privacy.", "cost": "2 credits", "cost1": "Free Trial", "uploadTitle": "Upload a photo with faces", "detectFaces": "Detect Faces", "detectHint": "AI will scan the image and locate all faces automatically.", "detecting": "Detecting faces...", "oneFaceFound": "1 face detected", "multiFacesFound": "{n} faces detected", "facesFound": "{n} region(s) marked", "facesMarkedHint": "Faces are marked with green rectangles. Add extra regions if needed, then choose a blur style.", "noFacesFound": "No faces detected", "noFacesHint": "You can still draw regions manually below.", "chooseStyle": "Choose Blur Style", "pickEmoji": "Pick icon", "addRegions": "Add Extra Regions (Optional)", "regionsAdded": "regions", "drawHint": "Click and drag on the image above to add extra blur regions.", "before": "Before", "after": "After", "applyBlur": "Apply Blur", "undo": "Undo", "clearAll": "Clear", "newTask": "New Task", "maxSize": "up to 10MB" },
-    "text-to-speech": { "name": "AI Text to Speech", "description": "Convert text into natural, human-like speech with AI voice synthesis." },
-    "image-description": { "name": "AI Image Describer", "description": "Generate detailed image descriptions, alt text, and captions with AI." },
-    "colorizer": { "name": "B&W Photo Colorizer", "description": "Bring black and white photos to life with AI colorization." },
-    "object-remover": { "name": "AI Object Remover", "description": "Remove unwanted objects, people, or text from photos." }
+    "ai-image-generator": {
+      "name": "AI Image Generator",
+      "description": "Turn text into stunning AI images. No watermark, instant download.",
+      "badge": "New"
+    },
+    "avatar-generator": {
+      "name": "AI Avatar Generator",
+      "description": "Transform your photos into cartoon, anime, or professional avatars.",
+      "badge": "Popular"
+    },
+    "background-remover": {
+      "name": "Background Remover",
+      "description": "Remove image backgrounds instantly with one click.",
+      "badge": "Free"
+    },
+    "watermark-remover": {
+      "name": "Watermark Remover",
+      "description": "Erase watermarks, logos, and text from images intelligently."
+    },
+    "photo-restorer": {
+      "name": "Photo Restorer",
+      "description": "Restore and colorize old, blurry, or damaged photos."
+    },
+    "pdf-to-word": {
+      "name": "PDF to Word",
+      "description": "Convert PDF documents to editable Word files instantly."
+    },
+    "image-upscaler": {
+      "name": "Image Upscaler",
+      "description": "Enhance image resolution with 2x or 4x AI super-resolution."
+    },
+    "style-transfer": {
+      "name": "Image Style Transfer",
+      "description": "Transform photos into oil paintings, watercolors, anime art."
+    },
+    "text-polish": {
+      "name": "Text Polish & Rewrite",
+      "description": "Polish, rewrite, shorten, or expand text with AI."
+    },
+    "face-blur": {
+      "name": "Face Privacy Blur",
+      "description": "Auto-detect faces and blur for privacy.",
+      "cost": "2 credits",
+      "cost1": "Free Trial",
+      "uploadTitle": "Upload a photo with faces",
+      "detectFaces": "Detect Faces",
+      "detectHint": "AI will scan the image and locate all faces automatically.",
+      "detecting": "Detecting faces...",
+      "oneFaceFound": "1 face detected",
+      "multiFacesFound": "{n} faces detected",
+      "facesFound": "{n} region(s) marked",
+      "facesMarkedHint": "Faces are marked with green rectangles. Add extra regions if needed, then choose a blur style.",
+      "noFacesFound": "No faces detected",
+      "noFacesHint": "You can still draw regions manually below.",
+      "chooseStyle": "Choose Blur Style",
+      "pickEmoji": "Pick icon",
+      "addRegions": "Add Extra Regions (Optional)",
+      "regionsAdded": "regions",
+      "drawHint": "Click and drag on the image above to add extra blur regions.",
+      "before": "Before",
+      "after": "After",
+      "applyBlur": "Apply Blur",
+      "undo": "Undo",
+      "clearAll": "Clear",
+      "newTask": "New Task",
+      "maxSize": "up to 10MB"
+    },
+    "text-to-speech": {
+      "name": "AI Text to Speech",
+      "description": "Convert text into natural, human-like speech with AI voice synthesis."
+    },
+    "image-description": {
+      "name": "AI Image Describer",
+      "description": "Generate detailed image descriptions, alt text, and captions with AI."
+    },
+    "colorizer": {
+      "name": "B&W Photo Colorizer",
+      "description": "Bring black and white photos to life with AI colorization."
+    },
+    "object-remover": {
+      "name": "AI Object Remover",
+      "description": "Remove unwanted objects, people, or text from photos."
+    }
   },
   "dashboard": {
     "welcome": "Welcome back",
@@ -193,9 +301,18 @@
     "responseText": "We aim to respond to all inquiries within 24 hours. For urgent matters, please include \"URGENT\" in your email subject line.",
     "commonQuestions": "Common Questions",
     "faq": [
-      { "q": "How do I get more credits?", "a": "Visit our Pricing page to purchase credits starting from $4.99 for 50 credits." },
-      { "q": "My file processing failed. What should I do?", "a": "Please email us with the tool name, file type, and any error message you received. We'll investigate and refund credits if needed." },
-      { "q": "Can I use the outputs commercially?", "a": "Yes. You retain full ownership of all files you upload and generate through our tools." }
+      {
+        "q": "How do I get more credits?",
+        "a": "Visit our Pricing page to purchase credits starting from $4.99 for 50 credits."
+      },
+      {
+        "q": "My file processing failed. What should I do?",
+        "a": "Please email us with the tool name, file type, and any error message you received. We'll investigate and refund credits if needed."
+      },
+      {
+        "q": "Can I use the outputs commercially?",
+        "a": "Yes. You retain full ownership of all files you upload and generate through our tools."
+      }
     ]
   },
   "privacy": {
@@ -444,8 +561,14 @@
     "tryAnother": "Try Another Photo",
     "strength": "Restoration Strength",
     "strengths": {
-      "auto": { "label": "Auto Restore", "desc": "AI removes scratches, dust, and blemishes automatically" },
-      "face": { "label": "Face Pro", "desc": "Dedicated face enhancement with GFPGAN" }
+      "auto": {
+        "label": "Auto Restore",
+        "desc": "AI removes scratches, dust, and blemishes automatically"
+      },
+      "face": {
+        "label": "Face Pro",
+        "desc": "Dedicated face enhancement with GFPGAN"
+      }
     }
   },
   "aiImageGenerator": {
@@ -458,9 +581,18 @@
     "generating": "Generating...",
     "qualityLabel": "Quality",
     "quality": {
-      "low": { "label": "Low", "desc": "Fast & affordable" },
-      "medium": { "label": "Medium", "desc": "Good balance" },
-      "high": { "label": "High", "desc": "Best detail" }
+      "low": {
+        "label": "Low",
+        "desc": "Fast & affordable"
+      },
+      "medium": {
+        "label": "Medium",
+        "desc": "Good balance"
+      },
+      "high": {
+        "label": "High",
+        "desc": "Best detail"
+      }
     },
     "aspectRatioLabel": "Aspect Ratio",
     "aspectRatio": {
@@ -489,10 +621,22 @@
     "noImages": "The AI couldn't generate images. Try a different prompt or settings.",
     "tipsTitle": "Pro Tips",
     "tips": [
-      { "icon": "📝", "text": "Be specific! \"A fluffy orange cat sleeping on a windowsill at sunset\" beats \"cat\" every time." },
-      { "icon": "⚡", "text": "Low quality is great for quick drafts & brainstorming. High quality uses more steps for finer detail." },
-      { "icon": "🖼️", "text": "Upload a reference image to guide composition. The AI blends your photo with the text description." },
-      { "icon": "🎨", "text": "Generate multiple images at once to compare variations. Each extra image costs just 1 more credit." }
+      {
+        "icon": "📝",
+        "text": "Be specific! \"A fluffy orange cat sleeping on a windowsill at sunset\" beats \"cat\" every time."
+      },
+      {
+        "icon": "⚡",
+        "text": "Low quality is great for quick drafts & brainstorming. High quality uses more steps for finer detail."
+      },
+      {
+        "icon": "🖼️",
+        "text": "Upload a reference image to guide composition. The AI blends your photo with the text description."
+      },
+      {
+        "icon": "🎨",
+        "text": "Generate multiple images at once to compare variations. Each extra image costs just 1 more credit."
+      }
     ]
   },
   "pdfToWord": {
@@ -520,17 +664,38 @@
     "uploadToSee": "Select options and upscale to see result",
     "imageType": "Image Type",
     "types": {
-      "photo": { "label": "Photo", "desc": "General model + face enhancement for portraits" },
-      "anime": { "label": "Anime / Illustration", "desc": "Optimized for line art, animation, and illustrations" }
+      "photo": {
+        "label": "Photo",
+        "desc": "General model + face enhancement for portraits"
+      },
+      "anime": {
+        "label": "Anime / Illustration",
+        "desc": "Optimized for line art, animation, and illustrations"
+      }
     },
-    "scales": { "2": "2×", "4": "4×" },
+    "scales": {
+      "2": "2×",
+      "4": "4×"
+    },
     "tryAnother": "Try Another Image",
     "tipsTitle": "💡 Pro Tips",
     "tips": [
-      { "icon": "📏", "text": "Low-res pics get the glow-up! Best for images under 2000px — already crisp photos won't see much change." },
-      { "icon": "📦", "text": "Keep files under 1MB / 2000px. Bigger images can overwhelm the AI — even robots have limits!" },
-      { "icon": "🎯", "text": "Portraits? Photo mode adds face magic. Illustrations or anime? Anime mode keeps those lines crisp!" },
-      { "icon": "🔢", "text": "2× is your go-to hero. 4× works best on tiny images under 1000px — go big or go home!" }
+      {
+        "icon": "📏",
+        "text": "Low-res pics get the glow-up! Best for images under 2000px — already crisp photos won't see much change."
+      },
+      {
+        "icon": "📦",
+        "text": "Keep files under 1MB / 2000px. Bigger images can overwhelm the AI — even robots have limits!"
+      },
+      {
+        "icon": "🎯",
+        "text": "Portraits? Photo mode adds face magic. Illustrations or anime? Anime mode keeps those lines crisp!"
+      },
+      {
+        "icon": "🔢",
+        "text": "2× is your go-to hero. 4× works best on tiny images under 1000px — go big or go home!"
+      }
     ]
   },
   "styleTransfer": {
@@ -541,19 +706,49 @@
     "processing": "Transferring style...",
     "uploadToSee": "Select a style and transform to see result",
     "styles": {
-      "oil-painting": { "label": "Oil Painting", "desc": "Thick brush strokes, rich warm palette" },
-      "watercolor": { "label": "Watercolor", "desc": "Soft translucent washes, delicate edges" },
-      "sketch": { "label": "Pencil Sketch", "desc": "Graphite drawing, fine cross-hatching" },
-      "cartoon": { "label": "3D Cartoon", "desc": "Pixar-style, polished 3D render" },
-      "cyberpunk": { "label": "Cyberpunk", "desc": "Neon lights, futuristic synthwave aesthetic" },
-      "fantasy": { "label": "Fantasy", "desc": "Magical glowing elements, ethereal atmosphere" }
+      "oil-painting": {
+        "label": "Oil Painting",
+        "desc": "Thick brush strokes, rich warm palette"
+      },
+      "watercolor": {
+        "label": "Watercolor",
+        "desc": "Soft translucent washes, delicate edges"
+      },
+      "sketch": {
+        "label": "Pencil Sketch",
+        "desc": "Graphite drawing, fine cross-hatching"
+      },
+      "cartoon": {
+        "label": "3D Cartoon",
+        "desc": "Pixar-style, polished 3D render"
+      },
+      "cyberpunk": {
+        "label": "Cyberpunk",
+        "desc": "Neon lights, futuristic synthwave aesthetic"
+      },
+      "fantasy": {
+        "label": "Fantasy",
+        "desc": "Magical glowing elements, ethereal atmosphere"
+      }
     },
     "tipsTitle": "💡 Pro Tips",
     "tips": [
-      { "icon": "👤", "text": "Solo subject, stunning result! Single portraits work best — busy backgrounds can confuse our AI artist." },
-      { "icon": "✂️", "text": "We'll square-crop your photo auto-magically. Centered composition = perfect style makeover!" },
-      { "icon": "🎨", "text": "No settings, no stress! Every style has its secret sauce pre-tuned for consistent awesomeness." },
-      { "icon": "💡", "text": "Bright lighting, clear face, centered frame = style magic. Our AI paints best from a great photo!" }
+      {
+        "icon": "👤",
+        "text": "Solo subject, stunning result! Single portraits work best — busy backgrounds can confuse our AI artist."
+      },
+      {
+        "icon": "✂️",
+        "text": "We'll square-crop your photo auto-magically. Centered composition = perfect style makeover!"
+      },
+      {
+        "icon": "🎨",
+        "text": "No settings, no stress! Every style has its secret sauce pre-tuned for consistent awesomeness."
+      },
+      {
+        "icon": "💡",
+        "text": "Bright lighting, clear face, centered frame = style magic. Our AI paints best from a great photo!"
+      }
     ],
     "tryAnother": "Try Another Photo"
   },
@@ -567,12 +762,36 @@
     "characters": "characters",
     "processedAppear": "Processed text will appear here",
     "modes": {
-      "polish": { "label": "Polish", "desc": "Fix grammar & flow", "icon": "✨" },
-      "rewrite": { "label": "Rewrite", "desc": "Fresh words, same meaning", "icon": "🔄" },
-      "shorten": { "label": "Shorten", "desc": "Cut the fluff, keep the point", "icon": "✂️" },
-      "expand": { "label": "Expand", "desc": "Add detail & depth", "icon": "📝" },
-      "academic": { "label": "Academic", "desc": "Formal scholarly style", "icon": "🎓" },
-      "business": { "label": "Business", "desc": "Professional & polished", "icon": "💼" }
+      "polish": {
+        "label": "Polish",
+        "desc": "Fix grammar & flow",
+        "icon": "✨"
+      },
+      "rewrite": {
+        "label": "Rewrite",
+        "desc": "Fresh words, same meaning",
+        "icon": "🔄"
+      },
+      "shorten": {
+        "label": "Shorten",
+        "desc": "Cut the fluff, keep the point",
+        "icon": "✂️"
+      },
+      "expand": {
+        "label": "Expand",
+        "desc": "Add detail & depth",
+        "icon": "📝"
+      },
+      "academic": {
+        "label": "Academic",
+        "desc": "Formal scholarly style",
+        "icon": "🎓"
+      },
+      "business": {
+        "label": "Business",
+        "desc": "Professional & polished",
+        "icon": "💼"
+      }
     },
     "button": "Process Text (3 credits)",
     "processing": "Processing text...",
