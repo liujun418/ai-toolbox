@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import sanitizeHtml from "sanitize-html";
 import { getDictionary } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { getBlogPost, getBlogPosts, fetchBlogPost } from "@/lib/blog";
@@ -28,6 +29,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
   const { locale, slug } = await params;
   const post = await fetchBlogPost(slug);
   if (!post) notFound();
+  const dict = await getDictionary(locale as Locale);
+  const bg = (dict as any)?.blog || {};
 
   const related = (post.relatedTools || [])
     .map((id) => allTools.find((t) => t.id === id))
@@ -37,9 +40,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
       {/* Breadcrumb */}
       <nav className="mb-8 text-sm text-zinc-500 dark:text-zinc-400">
-        <Link href={`/${locale}`} className="hover:text-blue-600 dark:hover:text-blue-400">Home</Link>
+        <Link href={`/${locale}`} className="hover:text-blue-600 dark:hover:text-blue-400">{bg.home || "Home"}</Link>
         <span className="mx-2">/</span>
-        <Link href={`/${locale}/blog`} className="hover:text-blue-600 dark:hover:text-blue-400">Blog</Link>
+        <Link href={`/${locale}/blog`} className="hover:text-blue-600 dark:hover:text-blue-400">{bg.blog || "Blog"}</Link>
         <span className="mx-2">/</span>
         <span className="font-medium text-zinc-900 dark:text-white truncate">{post.title}</span>
       </nav>
@@ -94,12 +97,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
       </header>
 
       {/* Article Content */}
-      <div className="prose prose-zinc dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
+      <div className="prose prose-zinc dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content, {
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img", "h1", "h2", "h3"]),
+        allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, img: ["src", "alt", "title"], a: ["href", "title", "rel", "target"] },
+      }) }} />
 
       {/* Related Tools */}
       {related.length > 0 && (
         <section className="mt-12 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-          <h2 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">Tools Mentioned in This Article</h2>
+          <h2 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">{bg.toolsMentioned || "Tools Mentioned in This Article"}</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             {related.map((t: any) => (
               <Link key={t.id} href={`/${locale}/tools/${t.id}`} className="flex items-center gap-3 rounded-xl border border-zinc-100 bg-zinc-50 p-3 transition-all hover:border-blue-200 hover:bg-blue-50/50 dark:border-zinc-700 dark:bg-zinc-800/50 dark:hover:border-blue-700">
@@ -116,7 +122,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
 
       {/* Back to Blog */}
       <div className="mt-8">
-        <Link href={`/${locale}/blog`} className="text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">← Back to all articles</Link>
+        <Link href={`/${locale}/blog`} className="text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">← {bg.backToBlog || "Back to all articles"}</Link>
       </div>
     </div>
   );

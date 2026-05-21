@@ -37,7 +37,7 @@ export default function ToolsGrid({ locale, dict }: ToolsGridProps) {
         badge: tool.free ? (home.free || "Free") : (tools_i18n[tool.id]?.badge || tool.badge) || null,
       }));
     return { ...cat, catTools };
-  });
+  }).filter(cat => cat.catTools.length > 0);
 
   return (
     <section className="mt-12 sm:mt-16">

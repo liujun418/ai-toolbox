@@ -4,29 +4,24 @@ import type { Locale } from "@/lib/i18n";
 import { fetchBlogPosts } from "@/lib/blog";
 import { tools as allTools } from "@/lib/tools";
 
-export const metadata = {
-  title: "AI ToolBox Blog — Tips, Guides & AI Tool Tutorials",
-  description: "Learn how to use AI tools for image editing, content creation, photo restoration, and more. Free guides, tutorials, and tips for creators and professionals.",
-  openGraph: { title: "AI ToolBox Blog", description: "AI tool guides, tips, and tutorials.", url: "https://ai.toolboxonline.club/en/blog", type: "website" as const },
-};
-
 export default async function BlogIndex({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const dict = await getDictionary(locale as Locale);
   const posts = await fetchBlogPosts();
+  const bg = (dict as any)?.blog || {};
   const home = (dict as any)?.home || {};
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
       <nav className="mb-8 text-sm text-zinc-500 dark:text-zinc-400">
-        <Link href={`/${locale}`} className="hover:text-blue-600 dark:hover:text-blue-400">{home.title || "Home"}</Link>
+        <Link href={`/${locale}`} className="hover:text-blue-600 dark:hover:text-blue-400">{bg.home || "Home"}</Link>
         <span className="mx-2">/</span>
-        <span className="font-medium text-zinc-900 dark:text-white">Blog</span>
+        <span className="font-medium text-zinc-900 dark:text-white">{bg.blog || "Blog"}</span>
       </nav>
 
       <header className="mb-10">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">AI ToolBox Blog</h1>
-        <p className="mt-3 text-base text-zinc-600 dark:text-zinc-400">Tips, guides, and tutorials to get the most out of AI tools. Learn how to create, edit, and optimize content with artificial intelligence.</p>
+        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">{bg.title || "AI ToolBox Blog"}</h1>
+        <p className="mt-3 text-base text-zinc-600 dark:text-zinc-400">{bg.description || "Tips, guides, and tutorials to get the most out of AI tools."}</p>
       </header>
 
       <script
@@ -35,8 +30,8 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Blog",
-            name: "AI ToolBox Blog",
-            description: "Tips, guides, and tutorials for AI tools",
+            name: bg.title || "AI ToolBox Blog",
+            description: bg.description || "Tips, guides, and tutorials for AI tools",
             url: `https://ai.toolboxonline.club/${locale}/blog`,
             blogPost: posts.map((p) => ({
               "@type": "BlogPosting",
