@@ -1,891 +1,920 @@
 {
-  "nav": {
-    "tools": "Tools",
-    "pricing": "Pricing",
-    "about": "About",
-    "freeTools": "Free Tools →",
-    "credits": "credits",
-    "login": "Log in",
-    "logout": "Log out",
-    "signup": "Sign up",
-    "toggleDark": "Toggle dark mode",
-    "loading": "..."
-  },
-  "footer": {
-    "copyright": "AI ToolBox Online. All rights reserved.",
-    "freeTools": "Free Tools →",
-    "pricing": "Pricing",
-    "about": "About",
-    "contact": "Contact",
-    "privacy": "Privacy",
-    "terms": "Terms",
-    "email": "jzerov@live.com",
-    "admin": "Admin"
-  },
-  "home": {
-    "heroTitle": "AI-Powered Tools for Images & Content",
-    "heroTitleHighlight": " Every",
-    "heroDescription": "Remove backgrounds, generate avatars, restore old photos, convert PDFs — all powered by AI, all in your browser.",
-    "getFreeCredits": "Get 5 Free Credits",
-    "viewPricing": "View Pricing",
-    "all": "All",
-    "allTools": "All Tools",
-    "categoryImageGeneration": "Image Generation",
-    "categoryImageEditing": "Image Editing",
-    "categoryContentCreation": "Content Creation",
-    "categoryDocument": "Document",
-    "credits": "credits",
-    "free": "Free",
-    "popular": "Popular",
-    "new": "New",
-    "whyChooseTitle": "Why Choose AI ToolBox Online?",
-    "whyChooseSubtitle": "Powerful AI tools built for speed, quality, and privacy.",
-    "pricingTitle": "Simple, Transparent Pricing",
-    "pricingSubtitle": "Start free. Upgrade when you need more. No hidden fees.",
-    "howItWorks": "How It Works",
-    "upload": "Upload",
-    "uploadDesc": "Upload your file — image or PDF.",
-    "process": "Process",
-    "processDesc": "Our AI models process your file instantly.",
-    "download": "Download",
-    "downloadDesc": "Get your result and download it.",
-    "faqTitle": "Frequently Asked Questions",
-    "ctaTitle": "Ready to Get Started?",
-    "ctaSubtitle": "Sign up today and get 5 free credits — no credit card required.",
-    "ctaButton": "Create Free Account",
-    "relatedTools": "You Might Also Like",
-    "heroSubtitle": "Generate, edit, and transform images with AI. Create articles, convert text to speech, and more. Free to start.",
-    "heroImageEditing": "Edit Images",
-    "heroContentCreation": "Create Content",
-    "heroSignup": "Get 5 Free Credits",
-    "heroHint": "No credit card · 15 AI tools · Pay only for what you use"
-  },
-  "features": [
-    {
-      "icon": "",
-      "title": "Instant Results",
-      "description": "Upload your file and get processed results in seconds — no waiting in queues."
-    },
-    {
-      "icon": "🔒",
-      "title": "Privacy First",
-      "description": "All files are automatically deleted after 1 hour. We never store or share your data."
-    },
-    {
-      "icon": "🎯",
-      "title": "AI-Powered Quality",
-      "description": "Powered by industry-leading models including Stable Diffusion and GFPGAN."
-    },
-    {
-      "icon": "💳",
-      "title": "Pay Only for What You Use",
-      "description": "Get 5 free credits every month. No forced subscriptions — buy credits as needed."
-    }
-  ],
-  "faqs": [
-    {
-      "q": "What can I do with free credits?",
-      "a": "You get 5 free credits every month. That's enough to remove 2 backgrounds, convert 5 PDFs, or generate 1 avatar."
-    },
-    {
-      "q": "Do unused credits roll over?",
-      "a": "Free tier credits reset monthly. Paid plan credits refresh with your billing cycle."
-    },
-    {
-      "q": "Is my data safe?",
-      "a": "All uploaded files are automatically deleted from our servers after 1 hour. We never store or share your images."
-    },
-    {
-      "q": "What AI models do you use?",
-      "a": "We use industry-leading models via Replicate API, including Stable Diffusion for image generation and GFPGAN for photo restoration."
-    },
-    {
-      "q": "Can I use the results commercially?",
-      "a": "Yes. You retain full ownership of all input and output files. Use them for personal or commercial projects."
-    },
-    {
-      "q": "What file formats are supported?",
-      "a": "We accept PNG, JPG, and WebP for image tools. PDF files up to 20MB for document conversion."
-    }
-  ],
-  "tools": {
-    "ai-image-generator": {
-      "name": "AI Image Generator",
-      "description": "Turn text into stunning AI images. No watermark, instant download.",
-      "badge": "New"
-    },
-    "avatar-generator": {
-      "name": "AI Avatar Generator",
-      "description": "Transform your photos into cartoon, anime, or professional avatars.",
-      "badge": "Popular"
-    },
-    "background-remover": {
-      "name": "Background Remover",
-      "description": "Remove image backgrounds instantly with one click.",
-      "badge": "Free"
-    },
-    "watermark-remover": {
-      "name": "Watermark Remover",
-      "description": "Erase watermarks, logos, and text from images intelligently."
-    },
-    "photo-restorer": {
-      "name": "Photo Restorer",
-      "description": "Restore and colorize old, blurry, or damaged photos."
-    },
-    "pdf-to-word": {
-      "name": "PDF to Word",
-      "description": "Convert PDF documents to editable Word files instantly."
-    },
-    "image-upscaler": {
-      "name": "Image Upscaler",
-      "description": "Enhance image resolution with 2x or 4x AI super-resolution."
-    },
-    "style-transfer": {
-      "name": "Image Style Transfer",
-      "description": "Transform photos into oil paintings, watercolors, anime art."
-    },
-    "text-polish": {
-      "name": "Text Polish & Rewrite",
-      "description": "Polish, rewrite, shorten, or expand text with AI."
-    },
-    "face-blur": {
-      "name": "Face Privacy Blur",
-      "description": "Auto-detect faces and blur for privacy.",
-      "cost": "2 credits",
-      "cost1": "Free Trial",
-      "uploadTitle": "Upload a photo with faces",
-      "detectFaces": "Detect Faces",
-      "detectHint": "AI will scan the image and locate all faces automatically.",
-      "detecting": "Detecting faces...",
-      "oneFaceFound": "1 face detected",
-      "multiFacesFound": "{n} faces detected",
-      "facesFound": "{n} region(s) marked",
-      "facesMarkedHint": "Faces are marked with green rectangles. Add extra regions if needed, then choose a blur style.",
-      "noFacesFound": "No faces detected",
-      "noFacesHint": "You can still draw regions manually below.",
-      "chooseStyle": "Choose Blur Style",
-      "pickEmoji": "Pick icon",
-      "addRegions": "Add Extra Regions (Optional)",
-      "regionsAdded": "regions",
-      "drawHint": "Click and drag on the image above to add extra blur regions.",
-      "before": "Before",
-      "after": "After",
-      "applyBlur": "Apply Blur",
-      "undo": "Undo",
-      "clearAll": "Clear",
-      "newTask": "New Task",
-      "maxSize": "up to 10MB"
-    },
-    "text-to-speech": {
-      "name": "AI Text to Speech",
-      "description": "Convert text into natural, human-like speech with AI voice synthesis."
-    },
-    "image-description": {
-      "name": "AI Image Describer",
-      "description": "Generate detailed image descriptions, alt text, and captions with AI."
-    },
-    "colorizer": {
-      "name": "B&W Photo Colorizer",
-      "description": "Bring black and white photos to life with AI colorization."
-    },
-    "object-remover": {
-      "name": "AI Object Remover",
-      "description": "Remove unwanted objects, people, or text from photos."
-    }
-  },
-  "dashboard": {
-    "welcome": "Welcome back",
-    "creditsRemaining": "You have",
-    "credits": "credits",
-    "buyMore": "Buy more credits →",
-    "creditsUsed": "Credits Used (All Time)",
-    "toolsUsed": "Tools Used",
-    "memberSince": "Member Since",
-    "yourTools": "Your Tools",
-    "used": "Used {{count}}x",
-    "creditsPerUse": "{{credits}} credits per use",
-    "recentActivity": "Recent Activity",
-    "noActivity": "No activity yet. Try a tool to get started!",
-    "browseTools": "Browse Tools",
-    "tool": "Tool",
-    "date": "Date",
-    "credits_col": "Credits"
-  },
-  "pricing": {
-    "title": "Simple Pricing: Pay-as-You-Go",
-    "subtitle": "Buy credits when you need them. No subscription lock-in.",
-    "oneTimeTitle": "One-Time Credit Packs",
-    "oneTimeDesc": "Buy credits that are valid for 12 months. Use them on any tool, anytime.",
-    "subscriptionTitle": "Monthly Subscriptions",
-    "subscriptionDesc": "Get fresh credits every month, capped at your plan limit.",
-    "popular": "Popular",
-    "allTools": "All AI tools included",
-    "noWatermark": "No watermark on outputs",
-    "getStarted": "Get Credits",
-    "subscribe": "Subscribe",
-    "costPerTool": "Cost per Tool",
-    "credits": "Credits",
-    "usdCost": "USD Cost*",
-    "perCredit": "credit",
-    "perMonth": "month",
-    "hardCap": "credits/month (hard cap)",
-    "noRollover": "Unused credits do not roll over",
-    "cancelAnytime": "Cancel anytime",
-    "valid12Months": "Valid for 12 months",
-    "whyPayg": "Why Pay-as-You-Go?",
-    "whyPayg1": "No monthly subscription lock-in. Buy credits only when you need them.",
-    "whyPayg2": "Purchased credits are valid for 12 months — no rush to use them.",
-    "whyPayg3": "Each credit is worth the same across all tools. Full price transparency.",
-    "costFootnote": "Based on Standard Pack ($10/50 credits = $0.20/credit). Free tools require login.",
-    "importantInfo": "Important Information",
-    "whatAreCredits": "What Are Credits?",
-    "whatAreCreditsDesc": "Credits are a virtual currency used to access our AI tools. Each tool use deducts a set number of credits. Credit costs are shown before each use.",
-    "expiration": "Credit Expiration",
-    "expirationDesc": "Purchased credits are valid for 12 months. Subscription credits reset monthly and do not roll over.",
-    "refund": "Refund Policy",
-    "refundDesc": "Credits are non-refundable once purchased. If you experience a technical issue, contact us for investigation."
-  },
-  "login": {
-    "title": "Log in",
-    "subtitle": "Sign in to access your AI tools and credits.",
-    "email": "Email",
-    "password": "Password",
-    "emailPlaceholder": "you@example.com",
-    "button": "Log in",
-    "loading": "Logging in...",
-    "noAccount": "Don't have an account?",
-    "signUp": "Sign up",
-    "loginFailed": "Login failed"
-  },
-  "signup": {
-    "title": "Sign up",
-    "subtitle": "Get 5 free credits to start. No credit card required.",
-    "name": "Name",
-    "email": "Email",
-    "password": "Password",
-    "namePlaceholder": "John Doe",
-    "emailPlaceholder": "you@example.com",
-    "button": "Create account",
-    "loading": "Creating account...",
-    "hasAccount": "Already have an account?",
-    "logIn": "Log in",
-    "registrationFailed": "Registration failed"
-  },
-  "about": {
-    "title": "About AI ToolBox Online",
-    "subtitle": "Our mission and story",
-    "mission": "Our Mission",
-    "missionText": "AI ToolBox Online was built with a simple idea: everyone should have access to powerful AI tools without expensive software subscriptions or technical expertise. Whether you're a small business owner creating professional avatars, a student converting PDFs for assignments, or a designer removing watermarks — our tools are designed to be fast, intuitive, and accessible from any device.",
-    "offer": "What We Offer",
-    "offerIntro": "We provide AI-powered tools:",
-    "offerItems": [
-      "Background Remover — One-click background removal for any image",
-      "AI Avatar Generator — Transform photos into cartoon, anime, or professional avatars",
-      "Watermark Remover — Erase watermarks, logos, and text from images",
-      "Photo Restorer — Restore and colorize old, blurry, or damaged photos",
-      "PDF to Word — Convert PDF documents to editable Word files"
-    ],
-    "howItWorks": "How It Works",
-    "howItWorksText": "We use industry-leading AI models via Replicate API — including Stable Diffusion for image generation and GFPGAN for photo restoration. All processing happens in the cloud; you just upload your file and get results in seconds. Files are automatically deleted after 1 hour to protect your privacy.",
-    "pricingPhilosophy": "Pricing Philosophy",
-    "pricingText": "We believe in transparent, pay-as-you-go pricing. No monthly subscriptions forced on you. Get 5 free credits every month, and only pay when you need more. Every tool shows its credit cost upfront so there are no surprises.",
-    "contact": "Contact",
-    "contactText": "Have questions or feedback? Reach us at jzerov@live.com or visit our contact page."
-  },
-  "contact": {
-    "title": "Contact Us",
-    "subtitle": "We'd love to hear from you",
-    "email": "Email",
-    "emailDesc": "For general inquiries, support, or feedback:",
-    "responseTime": "Response Time",
-    "responseText": "We aim to respond to all inquiries within 24 hours. For urgent matters, please include \"URGENT\" in your email subject line.",
-    "commonQuestions": "Common Questions",
-    "faq": [
-      {
-        "q": "How do I get more credits?",
-        "a": "Visit our Pricing page to purchase credits starting from $4.99 for 50 credits."
-      },
-      {
-        "q": "My file processing failed. What should I do?",
-        "a": "Please email us with the tool name, file type, and any error message you received. We'll investigate and refund credits if needed."
-      },
-      {
-        "q": "Can I use the outputs commercially?",
-        "a": "Yes. You retain full ownership of all files you upload and generate through our tools."
-      }
-    ]
-  },
-  "privacy": {
-    "title": "Privacy Policy",
-    "lastUpdated": "Last updated: May 10, 2026",
-    "sections": [
-      {
-        "title": "1. Who We Are",
-        "text": "AI ToolBox Online is operated by Liu Jun (individual sole proprietor). Our contact email is jzerov@live.com. We are committed to protecting your privacy and complying with applicable data protection laws including GDPR and CCPA."
-      },
-      {
-        "title": "2. Information We Collect",
-        "text": "We collect minimal information necessary to provide our services:",
-        "list": [
-          "Account Information: Email address and name when you create an account.",
-          "Usage Data: Tool usage logs for billing and credit management (tool name, timestamp, credits used).",
-          "Payment Data: Processed securely by our third-party payment provider (Lemon Squeezy / Stripe). We do not store your payment card details on our servers.",
-          "Technical Data: IP address, browser type, and device information collected automatically for security and analytics via Google Analytics (GA4). This data is anonymized and not linked to individual identities."
-        ]
-      },
-      {
-        "title": "3. File Handling",
-        "text": "All uploaded files (images, PDFs) and processed output files are automatically deleted from our servers within 1 hour of processing. We do not store, share, sell, or use your images for training AI models. You retain full ownership of all files you upload and generate through our tools."
-      },
-      {
-        "title": "4. How We Use Your Information",
-        "text": "We use your information solely for:",
-        "list": [
-          "Creating and managing your user account.",
-          "Processing tool requests and deducting credits.",
-          "Processing payments and maintaining billing records.",
-          "Communicating with you about your account, service updates, or support requests.",
-          "Improving our service performance and user experience."
-        ]
-      },
-      {
-        "title": "5. Cookies",
-        "text": "We use essential cookies to maintain your session locale preference (language selection). We also use Google Analytics (GA4) for anonymized traffic analysis. You can disable cookies in your browser settings, though this may affect site functionality. Third-party services such as payment providers may set their own cookies during checkout."
-      },
-      {
-        "title": "6. Third-Party Services",
-        "text": "We use the following third-party services to deliver our platform:",
-        "list": [
-          "Replicate API: For AI image processing. Operates under its own privacy policy.",
-          "Lemon Squeezy / Stripe: For secure payment processing. Operates under their own privacy policy.",
-          "Cloudflare R2: For temporary file storage during processing. Operates under Cloudflare's privacy policy.",
-          "Google Analytics (GA4): For anonymized website traffic analysis. Google does not associate your IP address with any other data."
-        ],
-        "note": "We do not share, sell, or rent your personal data to any third party for marketing purposes."
-      },
-      {
-        "title": "7. Data Security",
-        "text": "We use industry-standard encryption (HTTPS/TLS) for all data in transit. Authentication tokens are stored securely in your browser's local storage. Access to backend systems is restricted and protected. We regularly review our security practices."
-      },
-      {
-        "title": "8. Your Rights (GDPR & CCPA)",
-        "text": "Under GDPR and CCPA, you have the right to:",
-        "list": [
-          "Access the personal data we hold about you.",
-          "Request correction of inaccurate personal data.",
-          "Request deletion of your account and all associated personal data.",
-          "Object to or restrict certain processing of your data.",
-          "Opt out of the sale or sharing of your personal information (we do not sell data)."
-        ],
-        "note": "To exercise any of these rights, contact us at jzerov@live.com. We will respond within 30 days."
-      },
-      {
-        "title": "9. Children's Privacy",
-        "text": "Our service is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If we learn that we have collected personal information from a child under 13, we will delete it promptly."
-      },
-      {
-        "title": "10. Changes to This Policy",
-        "text": "We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated date. We encourage you to review this policy periodically."
-      },
-      {
-        "title": "11. Contact",
-        "text": "For privacy-related inquiries or to exercise your rights, contact us at: Liu Jun — jzerov@live.com."
-      }
-    ]
-  },
-  "terms": {
-    "title": "Terms of Service",
-    "lastUpdated": "Last updated: May 10, 2026",
-    "sections": [
-      {
-        "title": "1. Company Information",
-        "text": "AI ToolBox Online is operated by Liu Jun (individual sole proprietor). Contact email: jzerov@live.com. By accessing or using our website and services, you agree to be bound by these Terms of Service."
-      },
-      {
-        "title": "2. Service Description",
-        "text": "AI ToolBox Online provides AI-powered image processing and document conversion tools, including but not limited to background removal, avatar generation, watermark removal, photo restoration, PDF-to-Word conversion, image upscaling, style transfer, and text polishing. Service availability is subject to third-party API availability. We use a credit-based pricing model where each tool use deducts a set number of credits from your account."
-      },
-      {
-        "title": "3. Acceptance of Terms",
-        "text": "By creating an account or using any of our tools, you agree to these Terms. If you do not agree, please do not use our services. We may update these terms from time to time; continued use after changes constitutes acceptance of the updated terms."
-      },
-      {
-        "title": "4. User Account & Responsibilities",
-        "text": "You are responsible for maintaining the confidentiality of your account credentials. You agree not to:",
-        "list": [
-          "Share, transfer, or sell your account or credits to another person or entity.",
-          "Use our service to process content that violates applicable laws or infringes on others' intellectual property or privacy rights.",
-          "Automate, scrape, or access our service via unauthorized means.",
-          "Use our service for any unlawful or fraudulent purpose."
-        ]
-      },
-      {
-        "title": "5. Credits & Billing",
-        "text": "All purchases are made in credits via our pricing page. Current packages: 50 credits for $4.99 USD, 100 credits for $9.99 USD, and 500 credits for $24.99 USD. Free accounts receive 5 credits per month. Each tool deducts credits as shown on the tool page (1–5 credits per use). Purchased credits are valid for 12 months from the date of purchase. Free tier credits reset monthly and do not roll over. All prices are in USD."
-      },
-      {
-        "title": "6. Refund Policy",
-        "text": "Credits are non-refundable and non-transferable once purchased, except in cases of proven service failure. If a tool fails to process your file due to a technical error on our side, contact us at jzerov@live.com with the tool name, file type, and error details. We will investigate and refund the deducted credits to your account if the issue was caused by our service. Refund requests are processed within 5 business days. We do not offer cash refunds — refunded credits are added back to your account balance."
-      },
-      {
-        "title": "7. Intellectual Property",
-        "text": "The AI ToolBox Online platform, including its design, code, branding, and logo, is protected by intellectual property rights owned by Liu Jun. You retain full ownership of all files you upload and all outputs generated through our tools. You may use outputs for personal or commercial purposes."
-      },
-      {
-        "title": "8. Privacy & Data Handling",
-        "text": "All uploaded files and processed outputs are automatically deleted from our servers within 1 hour of processing. We collect minimal personal data (email address, name) for account management. Payment data is processed securely by our third-party payment provider. We do not sell or share your personal data with third parties for marketing purposes. See our Privacy Policy for full details."
-      },
-      {
-        "title": "9. Disclaimer of Warranties",
-        "text": "AI ToolBox Online is provided 'as is' without warranties of any kind, express or implied. We do not guarantee uninterrupted, error-free, or timely service. AI-generated outputs may vary in quality and accuracy. You use the service at your own risk."
-      },
-      {
-        "title": "10. Limitation of Liability",
-        "text": "To the maximum extent permitted by law, AI ToolBox Online and its operator shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of or inability to use our services, including but not limited to loss of data, files, or profits."
-      },
-      {
-        "title": "11. Third-Party Services",
-        "text": "We use third-party services including Replicate (AI processing), Stripe/Lemon Squeezy (payment processing), and Cloudflare R2 (temporary storage). Each operates under its own terms and privacy policy. We are not responsible for the actions of these third-party services."
-      },
-      {
-        "title": "12. Governing Law",
-        "text": "These terms are governed by applicable law. Any disputes shall be resolved through good-faith negotiation. If resolution is not possible, disputes may be brought before the appropriate courts."
-      },
-      {
-        "title": "13. Contact Information",
-        "text": "For any questions regarding these terms, contact us at: Liu Jun — jzerov@live.com. We aim to respond within 24–48 hours."
-      }
-    ]
-  },
-  "notFound": {
-    "title": "404",
-    "heading": "Page Not Found",
-    "description": "The page you are looking for doesn't exist or has been moved.",
-    "goHome": "Go Home",
-    "viewPricing": "View Pricing"
-  },
-  "paymentSuccess": {
-    "title": "Payment Successful!",
-    "description": "Your credits have been added to your account.",
-    "creditsAvailable": "credits available",
-    "goToDashboard": "Go to Dashboard",
-    "seconds": "s"
-  },
-  "paymentCancel": {
-    "title": "Payment Cancelled",
-    "description": "Your payment was not completed. No charges have been made.",
-    "tryAgain": "Try Again",
-    "backToDashboard": "Back to Dashboard"
-  },
-  "toolPage": {
-    "home": "Home",
-    "clickToUpload": "Click to upload",
-    "uploadPhoto": "Upload a photo",
-    "uploadImage": "Upload an image to upscale",
-    "uploadPdf": "Upload a PDF document",
-    "supportedFormats": "PNG, JPG, WebP — max 3MB",
-    "supportedFormatsPdf": "PDF — max 20MB",
-    "original": "Original",
-    "result": "Result",
-    "processing": "Processing...",
-    "cancel": "Cancel",
-    "tryAgain": "Try Again",
-    "downloadResult": "Download Result",
-    "startOver": "Start Over",
-    "tryAnother": "Try Another",
-    "style": "Style",
-    "customPrompt": "Custom prompt (optional)",
-    "mode": "Mode",
-    "upscaleFactor": "Upscale Factor",
-    "loading": "Loading...",
-    "howToUse": "How to Use This Tool",
-    "faq": "Frequently Asked Questions"
-  },
-  "avatarGenerator": {
-    "title": "AI Avatar Generator",
-    "description": "Turn your selfie into a cartoon star, anime hero, or professional headshot — like magic!",
-    "cost": "5 credits",
-    "button": "Generate Avatar (5 credits)",
-    "styles": {
-      "cartoon": "Cartoon",
-      "anime": "Anime",
-      "professional": "Professional",
-      "pixel-art": "Pixel Art",
-      "watercolor": "Watercolor",
-      "oil-painting": "Oil Painting"
-    },
-    "generating": "Generating avatar...",
-    "resultReady": "Select a style and generate to see the result",
-    "download": "Download Avatar",
-    "tryAnother": "Try Another Photo",
-    "selectBest": "Choose your favorite"
-  },
-  "backgroundRemover": {
-    "title": "Background Remover",
-    "description": "Snip snip! Backgrounds vanish with one click. Clean cut, every time.",
-    "cost": "2 credits",
-    "button": "Remove Background (2 credits)",
-    "processing": "Removing background...",
-    "uploadToSee": "Upload an image to remove background",
-    "bgColor": "Background Color",
-    "transparent": "Transparent",
-    "white": "White",
-    "black": "Black",
-    "custom": "Custom",
-    "advanced": "Advanced",
-    "download": "Download PNG",
-    "autoMode": "Auto Remove",
-    "manualMode": "Manual Paint"
-  },
-  "watermarkRemover": {
-    "title": "Watermark Remover",
-    "description": "Sweep away watermarks, logos, and text — your image, squeaky clean.",
-    "cost": "3 credits",
-    "button": "Remove Watermark (3 credits)",
-    "processing": "Processing...",
-    "uploadToSee": "Upload to see result",
-    "autoDetect": "Auto Detect",
-    "manual": "Manual",
-    "autoHint": "AI will automatically detect and remove watermarks, logos, and text.",
-    "manualHint": "Paint over the watermark area so the AI knows what to remove.",
-    "clearMarks": "Clear Marks"
-  },
-  "photoRestorer": {
-    "title": "Photo Restorer",
-    "description": "Give old photos a time machine makeover. Scratches, dust, blur — poof, gone!",
-    "cost": "5 credits",
-    "button": "Restore Photo (5 credits)",
-    "processing": "Restoring photo...",
-    "uploadToSee": "Select strength and restore to see result",
-    "download": "Download Restored Photo",
-    "tryAnother": "Try Another Photo",
-    "strength": "Restoration Strength",
-    "strengths": {
-      "auto": {
-        "label": "Auto Restore",
-        "desc": "AI removes scratches, dust, and blemishes automatically"
-      },
-      "face": {
-        "label": "Face Pro",
-        "desc": "Dedicated face enhancement with GFPGAN"
-      }
-    }
-  },
-  "aiImageGenerator": {
-    "title": "AI Image Generator",
-    "description": "Describe it. See it. Download it. Turn any text prompt into a stunning AI-generated image — no watermark, instant delivery, pay only for what you create!",
-    "cost": "from 1 credit",
-    "promptLabel": "Describe the image you want",
-    "promptPlaceholder": "A majestic mountain landscape at golden hour, with a crystal-clear lake reflecting the peaks...",
-    "generateButton": "Generate Image",
-    "generating": "Generating...",
-    "qualityLabel": "Quality",
-    "quality": {
-      "low": {
-        "label": "Low",
-        "desc": "Fast & affordable"
-      },
-      "medium": {
-        "label": "Medium",
-        "desc": "Good balance"
-      },
-      "high": {
-        "label": "High",
-        "desc": "Best detail"
-      }
-    },
-    "aspectRatioLabel": "Aspect Ratio",
-    "aspectRatio": {
-      "1:1": "Square (1:1)",
-      "3:2": "Landscape (3:2)",
-      "2:3": "Portrait (2:3)"
-    },
-    "formatLabel": "Format",
-    "format": {
-      "png": "PNG — lossless, larger file",
-      "webp": "WebP — modern, small size",
-      "jpeg": "JPEG — universal, compressed"
-    },
-    "imagesLabel": "Images",
-    "images": "images",
-    "referenceLabel": "Reference Image (optional)",
-    "referenceDesc": "Upload a photo to guide style & composition. Adds 1 extra credit.",
-    "uploadReference": "Click to upload reference",
-    "removeReference": "Remove",
-    "creditSummary": "credits for this generation",
-    "result": "Your Generated Image",
-    "results": "Your Generated Images",
-    "downloadAll": "Download All",
-    "tryAnother": "Generate Another",
-    "errorTitle": "Generation Failed",
-    "noImages": "The AI couldn't generate images. Try a different prompt or settings.",
-    "tipsTitle": "Pro Tips",
-    "tips": [
-      {
-        "icon": "📝",
-        "text": "Be specific! \"A fluffy orange cat sleeping on a windowsill at sunset\" beats \"cat\" every time."
-      },
-      {
-        "icon": "⚡",
-        "text": "Low quality is great for quick drafts & brainstorming. High quality uses more steps for finer detail."
-      },
-      {
-        "icon": "🖼️",
-        "text": "Upload a reference image to guide composition. The AI blends your photo with the text description."
-      },
-      {
-        "icon": "🎨",
-        "text": "Generate multiple images at once to compare variations. Each extra image costs just 1 more credit."
-      }
-    ]
-  },
-  "pdfToWord": {
-    "title": "PDF to Word",
-    "description": "Unlock your PDFs! Text or scanned — convert any PDF into a squeaky-clean editable Word doc.",
-    "cost1": "Free",
-    "cost2": "Free",
-    "scannedBadge": "No AI credits needed",
-    "button": "Convert to Word",
-    "processing": "Converting PDF...",
-    "processingOcr": "Rendering scanned pages...",
-    "pageCount": "Pages",
-    "download": "Download Word File",
-    "downloadText": "Your Word document is ready for download.",
-    "done": "Conversion Complete!",
-    "tryAnother": "Convert Another File"
-  },
-  "imageUpscaler": {
-    "title": "Image Upscaler",
-    "description": "Zoom and enhance! Turn tiny, blurry pics into crisp, detailed images.",
-    "cost": "2 credits",
-    "supportedFormats": "PNG, JPG, WebP — max 1MB",
-    "button": "Upscale Image (2 credits)",
-    "processing": "Upscaling image...",
-    "uploadToSee": "Select options and upscale to see result",
-    "imageType": "Image Type",
-    "types": {
-      "photo": {
-        "label": "Photo",
-        "desc": "General model + face enhancement for portraits"
-      },
-      "anime": {
-        "label": "Anime / Illustration",
-        "desc": "Optimized for line art, animation, and illustrations"
-      }
-    },
-    "scales": {
-      "2": "2×",
-      "4": "4×"
-    },
-    "tryAnother": "Try Another Image",
-    "tipsTitle": "💡 Pro Tips",
-    "tips": [
-      {
-        "icon": "📏",
-        "text": "Low-res pics get the glow-up! Best for images under 2000px — already crisp photos won't see much change."
-      },
-      {
-        "icon": "📦",
-        "text": "Keep files under 1MB / 2000px. Bigger images can overwhelm the AI — even robots have limits!"
-      },
-      {
-        "icon": "🎯",
-        "text": "Portraits? Photo mode adds face magic. Illustrations or anime? Anime mode keeps those lines crisp!"
-      },
-      {
-        "icon": "🔢",
-        "text": "2× is your go-to hero. 4× works best on tiny images under 1000px — go big or go home!"
-      }
-    ]
-  },
-  "styleTransfer": {
-    "title": "Image Style Transfer",
-    "description": "Paint your photo into a masterpiece — oil, sketch, cyberpunk, fantasy & more!",
-    "cost": "4 credits",
-    "button": "Transform (4 credits)",
-    "processing": "Transferring style...",
-    "uploadToSee": "Select a style and transform to see result",
-    "styles": {
-      "oil-painting": {
-        "label": "Oil Painting",
-        "desc": "Thick brush strokes, rich warm palette"
-      },
-      "watercolor": {
-        "label": "Watercolor",
-        "desc": "Soft translucent washes, delicate edges"
-      },
-      "sketch": {
-        "label": "Pencil Sketch",
-        "desc": "Graphite drawing, fine cross-hatching"
-      },
-      "cartoon": {
-        "label": "3D Cartoon",
-        "desc": "Pixar-style, polished 3D render"
-      },
-      "cyberpunk": {
-        "label": "Cyberpunk",
-        "desc": "Neon lights, futuristic synthwave aesthetic"
-      },
-      "fantasy": {
-        "label": "Fantasy",
-        "desc": "Magical glowing elements, ethereal atmosphere"
-      }
-    },
-    "tipsTitle": "💡 Pro Tips",
-    "tips": [
-      {
-        "icon": "👤",
-        "text": "Solo subject, stunning result! Single portraits work best — busy backgrounds can confuse our AI artist."
-      },
-      {
-        "icon": "✂️",
-        "text": "We'll square-crop your photo auto-magically. Centered composition = perfect style makeover!"
-      },
-      {
-        "icon": "🎨",
-        "text": "No settings, no stress! Every style has its secret sauce pre-tuned for consistent awesomeness."
-      },
-      {
-        "icon": "💡",
-        "text": "Bright lighting, clear face, centered frame = style magic. Our AI paints best from a great photo!"
-      }
-    ],
-    "tryAnother": "Try Another Photo"
-  },
-  "textPolish": {
-    "title": "Text Polish & Rewrite",
-    "description": "Give your words a spa day. Polish, rewrite, shorten, or expand with AI magic.",
-    "cost": "3 credits",
-    "originalText": "Original Text",
-    "resultLabel": "Result",
-    "placeholder": "Paste or type your text here...",
-    "characters": "characters",
-    "outputLanguage": "Output Language",
-    "processedAppear": "Processed text will appear here",
-    "modes": {
-      "polish": {
-        "label": "Polish",
-        "desc": "Fix grammar & flow",
-        "icon": "✨"
-      },
-      "rewrite": {
-        "label": "Rewrite",
-        "desc": "Fresh words, same meaning",
-        "icon": "🔄"
-      },
-      "shorten": {
-        "label": "Shorten",
-        "desc": "Cut the fluff, keep the point",
-        "icon": "✂️"
-      },
-      "expand": {
-        "label": "Expand",
-        "desc": "Add detail & depth",
-        "icon": "📝"
-      },
-      "academic": {
-        "label": "Academic",
-        "desc": "Formal scholarly style",
-        "icon": "🎓"
-      },
-      "business": {
-        "label": "Business",
-        "desc": "Professional & polished",
-        "icon": "💼"
-      }
-    },
-    "button": "Process Text (3 credits)",
-    "processing": "Processing text...",
-    "copy": "Copy to Clipboard",
-    "clear": "Clear",
-    "tryAnother": "Try Another Text"
-  },
-  "language": {
-    "select": "Language"
-  },
-  "forgotPassword": {
-    "title": "Forgot Password",
-    "subtitle": "Enter your email and we'll send a reset link.",
-    "emailLabel": "Email",
-    "emailPlaceholder": "you@example.com",
-    "button": "Send Reset Link",
-    "loading": "Sending...",
-    "successTitle": "Check your email",
-    "successDesc": "If an account exists with that email, we've sent a password reset link.",
-    "tryAgain": "Try again",
-    "backToLogin": "Back to Login"
-  },
-  "resetPassword": {
-    "title": "Reset Password",
-    "subtitle": "Enter your new password below.",
-    "invalidTitle": "Invalid Link",
-    "invalidDesc": "The reset link is missing or invalid. Please request a new one.",
-    "invalidLinkText": "Forgot Password",
-    "newPassword": "New Password",
-    "confirmPassword": "Confirm Password",
-    "passwordPlaceholder": "••••••••",
-    "button": "Reset Password",
-    "loading": "Resetting...",
-    "successTitle": "Password Reset",
-    "successDesc": "Your password has been reset successfully.",
-    "loginLink": "Log in with new password",
-    "passwordsDontMatch": "Passwords don't match",
-    "missingToken": "Missing reset token"
-  },
-  "settings": {
-    "title": "Account Settings",
-    "profileSection": "Profile",
-    "nameLabel": "Name",
-    "emailLabel": "Email",
-    "saveProfile": "Save Changes",
-    "saving": "Saving...",
-    "emailVerified": "Verified",
-    "emailNotVerified": "Not verified",
-    "verifyEmail": "Verify email",
-    "resendVerification": "Resend verification email",
-    "verificationSent": "Verification email sent",
-    "passwordSection": "Change Password",
-    "currentPassword": "Current Password",
-    "newPassword": "New Password",
-    "confirmNewPassword": "Confirm New Password",
-    "changePassword": "Change Password",
-    "changing": "Changing...",
-    "passwordChanged": "Password updated successfully",
-    "dangerSection": "Danger Zone",
-    "deleteAccount": "Delete Account",
-    "deleteAccountDesc": "Once deleted, this action cannot be undone.",
-    "confirmDelete": "Are you sure? This will permanently delete your account and all data.",
-    "usageHistory": "Usage History",
-    "transactions": "Transaction History",
-    "noUsage": "No usage history yet.",
-    "noTransactions": "No transactions yet.",
-    "tool": "Tool",
-    "status": "Status",
-    "creditsCost": "Credits",
-    "date": "Date",
-    "amount": "Amount",
-    "type": "Type",
-    "description": "Description"
-  },
-  "creditGuard": {
-    "confirmTitle": "Confirm Credit Usage",
-    "confirmMessage": "{toolName} requires {credits} credits",
-    "currentBalance": "Current balance",
-    "cost": "Cost",
-    "after": "After",
-    "useCredits": "Use {credits} Credits",
-    "cancel": "Cancel",
-    "insufficientTitle": "Insufficient Credits",
-    "insufficientMessage": "{toolName} needs {needed} credits but you only have {current}",
-    "needMore": "You need {needed} more credits",
-    "buyCredits": "Buy Credits",
-    "creditsUsed": "Credits Used",
-    "remaining": "remaining"
-  },
-  "loginPrompt": {
-    "title": "Login Required",
-    "description": "Please login or register to use this tool. New accounts get 5 free credits!",
-    "login": "Log in",
-    "signup": "Sign up — Free"
-  }
+	"nav": {
+		"tools": "Tools",
+		"pricing": "Pricing",
+		"about": "About",
+		"freeTools": "Free Tools →",
+		"credits": "credits",
+		"login": "Log in",
+		"logout": "Log out",
+		"signup": "Sign up",
+		"toggleDark": "Toggle dark mode",
+		"loading": "..."
+	},
+	"footer": {
+		"copyright": "AI ToolBox Online. All rights reserved.",
+		"freeTools": "Free Tools →",
+		"pricing": "Pricing",
+		"about": "About",
+		"contact": "Contact",
+		"privacy": "Privacy",
+		"terms": "Terms",
+		"email": "jzerov@live.com",
+		"admin": "Admin"
+	},
+	"home": {
+		"heroTitle": "AI-Powered Tools for Images & Content",
+		"heroTitleHighlight": " Every",
+		"heroDescription": "Remove backgrounds, generate avatars, restore old photos, convert PDFs — all powered by AI, all in your browser.",
+		"getFreeCredits": "Get 5 Free Credits",
+		"viewPricing": "View Pricing",
+		"all": "All",
+		"allTools": "All Tools",
+		"categoryImageGeneration": "Image Generation",
+		"categoryImageEditing": "Image Editing",
+		"categoryContentCreation": "Content Creation",
+		"categoryDocument": "Document",
+		"credits": "credits",
+		"free": "Free",
+		"popular": "Popular",
+		"new": "New",
+		"whyChooseTitle": "Why Choose AI ToolBox Online?",
+		"whyChooseSubtitle": "Powerful AI tools built for speed, quality, and privacy.",
+		"pricingTitle": "Simple, Transparent Pricing",
+		"pricingSubtitle": "Start free. Upgrade when you need more. No hidden fees.",
+		"howItWorks": "How It Works",
+		"upload": "Upload",
+		"uploadDesc": "Upload your file — image or PDF.",
+		"process": "Process",
+		"processDesc": "Our AI models process your file instantly.",
+		"download": "Download",
+		"downloadDesc": "Get your result and download it.",
+		"faqTitle": "Frequently Asked Questions",
+		"ctaTitle": "Ready to Get Started?",
+		"ctaSubtitle": "Sign up today and get 5 free credits — no credit card required.",
+		"ctaButton": "Create Free Account",
+		"relatedTools": "You Might Also Like",
+		"heroSubtitle": "Generate, edit, and transform images with AI. Create articles, convert text to speech, and more. Free to start.",
+		"heroImageEditing": "Edit Images",
+		"heroContentCreation": "Create Content",
+		"heroSignup": "Get 5 Free Credits",
+		"heroHint": "No credit card · 15 AI tools · Pay only for what you use"
+	},
+	"features": [
+		{
+			"icon": "",
+			"title": "Instant Results",
+			"description": "Upload your file and get processed results in seconds — no waiting in queues."
+		},
+		{
+			"icon": "🔒",
+			"title": "Privacy First",
+			"description": "All files are automatically deleted after 1 hour. We never store or share your data."
+		},
+		{
+			"icon": "🎯",
+			"title": "AI-Powered Quality",
+			"description": "Powered by industry-leading models including Stable Diffusion and GFPGAN."
+		},
+		{
+			"icon": "💳",
+			"title": "Pay Only for What You Use",
+			"description": "Get 5 free credits every month. No forced subscriptions — buy credits as needed."
+		}
+	],
+	"faqs": [
+		{
+			"q": "What can I do with free credits?",
+			"a": "You get 5 free credits every month. That's enough to remove 2 backgrounds, convert 5 PDFs, or generate 1 avatar."
+		},
+		{
+			"q": "Do unused credits roll over?",
+			"a": "Free tier credits reset monthly. Paid plan credits refresh with your billing cycle."
+		},
+		{
+			"q": "Is my data safe?",
+			"a": "All uploaded files are automatically deleted from our servers after 1 hour. We never store or share your images."
+		},
+		{
+			"q": "What AI models do you use?",
+			"a": "We use industry-leading models via Replicate API, including Stable Diffusion for image generation and GFPGAN for photo restoration."
+		},
+		{
+			"q": "Can I use the results commercially?",
+			"a": "Yes. You retain full ownership of all input and output files. Use them for personal or commercial projects."
+		},
+		{
+			"q": "What file formats are supported?",
+			"a": "We accept PNG, JPG, and WebP for image tools. PDF files up to 20MB for document conversion."
+		}
+	],
+	"tools": {
+		"ai-image-generator": {
+			"name": "AI Image Generator",
+			"description": "Turn text into stunning AI images. No watermark, instant download.",
+			"badge": "New"
+		},
+		"avatar-generator": {
+			"name": "AI Avatar Generator",
+			"description": "Transform your photos into cartoon, anime, or professional avatars.",
+			"badge": "Popular"
+		},
+		"background-remover": {
+			"name": "Background Remover",
+			"description": "Remove image backgrounds instantly with one click.",
+			"badge": "Free"
+		},
+		"watermark-remover": {
+			"name": "Watermark Remover",
+			"description": "Erase watermarks, logos, and text from images intelligently."
+		},
+		"photo-restorer": {
+			"name": "Photo Restorer",
+			"description": "Restore and colorize old, blurry, or damaged photos."
+		},
+		"pdf-to-word": {
+			"name": "PDF to Word",
+			"description": "Convert PDF documents to editable Word files instantly."
+		},
+		"image-upscaler": {
+			"name": "Image Upscaler",
+			"description": "Enhance image resolution with 2x or 4x AI super-resolution."
+		},
+		"style-transfer": {
+			"name": "Image Style Transfer",
+			"description": "Transform photos into oil paintings, watercolors, anime art."
+		},
+		"text-polish": {
+			"name": "Text Polish & Rewrite",
+			"description": "Polish, rewrite, shorten, or expand text with AI.",
+			"howToUse": [
+				"Paste or type your text in the input area.",
+				"Choose a mode: Polish (fix grammar and flow), Rewrite (fresh wording), Shorten (cut fluff), Expand (add detail), Academic (formal tone), or Business (professional tone).",
+				"Pick your output language — Auto Detect keeps the original language, or select from 10 languages to translate and process into a different language.",
+				"Click the mode button and the AI will process your text.",
+				"Copy, download, or try another text."
+			],
+			"faq": [
+				{
+					"question": "What languages does this tool support?",
+					"answer": "You can output in 10 languages: English, Spanish, Arabic, French, German, Chinese, Japanese, Korean, Portuguese, and Russian. Select Auto Detect to keep the original language, or pick a specific output language to translate and process in one step."
+				},
+				{
+					"question": "What's the difference between Polish and Rewrite?",
+					"answer": "Polish fixes grammar, spelling, and sentence flow while preserving your original wording and tone. Rewrite expresses the same meaning with completely different wording and sentence structure — same message, fresh delivery."
+				},
+				{
+					"question": "How does the Shorten mode work?",
+					"answer": "Shorten removes redundancy and distills your text to the core message. It keeps all key facts and data points intact while cutting filler words and repetitive phrases."
+				},
+				{
+					"question": "Can Expand mode add meaningful content?",
+					"answer": "Yes. Expand adds relevant details, examples, and explanations to enrich your content without changing the original core message. Great for turning bullet points into paragraphs or beefing up thin sections."
+				},
+				{
+					"question": "Does the AI sound natural?",
+					"answer": "The prompts are designed to avoid AI clichés and formulaic phrasing. The output aims for natural, human-sounding writing regardless of the language you choose."
+				}
+			]
+		},
+		"face-blur": {
+			"name": "Face Privacy Blur",
+			"description": "Auto-detect faces and blur for privacy.",
+			"cost": "2 credits",
+			"cost1": "Free Trial",
+			"uploadTitle": "Upload a photo with faces",
+			"detectFaces": "Detect Faces",
+			"detectHint": "AI will scan the image and locate all faces automatically.",
+			"detecting": "Detecting faces...",
+			"oneFaceFound": "1 face detected",
+			"multiFacesFound": "{n} faces detected",
+			"facesFound": "{n} region(s) marked",
+			"facesMarkedHint": "Faces are marked with green rectangles. Add extra regions if needed, then choose a blur style.",
+			"noFacesFound": "No faces detected",
+			"noFacesHint": "You can still draw regions manually below.",
+			"chooseStyle": "Choose Blur Style",
+			"pickEmoji": "Pick icon",
+			"addRegions": "Add Extra Regions (Optional)",
+			"regionsAdded": "regions",
+			"drawHint": "Click and drag on the image above to add extra blur regions.",
+			"before": "Before",
+			"after": "After",
+			"applyBlur": "Apply Blur",
+			"undo": "Undo",
+			"clearAll": "Clear",
+			"newTask": "New Task",
+			"maxSize": "up to 10MB"
+		},
+		"text-to-speech": {
+			"name": "AI Text to Speech",
+			"description": "Convert text into natural, human-like speech with AI voice synthesis."
+		},
+		"image-description": {
+			"name": "AI Image Describer",
+			"description": "Generate detailed image descriptions, alt text, and captions with AI."
+		},
+		"colorizer": {
+			"name": "B&W Photo Colorizer",
+			"description": "Bring black and white photos to life with AI colorization."
+		},
+		"object-remover": {
+			"name": "AI Object Remover",
+			"description": "Remove unwanted objects, people, or text from photos."
+		}
+	},
+	"dashboard": {
+		"welcome": "Welcome back",
+		"creditsRemaining": "You have",
+		"credits": "credits",
+		"buyMore": "Buy more credits →",
+		"creditsUsed": "Credits Used (All Time)",
+		"toolsUsed": "Tools Used",
+		"memberSince": "Member Since",
+		"yourTools": "Your Tools",
+		"used": "Used {{count}}x",
+		"creditsPerUse": "{{credits}} credits per use",
+		"recentActivity": "Recent Activity",
+		"noActivity": "No activity yet. Try a tool to get started!",
+		"browseTools": "Browse Tools",
+		"tool": "Tool",
+		"date": "Date",
+		"credits_col": "Credits"
+	},
+	"pricing": {
+		"title": "Simple Pricing: Pay-as-You-Go",
+		"subtitle": "Buy credits when you need them. No subscription lock-in.",
+		"oneTimeTitle": "One-Time Credit Packs",
+		"oneTimeDesc": "Buy credits that are valid for 12 months. Use them on any tool, anytime.",
+		"subscriptionTitle": "Monthly Subscriptions",
+		"subscriptionDesc": "Get fresh credits every month, capped at your plan limit.",
+		"popular": "Popular",
+		"allTools": "All AI tools included",
+		"noWatermark": "No watermark on outputs",
+		"getStarted": "Get Credits",
+		"subscribe": "Subscribe",
+		"costPerTool": "Cost per Tool",
+		"credits": "Credits",
+		"usdCost": "USD Cost*",
+		"perCredit": "credit",
+		"perMonth": "month",
+		"hardCap": "credits/month (hard cap)",
+		"noRollover": "Unused credits do not roll over",
+		"cancelAnytime": "Cancel anytime",
+		"valid12Months": "Valid for 12 months",
+		"whyPayg": "Why Pay-as-You-Go?",
+		"whyPayg1": "No monthly subscription lock-in. Buy credits only when you need them.",
+		"whyPayg2": "Purchased credits are valid for 12 months — no rush to use them.",
+		"whyPayg3": "Each credit is worth the same across all tools. Full price transparency.",
+		"costFootnote": "Based on Standard Pack ($10/50 credits = $0.20/credit). Free tools require login.",
+		"importantInfo": "Important Information",
+		"whatAreCredits": "What Are Credits?",
+		"whatAreCreditsDesc": "Credits are a virtual currency used to access our AI tools. Each tool use deducts a set number of credits. Credit costs are shown before each use.",
+		"expiration": "Credit Expiration",
+		"expirationDesc": "Purchased credits are valid for 12 months. Subscription credits reset monthly and do not roll over.",
+		"refund": "Refund Policy",
+		"refundDesc": "Credits are non-refundable once purchased. If you experience a technical issue, contact us for investigation."
+	},
+	"login": {
+		"title": "Log in",
+		"subtitle": "Sign in to access your AI tools and credits.",
+		"email": "Email",
+		"password": "Password",
+		"emailPlaceholder": "you@example.com",
+		"button": "Log in",
+		"loading": "Logging in...",
+		"noAccount": "Don't have an account?",
+		"signUp": "Sign up",
+		"loginFailed": "Login failed"
+	},
+	"signup": {
+		"title": "Sign up",
+		"subtitle": "Get 5 free credits to start. No credit card required.",
+		"name": "Name",
+		"email": "Email",
+		"password": "Password",
+		"namePlaceholder": "John Doe",
+		"emailPlaceholder": "you@example.com",
+		"button": "Create account",
+		"loading": "Creating account...",
+		"hasAccount": "Already have an account?",
+		"logIn": "Log in",
+		"registrationFailed": "Registration failed"
+	},
+	"about": {
+		"title": "About AI ToolBox Online",
+		"subtitle": "Our mission and story",
+		"mission": "Our Mission",
+		"missionText": "AI ToolBox Online was built with a simple idea: everyone should have access to powerful AI tools without expensive software subscriptions or technical expertise. Whether you're a small business owner creating professional avatars, a student converting PDFs for assignments, or a designer removing watermarks — our tools are designed to be fast, intuitive, and accessible from any device.",
+		"offer": "What We Offer",
+		"offerIntro": "We provide AI-powered tools:",
+		"offerItems": [
+			"Background Remover — One-click background removal for any image",
+			"AI Avatar Generator — Transform photos into cartoon, anime, or professional avatars",
+			"Watermark Remover — Erase watermarks, logos, and text from images",
+			"Photo Restorer — Restore and colorize old, blurry, or damaged photos",
+			"PDF to Word — Convert PDF documents to editable Word files"
+		],
+		"howItWorks": "How It Works",
+		"howItWorksText": "We use industry-leading AI models via Replicate API — including Stable Diffusion for image generation and GFPGAN for photo restoration. All processing happens in the cloud; you just upload your file and get results in seconds. Files are automatically deleted after 1 hour to protect your privacy.",
+		"pricingPhilosophy": "Pricing Philosophy",
+		"pricingText": "We believe in transparent, pay-as-you-go pricing. No monthly subscriptions forced on you. Get 5 free credits every month, and only pay when you need more. Every tool shows its credit cost upfront so there are no surprises.",
+		"contact": "Contact",
+		"contactText": "Have questions or feedback? Reach us at jzerov@live.com or visit our contact page."
+	},
+	"contact": {
+		"title": "Contact Us",
+		"subtitle": "We'd love to hear from you",
+		"email": "Email",
+		"emailDesc": "For general inquiries, support, or feedback:",
+		"responseTime": "Response Time",
+		"responseText": "We aim to respond to all inquiries within 24 hours. For urgent matters, please include \"URGENT\" in your email subject line.",
+		"commonQuestions": "Common Questions",
+		"faq": [
+			{
+				"q": "How do I get more credits?",
+				"a": "Visit our Pricing page to purchase credits starting from $4.99 for 50 credits."
+			},
+			{
+				"q": "My file processing failed. What should I do?",
+				"a": "Please email us with the tool name, file type, and any error message you received. We'll investigate and refund credits if needed."
+			},
+			{
+				"q": "Can I use the outputs commercially?",
+				"a": "Yes. You retain full ownership of all files you upload and generate through our tools."
+			}
+		]
+	},
+	"privacy": {
+		"title": "Privacy Policy",
+		"lastUpdated": "Last updated: May 10, 2026",
+		"sections": [
+			{
+				"title": "1. Who We Are",
+				"text": "AI ToolBox Online is operated by Liu Jun (individual sole proprietor). Our contact email is jzerov@live.com. We are committed to protecting your privacy and complying with applicable data protection laws including GDPR and CCPA."
+			},
+			{
+				"title": "2. Information We Collect",
+				"text": "We collect minimal information necessary to provide our services:",
+				"list": [
+					"Account Information: Email address and name when you create an account.",
+					"Usage Data: Tool usage logs for billing and credit management (tool name, timestamp, credits used).",
+					"Payment Data: Processed securely by our third-party payment provider (Lemon Squeezy / Stripe). We do not store your payment card details on our servers.",
+					"Technical Data: IP address, browser type, and device information collected automatically for security and analytics via Google Analytics (GA4). This data is anonymized and not linked to individual identities."
+				]
+			},
+			{
+				"title": "3. File Handling",
+				"text": "All uploaded files (images, PDFs) and processed output files are automatically deleted from our servers within 1 hour of processing. We do not store, share, sell, or use your images for training AI models. You retain full ownership of all files you upload and generate through our tools."
+			},
+			{
+				"title": "4. How We Use Your Information",
+				"text": "We use your information solely for:",
+				"list": [
+					"Creating and managing your user account.",
+					"Processing tool requests and deducting credits.",
+					"Processing payments and maintaining billing records.",
+					"Communicating with you about your account, service updates, or support requests.",
+					"Improving our service performance and user experience."
+				]
+			},
+			{
+				"title": "5. Cookies",
+				"text": "We use essential cookies to maintain your session locale preference (language selection). We also use Google Analytics (GA4) for anonymized traffic analysis. You can disable cookies in your browser settings, though this may affect site functionality. Third-party services such as payment providers may set their own cookies during checkout."
+			},
+			{
+				"title": "6. Third-Party Services",
+				"text": "We use the following third-party services to deliver our platform:",
+				"list": [
+					"Replicate API: For AI image processing. Operates under its own privacy policy.",
+					"Lemon Squeezy / Stripe: For secure payment processing. Operates under their own privacy policy.",
+					"Cloudflare R2: For temporary file storage during processing. Operates under Cloudflare's privacy policy.",
+					"Google Analytics (GA4): For anonymized website traffic analysis. Google does not associate your IP address with any other data."
+				],
+				"note": "We do not share, sell, or rent your personal data to any third party for marketing purposes."
+			},
+			{
+				"title": "7. Data Security",
+				"text": "We use industry-standard encryption (HTTPS/TLS) for all data in transit. Authentication tokens are stored securely in your browser's local storage. Access to backend systems is restricted and protected. We regularly review our security practices."
+			},
+			{
+				"title": "8. Your Rights (GDPR & CCPA)",
+				"text": "Under GDPR and CCPA, you have the right to:",
+				"list": [
+					"Access the personal data we hold about you.",
+					"Request correction of inaccurate personal data.",
+					"Request deletion of your account and all associated personal data.",
+					"Object to or restrict certain processing of your data.",
+					"Opt out of the sale or sharing of your personal information (we do not sell data)."
+				],
+				"note": "To exercise any of these rights, contact us at jzerov@live.com. We will respond within 30 days."
+			},
+			{
+				"title": "9. Children's Privacy",
+				"text": "Our service is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If we learn that we have collected personal information from a child under 13, we will delete it promptly."
+			},
+			{
+				"title": "10. Changes to This Policy",
+				"text": "We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated date. We encourage you to review this policy periodically."
+			},
+			{
+				"title": "11. Contact",
+				"text": "For privacy-related inquiries or to exercise your rights, contact us at: Liu Jun — jzerov@live.com."
+			}
+		]
+	},
+	"terms": {
+		"title": "Terms of Service",
+		"lastUpdated": "Last updated: May 10, 2026",
+		"sections": [
+			{
+				"title": "1. Company Information",
+				"text": "AI ToolBox Online is operated by Liu Jun (individual sole proprietor). Contact email: jzerov@live.com. By accessing or using our website and services, you agree to be bound by these Terms of Service."
+			},
+			{
+				"title": "2. Service Description",
+				"text": "AI ToolBox Online provides AI-powered image processing and document conversion tools, including but not limited to background removal, avatar generation, watermark removal, photo restoration, PDF-to-Word conversion, image upscaling, style transfer, and text polishing. Service availability is subject to third-party API availability. We use a credit-based pricing model where each tool use deducts a set number of credits from your account."
+			},
+			{
+				"title": "3. Acceptance of Terms",
+				"text": "By creating an account or using any of our tools, you agree to these Terms. If you do not agree, please do not use our services. We may update these terms from time to time; continued use after changes constitutes acceptance of the updated terms."
+			},
+			{
+				"title": "4. User Account & Responsibilities",
+				"text": "You are responsible for maintaining the confidentiality of your account credentials. You agree not to:",
+				"list": [
+					"Share, transfer, or sell your account or credits to another person or entity.",
+					"Use our service to process content that violates applicable laws or infringes on others' intellectual property or privacy rights.",
+					"Automate, scrape, or access our service via unauthorized means.",
+					"Use our service for any unlawful or fraudulent purpose."
+				]
+			},
+			{
+				"title": "5. Credits & Billing",
+				"text": "All purchases are made in credits via our pricing page. Current packages: 50 credits for $4.99 USD, 100 credits for $9.99 USD, and 500 credits for $24.99 USD. Free accounts receive 5 credits per month. Each tool deducts credits as shown on the tool page (1–5 credits per use). Purchased credits are valid for 12 months from the date of purchase. Free tier credits reset monthly and do not roll over. All prices are in USD."
+			},
+			{
+				"title": "6. Refund Policy",
+				"text": "Credits are non-refundable and non-transferable once purchased, except in cases of proven service failure. If a tool fails to process your file due to a technical error on our side, contact us at jzerov@live.com with the tool name, file type, and error details. We will investigate and refund the deducted credits to your account if the issue was caused by our service. Refund requests are processed within 5 business days. We do not offer cash refunds — refunded credits are added back to your account balance."
+			},
+			{
+				"title": "7. Intellectual Property",
+				"text": "The AI ToolBox Online platform, including its design, code, branding, and logo, is protected by intellectual property rights owned by Liu Jun. You retain full ownership of all files you upload and all outputs generated through our tools. You may use outputs for personal or commercial purposes."
+			},
+			{
+				"title": "8. Privacy & Data Handling",
+				"text": "All uploaded files and processed outputs are automatically deleted from our servers within 1 hour of processing. We collect minimal personal data (email address, name) for account management. Payment data is processed securely by our third-party payment provider. We do not sell or share your personal data with third parties for marketing purposes. See our Privacy Policy for full details."
+			},
+			{
+				"title": "9. Disclaimer of Warranties",
+				"text": "AI ToolBox Online is provided 'as is' without warranties of any kind, express or implied. We do not guarantee uninterrupted, error-free, or timely service. AI-generated outputs may vary in quality and accuracy. You use the service at your own risk."
+			},
+			{
+				"title": "10. Limitation of Liability",
+				"text": "To the maximum extent permitted by law, AI ToolBox Online and its operator shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of or inability to use our services, including but not limited to loss of data, files, or profits."
+			},
+			{
+				"title": "11. Third-Party Services",
+				"text": "We use third-party services including Replicate (AI processing), Stripe/Lemon Squeezy (payment processing), and Cloudflare R2 (temporary storage). Each operates under its own terms and privacy policy. We are not responsible for the actions of these third-party services."
+			},
+			{
+				"title": "12. Governing Law",
+				"text": "These terms are governed by applicable law. Any disputes shall be resolved through good-faith negotiation. If resolution is not possible, disputes may be brought before the appropriate courts."
+			},
+			{
+				"title": "13. Contact Information",
+				"text": "For any questions regarding these terms, contact us at: Liu Jun — jzerov@live.com. We aim to respond within 24–48 hours."
+			}
+		]
+	},
+	"notFound": {
+		"title": "404",
+		"heading": "Page Not Found",
+		"description": "The page you are looking for doesn't exist or has been moved.",
+		"goHome": "Go Home",
+		"viewPricing": "View Pricing"
+	},
+	"paymentSuccess": {
+		"title": "Payment Successful!",
+		"description": "Your credits have been added to your account.",
+		"creditsAvailable": "credits available",
+		"goToDashboard": "Go to Dashboard",
+		"seconds": "s"
+	},
+	"paymentCancel": {
+		"title": "Payment Cancelled",
+		"description": "Your payment was not completed. No charges have been made.",
+		"tryAgain": "Try Again",
+		"backToDashboard": "Back to Dashboard"
+	},
+	"toolPage": {
+		"home": "Home",
+		"clickToUpload": "Click to upload",
+		"uploadPhoto": "Upload a photo",
+		"uploadImage": "Upload an image to upscale",
+		"uploadPdf": "Upload a PDF document",
+		"supportedFormats": "PNG, JPG, WebP — max 3MB",
+		"supportedFormatsPdf": "PDF — max 20MB",
+		"original": "Original",
+		"result": "Result",
+		"processing": "Processing...",
+		"cancel": "Cancel",
+		"tryAgain": "Try Again",
+		"downloadResult": "Download Result",
+		"startOver": "Start Over",
+		"tryAnother": "Try Another",
+		"style": "Style",
+		"customPrompt": "Custom prompt (optional)",
+		"mode": "Mode",
+		"upscaleFactor": "Upscale Factor",
+		"loading": "Loading...",
+		"howToUse": "How to Use This Tool",
+		"faq": "Frequently Asked Questions"
+	},
+	"avatarGenerator": {
+		"title": "AI Avatar Generator",
+		"description": "Turn your selfie into a cartoon star, anime hero, or professional headshot — like magic!",
+		"cost": "5 credits",
+		"button": "Generate Avatar (5 credits)",
+		"styles": {
+			"cartoon": "Cartoon",
+			"anime": "Anime",
+			"professional": "Professional",
+			"pixel-art": "Pixel Art",
+			"watercolor": "Watercolor",
+			"oil-painting": "Oil Painting"
+		},
+		"generating": "Generating avatar...",
+		"resultReady": "Select a style and generate to see the result",
+		"download": "Download Avatar",
+		"tryAnother": "Try Another Photo",
+		"selectBest": "Choose your favorite"
+	},
+	"backgroundRemover": {
+		"title": "Background Remover",
+		"description": "Snip snip! Backgrounds vanish with one click. Clean cut, every time.",
+		"cost": "2 credits",
+		"button": "Remove Background (2 credits)",
+		"processing": "Removing background...",
+		"uploadToSee": "Upload an image to remove background",
+		"bgColor": "Background Color",
+		"transparent": "Transparent",
+		"white": "White",
+		"black": "Black",
+		"custom": "Custom",
+		"advanced": "Advanced",
+		"download": "Download PNG",
+		"autoMode": "Auto Remove",
+		"manualMode": "Manual Paint"
+	},
+	"watermarkRemover": {
+		"title": "Watermark Remover",
+		"description": "Sweep away watermarks, logos, and text — your image, squeaky clean.",
+		"cost": "3 credits",
+		"button": "Remove Watermark (3 credits)",
+		"processing": "Processing...",
+		"uploadToSee": "Upload to see result",
+		"autoDetect": "Auto Detect",
+		"manual": "Manual",
+		"autoHint": "AI will automatically detect and remove watermarks, logos, and text.",
+		"manualHint": "Paint over the watermark area so the AI knows what to remove.",
+		"clearMarks": "Clear Marks"
+	},
+	"photoRestorer": {
+		"title": "Photo Restorer",
+		"description": "Give old photos a time machine makeover. Scratches, dust, blur — poof, gone!",
+		"cost": "5 credits",
+		"button": "Restore Photo (5 credits)",
+		"processing": "Restoring photo...",
+		"uploadToSee": "Select strength and restore to see result",
+		"download": "Download Restored Photo",
+		"tryAnother": "Try Another Photo",
+		"strength": "Restoration Strength",
+		"strengths": {
+			"auto": {
+				"label": "Auto Restore",
+				"desc": "AI removes scratches, dust, and blemishes automatically"
+			},
+			"face": {
+				"label": "Face Pro",
+				"desc": "Dedicated face enhancement with GFPGAN"
+			}
+		}
+	},
+	"aiImageGenerator": {
+		"title": "AI Image Generator",
+		"description": "Describe it. See it. Download it. Turn any text prompt into a stunning AI-generated image — no watermark, instant delivery, pay only for what you create!",
+		"cost": "from 1 credit",
+		"promptLabel": "Describe the image you want",
+		"promptPlaceholder": "A majestic mountain landscape at golden hour, with a crystal-clear lake reflecting the peaks...",
+		"generateButton": "Generate Image",
+		"generating": "Generating...",
+		"qualityLabel": "Quality",
+		"quality": {
+			"low": {
+				"label": "Low",
+				"desc": "Fast & affordable"
+			},
+			"medium": {
+				"label": "Medium",
+				"desc": "Good balance"
+			},
+			"high": {
+				"label": "High",
+				"desc": "Best detail"
+			}
+		},
+		"aspectRatioLabel": "Aspect Ratio",
+		"aspectRatio": {
+			"1:1": "Square (1:1)",
+			"3:2": "Landscape (3:2)",
+			"2:3": "Portrait (2:3)"
+		},
+		"formatLabel": "Format",
+		"format": {
+			"png": "PNG — lossless, larger file",
+			"webp": "WebP — modern, small size",
+			"jpeg": "JPEG — universal, compressed"
+		},
+		"imagesLabel": "Images",
+		"images": "images",
+		"referenceLabel": "Reference Image (optional)",
+		"referenceDesc": "Upload a photo to guide style & composition. Adds 1 extra credit.",
+		"uploadReference": "Click to upload reference",
+		"removeReference": "Remove",
+		"creditSummary": "credits for this generation",
+		"result": "Your Generated Image",
+		"results": "Your Generated Images",
+		"downloadAll": "Download All",
+		"tryAnother": "Generate Another",
+		"errorTitle": "Generation Failed",
+		"noImages": "The AI couldn't generate images. Try a different prompt or settings.",
+		"tipsTitle": "Pro Tips",
+		"tips": [
+			{
+				"icon": "📝",
+				"text": "Be specific! \"A fluffy orange cat sleeping on a windowsill at sunset\" beats \"cat\" every time."
+			},
+			{
+				"icon": "⚡",
+				"text": "Low quality is great for quick drafts & brainstorming. High quality uses more steps for finer detail."
+			},
+			{
+				"icon": "🖼️",
+				"text": "Upload a reference image to guide composition. The AI blends your photo with the text description."
+			},
+			{
+				"icon": "🎨",
+				"text": "Generate multiple images at once to compare variations. Each extra image costs just 1 more credit."
+			}
+		]
+	},
+	"pdfToWord": {
+		"title": "PDF to Word",
+		"description": "Unlock your PDFs! Text or scanned — convert any PDF into a squeaky-clean editable Word doc.",
+		"cost1": "Free",
+		"cost2": "Free",
+		"scannedBadge": "No AI credits needed",
+		"button": "Convert to Word",
+		"processing": "Converting PDF...",
+		"processingOcr": "Rendering scanned pages...",
+		"pageCount": "Pages",
+		"download": "Download Word File",
+		"downloadText": "Your Word document is ready for download.",
+		"done": "Conversion Complete!",
+		"tryAnother": "Convert Another File"
+	},
+	"imageUpscaler": {
+		"title": "Image Upscaler",
+		"description": "Zoom and enhance! Turn tiny, blurry pics into crisp, detailed images.",
+		"cost": "2 credits",
+		"supportedFormats": "PNG, JPG, WebP — max 1MB",
+		"button": "Upscale Image (2 credits)",
+		"processing": "Upscaling image...",
+		"uploadToSee": "Select options and upscale to see result",
+		"imageType": "Image Type",
+		"types": {
+			"photo": {
+				"label": "Photo",
+				"desc": "General model + face enhancement for portraits"
+			},
+			"anime": {
+				"label": "Anime / Illustration",
+				"desc": "Optimized for line art, animation, and illustrations"
+			}
+		},
+		"scales": {
+			"2": "2×",
+			"4": "4×"
+		},
+		"tryAnother": "Try Another Image",
+		"tipsTitle": "💡 Pro Tips",
+		"tips": [
+			{
+				"icon": "📏",
+				"text": "Low-res pics get the glow-up! Best for images under 2000px — already crisp photos won't see much change."
+			},
+			{
+				"icon": "📦",
+				"text": "Keep files under 1MB / 2000px. Bigger images can overwhelm the AI — even robots have limits!"
+			},
+			{
+				"icon": "🎯",
+				"text": "Portraits? Photo mode adds face magic. Illustrations or anime? Anime mode keeps those lines crisp!"
+			},
+			{
+				"icon": "🔢",
+				"text": "2× is your go-to hero. 4× works best on tiny images under 1000px — go big or go home!"
+			}
+		]
+	},
+	"styleTransfer": {
+		"title": "Image Style Transfer",
+		"description": "Paint your photo into a masterpiece — oil, sketch, cyberpunk, fantasy & more!",
+		"cost": "4 credits",
+		"button": "Transform (4 credits)",
+		"processing": "Transferring style...",
+		"uploadToSee": "Select a style and transform to see result",
+		"styles": {
+			"oil-painting": {
+				"label": "Oil Painting",
+				"desc": "Thick brush strokes, rich warm palette"
+			},
+			"watercolor": {
+				"label": "Watercolor",
+				"desc": "Soft translucent washes, delicate edges"
+			},
+			"sketch": {
+				"label": "Pencil Sketch",
+				"desc": "Graphite drawing, fine cross-hatching"
+			},
+			"cartoon": {
+				"label": "3D Cartoon",
+				"desc": "Pixar-style, polished 3D render"
+			},
+			"cyberpunk": {
+				"label": "Cyberpunk",
+				"desc": "Neon lights, futuristic synthwave aesthetic"
+			},
+			"fantasy": {
+				"label": "Fantasy",
+				"desc": "Magical glowing elements, ethereal atmosphere"
+			}
+		},
+		"tipsTitle": "💡 Pro Tips",
+		"tips": [
+			{
+				"icon": "👤",
+				"text": "Solo subject, stunning result! Single portraits work best — busy backgrounds can confuse our AI artist."
+			},
+			{
+				"icon": "✂️",
+				"text": "We'll square-crop your photo auto-magically. Centered composition = perfect style makeover!"
+			},
+			{
+				"icon": "🎨",
+				"text": "No settings, no stress! Every style has its secret sauce pre-tuned for consistent awesomeness."
+			},
+			{
+				"icon": "💡",
+				"text": "Bright lighting, clear face, centered frame = style magic. Our AI paints best from a great photo!"
+			}
+		],
+		"tryAnother": "Try Another Photo"
+	},
+	"textPolish": {
+		"title": "Text Polish & Rewrite",
+		"description": "Give your words a spa day. Polish, rewrite, shorten, or expand with AI magic.",
+		"cost": "3 credits",
+		"originalText": "Original Text",
+		"resultLabel": "Result",
+		"placeholder": "Paste or type your text here...",
+		"characters": "characters",
+		"outputLanguage": "Output Language",
+		"processedAppear": "Processed text will appear here",
+		"modes": {
+			"polish": {
+				"label": "Polish",
+				"desc": "Fix grammar & flow",
+				"icon": "✨"
+			},
+			"rewrite": {
+				"label": "Rewrite",
+				"desc": "Fresh words, same meaning",
+				"icon": "🔄"
+			},
+			"shorten": {
+				"label": "Shorten",
+				"desc": "Cut the fluff, keep the point",
+				"icon": "✂️"
+			},
+			"expand": {
+				"label": "Expand",
+				"desc": "Add detail & depth",
+				"icon": "📝"
+			},
+			"academic": {
+				"label": "Academic",
+				"desc": "Formal scholarly style",
+				"icon": "🎓"
+			},
+			"business": {
+				"label": "Business",
+				"desc": "Professional & polished",
+				"icon": "💼"
+			}
+		},
+		"button": "Process Text (3 credits)",
+		"processing": "Processing text...",
+		"copy": "Copy to Clipboard",
+		"clear": "Clear",
+		"tryAnother": "Try Another Text"
+	},
+	"language": {
+		"select": "Language"
+	},
+	"forgotPassword": {
+		"title": "Forgot Password",
+		"subtitle": "Enter your email and we'll send a reset link.",
+		"emailLabel": "Email",
+		"emailPlaceholder": "you@example.com",
+		"button": "Send Reset Link",
+		"loading": "Sending...",
+		"successTitle": "Check your email",
+		"successDesc": "If an account exists with that email, we've sent a password reset link.",
+		"tryAgain": "Try again",
+		"backToLogin": "Back to Login"
+	},
+	"resetPassword": {
+		"title": "Reset Password",
+		"subtitle": "Enter your new password below.",
+		"invalidTitle": "Invalid Link",
+		"invalidDesc": "The reset link is missing or invalid. Please request a new one.",
+		"invalidLinkText": "Forgot Password",
+		"newPassword": "New Password",
+		"confirmPassword": "Confirm Password",
+		"passwordPlaceholder": "••••••••",
+		"button": "Reset Password",
+		"loading": "Resetting...",
+		"successTitle": "Password Reset",
+		"successDesc": "Your password has been reset successfully.",
+		"loginLink": "Log in with new password",
+		"passwordsDontMatch": "Passwords don't match",
+		"missingToken": "Missing reset token"
+	},
+	"settings": {
+		"title": "Account Settings",
+		"profileSection": "Profile",
+		"nameLabel": "Name",
+		"emailLabel": "Email",
+		"saveProfile": "Save Changes",
+		"saving": "Saving...",
+		"emailVerified": "Verified",
+		"emailNotVerified": "Not verified",
+		"verifyEmail": "Verify email",
+		"resendVerification": "Resend verification email",
+		"verificationSent": "Verification email sent",
+		"passwordSection": "Change Password",
+		"currentPassword": "Current Password",
+		"newPassword": "New Password",
+		"confirmNewPassword": "Confirm New Password",
+		"changePassword": "Change Password",
+		"changing": "Changing...",
+		"passwordChanged": "Password updated successfully",
+		"dangerSection": "Danger Zone",
+		"deleteAccount": "Delete Account",
+		"deleteAccountDesc": "Once deleted, this action cannot be undone.",
+		"confirmDelete": "Are you sure? This will permanently delete your account and all data.",
+		"usageHistory": "Usage History",
+		"transactions": "Transaction History",
+		"noUsage": "No usage history yet.",
+		"noTransactions": "No transactions yet.",
+		"tool": "Tool",
+		"status": "Status",
+		"creditsCost": "Credits",
+		"date": "Date",
+		"amount": "Amount",
+		"type": "Type",
+		"description": "Description"
+	},
+	"creditGuard": {
+		"confirmTitle": "Confirm Credit Usage",
+		"confirmMessage": "{toolName} requires {credits} credits",
+		"currentBalance": "Current balance",
+		"cost": "Cost",
+		"after": "After",
+		"useCredits": "Use {credits} Credits",
+		"cancel": "Cancel",
+		"insufficientTitle": "Insufficient Credits",
+		"insufficientMessage": "{toolName} needs {needed} credits but you only have {current}",
+		"needMore": "You need {needed} more credits",
+		"buyCredits": "Buy Credits",
+		"creditsUsed": "Credits Used",
+		"remaining": "remaining"
+	},
+	"loginPrompt": {
+		"title": "Login Required",
+		"description": "Please login or register to use this tool. New accounts get 5 free credits!",
+		"login": "Log in",
+		"signup": "Sign up — Free"
+	}
 }

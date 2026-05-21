@@ -146,7 +146,36 @@
 		},
 		"text-polish": {
 			"name": "Pulir y Reescribir Texto",
-			"description": "Pule, reescribe, acorta o expande texto con IA."
+			"description": "Pule, reescribe, acorta o expande texto con IA.",
+			"howToUse": [
+				"Pega o escribe tu texto en el área de entrada.",
+				"Elige un modo: Pulir (corregir gramática y fluidez), Reescribir (nuevas palabras), Acortar (eliminar relleno), Expandir (añadir detalles), Académico (tono formal) o Negocios (tono profesional).",
+				"Selecciona el idioma de salida — Detección automática mantiene el idioma original, o elige entre 10 idiomas para traducir y procesar en un solo paso.",
+				"Haz clic en el botón del modo y la IA procesará tu texto.",
+				"Copia, descarga o prueba con otro texto."
+			],
+			"faq": [
+				{
+					"question": "¿Qué idiomas admite esta herramienta?",
+					"answer": "Puedes generar en 10 idiomas: inglés, español, árabe, francés, alemán, chino, japonés, coreano, portugués y ruso. Selecciona Detección automática para mantener el idioma original, o elige un idioma específico para traducir y procesar en un solo paso."
+				},
+				{
+					"question": "¿Cuál es la diferencia entre Pulir y Reescribir?",
+					"answer": "Pulir corrige gramática, ortografía y fluidez preservando tu redacción y tono original. Reescribir expresa el mismo significado con palabras y estructura completamente diferentes — mismo mensaje, nueva presentación."
+				},
+				{
+					"question": "¿Cómo funciona el modo Acortar?",
+					"answer": "Acortar elimina redundancia y destila tu texto al mensaje central. Conserva todos los hechos y datos clave mientras recorta palabras de relleno y frases repetitivas."
+				},
+				{
+					"question": "¿El modo Expandir añade contenido significativo?",
+					"answer": "Sí. Expandir añade detalles relevantes, ejemplos y explicaciones para enriquecer tu contenido sin cambiar el mensaje central. Ideal para convertir viñetas en párrafos."
+				},
+				{
+					"question": "¿La IA suena natural?",
+					"answer": "Los prompts están diseñados para evitar clichés de IA y frases formulaicas. El resultado busca una escritura natural, similar a la humana, independientemente del idioma elegido."
+				}
+			]
 		},
 		"face-blur": {
 			"name": "Difuminado Facial",
