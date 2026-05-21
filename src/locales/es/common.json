@@ -299,7 +299,29 @@
 				"3",
 				"$0.30"
 			]
-		]
+		],
+		"oneTimeTitle": "Paquetes de Créditos Únicos",
+		"oneTimeDesc": "Compra créditos válidos por 12 meses. Úsalos en cualquier herramienta, cuando quieras.",
+		"subscriptionTitle": "Suscripciones Mensuales",
+		"subscriptionDesc": "Recibe créditos nuevos cada mes, limitados al máximo de tu plan.",
+		"perCredit": "crédito",
+		"perMonth": "mes",
+		"hardCap": "créditos/mes (límite fijo)",
+		"noRollover": "Los créditos no usados no se acumulan",
+		"cancelAnytime": "Cancela cuando quieras",
+		"valid12Months": "Válido por 12 meses",
+		"whyPayg": "¿Por qué Pago por Uso?",
+		"whyPayg1": "Sin suscripción mensual obligatoria. Compra créditos solo cuando los necesites.",
+		"whyPayg2": "Los créditos comprados son válidos por 12 meses — sin prisa para usarlos.",
+		"whyPayg3": "Cada crédito vale lo mismo en todas las herramientas. Transparencia total de precios.",
+		"costFootnote": "Basado en Paquete Estándar ($10/50 créditos = $0.20/crédito). Herramientas gratuitas requieren inicio de sesión.",
+		"importantInfo": "Información Importante",
+		"whatAreCredits": "¿Qué son los Créditos?",
+		"whatAreCreditsDesc": "Los créditos son una moneda virtual para acceder a nuestras herramientas IA. Cada uso descuenta un número fijo de créditos. Los costos se muestran antes de cada uso.",
+		"expiration": "Vencimiento de Créditos",
+		"expirationDesc": "Los créditos comprados son válidos por 12 meses. Los créditos de suscripción se renuevan mensualmente y no se acumulan.",
+		"refund": "Política de Reembolso",
+		"refundDesc": "Los créditos no son reembolsables una vez comprados. Si experimentas un problema técnico, contáctanos para investigarlo."
 	},
 	"login": {
 		"title": "Iniciar sesión",
@@ -376,39 +398,48 @@
 		"lastUpdated": "Última actualización: mayo de 2026",
 		"sections": [
 			{
-				"title": "1. Información que Recopilamos",
-				"text": "Recopilamos información mínima necesaria para proporcionar nuestros servicios:",
-				"list": [
-					"Información de Cuenta: Dirección de correo electrónico y nombre al crear una cuenta.",
-					"Datos de Uso: Registros de uso de herramientas para facturación y gestión de créditos.",
-					"Datos de Pago: Procesados de forma segura por Stripe. No almacenamos los datos de tu tarjeta de pago."
-				]
+				"title": "Información que Recopilamos",
+				"content": "Recopilamos la dirección de correo electrónico y los datos de uso (herramientas utilizadas, créditos consumidos). No recopilamos contraseñas en texto plano."
 			},
 			{
-				"title": "2. Gestión de Archivos",
-				"text": "Todos los archivos subidos y las salidas procesadas se eliminan automáticamente de nuestros servidores en un plazo de 1 hora tras el procesamiento. No almacenamos, compartimos ni utilizamos tus imágenes para entrenar modelos de IA. Conservas la plena propiedad de todos los archivos que subes y generas."
+				"title": "Cómo Usamos tu Información",
+				"content": "Usamos tu correo electrónico para la gestión de la cuenta y notificaciones del servicio. Los datos de uso nos ayudan a mejorar nuestras herramientas y la precisión de los precios."
 			},
 			{
-				"title": "3. Servicios de Terceros",
-				"text": "Utilizamos los siguientes servicios de terceros para ofrecer nuestra plataforma:",
-				"list": [
-					"API de Replicate: Para procesamiento de imágenes con IA (generación de avatares, eliminación de fondos, restauración de fotos).",
-					"Stripe: Para procesamiento seguro de pagos.",
-					"Cloudflare R2: Para almacenamiento temporal de archivos durante el procesamiento."
-				],
-				"note": "Cada servicio opera bajo su propia política de privacidad."
+				"title": "Almacenamiento de Datos",
+				"content": "Tus archivos subidos se almacenan temporalmente en Cloudflare R2 y se eliminan automáticamente. Los datos de la cuenta se almacenan en PostgreSQL en Railway."
 			},
 			{
-				"title": "4. Seguridad de Datos",
-				"text": "Utilizamos cifrado estándar de la industria (HTTPS/TLS) para todos los datos en tránsito. Los tokens de autenticación se almacenan de forma segura en el almacenamiento local de tu navegador. Revisamos regularmente nuestras prácticas de seguridad."
+				"title": "Cookies",
+				"content": "Usamos cookies esenciales para la autenticación. Sin cookies de terceros ni cookies de rastreo."
 			},
 			{
-				"title": "5. Tus Derechos",
-				"text": "Tienes derecho a acceder, corregir o eliminar tus datos personales en cualquier momento. Para solicitar la eliminación de tu cuenta, contáctanos en jzerov@live.com."
+				"title": "Servicios de Terceros",
+				"content": "Usamos Stripe para pagos, Replicate para inferencia de IA, Google Cloud Vision para OCR y Resend para correos electrónicos. Cada servicio procesa datos según sus propias políticas de privacidad."
 			},
 			{
-				"title": "6. Contacto",
-				"text": "Para consultas relacionadas con la privacidad, contáctanos en jzerov@live.com."
+				"title": "Seguridad de Datos",
+				"content": "Las contraseñas se hashean con bcrypt. Toda la comunicación se realiza a través de HTTPS. Los tokens JWT se utilizan para la autenticación de sesión."
+			},
+			{
+				"title": "Tus Derechos",
+				"content": "Puedes solicitar la eliminación de datos contactándonos. Eliminaremos los datos de tu cuenta en un plazo de 30 días."
+			},
+			{
+				"title": "Política de Retención de Datos",
+				"content": "Los archivos subidos se eliminan después del procesamiento. Los datos de la cuenta se conservan hasta que solicites la eliminación. Los registros de transacciones se conservan indefinidamente por razones legales."
+			},
+			{
+				"title": "Privacidad Infantil",
+				"content": "Nuestros servicios no están dirigidos a niños menores de 13 años. No recopilamos intencionadamente información de niños."
+			},
+			{
+				"title": "Cambios en esta Política",
+				"content": "Podemos actualizar esta política periódicamente. Los cambios se publicarán en esta página con una fecha de revisión actualizada."
+			},
+			{
+				"title": "Contáctanos",
+				"content": "Para preguntas relacionadas con la privacidad, envíanos un correo a jzerov@live.com."
 			}
 		]
 	},
@@ -417,41 +448,56 @@
 		"lastUpdated": "Última actualización: mayo de 2026",
 		"sections": [
 			{
-				"title": "1. Descripción del Servicio",
-				"text": "AI ToolBox Online proporciona herramientas de procesamiento de imágenes y conversión de documentos potenciadas por IA, incluyendo eliminación de fondos, generación de avatares, eliminación de marcas de agua, restauración de fotos y conversión de PDF a Word. La disponibilidad del servicio está sujeta a la disponibilidad de la API de terceros."
+				"title": "Aceptación de los Términos",
+				"content": "Al usar AI ToolBox Online, aceptas estos Términos de Servicio. Si no estás de acuerdo, no uses nuestros servicios."
 			},
 			{
-				"title": "2. Uso Aceptable",
-				"text": "Puedes usar nuestras herramientas para fines personales y comerciales. Conservas la plena propiedad de tus archivos de entrada y salida. Aceptas no:",
-				"list": [
-					"Usar nuestro servicio para procesar contenido que viole las leyes aplicables o infrinja los derechos de otros.",
-					"Automatizar o extraer datos de nuestro servicio sin permiso.",
-					"Compartir las credenciales de tu cuenta o revender nuestros créditos."
-				]
+				"title": "Descripción del Servicio",
+				"content": "AI ToolBox Online proporciona herramientas impulsadas por IA para procesamiento de imágenes, creación de contenido y conversión de documentos."
 			},
 			{
-				"title": "3. Créditos y Facturación",
-				"text": "Las cuentas gratuitas reciben 5 créditos por mes. Los créditos de pago se compran a través de Stripe y se renuevan con tu ciclo de facturación. Los créditos de pago no utilizados se acumulan dentro del mismo ciclo de facturación. Los créditos del plan gratuito se reinician mensualmente. Los créditos no utilizados no son reembolsables."
+				"title": "Cuentas de Usuario",
+				"content": "Eres responsable de mantener la confidencialidad de tu cuenta. Debes proporcionar información precisa durante el registro."
 			},
 			{
-				"title": "4. Reembolsos",
-				"text": "Los créditos no utilizados no son reembolsables. Si experimentas problemas con nuestro servicio, contáctanos en jzerov@live.com para obtener una resolución. Haremos todos los esfuerzos razonables para abordar tus preocupaciones."
+				"title": "Sistema de Créditos",
+				"content": "Los créditos son moneda virtual para acceder a herramientas de IA. Cada uso de herramienta consume créditos a las tarifas publicadas. Los créditos no tienen valor monetario fuera de nuestra plataforma."
 			},
 			{
-				"title": "5. Limitación de Responsabilidad",
-				"text": "AI ToolBox Online se proporciona \"tal cual\" sin garantías de ningún tipo. No garantizamos un servicio ininterrumpido o libre de errores. No somos responsables de ningún daño indirecto, incidental o consecuente derivado del uso de nuestro servicio."
+				"title": "Pagos",
+				"content": "Todos los pagos se procesan a través de Stripe. Los precios se muestran en dólares estadounidenses. Los créditos comprados son válidos por 12 meses."
 			},
 			{
-				"title": "6. Propiedad Intelectual",
-				"text": "La plataforma AI ToolBox Online, incluyendo su diseño, código y marca, está protegida por derechos de propiedad intelectual. Conservas la propiedad de tus archivos subidos y las salidas generadas."
+				"title": "Propiedad del Contenido",
+				"content": "Eres propietario de todo el contenido que generes utilizando nuestras herramientas. No reclamamos la propiedad de tus entradas o salidas."
 			},
 			{
-				"title": "7. Cambios en los Términos",
-				"text": "Podemos actualizar estos términos de vez en cuando. El uso continuado del servicio después de los cambios constituye la aceptación de los términos actualizados."
+				"title": "Uso Aceptable",
+				"content": "No puedes usar nuestras herramientas para crear contenido ilegal, dañino o abusivo. Nos reservamos el derecho de suspender cuentas que violen estos términos."
 			},
 			{
-				"title": "8. Contacto",
-				"text": "Para cualquier pregunta sobre estos términos, contáctanos en jzerov@live.com."
+				"title": "Limitación de Responsabilidad",
+				"content": "AI ToolBox Online se proporciona \"tal cual\". No garantizamos disponibilidad ininterrumpida ni resultados perfectos."
+			},
+			{
+				"title": "Cancelación",
+				"content": "Puedes cancelar tu cuenta en cualquier momento. Las suscripciones se pueden cancelar mensualmente."
+			},
+			{
+				"title": "Cambios en los Términos",
+				"content": "Podemos actualizar estos términos periódicamente. El uso continuado después de los cambios constituye la aceptación de los nuevos términos."
+			},
+			{
+				"title": "Ley Aplicable",
+				"content": "Estos términos se rigen por las leyes aplicables. Las disputas se resolverán mediante arbitraje vinculante."
+			},
+			{
+				"title": "Propiedad Intelectual",
+				"content": "La plataforma AI ToolBox Online, su código y diseño están protegidos por derechos de autor y otras leyes de propiedad intelectual."
+			},
+			{
+				"title": "Contáctanos",
+				"content": "Para preguntas legales, contáctanos en jzerov@live.com."
 			}
 		]
 	},
