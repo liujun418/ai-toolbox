@@ -3,24 +3,29 @@
 		"tools": "Herramientas",
 		"pricing": "Precios",
 		"about": "Acerca de",
-		"freeTools": "Herramientas gratuitas →",
+		"freeTools": "Herramientas Gratuitas →",
 		"credits": "créditos",
 		"login": "Iniciar sesión",
 		"logout": "Cerrar sesión",
 		"signup": "Registrarse",
-		"toggleDark": "Cambiar modo oscuro",
-		"loading": "..."
+		"toggleDark": "Modo oscuro",
+		"loading": "...",
+		"home": "Inicio",
+		"blog": "Blog",
+		"dashboard": "Panel",
+		"settings": "Configuración"
 	},
 	"footer": {
 		"copyright": "AI ToolBox Online. Todos los derechos reservados.",
-		"freeTools": "Herramientas gratuitas →",
+		"freeTools": "Herramientas Gratuitas →",
 		"pricing": "Precios",
 		"about": "Acerca de",
 		"contact": "Contacto",
 		"privacy": "Privacidad",
 		"terms": "Términos",
 		"email": "jzerov@live.com",
-		"admin": "Admin"
+		"admin": "Admin",
+		"blog": "Blog"
 	},
 	"home": {
 		"heroTitle": "Herramientas con IA para Imagenes y Contenido",
@@ -58,7 +63,11 @@
 		"heroImageEditing": "Editar Imagenes",
 		"heroContentCreation": "Crear Contenido",
 		"heroSignup": "5 Creditos Gratis",
-		"heroHint": "Sin tarjeta · 15 herramientas IA · Paga solo por lo que usas"
+		"heroHint": "Sin tarjeta · 15 herramientas IA · Paga solo por lo que usas",
+		"exploreMore": "Explorar más herramientas de {category} →",
+		"exploreMoreImageEditing": "Explorar herramientas de edición de fotos IA →",
+		"exploreMoreContentCreation": "Explorar herramientas de creación de contenido IA →",
+		"exploreMoreImageGeneration": "Explorar herramientas de generación de imágenes IA →"
 	},
 	"features": [
 		{
@@ -117,20 +126,116 @@
 		"avatar-generator": {
 			"name": "Generador de Avatares con IA",
 			"description": "Transforma tus fotos en avatares de dibujos animados, anime o profesionales.",
-			"badge": "Popular"
+			"badge": "Popular",
+			"howToUse": [
+				"Sube una foto frontal clara con buena iluminación — evita sombras, sombreros o rostros obstruidos.",
+				"Selecciona uno de 6 estilos: 3D Cartoon, Anime, Profesional, Pixel Art, Acuarela o Boceto.",
+				"Haz clic en Generar y la IA crea 4 variaciones con prompts SDXL optimizados por estilo.",
+				"Descarga las 4 variaciones en alta resolución."
+			],
+			"faq": [
+				{
+					"question": "¿Qué foto funciona mejor?",
+					"answer": "Un retrato frontal claro con buena iluminación y fondo neutro. Evita fotos grupales, gafas de sol, sombreros o ángulos extremos."
+				},
+				{
+					"question": "¿Qué estilos están disponibles?",
+					"answer": "6 estilos: 3D Cartoon (estilo Pixar), Anime (animación japonesa), Profesional (foto corporativa), Pixel Art (estilo retro), Acuarela (artístico) y Boceto (dibujo a lápiz)."
+				},
+				{
+					"question": "¿Cuántas variaciones obtengo?",
+					"answer": "4 variaciones por generación. La IA crea 4 versiones diferentes de la misma foto para que elijas tu favorita."
+				},
+				{
+					"question": "¿Cuántos créditos cuesta?",
+					"answer": "5 créditos por generación (incluye las 4 variaciones). Es más alto porque ejecuta múltiples inferencias SDXL con prompts optimizados por estilo."
+				}
+			]
 		},
 		"background-remover": {
 			"name": "Eliminador de Fondos",
 			"description": "Elimina fondos de imágenes al instante con un clic.",
-			"badge": "Gratis"
+			"badge": "Gratis",
+			"howToUse": [
+				"Sube una imagen — fotos de productos, retratos y objetos con bordes definidos funcionan mejor.",
+				"Elige modo Automático para eliminación con un clic, o Manual para pintar áreas verdes sobre lo que quieres conservar.",
+				"Selecciona un color de fondo: transparente, blanco, negro o cualquier color hexadecimal personalizado.",
+				"Descarga tu imagen con fondo limpio y transparente en formato PNG."
+			],
+			"faq": [
+				{
+					"question": "¿Qué tan precisa es la eliminación de fondo?",
+					"answer": "Usa BRIA RMBG — un modelo de eliminación de fondo de vanguardia. Maneja bien bordes complejos como cabello, pieles y objetos transparentes."
+				},
+				{
+					"question": "¿Cuándo usar el modo Manual?",
+					"answer": "Usa el modo Manual cuando el sujeto tiene detalles finos (cabello suelto, encaje) o cuando el modo Auto elimina partes del sujeto. Pinta trazos verdes sobre las áreas a conservar."
+				},
+				{
+					"question": "¿Qué fondos de reemplazo puedo elegir?",
+					"answer": "Transparente (PNG con canal alfa), blanco sólido, negro sólido, o cualquier color hexadecimal personalizado. Ideal para comercio electrónico y fotos de perfil."
+				},
+				{
+					"question": "¿Qué formatos de imagen se admiten?",
+					"answer": "PNG, JPG y WebP hasta 10MB. La salida siempre es PNG sin pérdida para preservar transparencia y calidad."
+				}
+			]
 		},
 		"watermark-remover": {
 			"name": "Eliminador de Marcas de Agua",
-			"description": "Elimina marcas de agua, logotipos y texto de imágenes de forma inteligente."
+			"description": "Elimina marcas de agua, logotipos y texto de imágenes de forma inteligente.",
+			"howToUse": [
+				"Sube una imagen con marcas de agua, logotipos, sellos de fecha o texto superpuesto no deseado.",
+				"Usa Detección Automática para que la IA encuentre y elimine marcas de agua, o pinta una máscara roja para control manual.",
+				"En modo manual, pinta sobre el área de la marca con el pincel — los trazos aproximados funcionan mejor.",
+				"Haz clic en Eliminar y descarga tu imagen limpia."
+			],
+			"faq": [
+				{
+					"question": "¿Puede eliminar cualquier marca de agua?",
+					"answer": "La IA funciona mejor con marcas de agua semitransparentes, logotipos y superposiciones de texto. Las marcas grandes y opacas pueden requerir enmascarado manual."
+				},
+				{
+					"question": "¿Diferencia entre Detección Automática y Manual?",
+					"answer": "La Detección Automática usa Florence-2 para encontrar marcas automáticamente. El modo Manual te da control total con un pincel para marcas irregulares."
+				},
+				{
+					"question": "¿Cómo debo pintar la máscara?",
+					"answer": "Trazos aproximados sobre el área de la marca funcionan mejor. No necesitas bordes perfectos — la IA usa el contexto circundante para rellenar naturalmente."
+				},
+				{
+					"question": "¿Cuántos créditos cuesta?",
+					"answer": "3 créditos por imagen. Cubre tanto la detección (Florence-2) como la eliminación (BRIA Eraser)."
+				}
+			]
 		},
 		"photo-restorer": {
 			"name": "Restaurador de Fotos",
-			"description": "Restaura y colorea fotos antiguas, borrosas o dañadas."
+			"description": "Restaura y colorea fotos antiguas, borrosas o dañadas.",
+			"howToUse": [
+				"Sube una foto antigua, dañada o descolorida.",
+				"Elige modo Auto para eliminación general de rayones/polvo, o modo Face Pro (GFPGAN) para mejora facial.",
+				"Haz clic en Restaurar — el proceso toma 10-30 segundos.",
+				"Descarga tu foto restaurada y compárala con la original."
+			],
+			"faq": [
+				{
+					"question": "¿Diferencia entre modo Auto y Face Pro?",
+					"answer": "Auto usa Topaz Dust & Scratch v2 para restauración general. Face Pro añade GFPGAN para restaurar detalles faciales en retratos y fotos grupales."
+				},
+				{
+					"question": "¿Puede restaurar fotos muy dañadas?",
+					"answer": "La IA maneja bien daños moderados como rayones, polvo y decoloración. Fotos severamente rasgadas o con daños por agua pueden mostrar mejora limitada."
+				},
+				{
+					"question": "¿En qué se diferencia del Colorizador B&N?",
+					"answer": "Photo Restorer repara daños físicos. El Colorizador añade color realista a fotos B&N. Úsalos juntos: restaura primero, colorea después."
+				},
+				{
+					"question": "¿Qué formatos se admiten?",
+					"answer": "PNG, JPG y WebP hasta 10MB. La salida es PNG para preservar calidad sin pérdida."
+				}
+			]
 		},
 		"pdf-to-word": {
 			"name": "PDF a Word",
@@ -138,11 +243,59 @@
 		},
 		"image-upscaler": {
 			"name": "Mejorador de Imágenes",
-			"description": "Mejora la resolución de imágenes con super-resolución IA de 2x o 4x."
+			"description": "Mejora la resolución de imágenes con super-resolución IA de 2x o 4x.",
+			"howToUse": [
+				"Sube una imagen que quieras ampliar.",
+				"Elige modo Foto (fotografías reales) o Anime (ilustraciones, manga) para resultados optimizados.",
+				"Selecciona factor de ampliación 2x o 4x.",
+				"Descarga tu imagen en alta resolución con detalles mejorados."
+			],
+			"faq": [
+				{
+					"question": "¿Cuánto puedo ampliar una imagen?",
+					"answer": "2x o 4x la resolución original. Por ejemplo, 500x500 pasa a 1000x1000 (2x) o 2000x2000 (4x). Real-ESRGAN reconstruye detalles de alta frecuencia."
+				},
+				{
+					"question": "¿Diferencia entre modo Foto y Anime?",
+					"answer": "El modo Foto está optimizado para fotografías reales. El modo Anime para ilustraciones y manga. Usar el modo correcto evita artefactos."
+				},
+				{
+					"question": "¿Cuándo usar 4x en lugar de 2x?",
+					"answer": "Usa 2x para ampliación moderada. Usa 4x para ampliación significativa (impresión, pantalla 4K). 4x toma un poco más de tiempo."
+				},
+				{
+					"question": "¿Es gratis la ampliación?",
+					"answer": "No — 2 créditos por imagen independientemente del factor de escala. El modelo Real-ESRGAN se ejecuta en infraestructura GPU."
+				}
+			]
 		},
 		"style-transfer": {
 			"name": "Transferencia de Estilo de Imagen",
-			"description": "Transforma fotos en pinturas al óleo, acuarelas, arte anime."
+			"description": "Transforma fotos en pinturas al óleo, acuarelas, arte anime.",
+			"howToUse": [
+				"Sube una foto que quieras transformar — retratos, paisajes y arquitectura funcionan bien.",
+				"Selecciona uno de 6 estilos artísticos: Óleo, Acuarela, Boceto, Cartoon, Cyberpunk o Fantasía.",
+				"Opcionalmente añade una descripción para afinar la aplicación del estilo.",
+				"Haz clic en Generar y espera 10-20 segundos. Descarga tu obra de arte estilizada."
+			],
+			"faq": [
+				{
+					"question": "¿Qué estilos están disponibles?",
+					"answer": "6 estilos: Óleo (pinceladas ricas), Acuarela (lavados suaves), Boceto (dibujo a lápiz), Cartoon (estilo animado), Cyberpunk (futurista neón) y Fantasía (mágico)."
+				},
+				{
+					"question": "¿En qué se diferencia del Generador de Imágenes IA?",
+					"answer": "Style Transfer transforma una foto existente aplicando un estilo artístico. El Generador crea imágenes completamente nuevas desde texto."
+				},
+				{
+					"question": "¿Qué fotos funcionan mejor?",
+					"answer": "Fotos con sujetos claros y buen contraste. Retratos, paisajes y arquitectura con formas definidas funcionan bien."
+				},
+				{
+					"question": "¿Puedo usar un estilo personalizado?",
+					"answer": "Actualmente hay 6 estilos predefinidos. El prompt de texto opcional te permite afinar colores, ambiente y detalles dentro del estilo elegido."
+				}
+			]
 		},
 		"text-polish": {
 			"name": "Pulir y Reescribir Texto",
@@ -220,7 +373,9 @@
 		"object-remover": {
 			"name": "Eliminador de Objetos IA",
 			"description": "Elimina objetos, personas o texto no deseados de tus fotos."
-		}
+		},
+		"image-generation": {},
+		"article-generator": {}
 	},
 	"dashboard": {
 		"welcome": "Bienvenido de nuevo",
@@ -533,27 +688,16 @@
 	},
 	"toolPage": {
 		"home": "Inicio",
-		"clickToUpload": "Haz clic para subir",
-		"uploadPhoto": "Subir una foto",
-		"uploadImage": "Subir una imagen para mejorar",
-		"uploadPdf": "Subir un documento PDF",
-		"supportedFormats": "PNG, JPG, WebP — máx. 3MB",
-		"supportedFormatsPdf": "PDF — máx. 20MB",
-		"original": "Original",
-		"result": "Resultado",
-		"processing": "Procesando...",
-		"cancel": "Cancelar",
-		"tryAgain": "Intentar de Nuevo",
-		"downloadResult": "Descargar Resultado",
-		"startOver": "Empezar de Nuevo",
-		"tryAnother": "Probar Otra",
-		"style": "Estilo",
-		"customPrompt": "Indicación personalizada (opcional)",
-		"mode": "Modo",
-		"upscaleFactor": "Factor de Escala",
-		"loading": "Cargando...",
 		"howToUse": "Cómo Usar Esta Herramienta",
-		"faq": "Preguntas Frecuentes"
+		"faq": "Preguntas Frecuentes",
+		"downloadResult": "Descargar Resultado",
+		"tryAgain": "Intentar de Nuevo",
+		"cost": "créditos",
+		"free": "Gratis",
+		"popular": "Popular",
+		"new": "Nuevo",
+		"credits": "créditos",
+		"mode": "Modo"
 	},
 	"avatarGenerator": {
 		"title": "Generador de Avatares con IA",
@@ -959,25 +1103,23 @@
 		"deduction": "deducción"
 	},
 	"creditGuard": {
-		"confirmTitle": "Confirmar uso de créditos",
-		"confirmMessage": "{toolName} requiere {credits} créditos",
+		"confirmTitle": "Confirmar Uso de Créditos",
+		"cost": "Créditos",
 		"currentBalance": "Saldo actual",
-		"cost": "Costo",
 		"after": "Después",
-		"useCredits": "Usar {credits} créditos",
 		"cancel": "Cancelar",
-		"insufficientTitle": "Créditos insuficientes",
-		"insufficientMessage": "{toolName} necesita {needed} créditos pero solo tienes {current}",
-		"needMore": "Necesitas {needed} créditos más",
-		"buyCredits": "Comprar créditos",
-		"creditsUsed": "Créditos usados",
+		"useCredits": "Usar Créditos",
+		"insufficientTitle": "Créditos Insuficientes",
+		"needMore": "Necesitas más créditos",
+		"buyCredits": "Comprar Créditos",
+		"creditsUsed": "Créditos Usados",
 		"remaining": "restantes"
 	},
 	"loginPrompt": {
-		"title": "Iniciar sesión requerido",
-		"description": "Inicia sesión o regístrate para usar esta herramienta. ¡Las cuentas nuevas obtienen 5 créditos gratis!",
-		"login": "Iniciar sesión",
-		"signup": "Registrarse — Gratis"
+		"title": "Inicio de Sesión Requerido",
+		"message": "Inicia sesión o crea una cuenta para usar esta herramienta.",
+		"login": "Iniciar Sesión",
+		"signup": "Registrarse"
 	},
 	"blog": {
 		"title": "Blog de AI ToolBox",

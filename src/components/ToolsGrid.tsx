@@ -56,17 +56,17 @@ export default function ToolsGrid({ locale, dict }: ToolsGridProps) {
             </h3>
             {cat.id === "image-editing" && (
               <Link href={`/${locale}/ai-image-editing`} className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
-                {home.exploreMore || "Explore AI photo editing tools →"}
+                {home.exploreMoreImageEditing || "Explore AI photo editing tools →"}
               </Link>
             )}
             {cat.id === "content-creation" && (
               <Link href={`/${locale}/ai-content-creation`} className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
-                {home.exploreMore || "Explore AI content creation tools →"}
+                {home.exploreMoreContentCreation || "Explore AI content creation tools →"}
               </Link>
             )}
             {cat.id === "image-generation" && (
               <Link href={`/${locale}/ai-image-generation`} className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
-                {home.exploreMore || "Explore AI image generation tools →"}
+                {home.exploreMoreImageGeneration || "Explore AI image generation tools →"}
               </Link>
             )}
           </div>
