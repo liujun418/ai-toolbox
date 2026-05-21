@@ -13,7 +13,14 @@
 		"home": "Home",
 		"blog": "Blog",
 		"dashboard": "Dashboard",
-		"settings": "Settings"
+		"settings": "Settings",
+		"verifyEmailBanner": "Please verify your email address for full account access.",
+		"suggestTitle": "💡 Suggest a Feature",
+		"suggestDesc": "We'd love to hear your ideas!",
+		"suggestPlaceholder": "I suggest...",
+		"suggestThankYou": "✅ Thank you for your suggestion!",
+		"suggestSending": "Sending...",
+		"suggestSubmit": "Submit"
 	},
 	"footer": {
 		"copyright": "AI ToolBox Online. All rights reserved.",
@@ -591,7 +598,12 @@
 		"expiration": "Credit Expiration",
 		"expirationDesc": "Purchased credits are valid for 12 months. Subscription credits reset monthly and do not roll over.",
 		"refund": "Refund Policy",
-		"refundDesc": "Credits are non-refundable once purchased. If you experience a technical issue, contact us for investigation."
+		"refundDesc": "Credits are non-refundable once purchased. If you experience a technical issue, contact us for investigation.",
+		"pleaseRead": "Please read before purchasing credits.",
+		"readOur": "Read our",
+		"termsOfService": "Terms of Service",
+		"privacyPolicy": "Privacy Policy",
+		"and": "and"
 	},
 	"login": {
 		"title": "Log In",
@@ -816,7 +828,7 @@
 		]
 	},
 	"notFound": {
-		"title": "404",
+		"title": "Page Not Found",
 		"heading": "Page Not Found",
 		"description": "The page you are looking for doesn't exist or has been moved.",
 		"goHome": "Go Home",

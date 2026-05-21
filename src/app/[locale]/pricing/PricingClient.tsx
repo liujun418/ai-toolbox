@@ -21,7 +21,8 @@ const subscriptionTiers = [
   { id: "pro_monthly", credits: 120, price: "$18", popular: true },
 ];
 
-export default function PricingClient() {
+export default function PricingClient({ dict }: { dict?: Record<string, unknown> }) {
+  const p = (dict as any)?.pricing || {};
   const { user } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
@@ -118,10 +119,10 @@ export default function PricingClient() {
 
       {/* Subscription Tiers */}
       <h2 className="mt-12 mb-4 text-center text-xl font-bold text-zinc-900 dark:text-white">
-        Monthly Subscriptions
+        {p.subscriptionTitle || "Monthly Subscriptions"}
       </h2>
       <p className="mx-auto mb-6 max-w-xl text-center text-sm text-zinc-500 dark:text-zinc-400">
-        Get fresh credits every month, capped at your plan limit. Unused credits do not roll over.
+        {p.subscriptionDesc || "Get fresh credits every month, capped at your plan limit."}
       </p>
       <div className="mx-auto grid max-w-md gap-4 sm:max-w-none sm:grid-cols-2">
         {subscriptionTiers.map((tier) => (
@@ -169,7 +170,7 @@ export default function PricingClient() {
 
       {/* Cost per Tool */}
       <div className="mt-12">
-        <h3 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">Cost per Tool</h3>
+        <h3 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">{p.costPerTool || "Cost per Tool"}</h3>
         <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
           <table className="w-full min-w-[400px] text-sm">
             <thead className="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900">
@@ -204,26 +205,26 @@ export default function PricingClient() {
 
       {/* Important Information */}
       <div className="mt-12 space-y-6 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-        <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">Important Information</h3>
+        <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">{p.importantInfo || "Important Information"}</h3>
         <div className="space-y-4 text-sm text-zinc-600 dark:text-zinc-400">
           <div>
-            <h4 className="font-semibold text-zinc-900 dark:text-white">What Are Credits?</h4>
-            <p className="mt-1">Credits are a virtual currency used to access our AI tools. Each tool use deducts a set number of credits. Credit costs are shown before each use.</p>
+            <h4 className="font-semibold text-zinc-900 dark:text-white">{p.whatAreCredits || "What Are Credits?"}</h4>
+            <p className="mt-1">{p.whatAreCreditsDesc || "Credits are a virtual currency used to access our AI tools."}</p>
           </div>
           <div>
-            <h4 className="font-semibold text-zinc-900 dark:text-white">Credit Expiration</h4>
-            <p className="mt-1">Purchased credits are valid for 12 months. Subscription credits reset monthly and do not roll over.</p>
+            <h4 className="font-semibold text-zinc-900 dark:text-white">{p.expiration || "Credit Expiration"}</h4>
+            <p className="mt-1">{p.expirationDesc || "Purchased credits are valid for 12 months."}</p>
           </div>
           <div>
-            <h4 className="font-semibold text-zinc-900 dark:text-white">Refund Policy</h4>
-            <p className="mt-1">Credits are non-refundable once purchased. If you experience a technical issue, contact us at <a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-600 hover:underline">{CONTACT_EMAIL}</a> for investigation.</p>
+            <h4 className="font-semibold text-zinc-900 dark:text-white">{p.refund || "Refund Policy"}</h4>
+            <p className="mt-1">{p.refundDesc || "Credits are non-refundable once purchased."} <>{p.refundDesc ? "" : "If you experience a technical issue, contact us at "}<a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-600 hover:underline">{CONTACT_EMAIL}</a>{p.refundDesc ? "" : " for investigation."}</></p>
           </div>
         </div>
       </div>
 
       <div className="mt-8 text-center text-sm text-zinc-500 dark:text-zinc-400">
         <p>Questions about pricing? Contact us at <a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-600 hover:underline">{CONTACT_EMAIL}</a></p>
-        <p className="mt-1">Read our <a href={`/${locale}/terms`} className="text-blue-600 hover:underline">Terms of Service</a> and <a href={`/${locale}/privacy`} className="text-blue-600 hover:underline">Privacy Policy</a>.</p>
+        <p className="mt-1">{(p as any).readOur || "Read our"} <a href={`/${locale}/terms`} className="text-blue-600 hover:underline">{(p as any).termsOfService || "Terms of Service"}</a> {(p as any).and || "and"} <a href={`/${locale}/privacy`} className="text-blue-600 hover:underline">{(p as any).privacyPolicy || "Privacy Policy"}</a>.</p>
       </div>
     </div>
   );

@@ -13,7 +13,14 @@
 		"home": "Inicio",
 		"blog": "Blog",
 		"dashboard": "Panel",
-		"settings": "Configuración"
+		"settings": "Configuración",
+		"verifyEmailBanner": "Verifica tu correo electrónico para acceso completo a la cuenta.",
+		"suggestTitle": "💡 Sugerir una Función",
+		"suggestDesc": "¡Nos encantaría escuchar tus ideas!",
+		"suggestPlaceholder": "Sugiero...",
+		"suggestThankYou": "✅ ¡Gracias por tu sugerencia!",
+		"suggestSending": "Enviando...",
+		"suggestSubmit": "Enviar"
 	},
 	"footer": {
 		"copyright": "AI ToolBox Online. Todos los derechos reservados.",
@@ -404,7 +411,7 @@
 		"noWatermark": "Sin marca de agua en los resultados",
 		"getStarted": "Empezar",
 		"subscribe": "Suscribirse",
-		"costPerTool": "Coste por herramienta",
+		"costPerTool": "Costo por Herramienta",
 		"tool": "Herramienta",
 		"credits": "Créditos",
 		"usdCost": "Coste en USD",
@@ -476,11 +483,16 @@
 		"expiration": "Vencimiento de Créditos",
 		"expirationDesc": "Los créditos comprados son válidos por 12 meses. Los créditos de suscripción se renuevan mensualmente y no se acumulan.",
 		"refund": "Política de Reembolso",
-		"refundDesc": "Los créditos no son reembolsables una vez comprados. Si experimentas un problema técnico, contáctanos para investigarlo."
+		"refundDesc": "Los créditos no son reembolsables una vez comprados. Si experimentas un problema técnico, contáctanos para investigarlo.",
+		"pleaseRead": "Por favor lea antes de comprar créditos.",
+		"readOur": "Lee nuestros",
+		"termsOfService": "Términos de Servicio",
+		"privacyPolicy": "Política de Privacidad",
+		"and": "y"
 	},
 	"login": {
 		"title": "Iniciar Sesión",
-		"subtitle": "Inicia sesión para acceder a tus herramientas y créditos de IA.",
+		"subtitle": "Inicia sesión para acceder a tus herramientas de IA y créditos.",
 		"email": "Correo electrónico",
 		"password": "Contraseña",
 		"emailPlaceholder": "tu@ejemplo.com",
@@ -667,7 +679,7 @@
 		]
 	},
 	"notFound": {
-		"title": "404",
+		"title": "Página No Encontrada",
 		"heading": "Página No Encontrada",
 		"description": "La página que buscas no existe o ha sido movida.",
 		"goHome": "Ir al Inicio",

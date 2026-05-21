@@ -94,9 +94,9 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
       {/* Email verification banner */}
       {user && !user.email_verified && pathname !== `/${locale}/verify-email` && (
         <div className="flex items-center justify-center gap-3 bg-yellow-50 px-4 py-2 text-sm text-yellow-800 dark:bg-yellow-950 dark:text-yellow-300">
-          <span>Please verify your email address for full account access.</span>
+          <span>{t.verifyEmailBanner || "Please verify your email address for full account access."}</span>
           <Link href={`/${locale}/settings`} className="font-medium underline hover:no-underline">
-            Settings
+            {t.settings || "Settings"}
           </Link>
         </div>
       )}
@@ -185,7 +185,7 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  Settings
+                  {t.settings || "Settings"}
                 </Link>
                 <button
                   onClick={logout}
@@ -276,26 +276,26 @@ export function Header({ locale = defaultLocale, dict }: HeaderProps) {
         {showSuggest && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setShowSuggest(false)}>
             <div className="mx-4 w-full max-w-md rounded-2xl bg-white p-6 shadow-xl dark:bg-zinc-900" onClick={(e) => e.stopPropagation()}>
-              <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">💡 Suggest a Feature</h3>
-              <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">We'd love to hear your ideas!</p>
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">{t.suggestTitle || "💡 Suggest a Feature"}</h3>
+              <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{t.suggestDesc || "We'd love to hear your ideas!"}</p>
               <textarea
                 value={suggestText}
                 onChange={(e) => setSuggestText(e.target.value)}
-                placeholder="I suggest..."
+                placeholder={t.suggestPlaceholder || "I suggest..."}
                 rows={4}
                 maxLength={1000}
                 disabled={suggestStatus === "sending" || suggestStatus === "done"}
                 className="mt-4 w-full rounded-xl border border-zinc-300 px-4 py-3 text-base text-zinc-800 placeholder:text-zinc-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:placeholder:text-zinc-500"
               />
               {suggestStatus === "done" ? (
-                <p className="mt-3 text-sm font-medium text-green-600 dark:text-green-400">✅ Thank you for your suggestion!</p>
+                <p className="mt-3 text-sm font-medium text-green-600 dark:text-green-400">{t.suggestThankYou || "✅ Thank you for your suggestion!"}</p>
               ) : (
                 <button
                   onClick={handleSuggest}
                   disabled={!suggestText.trim() || suggestStatus === "sending"}
                   className="mt-4 w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700 disabled:opacity-50"
                 >
-                  {suggestStatus === "sending" ? "Sending..." : "Submit"}
+                  {suggestStatus === "sending" ? (t.suggestSending || "Sending...") : (t.suggestSubmit || "Submit")}
                 </button>
               )}
             </div>
