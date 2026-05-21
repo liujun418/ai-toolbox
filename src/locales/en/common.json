@@ -760,6 +760,7 @@
     "resultLabel": "Result",
     "placeholder": "Paste or type your text here...",
     "characters": "characters",
+    "outputLanguage": "Output Language",
     "processedAppear": "Processed text will appear here",
     "modes": {
       "polish": {

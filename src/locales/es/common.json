@@ -1,859 +1,860 @@
 {
-  "nav": {
-    "tools": "Herramientas",
-    "pricing": "Precios",
-    "about": "Acerca de",
-    "freeTools": "Herramientas gratuitas →",
-    "credits": "créditos",
-    "login": "Iniciar sesión",
-    "logout": "Cerrar sesión",
-    "signup": "Registrarse",
-    "toggleDark": "Cambiar modo oscuro",
-    "loading": "..."
-  },
-  "footer": {
-    "copyright": "AI ToolBox Online. Todos los derechos reservados.",
-    "freeTools": "Herramientas gratuitas →",
-    "pricing": "Precios",
-    "about": "Acerca de",
-    "contact": "Contacto",
-    "privacy": "Privacidad",
-    "terms": "Términos",
-    "email": "jzerov@live.com",
-    "admin": "Admin"
-  },
-  "home": {
-    "heroTitle": "Herramientas con IA para Imagenes y Contenido",
-    "heroTitleHighlight": " cada",
-    "heroDescription": "Elimina fondos, genera avatares, restaura fotos antiguas, convierte PDF — todo potenciado por IA, todo en tu navegador.",
-    "getFreeCredits": "Obtén 5 créditos gratis",
-    "viewPricing": "Ver precios",
-    "all": "Todas",
-    "allTools": "Todas las herramientas",
-    "categoryImageGeneration": "Generación de Imágenes",
-    "categoryImageEditing": "Edición de Imágenes",
-    "categoryContentCreation": "Creación de Contenido",
-    "categoryDocument": "Documentos",
-    "credits": "créditos",
-    "free": "Gratis",
-    "popular": "Popular",
-    "new": "Nuevo",
-    "whyChooseTitle": "¿Por qué elegir AI ToolBox Online?",
-    "whyChooseSubtitle": "Potentes herramientas de IA diseñadas para velocidad, calidad y privacidad.",
-    "pricingTitle": "Precios simples y transparentes",
-    "pricingSubtitle": "Empieza gratis. Mejora cuando necesites más. Sin costes ocultos.",
-    "howItWorks": "Cómo funciona",
-    "upload": "Subir",
-    "uploadDesc": "Sube tu archivo — imagen o PDF.",
-    "process": "Procesar",
-    "processDesc": "Nuestros modelos de IA procesan tu archivo al instante.",
-    "download": "Descargar",
-    "downloadDesc": "Obtén tu resultado y descárgalo.",
-    "faqTitle": "Preguntas frecuentes",
-    "ctaTitle": "¿Listo para empezar?",
-    "ctaSubtitle": "Regístrate hoy y obtén 5 créditos gratis — sin tarjeta de crédito.",
-    "ctaButton": "Crear cuenta gratis",
-    "relatedTools": "También te Puede Gustar",
-    "heroSubtitle": "Genera, edita y transforma imagenes con IA. Crea articulos, convierte texto a voz y mas. Gratis para empezar.",
-    "heroImageEditing": "Editar Imagenes",
-    "heroContentCreation": "Crear Contenido",
-    "heroSignup": "5 Creditos Gratis",
-    "heroHint": "Sin tarjeta · 15 herramientas IA · Paga solo por lo que usas"
-  },
-  "features": [
-    {
-      "icon": "",
-      "title": "Resultados instantáneos",
-      "description": "Sube tu archivo y obtén resultados procesados en segundos — sin esperar en colas."
-    },
-    {
-      "icon": "🔒",
-      "title": "Privacidad ante todo",
-      "description": "Todos los archivos se eliminan automáticamente después de 1 hora. Nunca almacenamos ni compartimos tus datos."
-    },
-    {
-      "icon": "🎯",
-      "title": "Calidad potenciada por IA",
-      "description": "Potenciado por modelos líderes en la industria, incluyendo Stable Diffusion y GFPGAN."
-    },
-    {
-      "icon": "💳",
-      "title": "Paga solo por lo que usas",
-      "description": "Obtén 5 créditos gratis cada mes. Sin suscripciones forzadas — compra créditos según los necesites."
-    }
-  ],
-  "faqs": [
-    {
-      "q": "¿Qué puedo hacer con los créditos gratuitos?",
-      "a": "Obtienes 5 créditos gratis cada mes. Eso es suficiente para eliminar 2 fondos, convertir 5 PDF o generar 1 avatar."
-    },
-    {
-      "q": "¿Los créditos no utilizados se acumulan?",
-      "a": "Los créditos del plan gratuito se reinician mensualmente. Los créditos del plan de pago se renuevan con tu ciclo de facturación."
-    },
-    {
-      "q": "¿Mis datos están seguros?",
-      "a": "Todos los archivos subidos se eliminan automáticamente de nuestros servidores después de 1 hora. Nunca almacenamos ni compartimos tus imágenes."
-    },
-    {
-      "q": "¿Qué modelos de IA utilizan?",
-      "a": "Utilizamos modelos líderes a través de la API de Replicate, incluyendo Stable Diffusion para generación de imágenes y GFPGAN para restauración de fotos."
-    },
-    {
-      "q": "¿Puedo usar los resultados comercialmente?",
-      "a": "Sí. Conservas la plena propiedad de todos los archivos de entrada y salida. Úsalos para proyectos personales o comerciales."
-    },
-    {
-      "q": "¿Qué formatos de archivo son compatibles?",
-      "a": "Aceptamos PNG, JPG y WebP para herramientas de imagen. Archivos PDF de hasta 20MB para conversión de documentos."
-    }
-  ],
-  "tools": {
-    "ai-image-generator": {
-      "name": "Generador de Imágenes IA",
-      "description": "Convierte texto en imágenes increíbles. Sin marca de agua, descarga instantánea.",
-      "badge": "Nuevo"
-    },
-    "avatar-generator": {
-      "name": "Generador de Avatares con IA",
-      "description": "Transforma tus fotos en avatares de dibujos animados, anime o profesionales.",
-      "badge": "Popular"
-    },
-    "background-remover": {
-      "name": "Eliminador de Fondos",
-      "description": "Elimina fondos de imágenes al instante con un clic.",
-      "badge": "Gratis"
-    },
-    "watermark-remover": {
-      "name": "Eliminador de Marcas de Agua",
-      "description": "Elimina marcas de agua, logotipos y texto de imágenes de forma inteligente."
-    },
-    "photo-restorer": {
-      "name": "Restaurador de Fotos",
-      "description": "Restaura y colorea fotos antiguas, borrosas o dañadas."
-    },
-    "pdf-to-word": {
-      "name": "PDF a Word",
-      "description": "Convierte documentos PDF a archivos Word editables al instante."
-    },
-    "image-upscaler": {
-      "name": "Mejorador de Imágenes",
-      "description": "Mejora la resolución de imágenes con super-resolución IA de 2x o 4x."
-    },
-    "style-transfer": {
-      "name": "Transferencia de Estilo de Imagen",
-      "description": "Transforma fotos en pinturas al óleo, acuarelas, arte anime."
-    },
-    "text-polish": {
-      "name": "Pulir y Reescribir Texto",
-      "description": "Pule, reescribe, acorta o expande texto con IA."
-    },
-    "face-blur": {
-      "name": "Difuminado Facial",
-      "description": "Detecta rostros y aplica desenfoque para privacidad.",
-      "cost": "2 créditos",
-      "cost1": "Prueba Gratis",
-      "uploadTitle": "Sube una foto con rostros",
-      "detectFaces": "Detectar Rostros",
-      "detectHint": "La IA escaneará la imagen y localizará todos los rostros automáticamente.",
-      "detecting": "Detectando rostros...",
-      "oneFaceFound": "1 rostro detectado",
-      "multiFacesFound": "{n} rostros detectados",
-      "facesFound": "{n} región(es) marcada(s)",
-      "facesMarkedHint": "Los rostros están marcados con rectángulos verdes. Añade regiones extra si es necesario, luego elige un estilo.",
-      "noFacesFound": "No se detectaron rostros",
-      "noFacesHint": "Puedes dibujar regiones manualmente abajo.",
-      "chooseStyle": "Elegir Estilo de Desenfoque",
-      "pickEmoji": "Elegir icono",
-      "addRegions": "Añadir Regiones Extra (Opcional)",
-      "regionsAdded": "regiones",
-      "drawHint": "Haz clic y arrastra en la imagen para añadir regiones extra.",
-      "before": "Antes",
-      "after": "Después",
-      "applyBlur": "Aplicar Desenfoque",
-      "undo": "Deshacer",
-      "clearAll": "Limpiar",
-      "newTask": "Nueva Tarea",
-      "maxSize": "hasta 10MB"
-    },
-    "text-to-speech": {
-      "name": "Texto a Voz IA",
-      "description": "Convierte texto en voz natural con IA."
-    },
-    "image-description": {
-      "name": "Descriptor de Imágenes IA",
-      "description": "Genera descripciones detalladas, texto ALT y más con IA."
-    },
-    "colorizer": {
-      "name": "Colorizador de Fotos B&N",
-      "description": "Da vida a fotos en blanco y negro con IA."
-    },
-    "object-remover": {
-      "name": "Eliminador de Objetos IA",
-      "description": "Elimina objetos, personas o texto no deseados de tus fotos."
-    }
-  },
-  "dashboard": {
-    "welcome": "Bienvenido de nuevo",
-    "creditsRemaining": "Tienes",
-    "credits": "créditos",
-    "buyMore": "Comprar más créditos →",
-    "creditsUsed": "Créditos utilizados (total)",
-    "toolsUsed": "Herramientas utilizadas",
-    "memberSince": "Miembro desde",
-    "yourTools": "Tus herramientas",
-    "used": "Usado {{count}}x",
-    "creditsPerUse": "{{credits}} créditos por uso",
-    "recentActivity": "Actividad reciente",
-    "noActivity": "Aún no hay actividad. ¡Prueba una herramienta para empezar!",
-    "browseTools": "Explorar herramientas",
-    "tool": "Herramienta",
-    "date": "Fecha",
-    "credits_col": "Créditos"
-  },
-  "pricing": {
-    "title": "Precios simples y transparentes",
-    "subtitle": "Empieza gratis. Mejora cuando necesites más.",
-    "popular": "Popular",
-    "allTools": "Todas las herramientas de IA incluidas",
-    "filesDeleted": "Archivos eliminados después de 1 hora",
-    "noWatermark": "Sin marca de agua en los resultados",
-    "getStarted": "Empezar",
-    "subscribe": "Suscribirse",
-    "costPerTool": "Coste por herramienta",
-    "tool": "Herramienta",
-    "credits": "Créditos",
-    "usdCost": "Coste en USD",
-    "tools": [
-      [
-        "Eliminador de Fondos",
-        "2",
-        "$0.20"
-      ],
-      [
-        "Eliminador de Marcas de Agua",
-        "3",
-        "$0.30"
-      ],
-      [
-        "Generador de Avatares con IA",
-        "5",
-        "$0.50"
-      ],
-      [
-        "Restaurador de Fotos",
-        "5",
-        "$0.50"
-      ],
-      [
-        "PDF a Word (≤10 páginas)",
-        "1",
-        "$0.10"
-      ],
-      [
-        "PDF a Word (>10 páginas)",
-        "2",
-        "$0.20"
-      ],
-      [
-        "Mejorador de Imágenes",
-        "2",
-        "$0.20"
-      ],
-      [
-        "Transferencia de Estilo de Imagen",
-        "4",
-        "$0.40"
-      ],
-      [
-        "Pulir y Reescribir Texto",
-        "3",
-        "$0.30"
-      ]
-    ]
-  },
-  "login": {
-    "title": "Iniciar sesión",
-    "subtitle": "Inicia sesión para acceder a tus herramientas y créditos de IA.",
-    "email": "Correo electrónico",
-    "password": "Contraseña",
-    "emailPlaceholder": "tu@ejemplo.com",
-    "button": "Iniciar sesión",
-    "loading": "Iniciando sesión...",
-    "noAccount": "¿No tienes una cuenta?",
-    "signUp": "Registrarse",
-    "loginFailed": "Error al iniciar sesión"
-  },
-  "signup": {
-    "title": "Registrarse",
-    "subtitle": "Obtén 5 créditos gratis para empezar. Sin tarjeta de crédito.",
-    "name": "Nombre",
-    "email": "Correo electrónico",
-    "password": "Contraseña",
-    "namePlaceholder": "Juan Pérez",
-    "emailPlaceholder": "tu@ejemplo.com",
-    "button": "Crear cuenta",
-    "loading": "Creando cuenta...",
-    "hasAccount": "¿Ya tienes una cuenta?",
-    "logIn": "Iniciar sesión",
-    "registrationFailed": "Error en el registro"
-  },
-  "about": {
-    "title": "Acerca de AI ToolBox Online",
-    "subtitle": "Nuestra misión e historia",
-    "mission": "Nuestra Misión",
-    "missionText": "AI ToolBox Online se creó con una idea simple: todos deberían tener acceso a potentes herramientas de IA sin costosas suscripciones de software ni conocimientos técnicos. Ya seas un pequeño empresario creando avatares profesionales, un estudiante convirtiendo PDF para tareas, o un diseñador eliminando marcas de agua — nuestras herramientas están diseñadas para ser rápidas, intuitivas y accesibles desde cualquier dispositivo.",
-    "offer": "Lo que Ofrecemos",
-    "offerIntro": "Proporcionamos herramientas potenciadas por IA:",
-    "offerItems": [
-      "Eliminador de Fondos — Eliminación de fondos con un clic para cualquier imagen",
-      "Generador de Avatares con IA — Transforma fotos en avatares de dibujos animados, anime o profesionales",
-      "Eliminador de Marcas de Agua — Elimina marcas de agua, logotipos y texto de imágenes",
-      "Restaurador de Fotos — Restaura y colorea fotos antiguas, borrosas o dañadas",
-      "PDF a Word — Convierte documentos PDF a archivos Word editables"
-    ],
-    "howItWorks": "Cómo Funciona",
-    "howItWorksText": "Utilizamos modelos de IA líderes a través de la API de Replicate — incluyendo Stable Diffusion para generación de imágenes y GFPGAN para restauración de fotos. Todo el procesamiento se realiza en la nube; solo subes tu archivo y obtienes resultados en segundos. Los archivos se eliminan automáticamente después de 1 hora para proteger tu privacidad.",
-    "pricingPhilosophy": "Filosofía de Precios",
-    "pricingText": "Creemos en precios transparentes y de pago por uso. Sin suscripciones mensuales obligatorias. Obtén 5 créditos gratis cada mes y solo paga cuando necesites más. Cada herramienta muestra su coste en créditos por adelantado para que no haya sorpresas.",
-    "contact": "Contacto",
-    "contactText": "¿Tienes preguntas o comentarios? Contáctanos en jzerov@live.com o visita nuestra página de contacto."
-  },
-  "contact": {
-    "title": "Contáctanos",
-    "subtitle": "Nos encantaría saber de ti",
-    "email": "Correo electrónico",
-    "emailDesc": "Para consultas generales, soporte o comentarios:",
-    "responseTime": "Tiempo de Respuesta",
-    "responseText": "Nuestro objetivo es responder a todas las consultas en 24 horas. Para asuntos urgentes, incluye \"URGENTE\" en el asunto de tu correo.",
-    "commonQuestions": "Preguntas Comunes",
-    "faq": [
-      {
-        "q": "¿Cómo obtengo más créditos?",
-        "a": "Visita nuestra página de Precios para comprar créditos desde $4.99 por 50 créditos."
-      },
-      {
-        "q": "Mi procesamiento de archivos falló. ¿Qué debo hacer?",
-        "a": "Envíanos un correo con el nombre de la herramienta, el tipo de archivo y cualquier mensaje de error que hayas recibido. Investigaremos y reembolsaremos los créditos si es necesario."
-      },
-      {
-        "q": "¿Puedo usar los resultados comercialmente?",
-        "a": "Sí. Conservas la plena propiedad de todos los archivos que subes y generas a través de nuestras herramientas."
-      }
-    ]
-  },
-  "privacy": {
-    "title": "Política de Privacidad",
-    "lastUpdated": "Última actualización: mayo de 2026",
-    "sections": [
-      {
-        "title": "1. Información que Recopilamos",
-        "text": "Recopilamos información mínima necesaria para proporcionar nuestros servicios:",
-        "list": [
-          "Información de Cuenta: Dirección de correo electrónico y nombre al crear una cuenta.",
-          "Datos de Uso: Registros de uso de herramientas para facturación y gestión de créditos.",
-          "Datos de Pago: Procesados de forma segura por Stripe. No almacenamos los datos de tu tarjeta de pago."
-        ]
-      },
-      {
-        "title": "2. Gestión de Archivos",
-        "text": "Todos los archivos subidos y las salidas procesadas se eliminan automáticamente de nuestros servidores en un plazo de 1 hora tras el procesamiento. No almacenamos, compartimos ni utilizamos tus imágenes para entrenar modelos de IA. Conservas la plena propiedad de todos los archivos que subes y generas."
-      },
-      {
-        "title": "3. Servicios de Terceros",
-        "text": "Utilizamos los siguientes servicios de terceros para ofrecer nuestra plataforma:",
-        "list": [
-          "API de Replicate: Para procesamiento de imágenes con IA (generación de avatares, eliminación de fondos, restauración de fotos).",
-          "Stripe: Para procesamiento seguro de pagos.",
-          "Cloudflare R2: Para almacenamiento temporal de archivos durante el procesamiento."
-        ],
-        "note": "Cada servicio opera bajo su propia política de privacidad."
-      },
-      {
-        "title": "4. Seguridad de Datos",
-        "text": "Utilizamos cifrado estándar de la industria (HTTPS/TLS) para todos los datos en tránsito. Los tokens de autenticación se almacenan de forma segura en el almacenamiento local de tu navegador. Revisamos regularmente nuestras prácticas de seguridad."
-      },
-      {
-        "title": "5. Tus Derechos",
-        "text": "Tienes derecho a acceder, corregir o eliminar tus datos personales en cualquier momento. Para solicitar la eliminación de tu cuenta, contáctanos en jzerov@live.com."
-      },
-      {
-        "title": "6. Contacto",
-        "text": "Para consultas relacionadas con la privacidad, contáctanos en jzerov@live.com."
-      }
-    ]
-  },
-  "terms": {
-    "title": "Términos de Servicio",
-    "lastUpdated": "Última actualización: mayo de 2026",
-    "sections": [
-      {
-        "title": "1. Descripción del Servicio",
-        "text": "AI ToolBox Online proporciona herramientas de procesamiento de imágenes y conversión de documentos potenciadas por IA, incluyendo eliminación de fondos, generación de avatares, eliminación de marcas de agua, restauración de fotos y conversión de PDF a Word. La disponibilidad del servicio está sujeta a la disponibilidad de la API de terceros."
-      },
-      {
-        "title": "2. Uso Aceptable",
-        "text": "Puedes usar nuestras herramientas para fines personales y comerciales. Conservas la plena propiedad de tus archivos de entrada y salida. Aceptas no:",
-        "list": [
-          "Usar nuestro servicio para procesar contenido que viole las leyes aplicables o infrinja los derechos de otros.",
-          "Automatizar o extraer datos de nuestro servicio sin permiso.",
-          "Compartir las credenciales de tu cuenta o revender nuestros créditos."
-        ]
-      },
-      {
-        "title": "3. Créditos y Facturación",
-        "text": "Las cuentas gratuitas reciben 5 créditos por mes. Los créditos de pago se compran a través de Stripe y se renuevan con tu ciclo de facturación. Los créditos de pago no utilizados se acumulan dentro del mismo ciclo de facturación. Los créditos del plan gratuito se reinician mensualmente. Los créditos no utilizados no son reembolsables."
-      },
-      {
-        "title": "4. Reembolsos",
-        "text": "Los créditos no utilizados no son reembolsables. Si experimentas problemas con nuestro servicio, contáctanos en jzerov@live.com para obtener una resolución. Haremos todos los esfuerzos razonables para abordar tus preocupaciones."
-      },
-      {
-        "title": "5. Limitación de Responsabilidad",
-        "text": "AI ToolBox Online se proporciona \"tal cual\" sin garantías de ningún tipo. No garantizamos un servicio ininterrumpido o libre de errores. No somos responsables de ningún daño indirecto, incidental o consecuente derivado del uso de nuestro servicio."
-      },
-      {
-        "title": "6. Propiedad Intelectual",
-        "text": "La plataforma AI ToolBox Online, incluyendo su diseño, código y marca, está protegida por derechos de propiedad intelectual. Conservas la propiedad de tus archivos subidos y las salidas generadas."
-      },
-      {
-        "title": "7. Cambios en los Términos",
-        "text": "Podemos actualizar estos términos de vez en cuando. El uso continuado del servicio después de los cambios constituye la aceptación de los términos actualizados."
-      },
-      {
-        "title": "8. Contacto",
-        "text": "Para cualquier pregunta sobre estos términos, contáctanos en jzerov@live.com."
-      }
-    ]
-  },
-  "notFound": {
-    "title": "404",
-    "heading": "Página No Encontrada",
-    "description": "La página que buscas no existe o ha sido movida.",
-    "goHome": "Ir al Inicio",
-    "viewPricing": "Ver Precios"
-  },
-  "paymentSuccess": {
-    "title": "¡Pago Exitoso!",
-    "description": "Tus créditos han sido añadidos a tu cuenta.",
-    "creditsAvailable": "créditos disponibles",
-    "goToDashboard": "Ir al Panel",
-    "seconds": "s"
-  },
-  "paymentCancel": {
-    "title": "Pago Cancelado",
-    "description": "Tu pago no se completó. No se han realizado cargos.",
-    "tryAgain": "Intentar de Nuevo",
-    "backToDashboard": "Volver al Panel"
-  },
-  "toolPage": {
-    "home": "Inicio",
-    "clickToUpload": "Haz clic para subir",
-    "uploadPhoto": "Subir una foto",
-    "uploadImage": "Subir una imagen para mejorar",
-    "uploadPdf": "Subir un documento PDF",
-    "supportedFormats": "PNG, JPG, WebP — máx. 3MB",
-    "supportedFormatsPdf": "PDF — máx. 20MB",
-    "original": "Original",
-    "result": "Resultado",
-    "processing": "Procesando...",
-    "cancel": "Cancelar",
-    "tryAgain": "Intentar de Nuevo",
-    "downloadResult": "Descargar Resultado",
-    "startOver": "Empezar de Nuevo",
-    "tryAnother": "Probar Otra",
-    "style": "Estilo",
-    "customPrompt": "Indicación personalizada (opcional)",
-    "mode": "Modo",
-    "upscaleFactor": "Factor de Escala",
-    "loading": "Cargando...",
-    "howToUse": "Cómo Usar Esta Herramienta",
-    "faq": "Preguntas Frecuentes"
-  },
-  "avatarGenerator": {
-    "title": "Generador de Avatares con IA",
-    "description": "¡Convierte tu selfie en estrella cartoon, héroe anime o foto profesional — como por arte de magia!",
-    "cost": "5 créditos",
-    "button": "Generar Avatar (5 créditos)",
-    "styles": {
-      "cartoon": "Dibujo Animado",
-      "anime": "Anime",
-      "professional": "Profesional",
-      "pixel-art": "Arte Pixel",
-      "watercolor": "Acuarela",
-      "oil-painting": "Pintura al Óleo"
-    },
-    "generating": "Generando avatar...",
-    "resultReady": "Selecciona un estilo y genera para ver el resultado",
-    "download": "Descargar Avatar",
-    "tryAnother": "Probar Otra Foto",
-    "selectBest": "Elige tu favorito"
-  },
-  "backgroundRemover": {
-    "title": "Eliminador de Fondos",
-    "description": "¡Zas! Fondos que desaparecen con un clic. Corte limpio, siempre perfecto.",
-    "cost": "2 créditos",
-    "button": "Eliminar Fondo (2 créditos)",
-    "processing": "Eliminando fondo...",
-    "uploadToSee": "Sube una imagen para eliminar el fondo",
-    "bgColor": "Color de Fondo",
-    "transparent": "Transparente",
-    "white": "Blanco",
-    "black": "Negro",
-    "custom": "Personalizado",
-    "advanced": "Avanzado",
-    "download": "Descargar PNG",
-    "autoMode": "Auto Eliminar",
-    "manualMode": "Pintar Manual"
-  },
-  "watermarkRemover": {
-    "title": "Eliminador de Marcas de Agua",
-    "description": "Barre marcas de agua, logos y texto — tu imagen queda impecable, como nueva.",
-    "cost": "3 créditos",
-    "button": "Eliminar Marca de Agua (3 créditos)",
-    "processing": "Procesando...",
-    "uploadToSee": "Sube para ver el resultado",
-    "autoDetect": "Auto Detectar",
-    "manual": "Manual",
-    "autoHint": "La IA detectará y eliminará automáticamente marcas de agua, logotipos y texto.",
-    "manualHint": "Pinta sobre el área de la marca de agua para que la IA sepa qué eliminar.",
-    "clearMarks": "Borrar Marcas"
-  },
-  "photoRestorer": {
-    "title": "Restaurador de Fotos",
-    "description": "¡Dale a tus fotos viejas un viaje en el tiempo! Arañazos, polvo, desenfoque — ¡desaparecidos!",
-    "cost": "5 créditos",
-    "button": "Restaurar Foto (5 créditos)",
-    "processing": "Restaurando foto...",
-    "uploadToSee": "Selecciona intensidad para restaurar",
-    "download": "Descargar Foto Restaurada",
-    "tryAnother": "Probar Otra Foto",
-    "strength": "Intensidad de Restauración",
-    "strengths": {
-      "auto": {
-        "label": "Auto Restaurar",
-        "desc": "IA elimina rayones, polvo e imperfecciones automáticamente"
-      },
-      "face": {
-        "label": "Rostro Pro",
-        "desc": "Mejora facial dedicada con GFPGAN"
-      }
-    }
-  },
-  "aiImageGenerator": {
-    "title": "Generador de Imágenes IA",
-    "description": "Descríbelo. Míralo. Descárgalo. ¡Convierte cualquier texto en una increíble imagen generada por IA — sin marca de agua, pago solo por lo que creas!",
-    "cost": "desde 1 crédito",
-    "promptLabel": "Describe la imagen que quieres",
-    "promptPlaceholder": "Un paisaje montañoso majestuoso al atardecer, con un lago cristalino reflejando los picos...",
-    "generateButton": "Generar Imagen",
-    "generating": "Generando...",
-    "qualityLabel": "Calidad",
-    "quality": {
-      "low": {
-        "label": "Baja",
-        "desc": "Rápido y económico"
-      },
-      "medium": {
-        "label": "Media",
-        "desc": "Buen equilibrio"
-      },
-      "high": {
-        "label": "Alta",
-        "desc": "Máximo detalle"
-      }
-    },
-    "aspectRatioLabel": "Relación de Aspecto",
-    "aspectRatio": {
-      "1:1": "Cuadrado (1:1)",
-      "3:2": "Horizontal (3:2)",
-      "2:3": "Vertical (2:3)"
-    },
-    "formatLabel": "Formato",
-    "format": {
-      "png": "PNG — sin pérdida, archivo grande",
-      "webp": "WebP — moderno, tamaño pequeño",
-      "jpeg": "JPEG — universal, comprimido"
-    },
-    "imagesLabel": "Imágenes",
-    "images": "imágenes",
-    "referenceLabel": "Imagen de Referencia (opcional)",
-    "referenceDesc": "Sube una foto para guiar estilo y composición. Añade 1 crédito extra.",
-    "uploadReference": "Clic para subir referencia",
-    "removeReference": "Quitar",
-    "creditSummary": "créditos para esta generación",
-    "result": "Tu Imagen Generada",
-    "results": "Tus Imágenes Generadas",
-    "downloadAll": "Descargar Todas",
-    "tryAnother": "Generar Otra",
-    "errorTitle": "Generación Fallida",
-    "noImages": "La IA no pudo generar imágenes. Prueba con otro texto o ajustes.",
-    "tipsTitle": "Consejos Pro",
-    "tips": [
-      {
-        "icon": "📝",
-        "text": "¡Sé específico! \"Un gato naranja peludo durmiendo en un alféizar al atardecer\" funciona mejor que \"gato\"."
-      },
-      {
-        "icon": "⚡",
-        "text": "Calidad baja es ideal para borradores rápidos. Alta calidad usa más pasos para mayor detalle."
-      },
-      {
-        "icon": "🖼️",
-        "text": "Sube una imagen de referencia para guiar la composición. La IA mezcla tu foto con la descripción."
-      },
-      {
-        "icon": "🎨",
-        "text": "Genera varias imágenes a la vez para comparar variaciones. Cada imagen extra cuesta solo 1 crédito más."
-      }
-    ]
-  },
-  "pdfToWord": {
-    "title": "PDF a Word",
-    "description": "¡Desbloquea tus PDFs! Convierte cualquier PDF — con texto o escaneado — en un Word editable impecable.",
-    "cost1": "Gratis",
-    "cost2": "Gratis",
-    "scannedBadge": "Sin coste de IA",
-    "button": "Convertir a Word",
-    "processing": "Convirtiendo PDF...",
-    "processingOcr": "Renderizando páginas escaneadas...",
-    "pageCount": "Páginas",
-    "download": "Descargar Archivo Word",
-    "downloadText": "Tu documento Word está listo para descargar.",
-    "done": "¡Conversión Completa!",
-    "tryAnother": "Convertir Otro Archivo"
-  },
-  "imageUpscaler": {
-    "title": "Mejorador de Imágenes",
-    "description": "¡Zoom y mejora! Convierte imágenes pequeñas y borrosas en fotos nítidas y detalladas.",
-    "cost": "2 créditos",
-    "supportedFormats": "PNG, JPG, WebP — máx. 1MB",
-    "button": "Mejorar Imagen (2 créditos)",
-    "processing": "Mejorando imagen...",
-    "uploadToSee": "Selecciona opciones para mejorar",
-    "imageType": "Tipo de Imagen",
-    "types": {
-      "photo": {
-        "label": "Foto",
-        "desc": "Modelo general + mejora facial para retratos"
-      },
-      "anime": {
-        "label": "Anime / Ilustración",
-        "desc": "Optimizado para arte lineal, animación e ilustraciones"
-      }
-    },
-    "scales": {
-      "2": "2×",
-      "4": "4×"
-    },
-    "tryAnother": "Probar Otra Imagen",
-    "tipsTitle": "💡 Consejos Pro",
-    "tips": [
-      {
-        "icon": "📏",
-        "text": "¡Las fotos pequeñas ganan más! Ideal para menos de 2000px — las que ya son nítidas no cambiarán mucho."
-      },
-      {
-        "icon": "📦",
-        "text": "Mantén archivos bajo 1MB / 2000px. Imágenes enormes pueden saturar la IA — ¡hasta los robots tienen límites!"
-      },
-      {
-        "icon": "🎯",
-        "text": "¿Retratos? Modo Foto añade magia facial. ¿Ilustraciones? Modo Anime mantiene las líneas definidas."
-      },
-      {
-        "icon": "🔢",
-        "text": "2× es tu héroe cotidiano. 4× funciona mejor en imágenes pequeñas (menos de 1000px) — ¡a lo grande!"
-      }
-    ]
-  },
-  "styleTransfer": {
-    "title": "Transferencia de Estilo de Imagen",
-    "description": "¡Convierte tu foto en arte! Óleo, acuarela, boceto, cyberpunk, fantasía y más.",
-    "cost": "4 créditos",
-    "button": "Transformar (4 créditos)",
-    "processing": "Transfiriendo estilo...",
-    "uploadToSee": "Selecciona un estilo y transforma para ver el resultado",
-    "styles": {
-      "oil-painting": {
-        "label": "Óleo",
-        "desc": "Pinceladas gruesas, paleta cálida"
-      },
-      "watercolor": {
-        "label": "Acuarela",
-        "desc": "Lavados translúcidos, bordes suaves"
-      },
-      "sketch": {
-        "label": "Lápiz",
-        "desc": "Dibujo a grafito, fino sombreado"
-      },
-      "cartoon": {
-        "label": "3D Cartoon",
-        "desc": "Estilo Pixar, render 3D pulido"
-      },
-      "cyberpunk": {
-        "label": "Cyberpunk",
-        "desc": "Neón, estética synthwave futurista"
-      },
-      "fantasy": {
-        "label": "Fantasía",
-        "desc": "Elementos mágicos, atmósfera etérea"
-      }
-    },
-    "tipsTitle": "💡 Consejos Pro",
-    "tips": [
-      {
-        "icon": "👤",
-        "text": "¡Un solo sujeto, un resultado espectacular! Los retratos individuales funcionan mejor — fondos complejos confunden al artista IA."
-      },
-      {
-        "icon": "✂️",
-        "text": "Recortamos tu foto en cuadrado automáticamente. Composición centrada = ¡cambio de look perfecto!"
-      },
-      {
-        "icon": "🎨",
-        "text": "¡Cero ajustes, cero estrés! Cada estilo tiene su salsa secreta pre-ajustada para resultados consistentes."
-      },
-      {
-        "icon": "💡",
-        "text": "Buena luz, rostro nítido, encuadre centrado = magia estilística. ¡Nuestro artista IA pinta mejor con fotos claras!"
-      }
-    ],
-    "tryAnother": "Probar Otra Foto"
-  },
-  "textPolish": {
-    "title": "Pulir y Reescribir Texto",
-    "description": "Dale a tus palabras un día de spa. Pule, reescribe, acorta o expande con magia IA.",
-    "cost": "3 créditos",
-    "originalText": "Texto Original",
-    "resultLabel": "Resultado",
-    "placeholder": "Pega o escribe tu texto aquí...",
-    "characters": "caracteres",
-    "processedAppear": "El texto procesado aparecerá aquí",
-    "modes": {
-      "polish": {
-        "label": "Pulir",
-        "desc": "Corrige gramática y fluidez",
-        "icon": "✨"
-      },
-      "rewrite": {
-        "label": "Reescribir",
-        "desc": "Palabras frescas, mismo sentido",
-        "icon": "🔄"
-      },
-      "shorten": {
-        "label": "Acortar",
-        "desc": "Quita paja, guarda la idea",
-        "icon": "✂️"
-      },
-      "expand": {
-        "label": "Expandir",
-        "desc": "Añade detalle y profundidad",
-        "icon": "📝"
-      },
-      "academic": {
-        "label": "Académico",
-        "desc": "Estilo formal erudito",
-        "icon": "🎓"
-      },
-      "business": {
-        "label": "Negocios",
-        "desc": "Profesional y pulido",
-        "icon": "💼"
-      }
-    },
-    "button": "Procesar Texto (3 créditos)",
-    "processing": "Procesando texto...",
-    "copy": "Copiar al Portapapeles",
-    "clear": "Limpiar",
-    "tryAnother": "Probar Otro Texto"
-  },
-  "language": {
-    "select": "Idioma"
-  },
-  "forgotPassword": {
-    "title": "Olvidé mi Contraseña",
-    "subtitle": "Ingresa tu email y te enviaremos un enlace para restablecer.",
-    "emailLabel": "Email",
-    "emailPlaceholder": "tu@email.com",
-    "button": "Enviar Enlace",
-    "loading": "Enviando...",
-    "successTitle": "Revisa tu email",
-    "successDesc": "Si existe una cuenta con ese email, hemos enviado un enlace para restablecer la contraseña.",
-    "tryAgain": "Intentar de nuevo",
-    "backToLogin": "Volver al Login"
-  },
-  "resetPassword": {
-    "title": "Restablecer Contraseña",
-    "subtitle": "Ingresa tu nueva contraseña.",
-    "invalidTitle": "Enlace Inválido",
-    "invalidDesc": "El enlace falta o es inválido. Solicita uno nuevo.",
-    "invalidLinkText": "Olvidé mi Contraseña",
-    "newPassword": "Nueva Contraseña",
-    "confirmPassword": "Confirmar Contraseña",
-    "passwordPlaceholder": "••••••••",
-    "button": "Restablecer",
-    "loading": "Restableciendo...",
-    "successTitle": "Contraseña Restablecida",
-    "successDesc": "Tu contraseña ha sido restablecida exitosamente.",
-    "loginLink": "Iniciar sesión con nueva contraseña",
-    "passwordsDontMatch": "Las contraseñas no coinciden",
-    "missingToken": "Falta el token de restablecimiento"
-  },
-  "settings": {
-    "title": "Configuración de Cuenta",
-    "profileSection": "Perfil",
-    "nameLabel": "Nombre",
-    "emailLabel": "Email",
-    "saveProfile": "Guardar Cambios",
-    "saving": "Guardando...",
-    "emailVerified": "Verificado",
-    "emailNotVerified": "No verificado",
-    "verifyEmail": "Verificar email",
-    "resendVerification": "Reenviar email de verificación",
-    "verificationSent": "Email de verificación enviado",
-    "passwordSection": "Cambiar Contraseña",
-    "currentPassword": "Contraseña Actual",
-    "newPassword": "Nueva Contraseña",
-    "confirmNewPassword": "Confirmar Nueva Contraseña",
-    "changePassword": "Cambiar Contraseña",
-    "changing": "Cambiando...",
-    "passwordChanged": "Contraseña actualizada exitosamente",
-    "dangerSection": "Zona de Peligro",
-    "deleteAccount": "Eliminar Cuenta",
-    "deleteAccountDesc": "Una vez eliminada, esta acción no se puede deshacer.",
-    "confirmDelete": "¿Estás seguro? Esto eliminará permanentemente tu cuenta y todos los datos.",
-    "usageHistory": "Historial de Uso",
-    "transactions": "Historial de Transacciones",
-    "noUsage": "Sin historial de uso aún.",
-    "noTransactions": "Sin transacciones aún.",
-    "tool": "Herramienta",
-    "status": "Estado",
-    "creditsCost": "Créditos",
-    "date": "Fecha",
-    "amount": "Monto",
-    "type": "Tipo",
-    "description": "Descripción"
-  },
-  "creditGuard": {
-    "confirmTitle": "Confirmar uso de créditos",
-    "confirmMessage": "{toolName} requiere {credits} créditos",
-    "currentBalance": "Saldo actual",
-    "cost": "Costo",
-    "after": "Después",
-    "useCredits": "Usar {credits} créditos",
-    "cancel": "Cancelar",
-    "insufficientTitle": "Créditos insuficientes",
-    "insufficientMessage": "{toolName} necesita {needed} créditos pero solo tienes {current}",
-    "needMore": "Necesitas {needed} créditos más",
-    "buyCredits": "Comprar créditos",
-    "creditsUsed": "Créditos usados",
-    "remaining": "restantes"
-  },
-  "loginPrompt": {
-    "title": "Iniciar sesión requerido",
-    "description": "Inicia sesión o regístrate para usar esta herramienta. ¡Las cuentas nuevas obtienen 5 créditos gratis!",
-    "login": "Iniciar sesión",
-    "signup": "Registrarse — Gratis"
-  }
+	"nav": {
+		"tools": "Herramientas",
+		"pricing": "Precios",
+		"about": "Acerca de",
+		"freeTools": "Herramientas gratuitas →",
+		"credits": "créditos",
+		"login": "Iniciar sesión",
+		"logout": "Cerrar sesión",
+		"signup": "Registrarse",
+		"toggleDark": "Cambiar modo oscuro",
+		"loading": "..."
+	},
+	"footer": {
+		"copyright": "AI ToolBox Online. Todos los derechos reservados.",
+		"freeTools": "Herramientas gratuitas →",
+		"pricing": "Precios",
+		"about": "Acerca de",
+		"contact": "Contacto",
+		"privacy": "Privacidad",
+		"terms": "Términos",
+		"email": "jzerov@live.com",
+		"admin": "Admin"
+	},
+	"home": {
+		"heroTitle": "Herramientas con IA para Imagenes y Contenido",
+		"heroTitleHighlight": " cada",
+		"heroDescription": "Elimina fondos, genera avatares, restaura fotos antiguas, convierte PDF — todo potenciado por IA, todo en tu navegador.",
+		"getFreeCredits": "Obtén 5 créditos gratis",
+		"viewPricing": "Ver precios",
+		"all": "Todas",
+		"allTools": "Todas las herramientas",
+		"categoryImageGeneration": "Generación de Imágenes",
+		"categoryImageEditing": "Edición de Imágenes",
+		"categoryContentCreation": "Creación de Contenido",
+		"categoryDocument": "Documentos",
+		"credits": "créditos",
+		"free": "Gratis",
+		"popular": "Popular",
+		"new": "Nuevo",
+		"whyChooseTitle": "¿Por qué elegir AI ToolBox Online?",
+		"whyChooseSubtitle": "Potentes herramientas de IA diseñadas para velocidad, calidad y privacidad.",
+		"pricingTitle": "Precios simples y transparentes",
+		"pricingSubtitle": "Empieza gratis. Mejora cuando necesites más. Sin costes ocultos.",
+		"howItWorks": "Cómo funciona",
+		"upload": "Subir",
+		"uploadDesc": "Sube tu archivo — imagen o PDF.",
+		"process": "Procesar",
+		"processDesc": "Nuestros modelos de IA procesan tu archivo al instante.",
+		"download": "Descargar",
+		"downloadDesc": "Obtén tu resultado y descárgalo.",
+		"faqTitle": "Preguntas frecuentes",
+		"ctaTitle": "¿Listo para empezar?",
+		"ctaSubtitle": "Regístrate hoy y obtén 5 créditos gratis — sin tarjeta de crédito.",
+		"ctaButton": "Crear cuenta gratis",
+		"relatedTools": "También te Puede Gustar",
+		"heroSubtitle": "Genera, edita y transforma imagenes con IA. Crea articulos, convierte texto a voz y mas. Gratis para empezar.",
+		"heroImageEditing": "Editar Imagenes",
+		"heroContentCreation": "Crear Contenido",
+		"heroSignup": "5 Creditos Gratis",
+		"heroHint": "Sin tarjeta · 15 herramientas IA · Paga solo por lo que usas"
+	},
+	"features": [
+		{
+			"icon": "",
+			"title": "Resultados instantáneos",
+			"description": "Sube tu archivo y obtén resultados procesados en segundos — sin esperar en colas."
+		},
+		{
+			"icon": "🔒",
+			"title": "Privacidad ante todo",
+			"description": "Todos los archivos se eliminan automáticamente después de 1 hora. Nunca almacenamos ni compartimos tus datos."
+		},
+		{
+			"icon": "🎯",
+			"title": "Calidad potenciada por IA",
+			"description": "Potenciado por modelos líderes en la industria, incluyendo Stable Diffusion y GFPGAN."
+		},
+		{
+			"icon": "💳",
+			"title": "Paga solo por lo que usas",
+			"description": "Obtén 5 créditos gratis cada mes. Sin suscripciones forzadas — compra créditos según los necesites."
+		}
+	],
+	"faqs": [
+		{
+			"q": "¿Qué puedo hacer con los créditos gratuitos?",
+			"a": "Obtienes 5 créditos gratis cada mes. Eso es suficiente para eliminar 2 fondos, convertir 5 PDF o generar 1 avatar."
+		},
+		{
+			"q": "¿Los créditos no utilizados se acumulan?",
+			"a": "Los créditos del plan gratuito se reinician mensualmente. Los créditos del plan de pago se renuevan con tu ciclo de facturación."
+		},
+		{
+			"q": "¿Mis datos están seguros?",
+			"a": "Todos los archivos subidos se eliminan automáticamente de nuestros servidores después de 1 hora. Nunca almacenamos ni compartimos tus imágenes."
+		},
+		{
+			"q": "¿Qué modelos de IA utilizan?",
+			"a": "Utilizamos modelos líderes a través de la API de Replicate, incluyendo Stable Diffusion para generación de imágenes y GFPGAN para restauración de fotos."
+		},
+		{
+			"q": "¿Puedo usar los resultados comercialmente?",
+			"a": "Sí. Conservas la plena propiedad de todos los archivos de entrada y salida. Úsalos para proyectos personales o comerciales."
+		},
+		{
+			"q": "¿Qué formatos de archivo son compatibles?",
+			"a": "Aceptamos PNG, JPG y WebP para herramientas de imagen. Archivos PDF de hasta 20MB para conversión de documentos."
+		}
+	],
+	"tools": {
+		"ai-image-generator": {
+			"name": "Generador de Imágenes IA",
+			"description": "Convierte texto en imágenes increíbles. Sin marca de agua, descarga instantánea.",
+			"badge": "Nuevo"
+		},
+		"avatar-generator": {
+			"name": "Generador de Avatares con IA",
+			"description": "Transforma tus fotos en avatares de dibujos animados, anime o profesionales.",
+			"badge": "Popular"
+		},
+		"background-remover": {
+			"name": "Eliminador de Fondos",
+			"description": "Elimina fondos de imágenes al instante con un clic.",
+			"badge": "Gratis"
+		},
+		"watermark-remover": {
+			"name": "Eliminador de Marcas de Agua",
+			"description": "Elimina marcas de agua, logotipos y texto de imágenes de forma inteligente."
+		},
+		"photo-restorer": {
+			"name": "Restaurador de Fotos",
+			"description": "Restaura y colorea fotos antiguas, borrosas o dañadas."
+		},
+		"pdf-to-word": {
+			"name": "PDF a Word",
+			"description": "Convierte documentos PDF a archivos Word editables al instante."
+		},
+		"image-upscaler": {
+			"name": "Mejorador de Imágenes",
+			"description": "Mejora la resolución de imágenes con super-resolución IA de 2x o 4x."
+		},
+		"style-transfer": {
+			"name": "Transferencia de Estilo de Imagen",
+			"description": "Transforma fotos en pinturas al óleo, acuarelas, arte anime."
+		},
+		"text-polish": {
+			"name": "Pulir y Reescribir Texto",
+			"description": "Pule, reescribe, acorta o expande texto con IA."
+		},
+		"face-blur": {
+			"name": "Difuminado Facial",
+			"description": "Detecta rostros y aplica desenfoque para privacidad.",
+			"cost": "2 créditos",
+			"cost1": "Prueba Gratis",
+			"uploadTitle": "Sube una foto con rostros",
+			"detectFaces": "Detectar Rostros",
+			"detectHint": "La IA escaneará la imagen y localizará todos los rostros automáticamente.",
+			"detecting": "Detectando rostros...",
+			"oneFaceFound": "1 rostro detectado",
+			"multiFacesFound": "{n} rostros detectados",
+			"facesFound": "{n} región(es) marcada(s)",
+			"facesMarkedHint": "Los rostros están marcados con rectángulos verdes. Añade regiones extra si es necesario, luego elige un estilo.",
+			"noFacesFound": "No se detectaron rostros",
+			"noFacesHint": "Puedes dibujar regiones manualmente abajo.",
+			"chooseStyle": "Elegir Estilo de Desenfoque",
+			"pickEmoji": "Elegir icono",
+			"addRegions": "Añadir Regiones Extra (Opcional)",
+			"regionsAdded": "regiones",
+			"drawHint": "Haz clic y arrastra en la imagen para añadir regiones extra.",
+			"before": "Antes",
+			"after": "Después",
+			"applyBlur": "Aplicar Desenfoque",
+			"undo": "Deshacer",
+			"clearAll": "Limpiar",
+			"newTask": "Nueva Tarea",
+			"maxSize": "hasta 10MB"
+		},
+		"text-to-speech": {
+			"name": "Texto a Voz IA",
+			"description": "Convierte texto en voz natural con IA."
+		},
+		"image-description": {
+			"name": "Descriptor de Imágenes IA",
+			"description": "Genera descripciones detalladas, texto ALT y más con IA."
+		},
+		"colorizer": {
+			"name": "Colorizador de Fotos B&N",
+			"description": "Da vida a fotos en blanco y negro con IA."
+		},
+		"object-remover": {
+			"name": "Eliminador de Objetos IA",
+			"description": "Elimina objetos, personas o texto no deseados de tus fotos."
+		}
+	},
+	"dashboard": {
+		"welcome": "Bienvenido de nuevo",
+		"creditsRemaining": "Tienes",
+		"credits": "créditos",
+		"buyMore": "Comprar más créditos →",
+		"creditsUsed": "Créditos utilizados (total)",
+		"toolsUsed": "Herramientas utilizadas",
+		"memberSince": "Miembro desde",
+		"yourTools": "Tus herramientas",
+		"used": "Usado {{count}}x",
+		"creditsPerUse": "{{credits}} créditos por uso",
+		"recentActivity": "Actividad reciente",
+		"noActivity": "Aún no hay actividad. ¡Prueba una herramienta para empezar!",
+		"browseTools": "Explorar herramientas",
+		"tool": "Herramienta",
+		"date": "Fecha",
+		"credits_col": "Créditos"
+	},
+	"pricing": {
+		"title": "Precios simples y transparentes",
+		"subtitle": "Empieza gratis. Mejora cuando necesites más.",
+		"popular": "Popular",
+		"allTools": "Todas las herramientas de IA incluidas",
+		"filesDeleted": "Archivos eliminados después de 1 hora",
+		"noWatermark": "Sin marca de agua en los resultados",
+		"getStarted": "Empezar",
+		"subscribe": "Suscribirse",
+		"costPerTool": "Coste por herramienta",
+		"tool": "Herramienta",
+		"credits": "Créditos",
+		"usdCost": "Coste en USD",
+		"tools": [
+			[
+				"Eliminador de Fondos",
+				"2",
+				"$0.20"
+			],
+			[
+				"Eliminador de Marcas de Agua",
+				"3",
+				"$0.30"
+			],
+			[
+				"Generador de Avatares con IA",
+				"5",
+				"$0.50"
+			],
+			[
+				"Restaurador de Fotos",
+				"5",
+				"$0.50"
+			],
+			[
+				"PDF a Word (≤10 páginas)",
+				"1",
+				"$0.10"
+			],
+			[
+				"PDF a Word (>10 páginas)",
+				"2",
+				"$0.20"
+			],
+			[
+				"Mejorador de Imágenes",
+				"2",
+				"$0.20"
+			],
+			[
+				"Transferencia de Estilo de Imagen",
+				"4",
+				"$0.40"
+			],
+			[
+				"Pulir y Reescribir Texto",
+				"3",
+				"$0.30"
+			]
+		]
+	},
+	"login": {
+		"title": "Iniciar sesión",
+		"subtitle": "Inicia sesión para acceder a tus herramientas y créditos de IA.",
+		"email": "Correo electrónico",
+		"password": "Contraseña",
+		"emailPlaceholder": "tu@ejemplo.com",
+		"button": "Iniciar sesión",
+		"loading": "Iniciando sesión...",
+		"noAccount": "¿No tienes una cuenta?",
+		"signUp": "Registrarse",
+		"loginFailed": "Error al iniciar sesión"
+	},
+	"signup": {
+		"title": "Registrarse",
+		"subtitle": "Obtén 5 créditos gratis para empezar. Sin tarjeta de crédito.",
+		"name": "Nombre",
+		"email": "Correo electrónico",
+		"password": "Contraseña",
+		"namePlaceholder": "Juan Pérez",
+		"emailPlaceholder": "tu@ejemplo.com",
+		"button": "Crear cuenta",
+		"loading": "Creando cuenta...",
+		"hasAccount": "¿Ya tienes una cuenta?",
+		"logIn": "Iniciar sesión",
+		"registrationFailed": "Error en el registro"
+	},
+	"about": {
+		"title": "Acerca de AI ToolBox Online",
+		"subtitle": "Nuestra misión e historia",
+		"mission": "Nuestra Misión",
+		"missionText": "AI ToolBox Online se creó con una idea simple: todos deberían tener acceso a potentes herramientas de IA sin costosas suscripciones de software ni conocimientos técnicos. Ya seas un pequeño empresario creando avatares profesionales, un estudiante convirtiendo PDF para tareas, o un diseñador eliminando marcas de agua — nuestras herramientas están diseñadas para ser rápidas, intuitivas y accesibles desde cualquier dispositivo.",
+		"offer": "Lo que Ofrecemos",
+		"offerIntro": "Proporcionamos herramientas potenciadas por IA:",
+		"offerItems": [
+			"Eliminador de Fondos — Eliminación de fondos con un clic para cualquier imagen",
+			"Generador de Avatares con IA — Transforma fotos en avatares de dibujos animados, anime o profesionales",
+			"Eliminador de Marcas de Agua — Elimina marcas de agua, logotipos y texto de imágenes",
+			"Restaurador de Fotos — Restaura y colorea fotos antiguas, borrosas o dañadas",
+			"PDF a Word — Convierte documentos PDF a archivos Word editables"
+		],
+		"howItWorks": "Cómo Funciona",
+		"howItWorksText": "Utilizamos modelos de IA líderes a través de la API de Replicate — incluyendo Stable Diffusion para generación de imágenes y GFPGAN para restauración de fotos. Todo el procesamiento se realiza en la nube; solo subes tu archivo y obtienes resultados en segundos. Los archivos se eliminan automáticamente después de 1 hora para proteger tu privacidad.",
+		"pricingPhilosophy": "Filosofía de Precios",
+		"pricingText": "Creemos en precios transparentes y de pago por uso. Sin suscripciones mensuales obligatorias. Obtén 5 créditos gratis cada mes y solo paga cuando necesites más. Cada herramienta muestra su coste en créditos por adelantado para que no haya sorpresas.",
+		"contact": "Contacto",
+		"contactText": "¿Tienes preguntas o comentarios? Contáctanos en jzerov@live.com o visita nuestra página de contacto."
+	},
+	"contact": {
+		"title": "Contáctanos",
+		"subtitle": "Nos encantaría saber de ti",
+		"email": "Correo electrónico",
+		"emailDesc": "Para consultas generales, soporte o comentarios:",
+		"responseTime": "Tiempo de Respuesta",
+		"responseText": "Nuestro objetivo es responder a todas las consultas en 24 horas. Para asuntos urgentes, incluye \"URGENTE\" en el asunto de tu correo.",
+		"commonQuestions": "Preguntas Comunes",
+		"faq": [
+			{
+				"q": "¿Cómo obtengo más créditos?",
+				"a": "Visita nuestra página de Precios para comprar créditos desde $4.99 por 50 créditos."
+			},
+			{
+				"q": "Mi procesamiento de archivos falló. ¿Qué debo hacer?",
+				"a": "Envíanos un correo con el nombre de la herramienta, el tipo de archivo y cualquier mensaje de error que hayas recibido. Investigaremos y reembolsaremos los créditos si es necesario."
+			},
+			{
+				"q": "¿Puedo usar los resultados comercialmente?",
+				"a": "Sí. Conservas la plena propiedad de todos los archivos que subes y generas a través de nuestras herramientas."
+			}
+		]
+	},
+	"privacy": {
+		"title": "Política de Privacidad",
+		"lastUpdated": "Última actualización: mayo de 2026",
+		"sections": [
+			{
+				"title": "1. Información que Recopilamos",
+				"text": "Recopilamos información mínima necesaria para proporcionar nuestros servicios:",
+				"list": [
+					"Información de Cuenta: Dirección de correo electrónico y nombre al crear una cuenta.",
+					"Datos de Uso: Registros de uso de herramientas para facturación y gestión de créditos.",
+					"Datos de Pago: Procesados de forma segura por Stripe. No almacenamos los datos de tu tarjeta de pago."
+				]
+			},
+			{
+				"title": "2. Gestión de Archivos",
+				"text": "Todos los archivos subidos y las salidas procesadas se eliminan automáticamente de nuestros servidores en un plazo de 1 hora tras el procesamiento. No almacenamos, compartimos ni utilizamos tus imágenes para entrenar modelos de IA. Conservas la plena propiedad de todos los archivos que subes y generas."
+			},
+			{
+				"title": "3. Servicios de Terceros",
+				"text": "Utilizamos los siguientes servicios de terceros para ofrecer nuestra plataforma:",
+				"list": [
+					"API de Replicate: Para procesamiento de imágenes con IA (generación de avatares, eliminación de fondos, restauración de fotos).",
+					"Stripe: Para procesamiento seguro de pagos.",
+					"Cloudflare R2: Para almacenamiento temporal de archivos durante el procesamiento."
+				],
+				"note": "Cada servicio opera bajo su propia política de privacidad."
+			},
+			{
+				"title": "4. Seguridad de Datos",
+				"text": "Utilizamos cifrado estándar de la industria (HTTPS/TLS) para todos los datos en tránsito. Los tokens de autenticación se almacenan de forma segura en el almacenamiento local de tu navegador. Revisamos regularmente nuestras prácticas de seguridad."
+			},
+			{
+				"title": "5. Tus Derechos",
+				"text": "Tienes derecho a acceder, corregir o eliminar tus datos personales en cualquier momento. Para solicitar la eliminación de tu cuenta, contáctanos en jzerov@live.com."
+			},
+			{
+				"title": "6. Contacto",
+				"text": "Para consultas relacionadas con la privacidad, contáctanos en jzerov@live.com."
+			}
+		]
+	},
+	"terms": {
+		"title": "Términos de Servicio",
+		"lastUpdated": "Última actualización: mayo de 2026",
+		"sections": [
+			{
+				"title": "1. Descripción del Servicio",
+				"text": "AI ToolBox Online proporciona herramientas de procesamiento de imágenes y conversión de documentos potenciadas por IA, incluyendo eliminación de fondos, generación de avatares, eliminación de marcas de agua, restauración de fotos y conversión de PDF a Word. La disponibilidad del servicio está sujeta a la disponibilidad de la API de terceros."
+			},
+			{
+				"title": "2. Uso Aceptable",
+				"text": "Puedes usar nuestras herramientas para fines personales y comerciales. Conservas la plena propiedad de tus archivos de entrada y salida. Aceptas no:",
+				"list": [
+					"Usar nuestro servicio para procesar contenido que viole las leyes aplicables o infrinja los derechos de otros.",
+					"Automatizar o extraer datos de nuestro servicio sin permiso.",
+					"Compartir las credenciales de tu cuenta o revender nuestros créditos."
+				]
+			},
+			{
+				"title": "3. Créditos y Facturación",
+				"text": "Las cuentas gratuitas reciben 5 créditos por mes. Los créditos de pago se compran a través de Stripe y se renuevan con tu ciclo de facturación. Los créditos de pago no utilizados se acumulan dentro del mismo ciclo de facturación. Los créditos del plan gratuito se reinician mensualmente. Los créditos no utilizados no son reembolsables."
+			},
+			{
+				"title": "4. Reembolsos",
+				"text": "Los créditos no utilizados no son reembolsables. Si experimentas problemas con nuestro servicio, contáctanos en jzerov@live.com para obtener una resolución. Haremos todos los esfuerzos razonables para abordar tus preocupaciones."
+			},
+			{
+				"title": "5. Limitación de Responsabilidad",
+				"text": "AI ToolBox Online se proporciona \"tal cual\" sin garantías de ningún tipo. No garantizamos un servicio ininterrumpido o libre de errores. No somos responsables de ningún daño indirecto, incidental o consecuente derivado del uso de nuestro servicio."
+			},
+			{
+				"title": "6. Propiedad Intelectual",
+				"text": "La plataforma AI ToolBox Online, incluyendo su diseño, código y marca, está protegida por derechos de propiedad intelectual. Conservas la propiedad de tus archivos subidos y las salidas generadas."
+			},
+			{
+				"title": "7. Cambios en los Términos",
+				"text": "Podemos actualizar estos términos de vez en cuando. El uso continuado del servicio después de los cambios constituye la aceptación de los términos actualizados."
+			},
+			{
+				"title": "8. Contacto",
+				"text": "Para cualquier pregunta sobre estos términos, contáctanos en jzerov@live.com."
+			}
+		]
+	},
+	"notFound": {
+		"title": "404",
+		"heading": "Página No Encontrada",
+		"description": "La página que buscas no existe o ha sido movida.",
+		"goHome": "Ir al Inicio",
+		"viewPricing": "Ver Precios"
+	},
+	"paymentSuccess": {
+		"title": "¡Pago Exitoso!",
+		"description": "Tus créditos han sido añadidos a tu cuenta.",
+		"creditsAvailable": "créditos disponibles",
+		"goToDashboard": "Ir al Panel",
+		"seconds": "s"
+	},
+	"paymentCancel": {
+		"title": "Pago Cancelado",
+		"description": "Tu pago no se completó. No se han realizado cargos.",
+		"tryAgain": "Intentar de Nuevo",
+		"backToDashboard": "Volver al Panel"
+	},
+	"toolPage": {
+		"home": "Inicio",
+		"clickToUpload": "Haz clic para subir",
+		"uploadPhoto": "Subir una foto",
+		"uploadImage": "Subir una imagen para mejorar",
+		"uploadPdf": "Subir un documento PDF",
+		"supportedFormats": "PNG, JPG, WebP — máx. 3MB",
+		"supportedFormatsPdf": "PDF — máx. 20MB",
+		"original": "Original",
+		"result": "Resultado",
+		"processing": "Procesando...",
+		"cancel": "Cancelar",
+		"tryAgain": "Intentar de Nuevo",
+		"downloadResult": "Descargar Resultado",
+		"startOver": "Empezar de Nuevo",
+		"tryAnother": "Probar Otra",
+		"style": "Estilo",
+		"customPrompt": "Indicación personalizada (opcional)",
+		"mode": "Modo",
+		"upscaleFactor": "Factor de Escala",
+		"loading": "Cargando...",
+		"howToUse": "Cómo Usar Esta Herramienta",
+		"faq": "Preguntas Frecuentes"
+	},
+	"avatarGenerator": {
+		"title": "Generador de Avatares con IA",
+		"description": "¡Convierte tu selfie en estrella cartoon, héroe anime o foto profesional — como por arte de magia!",
+		"cost": "5 créditos",
+		"button": "Generar Avatar (5 créditos)",
+		"styles": {
+			"cartoon": "Dibujo Animado",
+			"anime": "Anime",
+			"professional": "Profesional",
+			"pixel-art": "Arte Pixel",
+			"watercolor": "Acuarela",
+			"oil-painting": "Pintura al Óleo"
+		},
+		"generating": "Generando avatar...",
+		"resultReady": "Selecciona un estilo y genera para ver el resultado",
+		"download": "Descargar Avatar",
+		"tryAnother": "Probar Otra Foto",
+		"selectBest": "Elige tu favorito"
+	},
+	"backgroundRemover": {
+		"title": "Eliminador de Fondos",
+		"description": "¡Zas! Fondos que desaparecen con un clic. Corte limpio, siempre perfecto.",
+		"cost": "2 créditos",
+		"button": "Eliminar Fondo (2 créditos)",
+		"processing": "Eliminando fondo...",
+		"uploadToSee": "Sube una imagen para eliminar el fondo",
+		"bgColor": "Color de Fondo",
+		"transparent": "Transparente",
+		"white": "Blanco",
+		"black": "Negro",
+		"custom": "Personalizado",
+		"advanced": "Avanzado",
+		"download": "Descargar PNG",
+		"autoMode": "Auto Eliminar",
+		"manualMode": "Pintar Manual"
+	},
+	"watermarkRemover": {
+		"title": "Eliminador de Marcas de Agua",
+		"description": "Barre marcas de agua, logos y texto — tu imagen queda impecable, como nueva.",
+		"cost": "3 créditos",
+		"button": "Eliminar Marca de Agua (3 créditos)",
+		"processing": "Procesando...",
+		"uploadToSee": "Sube para ver el resultado",
+		"autoDetect": "Auto Detectar",
+		"manual": "Manual",
+		"autoHint": "La IA detectará y eliminará automáticamente marcas de agua, logotipos y texto.",
+		"manualHint": "Pinta sobre el área de la marca de agua para que la IA sepa qué eliminar.",
+		"clearMarks": "Borrar Marcas"
+	},
+	"photoRestorer": {
+		"title": "Restaurador de Fotos",
+		"description": "¡Dale a tus fotos viejas un viaje en el tiempo! Arañazos, polvo, desenfoque — ¡desaparecidos!",
+		"cost": "5 créditos",
+		"button": "Restaurar Foto (5 créditos)",
+		"processing": "Restaurando foto...",
+		"uploadToSee": "Selecciona intensidad para restaurar",
+		"download": "Descargar Foto Restaurada",
+		"tryAnother": "Probar Otra Foto",
+		"strength": "Intensidad de Restauración",
+		"strengths": {
+			"auto": {
+				"label": "Auto Restaurar",
+				"desc": "IA elimina rayones, polvo e imperfecciones automáticamente"
+			},
+			"face": {
+				"label": "Rostro Pro",
+				"desc": "Mejora facial dedicada con GFPGAN"
+			}
+		}
+	},
+	"aiImageGenerator": {
+		"title": "Generador de Imágenes IA",
+		"description": "Descríbelo. Míralo. Descárgalo. ¡Convierte cualquier texto en una increíble imagen generada por IA — sin marca de agua, pago solo por lo que creas!",
+		"cost": "desde 1 crédito",
+		"promptLabel": "Describe la imagen que quieres",
+		"promptPlaceholder": "Un paisaje montañoso majestuoso al atardecer, con un lago cristalino reflejando los picos...",
+		"generateButton": "Generar Imagen",
+		"generating": "Generando...",
+		"qualityLabel": "Calidad",
+		"quality": {
+			"low": {
+				"label": "Baja",
+				"desc": "Rápido y económico"
+			},
+			"medium": {
+				"label": "Media",
+				"desc": "Buen equilibrio"
+			},
+			"high": {
+				"label": "Alta",
+				"desc": "Máximo detalle"
+			}
+		},
+		"aspectRatioLabel": "Relación de Aspecto",
+		"aspectRatio": {
+			"1:1": "Cuadrado (1:1)",
+			"3:2": "Horizontal (3:2)",
+			"2:3": "Vertical (2:3)"
+		},
+		"formatLabel": "Formato",
+		"format": {
+			"png": "PNG — sin pérdida, archivo grande",
+			"webp": "WebP — moderno, tamaño pequeño",
+			"jpeg": "JPEG — universal, comprimido"
+		},
+		"imagesLabel": "Imágenes",
+		"images": "imágenes",
+		"referenceLabel": "Imagen de Referencia (opcional)",
+		"referenceDesc": "Sube una foto para guiar estilo y composición. Añade 1 crédito extra.",
+		"uploadReference": "Clic para subir referencia",
+		"removeReference": "Quitar",
+		"creditSummary": "créditos para esta generación",
+		"result": "Tu Imagen Generada",
+		"results": "Tus Imágenes Generadas",
+		"downloadAll": "Descargar Todas",
+		"tryAnother": "Generar Otra",
+		"errorTitle": "Generación Fallida",
+		"noImages": "La IA no pudo generar imágenes. Prueba con otro texto o ajustes.",
+		"tipsTitle": "Consejos Pro",
+		"tips": [
+			{
+				"icon": "📝",
+				"text": "¡Sé específico! \"Un gato naranja peludo durmiendo en un alféizar al atardecer\" funciona mejor que \"gato\"."
+			},
+			{
+				"icon": "⚡",
+				"text": "Calidad baja es ideal para borradores rápidos. Alta calidad usa más pasos para mayor detalle."
+			},
+			{
+				"icon": "🖼️",
+				"text": "Sube una imagen de referencia para guiar la composición. La IA mezcla tu foto con la descripción."
+			},
+			{
+				"icon": "🎨",
+				"text": "Genera varias imágenes a la vez para comparar variaciones. Cada imagen extra cuesta solo 1 crédito más."
+			}
+		]
+	},
+	"pdfToWord": {
+		"title": "PDF a Word",
+		"description": "¡Desbloquea tus PDFs! Convierte cualquier PDF — con texto o escaneado — en un Word editable impecable.",
+		"cost1": "Gratis",
+		"cost2": "Gratis",
+		"scannedBadge": "Sin coste de IA",
+		"button": "Convertir a Word",
+		"processing": "Convirtiendo PDF...",
+		"processingOcr": "Renderizando páginas escaneadas...",
+		"pageCount": "Páginas",
+		"download": "Descargar Archivo Word",
+		"downloadText": "Tu documento Word está listo para descargar.",
+		"done": "¡Conversión Completa!",
+		"tryAnother": "Convertir Otro Archivo"
+	},
+	"imageUpscaler": {
+		"title": "Mejorador de Imágenes",
+		"description": "¡Zoom y mejora! Convierte imágenes pequeñas y borrosas en fotos nítidas y detalladas.",
+		"cost": "2 créditos",
+		"supportedFormats": "PNG, JPG, WebP — máx. 1MB",
+		"button": "Mejorar Imagen (2 créditos)",
+		"processing": "Mejorando imagen...",
+		"uploadToSee": "Selecciona opciones para mejorar",
+		"imageType": "Tipo de Imagen",
+		"types": {
+			"photo": {
+				"label": "Foto",
+				"desc": "Modelo general + mejora facial para retratos"
+			},
+			"anime": {
+				"label": "Anime / Ilustración",
+				"desc": "Optimizado para arte lineal, animación e ilustraciones"
+			}
+		},
+		"scales": {
+			"2": "2×",
+			"4": "4×"
+		},
+		"tryAnother": "Probar Otra Imagen",
+		"tipsTitle": "💡 Consejos Pro",
+		"tips": [
+			{
+				"icon": "📏",
+				"text": "¡Las fotos pequeñas ganan más! Ideal para menos de 2000px — las que ya son nítidas no cambiarán mucho."
+			},
+			{
+				"icon": "📦",
+				"text": "Mantén archivos bajo 1MB / 2000px. Imágenes enormes pueden saturar la IA — ¡hasta los robots tienen límites!"
+			},
+			{
+				"icon": "🎯",
+				"text": "¿Retratos? Modo Foto añade magia facial. ¿Ilustraciones? Modo Anime mantiene las líneas definidas."
+			},
+			{
+				"icon": "🔢",
+				"text": "2× es tu héroe cotidiano. 4× funciona mejor en imágenes pequeñas (menos de 1000px) — ¡a lo grande!"
+			}
+		]
+	},
+	"styleTransfer": {
+		"title": "Transferencia de Estilo de Imagen",
+		"description": "¡Convierte tu foto en arte! Óleo, acuarela, boceto, cyberpunk, fantasía y más.",
+		"cost": "4 créditos",
+		"button": "Transformar (4 créditos)",
+		"processing": "Transfiriendo estilo...",
+		"uploadToSee": "Selecciona un estilo y transforma para ver el resultado",
+		"styles": {
+			"oil-painting": {
+				"label": "Óleo",
+				"desc": "Pinceladas gruesas, paleta cálida"
+			},
+			"watercolor": {
+				"label": "Acuarela",
+				"desc": "Lavados translúcidos, bordes suaves"
+			},
+			"sketch": {
+				"label": "Lápiz",
+				"desc": "Dibujo a grafito, fino sombreado"
+			},
+			"cartoon": {
+				"label": "3D Cartoon",
+				"desc": "Estilo Pixar, render 3D pulido"
+			},
+			"cyberpunk": {
+				"label": "Cyberpunk",
+				"desc": "Neón, estética synthwave futurista"
+			},
+			"fantasy": {
+				"label": "Fantasía",
+				"desc": "Elementos mágicos, atmósfera etérea"
+			}
+		},
+		"tipsTitle": "💡 Consejos Pro",
+		"tips": [
+			{
+				"icon": "👤",
+				"text": "¡Un solo sujeto, un resultado espectacular! Los retratos individuales funcionan mejor — fondos complejos confunden al artista IA."
+			},
+			{
+				"icon": "✂️",
+				"text": "Recortamos tu foto en cuadrado automáticamente. Composición centrada = ¡cambio de look perfecto!"
+			},
+			{
+				"icon": "🎨",
+				"text": "¡Cero ajustes, cero estrés! Cada estilo tiene su salsa secreta pre-ajustada para resultados consistentes."
+			},
+			{
+				"icon": "💡",
+				"text": "Buena luz, rostro nítido, encuadre centrado = magia estilística. ¡Nuestro artista IA pinta mejor con fotos claras!"
+			}
+		],
+		"tryAnother": "Probar Otra Foto"
+	},
+	"textPolish": {
+		"outputLanguage": "Idioma de Salida",
+		"title": "Pulir y Reescribir Texto",
+		"description": "Dale a tus palabras un día de spa. Pule, reescribe, acorta o expande con magia IA.",
+		"cost": "3 créditos",
+		"originalText": "Texto Original",
+		"resultLabel": "Resultado",
+		"placeholder": "Pega o escribe tu texto aquí...",
+		"characters": "caracteres",
+		"processedAppear": "El texto procesado aparecerá aquí",
+		"modes": {
+			"polish": {
+				"label": "Pulir",
+				"desc": "Corrige gramática y fluidez",
+				"icon": "✨"
+			},
+			"rewrite": {
+				"label": "Reescribir",
+				"desc": "Palabras frescas, mismo sentido",
+				"icon": "🔄"
+			},
+			"shorten": {
+				"label": "Acortar",
+				"desc": "Quita paja, guarda la idea",
+				"icon": "✂️"
+			},
+			"expand": {
+				"label": "Expandir",
+				"desc": "Añade detalle y profundidad",
+				"icon": "📝"
+			},
+			"academic": {
+				"label": "Académico",
+				"desc": "Estilo formal erudito",
+				"icon": "🎓"
+			},
+			"business": {
+				"label": "Negocios",
+				"desc": "Profesional y pulido",
+				"icon": "💼"
+			}
+		},
+		"button": "Procesar Texto (3 créditos)",
+		"processing": "Procesando texto...",
+		"copy": "Copiar al Portapapeles",
+		"clear": "Limpiar",
+		"tryAnother": "Probar Otro Texto"
+	},
+	"language": {
+		"select": "Idioma"
+	},
+	"forgotPassword": {
+		"title": "Olvidé mi Contraseña",
+		"subtitle": "Ingresa tu email y te enviaremos un enlace para restablecer.",
+		"emailLabel": "Email",
+		"emailPlaceholder": "tu@email.com",
+		"button": "Enviar Enlace",
+		"loading": "Enviando...",
+		"successTitle": "Revisa tu email",
+		"successDesc": "Si existe una cuenta con ese email, hemos enviado un enlace para restablecer la contraseña.",
+		"tryAgain": "Intentar de nuevo",
+		"backToLogin": "Volver al Login"
+	},
+	"resetPassword": {
+		"title": "Restablecer Contraseña",
+		"subtitle": "Ingresa tu nueva contraseña.",
+		"invalidTitle": "Enlace Inválido",
+		"invalidDesc": "El enlace falta o es inválido. Solicita uno nuevo.",
+		"invalidLinkText": "Olvidé mi Contraseña",
+		"newPassword": "Nueva Contraseña",
+		"confirmPassword": "Confirmar Contraseña",
+		"passwordPlaceholder": "••••••••",
+		"button": "Restablecer",
+		"loading": "Restableciendo...",
+		"successTitle": "Contraseña Restablecida",
+		"successDesc": "Tu contraseña ha sido restablecida exitosamente.",
+		"loginLink": "Iniciar sesión con nueva contraseña",
+		"passwordsDontMatch": "Las contraseñas no coinciden",
+		"missingToken": "Falta el token de restablecimiento"
+	},
+	"settings": {
+		"title": "Configuración de Cuenta",
+		"profileSection": "Perfil",
+		"nameLabel": "Nombre",
+		"emailLabel": "Email",
+		"saveProfile": "Guardar Cambios",
+		"saving": "Guardando...",
+		"emailVerified": "Verificado",
+		"emailNotVerified": "No verificado",
+		"verifyEmail": "Verificar email",
+		"resendVerification": "Reenviar email de verificación",
+		"verificationSent": "Email de verificación enviado",
+		"passwordSection": "Cambiar Contraseña",
+		"currentPassword": "Contraseña Actual",
+		"newPassword": "Nueva Contraseña",
+		"confirmNewPassword": "Confirmar Nueva Contraseña",
+		"changePassword": "Cambiar Contraseña",
+		"changing": "Cambiando...",
+		"passwordChanged": "Contraseña actualizada exitosamente",
+		"dangerSection": "Zona de Peligro",
+		"deleteAccount": "Eliminar Cuenta",
+		"deleteAccountDesc": "Una vez eliminada, esta acción no se puede deshacer.",
+		"confirmDelete": "¿Estás seguro? Esto eliminará permanentemente tu cuenta y todos los datos.",
+		"usageHistory": "Historial de Uso",
+		"transactions": "Historial de Transacciones",
+		"noUsage": "Sin historial de uso aún.",
+		"noTransactions": "Sin transacciones aún.",
+		"tool": "Herramienta",
+		"status": "Estado",
+		"creditsCost": "Créditos",
+		"date": "Fecha",
+		"amount": "Monto",
+		"type": "Tipo",
+		"description": "Descripción"
+	},
+	"creditGuard": {
+		"confirmTitle": "Confirmar uso de créditos",
+		"confirmMessage": "{toolName} requiere {credits} créditos",
+		"currentBalance": "Saldo actual",
+		"cost": "Costo",
+		"after": "Después",
+		"useCredits": "Usar {credits} créditos",
+		"cancel": "Cancelar",
+		"insufficientTitle": "Créditos insuficientes",
+		"insufficientMessage": "{toolName} necesita {needed} créditos pero solo tienes {current}",
+		"needMore": "Necesitas {needed} créditos más",
+		"buyCredits": "Comprar créditos",
+		"creditsUsed": "Créditos usados",
+		"remaining": "restantes"
+	},
+	"loginPrompt": {
+		"title": "Iniciar sesión requerido",
+		"description": "Inicia sesión o regístrate para usar esta herramienta. ¡Las cuentas nuevas obtienen 5 créditos gratis!",
+		"login": "Iniciar sesión",
+		"signup": "Registrarse — Gratis"
+	}
 }

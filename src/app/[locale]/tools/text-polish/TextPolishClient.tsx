@@ -13,11 +13,26 @@ const TOOL_ID = "text-polish";
 
 const modeIds = ["polish", "rewrite", "shorten", "expand", "academic", "business"] as const;
 
+const langOptions = [
+  { id: "auto", label: "Auto Detect", icon: "🌐" },
+  { id: "en", label: "English", icon: "🇬🇧" },
+  { id: "es", label: "Español", icon: "🇪🇸" },
+  { id: "ar", label: "العربية", icon: "🇸🇦" },
+  { id: "fr", label: "Français", icon: "🇫🇷" },
+  { id: "de", label: "Deutsch", icon: "🇩🇪" },
+  { id: "zh", label: "中文", icon: "🇨🇳" },
+  { id: "ja", label: "日本語", icon: "🇯🇵" },
+  { id: "ko", label: "한국어", icon: "🇰🇷" },
+  { id: "pt", label: "Português", icon: "🇧🇷" },
+  { id: "ru", label: "Русский", icon: "🇷🇺" },
+] as const;
+
 export default function TextPolishClient({ locale = "en" as Locale, dict }: { locale?: Locale; dict?: Record<string, unknown> }) {
   const CREDIT_COST = getCreditCost(TOOL_ID);
   const { user, loading, updateUser } = useAuth();
   const [text, setText] = useState("");
   const [selectedMode, setSelectedMode] = useState("polish");
+  const [selectedLang, setSelectedLang] = useState("auto");
   const [status, setStatus] = useState<"idle" | "processing" | "done" | "error">("idle");
   const [result, setResult] = useState<string | null>(null);
   const [resultContent, setResultContent] = useState("");
@@ -49,7 +64,7 @@ export default function TextPolishClient({ locale = "en" as Locale, dict }: { lo
     setErrorMsg("");
     const blob = new Blob([text], { type: "text/plain" });
     const file = new File([blob], "input.txt", { type: "text/plain" });
-    const prompt = `Mode: ${selectedMode}. Text: ${text}`;
+    const prompt = `Mode: ${selectedMode}. Language: ${selectedLang}. Text: ${text}`;
     try {
       const data = await toolsApi.uploadFile(TOOL_ID, file, prompt);
       if (data.status === "failed" || data.error_message) {
@@ -72,7 +87,7 @@ export default function TextPolishClient({ locale = "en" as Locale, dict }: { lo
   }
 
   function resetAll() {
-    setText(""); setResult(null); setResultContent(""); setStatus("idle"); setErrorMsg("");
+    setText(""); setSelectedLang("auto"); setResult(null); setResultContent(""); setStatus("idle"); setErrorMsg("");
   }
 
   return (
@@ -90,6 +105,24 @@ export default function TextPolishClient({ locale = "en" as Locale, dict }: { lo
                 <span className="block text-xl">{modes[id]?.icon || { polish: "✨", rewrite: "🔄", shorten: "✂️", expand: "📝", academic: "🎓", business: "💼" }[id]}</span>
                 <span className="mt-1 text-xs font-semibold text-zinc-700 dark:text-zinc-300">{modes[id]?.label || id}</span>
                 <span className="mt-0.5 block text-xs text-zinc-400">{modes[id]?.desc || ""}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Language Selection */}
+        <div className="mb-4">
+          <label className="mb-2 block text-sm font-medium text-zinc-700 dark:text-zinc-300">{t.outputLanguage || "Output Language"}</label>
+          <div className="flex flex-wrap gap-2">
+            {langOptions.map((lang) => (
+              <button key={lang.id} onClick={() => setSelectedLang(lang.id)}
+                className={`rounded-lg border px-3 py-1.5 text-sm transition-all ${
+                  selectedLang === lang.id
+                    ? "border-blue-600 bg-blue-50 dark:border-blue-500 dark:bg-blue-900/20"
+                    : "border-zinc-200 hover:border-zinc-300 dark:border-zinc-700 dark:hover:border-zinc-600"
+                }`}>
+                <span className="mr-1">{lang.icon}</span>
+                <span className="font-medium text-zinc-700 dark:text-zinc-300">{lang.label}</span>
               </button>
             ))}
           </div>
