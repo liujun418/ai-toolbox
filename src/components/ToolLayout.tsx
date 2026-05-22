@@ -112,8 +112,6 @@ export default function ToolLayout({
         </div>
       </header>
 
-      <ShareBar locale={locale} dict={dict as Record<string, unknown>} />
-
       {/* WebApplication structured data */}
       <script
         type="application/ld+json"
@@ -132,6 +130,8 @@ export default function ToolLayout({
 
       {/* Tool content */}
       {children}
+
+      <ShareBar locale={locale} dict={dict as Record<string, unknown>} />
 
       {/* How to Use */}
       {howToUseSteps.length > 0 && (
