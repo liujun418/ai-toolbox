@@ -5,6 +5,7 @@ import { getDictionary } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { getBlogPost, getBlogPosts, fetchBlogPost } from "@/lib/blog";
 import { tools as allTools } from "@/lib/tools";
+import ShareBar from "@/components/ShareBar";
 
 export function generateStaticParams() {
   return getBlogPosts().flatMap((post) =>
@@ -121,6 +122,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
       )}
 
       {/* Back to Blog */}
+      <ShareBar locale={locale} dict={dict as Record<string, unknown>} />
+
       <div className="mt-8">
         <Link href={`/${locale}/blog`} className="text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">← {bg.backToBlog || "Back to all articles"}</Link>
       </div>
