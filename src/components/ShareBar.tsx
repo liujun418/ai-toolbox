@@ -97,7 +97,6 @@ export default function ShareBar({ locale = "en", dict }: ShareBarProps) {
             target={link.id === "copy" || link.id === "email" ? undefined : "_blank"}
             rel="noopener noreferrer"
             onClick={link.id === "copy" ? handleCopy : undefined}
-            title={link.title}
             className={`inline-flex items-center justify-center h-9 w-9 rounded-lg border transition-colors ${
               link.id === "copy" && copied
                 ? "border-green-300 bg-green-50 text-green-700 dark:border-green-800 dark:bg-green-900/30 dark:text-green-400"
