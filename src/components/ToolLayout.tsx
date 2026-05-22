@@ -112,6 +112,8 @@ export default function ToolLayout({
         </div>
       </header>
 
+      <ShareBar locale={locale} dict={dict as Record<string, unknown>} />
+
       {/* WebApplication structured data */}
       <script
         type="application/ld+json"
@@ -163,7 +165,6 @@ export default function ToolLayout({
       )}
 
       <RelatedTools toolId={toolId} locale={locale} dict={dict as Record<string, unknown>} />
-      <ShareBar locale={locale} dict={dict as Record<string, unknown>} />
     </div>
   );
 }
