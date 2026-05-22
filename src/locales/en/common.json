@@ -1304,5 +1304,17 @@
 		"failed": "Verification Failed",
 		"invalidToken": "Invalid or expired verification token.",
 		"backToHome": "Back to Home"
+	},
+	"shareBar": {
+		"share": "Share this tool",
+		"twitter": "Share on X",
+		"facebook": "Share on Facebook",
+		"reddit": "Share on Reddit",
+		"linkedin": "Share on LinkedIn",
+		"whatsapp": "Share on WhatsApp",
+		"telegram": "Share on Telegram",
+		"email": "Share via Email",
+		"copy": "Copy Link",
+		"copyTitle": "Copy link to clipboard"
 	}
 }

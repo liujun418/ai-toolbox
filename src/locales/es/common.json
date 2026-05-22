@@ -1155,5 +1155,17 @@
 		"failed": "Verificación Fallida",
 		"invalidToken": "Token de verificación inválido o expirado.",
 		"backToHome": "Volver al Inicio"
+	},
+	"shareBar": {
+		"share": "Compartir esta herramienta",
+		"twitter": "Compartir en X",
+		"facebook": "Compartir en Facebook",
+		"reddit": "Compartir en Reddit",
+		"linkedin": "Compartir en LinkedIn",
+		"whatsapp": "Compartir en WhatsApp",
+		"telegram": "Compartir en Telegram",
+		"email": "Compartir por Email",
+		"copy": "Copiar Enlace",
+		"copyTitle": "Copiar enlace al portapapeles"
 	}
 }

@@ -3,6 +3,7 @@ import { tools } from "@/lib/tools";
 import type { Tool } from "@/lib/tools";
 import { getCreditCost } from "@/lib/creditCosts";
 import RelatedTools from "@/components/RelatedTools";
+import ShareBar from "@/components/ShareBar";
 
 interface ToolLayoutProps {
   toolId: string;
@@ -162,6 +163,7 @@ export default function ToolLayout({
       )}
 
       <RelatedTools toolId={toolId} locale={locale} dict={dict as Record<string, unknown>} />
+      <ShareBar locale={locale} dict={dict as Record<string, unknown>} />
     </div>
   );
 }
