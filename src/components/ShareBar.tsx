@@ -87,8 +87,8 @@ export default function ShareBar({ locale = "en", dict }: ShareBarProps) {
   }
 
   return (
-    <div className="mt-12 border-t border-zinc-200 pt-8 dark:border-zinc-800">
-      <p className="mb-4 text-sm font-semibold text-zinc-500 dark:text-zinc-400">{label}</p>
+    <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900/50">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">{label}</p>
       <div className="flex flex-wrap items-center gap-2">
         {shareLinks.map((link) => (
           <a
@@ -98,14 +98,14 @@ export default function ShareBar({ locale = "en", dict }: ShareBarProps) {
             rel="noopener noreferrer"
             onClick={link.id === "copy" ? handleCopy : undefined}
             title={link.title}
-            className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
+            className={`inline-flex items-center justify-center h-9 w-9 rounded-lg border transition-colors ${
               link.id === "copy" && copied
                 ? "border-green-300 bg-green-50 text-green-700 dark:border-green-800 dark:bg-green-900/30 dark:text-green-400"
                 : "border-zinc-200 text-zinc-600 hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:bg-zinc-800/50"
             }`}
+            title={link.title}
           >
             {link.icon}
-            <span className="hidden sm:inline">{link.label}</span>
           </a>
         ))}
       </div>
