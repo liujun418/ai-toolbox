@@ -62,7 +62,7 @@ for (const l of LOCALES) {
 
   // Blog
   xml += `<url><loc>${esc(BASE)}/${l}/blog</loc><lastmod>${lm}</lastmod><priority>0.7</priority><changefreq>weekly</changefreq>${hreflangBlock(l, "blog")}</url>`;
-  const blogSlugs = ["how-to-remove-image-background-without-photoshop","best-ai-tools-content-creators-2026","restore-old-photos-ai-guide","ai-image-generator-prompt-guide","remove-watermark-from-photo","text-to-speech-for-content-creators","colorize-black-and-white-photos","ai-article-writing-vs-human","upscale-images-without-losing-quality","blur-faces-in-photos-privacy","best-ai-background-removers-compared","ai-image-upscalers-compared","restore-old-photos-ai-vs-professional","face-blur-privacy-guide"];
+  const blogSlugs = ["how-to-remove-image-background-without-photoshop","best-ai-tools-content-creators-2026","restore-old-photos-ai-guide","ai-image-generator-prompt-guide","remove-watermark-from-photo","text-to-speech-for-content-creators","colorize-black-and-white-photos","ai-article-writing-vs-human","upscale-images-without-losing-quality","blur-faces-in-photos-privacy","best-ai-background-removers-compared","ai-image-upscalers-compared","restore-old-photos-ai-vs-professional","face-blur-privacy-guide","ai-style-transfer-vs-image-generation","ai-avatar-generator-style-guide"];
   for (const slug of blogSlugs) {
     xml += `<url><loc>${esc(BASE)}/${l}/blog/${slug}</loc><lastmod>${lm}</lastmod><priority>0.6</priority><changefreq>monthly</changefreq>${hreflangBlock(l, `blog/${slug}`)}</url>`;
   }
