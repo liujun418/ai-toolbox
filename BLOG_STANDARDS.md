@@ -146,6 +146,36 @@
 - 每篇至少 1 个跨站链接（AI 站 ↔ 免费站）
 - 链到至少 1 篇相关旧博客
 
+### 场景驱动（每篇必有）
+
+借鉴 DungeonPath v3 内容标准。每篇博客不只是"怎么用"，必须让读者感觉"我遇到过这个问题"。
+
+- 每个 H2 章节至少嵌入 **1 个具体场景**："你看到 X → 做 Y → 结果是什么"
+- 至少 **1 处翻车复盘**：常见错误操作 + 为什么错 + 怎么恢复
+- 至少 **1 处反直觉建议**："常识会告诉你 X，但在这个工具上实际该做 Y"
+- 至少 **1 处两难决策**："如果你只有 X，应该先做 A 还是 B"
+
+### 标题变体（5 种轮换，禁止连续重复）
+
+| 类型 | 格式 | 示例 |
+|------|------|------|
+| 问题型 | Why X Happens and How to Fix It | "Why Your JSON Is Always Broken and How to Fix It" |
+| 对比型 | A vs B: When to Use Which | "Base64 vs SHA-256: When to Use Each" |
+| 痛点型 | I Did X So You Don't Have To | "I Spent 4 Hours Debugging One Trailing Comma" |
+| 结果型 | How to Achieve X in Y Steps | "How to Generate 100 Strong Passwords in 10 Seconds" |
+| 场景型 | What to Do When X Happens | "What to Do When Your CSV Has 50,000 Rows" |
+
+### 写作自检清单（每篇发布前执行）
+
+- [ ] 有没有至少 1 个"你遇到 X → 做 Y"的具体场景？
+- [ ] 有没有指出至少 1 个常见错误 + 恢复策略？
+- [ ] 有没有至少 1 处反直觉/颠覆常识的建议？
+- [ ] 标题是否避免了与上一篇同一类型？
+- [ ] FAQ 有没有回答"工具不好使的时候怎么办"？
+- [ ] 有没有至少 2 个内链到工具页？
+- [ ] 可以朗读一遍而不听起来像 AI 吗？
+- [ ] 有没有 "unleash" / "furthermore" / "in conclusion" 等禁词？
+
 ### 转化引导（软 CTA）
 
 结尾用一句话引导，不过度推销：

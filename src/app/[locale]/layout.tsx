@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AuthProvider } from "@/lib/auth-context";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import CookieConsent from "@/components/CookieConsent";
 import { locales, defaultLocale, isValidLocale, localeDir, getDictionary } from "@/lib/i18n";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Noto_Sans_Arabic } from "next/font/google";
@@ -94,6 +95,7 @@ export default async function LocaleLayout({
           <Footer locale={locale} dict={dict} />
           <Suspense fallback={null}>
             <GoogleAnalytics />
+            <CookieConsent locale={locale} />
           </Suspense>
         </AuthProvider>
       </body>
