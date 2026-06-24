@@ -1,4 +1,4 @@
-# Insert 6 new blog posts (2026-06-23 batch) — deepening coverage
+# Insert 6 new blog posts (2026-06-24 batch)
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
 
 with open(BLOG_FILE, "r", encoding="utf-8") as f:
@@ -8,299 +8,284 @@ old = '\n\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
 
-  // 2026-06-23 batch: deepening coverage (3A+2B+1C)
+  // 2026-06-24 batch (3A+2B+1C)
   {
-    slug: "image-description-better-alt-text-guide",
-    title: "AI Image Description: Write Better Alt Text, Sort Your Photo Library, and More",
-    description: "AI can look at your photos and describe them in natural language. This does more than just generate alt text — it helps you search unorganized photo libraries and create content from images.",
-    date: "2026-06-23",
-    category: "Content Creation",
-    tags: ["image description", "AI image to text", "alt text generator", "photo description", "image captioning"],
-    relatedTools: ["image-description", "text-polish", "article-generator"],
+    slug: "style-transfer-photo-to-art-step-by-step-guide",
+    title: "Style Transfer Step by Step: Turn Any Photo Into Art in Under a Minute",
+    description: "You pick a photo and a reference style image. The AI merges them — your composition, the style's look. Here's the complete workflow, how to choose reference images, and what styles work best.",
+    date: "2026-06-24",
+    category: "Image Generation",
+    tags: ["style transfer", "AI art style", "photo to painting", "neural style transfer", "art filter"],
+    relatedTools: ["style-transfer", "ai-image-generator", "avatar-generator"],
     content: `
-<p>You have a folder called "Photos" with 4,000 images named IMG_2847.jpg, IMG_2848.jpg, IMG_2849.jpg. Somewhere in there is the photo you need for your blog post, your presentation, or your product page. You could scroll for 20 minutes. Or you could let an <a href="/en/tools/image-description">AI image description tool</a> look at each photo and tell you what is in it.</p>
+<p>You have a photo of a city skyline at sunset. It is a nice photo, but it looks like every other skyline photo. You want it to look like it was painted — maybe in the style of Van Gogh's Starry Night, or a watercolor travel sketch, or a bold graphic novel panel. An <a href="/en/tools/style-transfer">AI style transfer tool</a> does exactly this: it takes your photo's composition and applies the visual style of a reference image, producing something that looks like your photo was painted by the artist who created the reference. Here is the complete workflow, from choosing images to getting the best result.</p>
 
-<p>AI image description — also called image captioning or visual recognition — has gotten dramatically better in the past year. Modern models do not just say "a dog." They say "a golden retriever sitting on a wooden dock at sunset with a red ball in its mouth." Here is what the technology actually does, what it is good for, and where it still gets things wrong.</p>
+<h2>How style transfer actually works</h2>
 
-<h2>How AI image description works</h2>
+<p>Style transfer is different from AI image generation. A generator creates an entirely new image from a text prompt — the composition, the subjects, everything is invented. Style transfer keeps your photo's composition exactly as it is — the buildings stay in the same places, the people keep the same poses, the objects maintain their shapes — but the rendering style changes. The colors shift, the textures change, the edges soften or sharpen depending on the reference.</p>
 
-<p>You upload an image. The AI model (NVIDIA Nemotron, in our case) analyzes it and returns a natural language description. The model has been trained on millions of images paired with human-written captions. It learned to associate visual patterns — fur texture, sky gradients, object shapes — with the words humans use to describe them.</p>
+<p>Under the hood, the AI separates "content" (what is in the image, the spatial structure) from "style" (how it is rendered, the color palette and texture patterns). It then recombines your photo's content with the reference image's style. The result is your photo, reimagined in the reference's visual language.</p>
 
-<p>The <a href="/en/tools/image-description">image description tool</a> processes your photo in 5-15 seconds. The output is a paragraph of English text describing the scene, the main subjects, the setting, and notable details. It works on photographs, illustrations, and screenshots — though accuracy varies by image type.</p>
+<h2>Step 1: Choose your content photo</h2>
 
-<h2>Use case 1: Generate alt text for accessibility and SEO</h2>
-
-<p>Every image on your website needs alt text — a short description that screen readers announce to visually impaired users and that search engines use to understand your content. Most websites have terrible alt text: "image," "photo," or the filename. AI-generated descriptions fix this at scale.</p>
-
-<p>The AI description is usually a full sentence, which is perfect for alt text. "A golden retriever sitting on a wooden dock at sunset with a red ball" is exactly the level of detail good alt text needs. It describes what is in the image without being verbose. For blog posts, run the AI description through the <a href="/en/tools/text-polish">AI text polisher</a> to tighten the language and match your site's tone before using it as alt text.</p>
-
-<h2>Use case 2: Search an unorganized photo library</h2>
-
-<p>You cannot Ctrl+F a folder of images. But if you generate descriptions for all your photos and store them in a spreadsheet or database, suddenly you can. Search "sunset dock dog" and find the exact photo among thousands. This is especially useful for:</p>
+<p>Not every photo works equally well for style transfer. The best results come from photos with:</p>
 
 <ul>
-<li><strong>Content creators</strong> with years of unsorted photos who need specific shots for articles</li>
-<li><strong>E-commerce</strong> with product photos that need to be searchable by visual attributes</li>
-<li><strong>Real estate</strong> with property photos that need to be findable by feature ("kitchen with island," "backyard with pool")</li>
+<li><strong>Clear, distinct subjects.</strong> A single person, a defined landscape, an object with clear edges. The AI needs to identify what to preserve versus what to restyle. Busy, cluttered photos with no clear focal point produce messy results.</li>
+<li><strong>Good lighting and contrast.</strong> Flat, dim, or heavily backlit photos give the AI less structural information to work with. The content structure comes from edges and contrast — more of both means a cleaner result.</li>
+<li><strong>Minimal text.</strong> Text in photos (signs, screens, labels) gets distorted by the style transfer. The AI treats text as a texture pattern, not as meaningful characters, and the result is usually illegible.</li>
 </ul>
 
-<h2>Use case 3: Generate content from images</h2>
+<h2>Step 2: Choose your style reference</h2>
 
-<p>You have a photo from a trip, an event, or a product shoot. You need to write a caption, a social media post, or a product description. The AI description gives you a starting point — the factual description of what is in the image. Feed that into the <a href="/en/tools/article-generator">AI article generator</a> as a prompt: "Write a 200-word Instagram caption based on this image description: [AI output]." You now have a first draft in seconds instead of staring at a blank caption field.</p>
+<p>This is the most important decision. The reference image determines the entire look of the output. Here is what works:</p>
 
-<h2>What AI image description gets wrong</h2>
+<ul>
+<li><strong>Famous paintings work best.</strong> Van Gogh, Monet, Picasso, Hokusai — their styles are distinct, consistent, and the AI has seen enough examples to understand them. Starry Night and The Great Wave off Kanagawa are probably the two most-used references, and for good reason: they produce consistently excellent results.</li>
+<li><strong>Single-style references beat mixed ones.</strong> A painting that is all one style (all impressionist, all watercolor, all pencil sketch) produces a cleaner result than an image with mixed media or multiple styles.</li>
+<li><strong>Avoid photographs as references.</strong> Using a photo as a style reference just transfers one photo's color grading to another — the result looks like a badly color-graded photo, not art. Use actual artwork, illustrations, or textures.</li>
+<li><strong>Texture and pattern images work too.</strong> A close-up of oil paint texture, a watercolor wash, a pencil hatching pattern — these produce subtle but beautiful results when you want a hint of style rather than a dramatic transformation.</li>
+</ul>
 
-<p><strong>It describes what it sees, not what it means.</strong> "A group of people sitting around a table with papers" might be a business meeting, a family dinner, or a study group. The AI describes the visual content; it does not interpret context. If you need the meaning, not just the contents, you will need to add that yourself.</p>
+<h2>Step 3: Upload and generate</h2>
 
-<p><strong>Text in images is often misread.</strong> The model sometimes reads signs, screens, and documents correctly, but not reliably. If your image contains important text, use OCR (like our PDF to Word converter's Google Vision backend) instead of image description.</p>
+<p>Upload your content photo and your style reference to the <a href="/en/tools/style-transfer">style transfer tool</a>. Processing takes 30-60 seconds. The tool outputs a single transformed image. If you do not like the result, try a different reference — the content photo is usually not the problem; the reference choice is.</p>
 
-<p><strong>It can be too literal.</strong> A photo of a person frowning slightly gets described as "a person with a neutral expression." The AI misses subtle emotional cues that humans read instantly. For content where emotional tone matters, always review and adjust the AI's description.</p>
+<h2>What to do with the result</h2>
 
-<p><strong>Language limitation:</strong> The current model outputs English only. If you need descriptions in other languages, run the output through a translator. For more on AI content tools, see our <a href="/en/blog/best-ai-tools-content-creators-2026">roundup of the best AI tools for content creators</a>.</p>
+<p><strong>Print it.</strong> Style-transferred photos make excellent prints because they look intentional — it is clearly your photo, but rendered as art. Canvas prints of style-transferred family photos or travel shots look far more interesting than standard photo prints.</p>
+
+<p><strong>Use it as a unique social media post.</strong> A style-transferred photo stops the scroll. It looks like nothing else in the feed — not a photo, not a filter, not AI-generated from scratch. It is recognizably real content with an artistic rendering.</p>
+
+<p><strong>Create a series.</strong> Apply the same style reference to 5-10 photos and you have a cohesive art series. This works especially well for travel photos (all in the same watercolor style) or product shots (all in the same pop art style).</p>
+
+<p>For generating entirely new images from text prompts instead of transforming existing photos, use the <a href="/en/tools/ai-image-generator">AI image generator</a>. For a completely different approach to AI-powered portraits, our <a href="/en/tools/avatar-generator">AI avatar generator</a> creates professional headshots from selfies. And for more style transfer insights, see our <a href="/en/blog/style-transfer-vs-ai-generation-vs-filters">comparison of style transfer, AI generation, and Instagram filters</a>.</p>
 `,
   },
   {
-    slug: "photo-restorer-triage-before-after-guide",
-    title: "Photo Restoration Triage: Which Photos Are Worth Saving and Which Are Beyond Repair",
-    description: "Not every old photo can be fully restored. Some damage is fixable; some is permanent. Here's how to triage your old photo collection before you spend time and credits on restoration.",
-    date: "2026-06-23",
+    slug: "watermark-remover-batch-processing-guide",
+    title: "Watermark Remover: How to Clean Up Multiple Photos Fast",
+    description: "You have 20 photos with the same watermark in the same position. Processing them one by one is slow. Here's how to batch-clean watermarks and what to watch for in each photo.",
+    date: "2026-06-24",
     category: "Image Editing",
-    tags: ["photo restoration", "restore old photos", "photo repair", "damaged photo", "AI photo fix"],
-    relatedTools: ["photo-restorer", "colorizer", "image-upscaler"],
+    tags: ["watermark remover", "remove watermark", "batch watermark removal", "photo cleanup", "AI watermark"],
+    relatedTools: ["watermark-remover", "object-remover", "photo-restorer"],
     content: `
-<p>You found a shoebox of old family photos in your parents' attic. Some are in surprisingly good shape — a little faded, a little yellowed, but the faces are clear. Others look like they went through a washing machine: torn corners, water damage, a mysterious brown stain that might be coffee from 1978. You want to restore them all, but an <a href="/en/tools/photo-restorer">AI photo restorer</a> costs credits and time. Some photos will restore beautifully. Some will never look good no matter what you do. Here is how to triage before you start.</p>
+<p>You bought a set of stock photos for your website. They all have the same watermark in the bottom-right corner — the preview watermark the stock site adds before purchase. You downloaded them anyway (you paid for the license, but the preview files were all you could batch-download). Now you have 20 photos with the same watermark, and you need to clean them all. An <a href="/en/tools/watermark-remover">AI watermark remover</a> handles them in seconds each — here is the batch workflow and what to check in each photo.</p>
 
-<h2>The triage framework: green, yellow, red</h2>
+<h2>The batch workflow</h2>
 
-<p>Sort your photos into three piles before you run a single one through the restorer:</p>
+<ol>
+<li><strong>Process the first photo.</strong> Upload it to the watermark remover. Check the result carefully — zoom in on the area where the watermark was. If the fill looks natural, proceed. If it looks blurry or has visible artifacts, the watermark might be too large or over a complex area. Test one before you process all 20.</li>
+<li><strong>Process the rest one at a time.</strong> The <a href="/en/tools/watermark-remover">watermark remover</a> processes one image at a time. For 20 photos with similar watermarks, this takes about 3-5 minutes total — roughly 10-15 seconds per photo including upload and download time.</li>
+<li><strong>Spot-check each result.</strong> Do not batch-download and assume they are all good. Check each photo at 100% zoom on the watermark area. 18 out of 20 will be perfect. The other 2 might have faint traces or blurry patches that need a second pass or manual touch-up.</li>
+</ol>
 
-<p><strong>🟢 Green — will restore well (start here):</strong> Fading, yellowing, low contrast, minor dust and scratches, slight blur. These are the easiest problems for AI to fix. Color fading gets corrected by histogram equalization. Yellowing gets white-balanced. Dust and scratches get inpainted using surrounding pixel data. Expect 80-95% improvement with one pass through the <a href="/en/tools/photo-restorer">photo restoration tool</a>.</p>
+<h2>What the AI handles well in batch</h2>
 
-<p><strong>🟡 Yellow — might restore with multiple passes:</strong> Moderate tears (especially through non-face areas), creases that do not cross eyes or mouths, larger stains on backgrounds, photos that are both faded AND scratched. These need the restorer, then manual touch-up, possibly a second restoration pass. Budget 2-3 credits per photo. Results will be noticeably better but not perfect.</p>
+<p><strong>Corner and edge watermarks.</strong> The easiest case. The watermark covers a small area, usually over background rather than the main subject, and the AI has plenty of surrounding context for inpainting. These clean up perfectly 95%+ of the time.</p>
 
-<p><strong>🔴 Red — probably not worth it:</strong> Missing chunks (torn-off corners with actual image data gone), damage directly over the center of a face (the AI will guess, and guessed faces look wrong), extreme water damage where the emulsion has separated from the paper, photos that are more damage than photo. The AI cannot restore what is not there. If the original detail is gone, the AI invents plausible detail — which might look fine at a glance but wrong to anyone who knew the person.</p>
+<p><strong>Repeating watermarks on simple backgrounds.</strong> A tiled watermark over a sky, a wall, or grass. The AI fills each instance independently, and simple backgrounds give it clean reference pixels. Results are consistently good.</p>
 
-<h2>The specific damages and what AI can do about each</h2>
+<p><strong>Semi-transparent watermarks.</strong> Logos and text at 30-50% opacity. The AI sees the underlying image through the watermark and reconstructs it well. The semi-transparency actually helps — it gives the AI partial information about what is underneath.</p>
 
-<p><strong>Fading and color shift → Excellent fix.</strong> This is what AI restoration does best. The model has seen millions of properly-exposed photos and knows what natural skin tones, sky colors, and vegetation should look like. Faded photos come back to life with realistic color and contrast. Pair with the <a href="/en/tools/colorizer">AI colorizer</a> if the original is black and white.</p>
+<h2>What to watch for in each photo</h2>
 
-<p><strong>Scratches and dust → Very good fix, with caveats.</strong> Thin scratches across backgrounds or clothing get filled cleanly. Scratches across faces are harder — the AI fills the scratch but may slightly alter the facial feature. A scratch through an eye might result in an eye that looks slightly different from the other one. Always zoom in and check facial features after restoration.</p>
+<p><strong>Watermarks over faces.</strong> The AI fills the area but the reconstructed face may look slightly different — an eye shape that does not match, a skin texture that looks painted. If the watermark covers any part of a face, check that photo especially carefully. Our <a href="/en/tools/object-remover">object remover</a> faces the same challenge with objects over faces.</p>
 
-<p><strong>Tears and missing pieces → Partial fix.</strong> If the tear is through a uniform area (sky, wall, grass), the AI fills it seamlessly. If the tear is through a detailed area (face, text, patterned clothing), the fill will be approximate. For torn corners with sky or simple background, the AI reconstruction is usually good enough. For a tear that removed half of someone's face, no AI can reconstruct what that person actually looked like.</p>
+<p><strong>Watermarks over text.</strong> If the watermark covers a sign, a label, or any readable text, the AI will fill the area with shapes that look like text but say nothing. This is fine for decorative signs but problematic for product labels or document text where the words matter.</p>
 
-<p><strong>Water damage and mold → Unpredictable.</strong> Water damage creates irregular patterns that confuse the AI — it is not sure what is damage and what is actual image content. Mold spots are often treated as image features rather than defects. These photos need manual pre-cleaning (digitally clone out the worst spots) before AI restoration.</p>
+<p><strong>Watermarks over detailed patterns.</strong> Plaid clothing, brick walls, tile floors — repeating patterns that the AI needs to continue seamlessly. The AI usually gets the pattern right but occasionally creates a visible seam where the filled area meets the original. Check pattern continuity at the edges of the watermark area.</p>
 
-<h2>The restoration pipeline order</h2>
+<p><strong>Very large watermarks (over 20% of the image).</strong> The larger the area to fill, the more the AI invents. Large filled areas tend toward blurry or generic-looking content. If the watermark covers a significant portion of the photo, the result will be an approximation, not a restoration.</p>
 
-<p>If a photo needs multiple fixes, the order matters: restore first (fix the damage), then <a href="/en/tools/colorizer">colorize</a> (add color if black and white), then <a href="/en/tools/image-upscaler">upscale</a> last (increase resolution). Restoring after upscaling means you are fixing damage at higher resolution, which is slower and produces worse results. Colorizing before restoring means the colorizer works on damaged pixels, producing color artifacts that the restorer then has to fix. Always restore first.</p>
+<h2>When to use a different tool instead</h2>
 
-<p>Start with your green-pile photos. Run 5-10 through the <a href="/en/tools/photo-restorer">photo restorer</a>. See what the AI can do. Then decide whether your yellow-pile photos are worth the extra effort. The red pile — keep the originals, but do not spend credits on them. For the complete photo enhancement workflow, see our <a href="/en/blog/photo-restoration-correct-pipeline-order">guide to the correct order of operations for photo restoration</a>.</p>
+<p>If the watermark is in a corner and cropping would not harm the composition, crop it. Cropping is lossless — the remaining pixels are 100% original. AI removal is lossy — the filled pixels are synthetic. Always prefer cropping when composition allows it.</p>
+
+<p>If the photo has multiple issues beyond the watermark — fading, scratches, tears — process through the <a href="/en/tools/photo-restorer">photo restorer</a> first, then remove the watermark. Restoration before watermark removal means the AI has cleaner source pixels to work with for the inpainting.</p>
+
+<p>For the complete watermark removal guide, see our <a href="/en/blog/watermark-remover-vs-crop-vs-clone-stamp">comparison of watermark removal methods — AI vs cropping vs clone stamp</a>.</p>
 `,
   },
   {
-    slug: "text-polish-before-after-examples-guide",
-    title: "AI Text Polish: Before and After Examples That Show What It Actually Improves",
-    description: "AI text polishing is not just a grammar checker. It tightens sentences, removes filler words, and makes your writing more direct. Here are real before-and-after examples across different types of writing.",
-    date: "2026-06-23",
+    slug: "colorizer-how-ai-guesses-colors-guide",
+    title: "How an AI Photo Colorizer Guesses Colors — and Why It Is Usually Right",
+    description: "A black and white photo contains no color information. Yet AI colorizers produce natural-looking results. Here's how the AI guesses, why skin tones work so well, and where it still gets things wrong.",
+    date: "2026-06-24",
+    category: "Image Editing",
+    tags: ["colorizer", "AI colorization", "black and white to color", "photo colorization", "how AI colorizes"],
+    relatedTools: ["colorizer", "photo-restorer", "image-upscaler"],
+    content: `
+<p>You upload a black and white photo from 1952. Ten seconds later, you are looking at it in color — natural skin tones, realistic sky, plausible clothing colors. But the original photo contains zero color information. Every pixel is a shade of gray. How does the AI know that the woman's dress was blue and not green? The short answer: it does not know. It guesses. But it guesses with astonishing accuracy because of how it was trained. An <a href="/en/tools/colorizer">AI photo colorizer</a> is not recovering lost color — it is predicting the most likely color based on patterns learned from millions of color photos.</p>
+
+<h2>The training: learning what colors things usually are</h2>
+
+<p>The colorization model was trained on millions of color photographs. During training, the model was shown color photos, then shown the same photos converted to black and white, and asked to predict the original colors. By comparing its predictions to the actual colors, the model learned patterns: skin tends to be in a narrow range of warm tones, sky tends toward blue or gray depending on brightness, grass and foliage tend toward green, wood and earth toward brown.</p>
+
+<p>The model does not know what is in your specific photo. It recognizes patterns in the grayscale values — the texture of skin, the gradient of sky, the repetitive pattern of grass — and maps them to the color distributions it learned during training. A light gray area with the texture pattern of skin gets colored as skin. A smooth gradient from medium to light gray at the top of the frame gets colored as sky.</p>
+
+<h2>Why skin tones are the most accurate</h2>
+
+<p>Skin is the most constrained color in the natural world. Human skin — regardless of ethnicity — falls within a narrow range of hues (warm, reddish-brown tones) with limited saturation. The model has seen millions of faces and has an extremely precise model of what skin should look like. This is why AI-colorized portraits often have more natural-looking skin than manually colorized ones — the AI has seen more examples of skin than any human colorist ever will.</p>
+
+<p>The <a href="/en/tools/colorizer">free photo colorizer</a> handles skin tones especially well because the training data included a diverse range of skin colors under different lighting conditions — warm sunlight, cool shade, indoor tungsten, outdoor overcast. The model adjusts skin tone based on the overall brightness and contrast of the face region, producing results that look like they were photographed in color, not painted on after the fact.</p>
+
+<h2>Where the AI guesses wrong</h2>
+
+<p><strong>Clothing and objects with no color cues.</strong> A gray dress could be blue, red, green, or purple — the grayscale value alone does not tell you. The model guesses based on what colors were common in clothing during the era suggested by the photo's style, but this is statistical, not deterministic. Your grandmother's dress might have been navy blue, but the AI colored it dark brown because that was the more common color in its training data for similar grayscale values.</p>
+
+<p><strong>Painted objects and signs.</strong> A red fire truck and a yellow school bus have the same grayscale value in many black and white photos. The AI does not know it is looking at a fire truck — it sees a large vehicle-shaped object with a particular grayscale value and guesses the color based on similar shapes in its training data. It might guess red (correct for fire trucks) or it might guess blue (common for trucks in general).</p>
+
+<p><strong>Seasonal and contextual colors.</strong> A deciduous tree in a black and white photo could be summer green or autumn orange — the grayscale values overlap significantly. The AI guesses based on the overall tone of the photo (bright and high-contrast suggests summer; darker and lower-contrast might suggest autumn), but this is a weak signal.</p>
+
+<p><strong>Brand colors and specific known colors.</strong> A Coca-Cola logo should be red. The AI does not read the text and know the brand — it colors the logo based on its grayscale value, which might result in any dark color. If you need specific known colors, manual correction after AI colorization is still necessary.</p>
+
+<h2>The hybrid approach: AI first, then correct</h2>
+
+<p>The best results come from using AI as the first pass and then manually correcting the specific elements where you know the actual color. The AI handles 90% of the image — skin, sky, vegetation, common materials — with high accuracy. You handle the 10% where specific knowledge matters: "that dress was definitely blue," "that car was a red Mustang," "that sign was yellow."</p>
+
+<p>For photos that are both black-and-white AND damaged, run them through the <a href="/en/tools/photo-restorer">photo restorer</a> first — fix the scratches and fading before adding color. And if the original is low resolution, our <a href="/en/tools/image-upscaler">image upscaler</a> should run before colorization too — the more pixel detail the colorizer has to work with, the more accurate its predictions. For the complete pipeline, see our <a href="/en/blog/photo-restoration-correct-pipeline-order">guide to the correct order of operations for photo restoration</a>.</p>
+`,
+  },
+  {
+    slug: "image-upscaler-vs-ai-gen-vs-photo-restorer-comparison",
+    title: "Image Upscaler vs AI Image Generator vs Photo Restorer — Three Enhancement Tools, Three Different Goals",
+    description: "One makes images bigger, one creates new images from scratch, one fixes damaged old photos. They sound similar but solve completely different problems. Here's when to use each.",
+    date: "2026-06-24",
+    category: "Image Editing",
+    tags: ["image upscaler", "AI image generator", "photo restorer", "image enhancement", "AI photo tools"],
+    relatedTools: ["image-upscaler", "ai-image-generator", "photo-restorer"],
+    content: `
+<p>You have a photo that needs improvement. It might be too small, too damaged, or just not what you want. Three AI tools could help: an <a href="/en/tools/image-upscaler">image upscaler</a>, an <a href="/en/tools/ai-image-generator">AI image generator</a>, and a <a href="/en/tools/photo-restorer">photo restorer</a>. They all use AI. They all work with images. But they solve three completely different problems, and using the wrong one wastes time and credits while producing results that do not match what you actually need.</p>
+
+<h2>What each tool actually does</h2>
+
+<p><strong>Image Upscaler:</strong> Takes your existing image and makes it bigger — 2× or 4× the original resolution — while preserving (and sometimes enhancing) detail. The content does not change. The composition does not change. It is the same image, just with more pixels. Use it when your image is too small for its intended use: a 640×480 photo you want to print at 8×10, a product photo that looks pixelated on a retina display, a screenshot that is illegible at its native resolution.</p>
+
+<p><strong>AI Image Generator:</strong> Creates an entirely new image from a text prompt. It does not enhance an existing image — it generates one from scratch based on your description. Use it when you need an image you do not have: a featured image for a blog post, concept art for a project, a visual representation of an idea. Our <a href="/en/tools/ai-image-generator">AI image generator</a> can use a reference image for guidance, but the output is a new creation, not an enhanced version of the input.</p>
+
+<p><strong>Photo Restorer:</strong> Fixes damage on an existing photo — scratches, tears, fading, dust, yellowing. It enhances the existing image by removing defects, not by increasing resolution or changing content. Use it when you have an old or damaged photo that needs repair: a faded family photo from the 1970s, a scanned slide with dust spots, a photo with a crease across the middle.</p>
+
+<h2>The decision table</h2>
+
+<table>
+  <tr><th>Your problem</th><th>Right tool</th><th>Wrong tool</th></tr>
+  <tr><td>Photo is too small/pixelated</td><td>Upscaler</td><td>Generator (creates new image, not bigger original)</td></tr>
+  <tr><td>Need an image I do not have</td><td>Generator</td><td>Upscaler (cannot create content from nothing)</td></tr>
+  <tr><td>Old photo has scratches and fading</td><td>Restorer</td><td>Upscaler (makes scratches bigger, not fixes them)</td></tr>
+  <tr><td>Want to change photo's artistic style</td><td>Style Transfer</td><td>Generator (creates new image, loses original composition)</td></tr>
+  <tr><td>Photo is both damaged AND small</td><td>Restorer → Upscaler</td><td>Upscaler → Restorer (wrong order, amplifies damage)</td></tr>
+  <tr><td>Need a product photo on white background</td><td>Background Remover</td><td>Generator (creates fictional product, not your product)</td></tr>
+</table>
+
+<h2>The pipeline: when you need more than one tool</h2>
+
+<p>Many real-world photo problems require multiple tools in sequence. The order matters — applying them in the wrong sequence amplifies problems instead of fixing them:</p>
+
+<ol>
+<li><strong>Restore first</strong> (fix damage) — scratches, fading, tears, dust</li>
+<li><strong>Colorize next</strong> (if black and white) — add color to the restored image</li>
+<li><strong>Upscale last</strong> (increase resolution) — make the clean, colored image bigger</li>
+</ol>
+
+<p>Why this order: restoring after upscaling means fixing damage at higher resolution (slower, and the AI may treat upscaled artifacts as damage to fix). Colorizing before restoring means the colorizer works on damaged pixels (producing color artifacts the restorer then has to undo). Always restore first, enhance last.</p>
+
+<h2>The cost of using the wrong tool</h2>
+
+<p>Using the image generator when you need the upscaler: you get a new image that looks vaguely like your original but is not your original. The specific details — the exact building in your skyline photo, the exact expression on your subject's face — are gone, replaced by AI-generated approximations. You traded enhancement for replacement.</p>
+
+<p>Using the upscaler when you need the restorer: your scratches become bigger, sharper scratches. The upscaler enhances everything in the image — including the damage. A 2-pixel scratch becomes a 4-pixel scratch. The image is larger but looks worse, not better.</p>
+
+<p>Using the restorer when you need the upscaler: the restorer finds nothing to fix (your digital photo has no scratches or fading) and returns the image essentially unchanged. You spent credits for no improvement.</p>
+
+<p>Match the tool to the problem. For the complete photo enhancement workflow, see our <a href="/en/blog/photo-restoration-correct-pipeline-order">guide to the correct order of operations for photo restoration</a>.</p>
+`,
+  },
+  {
+    slug: "object-remover-real-estate-product-vacation-guide",
+    title: "Object Remover: Real Estate, Product Photos, and Vacation Shots — Three Industries, One Tool",
+    description: "Real estate agents remove clutter, product photographers remove reflections, travelers remove photobombers. The same AI object remover serves three very different industries. Here's how each uses it.",
+    date: "2026-06-24",
+    category: "Image Editing",
+    tags: ["object remover", "AI object removal", "real estate photo editing", "product photography", "photo cleanup"],
+    relatedTools: ["object-remover", "background-remover", "watermark-remover"],
+    content: `
+<p>An <a href="/en/tools/object-remover">AI object remover</a> is not just for deleting your ex from vacation photos (though it does that). Three industries use it daily for completely different purposes: real estate, e-commerce product photography, and travel. The same tool, the same underlying AI inpainting technology, but the workflow and the stakes are different in each case. Here is how each industry uses it.</p>
+
+<h2>Real estate: removing the seller's life from the listing</h2>
+
+<p>A real estate photographer walks into a house. The seller still lives there. The kitchen counter has a toaster, a coffee maker, a fruit bowl, and a stack of mail. The living room has a dog bed, children's toys, and a half-finished puzzle on the coffee table. The bathroom has shampoo bottles, a loofah, and a rubber duck.</p>
+
+<p>The photographer shoots the house as-is (staging takes hours and costs money) and removes the clutter in post-processing. The <a href="/en/tools/object-remover">AI object remover</a> handles: countertop appliances, personal items (family photos, mail, toiletries), pet accessories, cars in the driveway, garbage bins at the curb, power lines crossing the sky above the house.</p>
+
+<p>What it cannot handle well: large furniture that defines the room (the AI cannot replace a couch with empty floor — it fills with plausible flooring, but the result looks like something was removed), people (use the <a href="/en/tools/background-remover">background remover</a> for full person removal), reflections in mirrors that show the photographer.</p>
+
+<h2>Product photography: cleaning up the shot</h2>
+
+<p>You shot a product on a white background. The product looks great, but there is a small dust speck on the surface, a reflection of your softbox in a shiny area, and the edge of the backdrop stand peeking into the corner of the frame. These are not Photoshop emergencies — they are 10-second fixes with the object remover.</p>
+
+<p>The AI object remover handles: dust and lint on products (especially visible on dark or reflective surfaces), unwanted reflections (softboxes, tripods, the photographer's silhouette), backdrop edges and stands, price tags and stickers that were not removed before shooting, small scratches or blemishes on the product itself.</p>
+
+<p>For product photos where you need the entire background removed (not just objects within the scene), the <a href="/en/tools/background-remover">background remover</a> is the right tool — it isolates the product completely. Use the object remover for cleaning up within the scene; use the background remover for removing the scene entirely.</p>
+
+<h2>Travel and vacation photos: the classic use case</h2>
+
+<p>You waited 10 minutes for the perfect shot of the Trevi Fountain without tourists. You got close — there are only three people in the frame instead of 300. The object remover handles the remaining three in seconds. This is the use case everyone thinks of first, and it works exactly as well as you hope — for small, distinct photobombers on relatively simple backgrounds.</p>
+
+<p>The AI object remover handles: individual tourists in the background (the smaller they are in the frame, the better the removal), trash cans, signage, and street clutter, your own shadow or reflection accidentally caught in the shot, timestamps and date stamps from older digital cameras.</p>
+
+<p>What it handles poorly: crowds (removing 50 people individually takes forever and the cumulative AI fill looks artificial), objects that overlap with the main subject (a tourist standing partially in front of the person you want to keep — the AI cannot separate overlapping subjects), the Eiffel Tower at night (the light show is copyrighted; removing the tower does not make the photo legally usable for commercial purposes).</p>
+
+<h2>The common thread across all three</h2>
+
+<p>In every industry, the object remover solves the same problem: you have a photo that is 95% right, and one or two specific things are ruining it. The tool removes those things. It does not enhance the photo, change the composition, or improve the lighting. It removes specific, localized problems. That focus is what makes it useful across such different contexts.</p>
+
+<p>For removing semi-transparent overlays and text/logos specifically, our <a href="/en/tools/watermark-remover">watermark remover</a> is optimized for that case. For the complete guide, see our <a href="/en/blog/object-remover-vs-background-remover-comparison">comparison of object remover versus background remover</a>.</p>
+`,
+  },
+  {
+    slug: "text-polish-vs-article-generator-which-ai-writing-tool",
+    title: "AI Text Polish vs Article Generator — One Fixes Your Writing, the Other Writes from Scratch",
+    description: "Text polish tightens your existing words. Article generator creates new content from a topic. Both use AI, but they are for completely different stages of the writing process. Here's which to use when.",
+    date: "2026-06-24",
     category: "Content Creation",
-    tags: ["text polish", "AI writing", "improve writing", "grammar fix", "writing assistant"],
+    tags: ["text polish", "article generator", "AI writing tools", "writing assistant", "AI content"],
     relatedTools: ["text-polish", "article-generator", "text-to-speech"],
     content: `
-<p>You write an email, a blog post, or a report. It says what you mean, but it feels… heavy. Sentences that go on too long. Words that do not earn their place. A structure that meanders instead of driving forward. An <a href="/en/tools/text-polish">AI text polisher</a> fixes all of this — not by changing what you said, but by tightening how you said it.</p>
+<p>You have something to write. You open a blank document. Two AI tools could help: an <a href="/en/tools/text-polish">AI text polisher</a> and an <a href="/en/tools/article-generator">AI article generator</a>. One fixes writing you have already done. The other creates writing from nothing. They are not competitors — they are for completely different moments in the writing process. Using the wrong one at the wrong time either gives you a blank page when you needed a draft, or rewrites your carefully crafted message into something generic. Here is when to use each.</p>
 
-<p>Here are real before-and-after examples across four types of writing, so you can see exactly what AI polishing changes and what it leaves alone.</p>
+<h2>What the article generator does</h2>
 
-<h2>Example 1: Business email</h2>
+<p>You give it a topic. It gives you a complete article — introduction, body paragraphs, conclusion. The output is structured, grammatically correct, and reads like a competent but generic writer produced it. It handles the blank-page problem: the hardest part of writing is starting, and the generator eliminates that barrier entirely.</p>
 
-<p><strong>Before:</strong> "I am writing to you today in order to follow up regarding the proposal that we discussed during our meeting that took place last Thursday afternoon. I was wondering if you have had the opportunity to review the document and if there are any changes or modifications that you would like for me to make at this point in time."</p>
+<p>Use the article generator when: you have no draft at all and need a starting point, you need a first pass at a topic you are not deeply familiar with, you are producing reference content where comprehensiveness matters more than voice, or you need to generate multiple article drafts to compare approaches.</p>
 
-<p><strong>After AI polish:</strong> "Following up on the proposal from last Thursday's meeting. Have you had a chance to review it? Let me know if you would like any changes."</p>
+<h2>What the text polisher does</h2>
 
-<p>What changed: 55 words → 28 words. "I am writing to you today in order to" became "Following up on." "During our meeting that took place" became "from." "At this point in time" was deleted entirely — it added nothing. The tone is still professional but no longer reads like a Victorian letter. The <a href="/en/tools/text-polish">AI text polisher</a> identifies these filler phrases automatically because it has seen millions of examples of wordy writing and its tightened equivalents.</p>
+<p>You give it text you have already written. It tightens sentences, removes filler words, fixes awkward phrasing, and makes the writing more direct. It does not add new ideas, restructure the argument, or change your meaning. It makes your existing writing better at being itself.</p>
 
-<h2>Example 2: Blog post introduction</h2>
+<p>Use the text polisher when: you have written a draft and it feels wordy or unclear, you want to tighten an email or report before sending, you have added your own voice and insights to AI-generated content and want to smooth the transitions between your writing and the AI's, or your writing is factually correct but reads like a first draft.</p>
 
-<p><strong>Before:</strong> "In today's fast-paced digital world, it is more important than ever to ensure that your content is optimized for maximum engagement and conversion. Many businesses struggle with this challenge on a daily basis, which is why we have created this comprehensive guide that will walk you through the process step by step."</p>
+<h2>The workflow that combines both</h2>
 
-<p><strong>After AI polish:</strong> "Most business content gets ignored. Not because it is bad — because it is hard to read. Here is how to fix that, step by step."</p>
+<p>For most content creation, the optimal workflow uses both tools in sequence:</p>
 
-<p>What changed: The AI killed the generic opening ("in today's fast-paced digital world" is the "once upon a time" of bad blog posts), replaced vague claims with a specific statement, and cut the self-congratulatory "comprehensive guide" framing. The result has a point of view instead of a template.</p>
+<ol>
+<li><strong>Article generator → first draft.</strong> Feed it your topic. Get a structured, grammatically sound draft in 30 seconds. This is your skeleton — it has the right bones but no personality.</li>
+<li><strong>You → add voice, specifics, and original insight.</strong> Add your personal examples. Replace generic advice with specific recommendations from your experience. Add the data, anecdotes, and opinions that make it your article instead of anyone's article.</li>
+<li><strong>Text polisher → final polish.</strong> Run the combined article (AI draft + your additions) through the polisher. It smooths out the seams where your writing meets the AI's, tightens any sentences that got bloated during editing, and ensures the whole thing reads in one consistent voice.</li>
+</ol>
 
-<h2>Example 3: Product description</h2>
+<p>This workflow turns a 45-minute writing task into a 15-minute editing task. The AI handles the mechanical parts (structure, grammar, conciseness); you handle the human parts (specificity, voice, original thinking).</p>
 
-<p><strong>Before:</strong> "Our innovative new software solution leverages cutting-edge artificial intelligence technology to provide users with the ability to generate high-quality written content in a fraction of the time it would normally take using traditional methods."</p>
+<h2>When to use only one</h2>
 
-<p><strong>After AI polish:</strong> "AI that writes your first draft in seconds. Describe what you need, get a complete article, then edit it to sound like you."</p>
+<p><strong>Use only the article generator when:</strong> you need reference content fast and voice does not matter (an FAQ page, a glossary entry, a product description template), or you want to see how AI approaches a topic before writing your own take (use the generator as research, not as the final product).</p>
 
-<p>What changed: "Leverages cutting-edge artificial intelligence technology to provide users with the ability to" — a 14-word phrase that means "uses AI to." The AI polisher strips jargon and replaces it with plain verbs. The result tells you what the product does in concrete terms.</p>
+<p><strong>Use only the text polisher when:</strong> you have already written something and it just needs tightening (an email, a report, a social media post), your writing is complete in content but weak in execution, or you are a strong writer who does not need AI to generate ideas — you just need a second pass on your prose.</p>
 
-<h2>Example 4: Academic or technical writing</h2>
-
-<p><strong>Before:</strong> "It is the opinion of the researchers that the data would appear to suggest a potential correlation between the two variables, though further investigation is required in order to establish a more definitive conclusion."</p>
-
-<p><strong>After AI polish:</strong> "The data suggests a correlation between the two variables, though further investigation is needed to confirm it."</p>
-
-<p>What changed: "It is the opinion of the researchers that" → "The data suggests" (the researchers are implied). "Would appear to suggest a potential" → "suggests a" (three hedging words collapsed into one verb). The AI polisher preserves the academic caution ("suggests," "needed to confirm") while removing the verbal padding that makes academic writing exhausting to read.</p>
-
-<h2>What the AI polisher does not change</h2>
-
-<p><strong>Your facts and claims.</strong> It tightens language; it does not fact-check. If you wrote "the moon is made of cheese," the polished version will still say the moon is made of cheese — just with fewer words.</p>
-
-<p><strong>Your voice (mostly).</strong> If you write casually with humor, the polisher keeps the humor but removes the filler. If you write formally, it keeps the formality but removes the redundancy. It improves clarity without homogenizing voice. That said, very distinctive writing styles — heavy slang, experimental structure — may get smoothed out. Always review the output.</p>
-
-<p><strong>Technical terminology.</strong> The polisher recognizes domain-specific terms and leaves them alone. "API endpoint," "myocardial infarction," "habeas corpus" — these stay exactly as written.</p>
-
-<p>For generating the first draft that you will then polish, use the <a href="/en/tools/article-generator">AI article generator</a>. For converting the polished text to audio, our <a href="/en/tools/text-to-speech">text to speech tool</a> handles the voice side. And for a broader look at AI writing tools, see our <a href="/en/blog/ai-article-generator-vs-human-writer-comparison">comparison of AI article generators versus human writers</a>.</p>
-`,
-  },
-  {
-    slug: "pdf-to-word-vs-manual-retyping-comparison",
-    title: "PDF to Word Conversion vs Manual Retyping — The Real Cost Comparison",
-    description: "Converting a PDF to Word takes 30 seconds with AI. Retyping the same document takes 30 minutes. But which approach produces better formatting? We compared both on five different document types.",
-    date: "2026-06-23",
-    category: "Document",
-    tags: ["PDF to Word", "convert PDF", "PDF converter", "retype PDF", "document conversion"],
-    relatedTools: ["pdf-to-word", "text-polish", "article-generator"],
-    content: `
-<p>You need to edit a PDF. Your options: convert it with an AI tool (30 seconds), retype the whole thing manually (30 minutes to 2 hours depending on length), or — the worst of both worlds — try a free generic converter that destroys the formatting and then spend 45 minutes fixing what it broke. An <a href="/en/tools/pdf-to-word">AI PDF to Word converter</a> is the clear winner for speed. But does it win on formatting quality too?</p>
-
-<p>I tested all three approaches on five different document types — a scanned contract, a multi-column report, a simple letter, a table-heavy invoice, and a textbook page with mixed content. Here is how each method performed.</p>
-
-<h2>The test: five documents, three methods</h2>
-
-<p><strong>Method 1 — AI conversion:</strong> Uploaded each PDF to the <a href="/en/tools/pdf-to-word">AI PDF to Word converter</a>. Google Vision OCR extracted the text with 99%+ accuracy. The converter preserved headings, paragraphs, tables, and font hierarchy. Processing time: 10-30 seconds per document depending on length.</p>
-
-<p><strong>Method 2 — Generic free converter:</strong> Used a popular free online converter (no AI, basic OCR). Text was extracted but formatting was lost — multi-column layouts became single-column chaos, tables became tab-separated text, headings became regular paragraphs. Time: 15 seconds per document for conversion, then 20-45 minutes of manual reformatting.</p>
-
-<p><strong>Method 3 — Manual retyping:</strong> Opened the PDF on one half of the screen, a blank Word document on the other half, and retyped everything. Time: 20 minutes (simple letter) to 90 minutes (textbook page with tables and formatting).</p>
-
-<h2>Results by document type</h2>
-
-<table>
-  <tr><th>Document</th><th>AI Converter</th><th>Generic Converter</th><th>Manual Retyping</th></tr>
-  <tr><td>Scanned contract (3 pages)</td><td>✅ Perfect, 15s</td><td>⚠️ Text OK, formatting broken, 35min fix</td><td>✅ Perfect, 40min</td></tr>
-  <tr><td>Multi-column report (5 pages)</td><td>✅ Good, columns preserved, 25s</td><td>❌ Columns merged, unusable, 45min fix</td><td>✅ Perfect, 60min</td></tr>
-  <tr><td>Simple letter (1 page)</td><td>✅ Perfect, 10s</td><td>✅ Fine, minor spacing issues, 5min fix</td><td>✅ Perfect, 20min</td></tr>
-  <tr><td>Invoice with tables (2 pages)</td><td>✅ Tables preserved, 15s</td><td>⚠️ Tables became tab-text, 25min fix</td><td>✅ Perfect, 35min</td></tr>
-  <tr><td>Textbook page (1 page)</td><td>⚠️ Good, but equations broke, 20s</td><td>❌ Equations became gibberish, 40min fix</td><td>⚠️ Equations typed manually, 90min</td></tr>
-</table>
-
-<p><strong>Winner:</strong> AI conversion for everything except documents with heavy mathematical notation. For scanned contracts, reports, letters, and invoices, the AI converter produced usable output in under 30 seconds. Manual retyping produced perfect output but took 20-90 minutes per document — the quality difference did not justify the time difference for most documents.</p>
-
-<h2>When manual retyping still makes sense</h2>
-
-<p><strong>Very short documents (under 200 words).</strong> A one-paragraph letter is faster to retype than to upload, convert, download, and open. The overhead of the conversion process exceeds the typing time for very short documents.</p>
-
-<p><strong>Documents with complex equations.</strong> AI OCR still struggles with mathematical notation — integrals, matrices, chemical formulas. If your document is math-heavy, manual entry in a proper equation editor (LaTeX, MathType) will produce better results than any OCR-based converter currently available.</p>
-
-<p><strong>Documents where formatting IS the content.</strong> A typography specimen, a design portfolio, a page layout example. If the visual arrangement is the point, conversion will lose what matters. Retype or, better, use the original design file.</p>
-
-<h2>The hybrid approach that saves the most time</h2>
-
-<p>For most documents: AI convert first, then spot-fix. The converter handles 95% of the work. You spend 2-5 minutes fixing the remaining 5% — a stray paragraph break, a misidentified heading, a table cell that shifted. This is 5-10× faster than manual retyping and produces better results than generic conversion.</p>
-
-<p>After conversion, run the text through the <a href="/en/tools/text-polish">AI text polisher</a> if the original PDF had awkward phrasing you want to clean up. And if you need to generate new content based on the converted document — a summary, an analysis, a response — the <a href="/en/tools/article-generator">AI article generator</a> can work from the converted text as source material.</p>
-
-<p>For the full guide to PDF conversion, see our <a href="/en/blog/pdf-to-word-ai-converter-guide">detailed walkthrough of AI PDF to Word conversion and when to use it</a>.</p>
-`,
-  },
-  {
-    slug: "face-blur-vs-pixelation-vs-masking-comparison",
-    title: "Face Blur vs Pixelation vs Manual Masking — Which Privacy Method Works Best?",
-    description: "Blurring, pixelating, and masking are three ways to hide faces in photos. Each looks different, protects differently, and suits different contexts. We tested all three on the same photos.",
-    date: "2026-06-23",
-    category: "Image Editing",
-    tags: ["face blur", "pixelation", "photo privacy", "anonymize faces", "face masking"],
-    relatedTools: ["face-blur", "object-remover", "background-remover"],
-    content: `
-<p>You need to hide someone's face in a photo before publishing it. You have three options: blur it (Gaussian blur, smooth and soft), pixelate it (mosaic effect, the "TV news anonymous source" look), or mask it (solid black bar or emoji overlay, completely obscuring). Each looks different, protects privacy to a different degree, and is appropriate in different contexts. An <a href="/en/tools/face-blur">AI face blur tool</a> does the blurring automatically — but is blur always the right choice?</p>
-
-<p>I tested all three methods on the same five photos and evaluated them on privacy protection, visual quality, and contextual appropriateness. Here is when to use each.</p>
-
-<h2>Method 1: Gaussian blur (the AI default)</h2>
-
-<p><strong>How it works:</strong> The AI detects faces and applies a Gaussian blur — a mathematical smoothing algorithm that averages each pixel with its neighbors. The result is a soft, out-of-focus look. Facial features become unrecognizable but the general shape and skin tone remain visible.</p>
-
-<p><strong>Privacy level:</strong> High. A properly blurred face cannot be identified by a human viewer. However, advanced deblurring techniques exist (though they are mostly academic and not practically available to the average person). For standard privacy needs — publishing event photos, anonymizing research data, protecting minors in public photos — Gaussian blur is sufficient.</p>
-
-<p><strong>Visual quality:</strong> Best of the three. Blur looks intentional and professional. It preserves the photo's overall aesthetic — the person is still visibly a person, just not an identifiable one. This is why news organizations and documentaries use blur rather than pixelation or black bars.</p>
-
-<p><strong>Best for:</strong> Professional publications, journalism, research, any context where visual quality matters. The <a href="/en/tools/face-blur">face blur tool</a> applies Gaussian blur automatically to all detected faces.</p>
-
-<h2>Method 2: Pixelation (mosaic)</h2>
-
-<p><strong>How it works:</strong> The face area is divided into large square blocks, and all pixels within each block are set to the same color. The result looks like a low-resolution mosaic. Features become blocky and unrecognizable.</p>
-
-<p><strong>Privacy level:</strong> Very high. Pixelation is mathematically harder to reverse than Gaussian blur because it destroys more information. With blur, some spatial frequency data remains; with pixelation at sufficient block size, the original pixel values are completely lost.</p>
-
-<p><strong>Visual quality:</strong> Distinctive but not subtle. Pixelation screams "this person's identity is hidden" — which is sometimes exactly what you want. The "TV news anonymous source" look signals to viewers that the obscuring is intentional and important.</p>
-
-<p><strong>Best for:</strong> Investigative journalism, whistleblower interviews, contexts where you want to visibly communicate "this person's identity is protected." Not great for event photography or casual use — the mosaic effect is visually jarring.</p>
-
-<h2>Method 3: Manual masking (black bar or emoji)</h2>
-
-<p><strong>How it works:</strong> A solid shape — usually a black rectangle or an emoji — is placed over the face, completely covering it. No facial information is visible at all.</p>
-
-<p><strong>Privacy level:</strong> Maximum. Zero facial data is visible. This is the only method that is absolutely irreversible — there is no mathematical technique to recover data that has been completely replaced by a solid color or an emoji overlay.</p>
-
-<p><strong>Visual quality:</strong> Lowest. A black bar or emoji over someone's face looks aggressive and draws attention to the fact that something is being hidden. It can make an innocent photo look like a criminal evidence photo. Use only when privacy is paramount and visual quality is irrelevant.</p>
-
-<p><strong>Best for:</strong> Legal documents, medical images, situations where even the general shape of a face could be identifying. Not appropriate for social media, event coverage, or any public-facing content where aesthetics matter.</p>
-
-<h2>Which method should you use?</h2>
-
-<table>
-  <tr><th>Situation</th><th>Best Method</th><th>Why</th></tr>
-  <tr><td>Event photos for website</td><td>Gaussian blur</td><td>Professional look, sufficient privacy</td></tr>
-  <tr><td>Whistleblower interview</td><td>Pixelation</td><td>Signals seriousness, very high privacy</td></tr>
-  <tr><td>Medical/legal document</td><td>Masking</td><td>Absolute privacy, aesthetics irrelevant</td></tr>
-  <tr><td>Children in school photos</td><td>Gaussian blur</td><td>Professional, non-stigmatizing</td></tr>
-  <tr><td>Social media post</td><td>Gaussian blur or masking</td><td>Blur for subtlety, emoji for humor</td></tr>
-</table>
-
-<p>The <a href="/en/tools/face-blur">AI face blur tool</a> uses Gaussian blur by default — it is the right choice for most situations. If you need to remove more than just faces, our <a href="/en/tools/object-remover">object remover</a> handles other unwanted elements. And if you want to remove the entire background instead of just faces, the <a href="/en/tools/background-remover">background remover</a> is the tool for that job. For the full privacy guide, see our <a href="/en/blog/blur-faces-photos-privacy-complete-guide">complete guide to blurring faces in photos</a>.</p>
-`,
-  },
-  {
-    slug: "ai-image-generator-how-it-works-under-the-hood",
-    title: "How AI Image Generators Actually Work — From Text Prompt to Pixel Output",
-    description: "You type words and get an image. But what happens between the prompt and the picture? Here's a plain-English explanation of diffusion models, latent space, and why prompts matter so much.",
-    date: "2026-06-23",
-    category: "Image Generation",
-    tags: ["AI image generator", "how AI generates images", "diffusion models", "Stable Diffusion", "text to image"],
-    relatedTools: ["ai-image-generator", "style-transfer", "avatar-generator"],
-    content: `
-<p>You type "a cat wearing a spacesuit on Mars, photorealistic" into an <a href="/en/tools/ai-image-generator">AI image generator</a>. Thirty seconds later, you have exactly that image. It feels like magic. It is not magic — it is a diffusion model, and understanding roughly how it works makes you better at writing prompts that get the results you want.</p>
-
-<p>Here is what happens between your prompt and the final image, explained without the math.</p>
-
-<h2>Step 1: Your prompt becomes numbers</h2>
-
-<p>The first thing that happens: your text prompt goes through a text encoder (CLIP, in most modern models). CLIP converts your words into a vector — a long list of numbers that represents the meaning of your prompt in a mathematical space. "Cat" maps to a specific region in this space. "Spacesuit" maps to another region. "Mars" maps to a third. The model combines these into a single vector that represents "cat + spacesuit + Mars + photorealistic."</p>
-
-<p>This is why specific prompts work better than vague ones. "A cat" gives the model a small target to aim for — it knows what a cat looks like, but has enormous freedom in pose, setting, lighting, and style. "A ginger tabby cat wearing a white NASA spacesuit standing on the red Martian surface, photorealistic, golden hour lighting" gives the model many constraints, each narrowing the possibilities. More constraints = more predictable output.</p>
-
-<h2>Step 2: The model starts with pure noise</h2>
-
-<p>The image generation does not start with a blank canvas. It starts with pure random noise — like TV static. Every pixel is a random color. This is the "canvas," and it represents maximum entropy: every possible image is equally likely at this stage.</p>
-
-<p>The model's job is to remove noise. Not all at once — that would be impossible. It does it step by step, typically 20-50 steps depending on the model. At each step, the model looks at the current noisy image and predicts: "what would this look like if it were slightly less noisy and slightly more like the thing described in the prompt?" It subtracts the predicted noise, then repeats.</p>
-
-<h2>Step 3: Diffusion — from noise to image</h2>
-
-<p>This noise-removal process is called diffusion (or more precisely, reverse diffusion). The model was trained by showing it millions of images with varying amounts of noise added, and teaching it to predict the noise that was added. After training on enough images, the model becomes extremely good at this — it learns what "less noisy" looks like for every possible image concept.</p>
-
-<p>At step 1, the image is 100% noise. At step 10, vague shapes emerge — the general composition, broad color regions. At step 20, details start resolving — you can tell it is a cat, you can see the spacesuit outline. At step 30, fine details appear — fur texture, reflections on the helmet visor, individual rocks on the Martian surface. The final step produces a clean, noise-free image.</p>
-
-<p>This is also why AI image generators sometimes produce weird results with hands, text, and specific counts of objects. The model generates the image holistically — it does not "draw" five fingers; it generates a hand-shaped region and the diffusion process fills in plausible detail. Sometimes that detail includes six fingers because the model has seen enough images of hands at odd angles that six-finger-like arrangements exist in its training data as valid hand shapes.</p>
-
-<h2>Why different models produce different results from the same prompt</h2>
-
-<p>The <a href="/en/tools/ai-image-generator">AI image generator</a> uses SDXL (Stable Diffusion XL) as its base model. Other generators use DALL-E, Midjourney, Imagen, or Flux. They all use diffusion, but they were trained on different datasets and use different text encoders and slightly different architectures.</p>
-
-<p>SDXL was trained primarily on LAION-5B, a massive public dataset of image-text pairs scraped from the web. This means it is very good at photorealistic images, illustrations, and common concepts, but weaker on niche or highly specific subjects that are underrepresented in web data. It also means it has biases from its training data — certain prompts will produce results that reflect the data distribution it was trained on, not necessarily an objective representation.</p>
-
-<p>For a completely different approach to AI images, our <a href="/en/tools/style-transfer">style transfer tool</a> does not generate from scratch — it takes your existing photo and applies the style of a reference image. And our <a href="/en/tools/avatar-generator">AI avatar generator</a> uses similar diffusion technology but fine-tuned specifically for facial reconstruction from reference photos. For practical tips, see our <a href="/en/blog/ai-image-generator-blog-featured-images">guide to creating blog featured images with AI</a>.</p>
+<p>For the audio version of your final polished article, our <a href="/en/tools/text-to-speech">text to speech tool</a> converts it to spoken audio. And for the complete picture on AI writing tools, see our <a href="/en/blog/ai-article-generator-vs-human-writer-comparison">head-to-head comparison of AI article generators versus human writers</a>.</p>
 `,
   },
 
@@ -310,10 +295,9 @@ if old in content:
     content = content.replace(old, new_blogs + '\n\n];\n\n// Synchronous static accessors')
     with open(BLOG_FILE, "w", encoding="utf-8") as f:
         f.write(content)
-    print("OK: 6 AI blogs inserted (28→34 static)")
+    print("OK: AI station 34→40 static")
 else:
-    print("ERROR: pattern not found")
+    print("FAIL: pattern not found")
     idx = content.rfind('];')
     if idx > 0:
-        print("Last ]; found at index", idx)
-        print("Context:", repr(content[idx-30:idx+60]))
+        print("Last ]; at", idx, repr(content[idx-40:idx+80]))
