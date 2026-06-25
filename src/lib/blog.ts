@@ -2339,14 +2339,20 @@ export function getBlogPost(slug: string): BlogPost | undefined {
 
 // Async fetch from API — used at runtime for fresh content, with ISR
 export async function fetchBlogPosts(): Promise<BlogPost[]> {
+  const staticPosts = getBlogPosts();
   try {
     const res = await fetch(`${API_BASE}/api/blog`, { next: { revalidate: 300 } });
     if (res.ok) {
       const data = await res.json();
-      if (data.posts?.length) return data.posts.map(apiToBlogPost);
+      if (data.posts?.length) {
+        const apiPosts = data.posts.map(apiToBlogPost);
+        const apiSlugs = new Set(apiPosts.map((p: BlogPost) => p.slug));
+        const merged = [...apiPosts, ...staticPosts.filter(p => !apiSlugs.has(p.slug))];
+        return merged.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      }
     }
   } catch { /* fall through to static */ }
-  return getBlogPosts();
+  return staticPosts;
 }
 
 export async function fetchBlogPost(slug: string): Promise<BlogPost | undefined> {
