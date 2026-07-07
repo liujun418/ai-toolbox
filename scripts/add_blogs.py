@@ -1,4 +1,4 @@
-"""Add 6 blogs to AI station (106→112 static) — July 6, 2026"""
+"""Add 6 blogs to AI station (112→118 static) — July 7, 2026"""
 import os, sys
 
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
@@ -10,252 +10,238 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "ai-image-generator-prompt-templates-reusable-workflow",
-    title: "AI Image Generator Prompt Templates How to Build a Reusable Library and Stop Starting from Scratch Every Time",
-    description: "Typing prompts from scratch wastes time and produces inconsistent results. Build a prompt template library — here's the structure, storage, and iteration system that professional AI artists use.",
-    date: "2026-07-06",
-    category: "Generate",
-    tags: ["AI image generator", "prompt templates", "workflow", "prompt engineering", "productivity"],
-    relatedTools: ["ai-image-generator", "style-transfer", "image-upscaler"],
-    content: `<p>You generate a great image. The lighting is perfect. The composition is exactly what you wanted. Then three days later you need a similar image — same style, different subject — and you cannot remember the prompt that got you there. You type something close but the results are worse. You spend 20 minutes iterating to get back to where you were yesterday.</p>
+    slug: "watermark-remover-transparent-vs-solid-strategies",
+    title: "Watermark Remover Transparent vs Solid Watermarks Why Semi-Transparent Marks Are Both Harder and Easier to Remove",
+    description: "A solid white watermark is easy to spot but hard to remove cleanly. A transparent watermark is subtle but the AI inpainting model handles it better. Here's the paradox explained.",
+    date: "2026-07-07",
+    category: "Edit",
+    tags: ["watermark remover", "transparent watermark", "solid watermark", "inpainting", "photo editing"],
+    relatedTools: ["watermark-remover", "object-remover", "background-remover"],
+    content: `<p>You have two photos with watermarks. Photo A has a solid white logo in the bottom right corner — opaque, sharp edges, sitting on top of a dark background. Photo B has a semi-transparent watermark spread across the entire image — faded text at 30% opacity, overlapping faces and detailed textures. Which one is harder to remove?</p>
 
-<p>This is the <strong>prompt amnesia problem</strong>. Professional AI artists solve it with prompt templates — reusable prompt structures with variable slots. Here is how to build your own template library and integrate it with an <a href="/en/tools/ai-image-generator">AI image generator</a> workflow.</p>
+<p>Intuition says Photo B — the transparent watermark covers more area and overlaps more detail. But AI inpainting models often handle Photo B <strong>better</strong> than Photo A. Here is the counterintuitive reason why, and what it means for using a <a href="/en/tools/watermark-remover">watermark remover</a> effectively.</p>
 
-<h2>What a Prompt Template Actually Is</h2>
+<h2>Why Solid Watermarks Are Harder Than They Look</h2>
 
-<p>A prompt template is a prompt with <strong>placeholders for the parts that change</strong> and <strong>locked-down language for the parts that should stay consistent</strong>. A simple example:</p>
+<p>A solid white logo on a dark background creates a <strong>hard edge</strong> — a sharp boundary between the watermark and the surrounding image. AI inpainting models fill masked regions by sampling from the surrounding pixels. With a hard edge, the transition from "watermark" to "background" is abrupt. The model must invent the content behind the entire opaque area from scratch.</p>
 
-<p><code>[SUBJECT], [STYLE] style, [LIGHTING] lighting, [COMPOSITION] composition, high detail, 8K, sharp focus --no text, watermark, blurry</code></p>
+<p>If the solid watermark covers a textured area — grass, fabric, skin with pores — the model has to generate plausible texture that matches the surroundings. This is hard. The result often looks slightly smoothed or blurred in the inpainted area because the model averages the possibilities rather than committing to a specific texture pattern. The human eye is very good at detecting texture inconsistency.</p>
 
-<p>The variables (in brackets) change per image. The locked parts ("high detail, 8K, sharp focus") ensure consistency. The negative prompt ("--no text, watermark, blurry") prevents common issues. This structure means every image you generate with this template shares the same quality baseline — you are only varying the creative choices.</p>
+<p>Worse, if the solid watermark covers an <strong>edge</strong> in the image — the boundary between a person's shirt and the background, or the line where a wall meets the floor — the model has to reconstruct both the edge and the content on both sides. The inpainted edge rarely aligns perfectly with the original.</p>
 
-<p>Professional templates are more specific. Instead of "[STYLE] style," they might lock in "photorealistic product photography, softbox lighting, white seamless background, macro lens, f/2.8 depth of field" because that exact combination has been tested and produces reliable results for e-commerce images.</p>
+<h2>Why Transparent Watermarks Are Often Easier</h2>
 
-<h2>Template Categories Worth Building</h2>
+<p>A semi-transparent watermark at 30% opacity overlays the original image content. The underlying pixels are <strong>still there, just dimmed</strong>. The original texture, edges, and colors are partially visible through the watermark. The AI model does not need to invent content from nothing — it needs to <strong>amplify</strong> the existing signal and remove the watermark overlay.</p>
 
-<p><strong>Product photography template:</strong> Lock in lighting (softbox, three-point), background (white seamless), camera angle (slightly above, 45 degrees), and quality tags. Vary only the product description. This is how e-commerce brands generate consistent catalog images.</p>
+<p>This is mathematically closer to <strong>dehazing</strong> or <strong>contrast enhancement</strong> than to pure inpainting. The model can see the original pixels through the watermark and restore them. The result is typically more faithful to the original image than a solid-watermark removal, where the model is guessing.</p>
 
-<p><strong>Social media portrait template:</strong> Lock in aspect ratio (1:1 or 4:5 for Instagram), composition (head and shoulders, centered), lighting style (Rembrandt, butterfly, or natural window light), and post-processing style (warm tones, slight film grain). Vary the subject description and background.</p>
+<p>The paradox: a transparent watermark looks more intrusive to a human viewer (it covers the whole image) but is <strong>less destructive to the underlying data</strong>. A solid watermark looks contained (it is in one corner) but completely destroys the pixels it covers. The AI cares about data preservation, not visual salience.</p>
 
-<p><strong>Concept art exploration template:</strong> Lock in style ("concept art, digital painting, ArtStation trending"), quality tags, and negative prompt. Vary the subject, mood, and color palette. Use this for rapid ideation — generate 20 variations of the same concept with different moods in minutes.</p>
+<h2>Strategy by Watermark Type</h2>
 
-<p><strong>Thumbnail template:</strong> Lock in aspect ratio (16:9 for YouTube), composition (subject on right third, space for text on left), and lighting (dramatic, high contrast). Vary the subject. Every thumbnail shares the same layout so your channel has visual consistency.</p>
+<p><strong>Solid watermarks in uniform areas</strong> (sky, solid wall, plain background): easiest case. The model has plenty of uniform surrounding pixels to sample from. The fill will be nearly invisible.</p>
 
-<h2>Where to Store Templates</h2>
+<p><strong>Solid watermarks on textured areas</strong> (grass, water, fabric): moderate difficulty. The fill will be smooth where the original was textured. Acceptable for social media, noticeable in print. Consider using a mild grain or noise overlay after inpainting to match the surrounding texture.</p>
 
-<p>A Notion database, a simple text file, or a dedicated prompt manager — the format matters less than the discipline. Each template entry should include: the template text with variable markers, 2-3 example outputs (image links or descriptions), notes on what the template is good and bad at, the model and settings used, and the date of last successful use. This last field is important — models change, and a template that worked perfectly in January might produce worse results after a model update in June.</p>
+<p><strong>Solid watermarks crossing edges</strong> (hairline against background, product edge): hardest case. The inpainted edge will not align perfectly. You may need to manually touch up the edge region after AI processing.</p>
 
-<p>Version your templates. When you improve one, keep the old version with a note about why it was replaced. You will sometimes need to go back and understand why a particular batch of images looks different from the current output.</p>
+<p><strong>Transparent watermarks on any background:</strong> the model handles these surprisingly well. The underlying pixels guide the fill. The main risk is faint ghosting of the watermark text if the opacity estimation is slightly off. Running the removal twice often eliminates the ghost.</p>
 
-<h2>Iterating Templates: The A/B Testing Mindset</h2>
-
-<p>Do not treat templates as finished. Treat them as hypotheses. "Adding 'cinematic lighting' to the product template will improve perceived quality" — test it on 5 products, compare side by side with the old template, and keep the change only if it consistently improves results. One good image proves nothing. Five good images is a pattern.</p>
-
-<p>Start your template library today. Generate your first batch of consistent images at <a href="/en/tools/ai-image-generator">AI image generator</a> — save the prompt that works, add brackets around the variable parts, and you have your first template.</p>`
+<p>Test your specific watermark at <a href="/en/tools/watermark-remover">AI watermark remover</a> — the results vary by watermark type, and understanding which category you are in sets realistic expectations before you start.</p>`
   },
   {
-    slug: "text-to-speech-multi-voice-podcast-production",
-    title: "Text to Speech Multi-Voice Podcast Production Turn One Script into a Full Audio Show Without a Recording Studio",
-    description: "You have a script with a host, a guest, and a narrator. You need three distinct voices. Here's how to cast AI voices, assign dialogue, and produce a multi-voice podcast without recording a single word.",
-    date: "2026-07-06",
+    slug: "image-upscaler-retro-gaming-screenshots",
+    title: "Image Upscaler Retro Gaming Screenshots How to Upscale 16-Bit and 8-Bit Game Art Without Turning Sprites into Blurry Messes",
+    description: "Classic game screenshots are tiny — 320×240 or 256×224 pixels. Standard AI upscalers smooth them into unrecognizable blobs. Here's how to upscale pixel art while preserving the crisp, blocky aesthetic.",
+    date: "2026-07-07",
+    category: "Edit",
+    tags: ["image upscaler", "retro gaming", "pixel art", "emulation", "sprite upscaling"],
+    relatedTools: ["image-upscaler", "ai-image-generator", "style-transfer"],
+    content: `<p>You take a screenshot of Super Mario World on an emulator. The original resolution is 256×224 pixels. You want to use it in a blog post or YouTube thumbnail at 1920×1080. You run it through a standard AI upscaler. The result: Mario's mustache is a smeared brown blob, the pixel grid is gone, and the text in the HUD is illegible. The upscaler did its job — it smoothed and enhanced — but it destroyed the <strong>aesthetic that made the image recognizable</strong>.</p>
+
+<p>Pixel art upscaling is a fundamentally different problem from photo upscaling. Here is why, and how to use an <a href="/en/tools/image-upscaler">image upscaler</a> with the right settings for retro game art.</p>
+
+<h2>Why Standard Upscalers Fail on Pixel Art</h2>
+
+<p>Standard AI upscalers are trained on photographs. They learn that the world is continuous — edges are smooth, gradients are gradual, textures are organic. When they encounter pixel art, they interpret the <strong>sharp pixel boundaries as noise</strong> to be smoothed away. The 1-pixel-wide black outline around Mario's hat becomes a gray smear. The checkerboard dithering pattern used to simulate transparency on old hardware becomes a muddy gradient.</p>
+
+<p>The upscaler is not broken. It is solving the wrong problem. It thinks it is restoring a low-resolution photo of a real scene. It does not know it is looking at deliberately discrete, blocky art where every pixel was placed by hand.</p>
+
+<h2>The Right Approach: Integer Scaling First, AI Second</h2>
+
+<p><strong>Step 1: Integer-ratio nearest-neighbor upscale.</strong> Before AI touches the image, scale it up by an integer factor — 2×, 3×, or 4× — using nearest-neighbor interpolation. This preserves the hard pixel edges. A 256×224 screenshot at 4× nearest-neighbor becomes 1024×896 — still blocky, but now the AI has larger "pixels" to work with and is less likely to treat them as noise.</p>
+
+<p><strong>Step 2: Apply AI upscaling with low strength.</strong> Run the nearest-neighbor-upscaled image through the AI upscaler at a low enhancement level. The goal is to <strong>slightly soften</strong> the stair-step artifacts on diagonal lines without destroying the pixel grid. Think of it as anti-aliasing, not upscaling.</p>
+
+<p><strong>Step 3: Optional — add scanline or CRT overlay.</strong> For authenticity, overlay a subtle scanline or CRT phosphor pattern. This masks any remaining AI artifacts and sells the "retro" look. The scanlines give the image a visual texture that makes the upscaling feel intentional rather than necessary.</p>
+
+<h2>When to Use AI Upscaling vs Integer Scaling Alone</h2>
+
+<p><strong>For pixel art where the grid is the aesthetic</strong> (Celeste, Shovel Knight, Stardew Valley): use integer nearest-neighbor scaling only. Do not AI upscale at all. The pixel grid is part of the art direction. Smoothing it is like adding motion blur to a stop-motion film — you are removing the medium.</p>
+
+<p><strong>For pre-rendered 3D games turned into sprites</strong> (Donkey Kong Country, Killer Instinct, Diablo II): AI upscaling can work well because the original sprites were rendered from 3D models. The underlying content is "realistic" even if the resolution is low. The AI restores the original render quality.</p>
+
+<p><strong>For hand-drawn sprite art from the 16-bit era</strong> (Chrono Trigger, Final Fantasy VI, Super Metroid): hybrid approach. Integer scale first, then very light AI enhancement. The hand-drawn sprites have intentional detail that AI can misinterpret. The light touch preserves the artist's intent.</p>
+
+<p><strong>For text and UI elements:</strong> never AI upscale. Text in retro games — HUD numbers, dialogue boxes, menu text — is bitmap fonts at very low resolution. AI upscalers turn text into alien hieroglyphics. Keep text at integer scale and overlay sharp text manually in post-processing if needed.</p>
+
+<h2>Practical Workflow for a YouTube Thumbnail</h2>
+
+<p>You want a 1920×1080 thumbnail featuring a retro game screenshot. 1. Take the screenshot at native resolution. 2. Nearest-neighbor scale to 4× the original. 3. Apply AI upscaling at 15-25% strength to smooth stair-stepping on diagonals only. 4. Composite the upscaled game art onto a 1920×1080 canvas with your title text and branding. 5. The game art occupies roughly 60-70% of the thumbnail — the upscaling artifacts are not visible at that size.</p>
+
+<p>Try it at <a href="/en/tools/image-upscaler">AI image upscaler</a> — but remember: integer scale first, AI second, and never upscale the text.</p>`
+  },
+  {
+    slug: "face-blur-live-streaming-real-time-privacy",
+    title: "Face Blur Live Streaming Real-Time Privacy Protection for Content Creators Who Film in Public",
+    description: "You are live streaming from a public space. Bystanders walk through your frame. You cannot blur their faces in post-production because there is no post-production — it's live. Here's how real-time face blur works and what to expect.",
+    date: "2026-07-07",
+    category: "Edit",
+    tags: ["face blur", "live streaming", "real-time", "privacy", "GDPR"],
+    relatedTools: ["face-blur", "object-remover", "watermark-remover"],
+    content: `<p>You are a street photographer livestreaming a city walking tour. Fifty people walk through your frame every minute. Under GDPR and similar privacy laws, you are <strong>publishing identifiable faces without consent</strong> — potentially thousands of faces per stream. The fines are not theoretical. A single GDPR violation can cost up to €20 million or 4% of global annual revenue, whichever is higher.</p>
+
+<p>In post-produced video, you blur faces in editing software — draw masks, track motion, render. But live streaming has no editing phase. The blur must happen <strong>in real time</strong>, before the video leaves your encoder. Here is how the technology works, what current tools can and cannot do, and how to use a <a href="/en/tools/face-blur">face blur tool</a> in a live-context workflow.</p>
+
+<h2>How Real-Time Face Detection Works</h2>
+
+<p>Real-time face blur requires a <strong>face detection model</strong> that runs fast enough to process every frame before the next one arrives. At 30 fps, that means the model has roughly 33 milliseconds per frame — and that includes detection time, blur rendering time, and encoding overhead.</p>
+
+<p>The models used are lightweight versions of full detection architectures. Instead of a heavy model like a full convolutional neural network, real-time systems use optimized models like BlazeFace (Google's face detection for mobile devices), YOLO-face variants, or MediaPipe's face detector. These models prioritize <strong>speed over accuracy</strong> — they detect most faces most of the time, but they miss faces at extreme angles, in low light, partially occluded, or very small in the frame.</p>
+
+<p>Detection is not the same as blurring. After detection, the system draws a bounding box or segmentation mask around the face and applies a blur filter (Gaussian blur, pixelation, or a solid overlay). The blur must be rendered and composited onto the frame within the same time budget. This is computationally demanding — real-time face blur is essentially running a computer vision pipeline on every single frame of video.</p>
+
+<h2>What Real-Time Face Blur Can and Cannot Do</h2>
+
+<p><strong>Can do:</strong> Detect and blur faces that are front-facing or near-front-facing, reasonably well-lit, and occupy at least 5-10% of the frame area. Works reliably in daylight outdoor streams, conference panels, and controlled indoor environments.</p>
+
+<p><strong>Cannot do reliably:</strong> Detect faces in profile (side view) — most lightweight detectors are trained on frontal faces. Faces in low light — the contrast between face and background drops below the detector's threshold. Faces partially covered by masks, sunglasses, or hats — occlusion confuses the model. Faces very far from the camera — small face detection requires higher resolution processing that real-time systems cannot afford. Faces that move quickly across the frame — the detector may catch them on frame N but miss them on frame N+1, causing the blur to flicker on and off.</p>
+
+<p><strong>The flickering problem:</strong> The most visible artifact of real-time face blur is blur flickering — a face that is detected on some frames but not others, causing the blur to appear and disappear rapidly. This is more distracting than no blur at all. Some systems add temporal smoothing — once a face is detected, the blur persists for a few extra frames even if detection drops. This reduces flicker but increases the chance of blurring the wrong thing.</p>
+
+<h2>The Hybrid Workflow for Live-Then-Archive Content</h2>
+
+<p>Many "live" streams are later published as archived videos. The practical workflow: <strong>apply real-time blur during the live stream as a best-effort privacy measure</strong>, then run a more thorough offline face blur on the archived recording before publishing it permanently. The offline pass uses a slower, more accurate model, processes every frame without time pressure, and lets you manually review and adjust.</p>
+
+<p>For the live portion, use a tool like <a href="/en/tools/face-blur">face blur</a> on key frames or representative screenshots to verify your real-time blur is working. For the archive, process the full video through the same tool frame by frame. The live blur is your legal safety net. The offline blur is your actual privacy protection.</p>
+
+<p>Real-time face blur is not perfect. But it is better than the alternative — publishing identifiable faces without consent. The technology is improving every year. For now, treat it as a <strong>risk reduction measure</strong>, not a guarantee.</p>`
+  },
+  {
+    slug: "photo-restorer-torn-photo-physical-repair",
+    title: "Photo Restorer Torn Photo Physical Reconstruction How to Digitally Repair Ripped Creased and Missing-Chunk Photographs",
+    description: "A torn photo is not just faded — it has physical gaps where the paper is missing. AI inpainting can fill those gaps, but the result depends on what surrounded the missing piece. Here's how to triage torn photo damage.",
+    date: "2026-07-07",
+    category: "Edit",
+    tags: ["photo restorer", "torn photo", "physical damage", "inpainting", "photo repair"],
+    relatedTools: ["photo-restorer", "colorizer", "image-upscaler"],
+    content: `<p>A faded photo loses color information. A torn photo loses <strong>physical material</strong> — the paper itself is gone. The tear runs through your grandmother's face, splitting her left eye from her right. The missing corner took half of someone's shoulder. A crease runs diagonally across the entire image like a scar. This is not a color correction problem. It is a <strong>content reconstruction</strong> problem.</p>
+
+<p>AI photo restoration can handle torn photos, but the results depend heavily on <strong>what was torn</strong>. Here is a triage system for assessing damage, and how to use a <a href="/en/tools/photo-restorer">photo restorer</a> for each damage type.</p>
+
+<h2>Damage Triage: What Can Be Fixed vs What Will Look Fake</h2>
+
+<p><strong>Category 1 — Tear through background only:</strong> A tear that runs through sky, grass, wallpaper, or plain backdrop. This is the easiest case. The AI inpainting model has abundant surrounding context to sample from. The fill will be nearly perfect because backgrounds are repetitive and predictable. No human can tell the repair was made.</p>
+
+<p><strong>Category 2 — Tear through clothing or uniform area:</strong> A rip across a suit jacket, a dress, or a military uniform. Moderate difficulty. Fabrics have texture patterns that the model can extend. But if the tear crosses a seam, a button, or a lapel edge, the model may not reconstruct the structural detail correctly. The fill will look plausible but a close inspection may reveal slight texture inconsistency.</p>
+
+<p><strong>Category 3 — Tear through a face:</strong> The hardest case. Human faces are the most visually scrutinized objects in any photograph. We are wired to detect facial asymmetry and anomalies. If a tear runs through one eye, the model must reconstruct an eye that matches the surviving eye — same size, same angle, same expression, same lighting. Small errors in eye alignment are immediately noticeable. The model may produce a face that looks <strong>like a person</strong> but not <strong>like the specific person</strong> in the original photo.</p>
+
+<p><strong>Category 4 — Missing corner or chunk:</strong> A large contiguous area of the photo is physically gone. The model must invent content from zero context in the center of the missing area, using only the edges where the missing chunk meets the surviving photo. If the missing chunk is in a corner with sky, it is easy. If the missing chunk contains a person's hand holding an object, the model will invent a generic hand — and the object it is holding will be a guess.</p>
+
+<h2>Pre-Processing Before AI Restoration</h2>
+
+<p><strong>Scan at high resolution.</strong> Torn photos need 600 DPI minimum, 1200 DPI if the photo is small (3×5 inches or smaller). The AI needs as many pixels as possible to work with. A 300 DPI scan of a wallet-sized photo gives the model very little data to reconstruct from.</p>
+
+<p><strong>Flatten the photo physically.</strong> Use a scanner lid or a piece of glass to press the torn photo flat. Curled edges cast shadows that confuse the AI — it may interpret the shadow as a dark object to be preserved rather than an artifact to be removed. If the photo is too fragile to press, photograph it from directly above with diffuse lighting from multiple angles to minimize shadows.</p>
+
+<p><strong>Straighten and align.</strong> If the torn photo is crooked on the scanner bed, straighten it digitally before restoration. The AI works better when edges are horizontal and vertical — it uses the image geometry as context.</p>
+
+<h2>Post-Restoration: The Human Review Step</h2>
+
+<p>AI restoration of torn photos is a <strong>starting point</strong>, not a finished product. After the <a href="/en/tools/photo-restorer">photo restorer</a> processes the image, review it at 100% zoom. Focus on the repaired areas. Ask: does this look like a real photograph, or like an AI's guess about a photograph? If the latter, the repair needs manual adjustment — clone stamp tools, frequency separation, or accepting that some damage is beyond reconstruction.</p>
+
+<p>The hardest truth about torn photo restoration: some information is <strong>permanently lost</strong>. The AI can make a plausible guess about what was in the missing piece. It cannot know what was actually there. For family photos where the goal is preserving memory, a plausible reconstruction is often good enough. For forensic or historical photos where accuracy matters, document the AI's work as "reconstructed" and preserve the original scan alongside it.</p>
+
+<p>Restore your damaged photos at <a href="/en/tools/photo-restorer">AI photo restorer</a> — scan, restore, review, and know the difference between what was fixed and what was guessed.</p>`
+  },
+  {
+    slug: "background-remover-vs-object-remover-isolation-vs-removal",
+    title: "Background Remover vs Object Remover Subject Isolation vs Distraction Removal Two AI Tools That Sound Similar but Solve Opposite Problems",
+    description: "Background remover keeps the subject and deletes the background. Object remover keeps the background and deletes an object. They are inverse operations — and using the wrong one ruins your image.",
+    date: "2026-07-07",
+    category: "Edit",
+    tags: ["background remover", "object remover", "subject isolation", "inpainting", "photo editing"],
+    relatedTools: ["background-remover", "object-remover", "watermark-remover"],
+    content: `<p>You have a product photo with a cluttered background. You want the product on a clean white background. You use an <a href="/en/tools/background-remover">AI background remover</a> — it detects the product, removes everything else, and gives you a transparent PNG. Perfect.</p>
+
+<p>Now you have a different problem. A beautiful landscape photo with a trash can in the lower left corner. You want the landscape intact, minus the trash can. If you use the background remover, it will detect the trash can as... nothing in particular, and the landscape as the background, and delete the landscape. You need an <a href="/en/tools/object-remover">AI object remover</a> instead — it removes the trash can and fills the gap with plausible landscape.</p>
+
+<p>These two tools are <strong>semantic inverses</strong>. Background remover keeps the subject, deletes the background. Object remover keeps the background, deletes an object. Confusing them produces the exact opposite of what you wanted. Here is when to use each.</p>
+
+<h2>Background Remover: When the Subject Is the Point</h2>
+
+<p>Background removal answers the question: <strong>"What is the main subject of this image?"</strong> The AI segments the image into foreground (subject) and background (everything else), then makes the background transparent. The output is a cutout of the subject — a product, a person, an animal, a car — on a transparent canvas.</p>
+
+<p>Use background remover for: product photography (e-commerce white background requirements), portrait cutouts (placing a person on a new background), creating sticker-style images (transparent PNGs for messaging apps), and preparing assets for graphic design (isolated elements that can be composited freely).</p>
+
+<p>Background remover works best when there is a <strong>clear, singular subject</strong> with distinct edges. A person standing against a wall: perfect. A person standing in a crowd: the AI cannot tell which person is the subject. A product on a white table: perfect. A product on a busy patterned surface: the AI may struggle to distinguish product edge from pattern edge.</p>
+
+<p>The output is always a <strong>cutout</strong>. The background is gone. You cannot get it back. Save the original image separately because the background removal is destructive.</p>
+
+<h2>Object Remover: When the Background Is the Point</h2>
+
+<p>Object removal answers the question: <strong>"What does not belong in this image?"</strong> You mark an object — a person, a trash can, a logo, a blemish — and the AI fills the marked area with content that matches the surrounding background. The output is the same image, minus the object, with the gap filled in.</p>
+
+<p>Use object remover for: cleaning up travel photos (removing tourists from landmark shots), product photography cleanup (removing dust, scratches, reflections), real estate photos (removing clutter, power lines, vehicles), portrait retouching (removing blemishes, stray hairs), and removing unwanted elements from any photo where the scene itself is the subject.</p>
+
+<p>Object remover works best when the background behind the object is <strong>simple and predictable</strong>. Removing a person from a grassy field: easy — the model fills with more grass. Removing a person from a complex brick wall: harder — the model must reconstruct the brick pattern. Removing a person who overlaps a detailed architectural feature: very hard — the model must invent the hidden part of the architecture.</p>
+
+<h2>The Decision Rule</h2>
+
+<p>Ask one question: <strong>"What am I keeping?"</strong> If you are keeping the subject and want to change the background → background remover. If you are keeping the scene and want to remove an unwanted element → object remover. The tools are named for what they remove, but the decision is about what you <strong>keep</strong>.</p>
+
+<p>Try both at <a href="/en/tools/background-remover">AI background remover</a> and <a href="/en/tools/object-remover">AI object remover</a> — the names sound similar, but the results are opposites. Pick the right one and you get exactly what you want. Pick the wrong one and you delete the wrong half of your image.</p>`
+  },
+  {
+    slug: "image-description-classification-to-dense-captioning",
+    title: "How AI Learned to Describe Images From Classification to Dense Captioning and Why Your Computer Now Sees Better Than Your Eyes",
+    description: "In 2012, AI could say 'this is a cat.' Today it can say 'a ginger tabby cat sitting on a windowsill, looking at a bird outside, with a coffee mug on the left.' Here's the technological leap that made it possible.",
+    date: "2026-07-07",
     category: "Content",
-    tags: ["text to speech", "podcast production", "AI voice", "multi-voice", "audio content"],
-    relatedTools: ["text-to-speech", "article-generator", "text-polish"],
-    content: `<p>Recording a podcast episode traditionally means: book studio time or treat a closet with acoustic foam, coordinate schedules so host and guest are available simultaneously, record for an hour, edit for three hours, re-record flubbed lines, mix audio levels. Total time for a 30-minute episode: 6-8 hours. Total cost: varies but never zero.</p>
+    tags: ["image description", "computer vision", "dense captioning", "AI history", "multimodal AI"],
+    relatedTools: ["image-description", "ai-image-generator", "style-transfer"],
+    content: `<p>In 2012, the ImageNet competition was won by AlexNet — a convolutional neural network that could classify images into 1,000 categories with 15.3% top-5 error. This was a breakthrough. The AI could look at a photo and say "this is a cat." Not what kind of cat. Not what the cat was doing. Not where the cat was. Just "cat."</p>
 
-<p>AI text-to-speech with multi-voice casting changes the equation. One script, multiple distinct AI voices, mixed together — a complete audio show produced in under an hour, no microphone required. Here is the workflow.</p>
+<p>Today, an <a href="/en/tools/image-description">AI image description tool</a> can look at the same photo and say: "A ginger tabby cat with green eyes sits on a wooden windowsill, looking out at a sparrow on a branch. To the left, a white ceramic coffee mug with steam rising. The window has rain droplets on the glass. The lighting suggests early morning." This is not a 10% improvement on 2012. It is a <strong>fundamentally different capability</strong>. Here is the technological journey from classification to dense captioning.</p>
 
-<h2>Step 1: Write the Script with Voice Labels</h2>
+<h2>Phase 1: Classification (2012-2015) — "What Is This?"</h2>
 
-<p>Write your script in a format that separates speakers clearly. A simple markdown convention works:</p>
+<p>Image classification assigns a single label to an entire image: "cat," "car," "beach." The model outputs a probability distribution over a fixed set of categories. This is useful for search and organization but says nothing about the content of the image beyond its primary subject. An image of a cat playing with a ball of yarn is just "cat" — the ball of yarn and the action are invisible to the model.</p>
 
-<p><code>[HOST] Welcome back to the show. Today we are talking about solar panel efficiency — does the technology actually improve year over year, or are we hitting physical limits?</code></p>
+<p>The limitation was architectural: classification models used a CNN encoder followed by a fully connected layer that output a single label. The model was forced to summarize the entire image into one word. All the rich visual information in the convolutional features was reduced to a single classification decision.</p>
 
-<p><code>[GUEST] Great question. The short answer is yes, efficiency is still improving, but the curve is flattening. Commercial panels hit about 15% efficiency in 2010. Today the best residential panels reach 22-23%.</code></p>
+<h2>Phase 2: Object Detection (2015-2018) — "What Is Where?"</h2>
 
-<p>Each voice label maps to a specific TTS voice. The script itself should sound natural when spoken — read it aloud once before generating. Sentences that look fine on screen often sound stilted when spoken. Short sentences work better than long ones. Contractions (it's, we're, don't) are mandatory — full forms (it is, we are, do not) sound robotic.</p>
+<p>Models like Faster R-CNN, YOLO, and SSD added spatial awareness. Instead of one label per image, they output <strong>bounding boxes</strong> with labels: "cat" at coordinates (120, 340, 280, 510), "ball of yarn" at (450, 380, 520, 430). The model could now enumerate the objects in a scene and their positions.</p>
 
-<h2>Step 2: Cast Your Voices</h2>
+<p>This was the prerequisite for image captioning. To describe an image, you first need to know <strong>what is in it and where</strong>. Object detection provided the vocabulary. But it still could not describe relationships — the cat is <em>playing with</em> the yarn, not just near it.</p>
 
-<p>Voice casting is the creative step that separates amateur AI podcasts from professional-sounding ones. You need voices that are <strong>distinct enough to tell apart</strong> but <strong>consistent enough to belong in the same show</strong>. A deep male host paired with a high-pitched female guest creates clear differentiation — listeners never wonder who is speaking. Two similar-sounding voices create confusion.</p>
+<h2>Phase 3: Image Captioning (2015-2020) — "What Is Happening?"</h2>
 
-<p>Most TTS platforms offer voice previews. Listen to them back to back. Ask: can I close my eyes and tell these voices apart instantly? If not, swap one out. Also consider <strong>speaking rate</strong> — a slightly faster guest voice vs a measured host voice adds conversational realism. A monotone delivery kills engagement regardless of voice quality.</p>
+<p>The breakthrough: combining a CNN encoder (visual features) with an RNN/LSTM decoder (language generation). The model "translates" an image into a sentence, similar to how machine translation converts French to English. The output: "A cat playing with a ball of yarn on a wooden floor."</p>
 
-<p>Our <a href="/en/tools/text-to-speech">text to speech tool</a> supports multiple voices — generate each speaker's lines separately, then combine the audio files in any basic audio editor (Audacity is free and works).</p>
+<p>This captured actions and relationships — the cat is <em>playing with</em> the yarn, not just co-located with it. But the captions were single sentences, often generic. "A cat sitting on a windowsill" — which windowsill? What is outside? Single-sentence captioning misses detail.</p>
 
-<h2>Step 3: Generate and Assemble</h2>
+<h2>Phase 4: Dense Captioning and Multimodal LLMs (2020-Present) — "Tell Me Everything"</h2>
 
-<p>Generate each voice block independently. This gives you control over pacing — insert pauses between speaker transitions, trim awkward silences, and adjust volume levels so all voices sit at the same perceived loudness. Normalize audio to -16 LUFS for podcast standard loudness.</p>
+<p>Dense captioning combines object detection with captioning: the model generates a caption for <strong>every region of interest</strong> in the image. Instead of one sentence, you get a paragraph. "A ginger tabby cat on the windowsill. A sparrow on a branch outside the window. A white ceramic mug with steam on the left. Rain droplets on the window glass."</p>
 
-<p><strong>Pro tip:</strong> Add subtle room tone or background ambience to glue the voices together. When AI voices are completely dry (zero background noise), the silence between words sounds unnatural — a vacuum where air should be. A very quiet room tone track (-40dB or lower) makes the listening experience feel like a real recording space.</p>
+<p>The latest leap: <strong>multimodal large language models</strong> (GPT-4V, Claude Vision, Gemini, LLaVA) that can not only describe images but answer questions about them, compare them, and reason about them. "Is the cat an indoor cat or outdoor cat?" (Indoor — it is inside looking out.) "What time of day is it?" (Early morning, based on the warm low-angle light and steam rising from the coffee.) The model is not just describing pixels. It is <strong>reasoning about the scene</strong>.</p>
 
-<h2>When AI Podcasts Make Sense</h2>
+<p>This is the frontier. Current models still make mistakes — they hallucinate details, confuse similar objects, and miss subtle spatial relationships. But the trajectory from 2012 to 2026 is clear: from one-word labels to paragraph-length descriptions, from pattern matching to scene understanding. The gap between what AI sees and what humans see is closing faster than anyone predicted.</p>
 
-<p>AI-generated podcasts work well for: <strong>news roundups</strong> (script is factual, delivery should be neutral), <strong>educational content</strong> (clear explanation matters more than personality), <strong>internal company updates</strong> (information density is high, production cost should be low), and <strong>audio versions of blog posts</strong> (reach listeners who prefer audio).</p>
-
-<p>They work less well for: interview shows (the spontaneity of real conversation is hard to script and impossible to fake), comedy (timing is everything and AI does not understand timing), and highly emotional content (AI voices lack genuine affect). Know the boundary and stay on the right side of it.</p>
-
-<p>Produce your first AI-powered podcast episode at <a href="/en/tools/text-to-speech">text to speech</a> — write, cast, generate, mix, publish.</p>`
-  },
-  {
-    slug: "style-transfer-video-frame-consistency-temporal-coherence",
-    title: "Style Transfer Video Frame-by-Frame Consistency How to Avoid the Flickering Nightmare When Stylizing Video",
-    description: "Apply style transfer to a single video frame and it looks beautiful. Apply it to 24 frames per second and you get a flickering, swimming mess. Here's why temporal coherence is the hardest problem in neural style transfer — and how to work around it.",
-    date: "2026-07-06",
-    category: "Edit",
-    tags: ["style transfer", "video", "temporal coherence", "neural style", "frame consistency"],
-    relatedTools: ["style-transfer", "ai-image-generator", "image-upscaler"],
-    content: `<p>You run a short video clip through a neural style transfer model — Van Gogh's Starry Night applied to a walking scene. Frame 1: beautiful, swirling skies. Frame 2: also beautiful, but the swirls are in slightly different positions. Frame 3: the edges of objects are swimming. By frame 10, the video looks like an oil painting viewed through rippling water. This is the <strong>temporal coherence problem</strong>, and it is the single biggest challenge in video style transfer.</p>
-
-<p>Here is why it happens, what researchers are doing about it, and practical workarounds you can use today with a <a href="/en/tools/style-transfer">style transfer tool</a>.</p>
-
-<h2>Why Frames Flicker: The Independence Problem</h2>
-
-<p>Neural style transfer treats each frame as an <strong>independent image</strong>. The algorithm optimizes each frame to match the content of the original frame and the style of the reference artwork — but it does not know about the frame before or after. Small differences in optimization between frames (different random initialization, different convergence paths) produce slightly different stylizations of the same object. When played back at 24 or 30 fps, these differences become visible flicker.</p>
-
-<p>Think of it like tracing a movie frame by frame on separate sheets of paper without being able to see the previous sheet. Your tracing of frame 2 will be close to your tracing of frame 1 — but the lines will shift slightly. The brain perceives those shifts as motion. In video, that motion is noise, not signal.</p>
-
-<h2>Research Solutions: Optical Flow and Temporal Constraints</h2>
-
-<p>The academic solution is to add a <strong>temporal loss</strong> to the optimization. After stylizing frame 2, the algorithm computes the optical flow (motion vectors) between the original frame 1 and original frame 2, then warps the stylized frame 1 according to that flow, and penalizes differences between the warped stylized frame 1 and the new stylized frame 2. This constraint says: "objects that moved between frames should be stylized <em>consistently</em> with where they came from."</p>
-
-<p>This works — research papers show dramatic flicker reduction — but it requires running optical flow computation on every frame pair, which multiplies the processing time. It is available in research codebases but not in consumer tools yet. For now, practical workarounds are the path.</p>
-
-<h2>Practical Workarounds You Can Use Today</h2>
-
-<p><strong>Workaround 1: Fixed seed.</strong> If your style transfer tool supports a random seed parameter, set it to a fixed value. This eliminates the randomness in initialization and produces more consistent results across frames. It does not solve the problem completely but reduces flicker significantly. Our style transfer tool uses a deterministic process by default for this reason.</p>
-
-<p><strong>Workaround 2: Keyframe interpolation.</strong> Instead of stylizing all 24 frames per second, stylize only keyframes — say one frame every 1-2 seconds — and use conventional interpolation to blend between them. The keyframes are consistent, and the interpolation smooths the transitions. The downside: fast motion between keyframes may show ghosting.</p>
-
-<p><strong>Workaround 3: Reduce style strength.</strong> Lower style intensity reduces the visibility of frame-to-frame differences. A subtle style overlay (30-40% strength) flickers less noticeably than a full transformation. This is the "good enough" approach for short social media clips.</p>
-
-<p><strong>Workaround 4: Pre-process with temporal smoothing.</strong> Run the original video through a light temporal denoiser (like Neat Video or built-in tools in DaVinci Resolve) before style transfer. Smoother input produces smoother output — the style transfer has less noise to amplify.</p>
-
-<h2>The Current State and What Is Coming</h2>
-
-<p>As of mid-2026, consumer-grade video style transfer is still in the "good for short clips, frustrating for long videos" phase. Research models like Stable Video Diffusion and video-specific fine-tunes are closing the gap. Within 12-18 months, expect temporal coherence to be a solved problem for most use cases. For now, the workarounds above produce usable results for clips under 30 seconds.</p>
-
-<p>Start with single-image style transfer to dial in your look at <a href="/en/tools/style-transfer">style transfer</a>, then apply the keyframe method for video — it is the most reliable approach available today.</p>`
-  },
-  {
-    slug: "object-remover-video-vs-photo-cleanup-challenges",
-    title: "Object Remover Video Cleanup vs Photo Cleanup Why Removing Objects from Moving Footage Is Exponentially Harder",
-    description: "Removing a photobomber from a still image takes one inpainting pass. Removing the same person from a 10-second video takes 240 inpainting passes that all have to agree with each other. Here's the math and the workflow.",
-    date: "2026-07-06",
-    category: "Edit",
-    tags: ["object remover", "video inpainting", "photo cleanup", "frame consistency", "post-production"],
-    relatedTools: ["object-remover", "background-remover", "watermark-remover"],
-    content: `<p>You take a photo at a tourist spot. A stranger walks through the frame. You use an <a href="/en/tools/object-remover">AI object remover</a> — draw a mask around the person, click remove, and the AI fills the gap with plausible background. Total time: 10 seconds. The result is nearly perfect.</p>
-
-<p>Now imagine the same scene as a 10-second video at 24 frames per second. The stranger walks through 240 frames. Removing them means running inpainting on 240 individual frames — and every single one has to be consistent with the frames before and after. This is not 240× harder. It is a <strong>fundamentally different problem</strong>.</p>
-
-<h2>The Math That Makes Video Inpainting Hard</h2>
-
-<p>Photo inpainting has one constraint: the filled region should look plausible to a human eye in a single frame. Video inpainting has three constraints: the filled region should look plausible <strong>in each frame</strong>, the filled region should be <strong>consistent across frames</strong> (no flickering or swimming textures), and the filled region should respect <strong>motion</strong> — if the background behind the removed object is moving (camera pan, parallax), the inpainted content must move the same way.</p>
-
-<p>Constraint 1 is the photo problem. Constraints 2 and 3 are why video inpainting is a research problem. Even the best consumer tools today produce video inpaintings that look fine paused but show visible artifacts in motion — textures that slide, edges that warp, details that pulse in and out of existence.</p>
-
-<h2>When Photo Inpainting Is the Better Strategy</h2>
-
-<p>For many "video" cleanup tasks, you do not need video inpainting at all. If the object you want to remove is <strong>static</strong> (a logo on a wall, a piece of litter on the ground, a blemish on a product) and the camera is locked down on a tripod, you can export one representative frame, remove the object with a <a href="/en/tools/object-remover">photo object remover</a>, and composite the cleaned frame back over the video as a static patch. The patch sits perfectly still on a locked-off shot and covers the unwanted object in every frame.</p>
-
-<p>This technique — <strong>static patch compositing</strong> — is used in professional post-production all the time. It works for tripod shots with static unwanted objects. It does not work for handheld footage, moving objects, or scenes with changing lighting.</p>
-
-<h2>When You Actually Need Video Inpainting</h2>
-
-<p>Genuine video inpainting is required when: the camera is moving (handheld, gimbal, drone), the object being removed is moving through the scene, the lighting changes during the shot, or the background behind the object has complex parallax (near and far objects moving at different rates).</p>
-
-<p>In these cases, current consumer tools offer two approaches. <strong>Mask tracking + per-frame inpainting:</strong> track the object with a mask that follows it through the video, then run photo inpainting on each frame individually. This is fast but produces the flickering problem described above. <strong>AI video inpainting models:</strong> dedicated models that process the entire video clip at once, maintaining temporal consistency. These produce better results but are slower, more expensive, and available mainly through professional tools (Runway ML, Adobe After Effects content-aware fill, research models on Replicate).</p>
-
-<h2>The Practical Workflow</h2>
-
-<p>For most users: <strong>start with photo inpainting</strong>. If the shot is locked down and the object is static, export a frame, remove the object with the <a href="/en/tools/object-remover">object remover</a>, and composite the patch back. This solves 60-70% of real-world cases. For the remaining cases — moving cameras, moving objects — you need a dedicated video inpainting tool, and you should budget significantly more time and compute.</p>
-
-<p>The photo tool handles the common case instantly and for free. The video tool handles the hard case with effort and cost. Knowing which case you are in before you start saves hours of frustration.</p>
-
-<p>Remove unwanted objects from photos at <a href="/en/tools/object-remover">AI object remover</a> — free, instant, no signup required.</p>`
-  },
-  {
-    slug: "article-generator-vs-text-polish-generate-or-polish-first",
-    title: "Article Generator vs Text Polish Generate First or Polish First — The Pipeline Order That Determines Your Final Quality",
-    description: "You have an AI article generator and an AI text polisher. Do you generate a rough draft then polish it? Or polish your outline then generate from it? The order matters more than the tools.",
-    date: "2026-07-06",
-    category: "Content",
-    tags: ["article generator", "text polish", "AI writing", "content pipeline", "editing workflow"],
-    relatedTools: ["article-generator", "text-polish", "text-to-speech"],
-    content: `<p>You have two AI writing tools: an <a href="/en/tools/article-generator">article generator</a> that produces drafts from outlines, and a <a href="/en/tools/text-polish">text polisher</a> that improves tone, grammar, and clarity. The obvious workflow: generate a draft → polish it. That works. But the <strong>reverse</strong> workflow — polish your outline and key points first, then generate from them — produces consistently better results. Here is why.</p>
-
-<h2>The "Generate Then Polish" Pipeline (G→P)</h2>
-
-<p>Flow: Write a rough outline → AI generates a full draft → AI polishes the draft → human reviews.</p>
-
-<p><strong>What it does well:</strong> Speed. You go from idea to readable draft in minutes. The generator handles structure and volume. The polisher handles sentence-level quality. This is the right pipeline for content where <strong>volume and speed</strong> matter more than originality: product descriptions at scale, internal documentation, meeting summaries, routine blog posts on well-covered topics.</p>
-
-<p><strong>What it does poorly:</strong> The generator fills gaps in your outline with generic filler. If your outline says "discuss benefits of solar panels," the generator writes three paragraphs of surface-level benefits (save money, help environment, increase home value) because that is what the training data contains. The polisher then makes those generic paragraphs <em>well-written</em> generic paragraphs — but they are still generic. Polish does not create insight. It only improves expression.</p>
-
-<p>G→P also suffers from <strong>garbage-in amplification</strong>. If the generator misunderstands your outline's intent or picks the wrong angle, the polisher enthusiastically improves the wrong thing. You end up with a beautifully written article that misses the point.</p>
-
-<h2>The "Polish Then Generate" Pipeline (P→G)</h2>
-
-<p>Flow: Write a detailed outline → Polish the outline for clarity and specificity → AI generates from the polished outline → human reviews.</p>
-
-<p><strong>What it does well:</strong> Quality and originality. When you polish the outline — adding specific examples, sharpening the argument structure, naming concrete data points to include — the generator has much better input to work with. It does not need to fill gaps with generic content because there are fewer gaps. The output is more specific, more useful, and sounds less like every other AI-generated article on the topic.</p>
-
-<p>Example. G→P outline: "Section 3: Benefits of remote work." P→G polished outline: "Section 3: Remote work productivity — cite the Stanford WFH study (13% productivity increase at Ctrip), contrast with the Microsoft survey showing collaboration silos, and note that the real variable is async vs sync communication culture, not location." The generator given the second outline produces a dramatically better section because it has <strong>specific claims to explain</strong> rather than a vague topic to fill.</p>
-
-<p><strong>What it does poorly:</strong> It is slower. You spend more time on the outline. It also requires that you — the human — know enough about the topic to write a specific, informed outline. If you are writing about a topic you barely understand, you cannot polish the outline with specifics you do not have.</p>
-
-<h2>When to Use Each Pipeline</h2>
-
-<p><strong>Use G→P when:</strong> you are producing content at scale where "good enough" is the standard, you are writing about a topic you know well and can spot AI generic-isms quickly during review, or the content is short-form (social media posts, product blurbs, email copy) where the generator rarely goes off track.</p>
-
-<p><strong>Use P→G when:</strong> the content is long-form and needs depth, you are writing for an expert audience that will notice generic filler, the topic is nuanced and a wrong angle ruins the whole piece, or you have specific data, examples, or case studies you want to include.</p>
-
-<p><strong>Hybrid approach (recommended):</strong> P→G for the article body, then G→P for the introduction and conclusion. The body benefits from specific outlines. The intro and conclusion are formulaic enough that the generator handles them well with minimal guidance, and the polisher smooths the transitions.</p>
-
-<p>Try both pipelines at <a href="/en/tools/article-generator">AI article generator</a> and <a href="/en/tools/text-polish">text polish</a> — the order you use them changes the output more than you expect.</p>`
-  },
-  {
-    slug: "ai-colorizer-color-constancy-white-balance-illusions",
-    title: "Color Constancy Illusions Why AI Colorizers Get White Balance Wrong and What That Reveals About Computer Vision",
-    description: "Your brain auto-corrects white balance so a white shirt looks white under yellow light and blue light. AI colorizers don't have that ability — and the failures expose fascinating limits in computer vision.",
-    date: "2026-07-06",
-    category: "Edit",
-    tags: ["AI colorizer", "color constancy", "white balance", "computer vision", "optical illusions"],
-    relatedTools: ["colorizer", "photo-restorer", "style-transfer"],
-    content: `<p>Look at a white piece of paper under an incandescent bulb. It looks white. Now look at the same paper under fluorescent office lighting. Still white. Under the noon sun. Still white. Your brain performs an automatic white balance adjustment so seamless you never notice it. The paper is objectively reflecting different wavelengths of light in each scenario — yellowish under incandescent, greenish under fluorescent, bluish under midday sun — but your visual system subtracts the color of the light source and reports "white."</p>
-
-<p>This ability is called <strong>color constancy</strong>. AI colorizers do not have it. And their failures to achieve it reveal something profound about the gap between computer vision and human perception.</p>
-
-<h2>How Human Color Constancy Works</h2>
-
-<p>Your visual system does not measure absolute color. It measures <strong>relative color</strong> — how each surface compares to the average color of the entire scene. If the scene average is yellowish (incandescent lighting), your brain subtracts yellow from every surface, making the white paper appear white. If the scene average is bluish (shade), it subtracts blue.</p>
-
-<p>This is why the famous <strong>dress illusion</strong> (#TheDress, 2015) split the internet. Some people's visual systems assumed warm lighting and subtracted yellow, seeing the dress as blue and black. Others assumed cool lighting and subtracted blue, seeing it as white and gold. Neither group was wrong — their brains made different assumptions about the illuminant. The dress photo was accidentally perfectly ambiguous.</p>
-
-<p>Color constancy is not perfect. Optical illusions like the <strong>checker shadow illusion</strong> (Edward Adelson, 1995) exploit its limits — squares A and B are objectively the same shade of gray, but B looks lighter because your brain compensates for the perceived shadow. Knowing it is an illusion does not make it stop working. The compensation is involuntary and pre-conscious.</p>
-
-<h2>Why AI Colorizers Struggle with White Balance</h2>
-
-<p>An <a href="/en/tools/colorizer">AI colorizer</a> is trained on millions of color photos. It learns that grass is usually green, sky is usually blue, skin is usually in a range of warm tones. When it receives a black-and-white photo, it predicts colors based on these statistical priors — what color things "should" be.</p>
-
-<p>But black-and-white photos <strong>erase the illuminant information</strong>. A B&W photo taken under warm incandescent light looks identical to one taken under cool fluorescent light — the film or sensor captured only luminance, not chrominance. The AI has no way to know what the original lighting was. So it guesses, and its guess is always "neutral daylight" because that is the statistical average of its training data.</p>
-
-<p>This produces photos that look <strong>plausible but wrong</strong>. A B&W photo of a room lit by warm candlelight gets colorized with neutral colors, losing the warm amber glow that defined the original scene's mood. A photo taken during golden hour gets colorized as if it were noon. The AI produces technically competent colorization that misses the <strong>emotional content</strong> carried by the original lighting.</p>
-
-<h2>The Checker Shadow Problem in AI Colorization</h2>
-
-<p>Even more interesting: AI colorizers sometimes reproduce the <strong>same illusions humans fall for</strong>. If a B&W photo contains a checker shadow pattern — identical gray values that a human perceives as different due to context — the AI may color them differently too, because it learned from human-labeled data that encoded the illusion. The AI did not develop color constancy. It learned to mimic human color constancy failures.</p>
-
-<p>This is a recurring theme in AI: models learn to reproduce <strong>human biases and perceptual quirks</strong>, not because they share our biology, but because they were trained on data produced by humans who have those quirks. The AI colorizer's "mistakes" are a mirror of human perception.</p>
-
-<h2>What This Means for Practical Use</h2>
-
-<p>When you colorize a black-and-white photo, understand that the AI is making a <strong>best statistical guess</strong> about colors it cannot possibly know. For family photos, the result will look natural because skin tones and grass and sky are statistically predictable. For photos with unusual lighting — candlelight, neon, colored stage lights, underwater — the AI will neutralize the lighting and produce colors that are plausible but historically wrong.</p>
-
-<p>If lighting mood matters for your photo, manually adjust the white balance and color temperature after AI colorization. The AI gives you a starting point, not the final answer. The gap between "looks natural" and "matches the original scene's lighting" is where human judgment still beats the algorithm.</p>
-
-<p>Try it yourself at <a href="/en/tools/colorizer">AI colorizer</a> — upload a black-and-white photo and see how the AI interprets lighting it cannot measure.</p>`
+<p>Try it yourself at <a href="/en/tools/image-description">AI image description</a> — upload a photo and see what the model sees. The difference between "cat" and "ginger tabby on a windowsill at dawn" is the difference between 2012 and today.</p>`
   },
 ];
 
@@ -266,4 +252,4 @@ content = content.replace(old, new_blogs)
 with open(BLOG_FILE, "w", encoding="utf-8") as f:
     f.write(content)
 
-print("✅ AI station: 106→112 static blogs. Verify with: npm run build")
+print("AI station: 112->done. Check slugs.")
