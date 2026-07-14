@@ -1,4 +1,4 @@
-"""Add 6 blogs to AI station (142→148 static) — July 13, 2026"""
+"""Add 6 blogs to AI station (148→154 static) — July 14, 2026"""
 import os, sys
 
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
@@ -10,218 +10,224 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "colorizer-black-and-white-film-stills-movie-history",
-    title: "AI Colorizer for Black and White Film Stills How Movie Historians and Fans Are Reimagining Classic Cinema in Color",
-    description: "Casablanca, Citizen Kane, The Third Man — these films exist only in black and white. AI colorization brings them into color, but the choices about what colors to use are creative decisions, not technical ones.",
-    date: "2026-07-13",
-    category: "Edit",
-    tags: ["AI colorizer", "film history", "black and white", "classic cinema", "colorization"],
-    relatedTools: ["colorizer", "photo-restorer", "style-transfer"],
-    content: `<p>You watch the final scene of Casablanca. Rick and Captain Renault walk into the fog toward the Free French garrison. The film is black and white. The fog is gray. Rick's trench coat is gray. The runway is gray. Everything is a shade of gray — not because the world was gray in 1942, but because the film stock could only capture luminance, not color.</p>
-
-<p>You run a frame from the scene through an <a href="/en/tools/colorizer">AI colorizer</a>. The fog becomes a pale, cool white. Rick's trench coat becomes beige. The runway becomes dark asphalt. The skin tones become warm and lifelike. The scene transforms from a historical artifact into something that feels almost contemporary — as if you are watching a modern film set in the 1940s, not a film made in the 1940s.</p>
-
-<p>AI colorization of classic film stills is controversial among film historians — and fascinating to everyone else. Here is what the AI gets right, what it gets wrong, and why the color choices are creative decisions, not technical ones.</p>
-
-<h2>What the AI Colorizer Gets Right</h2>
-
-<p>An AI colorizer trained on millions of color photographs can accurately predict: <strong>skin tones</strong> (the AI knows the range of human skin colors and applies them convincingly), <strong>sky and vegetation</strong> (sky is blue, grass is green, trees are green-brown — these are the most statistically reliable predictions), <strong>common materials</strong> (wood is brown, concrete is gray, brick is red-brown), and <strong>lighting conditions</strong> (the AI recognizes the difference between daylight, tungsten, and shadow and adjusts color temperature accordingly).</p>
-
-<p>For a casual viewer, the AI-colorized film still looks <strong>convincing</strong>. The colors are plausible. The scene looks like it could have been shot in color. The AI has done its job — it produced a statistically probable colorization of a black-and-white image.</p>
-
-<h2>What the AI Gets Wrong (and Why Film Historians Object)</h2>
-
-<p>The AI does not know: <strong>the costume designer's intent</strong> (was Ingrid Bergman's dress in that scene blue or green? The AI guesses. The costume designer knew.), <strong>the set decorator's color palette</strong> (the furniture, the wallpaper, the props — these were chosen for specific visual effects that the AI cannot reconstruct), and <strong>the cinematographer's lighting choices</strong> (the lighting was designed for black and white — high contrast, deep shadows, dramatic highlights. Adding color changes the emotional impact of the lighting.)</p>
-
-<p>Film historians object to AI colorization because it replaces the filmmakers' <strong>intentional creative choices</strong> with statistical guesses. The black and white cinematography of Casablanca was not a technical limitation — it was an artistic choice. The film was made in 1942. Color film existed. The filmmakers chose black and white for its dramatic effect. Colorizing the film changes the artistic intent, not just the pixel values.</p>
-
-<h2>When AI Colorization Is Appropriate</h2>
-
-<p>AI colorization is appropriate for: <strong>personal family photos and home movies</strong> (these were shot in black and white for cost reasons, not artistic reasons — colorizing them restores information that was lost, not art that was intended), <strong>historical documentary footage</strong> (the goal is to make the past feel real and immediate, and color helps achieve that goal), and <strong>educational purposes</strong> (showing students what historical events might have looked like in color).</p>
-
-<p>AI colorization is controversial for: <strong>artistically significant films</strong> (where the black and white cinematography was a deliberate creative choice), and <strong>any context where the colorized version is presented as historically accurate</strong> (the colors are guesses, not facts).</p>
-
-<p>The <a href="/en/tools/colorizer">AI colorizer</a> is a tool of <strong>imagination</strong>, not reconstruction. It shows you what the past might have looked like. It does not show you what the past actually looked like. The difference matters.</p>`
-  },
-  {
-    slug: "object-remover-wedding-photography-guide",
-    title: "Object Remover for Wedding Photography How to Remove Unwanted Guests Photobombers and Exit Signs from Your Perfect Wedding Photos",
-    description: "The ceremony was perfect. The photos have an exit sign above the altar, a photobomber in the background, and a fire extinguisher on the wall. AI object removal fixes all three in minutes.",
-    date: "2026-07-13",
-    category: "Edit",
-    tags: ["object remover", "wedding photography", "photo cleanup", "distractions", "retouching"],
-    relatedTools: ["object-remover", "background-remover", "photo-restorer"],
-    content: `<p>You receive your wedding photos from the photographer. The ceremony was perfect — the flowers, the vows, the first kiss. But photo 23, the wide shot of the altar, has a bright red EXIT sign directly above the couple's heads. Photo 47, the recessional, has a distant relative's arm reaching into the frame with a phone. Photo 58, the first dance, has a fire extinguisher on the wall behind the dance floor. The photographer delivered 500 photos. About 30 of them have distracting elements that draw the eye away from the subject.</p>
-
-<p>You could ask the photographer to retouch them — at $25-50 per photo for professional retouching. Or you could use an <a href="/en/tools/object-remover">AI object remover</a> to clean them up yourself in minutes, for free. Here is the wedding photo cleanup workflow that turns near-perfect photos into actually perfect ones.</p>
-
-<h2>The Wedding Photo Distraction Checklist</h2>
-
-<p>Go through every wedding photo and check for these five categories. They appear in roughly 40% of wedding photos.</p>
-
-<p><strong>Category 1: Exit signs and safety equipment.</strong> Fire extinguishers, exit signs, emergency lighting, sprinkler heads. Churches and event venues are required to have these. They are not photogenic. They are usually against walls or ceilings — uniform backgrounds that AI inpainting handles easily.</p>
-
-<p><strong>Category 2: Photobombers and partial people.</strong> A guest's arm, a shoulder, a phone held up to take a photo. These are people who were not supposed to be in the shot. They are usually at the edges of the frame. The AI replaces them with the background — walls, curtains, sky, grass.</p>
-
-<p><strong>Category 3: Clutter and temporary items.</strong> Water bottles on the floor, purses on chairs, paper programs on pews, coat check tickets on tables. These are items that guests brought and left in visible places. They are small, against simple backgrounds, and easy to remove.</p>
-
-<p><strong>Category 4: Venue signage.</strong> "No Smoking" signs, bathroom directional signs, catering signs, parking signs. These are necessary for the venue but unnecessary in the photos. They are usually on walls, which are uniform surfaces.</p>
-
-<p><strong>Category 5: Photographer's equipment.</strong> Light stands, camera bags, reflector discs, tripods. The photographer's own equipment sometimes appears in wide shots. These are larger objects that may require more careful inpainting.</p>
-
-<h2>The Cleanup Workflow</h2>
-
-<p><strong>Step 1: Sort the photos.</strong> Go through all 500 photos and flag the ones with distractions. Focus on the key photos — ceremony, first dance, speeches, posed portraits. The candids of guests dancing can have distractions. The formal portraits cannot.</p>
-
-<p><strong>Step 2: Remove the distractions.</strong> Use the <a href="/en/tools/object-remover">AI object remover</a> on each flagged photo. Circle the distraction. Click remove. The AI fills the area with the surrounding background. Exit signs disappear into the wall. Photobombers disappear into the crowd. Water bottles disappear into the floor.</p>
-
-<p><strong>Step 3: Review at 100% zoom.</strong> The AI fill should be invisible at normal viewing size. Zoom in to check for: edge artifacts (a visible seam where the fill meets the original image), texture inconsistencies (the filled area is smoother than the surrounding area), and color mismatches (the filled area is slightly different in color from the surrounding area). These are usually subtle and fixable with a second pass.</p>
-
-<p><strong>Step 4: Prioritize the album photos.</strong> The 50-100 photos that go in the wedding album deserve the most attention. The 400 photos that stay on a USB drive can have minor imperfections. Focus your cleanup time on the photos that will be printed, framed, and displayed.</p>
-
-<p>Clean up your wedding photos at <a href="/en/tools/object-remover">AI object remover</a> — the exit sign above the altar, the photobomber in the background, the fire extinguisher on the wall. All gone in minutes.</p>`
-  },
-  {
-    slug: "face-blur-journalism-protecting-sources-conflict-zones",
-    title: "Face Blur for Journalism How Photojournalists Protect Sources in Conflict Zones and Why AI Face Blur Is Now an Essential Press Freedom Tool",
-    description: "A photojournalist captures a protest in a country where identification means imprisonment. Face blur technology protects the subjects — and it is now as essential as the camera itself.",
-    date: "2026-07-13",
-    category: "Edit",
-    tags: ["face blur", "journalism", "press freedom", "source protection", "conflict zones"],
-    relatedTools: ["face-blur", "object-remover", "watermark-remover"],
-    content: `<p>You are a photojournalist covering a protest in a country where participating in an unauthorized gathering is a criminal offense punishable by imprisonment. You capture a powerful image: a crowd of protesters facing a line of police, morning light breaking through smoke, a single protester in the foreground, face clearly visible, expression defiant. The image will win awards. It will also identify the protester to the authorities. Publishing the unblurred photo could put the subject in prison.</p>
-
-<p>You run the photo through a <a href="/en/tools/face-blur">face blur</a> tool. The AI detects the faces in the crowd and blurs them. The image retains its power — the composition, the light, the tension, the narrative. The individuals are protected. The story is told. The photo can be published. Here is how face blur technology has become an essential tool for journalism in the digital age.</p>
-
-<h2>Why Face Blur Is Now a Standard Journalism Tool</h2>
-
-<p>Before digital face blur, photojournalists protected sources through: <strong>composition</strong> (shooting from behind, in silhouette, or cropping out faces), <strong>post-production</strong> (manually blurring or pixelating faces in Photoshop — time-consuming and imprecise), and <strong>editorial decisions</strong> (choosing not to publish a photo that could not be anonymized).</p>
-
-<p>AI face blur changes the workflow. The AI detects faces automatically — no manual selection required. The blur is applied consistently — the same level of obfuscation on every face. The processing takes seconds, not hours. A photojournalist can process an entire day's shoot — hundreds of photos — in the time it used to take to manually blur a single image.</p>
-
-<p>The result: more photos can be published safely. More stories can be told. More sources can be protected. The AI face blur is not just a convenience. It is a <strong>press freedom tool</strong>. It lowers the barrier to responsible publication of sensitive imagery.</p>
-
-<h2>The Ethical Guidelines for Face Blur in Journalism</h2>
-
-<p><strong>Blur before publication, not after.</strong> Once an unblurred photo is published online, it is permanent. The face can be scraped, indexed, and archived. Blurring must happen before the image leaves the newsroom. The <a href="/en/tools/face-blur">face blur tool</a> processes images locally in the browser — no upload, no server, no risk of the unblurred image leaking.</p>
-
-<p><strong>Consider the consequences of identification.</strong> The threshold for blurring depends on the risk. A protest in a democracy: low risk of identification leading to harm. A protest in an authoritarian regime: high risk. A witness to a crime: high risk. A public figure at a public event: low risk. The journalist must assess the risk for each photo. The AI provides the capability. The journalist provides the judgment.</p>
-
-<p><strong>Blur consistently.</strong> If you blur one protester's face, blur all protesters' faces. Selective blurring — blurring some faces but not others — implies that the unblurred individuals are more important or more culpable. The AI applies the same level of blur to every detected face. The consistency is an editorial principle, not just a technical feature.</p>
-
-<p><strong>Preserve the original, unblurred file.</strong> The unblurred original is the historical record. The blurred version is the published version. Store both. The unblurred original may be needed for future investigation, legal proceedings, or historical research — after the subjects are no longer at risk.</p>
-
-<h2>When Not to Blur</h2>
-
-<p>Do not blur faces in photos of: public officials performing public duties, law enforcement officers in public spaces (their faces are public record), crowds at public events in democratic countries where there is no specific risk of harm, and historical photos where the subjects are deceased and the photos are part of the historical record.</p>
-
-<p>The face blur is a <strong>protective tool</strong>, not a default setting. Use it when identification would cause harm. Do not use it when identification is harmless or when the public interest in identification outweighs the individual's privacy interest. The AI does the blurring. The journalist makes the call.</p>`
-  },
-  {
-    slug: "pdf-to-word-legal-document-discovery-ediscovery",
-    title: "PDF to Word for Legal Document Discovery How eDiscovery Teams Convert Millions of PDFs to Searchable Text — and Why AI Conversion Is Changing the Game",
-    description: "A lawsuit produces 2 million pages of PDF documents. Lawyers need to search them all for relevant evidence. AI PDF to Word conversion makes the documents searchable — here's how eDiscovery works.",
-    date: "2026-07-13",
-    category: "Document",
-    tags: ["PDF to Word", "eDiscovery", "legal", "document review", "searchable text"],
-    relatedTools: ["pdf-to-word", "image-description", "text-polish"],
-    content: `<p>A corporate lawsuit produces 2 million pages of documents. They arrive as PDFs — contracts, emails, memos, spreadsheets, presentation decks, handwritten notes. Some are scanned images with no text layer. Some are digitally created with searchable text. Some are a mix — a scanned document with a digital cover page. The legal team needs to find every document that mentions "Project Falcon" and every email between two specific executives. They cannot read 2 million pages. They need to <strong>search</strong> them.</p>
-
-<p>This is eDiscovery — the process of identifying, collecting, and producing electronically stored information for legal proceedings. And the first step is converting every PDF to searchable text. An <a href="/en/tools/pdf-to-word">AI PDF to Word converter</a> with OCR capability is the tool that makes eDiscovery possible. Here is how it works, and why AI conversion is replacing traditional OCR in the legal industry.</p>
-
-<h2>How eDiscovery Works: The 3-Step Pipeline</h2>
-
-<p><strong>Step 1: Collection and processing.</strong> All documents are collected from the client's systems — email servers, file shares, SharePoint, Slack, mobile devices. The documents are deduplicated (identical files are removed) and de-NISTed (system files and program files that are irrelevant to the case are removed). The remaining documents are the "review set" — the documents that might contain relevant evidence.</p>
-
-<p><strong>Step 2: OCR and text extraction.</strong> Every document in the review set needs a searchable text layer. Digitally created PDFs already have text — the text is extracted directly. Scanned PDFs need OCR — the images are converted to text. The <a href="/en/tools/pdf-to-word">PDF to Word converter</a> handles both types, extracting text from digital PDFs and running OCR on scanned PDFs. The output is a searchable text file for every document.</p>
-
-<p><strong>Step 3: Search and review.</strong> The legal team searches the text of all 2 million documents for keywords, names, dates, and phrases relevant to the case. The search narrows 2 million documents to perhaps 50,000 potentially relevant documents. Human reviewers read those 50,000 documents and determine which are actually relevant, which are privileged, and which are responsive to the opposing party's discovery requests.</p>
-
-<h2>Why AI Conversion Is Better Than Traditional OCR for Legal Documents</h2>
-
-<p>Traditional OCR (Optical Character Recognition) works by matching pixel patterns to character shapes. It is accurate for clean, printed text in standard fonts — 99% accuracy on a clean document. It is much less accurate for: handwritten notes (cursive is especially difficult), mixed fonts and sizes on the same page, text on colored backgrounds, and text in tables, charts, and diagrams.</p>
-
-<p>AI-based OCR — the technology behind modern <a href="/en/tools/pdf-to-word">PDF to Word converters</a> — uses neural networks trained on millions of document images. The AI recognizes: context (the word "Contract" in a legal document is more likely than "Contrant" — the AI corrects OCR errors based on expected vocabulary), document structure (tables, columns, headers, footnotes — the AI preserves the structure, not just the text), and handwriting (the AI is trained on handwritten text as well as printed text, improving accuracy on handwritten notes from 70% to 85-90%).</p>
-
-<p>In eDiscovery, the difference between 99% and 99.9% accuracy is the difference between finding the smoking gun document and missing it. If the key email is one of the 0.1% of documents with OCR errors, the search will not find it. The legal team will not review it. The evidence will be missed. AI conversion reduces the error rate enough to change the outcome of cases.</p>
-
-<h2>The Cost of eDiscovery (and How AI Reduces It)</h2>
-
-<p>Traditional eDiscovery costs $1-3 per document for human review. At 50,000 potentially relevant documents, that is $50,000-$150,000 per case — just for the review phase. AI technologies that improve the accuracy of the search phase reduce the number of documents that need human review. Better search = fewer documents to review = lower cost. The <a href="/en/tools/pdf-to-word">PDF to Word converter</a> is the first link in the chain. Accurate conversion means accurate search. Accurate search means fewer documents to review. Fewer documents to review means lower legal costs.</p>
-
-<p>The tool that converts PDFs to searchable text is not just a convenience for lawyers. It is a <strong>cost-reduction technology</strong> that affects the economics of every lawsuit. Convert your documents at <a href="/en/tools/pdf-to-word">AI PDF to Word</a> — the first step in making 2 million pages searchable.</p>`
-  },
-  {
-    slug: "style-transfer-vs-photo-restorer-creative-vs-restoration",
-    title: "Style Transfer vs Photo Restorer Creative Transformation vs Historical Restoration — Two AI Tools That Both Modify Images but Serve Completely Different Goals",
-    description: "Style transfer turns your photo into a Van Gogh painting. Photo restorer fixes your damaged old photo. Both use AI. Both modify images. But one is about creativity and the other is about accuracy.",
-    date: "2026-07-13",
-    category: "Edit",
-    tags: ["style transfer", "photo restorer", "creative", "restoration", "comparison"],
-    relatedTools: ["style-transfer", "photo-restorer", "colorizer"],
-    content: `<p>You have a photo of a landscape. You run it through <a href="/en/tools/style-transfer">style transfer</a> with a Van Gogh painting as the reference. The output is your landscape, painted in Van Gogh's swirling, vibrant style. The sky is alive with motion. The trees are transformed into brushstrokes. The image is no longer a photograph. It is a <strong>creative transformation</strong> of a photograph.</p>
-
-<p>Now you have a different photo — a 60-year-old family portrait that is faded, scratched, and yellowed. You run it through a <a href="/en/tools/photo-restorer">photo restorer</a>. The output is the same photo, restored to look like it did when it was first taken. The colors are revived. The scratches are gone. The faces are clear. The image is still a photograph. It is a <strong>restored version</strong> of the original photograph.</p>
-
-<p>Both tools use AI. Both modify images. Both are in the "Edit" category. But they serve completely different goals — one is about artistic transformation, the other is about historical preservation. Here is when to use each, and why confusing them produces results that nobody wants.</p>
-
-<h2>Style Transfer: Creative Transformation</h2>
-
-<p>Style transfer answers the question: <strong>"What would this image look like if it were created in a different artistic style?"</strong> The content comes from your photo. The style comes from a reference artwork. The AI merges the two — preserving the content structure (shapes, edges, composition) while applying the style texture (colors, brush strokes, patterns).</p>
-
-<p>The goal is <strong>creative expression</strong>, not accuracy. The output is not supposed to look like the original photo. It is supposed to look like a new artistic work inspired by the photo. The Van Gogh landscape is not a photograph of a landscape. It is a painting of a landscape. The fact that it looks different from the original is the point.</p>
-
-<p>Use style transfer for: artistic projects (turning photos into paintings), brand content (applying a consistent artistic style across marketing materials), product visualization (showing a product in different artistic styles), and creative exploration (seeing what a photo looks like in different artistic styles).</p>
-
-<h2>Photo Restorer: Historical Preservation</h2>
-
-<p>Photo restoration answers the question: <strong>"What did this image look like when it was first created?"</strong> The input is a damaged, degraded, or faded photograph. The AI identifies the damage — scratches, stains, fading, noise — and repairs it. The goal is to restore the photo to its <strong>original state</strong>, not to transform it into something new.</p>
-
-<p>The goal is <strong>accuracy</strong>, not creativity. The restored photo should look like the original photo, not like a new artistic interpretation of the photo. The faces should look like the same people. The colors should match the original colors. The details should be preserved, not enhanced. The AI is a restoration tool, not a creative tool.</p>
-
-<p>Use photo restorer for: old family photos, historical documents and photographs, damaged prints and negatives, and any image where the goal is to recover the original appearance, not create a new one.</p>
-
-<h2>The Decision Rule</h2>
-
-<p>Ask: <strong>"Do I want this image to look like the original, or do I want it to look like something new?"</strong> If you want the original → photo restorer. If you want something new → style transfer. The tools are both in the "Edit" category. They both use AI. They both modify images. But they solve opposite problems. One preserves the past. One creates something that never existed. Know which one you need before you start.</p>
-
-<p>Try both at <a href="/en/tools/style-transfer">style transfer</a> and <a href="/en/tools/photo-restorer">photo restorer</a> — creativity and restoration. Two different goals. Two different tools.</p>`
-  },
-  {
-    slug: "text-to-speech-history-voder-to-neural-tts",
-    title: "The History of Speech Synthesis From the Voder to Neural TTS — How Machines Learned to Speak in 90 Years",
-    description: "In 1939, the Voder — the first electronic speech synthesizer — was demonstrated at the World's Fair. It required a trained operator to produce intelligible speech. Today, AI TTS speaks more naturally than some humans. Here's the 90-year journey.",
-    date: "2026-07-13",
+    slug: "image-description-ecommerce-bulk-product-catalog",
+    title: "Image Description for E-Commerce How to Generate Alt Text for 10,000 Product Images Without Writing a Single Description by Hand",
+    description: "Your e-commerce site has 10,000 product images. Each one needs alt text for accessibility and SEO. Manual writing takes months. AI image description generates them all in hours. Here's the workflow.",
+    date: "2026-07-14",
     category: "Content",
-    tags: ["text to speech", "speech synthesis", "history", "Voder", "neural TTS"],
-    relatedTools: ["text-to-speech", "text-polish", "article-generator"],
-    content: `<p>In 1939, at the New York World's Fair, a machine called the Voder (Voice Operating Demonstrator) was demonstrated to the public. It was a console of keys, pedals, and levers — like an organ crossed with a typewriter. A trained operator pressed keys to produce speech sounds, controlled pitch with a foot pedal, and modulated the tone with a wrist bar. The result was intelligible, mechanical, and utterly alien — a robot voice from a machine that required a human operator to "play" it like a musical instrument.</p>
+    tags: ["image description", "e-commerce", "alt text", "product catalog", "automation"],
+    relatedTools: ["image-description", "background-remover", "ai-image-generator"],
+    content: `<p>You run an e-commerce site with 10,000 products. Each product has 3-5 images — that is 40,000 images total. Each image needs alt text for accessibility compliance and SEO. Writing alt text for 40,000 images manually, at 2 minutes per image, would take roughly 1,300 hours — eight months of full-time work. You do not have eight months. You have a site that is not accessible and not ranking in Google Image Search.</p>
 
-<p>Eighty-seven years later, you open a <a href="/en/tools/text-to-speech">text to speech</a> tool, paste a paragraph of text, and click a button. The AI generates natural, expressive speech — with correct intonation, appropriate pauses, and a voice that is indistinguishable from a human recording. No operator. No keys. No pedals. Just text in, speech out. Here is the 90-year journey from the Voder to neural TTS — and the technological breakthroughs that made machines sound human.</p>
+<p>An <a href="/en/tools/image-description">AI image description</a> tool can generate alt text for 40,000 images in hours — not months. The AI describes what it sees in each image. The descriptions are accurate, specific, and ready for review. Here is the bulk alt text generation workflow for e-commerce product catalogs.</p>
 
-<h2>Era 1: Mechanical and Electrical Synthesis (1939-1970) — The Age of the Operator</h2>
+<h2>Why Every Product Image Needs Alt Text</h2>
 
-<p>The Voder (1939) was not a text-to-speech system. It was a <strong>speech synthesizer</strong> — a machine that could produce speech sounds when operated by a trained human. The operator controlled the vocal tract parameters in real time — the buzz for voiced sounds, the hiss for unvoiced sounds, the pitch for intonation. It took months of training to produce intelligible speech. The Voder was a musical instrument for speech, not a machine that could read text.</p>
+<p>Alt text (alternative text) is the HTML attribute that describes an image for users who cannot see it — screen reader users, users with slow connections where images fail to load, and search engine crawlers. In e-commerce, alt text serves three purposes: <strong>accessibility</strong> (blind and low-vision users rely on alt text to understand product images), <strong>SEO</strong> (Google indexes alt text for image search — product images with good alt text rank higher and drive more traffic), and <strong>resilience</strong> (when images fail to load, the alt text displays instead of a broken image icon).</p>
 
-<p>The first true text-to-speech system was the <strong>Pattern Playback</strong> (1951) at Haskins Laboratories. It converted hand-painted spectrograms — visual representations of speech frequencies — back into sound. It was not automatic. The spectrograms were painted by hand. But it proved that speech could be synthesized from visual representations of sound patterns.</p>
+<p>Good product alt text describes: the product (what is it?), the view (front, back, side, detail?), the context (on a model, on a white background, in use?), and the key features visible in this specific image (color, material, size, pattern). Example: "Front view of navy blue wool-blend blazer with notch lapel and two-button closure, worn by male model against white background."</p>
 
-<p>The first fully automatic text-to-speech system was developed at MIT in the 1960s. It used <strong>formant synthesis</strong> — modeling the human vocal tract as a series of resonant frequencies (formants) and generating speech by simulating how these formants change over time. The result was intelligible but robotic — the voice of early GPS navigation systems and Stephen Hawking's speech synthesizer.</p>
+<h2>The Bulk Generation Workflow</h2>
 
-<h2>Era 2: Concatenative Synthesis (1970-2010) — The Age of Recorded Speech</h2>
+<p><strong>Step 1: Prepare the image list.</strong> Export all product image URLs from your CMS or e-commerce platform. Include the product name and SKU for each image. The product name provides context that helps the AI generate more accurate descriptions.</p>
 
-<p>Concatenative synthesis abandoned vocal tract modeling in favor of a simpler approach: <strong>record a human speaker saying thousands of words and phrases, then stitch the recordings together to form new sentences.</strong> The output was more natural than formant synthesis because the individual speech units were real human recordings. The weakness: the transitions between stitched-together units were often unnatural, producing a slightly robotic, "choppy" quality.</p>
+<p><strong>Step 2: Generate alt text in batches.</strong> Process images through the <a href="/en/tools/image-description">AI image description</a> tool. The AI analyzes each image and generates a text description. The description is based on what the AI actually sees in the image — not on the product data in your database. This is important: the AI describes the image, not the product. If the image shows a navy blazer but the database says "black blazer," the AI will correctly describe the navy color it sees.</p>
 
-<p>This was the technology behind early GPS voices, automated phone systems, and the first consumer TTS products. It was good enough for short, predictable phrases ("Turn left in 500 feet") but struggled with longer, more varied text. The "uncanny valley" of speech synthesis — almost human, but not quite — was the result of concatenative synthesis.</p>
+<p><strong>Step 3: Human review for accuracy.</strong> Spot-check 5-10% of the generated alt text for accuracy. The AI is accurate about 90-95% of the time for product images. The 5-10% error rate includes: incorrect colors (navy vs black, cream vs white), misidentified materials (polyester vs silk), and confusion between similar products (blazer vs suit jacket). The human review catches these errors before they reach your product pages.</p>
 
-<h2>Era 3: Neural TTS (2016-Present) — The Age of Learned Speech</h2>
+<p><strong>Step 4: Import back into the CMS.</strong> Upload the generated alt text to your product image metadata. The alt text is now live on your site. Google can index it. Screen readers can read it. Your 40,000 images are accessible.</p>
 
-<p>The breakthrough came with <strong>deep learning</strong>. Instead of programming rules for speech production or recording speech fragments, neural TTS systems <strong>learn to speak</strong> by training on thousands of hours of human speech. The AI learns the relationship between text and speech — how letters map to sounds, how sounds combine into words, how words combine into sentences, and how sentences convey meaning through intonation, rhythm, and emphasis.</p>
+<h2>The ROI of Automated Alt Text</h2>
 
-<p>Models like WaveNet (DeepMind, 2016), Tacotron (Google, 2017), and FastSpeech (Microsoft, 2019) produced speech that was dramatically more natural than concatenative synthesis. The latest models — the ones powering modern <a href="/en/tools/text-to-speech">text to speech</a> tools — are approaching human-level naturalness. They handle: natural intonation (the voice rises and falls appropriately, not monotonically), emotional expression (some models can convey happiness, sadness, urgency, or calm), and contextual pronunciation (the word "read" is pronounced differently in "I will read" and "I have read" — the AI learns this from context).</p>
+<p>Manual alt text: 40,000 images × 2 minutes = 1,300 hours. AI-generated alt text: 40,000 images × 5 seconds = 55 hours (including review time). The AI reduces the time from 8 months to about 1.5 weeks. The alt text improves SEO (more traffic from image search), improves accessibility (compliance with WCAG and ADA), and improves the user experience (images that fail to load show text instead of broken icons). The cost of the AI tool is negligible compared to the cost of manual writing or the cost of not having alt text at all.</p>
 
-<h2>What the 90-Year Journey Teaches</h2>
+<p>Generate alt text for your product images at <a href="/en/tools/image-description">AI image description</a> — describe 40,000 images in hours, not months.</p>`
+  },
+  {
+    slug: "background-remover-graphic-design-transparent-png",
+    title: "Background Remover for Graphic Design How to Create Transparent PNG Assets for Presentations Logos and Social Media Graphics",
+    description: "You need a transparent PNG of your logo, your product, or a photo for a presentation. AI background removal creates it in seconds — no Photoshop, no pen tool, no manual masking.",
+    date: "2026-07-14",
+    category: "Edit",
+    tags: ["background remover", "transparent PNG", "graphic design", "logo", "presentation"],
+    relatedTools: ["background-remover", "object-remover", "ai-image-generator"],
+    content: `<p>You are creating a presentation. You need your company logo on a transparent background to place over a gradient slide. The logo file you have is a JPEG on a white background — it will look like a white rectangle pasted on a gradient. Unprofessional. You need a transparent PNG. You could open Photoshop, use the magic wand, refine the edge, and export. Or you could use a <a href="/en/tools/background-remover">background remover</a> — upload the JPEG, click one button, and download a transparent PNG. Ten seconds instead of ten minutes.</p>
 
-<p>The history of speech synthesis is a history of <strong>shifting from programming rules to learning from data</strong>. The Voder required a human operator. Formant synthesis required human-programmed rules. Concatenative synthesis required human-recorded speech fragments. Neural TTS requires human-labeled training data. Each era reduced the amount of human effort per unit of speech output. The Voder required months of training to produce a single sentence. Neural TTS requires seconds of computation to produce hours of speech. The trajectory is clear: speech synthesis is moving from human-operated to fully autonomous, from mechanical to natural, from a laboratory curiosity to a ubiquitous tool. The <a href="/en/tools/text-to-speech">AI text to speech</a> tool you use today is the culmination of 90 years of research — and it will sound primitive compared to what exists in 2036.</p>`
+<p>Transparent PNGs are the universal format for graphic design assets. Every designer needs them. AI background removal makes them accessible to everyone. Here is the transparent PNG creation workflow for the most common design tasks.</p>
+
+<h2>Use Case 1: Logo on a Transparent Background</h2>
+
+<p>Your logo is your most-used visual asset. It appears on: presentations, documents, social media graphics, email signatures, website headers, and merchandise. Each context has a different background. A logo on a white rectangle looks amateur in every context. A logo on a transparent background looks professional everywhere.</p>
+
+<p>Use the <a href="/en/tools/background-remover">background remover</a> to create a transparent PNG version of your logo. Upload the logo file. The AI removes the background. Download the transparent PNG. Save it as the canonical version of your logo. Use it everywhere. The one-time conversion from JPEG to transparent PNG is the single most valuable design task you can do with a background remover.</p>
+
+<h2>Use Case 2: Product Photos for Marketing Materials</h2>
+
+<p>You need to place product photos on: a sale banner, a social media graphic, an email header, a print flyer. Each has a different background color or image. The product photo on its original background looks like a photo pasted on a design. The product photo on a transparent background looks like it belongs in the design.</p>
+
+<p>Use the background remover to extract the product from its original photo. Place the transparent product PNG on any background — a solid color, a gradient, a lifestyle image, a pattern. The product integrates with the design because it has no background of its own. The transparent PNG is the <strong>design asset</strong> that makes the product composable.</p>
+
+<h2>Use Case 3: Portrait Cutouts for Team Pages and Social Media</h2>
+
+<p>Your team page needs consistent headshots. Your social media needs engaging profile images. A portrait on a transparent background can be placed on: a colored circle, a branded frame, a gradient background, or a pattern. The transparent PNG gives you design flexibility that a fixed-background photo cannot provide.</p>
+
+<p>Use the background remover to extract each team member's portrait. Place them on a consistent background — the same color, the same frame, the same style. The team page looks professional because every headshot has the same treatment. The transparent PNG is the <strong>intermediate format</strong> that enables consistent design.</p>
+
+<h2>Use Case 4: Icons and Graphics for Presentations</h2>
+
+<p>You find a perfect icon for your presentation — but it is on a white background. The slide background is dark blue. The white rectangle around the icon will be visible and ugly. Use the background remover to extract the icon. The transparent PNG icon blends seamlessly with the slide background. No white rectangle. No visual clash. The presentation looks professionally designed.</p>
+
+<p>Create transparent PNGs at <a href="/en/tools/background-remover">AI background remover</a> — logos, products, portraits, icons. Anything that needs to be placed on a different background. One click. Ten seconds. Transparent PNG ready.</p>`
+  },
+  {
+    slug: "text-polish-business-email-professional-tone",
+    title: "Text Polish for Business Email How to Communicate Professionally Across Cultures Without Sounding Like a Robot",
+    description: "An email that sounds professional in New York might sound cold in Tokyo and aggressive in Stockholm. AI text polish can adjust your tone for different cultural contexts — here's how.",
+    date: "2026-07-14",
+    category: "Content",
+    tags: ["text polish", "business email", "cross-cultural", "professional tone", "communication"],
+    relatedTools: ["text-polish", "translate", "article-generator"],
+    content: `<p>You write an email to a Japanese client: "We need the contract by Friday. Please confirm." It is direct, clear, and efficient — standard American business communication. Your Japanese colleague reads it and is offended. In Japanese business culture, direct demands are rude. The appropriate phrasing would be: "We would be grateful if you could kindly consider providing the contract at your earliest convenience, ideally by Friday if possible."</p>
+
+<p>Now you write an email to a Swedish partner, overcorrecting for cultural sensitivity: "We would be most honored if you could possibly consider reviewing the attached proposal when you have a moment, if it is not too much trouble." Your Swedish partner reads it and is confused. In Swedish business culture, extreme politeness reads as insincerity. The appropriate phrasing would be: "Please review the attached proposal. Let me know your thoughts by Friday."</p>
+
+<p>Business communication across cultures is a minefield. An <a href="/en/tools/text-polish">AI text polisher</a> can adjust your tone for different cultural contexts — but you need to know what to ask for. Here is how to communicate professionally across cultures without sounding like a robot or accidentally offending someone.</p>
+
+<h2>The Cultural Dimensions of Email Tone</h2>
+
+<p><strong>Direct vs Indirect:</strong> American, German, and Scandinavian business cultures favor direct communication — state your request clearly, provide the context, and expect a direct response. Japanese, Korean, and many Middle Eastern business cultures favor indirect communication — the request is implied through context, and a direct "no" is rarely stated. The directness of your email should match the cultural expectations of the recipient, not your own cultural default.</p>
+
+<p><strong>Formal vs Informal:</strong> French, Japanese, and German business cultures maintain formal address (titles, last names, formal greetings) until explicitly invited to switch to informal. American and Australian business cultures tend to switch to first names and casual tone quickly. The formality of your email should match the recipient's expectations. Being too casual is disrespectful. Being too formal is distancing.</p>
+
+<p><strong>High-Context vs Low-Context:</strong> High-context cultures (Japan, China, Arab countries) communicate meaning through context, relationship, and implication — what is not said is as important as what is said. Low-context cultures (USA, Germany, Scandinavia) communicate meaning explicitly through words — everything is stated directly. Your email to a high-context recipient should include relationship-building elements. Your email to a low-context recipient should be concise and explicit.</p>
+
+<h2>How to Use AI Text Polish for Cross-Cultural Communication</h2>
+
+<p>Write your email in your natural style. Then use the <a href="/en/tools/text-polish">AI text polisher</a> with a prompt like: "Polish this email to be more [direct/indirect] and [formal/informal] for a [culture] business context. Preserve the key information and request. Adjust the tone only."</p>
+
+<p>Examples: "Polish this email to be less direct and more formal for a Japanese business context." "Polish this email to be more direct and less formal for a Swedish business context." "Polish this email to add relationship-building context for a Brazilian business culture."</p>
+
+<p>The AI adjusts: the greeting (Dear Mr. Tanaka vs Hi Yuki), the level of directness (Could you please... vs We need...), the closing (Sincerely vs Best vs Cheers), and the relationship-building elements (including a sentence about the ongoing partnership, the weather, or a shared experience).</p>
+
+<h2>When AI Polish Is Not Enough</h2>
+
+<p>The AI can adjust the tone of your email. It cannot understand the nuances of your specific relationship with the recipient, the history of your interactions, or the specific cultural expectations of a particular company or industry. Use the AI as a <strong>first pass</strong>. Then apply your own cultural knowledge. The AI gets the tone right. You get the relationship right. Together, the email lands the way you intended.</p>
+
+<p>Polish your cross-cultural emails at <a href="/en/tools/text-polish">AI text polish</a> — direct, indirect, formal, informal. The right tone for the right recipient.</p>`
+  },
+  {
+    slug: "avatar-generator-game-development-npc-characters",
+    title: "AI Avatar Generator for Game Development How Indie Developers Create NPC Character Portraits Without an Artist",
+    description: "Your RPG needs 50 NPC character portraits. Hiring an artist costs $50-200 per portrait. AI avatar generation costs a few credits per portrait. Here's how indie devs are building character art on a budget.",
+    date: "2026-07-14",
+    category: "Generate",
+    tags: ["AI avatar", "game development", "NPC", "character design", "indie dev"],
+    relatedTools: ["avatar-generator", "ai-image-generator", "style-transfer"],
+    content: `<p>You are an indie game developer building an RPG. Your game has 50 NPCs — shopkeepers, quest-givers, villains, background characters. Each one needs a character portrait for the dialogue screen. Hiring a character artist costs $50-200 per portrait, depending on detail and style. Fifty portraits = $2,500-$10,000. That is your entire art budget. You cannot afford an artist. You cannot ship the game without portraits. Dialogue screens without character art look unfinished.</p>
+
+<p>An <a href="/en/tools/avatar-generator">AI avatar generator</a> offers a third option. You describe each character — their appearance, personality, role — and the AI generates a portrait. Fifty portraits in a day. Consistent style across all of them. Total cost: a fraction of hiring an artist. Here is the NPC portrait workflow for indie game developers.</p>
+
+<h2>Step 1: Define the Visual Style for Your Game</h2>
+
+<p>Before generating a single portrait, decide on the <strong>art style</strong> that will unify all NPC portraits. The style should match your game's aesthetic: fantasy RPG (painterly, medieval, warm tones), sci-fi (clean, futuristic, cool tones), pixel art (retro, blocky, limited palette), or anime/JRPG (cel-shaded, expressive, vibrant colors).</p>
+
+<p>Write a style prompt template that will be prepended to every character description. Example for a fantasy RPG: "Character portrait, fantasy RPG style, painterly, detailed face, soft lighting, medieval clothing, neutral background, consistent art style, 512x512 portrait." This template ensures every generated portrait shares the same visual language. The character descriptions vary. The style remains constant.</p>
+
+<p>Test the style template with 3-5 character descriptions. Generate portraits. Review them side by side. Do they look like they belong in the same game? If the styles are inconsistent, adjust the template. The style template is the <strong>art director</strong> of your AI-generated portraits. It defines the visual identity of your game's characters.</p>
+
+<h2>Step 2: Generate Portraits for Each NPC</h2>
+
+<p>For each NPC, write a character description that includes: gender, age range, role (blacksmith, innkeeper, wizard), distinguishing features (scar, eyepatch, beard, glasses), expression (friendly, gruff, mysterious, cheerful), and clothing (armor, robes, apron, merchant attire).</p>
+
+<p>Example: "Middle-aged male dwarf blacksmith, thick red beard, muscular build, leather apron, friendly expression, holding a hammer, warm forge lighting in background."</p>
+
+<p>Generate 3-5 variations per character. The AI will produce different interpretations of the same description. Pick the best one. The variations give you options. The character description gives you consistency.</p>
+
+<h2>Step 3: Post-Process for Consistency</h2>
+
+<p>After generating all 50 portraits, run them through a consistent post-processing pipeline: crop to the same aspect ratio (all portraits should be the same size and framing), apply the same background (use the <a href="/en/tools/background-remover">background remover</a> to extract characters onto a transparent background, then place them all on the same neutral background), and export at the same resolution (consistent sizing for the game engine).</p>
+
+<p>The post-processing is what makes the AI-generated portraits look like a <strong>set</strong> rather than a collection of individual images. The consistent framing, background, and resolution create visual unity. The player perceives the portraits as belonging to the same game world, not as AI-generated images.</p>
+
+<h2>When AI Portraits Work and When to Hire an Artist</h2>
+
+<p>AI portraits work well for: indie games with limited budgets (AI is better than no portraits at all), background NPCs (shopkeepers, quest-givers — the player interacts with them briefly), and early development and prototyping (generate placeholder portraits quickly, replace with artist-drawn portraits later if budget allows).</p>
+
+<p>Hire an artist for: main characters and party members (the player spends hours looking at these portraits), marketing and promotional art (the key art that sells the game), and any character whose portrait is a core part of the game's appeal.</p>
+
+<p>Generate your NPC portraits at <a href="/en/tools/avatar-generator">AI avatar generator</a> — define the style, describe the characters, and build a consistent visual world on an indie budget.</p>`
+  },
+  {
+    slug: "image-upscaler-vs-ai-image-generator-enhance-vs-create",
+    title: "Image Upscaler vs AI Image Generator Enhancement vs Creation — Two AI Image Tools That Work in Opposite Directions",
+    description: "AI image generator creates new images from text prompts. Image upscaler enhances existing images. They are the two ends of the AI image pipeline — creation and enhancement. Here's how they work together.",
+    date: "2026-07-14",
+    category: "Edit",
+    tags: ["image upscaler", "AI image generator", "enhancement", "creation", "pipeline"],
+    relatedTools: ["image-upscaler", "ai-image-generator", "style-transfer"],
+    content: `<p>You generate an image with an <a href="/en/tools/ai-image-generator">AI image generator</a>. The prompt: "A cyberpunk cityscape at night, neon reflections on wet pavement, flying cars, cinematic lighting." The result is stunning — but it is 1024×1024 pixels. You need it at 2048×2048 for a print project. You run it through an <a href="/en/tools/image-upscaler">image upscaler</a>. The AI enhances the resolution, sharpens the details, and makes the neon reflections crisper. The image is now print-ready at double the resolution.</p>
+
+<p>The AI image generator and the image upscaler are <strong>opposite ends of the same pipeline</strong>. The generator creates new images from nothing. The upscaler enhances existing images. They work together — the generator produces the image. The upscaler makes it usable at larger sizes. Here is how they complement each other, and when to use each one alone.</p>
+
+<h2>AI Image Generator: Creation from Scratch</h2>
+
+<p>The AI image generator answers the question: <strong>"What should this image look like?"</strong> It starts with random noise and iteratively refines it into an image that matches your text description. The output is a completely new image — it did not exist before you wrote the prompt. The generator is a <strong>creative tool</strong>. It produces images from ideas.</p>
+
+<p>The generator's strengths: unlimited creative possibilities (any subject, any style, any composition), speed (seconds per image), and iteration (generate 20 variations of an idea and pick the best one). The generator's weakness: resolution (most AI generators output at 1024×1024 or similar — fine for web, insufficient for print), and specificity (the AI generates what you describe, but it may not capture every detail exactly as you imagined it).</p>
+
+<h2>Image Upscaler: Enhancement of the Existing</h2>
+
+<p>The image upscaler answers the question: <strong>"How can I make this image look better at a larger size?"</strong> It takes an existing image and increases its resolution while preserving and enhancing details. The upscaler is a <strong>refinement tool</strong>. It improves images that already exist.</p>
+
+<p>The upscaler's strengths: resolution increase (2×, 4×, or more — the AI adds detail rather than just stretching pixels), detail preservation (edges become sharper, textures become clearer, noise is reduced), and print-readiness (you can upscale a web-resolution image to print resolution). The upscaler's weakness: it cannot create new content (it enhances what is already there), and extreme upscaling factors (8× or more) produce visible artifacts.</p>
+
+<h2>The Complete Pipeline: Generate, Then Upscale</h2>
+
+<p>The standard AI image workflow: <strong>generate → upscale → use</strong>. Step 1: Use the AI image generator to create the image at the default resolution (1024×1024). Generate multiple variations and pick the best one. Step 2: Use the image upscaler to increase the resolution to the target size. For web use, 2× upscale is usually sufficient. For print, 4× upscale may be needed depending on the print size. Step 3: Use the upscaled image in your project — web, print, social media, presentation.</p>
+
+<p>This pipeline gives you the best of both tools: the creative freedom of the generator and the resolution quality of the upscaler. The generator does what it does best — create. The upscaler does what it does best — enhance. Neither tool replaces the other. They work together.</p>
+
+<h2>When to Use Each Alone</h2>
+
+<p>Use only the generator when: the image is for web use at the default resolution (social media, blog posts, digital presentations), and you do not need a larger version. Use only the upscaler when: you already have an image that you love but it is too small for your needs (an old digital photo, a low-resolution screenshot, a downloaded image that needs to be larger), and you do not need to create new content. Use both together when: you are creating a new image that needs to be larger than the generator's default resolution. Generate first. Upscale second. The pipeline is the standard workflow for AI image creation at print-ready quality.</p>
+
+<p>Create at <a href="/en/tools/ai-image-generator">AI image generator</a> and enhance at <a href="/en/tools/image-upscaler">image upscaler</a> — creation and enhancement. Two ends of the same pipeline. Better together.</p>`
+  },
+  {
+    slug: "article-generator-future-ai-writing-2030",
+    title: "The Future of AI Writing How Article Generators Will Change Content Creation by 2030 — and What Human Writers Should Do About It",
+    description: "In 2023, AI writing was a novelty. In 2026, it is mainstream. By 2030, it will be ubiquitous. Here's what the trajectory looks like — and why human writers are not being replaced, they are being repositioned.",
+    date: "2026-07-14",
+    category: "Content",
+    tags: ["article generator", "AI writing", "future", "content creation", "trends"],
+    relatedTools: ["article-generator", "text-polish", "text-to-speech"],
+    content: `<p>In 2023, AI article generators were a novelty. The output was impressive but inconsistent — sometimes brilliant, sometimes nonsensical, often recognizably non-human. By 2026, they are mainstream. The output is reliable, well-structured, and increasingly difficult to distinguish from human writing. The question is no longer "can AI write?" It is "what should humans write when AI can write everything?"</p>
+
+<p>An <a href="/en/tools/article-generator">AI article generator</a> in 2026 can produce a 1,000-word article on almost any topic in under a minute. The grammar is correct. The structure is logical. The content is factually accurate (mostly). The writing is competent. But competence is not the same as insight. And the trajectory from 2026 to 2030 suggests that AI will become more competent — while the value of human writing will shift toward what AI cannot do. Here is what that trajectory looks like, and what human writers should do about it.</p>
+
+<h2>2023-2026: The Competence Era</h2>
+
+<p>The current era of AI writing is defined by <strong>competence</strong>. AI can write articles that are grammatically correct, structurally sound, and factually accurate on well-documented topics. The AI is a <strong>junior writer</strong> — it can produce a solid first draft, but it needs human editing, fact-checking, and voice injection to be publishable. The AI handles the mechanics. The human handles the meaning.</p>
+
+<p>The AI excels at: formulaic content (product descriptions, news summaries, how-to guides), content at scale (producing hundreds of articles from a database of facts), and content that does not require originality (the thousandth article about "how to lose weight" does not need to be original — it needs to be accurate and well-structured).</p>
+
+<p>The AI struggles with: original reporting (the AI cannot interview sources, visit locations, or investigate), genuine expertise (the AI knows what the internet knows — it cannot contribute new knowledge from personal experience), and voice and personality (the AI can mimic a style, but it cannot develop a unique perspective born from a lifetime of specific experiences).</p>
+
+<h2>2027-2030: The Insight Era (Predicted)</h2>
+
+<p>The next era will likely be defined by <strong>insight</strong>. AI will become better at: synthesizing information across multiple sources to produce novel connections, personalizing content for specific audiences based on their reading history and preferences, and generating content in multiple formats simultaneously (article + audio + video script + social media posts from a single prompt).</p>
+
+<p>The AI will not become better at: having original ideas (the AI generates from training data — it cannot have a genuinely new idea, only a new combination of existing ideas), having lived experience (the AI has never been in love, never lost a parent, never failed at a career, never traveled to a new country — the emotional texture of human experience is inaccessible to it), and taking genuine intellectual risks (the AI is designed to be safe and accurate — it will not stake out a controversial position, challenge a consensus, or argue for an unpopular idea).</p>
+
+<h2>What Human Writers Should Do About It</h2>
+
+<p>The human writer's value proposition is shifting from <strong>production</strong> to <strong>perspective</strong>. The AI can produce text. It cannot produce a perspective that comes from being a specific human with specific experiences, specific expertise, and a specific point of view.</p>
+
+<p>The writers who thrive in the AI era will: focus on <strong>original ideas</strong> (the AI can write about what is known — the human writer writes about what they have discovered), develop a <strong>distinctive voice</strong> (the AI can mimic a style, but it cannot develop a voice that is uniquely yours), and use AI as a <strong>productivity tool</strong> (let the AI write the first draft, the research summary, the outline — then the human writer adds the insight, the personality, and the original thinking that the AI cannot provide).</p>
+
+<p>The AI article generator is not replacing human writers. It is <strong>repositioning</strong> them. The value is no longer in the ability to produce text. The value is in the ability to produce <strong>meaning</strong> — original ideas, genuine expertise, and a distinctive perspective that could only come from one specific human. The AI writes the article. The human writes the insight. The future belongs to writers who understand the difference.</p>
+
+<p>Generate your next article at <a href="/en/tools/article-generator">AI article generator</a> — then add the insight that only you can provide.</p>`
   },
 ];
 
@@ -232,4 +238,4 @@ content = content.replace(old, new_blogs)
 with open(BLOG_FILE, "w", encoding="utf-8") as f:
     f.write(content)
 
-print("AI station: 142->done.")
+print("AI station: 148->done.")
