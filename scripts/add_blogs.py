@@ -1,4 +1,4 @@
-"""Add 6 blogs to AI station (148→154 static) — July 14, 2026"""
+"""Add 6 blogs to AI station (154→160 static) — July 15, 2026"""
 import os, sys
 
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
@@ -10,224 +10,210 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "image-description-ecommerce-bulk-product-catalog",
-    title: "Image Description for E-Commerce How to Generate Alt Text for 10,000 Product Images Without Writing a Single Description by Hand",
-    description: "Your e-commerce site has 10,000 product images. Each one needs alt text for accessibility and SEO. Manual writing takes months. AI image description generates them all in hours. Here's the workflow.",
-    date: "2026-07-14",
-    category: "Content",
-    tags: ["image description", "e-commerce", "alt text", "product catalog", "automation"],
-    relatedTools: ["image-description", "background-remover", "ai-image-generator"],
-    content: `<p>You run an e-commerce site with 10,000 products. Each product has 3-5 images — that is 40,000 images total. Each image needs alt text for accessibility compliance and SEO. Writing alt text for 40,000 images manually, at 2 minutes per image, would take roughly 1,300 hours — eight months of full-time work. You do not have eight months. You have a site that is not accessible and not ranking in Google Image Search.</p>
-
-<p>An <a href="/en/tools/image-description">AI image description</a> tool can generate alt text for 40,000 images in hours — not months. The AI describes what it sees in each image. The descriptions are accurate, specific, and ready for review. Here is the bulk alt text generation workflow for e-commerce product catalogs.</p>
-
-<h2>Why Every Product Image Needs Alt Text</h2>
-
-<p>Alt text (alternative text) is the HTML attribute that describes an image for users who cannot see it — screen reader users, users with slow connections where images fail to load, and search engine crawlers. In e-commerce, alt text serves three purposes: <strong>accessibility</strong> (blind and low-vision users rely on alt text to understand product images), <strong>SEO</strong> (Google indexes alt text for image search — product images with good alt text rank higher and drive more traffic), and <strong>resilience</strong> (when images fail to load, the alt text displays instead of a broken image icon).</p>
-
-<p>Good product alt text describes: the product (what is it?), the view (front, back, side, detail?), the context (on a model, on a white background, in use?), and the key features visible in this specific image (color, material, size, pattern). Example: "Front view of navy blue wool-blend blazer with notch lapel and two-button closure, worn by male model against white background."</p>
-
-<h2>The Bulk Generation Workflow</h2>
-
-<p><strong>Step 1: Prepare the image list.</strong> Export all product image URLs from your CMS or e-commerce platform. Include the product name and SKU for each image. The product name provides context that helps the AI generate more accurate descriptions.</p>
-
-<p><strong>Step 2: Generate alt text in batches.</strong> Process images through the <a href="/en/tools/image-description">AI image description</a> tool. The AI analyzes each image and generates a text description. The description is based on what the AI actually sees in the image — not on the product data in your database. This is important: the AI describes the image, not the product. If the image shows a navy blazer but the database says "black blazer," the AI will correctly describe the navy color it sees.</p>
-
-<p><strong>Step 3: Human review for accuracy.</strong> Spot-check 5-10% of the generated alt text for accuracy. The AI is accurate about 90-95% of the time for product images. The 5-10% error rate includes: incorrect colors (navy vs black, cream vs white), misidentified materials (polyester vs silk), and confusion between similar products (blazer vs suit jacket). The human review catches these errors before they reach your product pages.</p>
-
-<p><strong>Step 4: Import back into the CMS.</strong> Upload the generated alt text to your product image metadata. The alt text is now live on your site. Google can index it. Screen readers can read it. Your 40,000 images are accessible.</p>
-
-<h2>The ROI of Automated Alt Text</h2>
-
-<p>Manual alt text: 40,000 images × 2 minutes = 1,300 hours. AI-generated alt text: 40,000 images × 5 seconds = 55 hours (including review time). The AI reduces the time from 8 months to about 1.5 weeks. The alt text improves SEO (more traffic from image search), improves accessibility (compliance with WCAG and ADA), and improves the user experience (images that fail to load show text instead of broken icons). The cost of the AI tool is negligible compared to the cost of manual writing or the cost of not having alt text at all.</p>
-
-<p>Generate alt text for your product images at <a href="/en/tools/image-description">AI image description</a> — describe 40,000 images in hours, not months.</p>`
-  },
-  {
-    slug: "background-remover-graphic-design-transparent-png",
-    title: "Background Remover for Graphic Design How to Create Transparent PNG Assets for Presentations Logos and Social Media Graphics",
-    description: "You need a transparent PNG of your logo, your product, or a photo for a presentation. AI background removal creates it in seconds — no Photoshop, no pen tool, no manual masking.",
-    date: "2026-07-14",
+    slug: "photo-restorer-genealogy-family-tree-research",
+    title: "Photo Restorer for Genealogy How Family Historians Are Restoring Ancestor Photos to Discover Details Hidden by Decades of Damage",
+    description: "A 120-year-old family photo is faded, cracked, and stained. AI photo restoration reveals the faces, clothing, and details that tell your family's story. Here's how genealogists use AI to recover the past.",
+    date: "2026-07-15",
     category: "Edit",
-    tags: ["background remover", "transparent PNG", "graphic design", "logo", "presentation"],
-    relatedTools: ["background-remover", "object-remover", "ai-image-generator"],
-    content: `<p>You are creating a presentation. You need your company logo on a transparent background to place over a gradient slide. The logo file you have is a JPEG on a white background — it will look like a white rectangle pasted on a gradient. Unprofessional. You need a transparent PNG. You could open Photoshop, use the magic wand, refine the edge, and export. Or you could use a <a href="/en/tools/background-remover">background remover</a> — upload the JPEG, click one button, and download a transparent PNG. Ten seconds instead of ten minutes.</p>
+    tags: ["photo restorer", "genealogy", "family history", "ancestor photos", "restoration"],
+    relatedTools: ["photo-restorer", "colorizer", "image-upscaler"],
+    content: `<p>You find a photo of your great-great-grandparents, taken around 1905. The photo is faded to sepia. There is a crack running through your great-great-grandmother's face. A water stain obscures the lower right corner. You can barely make out the details — the pattern on her dress, the expression on his face, the background of the room they are standing in. The photo is a primary source for your family history. It is also nearly unreadable.</p>
 
-<p>Transparent PNGs are the universal format for graphic design assets. Every designer needs them. AI background removal makes them accessible to everyone. Here is the transparent PNG creation workflow for the most common design tasks.</p>
+<p>You scan the photo and run it through a <a href="/en/tools/photo-restorer">photo restorer</a>. The AI enhances the contrast, reduces the visibility of the crack, and sharpens the faded details. The pattern on her dress becomes visible — a floral print, typical of the era. His expression becomes clear — a slight smile, a young man proud of his new family. The background reveals a painted studio backdrop, not their actual home. The photo is not just restored — it is <strong>readable</strong> for the first time in decades. Here is how genealogists are using AI to recover family history from damaged photographs.</p>
 
-<h2>Use Case 1: Logo on a Transparent Background</h2>
+<h2>Why Genealogy and Photo Restoration Are a Perfect Match</h2>
 
-<p>Your logo is your most-used visual asset. It appears on: presentations, documents, social media graphics, email signatures, website headers, and merchandise. Each context has a different background. A logo on a white rectangle looks amateur in every context. A logo on a transparent background looks professional everywhere.</p>
+<p>Genealogy is the study of family history — tracing lineages, documenting ancestors, and preserving family stories. Photographs are the most powerful primary sources in genealogy. They show: what your ancestors looked like, what they wore, where they lived, and how they presented themselves to the world. A photograph is a <strong>visual record</strong> of a person's existence. It makes the names and dates on a family tree feel real.</p>
 
-<p>Use the <a href="/en/tools/background-remover">background remover</a> to create a transparent PNG version of your logo. Upload the logo file. The AI removes the background. Download the transparent PNG. Save it as the canonical version of your logo. Use it everywhere. The one-time conversion from JPEG to transparent PNG is the single most valuable design task you can do with a background remover.</p>
+<p>But most old family photos are in poor condition. They have been stored in attics, basements, and shoeboxes for decades. They suffer from: fading (the image loses contrast and detail over time), physical damage (cracks, creases, tears, and missing corners), stains (water, mold, and chemical degradation), and dust and scratches (accumulated from decades of handling).</p>
 
-<h2>Use Case 2: Product Photos for Marketing Materials</h2>
+<p>AI photo restoration addresses all of these. The AI identifies the damage and repairs it. The result is a photograph that is closer to what the original looked like — not a new image, but a <strong>restored version</strong> of the original. For genealogists, this means: reading the details that were hidden by damage, identifying people more accurately (facial features become clearer), and sharing restored photos with family members who have never seen their ancestors clearly.</p>
 
-<p>You need to place product photos on: a sale banner, a social media graphic, an email header, a print flyer. Each has a different background color or image. The product photo on its original background looks like a photo pasted on a design. The product photo on a transparent background looks like it belongs in the design.</p>
+<h2>The Genealogy Photo Restoration Workflow</h2>
 
-<p>Use the background remover to extract the product from its original photo. Place the transparent product PNG on any background — a solid color, a gradient, a lifestyle image, a pattern. The product integrates with the design because it has no background of its own. The transparent PNG is the <strong>design asset</strong> that makes the product composable.</p>
+<p><strong>Step 1: Scan at the highest possible resolution.</strong> 600 DPI minimum for old photos. 1200 DPI for small photos (wallet-sized, cabinet cards, tintypes). The AI needs as many pixels as possible to work with. A low-resolution scan limits what the AI can recover.</p>
 
-<h2>Use Case 3: Portrait Cutouts for Team Pages and Social Media</h2>
+<p><strong>Step 2: Run through the photo restorer.</strong> Use the <a href="/en/tools/photo-restorer">photo restorer</a> to enhance the image. The AI will: reduce the visibility of cracks and scratches, enhance contrast on faded areas, and reduce stains and discoloration. The restoration is a starting point, not a finished product. Review the result at 100% zoom.</p>
 
-<p>Your team page needs consistent headshots. Your social media needs engaging profile images. A portrait on a transparent background can be placed on: a colored circle, a branded frame, a gradient background, or a pattern. The transparent PNG gives you design flexibility that a fixed-background photo cannot provide.</p>
+<p><strong>Step 3: Colorize for additional context (optional).</strong> Use the <a href="/en/tools/colorizer">colorizer</a> to add color to the black-and-white or sepia photo. The colors are estimates, not historically accurate. But they add context: hair color, eye color, clothing colors, and background details become more visible in color. The colorized version is for emotional connection, not historical accuracy.</p>
 
-<p>Use the background remover to extract each team member's portrait. Place them on a consistent background — the same color, the same frame, the same style. The team page looks professional because every headshot has the same treatment. The transparent PNG is the <strong>intermediate format</strong> that enables consistent design.</p>
+<p><strong>Step 4: Archive both the original and restored versions.</strong> The original scan is the historical record. The restored version is the viewing copy. Store both. Share both. The original proves authenticity. The restoration makes the photo accessible to family members who have never seen their ancestors clearly.</p>
 
-<h2>Use Case 4: Icons and Graphics for Presentations</h2>
+<h2>The Emotional Impact of Restored Ancestor Photos</h2>
 
-<p>You find a perfect icon for your presentation — but it is on a white background. The slide background is dark blue. The white rectangle around the icon will be visible and ugly. Use the background remover to extract the icon. The transparent PNG icon blends seamlessly with the slide background. No white rectangle. No visual clash. The presentation looks professionally designed.</p>
+<p>Genealogists report that showing a restored photo to an elderly relative is one of the most emotionally powerful moments in family history research. The relative sees their parent or grandparent clearly — possibly for the first time in decades. The photo triggers memories. The memories become stories. The stories become recorded family history. The AI photo restorer is not just an image enhancement tool. It is a <strong>memory preservation tool</strong>. It restores the photo. The photo restores the memory. The memory preserves the story.</p>
 
-<p>Create transparent PNGs at <a href="/en/tools/background-remover">AI background remover</a> — logos, products, portraits, icons. Anything that needs to be placed on a different background. One click. Ten seconds. Transparent PNG ready.</p>`
+<p>Restore your family photos at <a href="/en/tools/photo-restorer">AI photo restorer</a> — scan, restore, colorize, and share the faces of your family's past.</p>`
   },
   {
-    slug: "text-polish-business-email-professional-tone",
-    title: "Text Polish for Business Email How to Communicate Professionally Across Cultures Without Sounding Like a Robot",
-    description: "An email that sounds professional in New York might sound cold in Tokyo and aggressive in Stockholm. AI text polish can adjust your tone for different cultural contexts — here's how.",
-    date: "2026-07-14",
-    category: "Content",
-    tags: ["text polish", "business email", "cross-cultural", "professional tone", "communication"],
-    relatedTools: ["text-polish", "translate", "article-generator"],
-    content: `<p>You write an email to a Japanese client: "We need the contract by Friday. Please confirm." It is direct, clear, and efficient — standard American business communication. Your Japanese colleague reads it and is offended. In Japanese business culture, direct demands are rude. The appropriate phrasing would be: "We would be grateful if you could kindly consider providing the contract at your earliest convenience, ideally by Friday if possible."</p>
-
-<p>Now you write an email to a Swedish partner, overcorrecting for cultural sensitivity: "We would be most honored if you could possibly consider reviewing the attached proposal when you have a moment, if it is not too much trouble." Your Swedish partner reads it and is confused. In Swedish business culture, extreme politeness reads as insincerity. The appropriate phrasing would be: "Please review the attached proposal. Let me know your thoughts by Friday."</p>
-
-<p>Business communication across cultures is a minefield. An <a href="/en/tools/text-polish">AI text polisher</a> can adjust your tone for different cultural contexts — but you need to know what to ask for. Here is how to communicate professionally across cultures without sounding like a robot or accidentally offending someone.</p>
-
-<h2>The Cultural Dimensions of Email Tone</h2>
-
-<p><strong>Direct vs Indirect:</strong> American, German, and Scandinavian business cultures favor direct communication — state your request clearly, provide the context, and expect a direct response. Japanese, Korean, and many Middle Eastern business cultures favor indirect communication — the request is implied through context, and a direct "no" is rarely stated. The directness of your email should match the cultural expectations of the recipient, not your own cultural default.</p>
-
-<p><strong>Formal vs Informal:</strong> French, Japanese, and German business cultures maintain formal address (titles, last names, formal greetings) until explicitly invited to switch to informal. American and Australian business cultures tend to switch to first names and casual tone quickly. The formality of your email should match the recipient's expectations. Being too casual is disrespectful. Being too formal is distancing.</p>
-
-<p><strong>High-Context vs Low-Context:</strong> High-context cultures (Japan, China, Arab countries) communicate meaning through context, relationship, and implication — what is not said is as important as what is said. Low-context cultures (USA, Germany, Scandinavia) communicate meaning explicitly through words — everything is stated directly. Your email to a high-context recipient should include relationship-building elements. Your email to a low-context recipient should be concise and explicit.</p>
-
-<h2>How to Use AI Text Polish for Cross-Cultural Communication</h2>
-
-<p>Write your email in your natural style. Then use the <a href="/en/tools/text-polish">AI text polisher</a> with a prompt like: "Polish this email to be more [direct/indirect] and [formal/informal] for a [culture] business context. Preserve the key information and request. Adjust the tone only."</p>
-
-<p>Examples: "Polish this email to be less direct and more formal for a Japanese business context." "Polish this email to be more direct and less formal for a Swedish business context." "Polish this email to add relationship-building context for a Brazilian business culture."</p>
-
-<p>The AI adjusts: the greeting (Dear Mr. Tanaka vs Hi Yuki), the level of directness (Could you please... vs We need...), the closing (Sincerely vs Best vs Cheers), and the relationship-building elements (including a sentence about the ongoing partnership, the weather, or a shared experience).</p>
-
-<h2>When AI Polish Is Not Enough</h2>
-
-<p>The AI can adjust the tone of your email. It cannot understand the nuances of your specific relationship with the recipient, the history of your interactions, or the specific cultural expectations of a particular company or industry. Use the AI as a <strong>first pass</strong>. Then apply your own cultural knowledge. The AI gets the tone right. You get the relationship right. Together, the email lands the way you intended.</p>
-
-<p>Polish your cross-cultural emails at <a href="/en/tools/text-polish">AI text polish</a> — direct, indirect, formal, informal. The right tone for the right recipient.</p>`
-  },
-  {
-    slug: "avatar-generator-game-development-npc-characters",
-    title: "AI Avatar Generator for Game Development How Indie Developers Create NPC Character Portraits Without an Artist",
-    description: "Your RPG needs 50 NPC character portraits. Hiring an artist costs $50-200 per portrait. AI avatar generation costs a few credits per portrait. Here's how indie devs are building character art on a budget.",
-    date: "2026-07-14",
-    category: "Generate",
-    tags: ["AI avatar", "game development", "NPC", "character design", "indie dev"],
-    relatedTools: ["avatar-generator", "ai-image-generator", "style-transfer"],
-    content: `<p>You are an indie game developer building an RPG. Your game has 50 NPCs — shopkeepers, quest-givers, villains, background characters. Each one needs a character portrait for the dialogue screen. Hiring a character artist costs $50-200 per portrait, depending on detail and style. Fifty portraits = $2,500-$10,000. That is your entire art budget. You cannot afford an artist. You cannot ship the game without portraits. Dialogue screens without character art look unfinished.</p>
-
-<p>An <a href="/en/tools/avatar-generator">AI avatar generator</a> offers a third option. You describe each character — their appearance, personality, role — and the AI generates a portrait. Fifty portraits in a day. Consistent style across all of them. Total cost: a fraction of hiring an artist. Here is the NPC portrait workflow for indie game developers.</p>
-
-<h2>Step 1: Define the Visual Style for Your Game</h2>
-
-<p>Before generating a single portrait, decide on the <strong>art style</strong> that will unify all NPC portraits. The style should match your game's aesthetic: fantasy RPG (painterly, medieval, warm tones), sci-fi (clean, futuristic, cool tones), pixel art (retro, blocky, limited palette), or anime/JRPG (cel-shaded, expressive, vibrant colors).</p>
-
-<p>Write a style prompt template that will be prepended to every character description. Example for a fantasy RPG: "Character portrait, fantasy RPG style, painterly, detailed face, soft lighting, medieval clothing, neutral background, consistent art style, 512x512 portrait." This template ensures every generated portrait shares the same visual language. The character descriptions vary. The style remains constant.</p>
-
-<p>Test the style template with 3-5 character descriptions. Generate portraits. Review them side by side. Do they look like they belong in the same game? If the styles are inconsistent, adjust the template. The style template is the <strong>art director</strong> of your AI-generated portraits. It defines the visual identity of your game's characters.</p>
-
-<h2>Step 2: Generate Portraits for Each NPC</h2>
-
-<p>For each NPC, write a character description that includes: gender, age range, role (blacksmith, innkeeper, wizard), distinguishing features (scar, eyepatch, beard, glasses), expression (friendly, gruff, mysterious, cheerful), and clothing (armor, robes, apron, merchant attire).</p>
-
-<p>Example: "Middle-aged male dwarf blacksmith, thick red beard, muscular build, leather apron, friendly expression, holding a hammer, warm forge lighting in background."</p>
-
-<p>Generate 3-5 variations per character. The AI will produce different interpretations of the same description. Pick the best one. The variations give you options. The character description gives you consistency.</p>
-
-<h2>Step 3: Post-Process for Consistency</h2>
-
-<p>After generating all 50 portraits, run them through a consistent post-processing pipeline: crop to the same aspect ratio (all portraits should be the same size and framing), apply the same background (use the <a href="/en/tools/background-remover">background remover</a> to extract characters onto a transparent background, then place them all on the same neutral background), and export at the same resolution (consistent sizing for the game engine).</p>
-
-<p>The post-processing is what makes the AI-generated portraits look like a <strong>set</strong> rather than a collection of individual images. The consistent framing, background, and resolution create visual unity. The player perceives the portraits as belonging to the same game world, not as AI-generated images.</p>
-
-<h2>When AI Portraits Work and When to Hire an Artist</h2>
-
-<p>AI portraits work well for: indie games with limited budgets (AI is better than no portraits at all), background NPCs (shopkeepers, quest-givers — the player interacts with them briefly), and early development and prototyping (generate placeholder portraits quickly, replace with artist-drawn portraits later if budget allows).</p>
-
-<p>Hire an artist for: main characters and party members (the player spends hours looking at these portraits), marketing and promotional art (the key art that sells the game), and any character whose portrait is a core part of the game's appeal.</p>
-
-<p>Generate your NPC portraits at <a href="/en/tools/avatar-generator">AI avatar generator</a> — define the style, describe the characters, and build a consistent visual world on an indie budget.</p>`
-  },
-  {
-    slug: "image-upscaler-vs-ai-image-generator-enhance-vs-create",
-    title: "Image Upscaler vs AI Image Generator Enhancement vs Creation — Two AI Image Tools That Work in Opposite Directions",
-    description: "AI image generator creates new images from text prompts. Image upscaler enhances existing images. They are the two ends of the AI image pipeline — creation and enhancement. Here's how they work together.",
-    date: "2026-07-14",
+    slug: "watermark-remover-photographers-own-archived-work",
+    title: "Watermark Remover for Photographers How to Remove Your Own Watermarks from Archived Work When the Original Files Are Lost",
+    description: "You watermarked your photos 10 years ago and lost the originals. Now a client wants a clean version for a print project. AI watermark removal can recover your own work — here's the ethical workflow.",
+    date: "2026-07-15",
     category: "Edit",
-    tags: ["image upscaler", "AI image generator", "enhancement", "creation", "pipeline"],
-    relatedTools: ["image-upscaler", "ai-image-generator", "style-transfer"],
-    content: `<p>You generate an image with an <a href="/en/tools/ai-image-generator">AI image generator</a>. The prompt: "A cyberpunk cityscape at night, neon reflections on wet pavement, flying cars, cinematic lighting." The result is stunning — but it is 1024×1024 pixels. You need it at 2048×2048 for a print project. You run it through an <a href="/en/tools/image-upscaler">image upscaler</a>. The AI enhances the resolution, sharpens the details, and makes the neon reflections crisper. The image is now print-ready at double the resolution.</p>
+    tags: ["watermark remover", "photographer", "archive", "original files", "ethical"],
+    relatedTools: ["watermark-remover", "photo-restorer", "object-remover"],
+    content: `<p>You are a photographer. Ten years ago, you delivered a set of wedding photos to a client. You watermarked the preview gallery with your logo. The client chose their favorites. You delivered the clean, high-resolution versions. You archived the watermarked previews and deleted the clean originals to save storage space. Now, a decade later, the client contacts you: they lost their copies, and they want the clean versions of the photos. You still have the watermarked previews. You do not have the originals. You need to remove <strong>your own watermark</strong> from your own photos.</p>
 
-<p>The AI image generator and the image upscaler are <strong>opposite ends of the same pipeline</strong>. The generator creates new images from nothing. The upscaler enhances existing images. They work together — the generator produces the image. The upscaler makes it usable at larger sizes. Here is how they complement each other, and when to use each one alone.</p>
+<p>This is the ethical use case for a <a href="/en/tools/watermark-remover">watermark remover</a> — removing watermarks from your own copyrighted work when the originals are lost. Here is the ethical workflow for photographers recovering their own archived images.</p>
 
-<h2>AI Image Generator: Creation from Scratch</h2>
+<h2>The Ethical Distinction: Your Watermark vs Someone Else's Watermark</h2>
 
-<p>The AI image generator answers the question: <strong>"What should this image look like?"</strong> It starts with random noise and iteratively refines it into an image that matches your text description. The output is a completely new image — it did not exist before you wrote the prompt. The generator is a <strong>creative tool</strong>. It produces images from ideas.</p>
+<p>Removing a watermark from your own photo is <strong>your right as the copyright holder</strong>. You created the image. You added the watermark. You are removing it. The watermark is your own protection mechanism. You have the right to remove it. This is ethically and legally clear.</p>
 
-<p>The generator's strengths: unlimited creative possibilities (any subject, any style, any composition), speed (seconds per image), and iteration (generate 20 variations of an idea and pick the best one). The generator's weakness: resolution (most AI generators output at 1024×1024 or similar — fine for web, insufficient for print), and specificity (the AI generates what you describe, but it may not capture every detail exactly as you imagined it).</p>
+<p>Removing a watermark from someone else's photo is <strong>copyright infringement</strong>. The watermark is the creator's claim of ownership. Removing it without permission is a violation of copyright law — regardless of the tool used. The AI watermark remover is a tool. The ethics depend entirely on <strong>who owns the image</strong> and <strong>who is removing the watermark</strong>. Your own watermark on your own photo: ethical. Someone else's watermark on their photo: not ethical.</p>
 
-<h2>Image Upscaler: Enhancement of the Existing</h2>
+<h2>The Archive Recovery Workflow</h2>
 
-<p>The image upscaler answers the question: <strong>"How can I make this image look better at a larger size?"</strong> It takes an existing image and increases its resolution while preserving and enhancing details. The upscaler is a <strong>refinement tool</strong>. It improves images that already exist.</p>
+<p><strong>Step 1: Verify ownership.</strong> Before removing any watermark, confirm that you are the copyright holder. The photo should be in your archive, with your watermark, and you should have a clear memory of creating it. If there is any doubt about ownership, do not remove the watermark.</p>
 
-<p>The upscaler's strengths: resolution increase (2×, 4×, or more — the AI adds detail rather than just stretching pixels), detail preservation (edges become sharper, textures become clearer, noise is reduced), and print-readiness (you can upscale a web-resolution image to print resolution). The upscaler's weakness: it cannot create new content (it enhances what is already there), and extreme upscaling factors (8× or more) produce visible artifacts.</p>
+<p><strong>Step 2: Remove the watermark.</strong> Use the <a href="/en/tools/watermark-remover">watermark remover</a> to erase the watermark from the photo. The AI fills the watermark area with the surrounding background. The result should be indistinguishable from the original clean photo. For best results, the watermark should be on a uniform background — sky, wall, grass. Watermarks that overlap complex textures (faces, detailed patterns, text) require more careful review.</p>
 
-<h2>The Complete Pipeline: Generate, Then Upscale</h2>
+<p><strong>Step 3: Review at 100% zoom.</strong> Check the watermark area for: edge artifacts (a visible seam where the fill meets the original), texture inconsistencies (the filled area is smoother than the surrounding area), and color mismatches (the filled area is slightly different from the original). Fix any issues with a second pass of the remover or manual retouching.</p>
 
-<p>The standard AI image workflow: <strong>generate → upscale → use</strong>. Step 1: Use the AI image generator to create the image at the default resolution (1024×1024). Generate multiple variations and pick the best one. Step 2: Use the image upscaler to increase the resolution to the target size. For web use, 2× upscale is usually sufficient. For print, 4× upscale may be needed depending on the print size. Step 3: Use the upscaled image in your project — web, print, social media, presentation.</p>
+<p><strong>Step 4: Deliver to the client.</strong> The restored photo is now clean and ready for delivery. Provide the client with the restored version and note that it was recovered from the watermarked archive — in case minor differences from the original are noticed.</p>
 
-<p>This pipeline gives you the best of both tools: the creative freedom of the generator and the resolution quality of the upscaler. The generator does what it does best — create. The upscaler does what it does best — enhance. Neither tool replaces the other. They work together.</p>
+<h2>The Lesson: Archive Clean Originals</h2>
 
-<h2>When to Use Each Alone</h2>
+<p>The best watermark removal is the one you never have to do. Archive a clean, high-resolution, watermark-free version of every photo you deliver. Storage is cheap. The cost of recovering a watermark-removed photo is the time spent removing the watermark plus the risk of imperfect restoration. The cost of archiving a clean original is a few megabytes of storage. The lesson: archive clean originals. The watermark remover is a safety net. It should not be your primary file management strategy.</p>
 
-<p>Use only the generator when: the image is for web use at the default resolution (social media, blog posts, digital presentations), and you do not need a larger version. Use only the upscaler when: you already have an image that you love but it is too small for your needs (an old digital photo, a low-resolution screenshot, a downloaded image that needs to be larger), and you do not need to create new content. Use both together when: you are creating a new image that needs to be larger than the generator's default resolution. Generate first. Upscale second. The pipeline is the standard workflow for AI image creation at print-ready quality.</p>
-
-<p>Create at <a href="/en/tools/ai-image-generator">AI image generator</a> and enhance at <a href="/en/tools/image-upscaler">image upscaler</a> — creation and enhancement. Two ends of the same pipeline. Better together.</p>`
+<p>Recover your archived work at <a href="/en/tools/watermark-remover">AI watermark remover</a> — for your own watermarks on your own photos. The tool is the same. The ethics are yours.</p>`
   },
   {
-    slug: "article-generator-future-ai-writing-2030",
-    title: "The Future of AI Writing How Article Generators Will Change Content Creation by 2030 — and What Human Writers Should Do About It",
-    description: "In 2023, AI writing was a novelty. In 2026, it is mainstream. By 2030, it will be ubiquitous. Here's what the trajectory looks like — and why human writers are not being replaced, they are being repositioned.",
-    date: "2026-07-14",
+    slug: "colorizer-genealogy-ancestor-photos-life",
+    title: "AI Colorizer for Genealogy Bringing Black and White Ancestor Photos to Life — and the Emotional Impact of Seeing Your Great-Grandparents in Color",
+    description: "You have seen your great-grandparents in black and white your entire life. Then you see them in color — and they suddenly feel real. Here's the genealogy colorization workflow and the emotional impact.",
+    date: "2026-07-15",
+    category: "Edit",
+    tags: ["AI colorizer", "genealogy", "ancestor photos", "colorization", "emotional"],
+    relatedTools: ["colorizer", "photo-restorer", "image-upscaler"],
+    content: `<p>You have a black-and-white photo of your great-grandparents on their wedding day, 1923. You have looked at this photo hundreds of times. You know every detail — the shape of her dress, the flower in his lapel, the serious expressions that were standard for photography of the era. The photo is familiar. It is also distant. Black and white creates a <strong>psychological barrier</strong> — the people in the photo feel like historical figures, not like your actual relatives.</p>
+
+<p>You run the photo through an <a href="/en/tools/colorizer">AI colorizer</a>. The AI adds color — her dress becomes ivory white, his suit becomes dark gray, his tie becomes burgundy, the flowers become pink and green. You look at the colorized version. The psychological barrier is gone. These are not historical figures. These are <strong>your great-grandparents</strong> — young, nervous, on their wedding day, looking exactly like people you might pass on the street today. The color makes them real. The color makes them feel like <strong>people</strong>, not photographs.</p>
+
+<p>This is the emotional power of AI colorization for genealogy. Here is the workflow and the psychological impact.</p>
+
+<h2>Why Color Makes Ancestors Feel Real</h2>
+
+<p>Black-and-white photography creates <strong>temporal distance</strong>. The lack of color signals "this is old." The brain processes black-and-white images differently than color images — they are categorized as historical artifacts rather than realistic representations. This is a psychological effect, not a technical one. The photo contains the same information in black and white as in color. But the brain responds to color as <strong>real</strong> and black and white as <strong>archival</strong>.</p>
+
+<p>Adding color removes the temporal distance. The great-grandmother in the photo stops being "a woman from the 1920s" and becomes "your great-grandmother — who was young once, who had a favorite color, who chose that dress for a reason." The color humanizes the subject. The humanization triggers emotional connection. The emotional connection transforms the photo from a historical document into a <strong>family member</strong>.</p>
+
+<p>Genealogists report that colorized photos are the most shared and most commented-on items in family history groups. People share colorized ancestor photos with captions like "I never realized how much my daughter looks like her" and "This is the first time I have seen my grandfather as a young man, not an old man." The color reveals the person. The person reveals the connection.</p>
+
+<h2>The Genealogy Colorization Workflow</h2>
+
+<p><strong>Step 1: Restore first, then colorize.</strong> Use the <a href="/en/tools/photo-restorer">photo restorer</a> to clean up the photo — reduce scratches, enhance contrast, repair damage. Then run the cleaned photo through the <a href="/en/tools/colorizer">colorizer</a>. The AI colorizes a clean image better than a damaged one. Restoration improves the colorization quality.</p>
+
+<p><strong>Step 2: Understand that the colors are estimates.</strong> The AI colorizer does not know the actual colors of the original scene. It guesses based on statistical patterns in its training data. The dress might have been blue, not ivory. The tie might have been green, not burgundy. The colors are <strong>plausible</strong>, not <strong>accurate</strong>. For genealogy, plausibility is usually good enough. The emotional impact comes from the presence of color, not the accuracy of specific colors.</p>
+
+<p><strong>Step 3: Share with family and collect stories.</strong> Post the colorized photo in family groups. Ask: "Does anyone know what color this dress was?" "Does anyone remember what color his eyes were?" The colorized photo triggers memories. The memories become stories. The stories become recorded family history. The colorized photo is a <strong>conversation starter</strong> — and the conversation is the point.</p>
+
+<h2>When Colorization Is Not Appropriate</h2>
+
+<p>Do not colorize photos where: the original black and white was a deliberate artistic choice by the photographer, the photo is a historical document where colorization might mislead viewers about the original, and the colors have specific cultural or historical significance that the AI might get wrong (military uniforms, traditional clothing, flags). For genealogy purposes, the emotional benefit of colorization usually outweighs the historical inaccuracy. But be transparent: always note that the photo has been AI-colorized and that the colors are estimates, not facts.</p>
+
+<p>Colorize your family photos at <a href="/en/tools/colorizer">AI colorizer</a> — restore, colorize, share, and watch your ancestors become real to your family.</p>`
+  },
+  {
+    slug: "text-to-speech-language-learning-pronunciation",
+    title: "TTS for Language Learning How AI Text to Speech Helps You Practice Pronunciation Accent Training and Listening Comprehension",
+    description: "You are learning Spanish. You can read it, but you cannot speak it with a natural accent. AI TTS gives you a native-speaker voice to listen to and imitate — unlimited, free, and patient.",
+    date: "2026-07-15",
     category: "Content",
-    tags: ["article generator", "AI writing", "future", "content creation", "trends"],
-    relatedTools: ["article-generator", "text-polish", "text-to-speech"],
-    content: `<p>In 2023, AI article generators were a novelty. The output was impressive but inconsistent — sometimes brilliant, sometimes nonsensical, often recognizably non-human. By 2026, they are mainstream. The output is reliable, well-structured, and increasingly difficult to distinguish from human writing. The question is no longer "can AI write?" It is "what should humans write when AI can write everything?"</p>
+    tags: ["text to speech", "language learning", "pronunciation", "accent", "listening"],
+    relatedTools: ["text-to-speech", "translate", "text-polish"],
+    content: `<p>You are learning Spanish. You can read news articles. You can write basic emails. But when you speak, your accent is thick, your pronunciation is hesitant, and native speakers ask you to repeat yourself. You know the words. You cannot produce them naturally. The gap between <strong>reading a language</strong> and <strong>speaking a language</strong> is the hardest part of language learning — and it is the part that most learning apps do not address.</p>
 
-<p>An <a href="/en/tools/article-generator">AI article generator</a> in 2026 can produce a 1,000-word article on almost any topic in under a minute. The grammar is correct. The structure is logical. The content is factually accurate (mostly). The writing is competent. But competence is not the same as insight. And the trajectory from 2026 to 2030 suggests that AI will become more competent — while the value of human writing will shift toward what AI cannot do. Here is what that trajectory looks like, and what human writers should do about it.</p>
+<p>AI <a href="/en/tools/text-to-speech">text to speech</a> with native-speaker voices is a free, unlimited pronunciation tutor. You paste any text in your target language. The AI reads it aloud with a natural accent. You listen. You imitate. You repeat. Here is the TTS language learning workflow that turns reading comprehension into speaking fluency.</p>
 
-<h2>2023-2026: The Competence Era</h2>
+<h2>Why Listening Is the Missing Link in Language Learning</h2>
 
-<p>The current era of AI writing is defined by <strong>competence</strong>. AI can write articles that are grammatically correct, structurally sound, and factually accurate on well-documented topics. The AI is a <strong>junior writer</strong> — it can produce a solid first draft, but it needs human editing, fact-checking, and voice injection to be publishable. The AI handles the mechanics. The human handles the meaning.</p>
+<p>Most language learners spend 80% of their time reading and writing and 20% listening and speaking. This is backwards. Children learn their native language by <strong>listening</strong> for years before they speak a single word. They absorb the sounds, the rhythms, and the intonation patterns of the language. When they finally speak, they already know how the language should sound.</p>
 
-<p>The AI excels at: formulaic content (product descriptions, news summaries, how-to guides), content at scale (producing hundreds of articles from a database of facts), and content that does not require originality (the thousandth article about "how to lose weight" does not need to be original — it needs to be accurate and well-structured).</p>
+<p>Adult language learners skip the listening phase. They learn vocabulary from flashcards. They learn grammar from textbooks. They try to speak from written knowledge. The result: they produce the right words with the wrong sounds. Their pronunciation is shaped by their native language's sound system, not the target language's. The fix: <strong>listen more</strong>. Listen to native speakers. Listen to the same phrases repeatedly. Listen until the sounds feel natural in your ear. The TTS tool provides unlimited native-speaker audio for any text you want to learn.</p>
 
-<p>The AI struggles with: original reporting (the AI cannot interview sources, visit locations, or investigate), genuine expertise (the AI knows what the internet knows — it cannot contribute new knowledge from personal experience), and voice and personality (the AI can mimic a style, but it cannot develop a unique perspective born from a lifetime of specific experiences).</p>
+<h2>The TTS Language Learning Workflow</h2>
 
-<h2>2027-2030: The Insight Era (Predicted)</h2>
+<p><strong>Step 1: Listen and read simultaneously.</strong> Paste a paragraph in your target language into the <a href="/en/tools/text-to-speech">text to speech</a> tool. Choose a voice in that language. Listen to the audio while reading the text. Your brain connects the written words to the spoken sounds. This is the <strong>phonetic mapping</strong> phase — learning which letters produce which sounds in the target language.</p>
 
-<p>The next era will likely be defined by <strong>insight</strong>. AI will become better at: synthesizing information across multiple sources to produce novel connections, personalizing content for specific audiences based on their reading history and preferences, and generating content in multiple formats simultaneously (article + audio + video script + social media posts from a single prompt).</p>
+<p><strong>Step 2: Listen and repeat (shadowing).</strong> Play the audio one sentence at a time. Repeat each sentence aloud, trying to match the TTS voice's pronunciation, rhythm, and intonation. This is called <strong>shadowing</strong> — a technique used by professional interpreters to develop native-like pronunciation. The TTS voice is your model. Your voice is the imitation. The goal is not perfection. The goal is <strong>improvement</strong> — each repetition brings your pronunciation closer to the model.</p>
 
-<p>The AI will not become better at: having original ideas (the AI generates from training data — it cannot have a genuinely new idea, only a new combination of existing ideas), having lived experience (the AI has never been in love, never lost a parent, never failed at a career, never traveled to a new country — the emotional texture of human experience is inaccessible to it), and taking genuine intellectual risks (the AI is designed to be safe and accurate — it will not stake out a controversial position, challenge a consensus, or argue for an unpopular idea).</p>
+<p><strong>Step 3: Listen without reading (comprehension).</strong> Play the audio without looking at the text. Can you understand what is being said? This is <strong>listening comprehension</strong> — the skill of understanding spoken language without visual support. The TTS voice speaks at a consistent pace, which is easier than native speakers who speak quickly and use colloquialisms. Use TTS for the intermediate stage between "I can read the language" and "I can understand native speakers."</p>
 
-<h2>What Human Writers Should Do About It</h2>
+<p><strong>Step 4: Generate audio for your own writing.</strong> Write a paragraph in your target language. Paste it into the TTS tool. Listen to how it sounds. Does it sound natural? If the TTS voice stumbles or sounds awkward, your writing probably has a grammatical error or unnatural phrasing. The TTS tool is a <strong>writing checker</strong> — it reveals awkward phrasing that looks fine on paper but sounds wrong when spoken.</p>
 
-<p>The human writer's value proposition is shifting from <strong>production</strong> to <strong>perspective</strong>. The AI can produce text. It cannot produce a perspective that comes from being a specific human with specific experiences, specific expertise, and a specific point of view.</p>
+<h2>Why TTS Is Better Than Recorded Audio for Language Learning</h2>
 
-<p>The writers who thrive in the AI era will: focus on <strong>original ideas</strong> (the AI can write about what is known — the human writer writes about what they have discovered), develop a <strong>distinctive voice</strong> (the AI can mimic a style, but it cannot develop a voice that is uniquely yours), and use AI as a <strong>productivity tool</strong> (let the AI write the first draft, the research summary, the outline — then the human writer adds the insight, the personality, and the original thinking that the AI cannot provide).</p>
+<p>Recorded audio (podcasts, audiobooks, language courses) is fixed content. You can only listen to what has been recorded. TTS can generate audio for <strong>any text</strong> — news articles, emails, your own writing, vocabulary lists, grammar examples. The content is unlimited. The voice is consistent. The pace is adjustable (slow down for beginners, speed up for advanced learners). TTS is a <strong>personalized language tutor</strong> that never gets tired, never judges your accent, and works with any text you want to learn.</p>
 
-<p>The AI article generator is not replacing human writers. It is <strong>repositioning</strong> them. The value is no longer in the ability to produce text. The value is in the ability to produce <strong>meaning</strong> — original ideas, genuine expertise, and a distinctive perspective that could only come from one specific human. The AI writes the article. The human writes the insight. The future belongs to writers who understand the difference.</p>
+<p>Practice your pronunciation at <a href="/en/tools/text-to-speech">AI text to speech</a> — listen, shadow, repeat. The TTS voice is your native-speaker model. Your voice is the student. The gap between them closes with every repetition.</p>`
+  },
+  {
+    slug: "pdf-to-word-vs-image-description-text-vs-visual",
+    title: "PDF to Word vs Image Description Text Extraction vs Visual Description — Two AI Tools That Extract Completely Different Information from Documents",
+    description: "PDF to Word extracts the text from a document. Image Description describes what the document looks like visually. Both work on documents. Both use AI. But they answer completely different questions.",
+    date: "2026-07-15",
+    category: "Document",
+    tags: ["PDF to Word", "image description", "text extraction", "visual description", "comparison"],
+    relatedTools: ["pdf-to-word", "image-description", "photo-restorer"],
+    content: `<p>You have a scanned PDF of a restaurant menu from 1952. You want two things from it: the <strong>text</strong> (what dishes were served and what they cost) and a <strong>description</strong> of the visual layout (the Art Deco border, the cursive font, the illustration of a chef holding a fish). You use a <a href="/en/tools/pdf-to-word">PDF to Word</a> converter to extract the text. You use an <a href="/en/tools/image-description">image description</a> tool to describe the visual appearance. Both tools work on the same document. Both use AI. But they extract completely different information.</p>
 
-<p>Generate your next article at <a href="/en/tools/article-generator">AI article generator</a> — then add the insight that only you can provide.</p>`
+<p>Here is when to use each — and why confusing text extraction with visual description leads to results that are technically correct and completely useless.</p>
+
+<h2>PDF to Word: Text Extraction</h2>
+
+<p>PDF to Word conversion answers the question: <strong>"What words are in this document?"</strong> The tool extracts the text content — the words, the numbers, the structured data. For a digital PDF, the text is extracted directly from the file. For a scanned PDF, OCR (Optical Character Recognition) converts the image of text into actual text characters. The output is an editable Word document or a text file that contains the words from the original.</p>
+
+<p>The PDF to Word converter cares about: text content (what does it say?), text structure (headings, paragraphs, lists, tables), and text accuracy (is the OCR correct? Are the characters recognized correctly?). The converter does not care about: visual design (fonts, colors, layout), images (photos, illustrations, logos), and decorative elements (borders, backgrounds, artistic flourishes).</p>
+
+<p>Use PDF to Word when: you need to edit the text, search the text, or repurpose the content. The text is the valuable information. The visual appearance is irrelevant.</p>
+
+<h2>Image Description: Visual Description</h2>
+
+<p>Image description answers the question: <strong>"What does this document look like?"</strong> The AI analyzes the visual appearance of the document and generates a text description. For the 1952 menu, the description might be: "A vintage restaurant menu with Art Deco border design, cursive script headings, an illustration of a chef holding a fish in the upper left corner, and three columns of menu items with prices in a serif font."</p>
+
+<p>The image description tool cares about: visual elements (what is visible in the image?), layout and design (how are the elements arranged?), and visual context (what era, style, or mood does the image convey?). The tool does not care about: extracting the exact text (it might mention that text is present, but it will not transcribe every word), and structured data extraction (it will not output a spreadsheet of menu items and prices).</p>
+
+<p>Use image description when: you need to understand the visual context of a document, you are cataloging or archiving visual materials, or you need alt text for accessibility. The visual appearance is the valuable information. The exact text is secondary.</p>
+
+<h2>When to Use Both Together</h2>
+
+<p>For comprehensive document analysis, use both tools: PDF to Word extracts the text content. Image description describes the visual context. Together, they provide a complete understanding of the document — what it says and what it looks like. This is useful for: digital archiving (preserve both the text and the visual description of historical documents), accessibility (provide both the text content and a visual description for screen reader users), and research (analyze both the content and the visual presentation of historical materials).</p>
+
+<p>Use <a href="/en/tools/pdf-to-word">PDF to Word</a> for the text and <a href="/en/tools/image-description">image description</a> for the visual context. Text extraction and visual description. Two different questions. Two different tools. One complete document understanding.</p>`
+  },
+  {
+    slug: "face-blur-right-to-be-forgotten-gdpr",
+    title: "The Right to Be Forgotten Face Blur Technology and the GDPR — How EU Privacy Law Created a Global Demand for Automated Face Anonymization",
+    description: "The GDPR's Right to be Forgotten means individuals can demand that their personal data — including their face — be removed from online platforms. Face blur technology is how platforms comply at scale.",
+    date: "2026-07-15",
+    category: "Edit",
+    tags: ["face blur", "GDPR", "right to be forgotten", "privacy law", "compliance"],
+    relatedTools: ["face-blur", "object-remover", "watermark-remover"],
+    content: `<p>In 2018, the European Union's General Data Protection Regulation (GDPR) went into effect. Article 17 of the GDPR establishes the <strong>Right to be Forgotten</strong> — the right of individuals to request that their personal data be erased. Personal data includes photographs of a person's face. This means: if a European citizen appears in a photo on your website, they can legally demand that you remove their face from that photo. Not take down the photo. Remove <strong>their face</strong> from it.</p>
+
+<p>For a small website with a few hundred photos, this is manageable. For a social media platform with billions of photos, or a news organization with millions of archival images, it is impossible without automation. <a href="/en/tools/face-blur">Face blur</a> technology — AI-powered automated face detection and anonymization — is how platforms comply with the Right to be Forgotten at scale. Here is the intersection of privacy law and AI technology.</p>
+
+<h2>The GDPR's Right to Be Forgotten: What It Actually Requires</h2>
+
+<p>Article 17 of the GDPR gives individuals the right to request deletion of their personal data under specific circumstances: the data is no longer necessary for the purpose it was collected, the individual withdraws consent, the individual objects to the processing, the data was unlawfully processed, or the data must be erased to comply with a legal obligation.</p>
+
+<p>For photographs, this means: if a person's face is identifiable in a photo, and they request erasure under Article 17, the data controller (the website or platform) must remove the identifying information. This does not necessarily mean deleting the entire photo. It means removing the <strong>identifying data</strong> — the face. Face blur is the technical implementation of this legal requirement. The face is blurred. The person is no longer identifiable. The photo remains. The legal obligation is satisfied.</p>
+
+<h2>How Face Blur Enables GDPR Compliance at Scale</h2>
+
+<p>Manually blurring faces in response to GDPR requests is feasible for a small number of requests. A news website might receive 10 requests per year. A human editor can manually blur the faces in those photos. But a social media platform with 500 million European users might receive thousands of requests per day. Manual blurring is impossible. Automated face blur is the only viable solution.</p>
+
+<p>The automated workflow: the user submits a GDPR erasure request, the platform identifies all photos containing the user's face (using facial recognition — the same technology that face blur is designed to counter), the face blur AI automatically detects and blurs the user's face in every identified photo, and the platform confirms to the user that their personal data has been erased. The entire process is automated. The face blur AI is the <strong>compliance mechanism</strong>.</p>
+
+<p>The irony: the same AI technology that enables mass surveillance (facial recognition) is also the technology that enables mass privacy protection (face blur). The two technologies are locked in an arms race. The GDPR created the legal demand for face blur. The AI industry created the technical supply. The combination is what makes privacy rights enforceable at internet scale.</p>
+
+<h2>Beyond GDPR: The Global Spread of Privacy Rights</h2>
+
+<p>The GDPR's Right to be Forgotten has inspired similar laws worldwide: California's CCPA/CPRA, Brazil's LGPD, Japan's APPI, and India's DPDP Act. All of these laws include some form of data erasure right. All of them create demand for automated face anonymization. The GDPR was the first domino. Face blur technology is the tool that makes compliance possible. As privacy laws spread globally, the demand for face blur will only increase.</p>
+
+<p>The <a href="/en/tools/face-blur">face blur tool</a> is not just a privacy tool for individuals. It is a <strong>compliance tool</strong> for organizations. The technology is the same. The use case is different. An individual blurs faces to protect privacy. An organization blurs faces to comply with the law. The tool serves both. The law created the demand. The AI provides the supply.</p>`
   },
 ];
 
@@ -238,4 +224,4 @@ content = content.replace(old, new_blogs)
 with open(BLOG_FILE, "w", encoding="utf-8") as f:
     f.write(content)
 
-print("AI station: 148->done.")
+print("AI station: 154->done.")
