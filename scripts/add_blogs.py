@@ -1,4 +1,4 @@
-"""Add 6 blogs to AI station (160→166 static) — July 16, 2026"""
+"""Add 6 blogs to AI station (166→172 static) — July 17, 2026"""
 import os, sys
 
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
@@ -10,208 +10,214 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "ai-image-generator-social-media-content-calendar",
-    title: "AI Image Generator for Social Media Content Calendar How to Batch-Produce a Month of Visual Content in One Afternoon",
-    description: "You need 30 unique images for 30 days of social media posts. Designing each one manually takes a week. An AI image generator batch-produces them in an afternoon. Here's the content calendar workflow.",
-    date: "2026-07-16",
+    slug: "avatar-generator-virtual-events-webinar-speaker",
+    title: "AI Avatar Generator for Virtual Events How to Create Professional Speaker Profile Photos for Webinars Conferences and Online Panels",
+    description: "Your webinar has 12 speakers across 6 time zones. Nobody has a consistent headshot. AI avatars create professional, unified speaker photos for the event page in under an hour. Here's the workflow.",
+    date: "2026-07-17",
     category: "Generate",
-    tags: ["AI image generator", "social media", "content calendar", "batch production", "marketing"],
-    relatedTools: ["ai-image-generator", "background-remover", "text-polish"],
-    content: `<p>You manage social media for a brand. You need 30 unique images for the next 30 days — one per day. Each image needs to be: visually distinct (not the same image repeated), on-brand (consistent style, colors, and quality), and relevant to the day's post topic. Designing 30 images manually — finding stock photos, editing them, adding text overlays — takes about 30 minutes per image. That is 15 hours of work. You do not have 15 hours. You have an afternoon.</p>
+    tags: ["AI avatar", "virtual events", "webinar", "speaker", "conference"],
+    relatedTools: ["avatar-generator", "background-remover", "ai-image-generator"],
+    content: `<p>You are organizing a virtual conference. Twelve speakers from six time zones. The event page goes live in 48 hours. You need a professional headshot for each speaker. Three speakers sent you high-resolution corporate photos. Four sent you selfies cropped from wedding photos. Three sent you nothing. One sent you a photo of their cat. The speaker lineup page currently looks like a ransom note — twelve different photos in twelve different styles, lighting conditions, and resolutions.</p>
 
-<p>An <a href="/en/tools/ai-image-generator">AI image generator</a> batch-produces 30 unique, on-brand images in 2-3 hours. The key is a <strong>prompt template</strong> — a reusable prompt structure with variable slots for the parts that change per image. Here is the content calendar workflow that fills a month of social media with AI-generated visuals.</p>
+<p>An <a href="/en/tools/avatar-generator">AI avatar generator</a> solves this in under an hour. Generate a consistent, professional headshot for every speaker using the same style template. The result: a speaker lineup that looks curated, professional, and intentional. Here is the virtual event speaker photo workflow.</p>
 
-<h2>Step 1: Define the Visual Brand Template</h2>
+<h2>Step 1: Define the Speaker Photo Style</h2>
 
-<p>Before generating a single image, write a <strong>brand style prompt</strong> that will be appended to every image description. This ensures every generated image shares the same visual identity. The brand style prompt includes: color palette (brand colors — e.g., "warm coral and teal accents, cream background"), lighting style (consistent across all images — e.g., "soft natural lighting, high key"), composition (consistent framing — e.g., "subject centered, clean composition, negative space for text overlay"), and quality tags (consistent quality — e.g., "professional photography, sharp focus, 4K").</p>
+<p>Write a style prompt that will be applied to every speaker's avatar. The style should match the event's brand: formal corporate conference (dark suit, professional lighting, neutral gray background), casual tech meetup (smart casual, natural lighting, clean white background), creative industry panel (artistic lighting, colorful background, expressive poses), or academic symposium (business attire, library or campus background, warm lighting).</p>
 
-<p>Example brand style prompt: "Warm coral and cream color palette, soft natural lighting, clean composition with negative space on the right for text overlay, professional photography style, consistent brand aesthetic." This template is appended to every specific image prompt. The specific prompt varies. The brand template is constant.</p>
+<p>Example style prompt for a corporate conference: "Professional corporate headshot, business attire, soft studio lighting, neutral gray gradient background, centered composition, friendly but professional expression, sharp focus, consistent quality." This template is used for every speaker. The individual descriptions vary. The style is constant.</p>
 
-<h2>Step 2: Plan the 30-Day Content Calendar</h2>
+<h2>Step 2: Generate Each Speaker's Avatar</h2>
 
-<p>Map out 30 post topics. Each topic gets a specific image prompt. The prompt describes the subject of the image. The brand template provides the visual consistency. Example: Day 1 (Product feature) — "A ceramic coffee mug on a wooden desk, steam rising, morning light." Day 2 (Quote graphic) — "An open book with warm lighting, reading glasses beside it." Day 3 (Behind the scenes) — "A workspace with a laptop, notebook, and coffee, organized but lived-in."</p>
+<p>For each speaker, write a brief description: gender, age range, hair style and color, facial features, and glasses if applicable. Example: "Male speaker, mid-40s, short graying brown hair, close-trimmed beard, wire-rimmed glasses, warm smile." The AI generates an avatar that matches this description in the defined style. The avatar is a stylized representation, not a photographic replica. It looks like the speaker enough to be recognizable — and consistent enough to belong in the lineup.</p>
 
-<p>Generate 2-3 variations per prompt. The AI produces different interpretations of the same description. Pick the best one. The variations give you options. The brand template ensures consistency across all variations.</p>
+<p>Generate 3-5 variations per speaker. Pick the best one. The goal is not exact likeness. The goal is <strong>professional representation</strong> — a photo that looks like it belongs on a speaker lineup, not on a driver's license.</p>
 
-<h2>Step 3: Post-Process for Consistency</h2>
+<h2>Step 3: Unify the Background and Framing</h2>
 
-<p>After generating all 30 images, run them through a consistent post-processing pipeline: crop all images to the same aspect ratio (1:1 for Instagram, 16:9 for Twitter, 4:5 for Instagram feed), apply the same text overlay template (font, size, color, and position consistent across all images), and use the <a href="/en/tools/background-remover">background remover</a> if needed to isolate subjects for composite images.</p>
+<p>After generating all avatars, use the <a href="/en/tools/background-remover">background remover</a> to extract each avatar onto a transparent background. Place all avatars on the exact same background — the same color, the same gradient, the same treatment. Crop all avatars to the same dimensions — the same framing, the same zoom level, the same head position. The consistent background + consistent framing = a speaker lineup that looks like it was photographed by the same photographer in the same studio.</p>
 
-<p>The post-processing is what makes the AI-generated images look like a <strong>coordinated campaign</strong> rather than a collection of random images. The consistent framing, color treatment, and text overlay create visual unity across the month of content.</p>
+<h2>When AI Avatars Work for Events (and When They Don't)</h2>
 
-<h2>Step 4: Schedule and Publish</h2>
+<p>AI avatars work well for: virtual event speaker pages (the photos are viewed at thumbnail size on the agenda page), large-scale events with many speakers (getting real photos from everyone is logistically impossible), and internal company events (the audience knows the speakers — the avatars are visual identifiers, not identity verifications).</p>
 
-<p>Upload the 30 images to your social media scheduler. Write the captions. Schedule the posts. One afternoon of AI generation and post-processing produces a month of visual content. The time savings: 15 hours of manual design work → 2-3 hours of AI-assisted batch production. The quality: consistent, on-brand, and visually distinct across 30 posts.</p>
+<p>AI avatars work less well for: in-person events where speakers will be on stage (the audience will see the real person and compare them to the avatar), events where exact likeness matters (legal, medical, or credential-based events), and keynote speakers (the face of the event deserves a real photo).</p>
 
-<p>Batch-produce your month of content at <a href="/en/tools/ai-image-generator">AI image generator</a> — define the brand template, generate the variations, and schedule a month of posts in an afternoon.</p>`
+<p>Build your speaker lineup at <a href="/en/tools/avatar-generator">AI avatar generator</a> — twelve speakers, one style, consistent and professional in under an hour.</p>`
   },
   {
-    slug: "object-remover-travel-photography-landmark-cleanup",
-    title: "Object Remover for Travel Photography How to Remove Tourists from Landmark Photos Without Waiting for the Perfect Empty Moment",
-    description: "You are at the Eiffel Tower. There are 200 tourists in front of it. You cannot wait for them all to leave. AI object removal removes them from your photo in minutes. Here's the travel photography cleanup workflow.",
-    date: "2026-07-16",
+    slug: "image-upscaler-digital-art-prints-canvas-gallery",
+    title: "Image Upscaler for Digital Art Prints How to Prepare Your Digital Artwork for Canvas Prints Posters and Gallery-Quality Large Format Output",
+    description: "Your digital painting is 3000×2000 pixels — beautiful on screen but only 10×6.7 inches at 300 DPI print quality. AI upscaling prepares it for 24×36 canvas prints. Here's the print preparation workflow.",
+    date: "2026-07-17",
     category: "Edit",
-    tags: ["object remover", "travel photography", "landmarks", "tourists", "cleanup"],
-    relatedTools: ["object-remover", "background-remover", "photo-restorer"],
-    content: `<p>You are at the Eiffel Tower. You have been waiting 45 minutes for the perfect shot — the tower centered, the sky dramatic, the foreground empty. But the foreground is never empty. There are always tourists. People taking selfies. People walking through the frame. People standing in exactly the spot you need to be clear. You could wait another hour. You could come back at 5 AM. Or you could take the photo with the tourists in it and remove them later with an <a href="/en/tools/object-remover">AI object remover</a>.</p>
+    tags: ["image upscaler", "digital art", "print", "canvas", "gallery quality"],
+    relatedTools: ["image-upscaler", "ai-image-generator", "background-remover"],
+    content: `<p>You are a digital artist. A collector wants to buy a 24×36 inch canvas print of your latest work. The digital file is 3000×2000 pixels. At 300 DPI — the standard for gallery-quality prints — that is only 10×6.7 inches. Printed at 24×36, the resolution drops to 125 DPI. The print will look soft, pixelated, and amateur. The collector will not be happy. You need to increase the image resolution without losing the quality of your artwork.</p>
 
-<p>Travel photography at popular landmarks is a battle against crowds. AI object removal is the tool that lets you win the battle in post-production instead of on location. Here is the landmark cleanup workflow.</p>
+<p>An <a href="/en/tools/image-upscaler">AI image upscaler</a> solves this. The AI increases the pixel dimensions while preserving — and sometimes enhancing — the details, textures, and edges of your artwork. Here is the digital art print preparation workflow.</p>
 
-<h2>Why Landmarks Are the Perfect Use Case for Object Removal</h2>
+<h2>Calculate the Required Resolution</h2>
 
-<p>Landmark photos have three properties that make AI object removal work exceptionally well: <strong>the background is known</strong> (the Eiffel Tower, the Colosseum, the Taj Mahal — the AI knows what these structures look like and can reconstruct them accurately), <strong>the tourists are against a uniform surface</strong> (the sky, the plaza, the grass — these are easy for the AI to fill with the surrounding background), and <strong>the tourists are small relative to the landmark</strong> (each tourist occupies a small portion of the image, making the inpainting task easier).</p>
+<p>The formula: <strong>Required pixels = Print size (inches) × DPI.</strong> A 24×36 inch print at 300 DPI requires 7200×10800 pixels. Your source image is 3000×2000 pixels. You need a 3.6× upscale to reach the required resolution. The AI upscaler can handle this — but the quality depends on the type of artwork.</p>
 
-<p>Take the photo with the tourists in it. Remove them later. The on-location strategy shifts from "wait for the perfect empty moment" to "take multiple photos from slightly different angles." The post-production strategy handles the cleanup.</p>
+<p>For the 3.6× upscale: upscale in stages if your tool supports it — 2× first (3000×2000 → 6000×4000), then crop and upscale again to reach the exact dimensions. A single large upscale can produce artifacts. Two moderate upscales produce better results. The intermediate step gives the AI a higher-quality source for the second upscale.</p>
 
-<h2>The Landmark Cleanup Workflow</h2>
+<h2>Artwork-Specific Upscaling Strategies</h2>
 
-<p><strong>Step 1: Take multiple photos from slightly different angles.</strong> If you take 5 photos from slightly different positions, different tourists will be in different positions in each photo. The tourists in the foreground of photo 1 might be in the background of photo 2. This gives you more information to work with during cleanup — you can use one photo to fill the gaps in another.</p>
+<p><strong>Digital paintings with brush textures:</strong> The AI should preserve the brushstroke texture, not smooth it. A smoothed brushstroke looks like a digital blur. The AI upscaler that recognizes texture patterns will enhance the brushstrokes rather than eliminate them. Test the upscaled result at 100% zoom — the brush textures should be visible and natural, not smoothed into gradients.</p>
 
-<p><strong>Step 2: Remove the tourists with the object remover.</strong> Use the <a href="/en/tools/object-remover">AI object remover</a> to mark and remove each tourist. Start with the tourists against the simplest backgrounds (sky, grass, plaza) — these are the easiest to remove. Work toward the tourists against more complex backgrounds (the landmark itself, detailed architecture, textured surfaces).</p>
+<p><strong>Vector-style artwork with hard edges:</strong> The AI should preserve the crisp lines, not anti-alias them. A anti-aliased hard edge looks like a blurred line. The AI upscaler that recognizes geometric patterns will keep the edges sharp. The upscaled version should look like a higher-resolution rendering of the same vector art.</p>
 
-<p><strong>Step 3: Review at 100% zoom.</strong> Check the areas where tourists were removed. Look for: repeating patterns (the AI sometimes copies a section of background multiple times, creating a visible pattern), texture inconsistencies (the filled area is smoother than the surrounding area), and color mismatches (the filled area is slightly different in color). Fix any issues with a second pass.</p>
+<p><strong>Photographic-style digital art:</strong> The AI should enhance details without inventing them. The upscaled version should look like the same scene photographed at a higher resolution — sharper details, finer textures, but no hallucinated elements. Review the upscaled result carefully for invented details in complex areas.</p>
 
-<p><strong>Step 4: Accept imperfection.</strong> A photo with 200 tourists removed will not be perfect. Small artifacts will be visible at 100% zoom. But at normal viewing size — on Instagram, in a photo album, on a computer screen — the cleanup will be invisible. The goal is a photo that looks like it was taken at an empty landmark. The goal is not a photo that passes forensic inspection at 400% zoom.</p>
+<p><strong>Artwork with text or signatures:</strong> The AI should keep the text sharp and legible. Blurry text in a print is the most visible quality failure. Text is the hardest element for AI upscalers to handle because letterforms are precise and the human eye is extremely sensitive to text distortion. Check the artist's signature at 100% zoom — it should look like it was written at the higher resolution.</p>
 
-<h2>When to Accept the Crowd</h2>
+<h2>Post-Upscale Verification</h2>
 
-<p>Some photos are better with the crowd. The tourists at the Eiffel Tower are part of the experience of being at the Eiffel Tower. Removing them creates a photo that looks like a postcard — technically perfect, emotionally empty. The crowd is the <strong>context</strong>. The crowd is the proof that you were actually there, not just looking at a stock photo. Consider keeping some photos with the crowd for authenticity. Remove the crowd for the hero shot — the one you print, frame, and display. The AI object remover gives you the choice. You decide which photos tell the story you want to tell.</p>
+<p>After upscaling, check the image at 100% zoom. Focus on: edges (are they sharp or blurred?), textures (preserved or smoothed?), gradients (smooth or banded?), and fine details (enhanced or invented?). If the upscaled image looks sharp at 100% zoom on screen, it will look sharp in print. If it looks soft or artifacted on screen, the print will magnify those flaws.</p>
 
-<p>Clean up your travel photos at <a href="/en/tools/object-remover">AI object remover</a> — take the photo with the crowd, remove the crowd in post. The landmark is always there. The tourists are temporary.</p>`
+<p>Prepare your artwork for print at <a href="/en/tools/image-upscaler">AI image upscaler</a> — calculate the DPI, upscale in stages, and verify at 100% zoom before sending to the printer.</p>`
   },
   {
-    slug: "background-remover-social-media-profile-consistent-brand",
-    title: "Background Remover for Social Media Profile Pictures How to Create a Consistent Brand Look Across Every Platform",
-    description: "Your LinkedIn profile photo has a blue background. Your Twitter has a gray background. Your Instagram has a beach background. AI background removal unifies them all — here's the consistent brand look workflow.",
-    date: "2026-07-16",
+    slug: "article-generator-email-newsletter-weekly-digest",
+    title: "Article Generator for Email Newsletters How to Automate Your Weekly Digest Without Sounding Like a Robot",
+    description: "You send a weekly newsletter to 10,000 subscribers. Writing original content every week is exhausting. An AI article generator drafts the content — you add the personal touch. Here's the newsletter automation workflow.",
+    date: "2026-07-17",
+    category: "Content",
+    tags: ["article generator", "email newsletter", "weekly digest", "automation", "content marketing"],
+    relatedTools: ["article-generator", "text-polish", "text-to-speech"],
+    content: `<p>You have been sending a weekly newsletter for three years. Every Tuesday, 10,000 subscribers receive an email with: a personal introduction, a main article (800 words), 3 curated links with commentary, and a personal sign-off. Total writing time: 4-6 hours per week. That is 200-300 hours per year spent on newsletter content. You are burning out. The quality is slipping. The personal introduction is becoming formulaic. The commentary is becoming perfunctory. Your subscribers can tell.</p>
+
+<p>An <a href="/en/tools/article-generator">AI article generator</a> handles the heavy lifting — the main article and link commentary. You handle the personal elements — the introduction and sign-off. The AI writes 80% of the content. You write the 20% that makes it <strong>your</strong> newsletter. Here is the newsletter automation workflow that maintains quality while cutting writing time in half.</p>
+
+<h2>The 80/20 Newsletter Workflow</h2>
+
+<p><strong>Step 1: The personal introduction (human-written, 10% of the content).</strong> Write this yourself. It is 100-200 words of personal context — what you have been thinking about this week, a story from your life, a lesson you learned. This is the section that builds connection with your readers. The AI cannot write this because the AI does not have your life. The personal introduction is the <strong>authenticity anchor</strong> of your newsletter. It proves there is a real person behind the content.</p>
+
+<p><strong>Step 2: The main article (AI-drafted, 60% of the content).</strong> Use the <a href="/en/tools/article-generator">AI article generator</a> to draft the main article. Provide the topic, the key points you want to cover, and any specific examples or data you want included. The AI produces a structured, well-written first draft. You edit it — add your voice, your examples, your perspective. The AI provides the structure and the bulk of the text. You provide the insight and the personality.</p>
+
+<p><strong>Step 3: Curated links with AI commentary (AI-drafted, 20% of the content).</strong> Give the AI the three links and ask for a 2-3 sentence commentary on each — why this link is interesting, what the key takeaway is, and why your subscribers should care. The AI drafts the commentary. You review and adjust. The AI summarizes. You contextualize.</p>
+
+<p><strong>Step 4: The personal sign-off (human-written, 10% of the content).</strong> Write this yourself. A question for your readers, an invitation to reply, a personal note. The sign-off is the <strong>relationship builder</strong>. It invites conversation. It makes the newsletter a dialogue, not a broadcast. The AI cannot write this because it cannot have a relationship with your readers.</p>
+
+<h2>Why This Workflow Preserves Quality</h2>
+
+<p>The AI handles the information-dense sections — the main article and link commentary. These sections benefit from clear structure, correct grammar, and concise writing. The AI excels at this. You handle the personality-dense sections — the introduction and sign-off. These sections benefit from authenticity, personal experience, and a distinctive voice. The AI cannot do this. You can. The division of labor plays to each writer's strengths. The AI is the researcher and drafter. You are the voice and the face. Together, the newsletter maintains quality while cutting writing time from 4-6 hours to 1-2 hours.</p>
+
+<p>Draft your next newsletter at <a href="/en/tools/article-generator">AI article generator</a> — let the AI write 80%, you write the 20% that matters most.</p>`
+  },
+  {
+    slug: "pdf-to-word-academic-research-literature-review",
+    title: "PDF to Word for Academic Research How to Organize Your Literature Review by Converting Dozens of PDF Papers into Searchable Editable Text",
+    description: "Your literature review requires reading 80 papers. They are all PDFs — some searchable, some scanned. Converting them to editable text makes them searchable, quotable, and organizable. Here's the research workflow.",
+    date: "2026-07-17",
+    category: "Document",
+    tags: ["PDF to Word", "academic research", "literature review", "papers", "organization"],
+    relatedTools: ["pdf-to-word", "text-polish", "article-generator"],
+    content: `<p>You are writing a literature review for your thesis. You have collected 80 papers. They are all PDFs. Some are digitally created — the text is selectable and searchable. Some are scanned from printed journals — the text is an image, not searchable at all. Some are a mix — the first page is digital metadata, the rest is scanned content. You need to: search across all 80 papers for specific terms and concepts, quote key passages with proper citations, and organize the findings thematically.</p>
+
+<p>Working with 80 individual PDFs is a research nightmare. Finding a specific quote means opening each PDF, searching (if it is searchable), scrolling, and hoping you remember which paper said what. A <a href="/en/tools/pdf-to-word">PDF to Word converter</a> that handles both digital and scanned PDFs transforms this workflow. Here is the literature review organization system.</p>
+
+<h2>Step 1: Convert All PDFs to Searchable Text</h2>
+
+<p>Process all 80 papers through the PDF to Word converter. For digital PDFs, the text is extracted directly. For scanned PDFs, OCR converts the image to text. For mixed PDFs, both methods are applied. The output is a searchable Word document for each paper. The conversion quality depends on the original: digital PDFs convert at 99%+ accuracy, clean scans convert at 95-98% accuracy, and old or damaged scans convert at 85-95% accuracy (handwritten notes, faded text, and complex layouts reduce accuracy).</p>
+
+<p>The converted documents are now <strong>searchable</strong>. You can use your computer's search function to find any term across all 80 papers. A search for "epistemological framework" finds every paper that uses that phrase. The same search in 80 individual PDFs — many of which are not searchable — would be impossible.</p>
+
+<h2>Step 2: Extract Key Quotes with Citations</h2>
+
+<p>As you read each paper, copy key quotes into a master research document. Include: the quote, the author, year, and page number, and your annotation (why this quote is relevant to your research). The PDF to Word conversion makes copying quotes easy — the text is editable, so you can select, copy, and paste directly. With a scanned PDF, you would have to retype each quote manually. The conversion saves hours of transcription time.</p>
+
+<p>Organize the quotes thematically in your master document. Group related quotes together. The thematic organization becomes the outline for your literature review. Each theme becomes a section. Each group of quotes becomes the evidence for that section's argument.</p>
+
+<h2>Step 3: Verify Quotes Against the Original PDF</h2>
+
+<p>OCR is not perfect. Before using a quote in your thesis, verify it against the original PDF. Check: proper names (OCR often mangles names — "Bourdieu" might become "Bourdieu" or "B0urdieu"), numbers and statistics (a misrecognized digit changes the meaning), and technical terminology (OCR might replace a field-specific term with a similar-looking common word).</p>
+
+<p>The verification adds time, but it prevents the embarrassment of citing a misquoted source. The PDF to Word conversion is a <strong>search and discovery tool</strong>, not a final transcript. Use it to find the relevant passages. Verify the exact wording against the original. The conversion gets you to the right page. The original confirms the right words.</p>
+
+<h2>Step 4: Archive the Converted Documents</h2>
+
+<p>Save the original PDF and the converted Word document together. The PDF is the authoritative version — the journal-published record. The Word document is the working copy — the searchable, quotable, editable version. Both are part of your research archive. The PDF proves provenance. The Word document enables productivity.</p>
+
+<p>Convert your research papers at <a href="/en/tools/pdf-to-word">PDF to Word converter</a> — 80 papers, searchable, quotable, organizable. Your literature review just got easier.</p>`
+  },
+  {
+    slug: "colorizer-vs-photo-restorer-which-first",
+    title: "Colorizer vs Photo Restorer for Old Photos Which One Should You Use First — and Why the Order Matters More Than You Think",
+    description: "You have an old, damaged black-and-white photo. Should you restore the damage first, then colorize? Or colorize first, then restore? The order changes the result. Here's the correct pipeline.",
+    date: "2026-07-17",
     category: "Edit",
-    tags: ["background remover", "social media", "profile picture", "brand consistency", "personal branding"],
-    relatedTools: ["background-remover", "avatar-generator", "ai-image-generator"],
-    content: `<p>You look at your online presence across platforms. LinkedIn: a professional headshot with a blue office background. Twitter: a candid photo with a gray conference room background. Instagram: a casual photo with a beach background. Each photo is fine individually. Together, they look like three different people. Your personal brand is <strong>inconsistent</strong>. The backgrounds are the problem.</p>
+    tags: ["colorizer", "photo restorer", "pipeline", "old photos", "restoration"],
+    relatedTools: ["colorizer", "photo-restorer", "image-upscaler"],
+    content: `<p>You have a 70-year-old black-and-white photo. It is faded, scratched, and has a crease running through the middle. You want to: restore the damage (remove scratches, fix the crease, enhance contrast) and colorize the photo (add realistic color). You have a <a href="/en/tools/photo-restorer">photo restorer</a> and a <a href="/en/tools/colorizer">colorizer</a>. Which one do you use first?</p>
 
-<p>A <a href="/en/tools/background-remover">background remover</a> extracts you from each photo onto a transparent background. You then place yourself on the <strong>same background</strong> across all platforms. The result: three different photos, three different expressions, one consistent visual identity. Here is the personal brand consistency workflow.</p>
+<p>The answer: <strong>restore first, then colorize</strong>. The order matters more than you think — and using the wrong order produces worse results that cannot be fixed without starting over. Here is the correct pipeline and why the order matters.</p>
 
-<h2>Why Background Consistency Matters for Personal Branding</h2>
+<h2>Why Restore First, Then Colorize</h2>
 
-<p>Your profile photo is the most-viewed image of you online. It appears on: LinkedIn (professional network), Twitter/X (public conversation), Instagram (visual presence), GitHub (developer identity), Slack/Teams (workplace communication), and email (Gmail/Outlook avatar). A potential employer, client, or collaborator might see your profile photo on multiple platforms in the same day. If the backgrounds are inconsistent, you look <strong>disorganized</strong>. If the backgrounds are consistent, you look <strong>intentional</strong>.</p>
+<p><strong>Reason 1: Damage confuses the colorizer.</strong> A scratch across a person's face is a high-contrast artifact. The AI colorizer sees the scratch as a feature of the image and assigns it a color — usually a skin tone or a gray tone. The scratch becomes a colored line across the face. The colorization locks in the scratch as a permanent feature. If you colorize first and then try to remove the scratch, the repair must match the surrounding colored area — which is harder than repairing a grayscale area. Restoring first removes the scratch before it can be colorized.</p>
 
-<p>The background is the silent signal of personal branding. A consistent background communicates: "I pay attention to details. I care about my presentation. I am the same person across platforms." An inconsistent background communicates the opposite. The background remover is the tool that creates consistency from inconsistency.</p>
+<p><strong>Reason 2: Fading affects color accuracy.</strong> A faded photo has low contrast. The AI colorizer uses contrast information to determine color boundaries — the edge between a person's hair and the background, the boundary between a shirt and a jacket. Low contrast makes these boundaries ambiguous. The colorizer guesses where the boundaries are and applies colors based on those guesses. The result: colors bleeding across boundaries. Restoring first enhances the contrast, which gives the colorizer cleaner boundaries to work with.</p>
 
-<h2>The Consistent Profile Photo Workflow</h2>
+<p><strong>Reason 3: Stains and discoloration mislead the colorizer.</strong> A yellowed or sepia-toned photo has a color cast. The AI colorizer sees the yellow or sepia as the actual color of the image and may incorporate it into the colorization. A yellow-stained white shirt becomes a yellow shirt. A sepia-toned sky becomes a brown sky. Restoring first neutralizes the color cast, giving the colorizer a clean monochrome image to work from.</p>
 
-<p><strong>Step 1: Choose your best 3-5 photos.</strong> Select photos with different expressions and contexts — a professional headshot, a speaking photo, a casual photo. The variety shows different sides of your personality. The consistent background unifies them.</p>
+<h2>The Correct Pipeline: Restore → Colorize → Review</h2>
 
-<p><strong>Step 2: Remove the background from each photo.</strong> Use the <a href="/en/tools/background-remover">background remover</a> to extract yourself from each photo onto a transparent background. The AI detects the subject and removes the background. The result: you, on a transparent canvas, for each photo.</p>
+<p><strong>Step 1: Scan the original photo at the highest possible resolution.</strong> 600 DPI minimum. The original scan is the master file. All restoration and colorization are derived from this master. Never modify the master directly.</p>
 
-<p><strong>Step 3: Choose a single background color for all platforms.</strong> Pick a color that aligns with your personal brand: white or light gray (clean, professional, minimal), a brand color (consistent with your website or business), or a subtle gradient (adds visual interest without being distracting). Apply the same background color to every photo.</p>
+<p><strong>Step 2: Restore with the photo restorer.</strong> Use the <a href="/en/tools/photo-restorer">photo restorer</a> to: remove scratches, dust, and physical damage, fix creases and folds, enhance contrast and sharpness, and neutralize color casts (sepia, yellowing). The output is a clean, high-contrast black-and-white image.</p>
 
-<p><strong>Step 4: Crop consistently.</strong> All profile photos should be square (1:1 aspect ratio) with the same framing — head and shoulders centered, consistent eye position, consistent zoom level. The consistent crop + consistent background = consistent personal brand.</p>
+<p><strong>Step 3: Colorize with the colorizer.</strong> Feed the restored black-and-white image to the <a href="/en/tools/colorizer">colorizer</a>. The clean image gives the AI the best possible input. The colors will be more accurate, the boundaries will be cleaner, and the result will look more natural.</p>
 
-<p><strong>Step 5: Upload across platforms.</strong> Update your profile photo on every platform with the new consistent set. The effect is immediate: your online presence transforms from a collection of individual photos to a <strong>coordinated personal brand</strong>.</p>
+<p><strong>Step 4: Review the colorized result.</strong> Check for: color bleeding across boundaries, colors that look unnatural (a green face, a purple sky), and artifacts introduced by either the restoration or the colorization. The colorized result is a <strong>derived work</strong>. The original scan is the master. Keep both.</p>
 
-<p>Create your consistent profile photos at <a href="/en/tools/background-remover">AI background remover</a> — extract, unify, and present the same person across every platform.</p>`
+<h2>When to Do It Differently</h2>
+
+<p>There is one exception: if the photo has <strong>severe fading</strong> where you cannot tell what the image depicts, colorizing first might help you identify the content — which parts are faces, which are clothing, which are background. The colorization adds information that helps you see the image more clearly. Then you can restore the original black-and-white scan more effectively with that understanding. Then you can colorize the restored version for the final output. In this case, the pipeline becomes: colorize (for analysis) → restore (with the understanding gained) → colorize (for final output). But this is the exception, not the rule.</p>
+
+<p>For 95% of old photos, the pipeline is: <strong>restore first, then colorize</strong>. The order is the difference between a natural-looking colorized photo and one where the scratches and stains are now permanently colored. Restore at <a href="/en/tools/photo-restorer">photo restorer</a>, then colorize at <a href="/en/tools/colorizer">colorizer</a>. The right order. The right result.</p>`
   },
   {
-    slug: "text-polish-job-applications-resume-cover-letter",
-    title: "Text Polish for Job Applications How to Optimize Your Resume Cover Letter and LinkedIn Profile Without Sounding Like Everyone Else",
-    description: "AI text polish can improve your resume's grammar and clarity. But it can also make your application sound identical to every other AI-polished application. Here's how to stand out while staying polished.",
-    date: "2026-07-16",
+    slug: "image-description-cnn-to-vision-transformer-evolution",
+    title: "How AI Image Description Works From Convolutional Neural Networks to Vision Transformers — the 15-Year Evolution of Teaching Computers to See",
+    description: "In 2012, AI could say 'this is a cat.' In 2026, it can describe the cat's breed, color, position, expression, and the room it is sitting in. Here's the technological evolution that made it possible.",
+    date: "2026-07-17",
     category: "Content",
-    tags: ["text polish", "resume", "cover letter", "LinkedIn", "job application"],
-    relatedTools: ["text-polish", "article-generator", "translate"],
-    content: `<p>You upload your resume to an <a href="/en/tools/text-polish">AI text polisher</a>. The original: "Managed a team of five people and made sure projects got done on time." The polished version: "Led a cross-functional team of five, consistently delivering projects ahead of schedule while maintaining a 97% stakeholder satisfaction rate." Better. More professional. More specific. But also: <strong>identical to every other AI-polished resume</strong> in the recruiter's inbox. The recruiter has read "Led a cross-functional team" and "consistently delivering projects ahead of schedule" fifty times today. Your resume does not stand out. It blends in.</p>
+    tags: ["image description", "CNN", "Vision Transformer", "computer vision", "evolution"],
+    relatedTools: ["image-description", "style-transfer", "ai-image-generator"],
+    content: `<p>In 2012, AlexNet — a convolutional neural network (CNN) with 60 million parameters — won the ImageNet competition by classifying images into 1,000 categories with 15.3% top-5 error. The AI could look at a photo and say "this is a cat." That was the state of the art. The AI could not tell you what kind of cat, where the cat was, what the cat was doing, or anything about the room the cat was in. Just "cat."</p>
 
-<p>AI text polish is a powerful tool for job applications — but it has a homogenization problem. The AI polishes toward the statistical average of professional language. The result is grammatically correct, professionally phrased, and indistinguishable from every other AI-polished application. Here is how to use AI polish without losing your distinctiveness.</p>
+<p>In 2026, an <a href="/en/tools/image-description">AI image description</a> tool can look at the same photo and say: "An orange tabby cat with green eyes sits on a wooden windowsill, looking at a sparrow on a branch outside. Morning sunlight streams through the window, casting warm light on the cat's fur. A white ceramic coffee mug with steam rising sits on the sill to the left." This is not a 10% improvement. It is a <strong>fundamentally different capability</strong> — from classification to description, from labels to language. Here is the 15-year technological evolution that made it possible.</p>
 
-<h2>The AI Homogenization Problem</h2>
+<h2>Phase 1: Convolutional Neural Networks (2012-2017) — The Feature Extraction Era</h2>
 
-<p>AI text polishers are trained on millions of professionally written documents. They learn the statistical patterns of "good writing" — active voice, specific numbers, confident language, industry-standard phrases. When you polish your resume, the AI applies these patterns. The result is writing that is <strong>statistically optimal</strong> — it matches the patterns of successful professional writing. But it is also <strong>statistically average</strong> — it sounds like every other document that was polished by the same AI.</p>
+<p>CNNs process images through layers of convolution filters — small sliding windows that detect edges, textures, and patterns at increasing levels of abstraction. The first layer detects edges. The second layer detects shapes. The third layer detects object parts. The final layers detect complete objects. The CNN is a <strong>feature extractor</strong> — it converts an image into a compact mathematical representation that captures what is in the image.</p>
 
-<p>The homogenization problem is most visible in: resume bullet points (everyone "led cross-functional teams" and "drove operational excellence"), cover letter openings (everyone is "excited to apply for the position of..."), and LinkedIn summaries (everyone is a "passionate professional with a track record of..."). The phrases are not wrong. They are just <strong>generic</strong>. The AI made them generic. The AI is good at making writing correct. It is bad at making writing distinctive.</p>
+<p>CNNs were excellent at classification and object detection. They could label images and draw bounding boxes around objects. But they could not generate descriptions. The CNN produced a category, not a sentence. The leap from classification to description required combining CNNs with a different type of model — one that could generate language.</p>
 
-<h2>How to Polish Without Losing Your Voice</h2>
+<h2>Phase 2: CNN + RNN/LSTM (2015-2020) — The Image Captioning Era</h2>
 
-<p><strong>Step 1: Polish for grammar and clarity only.</strong> Tell the AI: "Fix grammar, spelling, and awkward phrasing. Do not change the specific examples, numbers, or unique details." This constrains the AI to mechanical improvements. It fixes the errors. It does not homogenize the content.</p>
+<p>The breakthrough: use a CNN as the encoder (visual features → compact representation) and an RNN/LSTM as the decoder (compact representation → sentence). The model "translates" an image into a sentence, similar to how machine translation converts French to English. The CNN sees the image. The RNN describes what it sees.</p>
 
-<p><strong>Step 2: Add your specific, unique details back in.</strong> After the AI polishes, review the output. The AI may have replaced your specific example ("built a Python script that automated invoice processing, saving 15 hours per week") with a generic version ("developed automation solutions that improved operational efficiency"). Revert the generic version. Keep your specific example. The specificity is what makes your application memorable. The AI removed it. You put it back.</p>
+<p>This architecture produced the first AI image captions: "A cat sitting on a windowsill." The captions were single sentences, often generic, and sometimes wrong. But they were sentences — not just labels. The AI had crossed the boundary from classification to description.</p>
 
-<p><strong>Step 3: Read the polished version aloud.</strong> Does it sound like you? If you would never say "drove operational excellence" in a conversation, do not put it in your resume. The AI polishes toward the statistical average of professional language. You are not the statistical average. You are a specific person with specific experiences. The polish should make your writing clearer, not make you sound like everyone else.</p>
+<p>The limitation: RNNs process information sequentially, one word at a time. They have limited memory for long-range dependencies. An RNN describing a complex scene might "forget" the first object it saw by the time it describes the last one. The description would be inconsistent — the cat is described as orange in the first sentence and gray in the third.</p>
 
-<h2>What to Polish vs What to Leave Alone</h2>
+<h2>Phase 3: Vision Transformers (2020-Present) — The Dense Understanding Era</h2>
 
-<p><strong>Polish:</strong> grammar and spelling, sentence structure (fix awkward phrasing), word choice (replace weak verbs with stronger ones), and consistency (verb tense, formatting, punctuation).</p>
+<p>Transformers replaced RNNs in both language and vision. A Vision Transformer (ViT) processes an image by dividing it into patches — small squares like puzzle pieces — and processing all patches simultaneously using attention mechanisms. The attention mechanism allows every patch to "look at" every other patch, learning which parts of the image are related regardless of distance. The transformer sees the entire image at once, not sequentially.</p>
 
-<p><strong>Do not polish:</strong> specific examples and achievements (the AI will make them generic), personal story and voice (the AI will make them sound like everyone else), and industry-specific terminology (the AI might replace a precise term with a generic one).</p>
+<p>Combined with large language models, Vision Transformers produce <strong>dense, detailed descriptions</strong>: "An orange tabby cat with green eyes and white chest fur sits on a dark wooden windowsill, its body angled toward a window. Outside, a small brown sparrow perches on a bare branch. The cat's ears are forward, its gaze fixed on the bird. Morning light from the window creates a warm glow on the left side of the cat's face. A white ceramic coffee mug with a red heart pattern sits on the sill, steam rising faintly. Through the window, a suburban backyard with a wooden fence and bare winter trees is visible."</p>
 
-<p>Use the <a href="/en/tools/text-polish">AI text polish</a> for grammar and clarity. Then add your specific details back in. The AI makes your writing correct. You make it distinctive. The combination gets you the interview.</p>`
-  },
-  {
-    slug: "image-description-vs-article-generator-visual-vs-text",
-    title: "Image Description vs Article Generator Visual AI vs Text AI — Two Completely Different Types of Intelligence That Happen to Share a Platform",
-    description: "Image description AI understands visual content. Article generator AI understands language. They are both 'AI,' but they use different architectures, training data, and capabilities. Here's how they compare.",
-    date: "2026-07-16",
-    category: "Content",
-    tags: ["image description", "article generator", "computer vision", "NLP", "AI comparison"],
-    relatedTools: ["image-description", "article-generator", "text-to-speech"],
-    content: `<p>You upload a photo to an <a href="/en/tools/image-description">image description</a> tool. The AI analyzes the pixels and outputs: "A ginger cat sitting on a windowsill, looking out at a bird on a branch, morning sunlight streaming through the window." The AI understood the <strong>visual content</strong> of the image — objects, relationships, lighting, mood. It converted pixels into words.</p>
+<p>The description captures: object attributes (orange tabby, green eyes, white chest), spatial relationships (on the windowsill, toward the window, outside), temporal state (ears forward, gaze fixed, steam rising), and contextual detail (suburban backyard, bare winter trees). This is not a label. It is not a caption. It is a <strong>visual understanding</strong> expressed in language. The AI sees the scene the way a human would describe it to someone who cannot see it.</p>
 
-<p>Now you give an <a href="/en/tools/article-generator">article generator</a> the topic "The history of domestic cats." The AI outputs a 1,000-word article covering the domestication of cats in ancient Egypt, their spread across the Roman Empire, and their role in modern society. The AI understood the <strong>topic</strong> and generated relevant, structured text. It converted a prompt into an article.</p>
+<h2>What Has Not Changed</h2>
 
-<p>Both tools use AI. Both are in the "Content" category. But they use completely different types of artificial intelligence — one understands images, the other understands language. Here is how they compare, and why "AI" is not one thing.</p>
+<p>Despite 15 years of progress, AI image description still: cannot understand the <strong>meaning</strong> of a scene (why is the cat looking at the bird? Because it is a predator. The AI does not know this.), cannot describe <strong>emotional content</strong> (the scene feels peaceful because of the morning light — the AI describes the light, but does not feel the peace), and can be <strong>confidently wrong</strong> (the "coffee mug" might actually be a teacup — the AI guessed based on statistical patterns, not actual knowledge).</p>
 
-<h2>Image Description: Computer Vision AI</h2>
-
-<p>Image description AI is built on <strong>computer vision</strong> models — typically transformer-based architectures trained on millions of image-text pairs. The model learns to map visual features (shapes, colors, textures, spatial relationships) to language descriptions. The training data is pairs of images and human-written captions. The model learns: this pattern of pixels = "cat," this pattern = "windowsill," this spatial relationship = "sitting on," this lighting pattern = "morning sunlight."</p>
-
-<p>The AI's strength: <strong>perception</strong>. It sees what is in the image and describes it accurately. The AI's weakness: <strong>reasoning</strong>. It cannot tell you why the cat is looking out the window or what the cat is thinking. It describes what it sees. It does not interpret what it means.</p>
-
-<h2>Article Generator: Natural Language AI</h2>
-
-<p>Article generator AI is built on <strong>large language models</strong> (LLMs) — transformer-based models trained on trillions of words of text from the internet, books, and articles. The model learns the statistical patterns of human language: grammar, facts, argument structure, and writing style. The training data is text. The model learns: this sequence of words is a coherent paragraph, this structure is a persuasive argument, this combination of facts forms a logical explanation.</p>
-
-<p>The AI's strength: <strong>generation</strong>. It produces coherent, structured text on almost any topic. The AI's weakness: <strong>factual accuracy</strong>. It generates text that is statistically plausible, not necessarily true. It can confidently describe the history of cats and include a "fact" that never happened. The article generator is a writer, not a researcher. It writes well. It does not verify.</p>
-
-<h2>When to Use Each (and When to Use Both)</h2>
-
-<p>Use image description when: you need to understand what is in an image, you need alt text for accessibility, or you need to convert visual information into text. Use article generator when: you need to produce written content on a topic, you need a first draft quickly, or you need to explore different angles on a subject.</p>
-
-<p>Use both together when: you have an image-heavy blog post and need both the article text (article generator) and the image descriptions for alt text (image description). The article generator writes the post. The image description describes the images. Together, they produce a complete, accessible article — text and image descriptions, all AI-generated.</p>
-
-<p>Use <a href="/en/tools/image-description">image description</a> for the visual and <a href="/en/tools/article-generator">article generator</a> for the textual. Computer vision and natural language. Different AI. Different capabilities. Same platform.</p>`
-  },
-  {
-    slug: "style-transfer-neuroscience-artistic-preference",
-    title: "The Neuroscience of Artistic Style Why Our Brains Prefer Certain Visual Patterns — and What AI Style Transfer Reveals About Human Aesthetics",
-    description: "Why do humans find Van Gogh's swirling skies and Monet's water lilies beautiful? Neuroscience suggests specific visual patterns trigger pleasure responses in the brain. AI style transfer lets us test the theories.",
-    date: "2026-07-16",
-    category: "Generate",
-    tags: ["style transfer", "neuroscience", "aesthetics", "art", "visual perception"],
-    relatedTools: ["style-transfer", "ai-image-generator", "colorizer"],
-    content: `<p>You apply Van Gogh's "Starry Night" style to a photo of your neighborhood using <a href="/en/tools/style-transfer">style transfer</a>. The result is your street, painted in swirling, vibrant brushstrokes. The image is compelling. But why? What is it about Van Gogh's style — the exaggerated curves, the high-contrast colors, the visible brushstrokes — that makes the transformed image more interesting than the original photo?</p>
-
-<p>Neuroscience has begun to answer this question. Specific visual patterns — <strong>curvature, contrast, and complexity</strong> — trigger pleasure responses in the brain. AI style transfer, which can isolate and apply these patterns to any image, has become an unexpected tool for studying the neuroscience of aesthetics. Here is what the research says about why certain artistic styles feel good to look at.</p>
-
-<h2>The Neuroscience of Visual Pleasure</h2>
-
-<p>Neuroaesthetics — the study of how the brain processes art and beauty — has identified several visual features that consistently activate the brain's reward centers:</p>
-
-<p><strong>Curvature:</strong> The brain prefers curved lines over straight lines. fMRI studies show that viewing curved objects activates the anterior cingulate cortex — a region associated with emotional processing and reward — more than viewing sharp, angular objects. This may explain the appeal of Van Gogh's swirling skies, Hokusai's wave, and Art Nouveau's organic curves. The brain finds curves <strong>rewarding</strong>.</p>
-
-<p><strong>Optimal complexity:</strong> The brain prefers images that are neither too simple nor too complex. A blank white canvas is boring. A chaotic jumble of random patterns is overwhelming. The sweet spot — what researchers call "optimal complexity" — is a pattern that is complex enough to engage the brain's pattern-recognition systems but ordered enough to be comprehensible. Van Gogh's paintings hit this sweet spot: the brushstrokes create complexity, but the recognizable subject matter provides order.</p>
-
-<p><strong>High contrast:</strong> The brain's visual system is wired to detect edges and contrasts. High-contrast images — like the dark cypress trees against the bright sky in "Starry Night" — trigger stronger neural responses than low-contrast images. The contrast creates <strong>visual salience</strong> — the image grabs attention and holds it.</p>
-
-<h2>What AI Style Transfer Reveals</h2>
-
-<p>AI style transfer separates an image into <strong>content</strong> (the shapes and structure) and <strong>style</strong> (the textures, colors, and patterns). This separation allows researchers to test specific hypotheses about visual aesthetics: does applying a high-curvature style to a photo make it more aesthetically pleasing? Does applying a high-contrast style have the same effect? Does the combination of curvature and contrast produce a stronger response than either alone?</p>
-
-<p>The research suggests: yes, yes, and yes. AI style transfer confirms what art historians have observed for centuries — certain visual patterns are universally appealing. The difference is that AI can quantify the effect. It can measure the curvature, contrast, and complexity of a style and correlate those measurements with viewer preference. The AI is a <strong>laboratory for aesthetics</strong> — it can generate thousands of variations of an image in different styles and test which ones viewers prefer.</p>
-
-<h2>What This Means for Creators</h2>
-
-<p>If you are using AI style transfer to create compelling images, the neuroscience suggests: favor styles with <strong>curved, organic lines</strong> over sharp, angular ones, favor styles with <strong>high contrast</strong> over flat, low-contrast ones, and favor styles with <strong>visible texture</strong> (brushstrokes, grain, pattern) over smooth, textureless ones. The brain responds to these features. The style transfer tool applies them. The combination produces images that are not just visually interesting — they are <strong>neurologically rewarding</strong> to look at.</p>
-
-<p>Apply the styles that brains prefer at <a href="/en/tools/style-transfer">AI style transfer</a> — curvature, contrast, and complexity. The art is different. The neural response is universal.</p>`
+<p>The trajectory from 2012 to 2026 is remarkable. The trajectory from 2026 to 2040 will be even more so. But the fundamental limitation remains: the AI sees pixels and patterns. It does not see meaning. The description is accurate. The understanding is absent. That gap is the next frontier.</p>`
   },
 ];
 
@@ -222,4 +228,4 @@ content = content.replace(old, new_blogs)
 with open(BLOG_FILE, "w", encoding="utf-8") as f:
     f.write(content)
 
-print("AI station: 160->done.")
+print("AI station: 166->done.")
