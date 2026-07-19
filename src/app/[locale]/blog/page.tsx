@@ -1,15 +1,89 @@
 import Link from "next/link";
-import { getDictionary } from "@/lib/i18n";
+import type { Metadata } from "next";
+import { getDictionary, isValidLocale } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { fetchBlogPosts } from "@/lib/blog";
 import { tools as allTools } from "@/lib/tools";
 
-export default async function BlogIndex({ params }: { params: Promise<{ locale: string }> }) {
+const PER_PAGE = 12;
+const SITE_URL = "https://ai.toolboxonline.club";
+
+function Pagination({ currentPage, totalPages, locale }: { currentPage: number; totalPages: number; locale: string }) {
+  if (totalPages <= 1) return null;
+
+  const pages: (number | "...")[] = [];
+  if (totalPages <= 7) {
+    for (let i = 1; i <= totalPages; i++) pages.push(i);
+  } else {
+    pages.push(1);
+    if (currentPage > 3) pages.push("...");
+    const start = Math.max(2, currentPage - 1);
+    const end = Math.min(totalPages - 1, currentPage + 1);
+    for (let i = start; i <= end; i++) pages.push(i);
+    if (currentPage < totalPages - 2) pages.push("...");
+    pages.push(totalPages);
+  }
+
+  return (
+    <nav className="mt-12 flex items-center justify-center gap-1" aria-label="Pagination">
+      {currentPage > 1 ? (
+        <Link href={`/${locale}/blog?page=${currentPage - 1}`} className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800">
+          ← Previous
+        </Link>
+      ) : (
+        <span className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-300 dark:text-zinc-700 cursor-not-allowed">← Previous</span>
+      )}
+      <div className="hidden sm:flex gap-1">
+        {pages.map((p, i) =>
+          p === "..." ? (
+            <span key={`dots-${i}`} className="px-2 py-1 text-zinc-400">…</span>
+          ) : (
+            <Link key={p} href={`/${locale}/blog${p === 1 ? "" : `?page=${p}`}`} className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+              p === currentPage
+                ? "bg-blue-600 text-white"
+                : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+            }`}>
+              {p}
+            </Link>
+          )
+        )}
+      </div>
+      <span className="text-sm text-zinc-500 dark:text-zinc-400 sm:hidden px-2">{currentPage} / {totalPages}</span>
+      {currentPage < totalPages ? (
+        <Link href={`/${locale}/blog?page=${currentPage + 1}`} className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800">
+          Next →
+        </Link>
+      ) : (
+        <span className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-300 dark:text-zinc-700 cursor-not-allowed">Next →</span>
+      )}
+    </nav>
+  );
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
+  if (!isValidLocale(locale)) return {};
+  return {
+    title: "AI ToolBox Blog — AI Tool Guides, Tips & Tutorials",
+    description: "Tips, guides, and tutorials to get the most out of AI tools.",
+    alternates: {
+      canonical: `${SITE_URL}/en/blog`,
+      languages: { "x-default": `${SITE_URL}/en/blog`, en: `${SITE_URL}/en/blog`, es: `${SITE_URL}/es/blog`, ar: `${SITE_URL}/ar/blog` },
+    },
+  };
+}
+
+export default async function BlogIndex({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams: Promise<{ page?: string }> }) {
+  const { locale } = await params;
+  if (!isValidLocale(locale)) return null;
   const dict = await getDictionary(locale as Locale);
-  const posts = await fetchBlogPosts();
+  const allPosts = await fetchBlogPosts();
+  const sp = await searchParams;
+  const currentPage = Math.max(1, parseInt(sp.page || "1", 10));
+  const totalPages = Math.ceil(allPosts.length / PER_PAGE);
+  const safePage = Math.min(currentPage, totalPages);
+  const posts = allPosts.slice((safePage - 1) * PER_PAGE, safePage * PER_PAGE);
   const bg = (dict as any)?.blog || {};
-  const home = (dict as any)?.home || {};
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
@@ -17,11 +91,12 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
         <Link href={`/${locale}`} className="hover:text-blue-600 dark:hover:text-blue-400">{bg.home || "Home"}</Link>
         <span className="mx-2">/</span>
         <span className="font-medium text-zinc-900 dark:text-white">{bg.blog || "Blog"}</span>
+        {safePage > 1 && <><span className="mx-2">/</span><span className="text-zinc-500">Page {safePage}</span></>}
       </nav>
 
       <header className="mb-10">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">{bg.title || "AI ToolBox Blog"}</h1>
-        <p className="mt-3 text-base text-zinc-600 dark:text-zinc-400">{bg.description || "Tips, guides, and tutorials to get the most out of AI tools."}</p>
+        <p className="mt-3 text-base text-zinc-600 dark:text-zinc-400">{bg.description || "Tips, guides, and tutorials to get the most out of AI tools."}{" "}{allPosts.length} articles — page {safePage} of {totalPages}.</p>
       </header>
 
       <script
@@ -32,13 +107,13 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
             "@type": "Blog",
             name: bg.title || "AI ToolBox Blog",
             description: bg.description || "Tips, guides, and tutorials for AI tools",
-            url: `https://ai.toolboxonline.club/${locale}/blog`,
+            url: `${SITE_URL}/${locale}/blog`,
             blogPost: posts.map((p) => ({
               "@type": "BlogPosting",
               headline: p.title,
               description: p.description,
               datePublished: p.date,
-              url: `https://ai.toolboxonline.club/${locale}/blog/${p.slug}`,
+              url: `${SITE_URL}/${locale}/blog/${p.slug}`,
             })),
           }),
         }}
@@ -70,6 +145,8 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
           );
         })}
       </div>
+
+      <Pagination currentPage={safePage} totalPages={totalPages} locale={locale} />
     </div>
   );
 }
