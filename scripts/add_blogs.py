@@ -1,4 +1,4 @@
-"""Add 6 blogs to AI station (184→190 static) — July 20, 2026"""
+"""Add 6 blogs to AI station (190→196 static) — July 21, 2026"""
 import os, sys
 
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
@@ -10,194 +10,198 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "image-upscaler-real-estate-photos-listing-images",
-    title: "Image Upscaler for Real Estate Photos How to Fix Low-Resolution Listing Images and Make Every Property Look Its Best",
-    description: "Your MLS listing photos are 1024×768 — the standard from 2008. On a 4K screen, they look soft and unprofessional. AI upscaling fixes the resolution without reshooting. Here's the real estate photo upgrade workflow.",
-    date: "2026-07-20",
+    slug: "photo-restorer-film-photography-negatives-slides",
+    title: "Photo Restorer for Film Photography How to Digitize and Restore Old Negatives Slides and Film Prints with AI",
+    description: "You found a box of 35mm negatives from the 1970s. They are dusty, scratched, and the colors have shifted. AI photo restoration can recover them — here's the film digitization and restoration workflow.",
+    date: "2026-07-21",
     category: "Edit",
-    tags: ["image upscaler", "real estate", "listing photos", "MLS", "resolution"],
-    relatedTools: ["image-upscaler", "background-remover", "object-remover"],
-    content: `<p>You are a real estate agent. A client is selling a $750,000 home. You pull the listing photos from the MLS. They are 1024×768 pixels — the standard from 2008. On your phone, they look fine. On a 4K monitor — the screen your buyers are using to browse listings — they look soft, pixelated, and unprofessional. The house is beautiful. The photos make it look like it was photographed with a flip phone. You cannot reshoot — the house is occupied, the staging is gone, and the photographer is booked for weeks.</p>
+    tags: ["photo restorer", "film photography", "negatives", "slides", "digitization"],
+    relatedTools: ["photo-restorer", "colorizer", "image-upscaler"],
+    content: `<p>You find a shoebox in your parents' attic. Inside: 200 35mm negatives from the 1970s — family vacations, childhood birthdays, your parents' wedding. The negatives are dusty. Some are scratched. The colors on the aging film have shifted — the once-vibrant Kodachrome reds are now muted, and the whites have yellowed. You hold the negatives up to the light and squint. You can see your mother as a young woman, laughing at something off-camera. You want to see these images clearly — not as faded negatives, but as restored digital photographs.</p>
 
-<p>An <a href="/en/tools/image-upscaler">AI image upscaler</a> fixes the resolution without reshooting. The AI increases the pixel dimensions while sharpening details, enhancing textures, and making the photos look like they were shot at a higher resolution. Here is the real estate photo upgrade workflow.</p>
+<p>A <a href="/en/tools/photo-restorer">photo restorer</a> combined with a basic film scanning setup can recover these images. Here is the film digitization and restoration workflow for negatives and slides.</p>
 
-<h2>Why Listing Photo Resolution Matters</h2>
+<h2>Step 1: Digitize the Negatives</h2>
 
-<p>According to Zillow and Redfin data: listings with high-resolution photos get 40% more views than those with low-resolution photos, buyers spend 60% more time on listings with sharp, detailed images, and listings with professional-quality photos sell 32% faster than those with amateur or low-resolution photos. The photos are the first impression. The first impression determines whether the buyer clicks through to the listing or scrolls past. Low-resolution photos signal "this listing is old" or "this agent does not care." High-resolution photos signal "this home is worth looking at." The AI upscaler upgrades the signal from "old listing" to "premium property."</p>
+<p>You need to convert the physical negatives into digital files. Options: a dedicated film scanner (produces the best quality — 4000+ DPI, color-accurate — but costs $200-500), a flatbed scanner with a transparency unit (good quality for the price — 2400-4800 DPI for film), or a DSLR/mirrorless camera with a macro lens and a light table (fastest method — photograph the negative against a bright, even light source, then invert the colors in software).</p>
 
-<h2>The Real Estate Photo Upscaling Workflow</h2>
+<p>For each option: scan or photograph at the highest resolution possible — 2400 DPI minimum for 35mm film. The scan captures the negative. Software (Lightroom, Photoshop, or free tools like Darktable) inverts the negative to a positive image. The output is a digital photo that still has the dust, scratches, and color shifts of the original film.</p>
 
-<p><strong>Step 1: Extract the original photos.</strong> Pull the highest-resolution versions available from the MLS, the photographer, or the archived files. Even if they are only 1024×768, start with the best source available. The AI upscales from the source. Better source = better result.</p>
+<h2>Step 2: Restore with AI</h2>
 
-<p><strong>Step 2: Upscale with AI.</strong> Use the <a href="/en/tools/image-upscaler">image upscaler</a> to increase the resolution to at least 2048×1536 (2×) or 4096×3072 (4×). The AI adds detail — sharpening edges, enhancing textures, and filling in the extra pixels intelligently. For real estate photos, the key details are: room edges and corners (should be sharp, not soft), window views (should be clear, not blown out), and surface textures (wood floors, granite countertops, tile — should look crisp).</p>
+<p>Upload the digitized photo to the <a href="/en/tools/photo-restorer">photo restorer</a>. The AI enhances: contrast and sharpness (film scans often look soft — the AI sharpens the image), dust and scratch removal (the AI detects and removes the small white specks and scratches that are visible on every film scan), and color correction (the AI reduces the yellow cast of aging film and restores a more natural color balance).</p>
 
-<p><strong>Step 3: Review at 100% zoom.</strong> Check for AI artifacts: over-sharpened edges (halos around objects), invented textures (the AI added a wood grain that does not exist), and color shifts (the upscaling process changed the white balance). Fix issues with a second pass or manual adjustment.</p>
+<p>The AI restoration handles the bulk of the cleanup. For heavily damaged negatives — deep scratches, mold, torn sprocket holes — the AI provides a starting point. Manual retouching may be needed for the most severe damage.</p>
 
-<p><strong>Step 4: Clean up the photos (optional).</strong> Use the <a href="/en/tools/object-remover">object remover</a> to remove clutter, personal items, and distractions. Then use the <a href="/en/tools/background-remover">background remover</a> if you need to replace the sky in exterior shots with a blue sky (a common real estate photography technique). The upscaled photos are the clean canvas for additional enhancements.</p>
+<h2>Step 3: Colorize (Optional)</h2>
 
-<p><strong>Step 5: Upload the high-resolution photos.</strong> Replace the old listing photos with the upscaled versions. The listing now has the image quality of a premium property. The photos look sharp on every screen. The first impression is professional. The AI upscaler turned outdated photos into competitive marketing assets.</p>
+<p>If the negatives are black-and-white, use the <a href="/en/tools/colorizer">colorizer</a> to add color. The AI estimates the colors based on the scene content. The colors are plausible, not historically accurate. For family photos, the emotional impact of color usually outweighs the historical inaccuracy. The colorized version makes the past feel present. The black-and-white original preserves the historical record. Keep both.</p>
 
-<p>Upgrade your listing photos at <a href="/en/tools/image-upscaler">AI image upscaler</a> — 2008 resolution, 2026 quality. No reshoot required.</p>`
+<h2>Step 4: Archive the Digital Files</h2>
+
+<p>Save three versions of each photo: the raw scan (the original digitization — unmodified, the digital negative), the restored version (AI-enhanced, cleaned, color-corrected), and the colorized version (if applicable — AI-colorized for emotional connection). Store all three with metadata: date, location, people in the photo, and restoration notes. The raw scan is the archival master. The restored versions are the viewing copies. The film negatives go back in the shoebox — or better, into archival sleeves in a climate-controlled environment.</p>
+
+<p>Digitize and restore your film at <a href="/en/tools/photo-restorer">AI photo restorer</a> — from shoebox to screen, from faded negative to restored memory.</p>`
   },
   {
-    slug: "article-generator-product-descriptions-ecommerce-bulk",
-    title: "Article Generator for Product Descriptions How E-Commerce Stores Create Hundreds of Unique Product Pages Without Writing a Single Description by Hand",
-    description: "Your store has 500 products. Each needs a unique description for SEO. Writing 500 descriptions manually takes months. An AI article generator produces them in hours. Here's the bulk product description workflow.",
-    date: "2026-07-20",
+    slug: "face-blur-witness-protection-legal-documentation",
+    title: "Face Blur for Witness Protection and Legal Documentation How to Anonymize Sensitive Evidence While Preserving Its Evidentiary Value",
+    description: "A legal document includes a photo of a witness whose identity must be protected. Blurring the face preserves the photo's evidentiary value while protecting the person. Here's the legal documentation workflow.",
+    date: "2026-07-21",
+    category: "Edit",
+    tags: ["face blur", "witness protection", "legal", "evidence", "anonymization"],
+    relatedTools: ["face-blur", "object-remover", "watermark-remover"],
+    content: `<p>You are a paralegal preparing evidence for a trial. A key piece of evidence is a photograph that shows a witness at a specific location at a specific time. The photo proves the witness's presence — which is critical to the case. But the witness's identity must be protected. Publishing the unblurred photo would endanger the witness. The photo must be <strong>anonymized</strong> while preserving its <strong>evidentiary value</strong> — the fact that a person was present, at that location, at that time.</p>
+
+<p>A <a href="/en/tools/face-blur">face blur</a> tool solves this. The AI detects the face. The blur is applied. The person is anonymized. The photo's evidentiary value is preserved — the location, the time, the presence of a person, and the surrounding context are all still visible. Only the identity is protected. Here is the legal documentation anonymization workflow.</p>
+
+<h2>Why Face Blur Is the Standard for Evidence Anonymization</h2>
+
+<p>In legal contexts, evidence must be both <strong>authentic</strong> (proven to be what it claims to be) and <strong>admissible</strong> (meeting the rules of evidence). Anonymization must not destroy the evidence's authenticity. The photo must still prove what it is supposed to prove. Face blur is the preferred anonymization method because: it preserves the surrounding context (the location, the objects, the other people, the time of day), it is visibly an anonymization (the blur is obvious — no one can claim the photo was altered deceptively), and it is irreversible (once blurred, the face cannot be recovered — the anonymization is permanent).</p>
+
+<p>The alternative — pixelation or full masking — is also acceptable but produces a less natural-looking result. The choice of anonymization method depends on the court's requirements and the sensitivity of the case.</p>
+
+<h2>The Legal Anonymization Workflow</h2>
+
+<p><strong>Step 1: Preserve the original, unmodified photo.</strong> The original is the evidence. The blurred version is a derivative work. The original must be preserved in its unmodified state — with a chain of custody documented. The blur is applied to a copy, never to the original.</p>
+
+<p><strong>Step 2: Apply the face blur.</strong> Use the <a href="/en/tools/face-blur">face blur</a> tool on the copy. The AI detects faces automatically. Apply the blur at a sufficient radius — at least 20 pixels for Gaussian blur. The blur should be visibly obvious — a subtle blur that could be mistaken for an out-of-focus photo is not sufficient. The blur must communicate: "This face has been intentionally anonymized."</p>
+
+<p><strong>Step 3: Document the anonymization process.</strong> Record: the date and time of anonymization, the person who performed the anonymization, the tool used, the method (Gaussian blur, pixelation, masking), the blur radius or pixelation block size, and a statement that the original unmodified photo is preserved and available for verification. The documentation is part of the chain of custody. It proves that the anonymization was performed correctly and that the original evidence is preserved.</p>
+
+<p><strong>Step 4: Submit the blurred version as the exhibit.</strong> The blurred photo is the public-facing exhibit. The original is the sealed evidence — available to the court and counsel, but not to the public. The face blur satisfies the witness protection requirement. The preserved original satisfies the evidentiary requirement. Both are necessary. Neither alone is sufficient.</p>
+
+<h2>When Face Blur Is Not Enough</h2>
+
+<p>Face blur does not protect against identification by: distinctive clothing, visible tattoos, unique accessories, or the surrounding context (a person's home, workplace, or vehicle). If the surrounding context could identify the person, additional anonymization is required — cropping, blurring the background, or removing identifying objects. The face blur is the first step. The surrounding context is the second. Both must be addressed for complete anonymization. Use the <a href="/en/tools/face-blur">AI face blur</a> for the face — and review the entire photo for other identifying information.</p>`
+  },
+  {
+    slug: "object-remover-product-photography-clean-catalog",
+    title: "Object Remover for Product Photography How to Create Clean Consistent Catalog Images from Imperfect Source Photos",
+    description: "Your product photos have dust specks, reflections, and background distractions. AI object removal cleans them up for a professional catalog. Here's the e-commerce product photo cleanup workflow.",
+    date: "2026-07-21",
+    category: "Edit",
+    tags: ["object remover", "product photography", "catalog", "cleanup", "e-commerce"],
+    relatedTools: ["object-remover", "background-remover", "image-upscaler"],
+    content: `<p>You photograph 100 products for your e-commerce catalog. The lighting is good. The products are in focus. But when you review the photos at 100% zoom, you see: dust specks on a black product surface, a reflection of the photographer in a shiny surface, a stray hair on a fabric product, and background distractions (a power outlet, a shadow, a scuff on the backdrop). Each photo has 2-5 small imperfections. Across 100 products, that is 200-500 issues to fix. Manual retouching would take days.</p>
+
+<p>An <a href="/en/tools/object-remover">AI object remover</a> handles each issue in seconds. Circle the imperfection. Click remove. The AI fills the area with the surrounding surface. The product looks perfect. The catalog looks professional. Here is the product photo cleanup workflow.</p>
+
+<h2>The Product Photo Imperfection Checklist</h2>
+
+<p>Go through every product photo and check for these five categories. They appear in roughly 70% of product photos.</p>
+
+<p><strong>Category 1: Dust and debris.</strong> Dust specks are the most common imperfection — especially on dark products. They are invisible to the naked eye during the shoot but glaringly obvious at 100% zoom on a computer screen. The AI removes them in one click. Each dust speck is a small circle against a uniform product surface — the easiest case for AI inpainting.</p>
+
+<p><strong>Category 2: Reflections.</strong> Shiny products (glass, metal, polished surfaces) reflect the photographer, the camera, the lights, and the surrounding room. A reflection of the photographer in a product ruins the professional look. The AI removes the reflection and fills the area with the product's surface. The reflection is gone. The product looks like it was photographed in a professional light tent — even if it was photographed on your desk.</p>
+
+<p><strong>Category 3: Stray hairs and fibers.</strong> Fabric products (clothing, upholstery, towels) attract stray hairs and fibers. A single hair across a white shirt is the first thing the customer sees. The AI removes the hair and fills the area with the fabric texture. The fabric looks clean. The product looks new.</p>
+
+<p><strong>Category 4: Background distractions.</strong> Power outlets, baseboard edges, scuffs on the backdrop, and shadows from the lighting setup. These are not on the product — they are in the background. But they distract from the product. The AI removes them. The background becomes clean and uniform.</p>
+
+<p><strong>Category 5: Product imperfections.</strong> Small scratches, scuffs, or manufacturing marks on the product itself. Be careful with this category — removing a scratch that is actually present on the product could be misleading if the customer expects a scratch-free product. For catalog photos where the product is representative of what the customer will receive, remove manufacturing defects that are specific to the photographed unit and not present on all units. For the product photo that represents the exact item being sold, do not remove product imperfections — the customer should see what they are buying.</p>
+
+<h2>The Batch Cleanup Workflow</h2>
+
+<p><strong>Step 1: Review all photos at 100% zoom.</strong> Flag every imperfection. This is the most time-consuming step — but it is necessary. An imperfection you miss during review will be visible to the customer.</p>
+
+<p><strong>Step 2: Remove imperfections with the AI object remover.</strong> Process each photo through the <a href="/en/tools/object-remover">object remover</a>. Circle each imperfection. Click remove. The AI fills the area. Process the easy ones first (dust, spots on uniform surfaces). Save the hard ones for last (reflections on complex surfaces, hairs on textured fabrics).</p>
+
+<p><strong>Step 3: Final review at 100% zoom.</strong> Check every removed area. The AI fill should be invisible. If the fill is visible — a blurry patch, a color mismatch, a texture inconsistency — redo the removal with a smaller or larger selection, or manually retouch the area. The goal: the product should look like it was photographed perfectly, not like it was photographed imperfectly and then fixed.</p>
+
+<p>Clean up your product photos at <a href="/en/tools/object-remover">AI object remover</a> — 100 products, 500 imperfections, one afternoon of cleanup. The catalog looks professional. The products sell.</p>`
+  },
+  {
+    slug: "image-description-autonomous-vehicles-self-driving",
+    title: "Image Description for Autonomous Vehicles How AI Visual Understanding Is Driving Self-Driving Cars — and Why It Is the Hardest Computer Vision Problem Ever",
+    description: "A self-driving car sees a ball roll into the street. A child might follow. The AI must predict this — not just describe what it sees. Here's how AI image understanding enables autonomous driving.",
+    date: "2026-07-21",
     category: "Content",
-    tags: ["article generator", "product descriptions", "e-commerce", "bulk", "SEO"],
-    relatedTools: ["article-generator", "text-polish", "image-description"],
-    content: `<p>Your e-commerce store sells 500 products. Each product page needs a unique description for SEO — Google penalizes duplicate content, and 500 products with the manufacturer's generic description will not rank. Writing 500 unique descriptions at 30 minutes each = 250 hours of work. That is six weeks of full-time writing. You do not have six weeks. You have a store that is not ranking and products that are not selling.</p>
+    tags: ["image description", "autonomous vehicles", "self-driving", "computer vision", "safety"],
+    relatedTools: ["image-description", "object-remover", "face-blur"],
+    content: `<p>A self-driving car approaches a residential street. A ball rolls into the road. The car's AI does not just see "a ball in the road." It predicts: "A child might follow the ball. Slow down. Prepare to stop." The prediction is the difference between an AI that describes what it sees and an AI that <strong>understands</strong> what it sees. The first is an <a href="/en/tools/image-description">image description</a> tool. The second is a safety-critical system operating at highway speeds with human lives at stake.</p>
 
-<p>An <a href="/en/tools/article-generator">AI article generator</a> produces 500 unique product descriptions in hours — not weeks. The AI generates a description for each product based on its specifications. The descriptions are unique, SEO-optimized, and tailored to each product. Here is the bulk description workflow.</p>
+<p>Autonomous vehicles are the hardest computer vision problem ever attempted. Here is how AI visual understanding enables self-driving — and why the gap between "describe what you see" and "understand what you see" is the difference between a working prototype and a fatal accident.</p>
 
-<h2>Step 1: Prepare the Product Data</h2>
+<h2>Level 1: Perception — "What Is in the Scene?"</h2>
 
-<p>Export your product catalog to a spreadsheet. For each product, include: product name, key features (3-5 bullet points — what makes this product different?), specifications (size, material, color, weight, technical details), target audience (who is this product for?), and keywords (what search terms should this product rank for?). The AI uses this data to generate a description. The quality of the input determines the quality of the output. Generic input = generic description. Specific input = specific description.</p>
+<p>The foundation of autonomous driving is <strong>perception</strong> — identifying the objects in the scene. The car's cameras, LiDAR, and radar feed data to AI models that detect: other vehicles (cars, trucks, buses, motorcycles), pedestrians, cyclists, and animals, road markings (lane lines, crosswalks, stop lines, arrows), traffic signs and signals (speed limits, stop signs, traffic lights), and obstacles (debris, parked cars, construction barriers).</p>
 
-<h2>Step 2: Generate Descriptions in Batches</h2>
+<p>This is the same technology as image description — the AI identifies objects and their positions. But perception alone is not enough. Knowing that there is a pedestrian on the sidewalk is useful. Knowing that the pedestrian is looking at their phone, stepping toward the curb, and not paying attention to traffic — that is the level of understanding required for safe autonomous driving. The gap between perception and understanding is the gap between "there is a pedestrian" and "that pedestrian is about to cross the street without looking."</p>
 
-<p>Process products through the AI article generator in batches of 10-20. For each product, provide the product data and a prompt like: "Write a 150-200 word product description for [product name]. Include the key features [list features]. Mention the target audience [describe audience]. Optimize for the keywords [list keywords]. The tone should be [professional/casual/luxury/technical]." The AI generates a unique description for each product. The descriptions are based on the specifications. They are not generic filler.</p>
+<h2>Level 2: Prediction — "What Will Happen Next?"</h2>
 
-<p>Generate 2-3 variations per product. Pick the best one. The AI produces different phrasings, different angles, and different emphasis. The variations give you options. The best option becomes the product description.</p>
+<p>Prediction is the hardest part of autonomous driving. The AI must anticipate: pedestrian behavior (will that person step into the street?), vehicle behavior (will that car change lanes? run a red light? brake suddenly?), and cyclist behavior (will that cyclist swerve around a pothole?).</p>
 
-<h2>Step 3: Review and Polish</h2>
+<p>The prediction is based on: the object's current trajectory (speed, direction, acceleration), the object's body language (a pedestrian's head orientation, gait, and phone-holding status), and the context (a ball rolling into the street, a bus door opening, a crosswalk with a walk signal). The AI must predict the behavior of every relevant object in the scene — continuously, in real time, at highway speeds. A prediction error at 70 mph is fatal. A prediction error in an image description tool is a funny caption. The stakes could not be more different.</p>
 
-<p>Spot-check 10-20% of the generated descriptions for accuracy. The AI is accurate about 90-95% of the time. The 5-10% error rate includes: misinterpreted specifications (the AI described "blue" when the product is "navy"), invented features (the AI added a feature that the product does not have), and generic phrasing (the AI defaulted to generic language when specific details were not provided).</p>
+<h2>Level 3: Planning — "What Should the Car Do?"</h2>
 
-<p>Use the <a href="/en/tools/text-polish">text polisher</a> to refine the selected descriptions. The polish fixes awkward phrasing, improves SEO keyword integration, and ensures a consistent brand voice across all 500 descriptions.</p>
+<p>Based on the perception and prediction, the car's planning system decides: speed (accelerate, maintain, decelerate, stop), path (stay in lane, change lanes, turn, pull over), and emergency maneuvers (swerve, emergency brake, hazard lights). The planning system must balance safety, legality, and comfort. Stopping abruptly for every detected pedestrian would be safe but unrideable. The car must distinguish between: a pedestrian who is about to cross (brake), a pedestrian who is waiting at a crosswalk (slow down, prepare to brake), and a pedestrian who is walking parallel to the road on the sidewalk (maintain speed).</p>
 
-<h2>The SEO Impact of Unique Product Descriptions</h2>
-
-<p>Google's algorithms penalize duplicate content. If your product descriptions are identical to the manufacturer's or to competing stores, your pages will not rank — regardless of how good your products are. Unique descriptions are a ranking requirement, not a nice-to-have. The AI article generator makes unique descriptions scalable. 500 products × unique descriptions = 500 opportunities to rank in search results. The alternative — 500 products × manufacturer's generic descriptions = 500 pages that Google ignores. The AI generator is not a writing tool. It is an <strong>SEO investment</strong>. The cost of generation is near zero. The value of ranking for 500 product-specific search terms is the difference between a store that sells and a store that sits quietly on page 14 of search results.</p>
-
-<p>Generate your product descriptions at <a href="/en/tools/article-generator">AI article generator</a> — 500 products, 500 unique descriptions, one afternoon of work.</p>`
+<p>This is not an image description problem. It is a <strong>decision-making</strong> problem. The image description tells the car what is in the scene. The prediction tells the car what will happen next. The planning system decides what to do about it. The image description is the first step in a chain that ends with a decision that could save or end a life. The <a href="/en/tools/image-description">AI image description</a> tool you use to generate alt text is the same technology — applied to photos of your cat instead of a highway at night. The technology is the same. The stakes are not.</p>`
   },
   {
-    slug: "style-transfer-album-cover-art-independent-musician",
-    title: "Style Transfer for Album Cover Art How Independent Musicians Are Creating Professional Artwork Without a Graphic Designer",
-    description: "A professional album cover design costs $300-2,000. An AI style transfer creates a unique, artistic cover in minutes. Here's how indie musicians are designing their visual brand on a budget.",
-    date: "2026-07-20",
+    slug: "ai-image-generator-vs-background-remover-creation-vs-extraction",
+    title: "AI Image Generator vs Background Remover Creation vs Extraction — Two AI Image Tools That Operate in Opposite Directions",
+    description: "AI image generator creates a new scene around a subject. Background remover extracts a subject from an existing scene. They are inverse operations — and they work together in the creative pipeline.",
+    date: "2026-07-21",
     category: "Generate",
-    tags: ["style transfer", "album cover", "music", "independent", "design"],
-    relatedTools: ["style-transfer", "ai-image-generator", "background-remover"],
-    content: `<p>You are an independent musician. Your album is recorded, mixed, and mastered. The last piece is the cover art — the visual representation of your music that will appear on Spotify, Apple Music, Bandcamp, and vinyl. A professional album cover designer charges $300-2,000 depending on experience and complexity. You have already spent your budget on recording and mixing. You have $47 left. You cannot afford a designer. You cannot release the album without cover art. An album with no cover art looks like a demo. A demo does not get playlisted.</p>
+    tags: ["AI image generator", "background remover", "creation", "extraction", "comparison"],
+    relatedTools: ["ai-image-generator", "background-remover", "style-transfer"],
+    content: `<p>You have a product photo on a cluttered desk. You use a <a href="/en/tools/background-remover">background remover</a> to extract the product onto a transparent background. The tool removed the desk. It kept the product. The operation is <strong>extraction</strong> — removing the context to isolate the subject.</p>
 
-<p>You use <a href="/en/tools/style-transfer">AI style transfer</a> to create a unique, artistic cover. You take a photo of yourself or a meaningful object. You apply an artistic style — Van Gogh's swirling skies, a watercolor wash, a vintage poster aesthetic. The AI merges your photo with the chosen style. The result is a unique, artistic cover image that represents your music visually. Here is the indie musician's album cover workflow.</p>
+<p>Now you have the isolated product. You want to place it on a lifestyle background — a modern kitchen counter, morning light, coffee cup nearby. You use an <a href="/en/tools/ai-image-generator">AI image generator</a> to create the background. The tool generated a new scene. It added context. The operation is <strong>creation</strong> — generating new content around the subject.</p>
 
-<h2>Step 1: Choose a Base Photo</h2>
+<p>These two tools are <strong>inverse operations</strong> in the creative pipeline. One removes context. The other creates context. They work together — the background remover isolates the subject, and the AI image generator creates a new world around it. Here is the pipeline that uses both.</p>
 
-<p>The base photo is the content image — the photo whose structure and composition will be preserved. Good choices: a portrait of the artist (head and shoulders, simple background, expressive lighting), a meaningful object (an instrument, a location, a symbol that represents the album's theme), or an abstract composition (shapes, textures, colors — style transfer works on abstract images too). The photo should be: high resolution (at least 2000×2000 — streaming platforms require 3000×3000 minimum), well-lit (the style transfer preserves the lighting — good lighting in = good lighting out), and simple composition (style transfer works best with clear subjects — avoid cluttered, busy photos).</p>
+<h2>Background Remover: The Extraction Tool</h2>
 
-<h2>Step 2: Choose an Artistic Style</h2>
+<p>The background remover takes an existing image and removes the background — the context, the environment, everything that is not the subject. The output is the subject on a transparent background. The subject is unchanged. The context is gone. The operation is destructive — the original background is lost. You cannot recover it. Save the original image separately.</p>
 
-<p>The style image is the reference — the artwork whose colors, textures, and brush strokes will be applied to your photo. The style should match the album's mood: acoustic/folk → watercolor, impressionist (soft, organic, natural), rock/alternative → grunge, vintage poster (bold, textured, edgy), electronic/ambient → geometric, abstract (clean, futuristic, atmospheric), and hip-hop/urban → street art, graffiti (bold colors, graphic elements).</p>
+<p>Use the background remover when: you need to place a subject on a new background, you need a transparent PNG for design compositing, or you need to isolate a product, person, or object from its original environment.</p>
 
-<p>Generate 5-10 variations with the same photo and different style references. The AI produces different interpretations. Pick the best one. The right style makes the cover feel like it was designed for the music. The wrong style makes it feel like a random filter.</p>
+<h2>AI Image Generator: The Creation Tool</h2>
 
-<h2>Step 3: Add Text (Artist Name + Album Title)</h2>
+<p>The AI image generator creates an entirely new image from a text prompt. It can generate: backgrounds (the scene around a subject), complete scenes (subject + background), and abstract or artistic compositions. The output is a new image that did not exist before. The AI generator is the creative engine. The background remover is the isolation tool.</p>
 
-<p>AI style transfer does not handle text well. The AI produces shapes that look like letters but are not. Do not include text in the style transfer. Generate the cover <strong>image only</strong>. Then add the artist name and album title in a separate design tool (Canva, Photoshop, or even PowerPoint). The typography should: match the album's genre (serif fonts for folk, sans-serif for electronic, hand-drawn for indie), be legible at thumbnail size (most listeners see the cover at 200×200 pixels on their phone), and not compete with the image (the text should complement the art, not fight it).</p>
+<p>Use the AI image generator when: you need a new background for an extracted subject, you need a complete scene from scratch, or you need creative variations of an existing concept.</p>
 
-<h2>Step 4: Export at the Required Resolution</h2>
+<h2>The Creative Pipeline: Extract → Generate → Composite</h2>
 
-<p>Streaming platforms require album art at 3000×3000 pixels minimum. If the AI style transfer output is lower resolution, use the <a href="/en/tools/image-upscaler">image upscaler</a> to increase it. The upscaled version must be sharp at full resolution — streaming platforms reject blurry album art. Export as JPEG or PNG. Upload. The album now has professional-looking cover art that cost nothing to create.</p>
+<p>The pipeline that uses both tools: extract the subject from the original photo (background remover), generate a new background scene (AI image generator), and composite the extracted subject onto the generated background (any image editor). The result: the subject from the original photo, placed in a completely new, AI-generated environment. The product on the cluttered desk is now the product on a modern kitchen counter. The person in the messy office is now the person in a professional studio. The background remover handled the extraction. The AI image generator handled the creation. The composite is the final image.</p>
 
-<p>Design your album cover at <a href="/en/tools/style-transfer">AI style transfer</a> — your photo, an artistic style, and a vision for what your music looks like. The AI provides the art. You provide the music.</p>`
+<p>Use <a href="/en/tools/background-remover">background remover</a> to extract and <a href="/en/tools/ai-image-generator">AI image generator</a> to create. Extraction and creation. Inverse operations. One creative pipeline.</p>`
   },
   {
-    slug: "text-polish-technical-documentation-clarity-guide",
-    title: "Text Polish for Technical Documentation How to Make Complex Information Clear Without Dumbing It Down",
-    description: "Technical writers face a unique challenge: explain complex systems to readers who need precision but may lack expertise. AI text polish can improve clarity without sacrificing accuracy.",
-    date: "2026-07-20",
-    category: "Content",
-    tags: ["text polish", "technical documentation", "clarity", "writing", "API docs"],
-    relatedTools: ["text-polish", "article-generator", "translate"],
-    content: `<p>You write technical documentation for a software API. Your audience is developers who need precise, accurate information. Your draft is accurate. It is also impenetrable — long sentences, passive voice, jargon stacked on jargon. A junior developer trying to integrate your API reads the first paragraph three times and gives up. The documentation is correct. It is also <strong>unreadable</strong>. The two properties — correctness and readability — are not the same. And in technical writing, readability is what determines whether the documentation is actually used.</p>
+    slug: "avatar-generator-history-portraiture-oil-painting-to-ai",
+    title: "The History of Portraiture From Oil Paintings to AI Avatars — How Humans Have Been Creating Images of Themselves for 30,000 Years",
+    description: "The oldest known portrait is a 30,000-year-old ivory carving of a human head. Today, AI generates a portrait in seconds. The tools changed. The desire to see ourselves represented — never changed.",
+    date: "2026-07-21",
+    category: "Generate",
+    tags: ["avatar generator", "portraiture", "history", "art", "self-representation"],
+    relatedTools: ["avatar-generator", "ai-image-generator", "style-transfer"],
+    content: `<p>The oldest known portrait is a 30,000-year-old ivory carving — the Venus of Hohle Fels — a small figurine of a woman with exaggerated features. It was carved by a Paleolithic artist using stone tools. It took hours or days to create. It was one of the first times a human being created an image of another human being. The desire to see ourselves represented — to capture a likeness, to preserve a face, to say "I was here" — is one of the oldest human impulses. For 30,000 years, the tools changed. The desire did not.</p>
 
-<p>An <a href="/en/tools/text-polish">AI text polisher</a> can improve readability without sacrificing accuracy — but only if you constrain it correctly. Here is how to use AI polish for technical documentation without letting it dumb down the content.</p>
+<p>Today, an <a href="/en/tools/avatar-generator">AI avatar generator</a> creates a portrait in seconds. The tool is different. The impulse is the same. Here is the 30,000-year history of portraiture — from carved ivory to AI-generated avatars.</p>
 
-<h2>The Technical Writer's Dilemma</h2>
+<h2>30,000 BCE - 1500 CE: The Age of the Elite Portrait</h2>
 
-<p>Technical writing has two audiences: experts (who need precision and can handle complexity) and beginners (who need clarity and cannot handle complexity). Writing for both simultaneously is the hardest challenge in technical communication. The expert reads your documentation and complains that it is too basic. The beginner reads the same documentation and complains that it is incomprehensible. Both are right. The documentation is trying to serve two audiences with conflicting needs.</p>
+<p>For most of human history, portraits were reserved for the powerful: Egyptian pharaohs (carved in stone, painted on tomb walls — the portrait was a vessel for the soul in the afterlife), Roman emperors (sculpted in marble, stamped on coins — the portrait was political propaganda), and medieval kings and saints (painted in illuminated manuscripts and church frescoes — the portrait was religious devotion). Ordinary people were not portrayed. The portrait was a privilege of power. If you were not a pharaoh, an emperor, or a saint, your face was never recorded. For 32,000 of the 33,000 years of human image-making, the vast majority of humans who ever lived were never visually represented.</p>
 
-<p>The solution is not to write for one audience. The solution is to write <strong>clearly enough that beginners can understand, and precisely enough that experts find it useful</strong>. The AI text polisher helps with the clarity. The technical writer ensures the precision. The combination serves both audiences.</p>
+<h2>1500-1900: The Age of the Painter</h2>
 
-<h2>How to Polish Technical Writing Without Dumbing It Down</h2>
+<p>The Renaissance democratized portraiture — slightly. Wealthy merchants and nobles commissioned painted portraits. The tools: oil paint on canvas. The time: weeks or months per portrait. The cost: affordable only by the wealthy. Rembrandt painted over 80 self-portraits — a lifelong exploration of his own aging face. The self-portrait became a genre of its own. The portrait was still expensive. It was still time-consuming. But it was no longer reserved for pharaohs and emperors. The rising middle class could afford a portrait. The painter was the photographer of the pre-photography era.</p>
 
-<p><strong>Constrain the AI:</strong> Tell the AI what NOT to change. A good prompt: "Polish this technical documentation for clarity and readability. Preserve: all technical terminology, API endpoint names, parameter names, code examples, and version numbers. Do not: simplify technical concepts, replace precise terms with vague alternatives, or change the meaning of any sentence." This prompt prevents the AI from "simplifying" your API reference into a marketing brochure.</p>
+<h2>1840-2000: The Age of the Photograph</h2>
 
-<p><strong>Polish at the sentence level, not the concept level:</strong> Let the AI fix: sentence length (break long sentences into shorter ones), passive voice (convert to active voice where appropriate — "the API is called by the client" → "the client calls the API"), word order (rearrange sentences so the main point comes first), and transitions (add signposting so readers know where they are in the document). Do not let the AI: remove technical content, replace specific examples with vague generalities, or change the structure of the document.</p>
+<p>The invention of photography in the 1840s changed everything. A portrait that took weeks to paint could be captured in seconds by a camera. The cost dropped from a painter's commission to the price of a photographic print. For the first time in human history, ordinary people could afford a portrait of themselves. The photographic portrait became: the family photo album, the wedding photograph, the graduation portrait, the passport photo, the school picture. The portrait was no longer a privilege. It was a <strong>right</strong>. Every person could be visually recorded. The camera democratized the portrait.</p>
 
-<p><strong>Review every AI change:</strong> The AI polish is a suggestion, not a final edit. Every change must be reviewed. The AI might "clarify" a sentence by removing a critical qualifier. "The API returns a 200 status code in most cases" → "The API returns a 200 status code." The AI removed "in most cases" — and now the documentation is wrong. The AI made it simpler. The AI made it incorrect. The technical writer's review catches these errors.</p>
+<h2>2000-Present: The Age of the Selfie and the AI Avatar</h2>
 
-<h2>When NOT to Use AI Polish on Technical Documentation</h2>
+<p>The smartphone camera (2007) and the front-facing camera (2010) made the self-portrait instantaneous and free. The selfie became the most-produced genre of portrait in human history. Over 1 trillion photos are taken every year — the vast majority of them portraits of people. The portrait is no longer a privilege of the powerful, a commission for the wealthy, or even a planned event. It is a daily activity. The question changed from "Can I afford a portrait?" to "Do I want a portrait?" The answer is yes — billions of times per day.</p>
 
-<p>Do not polish: code examples (the AI might "correct" working code), API reference sections (parameter names, types, and descriptions must be exact), and security-critical documentation (authentication flows, permission models — accuracy is more important than readability). For everything else — overviews, guides, tutorials, explanations — AI polish improves readability without sacrificing accuracy. The key is the constraint. Tell the AI what not to change. Review every change. The AI makes the writing clearer. You keep the writing correct. Use <a href="/en/tools/text-polish">AI text polish</a> for technical documentation — clarity without dumbing down, polish without losing precision.</p>`
-  },
-  {
-    slug: "text-to-speech-vs-article-generator-audio-vs-text",
-    title: "Text to Speech vs Article Generator Audio Production vs Text Production — Two AI Content Tools That Create Completely Different Media from Similar Inputs",
-    description: "Article generator turns a topic into written text. Text to speech turns written text into audio. Both start with language. Both produce content. But the output format changes everything about how the content is consumed.",
-    date: "2026-07-20",
-    category: "Content",
-    tags: ["text to speech", "article generator", "audio", "text", "comparison"],
-    relatedTools: ["text-to-speech", "article-generator", "text-polish"],
-    content: `<p>You have a topic: "The history of coffee." You feed it to an <a href="/en/tools/article-generator">AI article generator</a>. The output is a 1,200-word article — structured, readable, ready to publish on your blog. Someone finds it via Google, reads it on their phone during lunch, and learns about the origins of coffee in Ethiopia.</p>
-
-<p>You take the same article and feed it to a <a href="/en/tools/text-to-speech">text to speech</a> tool. The output is a 7-minute audio file — narrated in a professional voice, ready to publish as a podcast episode. Someone listens to it during their commute, hands on the steering wheel, and learns about the origins of coffee in Ethiopia.</p>
-
-<p>Same topic. Same content. Two completely different media formats. The article generator and TTS tool are complementary stages in a content production pipeline. Here is when to use each — and why you need both to reach your entire audience.</p>
-
-<h2>Article Generator: Creating Content for Readers</h2>
-
-<p>The article generator produces <strong>written content</strong> — articles, blog posts, product descriptions, newsletters. The content is optimized for reading: scannable headings, short paragraphs, bold key terms, bulleted lists. Readers consume content by scanning — they read the headline, skim the subheadings, and dive deep only when something catches their attention. The article structure supports this behavior.</p>
-
-<p>Written content is: searchable (Google indexes it — readers find it through search), shareable (a link can be shared anywhere), and permanent (the article stays on your site, generating traffic for years). Use the article generator when: you need written content for your website, you want to rank in search engines, or you want content that readers can scan, save, and reference.</p>
-
-<h2>Text to Speech: Creating Content for Listeners</h2>
-
-<p>The TTS tool converts <strong>written content into audio</strong> — podcasts, narrated articles, audio versions of blog posts. The content is optimized for listening: natural sentence rhythms, clear transitions, consistent pacing. Listeners consume content linearly — they hear every word in order, at the pace of the narration. The audio format supports this behavior.</p>
-
-<p>Audio content is: convenient (listeners consume it while driving, exercising, cooking, or doing chores), intimate (the narrator's voice creates a personal connection that text cannot), and accessible (people with visual impairments or reading difficulties can access audio content). Use the TTS tool when: you want to reach people who prefer listening over reading, you want to offer your content in multiple formats, or you want to build a podcast audience from your existing written content.</p>
-
-<h2>The Combined Strategy: Write Once, Publish Twice</h2>
-
-<p>The content production pipeline: generate the article with the article generator → polish it for readability → adapt it for audio (shorten sentences, add verbal signposts) → convert to audio with TTS → publish both formats together. The written article ranks in Google. The audio version reaches podcast listeners. The same content investment produces two assets. The production cost is marginally higher than written-only. The audience reach is significantly larger.</p>
-
-<p>Use <a href="/en/tools/article-generator">article generator</a> for written content and <a href="/en/tools/text-to-speech">text to speech</a> for audio content. Write once. Publish twice. Reach everyone.</p>`
-  },
-  {
-    slug: "watermark-copyright-evolution-ai-era-photography",
-    title: "The Evolution of Photo Copyright Watermarks in the Age of AI From Signature Stamps to Neural Network Attacks",
-    description: "In 1900, photographers stamped their name on the back of prints. In 2026, AI can remove any digital watermark in seconds. How the 120-year battle between creators and copiers is entering a new phase.",
-    date: "2026-07-20",
-    category: "Edit",
-    tags: ["watermark", "copyright", "photography", "AI", "history"],
-    relatedTools: ["watermark-remover", "object-remover", "background-remover"],
-    content: `<p>In 1900, a photographer protected their work by stamping their name on the back of the photographic print — an embossed mark that could not be removed without destroying the paper. The watermark was <strong>physical</strong> — part of the object itself. A century later, the watermark is a semi-transparent text overlay on a digital image. It can be removed by an AI <a href="/en/tools/watermark-remover">watermark remover</a> in seconds. The creator's protection mechanism lasted 100 years. The copier's circumvention mechanism takes 5 seconds. The balance of power has shifted.</p>
-
-<p>This is the 120-year history of photo copyright watermarks — and the new phase that AI has created.</p>
-
-<h2>1900-2000: The Physical Era — Protection Through Permanence</h2>
-
-<p>Early photographic watermarks were physical: embossed stamps on prints, photographer signatures on the mat or mount, and studio logos printed on the back of cabinet cards and cartes de visite. These marks could not be removed without visibly damaging the photograph. The watermark was a <strong>permanent claim of authorship</strong>. It also served a marketing purpose — the studio name on the back of a portrait was advertising to everyone who handled the photo.</p>
-
-<p>The weakness: the watermark was on the back or the mount, not on the image itself. The image could be copied (rephotographed) without the watermark. The watermark protected the physical object, not the image content. As photography moved from physical prints to digital files, this protection model collapsed entirely.</p>
-
-<h2>2000-2020: The Digital Era — Protection Through Visibility</h2>
-
-<p>Digital photography created a new problem: images could be copied infinitely with zero quality loss. A downloaded JPEG was identical to the original. The photographer's only protection was a <strong>visible digital watermark</strong> — a semi-transparent text or logo overlaid on the image. The watermark did not prevent copying. It made copying <strong>less useful</strong> — a watermarked image could not be used professionally without buying the clean version.</p>
-
-<p>The digital watermark was a psychological barrier, not a technical one. It communicated: "This image belongs to someone. You should pay for it." Honest users respected the watermark. Dishonest users cropped it out, cloned it out in Photoshop, or used early watermark removal tools. The watermark was a padlock on a screen door — it kept honest people honest and did nothing to stop anyone else.</p>
-
-<h2>2020-Present: The AI Era — Protection Through... What?</h2>
-
-<p>AI watermark removal changed the game. A semi-transparent watermark that took a photographer 5 minutes to design and apply can be removed by AI in 5 seconds — with higher quality than manual clone-stamping ever achieved. The watermark is no longer a barrier to any determined copier. The balance of power has shifted entirely in favor of the copier.</p>
-
-<p>What comes next? There are several emerging approaches: <strong>invisible watermarks</strong> (embedding ownership data in the image pixels — invisible to humans, detectable by algorithms), <strong>blockchain-based provenance</strong> (registering image ownership on a public ledger — proves who created the image, but does not prevent copying), and <strong>perceptual hashing</strong> (automatically detecting copies of an image across the web — enables takedown notices, but does not prevent the copying itself). None of these approaches is as effective as the physical embossed stamp was in 1900. The 120-year trend is clear: creator protection gets weaker over time. The AI watermark remover is the latest acceleration of that trend.</p>
-
-<p>For photographers today, the practical advice: the watermark is a <strong>branding tool</strong>, not a <strong>protection tool</strong>. It communicates your name to honest viewers. It will not stop dishonest copiers. Accept the limitation. Focus on the clients who pay, not the copiers who will find a way around any protection you apply. The watermark is your signature, not your security system. Use the <a href="/en/tools/watermark-remover">watermark remover</a> to remove your own watermarks from archived work — the ethical use case. For your published work, the watermark is your brand. For your archived work, the remover is your recovery tool. The technology is the same. The ethics are yours.</p>`
+<p>The <a href="/en/tools/avatar-generator">AI avatar generator</a> is the latest tool in this 30,000-year lineage. It does not capture a likeness. It generates one. It is not a photograph. It is a stylized representation. The AI avatar is the portrait of the digital age — not a record of what you look like, but a representation of how you want to be seen. The carved ivory figurine, the oil painting, the photograph, the selfie, the AI avatar — different tools, same impulse. The desire to see ourselves represented. The desire to say "I was here." For 30,000 years, the tools changed. The desire never did.</p>`
   },
 ];
 
@@ -208,4 +212,4 @@ content = content.replace(old, new_blogs)
 with open(BLOG_FILE, "w", encoding="utf-8") as f:
     f.write(content)
 
-print("AI station: 184->done.")
+print("AI station: 190->done.")
