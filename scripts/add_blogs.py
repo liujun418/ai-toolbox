@@ -1,4 +1,4 @@
-"""Add 6 blogs to AI station (208→214 static) — July 24, 2026"""
+"""Add 6 blogs to AI station (214→220 static) — July 25, 2026"""
 import os, sys
 
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
@@ -10,178 +10,180 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "face-blur-drone-photography-aerial-privacy",
-    title: "Face Blur for Drone Photography How to Comply with Aerial Privacy Laws and Residential Surveillance Regulations",
-    description: "Your drone captures stunning aerial footage — and the faces of people in their backyards. Privacy laws in many countries require you to blur those faces before publishing. Here's the aerial privacy compliance workflow.",
-    date: "2026-07-24",
-    category: "Edit",
-    tags: ["face blur", "drone", "aerial", "privacy", "surveillance"],
-    relatedTools: ["face-blur", "object-remover", "background-remover"],
-    content: `<p>You fly a drone over a residential neighborhood, capturing beautiful aerial footage for a real estate listing. The video shows: sweeping views of the property, the surrounding landscape, and the faces of neighbors in their backyards — sunbathing, gardening, playing with children. They do not know they are being filmed. They did not consent. Publishing this footage without blurring their faces could violate privacy laws in your jurisdiction and expose you to legal liability.</p>
-
-<p>A <a href="/en/tools/face-blur">face blur</a> tool is the compliance mechanism. Blur the faces. Preserve the footage. Publish legally. Here is the drone photography privacy compliance workflow.</p>
-
-<h2>The Legal Landscape of Aerial Privacy</h2>
-
-<p>Drone privacy laws vary by country: United States — no comprehensive federal drone privacy law, but some states require consent for capturing images of people on private property. Europe (GDPR) — capturing identifiable images of people without consent may violate data protection laws. The face is personal data. Publishing it requires a legal basis. Australia and Canada — similar to European standards. The trend: stricter regulation of aerial surveillance and greater protection of individual privacy. The faces your drone captures are not just images. They are <strong>personal data</strong>. Publishing them without consent may be a legal violation. The face blur is the compliance tool.</p>
-
-<h2>The Aerial Privacy Compliance Workflow</h2>
-
-<p><strong>Step 1: Review the footage for identifiable people.</strong> Watch the entire video. Note every frame where a person's face is visible and identifiable. Faces at a distance (small in the frame, features not distinguishable) may not require blurring. Faces that are close enough to identify require blurring. The threshold: can you recognize the person? If yes, blur. If no, the face is already sufficiently anonymized by distance.</p>
-
-<p><strong>Step 2: Blur the faces.</strong> Use the <a href="/en/tools/face-blur">face blur</a> tool on the frames or video segments containing identifiable faces. The AI detects faces automatically. For video, blur key frames and let the blur track across adjacent frames. For still photos from drone footage, blur each face individually.</p>
-
-<p><strong>Step 3: Check for secondary identifiers.</strong> Faces are not the only identifiers. Also check for: license plates (blur them — they are personal data linked to vehicle registration), house numbers and street signs (blur if they could identify the specific location of a private residence), and distinctive features (a unique pool, a custom car, a recognizable garden layout — context-dependent judgment). The face blur handles the primary identifier. The secondary identifiers require manual review.</p>
-
-<h2>When Face Blur Is Not Required</h2>
-
-<p>Face blur is not required when: people are in public spaces where there is no reasonable expectation of privacy (a public park, a street, a beach), the footage is for personal use only and will never be published, and people are unidentifiable due to distance, angle, or image quality. The legal test: did the person have a reasonable expectation of privacy, and does the publication of their image cause harm? In their backyard: high expectation of privacy. On a public street: lower expectation. The face blur is the compliance tool. The context determines whether compliance is required.</p>
-
-<p>Fly legally at <a href="/en/tools/face-blur">AI face blur</a> — capture the aerial footage, blur the faces, and publish with confidence that you have protected the privacy of the people below.</p>`
-  },
-  {
-    slug: "image-description-medical-imaging-radiology-report",
-    title: "Image Description for Medical Imaging How AI-Assisted Radiology Report Generation Is Accelerating Diagnosis",
-    description: "A radiologist reads 50-100 scans per day. Each scan requires a detailed written report. AI image description generates a draft report in seconds — the radiologist reviews and signs off. Here's the clinical workflow.",
-    date: "2026-07-24",
-    category: "Content",
-    tags: ["image description", "medical imaging", "radiology", "diagnosis", "AI-assisted"],
-    relatedTools: ["image-description", "photo-restorer", "colorizer"],
-    content: `<p>A radiologist sits in a darkened room, scrolling through CT scans, X-rays, and MRIs. Each scan requires a detailed written report describing: the anatomical structures visible, any abnormalities detected, measurements of lesions or anomalies, and a diagnostic impression. The radiologist reads 50-100 scans per day. Each report takes 5-15 minutes to dictate, review, and sign. The reporting workload is one of the biggest bottlenecks in radiology — and one of the most promising applications of AI image description.</p>
-
-<p>An <a href="/en/tools/image-description">AI image description</a> tool generates a draft radiology report in seconds. The AI describes what it sees in the scan. The radiologist reviews the draft, corrects errors, adds clinical context, and signs off. The AI does not replace the radiologist. It <strong>accelerates</strong> the radiologist. Here is the clinical workflow.</p>
-
-<h2>How AI-Assisted Reporting Works</h2>
-
-<p>The AI analyzes the medical image and generates a structured description: anatomical structures present and their condition, abnormalities detected with measurements and locations, and a suggested diagnostic impression based on patterns in the image. The AI is trained on millions of annotated medical images. It learns to recognize: fractures, lesions, tumors, hemorrhages, and other abnormalities. It learns the vocabulary of radiology — the precise, standardized language used in clinical reports.</p>
-
-<p>The AI-generated draft is a <strong>starting point</strong>. The radiologist reviews every finding: confirms correct detections, corrects missed detections (the AI does not catch everything), removes false positives (the AI sometimes sees abnormalities that are not clinically significant), and adds clinical context (the AI sees the image — the radiologist knows the patient's history, symptoms, and risk factors). The final report is the radiologist's, signed with their credentials. The AI draft saved 60-80% of the dictation time. The radiologist's review ensures clinical accuracy.</p>
-
-<h2>The Benefits of AI-Assisted Reporting</h2>
-
-<p>AI-assisted reporting reduces: reporting time (from 10-15 minutes to 3-5 minutes per scan), radiologist fatigue (dictating reports is mentally draining — the AI draft handles the mechanical description), and turnaround time (faster reports = faster diagnosis = faster treatment). The AI does not improve diagnostic accuracy — the radiologist's judgment is still the gold standard. The AI improves <strong>efficiency</strong>. The radiologist spends less time describing what they see and more time thinking about what it means. The AI handles the description. The radiologist handles the diagnosis.</p>
-
-<h2>The Limitations and Risks</h2>
-
-<p>AI-assisted reporting has important limitations: the AI can miss abnormalities (false negatives — the radiologist must review every image, not just the AI report), the AI can hallucinate findings (describe an abnormality that does not exist — the radiologist must verify every finding), and the AI does not understand clinical context (a finding that is benign in one patient may be serious in another — the AI does not know the patient's history). The AI is a <strong>tool</strong>, not a <strong>diagnostician</strong>. The radiologist is responsible for the final report. The AI draft is a time-saving convenience. The radiologist's review is the clinical safeguard.</p>
-
-<p>The <a href="/en/tools/image-description">AI image description</a> tool you use to generate alt text is the same technology — applied to medical images instead of cat photos. The technology is the same. The stakes are different. The AI describes what it sees. The radiologist decides what it means.</p>`
-  },
-  {
-    slug: "avatar-generator-online-education-student-engagement",
-    title: "AI Avatar Generator for Online Education How to Create Student Avatars for Virtual Classrooms and Increase Engagement",
-    description: "Students in online courses feel anonymous and disengaged. AI-generated avatars give each student a visual identity — increasing participation, community, and course completion rates. Here's the virtual classroom strategy.",
-    date: "2026-07-24",
+    slug: "style-transfer-interior-design-client-visualization",
+    title: "Style Transfer for Interior Design How to Show Clients Room Makeovers in Different Styles Before Buying a Single Piece of Furniture",
+    description: "Your client wants to see their living room in minimalist, bohemian, and mid-century modern styles. Style transfer applies each style to a photo of the room. Here's the interior design visualization workflow.",
+    date: "2026-07-25",
     category: "Generate",
-    tags: ["AI avatar", "online education", "virtual classroom", "engagement", "student"],
-    relatedTools: ["avatar-generator", "background-remover", "ai-image-generator"],
-    content: `<p>You teach an online course with 200 students. The discussion forum is active — but anonymous. Every student is a gray default icon. No faces. No identities. No sense of community. Students post questions and answers, but they feel like they are talking to a void. The course completion rate is 40% — typical for massive open online courses. The anonymity is a feature (privacy) and a bug (disengagement).</p>
+    tags: ["style transfer", "interior design", "visualization", "client", "makeover"],
+    relatedTools: ["style-transfer", "ai-image-generator", "background-remover"],
+    content: `<p>You are an interior designer presenting a proposal to a client. The living room is currently: beige walls, brown leather sofa, oak coffee table, and generic art prints. The client says: "I want this room to feel different — but I don't know what style I want." You could describe the options verbally. Or you could show them: the same living room in minimalist style (white walls, clean lines, sparse decor), bohemian style (warm colors, layered textiles, plants everywhere), and mid-century modern style (teak furniture, geometric patterns, retro lighting). The client sees the options. The client chooses mid-century modern. The project moves forward.</p>
 
-<p>An <a href="/en/tools/avatar-generator">AI avatar generator</a> gives each student a visual identity — a stylized portrait that represents them in the virtual classroom. The avatars are not photos (protecting student privacy). They are not generic icons (restoring student identity). They are personalized, consistent, and humanizing. Here is the virtual classroom engagement strategy.</p>
+<p>This is <a href="/en/tools/style-transfer">style transfer</a> applied to interior design. You take a photo of the existing room. You apply different interior design styles as the style reference. The AI transforms the room into each style. The client sees the possibilities. Here is the interior design visualization workflow.</p>
 
-<h2>Why Avatars Improve Online Learning Engagement</h2>
+<h2>Step 1: Photograph the Existing Room</h2>
 
-<p>Online learning suffers from <strong>social isolation</strong>. Students feel disconnected from instructors and peers. They are less likely to participate in discussions, ask questions, or collaborate. The anonymity of the online environment — no faces, no identities — reinforces the isolation. Adding visual identities — even stylized AI avatars — reduces the isolation. Research on online learning communities shows: students with visual profiles participate more in discussions, students who feel part of a community are more likely to complete the course, and visual identity increases accountability (you are more likely to engage thoughtfully when your face — even an avatar — is attached to your words).</p>
+<p>Take a well-lit, wide-angle photo of the room from the client's primary viewing position. The photo should capture: the full room layout (walls, floor, ceiling, windows, doors), the major architectural features (fireplace, built-ins, moldings), and the existing furniture (the style transfer will apply the new style to everything in the photo). The photo is the content image — the structure that the style transfer preserves. The composition stays the same. The style changes.</p>
 
-<p>The AI avatar is a <strong>social presence</strong> tool. It gives each student a face. The face creates connection. The connection increases engagement. The engagement improves learning outcomes.</p>
+<h2>Step 2: Collect Style References</h2>
 
-<h2>The Student Avatar Workflow</h2>
+<p>For each design style, find high-quality reference images: minimalist (white spaces, clean lines, neutral palette — reference a professionally designed minimalist room), bohemian (layered rugs, plants, warm colors — reference a bohemian interior from a design magazine), and mid-century modern (teak, geometric shapes, retro color palette — reference a mid-century modern room). The reference should be a room photo, not a single piece of furniture. Room-to-room style transfer works better than object-to-room. The AI recognizes the spatial context.</p>
 
-<p><strong>Step 1: Offer avatars as an option, not a requirement.</strong> Some students may not want an avatar. Some may want to use a real photo. The avatar is an option — one of several ways to represent yourself in the course. Offering the choice respects student autonomy. Requiring the avatar would violate it.</p>
+<h2>Step 3: Generate the Style Variations</h2>
 
-<p><strong>Step 2: Generate personalized avatars.</strong> Students describe themselves: gender, age range, hair style and color, glasses, expression. The AI generates an avatar that matches the description. The avatar is a stylized representation — not a photographic likeness. It looks like a person. It does not look like the specific student. The stylization protects privacy while providing identity.</p>
+<p>Run the room photo through the <a href="/en/tools/style-transfer">style transfer</a> with each reference. The AI applies the style's color palette, textures, and visual language to the room. The output is the same room, redesigned in each style. The walls change color. The furniture takes on the style's aesthetic. The lighting and mood shift. The room is recognizable — it is the same space. But it looks completely different.</p>
 
-<p><strong>Step 3: Use avatars consistently across the platform.</strong> The avatar appears: in the discussion forum (next to every post), in the student directory, and in group project spaces. The consistent avatar creates recognition. "I know that avatar — they gave a great answer last week." The recognition builds community.</p>
+<h2>Step 4: Present to the Client</h2>
 
-<h2>When Avatars Are Not Appropriate</h2>
+<p>Show the client the original photo and the three style variations side by side. The side-by-side comparison is the decision-making tool. The client sees: what the room looks like now, and what it could look like in each style. The visual comparison is more persuasive than any verbal description. The client chooses. The project moves forward. The style transfer saved weeks of back-and-forth about what each style "means." The images showed exactly what it looks like.</p>
 
-<p>AI avatars are not appropriate for: courses where real identity is essential (accredited exams, professional certifications — real photos or ID verification may be required), young children (parental consent required for any online representation), and students who do not want to be visually represented (respect the choice to remain anonymous). The avatar is a tool for engagement, not a requirement for participation. Students who prefer to remain anonymous should have that option. The avatar enhances the experience for those who want it. The choice is the student's.</p>
-
-<p>Build your virtual classroom community at <a href="/en/tools/avatar-generator">AI avatar generator</a> — give each student a face, build a community, and watch engagement rise.</p>`
+<p>Visualize your design at <a href="/en/tools/style-transfer">AI style transfer</a> — one room, three styles, one decision. The client sees the future. The designer makes it happen.</p>`
   },
   {
-    slug: "pdf-to-word-insurance-claims-document-processing",
-    title: "PDF to Word for Insurance Claims How to Process Scanned Claim Forms and Extract Evidence Efficiently",
-    description: "An insurance claim arrives as a 50-page PDF — scanned forms, photos, receipts, and adjuster notes. PDF to Word conversion makes the entire claim searchable and extractable. Here's the claims processing workflow.",
-    date: "2026-07-24",
-    category: "Document",
-    tags: ["PDF to Word", "insurance", "claims", "document processing", "extraction"],
-    relatedTools: ["pdf-to-word", "image-description", "text-polish"],
-    content: `<p>An insurance adjuster hands you a 50-page claim file. It contains: scanned claim forms (hand-filled), photos of the damaged property, receipts and estimates, handwritten adjuster notes, and policy documents. You need to: find the claim number and date, extract the description of the incident, verify coverage under the policy, assess the damage from the photos, and compare the repair estimates. All of this information is in the 50-page PDF. None of it is searchable. You will spend 30 minutes flipping through pages before you even start processing the claim.</p>
-
-<p>A <a href="/en/tools/pdf-to-word">PDF to Word converter</a> with OCR makes the entire claim file searchable. You search for "date of incident," find it in 3 seconds, and start processing. Here is the insurance claims document processing workflow.</p>
-
-<h2>Step 1: Convert the Entire Claim File to Searchable Text</h2>
-
-<p>Process the complete 50-page PDF through the PDF to Word converter. The converter handles: digital pages (policy documents, forms — text extracted directly), scanned pages (hand-filled forms, handwritten notes — OCR converts images to text), and mixed pages (photos with embedded text, receipts — OCR extracts the visible text). The output is a searchable Word document. The conversion quality varies: printed text (95-99% accurate), neat handwriting (80-90% accurate), and cursive or poor handwriting (70-85% accurate — may require manual verification).</p>
-
-<h2>Step 2: Search for Key Information</h2>
-
-<p>With the converted document, search for: claim number, date of incident, description of loss, policy number, coverage limits, deductible amount, estimated repair cost, and adjuster recommendations. Each search takes seconds. The same searches in the original PDF would require manually scanning 50 pages. The conversion transforms an unsearchable archive into an instantly searchable database.</p>
-
-<h2>Step 3: Extract and Cite Evidence</h2>
-
-<p>Copy key passages from the converted document into your claims report. Cite the page number from the original PDF. The converted text is for reference. The original PDF is the authoritative record. Always verify extracted text against the original — OCR errors can change numbers (a "3" becomes an "8") and names. The conversion enables discovery. The original confirms accuracy.</p>
-
-<h2>Step 4: Archive for Audit</h2>
-
-<p>Save: the original PDF (the claim as submitted — the authoritative record), the converted Word document (searchable working copy), and the claims report (your processed output). The archive supports: audit (regulators can review the complete claim file), appeal (if the claim is denied, the complete file is available for review), and fraud investigation (searchable claims enable pattern detection across multiple claims).</p>
-
-<p>Process claims faster at <a href="/en/tools/pdf-to-word">PDF to Word converter</a> — 50-page claim file, searchable in seconds, and the information you need extracted and cited.</p>`
-  },
-  {
-    slug: "colorizer-vs-background-remover-adding-color-vs-removing-context",
-    title: "Colorizer vs Background Remover Adding Color vs Removing Context — Two AI Edit Tools That Move Images in Opposite Directions",
-    description: "Colorizer adds information to a photo (color). Background remover removes information from a photo (background). One enriches. One simplifies. They are opposites — and they serve opposite creative needs.",
-    date: "2026-07-24",
-    category: "Edit",
-    tags: ["colorizer", "background remover", "color", "context", "comparison"],
-    relatedTools: ["colorizer", "background-remover", "photo-restorer"],
-    content: `<p>You have a black-and-white photo of your grandmother from 1952. You run it through a <a href="/en/tools/colorizer">colorizer</a>. The AI adds color — her dress becomes lavender, the wallpaper becomes floral, her skin becomes warm and lifelike. The photo now has information it did not have before. The AI <strong>added</strong> color. The image is richer.</p>
-
-<p>Now you have a color photo of yourself at a conference. The background is a busy exhibition hall — banners, people, clutter. You run it through a <a href="/en/tools/background-remover">background remover</a>. The AI removes the background — the exhibition hall is gone. The photo now has less information than it had before. The AI <strong>removed</strong> context. The image is cleaner.</p>
-
-<p>Both tools are in the Edit category. Both modify images. But they move images in <strong>opposite directions</strong>. One adds. One removes. One enriches. One simplifies. Here is the difference.</p>
-
-<h2>Colorizer: Adding Information</h2>
-
-<p>The colorizer answers: <strong>"What might this image have looked like in color?"</strong> It takes a monochrome image and adds color information — estimated, not factual. The AI guesses the colors based on training data. The guesses are plausible. The image becomes richer, more emotionally immediate. The colorizer is an enrichment tool.</p>
-
-<p>Use when: you want to make a historical photo feel present and emotionally engaging, or you are exploring what a black-and-white scene might have looked like in color. Do not use when: color accuracy is essential (the colors are estimates, not facts).</p>
-
-<h2>Background Remover: Removing Context</h2>
-
-<p>The background remover answers: <strong>"What is the main subject of this image?"</strong> It takes an image and removes everything except the subject. The subject is isolated. The context is gone. The image becomes simpler, more focused. The background remover is a simplification tool.</p>
-
-<p>Use when: you want to isolate a subject for compositing, or you need a transparent PNG for design work. Do not use when: the background contains important context.</p>
-
-<h2>The Direction Rule</h2>
-
-<p>Ask: <strong>"Do I want more in this image, or less?"</strong> More → colorizer. Less → background remover. One adds. One removes. Opposite tools. Opposite directions. Use <a href="/en/tools/colorizer">colorizer</a> to enrich and <a href="/en/tools/background-remover">background remover</a> to simplify.</p>`
-  },
-  {
-    slug: "text-to-speech-voice-cloning-ethics-consent-identity",
-    title: "The Ethical Dilemma of AI Voice Cloning Consent Identity and Digital Resurrection — Who Owns the Sound of a Voice",
-    description: "AI can clone anyone's voice from a 30-second recording. This technology can help people who have lost their voice. It can also create deepfake audio of anyone saying anything. Here's the ethical framework.",
-    date: "2026-07-24",
+    slug: "text-polish-grant-proposals-nonprofit-fundraising",
+    title: "Text Polish for Grant Proposals How Nonprofits Use AI to Write More Persuasive Funding Applications",
+    description: "Your nonprofit's grant proposal is factually accurate but reads like a dry report. Funders read 200 proposals per cycle. AI text polish makes yours clear, compelling, and memorable. Here's the grant writing strategy.",
+    date: "2026-07-25",
     category: "Content",
-    tags: ["text to speech", "voice cloning", "ethics", "consent", "deepfake"],
-    relatedTools: ["text-to-speech", "text-polish", "article-generator"],
-    content: `<p>In 2022, a documentary filmmaker used AI voice cloning to recreate the voice of Anthony Bourdain — the celebrity chef who died in 2018 — to narrate a few lines from an email he had written. The recreation was convincing. It was also controversial. Bourdain did not consent to his voice being used after his death. The email was his words — he wrote them. But the voice was a synthetic recreation — he never spoke those words aloud. The audience was not told which lines were AI-generated. The ethical boundaries were unclear because they had never been drawn.</p>
+    tags: ["text polish", "grant proposals", "nonprofit", "fundraising", "persuasive"],
+    relatedTools: ["text-polish", "article-generator", "pdf-to-word"],
+    content: `<p>Your nonprofit serves 5,000 families per year with food assistance. Your grant proposal to a foundation states: "The organization provides nutritional support services to food-insecure households in the metro area. In the previous fiscal year, 4,872 households received services." The facts are correct. The writing is <strong>dead</strong>. A program officer at the foundation reads 200 proposals per cycle. Your proposal reads like every other proposal. It will be scored. It will be ranked. It will be funded — or not — based partly on how compelling it is. The facts get you considered. The writing gets you funded.</p>
 
-<p>AI <a href="/en/tools/text-to-speech">text to speech</a> and voice cloning technology has advanced rapidly since 2022. A 30-second recording of someone's voice can now be used to generate unlimited speech in that voice — saying anything. The technology enables: accessibility (restoring a voice to someone who has lost theirs), creativity (generating narration in a consistent voice), and fraud (deepfake audio of a CEO ordering a wire transfer). The technology is neutral. The ethics depend on <strong>consent, context, and transparency</strong>. Here is the ethical framework.</p>
+<p>An <a href="/en/tools/text-polish">AI text polisher</a> transforms dry, factual prose into clear, compelling, memorable writing. The facts stay the same. The presentation changes. Here is the grant writing polish strategy.</p>
 
-<h2>Principle 1: Consent Is Required</h2>
+<h2>What AI Polish Does for Grant Proposals</h2>
 
-<p>Voice is personal data — as personal as a fingerprint or a face. Using someone's voice without their consent is a violation of their autonomy. Three levels of consent: explicit consent (the person has agreed to the specific use of their voice — recorded, documented, revocable), implied consent (public figures speaking in public — their voice is publicly available, but cloning it for new speech may exceed the implied consent), and no consent (using someone's voice without their knowledge or permission — unethical in almost all circumstances). The consent must be: informed (the person understands how their voice will be used), specific (the consent covers the agreed use, not any imaginable use), and revocable (the person can withdraw consent at any time).</p>
+<p>The AI improves: sentence clarity (long, complex sentences become clear and direct), active voice ("services were provided" → "we provided services" — the nonprofit is the actor, not the passive recipient), emotional impact (statistics are paired with stories — "4,872 households" becomes "4,872 families — including Maria, a single mother of three who..."), and readability (foundation program officers read all day — clear writing respects their time and attention).</p>
 
-<h2>Principle 2: Context Matters</h2>
+<p>The AI does NOT change: the facts, the budget numbers, the program description, or the organizational details. The polish is a language improvement, not a content rewrite. The AI makes the writing better. The nonprofit ensures the facts are accurate.</p>
 
-<p>The same technology used with consent for accessibility (helping someone who lost their voice to speak again) is ethical. Used without consent for fraud (deepfake audio to deceive) is criminal. The technology is the same. The context determines the ethics. Ethical contexts: restoring a voice for someone who lost theirs, generating narration for content the person wrote and approved, and posthumous use with explicit prior consent. Unethical contexts: creating deepfake audio of anyone without their consent, impersonating someone for fraud or deception, and posthumous use without prior consent.</p>
+<h2>The Grant Proposal Polish Workflow</h2>
 
-<h2>Principle 3: Transparency Is Mandatory</h2>
+<p><strong>Step 1: Write the first draft without editing.</strong> Get the facts down. The draft will be rough. That is fine. The first draft is for content. The polish is for presentation.</p>
 
-<p>AI-generated speech must be labeled as AI-generated — especially when the voice is a real person's. The audience has the right to know whether they are hearing a real person's recorded speech or AI-generated speech in that person's voice. The disclosure prevents deception. The disclosure maintains trust. The disclosure is the minimum ethical requirement for any use of AI voice cloning. The <a href="/en/tools/text-to-speech">text to speech</a> tool uses synthetic voices — not clones of real people. The voice you hear is an AI voice. It does not belong to any human. The ethical concerns of voice cloning apply when the voice <strong>is</strong> a specific human's. The tool avoids these concerns by using only synthetic voices. The technology is the same. The ethical line is drawn at identity.</p>`
+<p><strong>Step 2: Polish each section with AI.</strong> Run each section through the <a href="/en/tools/text-polish">text polisher</a>: executive summary (the most important section — make every word count), needs statement (why this funding is necessary — make the need feel urgent and real), program description (what you will do — make it sound achievable and impactful), and organizational capacity (why you can deliver — make your track record compelling).</p>
+
+<p><strong>Step 3: Read the polished proposal aloud.</strong> Does it sound like your organization? The AI polishes toward professional, persuasive prose. You may need to add back: your organization's voice, specific stories and examples, and passion for the mission. The AI handles the language. You handle the authenticity. The combination wins grants.</p>
+
+<p>Polish your next proposal at <a href="/en/tools/text-polish">AI text polish</a> — the facts get you considered. The writing gets you funded.</p>`
+  },
+  {
+    slug: "photo-restorer-crime-scene-investigation-forensic",
+    title: "Photo Restorer for Crime Scene Investigation How Forensic Analysts Enhance Surveillance and Evidence Photos",
+    description: "A security camera captures a license plate — but it's blurry and low-resolution. AI photo restoration can enhance the image for forensic analysis. Here's how law enforcement uses AI enhancement.",
+    date: "2026-07-25",
+    category: "Edit",
+    tags: ["photo restorer", "forensic", "crime scene", "investigation", "enhancement"],
+    relatedTools: ["photo-restorer", "image-upscaler", "image-description"],
+    content: `<p>A convenience store is robbed at 2 AM. The security camera captures the suspect's vehicle leaving the parking lot. The license plate is visible — but barely. The image is: low-resolution (the camera is 720p), poorly lit (streetlight at a distance), and motion-blurred (the vehicle is moving). The license plate is a blur of light and shadow. A human eye cannot read it. A standard zoom makes it worse — enlarging the pixels just enlarges the blur.</p>
+
+<p>AI <a href="/en/tools/photo-restorer">photo restoration</a> can enhance the image. The AI does not just enlarge the pixels. It <strong>reconstructs</strong> the likely detail — the shapes that the blur obscured. The enhanced image reveals: the license plate number (now legible), the vehicle make and model (details sharpened), and distinguishing features (a bumper sticker, a dent, a roof rack). The enhanced image is not evidence — the original is. The enhanced image is an <strong>investigative lead</strong>. It tells investigators what to look for. The original proves what was there. Here is the forensic enhancement workflow.</p>
+
+<h2>What AI Restoration Can and Cannot Do for Forensics</h2>
+
+<p><strong>Can do:</strong> enhance low-resolution images (the AI adds detail by learning what real-world objects look like at higher resolution), reduce noise and artifacts (the AI cleans up sensor noise and compression artifacts), and sharpen blurred edges (motion blur and focus blur can be partially reversed).</p>
+
+<p><strong>Cannot do:</strong> create information that was not captured (if the license plate was completely invisible — no pixels captured — the AI cannot recover it), guarantee accuracy (the AI's reconstruction is a prediction — it may reconstruct a license plate number that is plausible but wrong), and replace the original as evidence (the enhanced image is a derived work — the original is the evidence).</p>
+
+<h2>The Forensic Enhancement Workflow</h2>
+
+<p><strong>Step 1: Secure the original image.</strong> The original file — unmodified, with metadata intact — is the evidence. Chain of custody must be documented. The original is never modified. All enhancement is performed on copies.</p>
+
+<p><strong>Step 2: Enhance with AI.</strong> Use the <a href="/en/tools/photo-restorer">photo restorer</a> to enhance a copy of the image. The AI sharpens edges, reduces noise, and enhances contrast. For license plates and text, the AI's reconstruction is the most valuable — it can resolve blurred characters into legible text.</p>
+
+<p><strong>Step 3: Document the enhancement process.</strong> Record the tool used, the settings applied, and the operator. The documentation establishes that the enhancement was performed correctly and that the original was preserved.</p>
+
+<p><strong>Step 4: Use the enhanced image as an investigative lead.</strong> The enhanced image suggests: a license plate number, a vehicle description, or a suspect description. Investigators use these leads to find corroborating evidence. The enhanced image is the lead. The corroborating evidence is the proof. The AI does not solve the crime. It points investigators in the right direction.</p>
+
+<p>Enhance forensic images at <a href="/en/tools/photo-restorer">AI photo restorer</a> — from blurry security footage to actionable investigative lead.</p>`
+  },
+  {
+    slug: "object-remover-architectural-photography-construction",
+    title: "Object Remover for Architectural Photography How to Remove Construction Equipment and Temporary Structures from Building Photos",
+    description: "You photographed a completed building — but there's a construction crane in the background and scaffolding on the left side. AI object removal cleans up the architecture. Here's the post-production workflow.",
+    date: "2026-07-25",
+    category: "Edit",
+    tags: ["object remover", "architectural", "construction", "cleanup", "photography"],
+    relatedTools: ["object-remover", "background-remover", "image-upscaler"],
+    content: `<p>You are an architectural photographer. The building is complete — a stunning modern office tower with a glass facade, geometric lines, and a dramatic entrance. You schedule the shoot. You arrive at sunrise for the best light. The building is perfect. The construction site next door is not. A crane looms in the background. Scaffolding clings to the left side of the frame. A portable toilet sits at the edge of the property. These are temporary. They will be gone in six months. The building's portfolio photos cannot wait six months. The architect needs the photos for an award submission due next week.</p>
+
+<p>An <a href="/en/tools/object-remover">AI object remover</a> cleans up the construction clutter. Circle the crane. Remove. Circle the scaffolding. Remove. Circle the portable toilet. Remove. The building stands clean against the sky. Here is the architectural photography cleanup workflow.</p>
+
+<h2>The Architectural Photo Cleanup Checklist</h2>
+
+<p>Go through every architectural photo and check for these categories of temporary or unwanted elements:</p>
+
+<p><strong>Category 1: Construction equipment.</strong> Cranes, scaffolding, temporary fencing, construction trailers, portable toilets, dumpsters, and building materials. These are the most common and most distracting elements. They are usually against the sky (easy to remove — uniform background) or against the ground (moderate difficulty — textured surface).</p>
+
+<p><strong>Category 2: Vehicles and people.</strong> Cars parked in front of the building, delivery trucks, pedestrians, cyclists. These are temporary — they were there during the shoot but are not part of the architecture. People are small against the building facade — easy to remove. Vehicles are larger and may overlap architectural details — moderate difficulty.</p>
+
+<p><strong>Category 3: Signage and temporary installations.</strong> Real estate signs, construction permits, temporary lighting, banners. These are small and against uniform backgrounds — easy to remove.</p>
+
+<p><strong>Category 4: Utility elements.</strong> Power lines, telephone poles, street lights, traffic signals, fire hydrants. These are permanent — removing them would misrepresent the site. Use judgment: if the utility element significantly detracts from the architectural composition, remove it. If it is part of the context, leave it. The architectural photo is not a documentary. It is a <strong>portrayal</strong> of the building at its best.</p>
+
+<h2>The Cleanup Workflow</h2>
+
+<p><strong>Step 1: Remove the largest distractions first.</strong> Cranes and scaffolding are the most visible. Remove them first. The AI fills the sky area with more sky — the easiest fill operation. The building's edge against the sky must remain sharp. If the AI softens the edge, undo and retry with a tighter mask.</p>
+
+<p><strong>Step 2: Remove smaller distractions.</strong> Portable toilets, signage, vehicles, people. Each removal takes seconds. The AI fills the area with the surrounding context — pavement, grass, wall, sky.</p>
+
+<p><strong>Step 3: Review at 100% zoom.</strong> Check every removed area. The fill should be invisible. If the fill is visible — a blurry patch, a repeating pattern, a color mismatch — redo the removal. The architectural photo is judged at high resolution. Errors visible at 100% zoom are unacceptable.</p>
+
+<p>Clean up your architecture at <a href="/en/tools/object-remover">AI object remover</a> — remove the temporary, reveal the permanent. The building at its best.</p>`
+  },
+  {
+    slug: "image-description-vs-face-blur-recognition-vs-protection",
+    title: "Image Description vs Face Blur Visual Recognition vs Identity Protection — Two AI Vision Tools That Serve Opposite Purposes",
+    description: "Image description identifies what is in a photo — including faces. Face blur obscures what is in a photo — specifically faces. They are AI vision tools that pull in opposite directions. Here's when to use each.",
+    date: "2026-07-25",
+    category: "Edit",
+    tags: ["image description", "face blur", "recognition", "privacy", "comparison"],
+    relatedTools: ["image-description", "face-blur", "object-remover"],
+    content: `<p>You upload a photo to an <a href="/en/tools/image-description">image description</a> tool. The AI identifies: "Three people sitting at a table, one woman and two men, the woman is wearing a blue dress, the man on the left has a beard and glasses." The AI recognized the faces — their gender, their features, their positions. The tool is about <strong>recognition</strong>.</p>
+
+<p>Now you upload the same photo to a <a href="/en/tools/face-blur">face blur</a> tool. The AI detects the faces and blurs them. The three people at the table are now anonymous. The tool is about <strong>protection</strong>. Both tools use AI vision. Both analyze faces. But they serve opposite purposes. One reveals identity. One conceals it. Here is the difference.</p>
+
+<h2>Image Description: Recognition for Accessibility and Analysis</h2>
+
+<p>Image description answers: <strong>"What and who is in this photo?"</strong> The AI identifies objects, people, actions, and settings. The output is a text description. The purpose is to make visual information accessible — to blind users, to search engines, to automated systems.</p>
+
+<p>Use when: generating alt text for accessibility, analyzing image content programmatically, or cataloging visual media. The tool reveals information. The information enables access.</p>
+
+<h2>Face Blur: Protection for Privacy and Safety</h2>
+
+<p>Face blur answers: <strong>"Who needs to be protected in this photo?"</strong> The AI identifies faces and obscures them. The output is an image with identities concealed. The purpose is to protect individuals — from surveillance, from identification, from harm.</p>
+
+<p>Use when: publishing photos of vulnerable people, complying with privacy laws, or protecting sources and witnesses. The tool conceals information. The concealment enables safety.</p>
+
+<h2>The Ethical Intersection</h2>
+
+<p>These two tools represent the fundamental tension in AI vision technology: the same AI that can describe a face can also blur it. The same technology that enables accessibility enables surveillance. The same model that powers image description for alt text powers facial recognition for law enforcement. The technology is dual-use — every capability has both beneficial and harmful applications. The image description tool and the face blur tool are on opposite sides of the same coin.</p>
+
+<p>Use <a href="/en/tools/image-description">image description</a> to reveal and <a href="/en/tools/face-blur">face blur</a> to protect. Recognition and protection. Opposite purposes. Same technology. The choice is yours.</p>`
+  },
+  {
+    slug: "background-remover-history-image-transparency-gif-to-ai",
+    title: "The History of Image Transparency From GIF's 1-Bit Alpha to AI Background Removal — How We Learned to Make Images Disappear",
+    description: "In 1989, GIF introduced transparency — one color could be designated as 'see-through.' In 2026, AI removes any background from any image. Here's the 37-year journey from 1-bit alpha to semantic segmentation.",
+    date: "2026-07-25",
+    category: "Edit",
+    tags: ["background remover", "transparency", "history", "GIF", "alpha channel"],
+    relatedTools: ["background-remover", "object-remover", "watermark-remover"],
+    content: `<p>In 1989, CompuServe released the GIF89a format. Its most innovative feature: <strong>transparency</strong>. One color in the 256-color palette could be designated as "transparent." The web page background would show through those pixels. The transparent color was a single, solid color — no partial transparency, no soft edges, no gradients. A logo on a white background could be made transparent by designating white as the transparent color. The result was functional. It was also ugly — a halo of white pixels around the edges where the transition from opaque to transparent should have been smooth but was instead a hard, jagged boundary. The 1-bit alpha channel was the best we had. It was also terrible.</p>
+
+<p>In 2026, a <a href="/en/tools/background-remover">background remover</a> uses AI to separate any subject from any background — complex edges, wispy hair, semi-transparent glass, motion blur. No single-color limitation. No hard edges. No halos. Here is the 37-year journey from GIF's 1-bit transparency to AI's semantic segmentation.</p>
+
+<h2>1989-1996: The 1-Bit Era — Transparency Is a Single Color</h2>
+
+<p>GIF89a transparency (1989): one palette color designated as transparent, no partial transparency, hard edges. Used for: website logos, buttons, and simple graphics. The limitation: images with anti-aliased edges looked terrible when made transparent because the anti-aliasing blended the foreground color with the background color, creating a visible halo.</p>
+
+<h2>1996-2015: The 8-Bit Era — Transparency Is a Channel</h2>
+
+<p>PNG format (1996): introduced the <strong>alpha channel</strong> — 8 bits (256 levels) of transparency per pixel. From fully opaque (255) to fully transparent (0). Soft edges. Smooth gradients. True compositing. The alpha channel solved the halo problem. It also required: the original image to already have transparency (the designer had to create the transparency manually in Photoshop), and manual masking (extracting a subject from its background required the pen tool, the magic wand, and hours of painstaking work). The alpha channel was the format. The masking was the labor.</p>
+
+<h2>2015-Present: The AI Era — Transparency Is Semantic Understanding</h2>
+
+<p>AI background removal (2015-present): the AI does not see colors. It sees <strong>objects</strong>. The AI is trained on millions of images with human-labeled masks showing which pixels belong to the subject and which to the background. The AI learns: what a person looks like (including hair, clothing, accessories), what a product looks like (including edges, reflections, packaging), and what an animal looks like (including fur, feathers, whiskers). The AI segments the image into subject and background — not by color, but by <strong>semantic understanding</strong>. The background remover does not need a single-color background. It does not need manual masking. It does not need Photoshop. It needs one click. The 37-year journey from 1-bit transparency to AI background removal is complete. Transparency went from a color to a channel to a semantic understanding. The <a href="/en/tools/background-remover">AI background remover</a> is the latest — and most capable — tool in that lineage.</p>`
   },
 ];
 
@@ -192,4 +194,4 @@ content = content.replace(old, new_blogs)
 with open(BLOG_FILE, "w", encoding="utf-8") as f:
     f.write(content)
 
-print("AI station: 208->done.")
+print("AI station: 214->done.")
