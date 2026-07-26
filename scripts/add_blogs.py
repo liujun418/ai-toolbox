@@ -1,4 +1,4 @@
-"""Add 6 blogs to AI station (214→220 static) — July 25, 2026"""
+"""Add 6 blogs to AI station (220→226 static) — July 26, 2026"""
 import os, sys
 
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
@@ -10,180 +10,102 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "style-transfer-interior-design-client-visualization",
-    title: "Style Transfer for Interior Design How to Show Clients Room Makeovers in Different Styles Before Buying a Single Piece of Furniture",
-    description: "Your client wants to see their living room in minimalist, bohemian, and mid-century modern styles. Style transfer applies each style to a photo of the room. Here's the interior design visualization workflow.",
-    date: "2026-07-25",
-    category: "Generate",
-    tags: ["style transfer", "interior design", "visualization", "client", "makeover"],
-    relatedTools: ["style-transfer", "ai-image-generator", "background-remover"],
-    content: `<p>You are an interior designer presenting a proposal to a client. The living room is currently: beige walls, brown leather sofa, oak coffee table, and generic art prints. The client says: "I want this room to feel different — but I don't know what style I want." You could describe the options verbally. Or you could show them: the same living room in minimalist style (white walls, clean lines, sparse decor), bohemian style (warm colors, layered textiles, plants everywhere), and mid-century modern style (teak furniture, geometric patterns, retro lighting). The client sees the options. The client chooses mid-century modern. The project moves forward.</p>
+    slug: "image-upscaler-retro-gaming-screenshots-preservation",
+    title: "Image Upscaler for Retro Gaming Screenshots How to Preserve Classic Game Art in High Resolution",
+    description: "SNES screenshots are 256×224 pixels. On a 4K monitor, they are a postage stamp. AI upscaling preserves the pixel art aesthetic while making it viewable on modern screens. Here's the retro gaming preservation workflow.",
+    date: "2026-07-26",
+    category: "Edit",
+    tags: ["image upscaler", "retro gaming", "screenshots", "preservation", "pixel art"],
+    relatedTools: ["image-upscaler", "ai-image-generator", "style-transfer"],
+    content: `<p>You take a screenshot of Chrono Trigger on a SNES emulator. The original resolution: 256×224 pixels. On your 4K monitor, the screenshot is smaller than a postage stamp. You enlarge it. The pixels become blocks. The pixel art — which looked crisp and intentional on a 1995 CRT television — looks crude and blocky on a 2026 LCD. The art is the same. The display technology is different. The art was designed for CRTs, which naturally blended adjacent pixels. LCDs display every pixel as a sharp square. The result: the art looks worse on a better screen.</p>
 
-<p>This is <a href="/en/tools/style-transfer">style transfer</a> applied to interior design. You take a photo of the existing room. You apply different interior design styles as the style reference. The AI transforms the room into each style. The client sees the possibilities. Here is the interior design visualization workflow.</p>
+<p>An <a href="/en/tools/image-upscaler">AI image upscaler</a> can increase the resolution while preserving the pixel art aesthetic. Here is the retro gaming screenshot preservation workflow.</p>
 
-<h2>Step 1: Photograph the Existing Room</h2>
+<h2>Step 1: Capture at Native Resolution</h2>
 
-<p>Take a well-lit, wide-angle photo of the room from the client's primary viewing position. The photo should capture: the full room layout (walls, floor, ceiling, windows, doors), the major architectural features (fireplace, built-ins, moldings), and the existing furniture (the style transfer will apply the new style to everything in the photo). The photo is the content image — the structure that the style transfer preserves. The composition stays the same. The style changes.</p>
+<p>Take the screenshot at the game's native resolution — 256×224 for SNES, 320×240 for Genesis, 640×480 for Dreamcast. Do not use the emulator's built-in upscaling — it applies filters that may distort the art. The native screenshot is the <strong>digital original</strong> — the preservation master. It captures exactly what the game output. It is the starting point for all enhancement.</p>
 
-<h2>Step 2: Collect Style References</h2>
+<h2>Step 2: Integer Scale First (Nearest Neighbor)</h2>
 
-<p>For each design style, find high-quality reference images: minimalist (white spaces, clean lines, neutral palette — reference a professionally designed minimalist room), bohemian (layered rugs, plants, warm colors — reference a bohemian interior from a design magazine), and mid-century modern (teak, geometric shapes, retro color palette — reference a mid-century modern room). The reference should be a room photo, not a single piece of furniture. Room-to-room style transfer works better than object-to-room. The AI recognizes the spatial context.</p>
+<p>Before AI upscaling, integer-scale the image by 2×, 3×, or 4× using nearest-neighbor interpolation. This preserves the hard pixel edges. A 256×224 screenshot at 4× becomes 1024×896 — still blocky, but now the AI has larger "pixels" to work with. The AI is less likely to misinterpret the pixel edges as noise. The integer scaling is the <strong>preservation step</strong>. It maintains the pixel art structure. The AI upscaling is the <strong>enhancement step</strong>. It adds detail on top of the preserved structure.</p>
 
-<h2>Step 3: Generate the Style Variations</h2>
+<h2>Step 3: AI Upscale with Low Strength</h2>
 
-<p>Run the room photo through the <a href="/en/tools/style-transfer">style transfer</a> with each reference. The AI applies the style's color palette, textures, and visual language to the room. The output is the same room, redesigned in each style. The walls change color. The furniture takes on the style's aesthetic. The lighting and mood shift. The room is recognizable — it is the same space. But it looks completely different.</p>
+<p>Run the integer-scaled image through the <a href="/en/tools/image-upscaler">image upscaler</a> at a low enhancement level. The AI smooths the stair-step artifacts on diagonal lines without destroying the pixel grid. The goal is subtle enhancement — the image should still look like pixel art, just pixel art that looks good on a modern screen. The AI should not smooth the image into a blur. The pixel art aesthetic is preserved. The presentation is improved.</p>
 
-<h2>Step 4: Present to the Client</h2>
+<h2>Step 4: Add Scanline or CRT Overlay (Optional)</h2>
 
-<p>Show the client the original photo and the three style variations side by side. The side-by-side comparison is the decision-making tool. The client sees: what the room looks like now, and what it could look like in each style. The visual comparison is more persuasive than any verbal description. The client chooses. The project moves forward. The style transfer saved weeks of back-and-forth about what each style "means." The images showed exactly what it looks like.</p>
+<p>For authenticity, overlay a subtle scanline or CRT phosphor pattern. This recreates the visual texture of a CRT display — the subtle horizontal lines, the slight glow, the color blending. The overlay masks any remaining AI artifacts and sells the retro aesthetic. The scanlines are the final touch that makes the screenshot look like it was captured from a CRT, not an emulator. The image is preserved. The aesthetic is restored. The screenshot is ready for: a retro gaming blog, a YouTube thumbnail, a print, or a digital archive.</p>
 
-<p>Visualize your design at <a href="/en/tools/style-transfer">AI style transfer</a> — one room, three styles, one decision. The client sees the future. The designer makes it happen.</p>`
+<p>Preserve classic games at <a href="/en/tools/image-upscaler">AI image upscaler</a> — native resolution to modern display, pixel art preserved.</p>`
   },
   {
-    slug: "text-polish-grant-proposals-nonprofit-fundraising",
-    title: "Text Polish for Grant Proposals How Nonprofits Use AI to Write More Persuasive Funding Applications",
-    description: "Your nonprofit's grant proposal is factually accurate but reads like a dry report. Funders read 200 proposals per cycle. AI text polish makes yours clear, compelling, and memorable. Here's the grant writing strategy.",
-    date: "2026-07-25",
+    slug: "watermark-remover-photographers-archived-portfolio-recovery",
+    title: "Watermark Remover for Photographers How to Recover Clean Versions of Your Own Watermarked Portfolio When the Originals Are Lost",
+    description: "You watermarked your portfolio 10 years ago and lost the clean originals. Now a client wants a print. AI watermark removal recovers your own work. Here's the ethical archive recovery workflow.",
+    date: "2026-07-26",
+    category: "Edit",
+    tags: ["watermark remover", "photographer", "portfolio", "archive", "recovery"],
+    relatedTools: ["watermark-remover", "photo-restorer", "background-remover"],
+    content: `<p>You are a photographer with 15 years of work. Your early portfolio was watermarked heavily. A decade later, a client from that era contacts you: "Can I get a large print?" The original clean files are gone — lost in a hard drive failure. You have the watermarked versions. You need to recover <strong>your own work</strong>.</p>
+
+<p>This is the ethical use case for a <a href="/en/tools/watermark-remover">watermark remover</a>. Removing your own watermark from your own copyrighted work is your right. Removing someone else's watermark is copyright infringement. The tool is the same. The ethics depend on ownership. Here is the archive recovery workflow: verify ownership, remove the watermark, review at 100% zoom, and archive the recovered clean version alongside the watermarked original. The watermark remover is the recovery tool. The ethics are yours.</p>
+
+<p>Recover your archived work at <a href="/en/tools/watermark-remover">AI watermark remover</a> — for your own watermarks on your own photos.</p>`
+  },
+  {
+    slug: "article-generator-faq-pages-customer-support-automation",
+    title: "Article Generator for FAQ Pages How to Automate Customer Support Content Without Sounding Like a Robot",
+    description: "Your SaaS product needs an FAQ page with 50 questions. Writing each answer manually takes weeks. An AI article generator drafts them in hours. Here's the FAQ automation workflow.",
+    date: "2026-07-26",
     category: "Content",
-    tags: ["text polish", "grant proposals", "nonprofit", "fundraising", "persuasive"],
-    relatedTools: ["text-polish", "article-generator", "pdf-to-word"],
-    content: `<p>Your nonprofit serves 5,000 families per year with food assistance. Your grant proposal to a foundation states: "The organization provides nutritional support services to food-insecure households in the metro area. In the previous fiscal year, 4,872 households received services." The facts are correct. The writing is <strong>dead</strong>. A program officer at the foundation reads 200 proposals per cycle. Your proposal reads like every other proposal. It will be scored. It will be ranked. It will be funded — or not — based partly on how compelling it is. The facts get you considered. The writing gets you funded.</p>
+    tags: ["article generator", "FAQ", "customer support", "automation", "SaaS"],
+    relatedTools: ["article-generator", "text-polish", "text-to-speech"],
+    content: `<p>Your SaaS product has 50 frequently asked questions. Customers ask them daily. Your support team answers them daily. Writing 50 answers manually would take 2-3 weeks. An <a href="/en/tools/article-generator">AI article generator</a> drafts all 50 answers in hours. Here is the FAQ automation workflow.</p>
 
-<p>An <a href="/en/tools/text-polish">AI text polisher</a> transforms dry, factual prose into clear, compelling, memorable writing. The facts stay the same. The presentation changes. Here is the grant writing polish strategy.</p>
+<p>Collect the real questions from support tickets, not from what marketing thinks customers ask. Generate draft answers from bullet points provided by the support team. Review and polish with the <a href="/en/tools/text-polish">text polisher</a> for consistent tone and accuracy. Publish and monitor support tickets to see which questions are still being asked — then update. The FAQ is a living document. The AI drafts. The data directs. The FAQ improves over time.</p>
 
-<h2>What AI Polish Does for Grant Proposals</h2>
-
-<p>The AI improves: sentence clarity (long, complex sentences become clear and direct), active voice ("services were provided" → "we provided services" — the nonprofit is the actor, not the passive recipient), emotional impact (statistics are paired with stories — "4,872 households" becomes "4,872 families — including Maria, a single mother of three who..."), and readability (foundation program officers read all day — clear writing respects their time and attention).</p>
-
-<p>The AI does NOT change: the facts, the budget numbers, the program description, or the organizational details. The polish is a language improvement, not a content rewrite. The AI makes the writing better. The nonprofit ensures the facts are accurate.</p>
-
-<h2>The Grant Proposal Polish Workflow</h2>
-
-<p><strong>Step 1: Write the first draft without editing.</strong> Get the facts down. The draft will be rough. That is fine. The first draft is for content. The polish is for presentation.</p>
-
-<p><strong>Step 2: Polish each section with AI.</strong> Run each section through the <a href="/en/tools/text-polish">text polisher</a>: executive summary (the most important section — make every word count), needs statement (why this funding is necessary — make the need feel urgent and real), program description (what you will do — make it sound achievable and impactful), and organizational capacity (why you can deliver — make your track record compelling).</p>
-
-<p><strong>Step 3: Read the polished proposal aloud.</strong> Does it sound like your organization? The AI polishes toward professional, persuasive prose. You may need to add back: your organization's voice, specific stories and examples, and passion for the mission. The AI handles the language. You handle the authenticity. The combination wins grants.</p>
-
-<p>Polish your next proposal at <a href="/en/tools/text-polish">AI text polish</a> — the facts get you considered. The writing gets you funded.</p>`
+<p>Automate your FAQ at <a href="/en/tools/article-generator">AI article generator</a> — 50 questions, 50 answers, one day of work.</p>`
   },
   {
-    slug: "photo-restorer-crime-scene-investigation-forensic",
-    title: "Photo Restorer for Crime Scene Investigation How Forensic Analysts Enhance Surveillance and Evidence Photos",
-    description: "A security camera captures a license plate — but it's blurry and low-resolution. AI photo restoration can enhance the image for forensic analysis. Here's how law enforcement uses AI enhancement.",
-    date: "2026-07-25",
-    category: "Edit",
-    tags: ["photo restorer", "forensic", "crime scene", "investigation", "enhancement"],
-    relatedTools: ["photo-restorer", "image-upscaler", "image-description"],
-    content: `<p>A convenience store is robbed at 2 AM. The security camera captures the suspect's vehicle leaving the parking lot. The license plate is visible — but barely. The image is: low-resolution (the camera is 720p), poorly lit (streetlight at a distance), and motion-blurred (the vehicle is moving). The license plate is a blur of light and shadow. A human eye cannot read it. A standard zoom makes it worse — enlarging the pixels just enlarges the blur.</p>
+    slug: "avatar-generator-anonymous-online-communities-identity",
+    title: "AI Avatar Generator for Anonymous Online Communities How to Create Visual Identity Without Revealing Real Identity",
+    description: "Your online community values anonymity. But a sea of gray default icons makes everyone feel like nobody. AI avatars give each member a unique visual identity — without revealing their face.",
+    date: "2026-07-26",
+    category: "Generate",
+    tags: ["AI avatar", "anonymous", "community", "identity", "privacy"],
+    relatedTools: ["avatar-generator", "face-blur", "ai-image-generator"],
+    content: `<p>You run an online community for people discussing sensitive health issues. Anonymity is essential. But every profile picture is a gray default icon. Members feel like they are "talking to a void." They need visual identity without real identity.</p>
 
-<p>AI <a href="/en/tools/photo-restorer">photo restoration</a> can enhance the image. The AI does not just enlarge the pixels. It <strong>reconstructs</strong> the likely detail — the shapes that the blur obscured. The enhanced image reveals: the license plate number (now legible), the vehicle make and model (details sharpened), and distinguishing features (a bumper sticker, a dent, a roof rack). The enhanced image is not evidence — the original is. The enhanced image is an <strong>investigative lead</strong>. It tells investigators what to look for. The original proves what was there. Here is the forensic enhancement workflow.</p>
+<p>An <a href="/en/tools/avatar-generator">AI avatar generator</a> solves this. Members create a character — "a wizard with a long white beard" or "a cyberpunk hacker with neon glasses." The AI generates an avatar that matches. The avatar is a <strong>character</strong>, not a <strong>likeness</strong>. It provides visual identity, preserves anonymity, and allows self-expression. Members recognize each other by avatar. The community feels connected. The real identities remain protected.</p>
 
-<h2>What AI Restoration Can and Cannot Do for Forensics</h2>
-
-<p><strong>Can do:</strong> enhance low-resolution images (the AI adds detail by learning what real-world objects look like at higher resolution), reduce noise and artifacts (the AI cleans up sensor noise and compression artifacts), and sharpen blurred edges (motion blur and focus blur can be partially reversed).</p>
-
-<p><strong>Cannot do:</strong> create information that was not captured (if the license plate was completely invisible — no pixels captured — the AI cannot recover it), guarantee accuracy (the AI's reconstruction is a prediction — it may reconstruct a license plate number that is plausible but wrong), and replace the original as evidence (the enhanced image is a derived work — the original is the evidence).</p>
-
-<h2>The Forensic Enhancement Workflow</h2>
-
-<p><strong>Step 1: Secure the original image.</strong> The original file — unmodified, with metadata intact — is the evidence. Chain of custody must be documented. The original is never modified. All enhancement is performed on copies.</p>
-
-<p><strong>Step 2: Enhance with AI.</strong> Use the <a href="/en/tools/photo-restorer">photo restorer</a> to enhance a copy of the image. The AI sharpens edges, reduces noise, and enhances contrast. For license plates and text, the AI's reconstruction is the most valuable — it can resolve blurred characters into legible text.</p>
-
-<p><strong>Step 3: Document the enhancement process.</strong> Record the tool used, the settings applied, and the operator. The documentation establishes that the enhancement was performed correctly and that the original was preserved.</p>
-
-<p><strong>Step 4: Use the enhanced image as an investigative lead.</strong> The enhanced image suggests: a license plate number, a vehicle description, or a suspect description. Investigators use these leads to find corroborating evidence. The enhanced image is the lead. The corroborating evidence is the proof. The AI does not solve the crime. It points investigators in the right direction.</p>
-
-<p>Enhance forensic images at <a href="/en/tools/photo-restorer">AI photo restorer</a> — from blurry security footage to actionable investigative lead.</p>`
+<p>Build your community's visual identity at <a href="/en/tools/avatar-generator">AI avatar generator</a> — unique avatars, anonymous members, connected community.</p>`
   },
   {
-    slug: "object-remover-architectural-photography-construction",
-    title: "Object Remover for Architectural Photography How to Remove Construction Equipment and Temporary Structures from Building Photos",
-    description: "You photographed a completed building — but there's a construction crane in the background and scaffolding on the left side. AI object removal cleans up the architecture. Here's the post-production workflow.",
-    date: "2026-07-25",
-    category: "Edit",
-    tags: ["object remover", "architectural", "construction", "cleanup", "photography"],
-    relatedTools: ["object-remover", "background-remover", "image-upscaler"],
-    content: `<p>You are an architectural photographer. The building is complete — a stunning modern office tower with a glass facade, geometric lines, and a dramatic entrance. You schedule the shoot. You arrive at sunrise for the best light. The building is perfect. The construction site next door is not. A crane looms in the background. Scaffolding clings to the left side of the frame. A portable toilet sits at the edge of the property. These are temporary. They will be gone in six months. The building's portfolio photos cannot wait six months. The architect needs the photos for an award submission due next week.</p>
+    slug: "pdf-to-word-vs-text-polish-extraction-vs-refinement",
+    title: "PDF to Word vs Text Polish Extraction vs Refinement — Two Document Tools That Work at Different Stages of the Content Pipeline",
+    description: "PDF to Word extracts text from a PDF. Text Polish refines the extracted text. One frees the content. One improves the content. They are sequential stages in the same workflow.",
+    date: "2026-07-26",
+    category: "Document",
+    tags: ["PDF to Word", "text polish", "extraction", "refinement", "pipeline"],
+    relatedTools: ["pdf-to-word", "text-polish", "image-description"],
+    content: `<p>You have a PDF report from a consultant. You need to extract the text and repurpose it for a blog post. You use a <a href="/en/tools/pdf-to-word">PDF to Word</a> converter to extract the text. The content is freed from the PDF. You use a <a href="/en/tools/text-polish">text polisher</a> to refine the extracted text for a different audience. The content is improved.</p>
 
-<p>An <a href="/en/tools/object-remover">AI object remover</a> cleans up the construction clutter. Circle the crane. Remove. Circle the scaffolding. Remove. Circle the portable toilet. Remove. The building stands clean against the sky. Here is the architectural photography cleanup workflow.</p>
+<p>PDF to Word is the <strong>extraction</strong> stage — it liberates content from a locked format. Text Polish is the <strong>refinement</strong> stage — it improves the liberated content. The pipeline is sequential: extract → polish → publish. The PDF converter handles the technical challenge. The text polisher handles the editorial challenge. The content is the same. The quality is transformed.</p>
 
-<h2>The Architectural Photo Cleanup Checklist</h2>
-
-<p>Go through every architectural photo and check for these categories of temporary or unwanted elements:</p>
-
-<p><strong>Category 1: Construction equipment.</strong> Cranes, scaffolding, temporary fencing, construction trailers, portable toilets, dumpsters, and building materials. These are the most common and most distracting elements. They are usually against the sky (easy to remove — uniform background) or against the ground (moderate difficulty — textured surface).</p>
-
-<p><strong>Category 2: Vehicles and people.</strong> Cars parked in front of the building, delivery trucks, pedestrians, cyclists. These are temporary — they were there during the shoot but are not part of the architecture. People are small against the building facade — easy to remove. Vehicles are larger and may overlap architectural details — moderate difficulty.</p>
-
-<p><strong>Category 3: Signage and temporary installations.</strong> Real estate signs, construction permits, temporary lighting, banners. These are small and against uniform backgrounds — easy to remove.</p>
-
-<p><strong>Category 4: Utility elements.</strong> Power lines, telephone poles, street lights, traffic signals, fire hydrants. These are permanent — removing them would misrepresent the site. Use judgment: if the utility element significantly detracts from the architectural composition, remove it. If it is part of the context, leave it. The architectural photo is not a documentary. It is a <strong>portrayal</strong> of the building at its best.</p>
-
-<h2>The Cleanup Workflow</h2>
-
-<p><strong>Step 1: Remove the largest distractions first.</strong> Cranes and scaffolding are the most visible. Remove them first. The AI fills the sky area with more sky — the easiest fill operation. The building's edge against the sky must remain sharp. If the AI softens the edge, undo and retry with a tighter mask.</p>
-
-<p><strong>Step 2: Remove smaller distractions.</strong> Portable toilets, signage, vehicles, people. Each removal takes seconds. The AI fills the area with the surrounding context — pavement, grass, wall, sky.</p>
-
-<p><strong>Step 3: Review at 100% zoom.</strong> Check every removed area. The fill should be invisible. If the fill is visible — a blurry patch, a repeating pattern, a color mismatch — redo the removal. The architectural photo is judged at high resolution. Errors visible at 100% zoom are unacceptable.</p>
-
-<p>Clean up your architecture at <a href="/en/tools/object-remover">AI object remover</a> — remove the temporary, reveal the permanent. The building at its best.</p>`
+<p>Use <a href="/en/tools/pdf-to-word">PDF to Word</a> to extract and <a href="/en/tools/text-polish">text polish</a> to refine. Extraction and refinement. Two stages. One pipeline.</p>`
   },
   {
-    slug: "image-description-vs-face-blur-recognition-vs-protection",
-    title: "Image Description vs Face Blur Visual Recognition vs Identity Protection — Two AI Vision Tools That Serve Opposite Purposes",
-    description: "Image description identifies what is in a photo — including faces. Face blur obscures what is in a photo — specifically faces. They are AI vision tools that pull in opposite directions. Here's when to use each.",
-    date: "2026-07-25",
-    category: "Edit",
-    tags: ["image description", "face blur", "recognition", "privacy", "comparison"],
-    relatedTools: ["image-description", "face-blur", "object-remover"],
-    content: `<p>You upload a photo to an <a href="/en/tools/image-description">image description</a> tool. The AI identifies: "Three people sitting at a table, one woman and two men, the woman is wearing a blue dress, the man on the left has a beard and glasses." The AI recognized the faces — their gender, their features, their positions. The tool is about <strong>recognition</strong>.</p>
+    slug: "ai-image-generation-environmental-cost-compute-carbon",
+    title: "The Environmental Cost of AI Image Generation How Much Energy and Carbon Does Each AI Image Actually Produce",
+    description: "Generating an AI image consumes energy — but how much? One study found a single AI image uses about as much energy as charging a smartphone. Here's the environmental audit of AI image generation.",
+    date: "2026-07-26",
+    category: "Generate",
+    tags: ["AI image generator", "environment", "energy", "carbon", "sustainability"],
+    relatedTools: ["ai-image-generator", "image-upscaler", "style-transfer"],
+    content: `<p>You generate an AI image. The energy cost is invisible. The carbon cost is invisible. But the server that ran the model consumed electricity. The data center consumed electricity for cooling. A single AI image uses approximately 0.01-0.05 kWh — roughly equivalent to charging a smartphone. The impact is small per image. It is large in aggregate: millions of images are generated daily. The carbon footprint depends on the energy source: renewable energy = near-zero carbon, fossil fuel = 100-500× higher. The same AI image generated on a renewable-powered server has a negligible carbon footprint. Generated on a coal-powered server, the impact is significant.</p>
 
-<p>Now you upload the same photo to a <a href="/en/tools/face-blur">face blur</a> tool. The AI detects the faces and blurs them. The three people at the table are now anonymous. The tool is about <strong>protection</strong>. Both tools use AI vision. Both analyze faces. But they serve opposite purposes. One reveals identity. One conceals it. Here is the difference.</p>
-
-<h2>Image Description: Recognition for Accessibility and Analysis</h2>
-
-<p>Image description answers: <strong>"What and who is in this photo?"</strong> The AI identifies objects, people, actions, and settings. The output is a text description. The purpose is to make visual information accessible — to blind users, to search engines, to automated systems.</p>
-
-<p>Use when: generating alt text for accessibility, analyzing image content programmatically, or cataloging visual media. The tool reveals information. The information enables access.</p>
-
-<h2>Face Blur: Protection for Privacy and Safety</h2>
-
-<p>Face blur answers: <strong>"Who needs to be protected in this photo?"</strong> The AI identifies faces and obscures them. The output is an image with identities concealed. The purpose is to protect individuals — from surveillance, from identification, from harm.</p>
-
-<p>Use when: publishing photos of vulnerable people, complying with privacy laws, or protecting sources and witnesses. The tool conceals information. The concealment enables safety.</p>
-
-<h2>The Ethical Intersection</h2>
-
-<p>These two tools represent the fundamental tension in AI vision technology: the same AI that can describe a face can also blur it. The same technology that enables accessibility enables surveillance. The same model that powers image description for alt text powers facial recognition for law enforcement. The technology is dual-use — every capability has both beneficial and harmful applications. The image description tool and the face blur tool are on opposite sides of the same coin.</p>
-
-<p>Use <a href="/en/tools/image-description">image description</a> to reveal and <a href="/en/tools/face-blur">face blur</a> to protect. Recognition and protection. Opposite purposes. Same technology. The choice is yours.</p>`
-  },
-  {
-    slug: "background-remover-history-image-transparency-gif-to-ai",
-    title: "The History of Image Transparency From GIF's 1-Bit Alpha to AI Background Removal — How We Learned to Make Images Disappear",
-    description: "In 1989, GIF introduced transparency — one color could be designated as 'see-through.' In 2026, AI removes any background from any image. Here's the 37-year journey from 1-bit alpha to semantic segmentation.",
-    date: "2026-07-25",
-    category: "Edit",
-    tags: ["background remover", "transparency", "history", "GIF", "alpha channel"],
-    relatedTools: ["background-remover", "object-remover", "watermark-remover"],
-    content: `<p>In 1989, CompuServe released the GIF89a format. Its most innovative feature: <strong>transparency</strong>. One color in the 256-color palette could be designated as "transparent." The web page background would show through those pixels. The transparent color was a single, solid color — no partial transparency, no soft edges, no gradients. A logo on a white background could be made transparent by designating white as the transparent color. The result was functional. It was also ugly — a halo of white pixels around the edges where the transition from opaque to transparent should have been smooth but was instead a hard, jagged boundary. The 1-bit alpha channel was the best we had. It was also terrible.</p>
-
-<p>In 2026, a <a href="/en/tools/background-remover">background remover</a> uses AI to separate any subject from any background — complex edges, wispy hair, semi-transparent glass, motion blur. No single-color limitation. No hard edges. No halos. Here is the 37-year journey from GIF's 1-bit transparency to AI's semantic segmentation.</p>
-
-<h2>1989-1996: The 1-Bit Era — Transparency Is a Single Color</h2>
-
-<p>GIF89a transparency (1989): one palette color designated as transparent, no partial transparency, hard edges. Used for: website logos, buttons, and simple graphics. The limitation: images with anti-aliased edges looked terrible when made transparent because the anti-aliasing blended the foreground color with the background color, creating a visible halo.</p>
-
-<h2>1996-2015: The 8-Bit Era — Transparency Is a Channel</h2>
-
-<p>PNG format (1996): introduced the <strong>alpha channel</strong> — 8 bits (256 levels) of transparency per pixel. From fully opaque (255) to fully transparent (0). Soft edges. Smooth gradients. True compositing. The alpha channel solved the halo problem. It also required: the original image to already have transparency (the designer had to create the transparency manually in Photoshop), and manual masking (extracting a subject from its background required the pen tool, the magic wand, and hours of painstaking work). The alpha channel was the format. The masking was the labor.</p>
-
-<h2>2015-Present: The AI Era — Transparency Is Semantic Understanding</h2>
-
-<p>AI background removal (2015-present): the AI does not see colors. It sees <strong>objects</strong>. The AI is trained on millions of images with human-labeled masks showing which pixels belong to the subject and which to the background. The AI learns: what a person looks like (including hair, clothing, accessories), what a product looks like (including edges, reflections, packaging), and what an animal looks like (including fur, feathers, whiskers). The AI segments the image into subject and background — not by color, but by <strong>semantic understanding</strong>. The background remover does not need a single-color background. It does not need manual masking. It does not need Photoshop. It needs one click. The 37-year journey from 1-bit transparency to AI background removal is complete. Transparency went from a color to a channel to a semantic understanding. The <a href="/en/tools/background-remover">AI background remover</a> is the latest — and most capable — tool in that lineage.</p>`
+<p>The industry is moving toward renewable energy and more efficient models. The trend: AI image generation is becoming more energy-efficient per image. The total energy consumption is increasing because usage is growing faster than efficiency gains. The environmental question is not about any single image. It is about the aggregate of billions. The <a href="/en/tools/ai-image-generator">AI image generator</a> you use is part of that aggregate. The energy is invisible. The impact is real. The awareness is the first step.</p>`
   },
 ];
 
@@ -194,4 +116,4 @@ content = content.replace(old, new_blogs)
 with open(BLOG_FILE, "w", encoding="utf-8") as f:
     f.write(content)
 
-print("AI station: 214->done.")
+print("AI station: 220->done.")
