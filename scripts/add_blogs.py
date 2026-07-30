@@ -1,4 +1,4 @@
-"""Add 6 blogs to AI station (238→244 static) — July 29, 2026"""
+"""Add 6 blogs to AI station (244→250 static) — July 30, 2026"""
 import os, sys
 
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
@@ -10,76 +10,84 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "image-description-digital-archives-museum-metadata",
-    title: "Image Description for Digital Archives How Museums Generate Collection Metadata at Scale with AI",
-    description: "A museum digitizes 100,000 artifacts. Each needs a description for the online catalog. Manual description takes years. AI image description generates metadata in weeks. Here's the digital archive workflow.",
-    date: "2026-07-29",
-    category: "Content",
-    tags: ["image description", "digital archives", "museum", "metadata", "catalog"],
-    relatedTools: ["image-description", "photo-restorer", "colorizer"],
-    content: `<p>A museum digitizes its collection: 100,000 artifacts. Each artifact needs a description for the online catalog, searchable metadata, and alt text for accessibility. A curator can write approximately 20 descriptions per day. 100,000 artifacts at that rate would take 20 person-years. The museum has 3 curators.</p>
-
-<p>An <a href="/en/tools/image-description">AI image description</a> tool generates draft descriptions in seconds. The AI describes what it sees. The curator reviews and adds scholarly context. The combination processes the collection 5× faster than manual description alone. Photograph each artifact, generate AI descriptions, curator review for accuracy and scholarly context. The AI is the accelerator. The curator is the authority. The <a href="/en/tools/image-description">AI image description</a> tool makes 100,000 artifacts searchable and accessible in weeks, not years.</p>`
-  },
-  {
-    slug: "style-transfer-fashion-design-concept-visualization",
-    title: "Style Transfer for Fashion Design How to Visualize Fabric Patterns Before Cutting a Single Piece of Cloth",
-    description: "Your fashion collection needs 12 color variations of the same dress. Physical samples cost $200 each. AI style transfer visualizes all 12 from one photo. Here's the fashion concept visualization workflow.",
-    date: "2026-07-29",
-    category: "Generate",
-    tags: ["style transfer", "fashion", "design", "visualization", "fabric"],
-    relatedTools: ["style-transfer", "ai-image-generator", "background-remover"],
-    content: `<p>You are a fashion designer preparing a collection. You have one prototype dress photographed on a model. The client wants to see it in 12 fabric patterns. Manufacturing 12 physical samples costs $2,400 and takes 2-3 weeks. The client meeting is in 3 days.</p>
-
-<p>AI <a href="/en/tools/style-transfer">style transfer</a> visualizes all 12 variations from one photo. Photograph the prototype against a neutral background. Use the <a href="/en/tools/background-remover">background remover</a> to isolate the dress. Collect fabric reference images for each pattern. Run style transfer with each reference. The AI applies the pattern while preserving the dress's shape and the model's form. The client sees all 12 variations and chooses 3 for physical sampling. The visualization saved $1,800 in sample costs and 2 weeks of production time.</p>`
-  },
-  {
-    slug: "watermark-remover-news-organizations-archival-photo-cleanup",
-    title: "Watermark Remover for News Organizations How to Clean Up Archived Photos and Recover Historic Images",
-    description: "A newspaper's photo archive has 50 years of images watermarked with outdated branding. AI watermark removal cleans them for digital publication. Here's the news archive recovery workflow.",
-    date: "2026-07-29",
+    slug: "colorizer-animation-studios-cell-animation-digital-restoration",
+    title: "AI Colorizer for Animation Studios How to Digitally Restore Classic Cell Animation and Hand-Drawn Frames",
+    description: "Classic animated films exist on aging celluloid sheets — fading, yellowing, and deteriorating. AI colorization can restore the original vibrancy. Here's the animation restoration workflow.",
+    date: "2026-07-30",
     category: "Edit",
-    tags: ["watermark remover", "news", "archive", "photo", "recovery"],
-    relatedTools: ["watermark-remover", "photo-restorer", "background-remover"],
-    content: `<p>A regional newspaper has a photo archive spanning 50 years with 500,000 images. Many were watermarked with the newspaper's old logo or copyright notices. The newspaper now wants to publish the archive online with clean images. The newspaper owns the copyright. The watermarks are their own. The removal is ethical and legal.</p>
+    tags: ["AI colorizer", "animation", "cell animation", "restoration", "digital"],
+    relatedTools: ["colorizer", "photo-restorer", "image-upscaler"],
+    content: `<p>Classic animated films from the 1930s-1980s were created on celluloid sheets — hand-painted frames photographed in sequence. Over decades, the celluloid degrades: colors fade, the acetate yellows, and the paint can crack or flake. The original vibrant colors — the deep blue of a night sky in Pinocchio, the rich green of a forest in Bambi — are muted by time. Digitizing these frames captures them before physical degradation destroys them. AI colorization restores the original color vibrancy.</p>
 
-<p>A <a href="/en/tools/watermark-remover">watermark remover</a> cleans the archive. Digitize prints at 600 DPI minimum. Remove watermarks with the AI tool. Corner watermarks on uniform backgrounds are easiest. Review at 100% zoom for artifacts. Archive the cleaned version alongside the watermarked original. The original is the historical record. The cleaned version is the public-facing image. The <a href="/en/tools/watermark-remover">watermark remover</a> modernizes the presentation while preserving the archive.</p>`
+<p>An <a href="/en/tools/colorizer">AI colorizer</a> analyzes scanned frames and restores estimated original colors. The AI is trained on millions of color images. It predicts what colors should look like based on context — the character, the background, the lighting. The restoration is a collaboration: the AI suggests colors based on learned patterns, and the restoration artist adjusts based on historical reference materials. The <a href="/en/tools/colorizer">AI colorizer</a> accelerates the process. The artist ensures historical accuracy. Together, they restore classic animation for digital preservation and re-release.</p>`
   },
   {
-    slug: "article-generator-real-estate-listings-neighborhood-guides",
-    title: "Article Generator for Real Estate How to Create Neighborhood Guides That Attract Buyers and Boost SEO",
-    description: "Your real estate website needs neighborhood guides for 50 areas. Each guide needs unique content for SEO. An AI article generator produces them in days. Here's the local SEO content strategy.",
-    date: "2026-07-29",
-    category: "Content",
-    tags: ["article generator", "real estate", "neighborhood", "SEO", "local"],
-    relatedTools: ["article-generator", "text-polish", "image-description"],
-    content: `<p>Your real estate website serves a metro area with 50 distinct neighborhoods. Each needs its own guide page for local SEO. Writing 50 unique guides manually would take months. An <a href="/en/tools/article-generator">AI article generator</a> produces all 50 in days.</p>
-
-<p>Compile data for each neighborhood: school ratings, transit options, median home price, walk score, parks, and neighborhood character. Feed the data to the AI with a prompt. The AI generates a unique, specific guide for each neighborhood. Use the <a href="/en/tools/text-polish">text polisher</a> to refine each guide. Publish. Each guide page is a new SEO landing page ranking for neighborhood-specific search terms. 50 neighborhoods create 50 opportunities to attract buyers through search. The <a href="/en/tools/article-generator">AI article generator</a> scales content production. Local data ensures accuracy. The SEO strategy drives traffic.</p>`
-  },
-  {
-    slug: "photo-restorer-vs-colorizer-damage-repair-vs-color-addition",
-    title: "Photo Restorer vs Colorizer for Old Photos Damage Repair vs Color Addition — Which One Should You Use First",
-    description: "Photo restorer fixes damage. Colorizer adds color. Both work on old photos. But the order matters: restore first, then colorize. Here's why the sequence changes the result.",
-    date: "2026-07-29",
+    slug: "image-upscaler-medical-imaging-xray-mri-diagnostic",
+    title: "Image Upscaler for Medical Imaging How AI Resolution Enhancement Supports X-Ray and MRI Diagnosis",
+    description: "Medical images are limited by equipment resolution and radiation dose constraints. AI upscaling can enhance detail without additional scans. Here's the medical imaging enhancement workflow.",
+    date: "2026-07-30",
     category: "Edit",
-    tags: ["photo restorer", "colorizer", "old photos", "pipeline", "comparison"],
+    tags: ["image upscaler", "medical imaging", "X-ray", "MRI", "diagnosis"],
+    relatedTools: ["image-upscaler", "photo-restorer", "image-description"],
+    content: `<p>Medical imaging faces a fundamental trade-off: higher resolution requires either more radiation (X-ray, CT) or longer scan times (MRI). Both have costs — radiation exposure increases cancer risk, and longer scan times reduce throughput and increase patient discomfort. AI upscaling offers a third path: capture at standard resolution, then enhance with AI. The <a href="/en/tools/image-upscaler">AI image upscaler</a> can increase the apparent resolution of medical images without additional radiation or scan time.</p>
+
+<p>The AI is trained on pairs of low-resolution and high-resolution medical images. It learns to predict the high-resolution detail from the low-resolution input. The enhanced image is not a replacement for higher-resolution scanning. It is an <strong>enhancement</strong> — it makes existing detail more visible. It does not create new diagnostic information. Radiologists review both the original and enhanced images. The AI enhancement is a tool for visibility, not a replacement for clinical judgment. The <a href="/en/tools/image-upscaler">image upscaler</a> supports diagnosis. The radiologist makes the diagnosis.</p>`
+  },
+  {
+    slug: "photo-restorer-disaster-recovery-water-damaged-family-photos",
+    title: "Photo Restorer for Disaster Recovery How to Salvage and Restore Water-Damaged Flood-Damaged and Fire-Damaged Family Photos",
+    description: "A flood destroyed your family photo albums. The photos are water-damaged, stuck together, and moldy. AI photo restoration can recover many of them. Here's the disaster recovery workflow.",
+    date: "2026-07-30",
+    category: "Edit",
+    tags: ["photo restorer", "disaster", "water damage", "recovery", "family"],
     relatedTools: ["photo-restorer", "colorizer", "image-upscaler"],
-    content: `<p>You have a 70-year-old black-and-white photo. It is faded, scratched, and has a crease through the middle. You want to restore the damage AND add color. You have a <a href="/en/tools/photo-restorer">photo restorer</a> and a <a href="/en/tools/colorizer">colorizer</a>. Which one do you use first? The answer: <strong>restore first, then colorize</strong>. The order matters.</p>
+    content: `<p>A pipe bursts in your basement. Your family photo albums — decades of memories — are submerged. The photos are: water-damaged (colors bleeding, images blurred), stuck together (emulsion adhering to album pages and other photos), and molding (within 48 hours, mold begins growing on wet photographs). The clock is ticking. Every hour the photos remain wet, the damage worsens. Here is the disaster recovery workflow.</p>
 
-<p>If you colorize first, the colorizer treats scratches as image features and colors them. The scratches become colored lines. Restoring colored scratches is harder than restoring grayscale ones. The correct pipeline: scan at high resolution, restore damage with the <a href="/en/tools/photo-restorer">photo restorer</a>, colorize with the <a href="/en/tools/colorizer">colorizer</a>, upscale with the <a href="/en/tools/image-upscaler">image upscaler</a>. The photo restorer cleans the image. The colorizer colors the clean image. The order produces a better result.</p>`
+<p><strong>Step 1: Stabilize.</strong> Remove photos from water immediately. Gently separate stuck photos in clean water. Air-dry on a flat surface — do not use heat, which accelerates damage. <strong>Step 2: Scan.</strong> Once dry, scan at the highest resolution possible — 600 DPI minimum. The scan captures the damaged photo digitally. The original may continue to deteriorate, but the scan is permanent. <strong>Step 3: Restore.</strong> Use the <a href="/en/tools/photo-restorer">AI photo restorer</a> to repair the scanned image: reduce water stains, enhance remaining color and contrast, and fill in damaged areas. The AI restoration recovers what can be recovered. Some damage is permanent. The AI makes the best possible recovery from what survives.</p>`
   },
   {
-    slug: "ai-image-generation-history-harold-cohen-to-dalle",
-    title: "How AI Learned to Draw The History of Generative Art From Harold Cohen's AARON to DALL-E and Beyond",
-    description: "In 1973, Harold Cohen created AARON — a program that produced original drawings. In 2026, AI generates any image from text. Here's the 50-year history of teaching machines to create art.",
-    date: "2026-07-29",
-    category: "Generate",
-    tags: ["AI image generator", "history", "generative art", "Harold Cohen", "DALL-E"],
-    relatedTools: ["ai-image-generator", "style-transfer", "avatar-generator"],
-    content: `<p>In 1973, artist Harold Cohen created AARON — a computer program that produced original drawings. AARON was not an AI in the modern sense. It was a set of rules programmed by Cohen over 40 years. AARON could draw a person and a plant. It could not draw anything beyond its rules. Its creativity was bounded by human programming.</p>
+    slug: "tts-meditation-apps-guided-audio-content-production",
+    title: "TTS for Meditation Apps How to Produce Guided Meditation Audio Content Without Recording Studios",
+    description: "Your meditation app needs 50 guided sessions in multiple languages. Professional voiceover costs thousands. AI TTS produces calm, measured narration for a fraction of the cost. Here's the production workflow.",
+    date: "2026-07-30",
+    category: "Content",
+    tags: ["text to speech", "meditation", "guided audio", "wellness", "production"],
+    relatedTools: ["text-to-speech", "text-polish", "translate"],
+    content: `<p>Your meditation app needs 50 guided sessions: morning meditations, sleep stories, breathing exercises, and body scans. Each session is 10-20 minutes of calm, measured narration. Hiring professional voice talent costs $200-500 per session. 50 sessions = $10,000-25,000. Multi-language versions multiply the cost. AI <a href="/en/tools/text-to-speech">text to speech</a> produces professional narration for a fraction of the cost — in any language, with consistent quality.</p>
 
-<p>In 2026, an <a href="/en/tools/ai-image-generator">AI image generator</a> creates any image from any text prompt — without rules, without explicit programming. The AI learned to draw by studying millions of images. The journey from rules to learning spans 50 years. 1973-2014: rule-based systems where humans programmed the rules. 2014-2021: neural networks (GANs) learned patterns from training data. 2021-present: prompt-based generation connected language to images. The barrier to creation collapsed from "learn to program" to "learn to describe." The <a href="/en/tools/ai-image-generator">AI image generator</a> you use today is the descendant of AARON. The difference: today's AI can draw anything you can describe.</p>`
+<p>Write the meditation script with natural pauses and calming language. Choose a TTS voice that is warm, measured, and calm — test multiple voices with a sample script. Generate the audio. Add background music or nature sounds. The AI TTS handles the narration. You handle the meditation design. The combination produces guided meditation content at scale and at a cost that makes 50 sessions viable. The <a href="/en/tools/text-to-speech">AI text to speech</a> tool is the narrator. You are the meditation guide.</p>`
+  },
+  {
+    slug: "avatar-generator-vs-face-blur-creating-identity-vs-protecting-identity",
+    title: "Avatar Generator vs Face Blur Creating Identity vs Protecting Identity — Two AI Tools on Opposite Sides of the Privacy Spectrum",
+    description: "Avatar generator creates a visual identity for someone. Face blur protects the visual identity of someone. Both work with faces. But their purposes are opposites.",
+    date: "2026-07-30",
+    category: "Edit",
+    tags: ["avatar generator", "face blur", "identity", "privacy", "comparison"],
+    relatedTools: ["avatar-generator", "face-blur", "ai-image-generator"],
+    content: `<p>You create an avatar for a user who wants a visual identity without revealing their real face. The <a href="/en/tools/avatar-generator">avatar generator</a> creates a stylized portrait — a character, not a likeness. The user now has an identity. They are recognizable by their avatar. The tool <strong>created</strong> identity.</p>
+
+<p>Now you blur a face in a photo to protect someone's privacy. The <a href="/en/tools/face-blur">face blur</a> obscures the identifiable features. The person is now anonymous. They cannot be recognized. The tool <strong>protected</strong> identity.</p>
+
+<p>Both tools work with faces. Both use AI. But their purposes are opposites. Avatar generator creates identity where there was none. Face blur removes identity where it existed. One gives a face to the faceless. One takes a face from the identified. Creation and protection. Opposite sides of the privacy spectrum. Different tools for different goals.</p>`
+  },
+  {
+    slug: "pdf-format-survival-future-documents-30-years",
+    title: "The Future of Document Formats Will PDF Survive Another 30 Years — and What Might Replace It",
+    description: "PDF has survived for 33 years — outlasting Flash, Silverlight, and dozens of proprietary formats. Will it survive another 30 years? Here's the case for PDF's immortality — and the technologies that might succeed it.",
+    date: "2026-07-30",
+    category: "Document",
+    tags: ["PDF", "document formats", "future", "survival", "prediction"],
+    relatedTools: ["pdf-to-word", "image-description", "text-polish"],
+    content: `<p>PDF is 33 years old. It has outlived: Flash (dead), Silverlight (dead), RealPlayer (dead), and dozens of proprietary document formats that were supposed to replace it. Every prediction of PDF's obsolescence has been wrong. The format is too entrenched — in government, law, business, and education — to be replaced quickly. But 30 more years is a long time. Here is the case for PDF's survival, and the technologies that might succeed it.</p>
+
+<h2>The Case for PDF's Survival</h2>
+
+<p>PDF survives because it solves a universal need: a document that looks exactly the same everywhere. No other format has achieved this with the same combination of reliability, universality, and simplicity. PDF is: an open standard (not controlled by any single company), universally supported (every device can open a PDF), and legally accepted (courts, governments, and regulators accept PDF as authoritative). These properties make PDF nearly impossible to displace. Any replacement must match all three — and overcome 33 years of entrenched infrastructure.</p>
+
+<h2>What Might Replace PDF</h2>
+
+<p>The most likely successor is not a new format but a new <strong>paradigm</strong>: documents that are interactive, collaborative, and connected to data sources — not static representations of a printed page. The PDF captures what a document looks like. The next format will capture what a document <strong>is</strong> — its data, its structure, its relationships. The format is unknown. The direction is clear. But PDF will persist alongside any successor for decades — just as paper persists alongside PDF. The <a href="/en/tools/pdf-to-word">PDF to Word converter</a> bridges the old format and the new. The future of documents is not about replacing PDF. It is about transcending it.</p>`
   },
 ];
 
@@ -90,4 +98,4 @@ content = content.replace(old, new_blogs)
 with open(BLOG_FILE, "w", encoding="utf-8") as f:
     f.write(content)
 
-print("AI station: 238->done.")
+print("AI station: 244->done.")
