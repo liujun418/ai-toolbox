@@ -1,4 +1,4 @@
-"""Add 6 blogs to AI station (256→262 static) — August 1, 2026"""
+"""Add 6 blogs to AI station (262→268 static) — August 3, 2026"""
 import os, sys
 
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
@@ -10,92 +10,88 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "watermark-remover-social-media-content-repurposing-stock-footage",
-    title: "Watermark Remover for Social Media Managers How to Repurpose Stock Footage and Clean Up Branded Assets for Multi-Platform Content",
-    description: "Your content library has watermarked previews and branded assets from past campaigns. An AI watermark remover cleans them for reuse. Here's the social media content repurposing workflow.",
-    date: "2026-08-01",
-    category: "Edit",
-    tags: ["watermark remover", "social media", "repurposing", "stock footage", "content"],
-    relatedTools: ["watermark-remover", "background-remover", "object-remover"],
-    content: `<p>You are a social media manager with a content library spanning 3 years. You have: stock footage previews with watermarks (you bought the license, but the preview is all you have saved), campaign assets with last year's branding, and user-generated content with platform watermarks. The content is good. The watermarks and branding are not. Rebuying the stock footage would cost thousands. An AI <a href="/en/tools/watermark-remover">watermark remover</a> cleans the assets for reuse — legally and efficiently.</p>
-
-<h2>The Social Media Content Repurposing Workflow</h2>
-
-<p><strong>Step 1: Audit.</strong> Identify all watermarked assets in your library. Separate by watermark type: corner watermarks (easiest), center watermarks (harder), and platform watermarks from TikTok/Instagram (medium — usually in corners or edges). <strong>Step 2: Verify licenses.</strong> Only remove watermarks from assets you own or have licensed. Removing a watermark from unlicensed stock footage is copyright infringement. The <a href="/en/tools/watermark-remover">watermark remover</a> is for cleaning your own assets — not for stealing others'. <strong>Step 3: Remove.</strong> Process watermarked assets through the AI tool. Corner watermarks and edge watermarks clean up best. Center watermarks on complex backgrounds may leave artifacts. <strong>Step 4: Repurpose.</strong> The cleaned assets are now ready for new campaigns. The stock footage you bought in 2023 is usable in 2026. The campaign video from last year is rebranded with the new logo. The <a href="/en/tools/watermark-remover">watermark remover</a> extends the life of your content library.</p>`
-  },
-  {
-    slug: "ai-image-generator-youtube-thumbnail-design-ctr-optimization",
-    title: "AI Image Generator for YouTube Thumbnails How to Design Click-Worthy Thumbnails That Increase CTR Without Hiring a Designer",
-    description: "Your YouTube CTR is 3%. The top creators get 8-12%. The difference is the thumbnail. An AI image generator creates custom thumbnails for every video. Here's the thumbnail design workflow.",
-    date: "2026-08-01",
+    slug: "avatar-generator-online-course-instructor-profile-creation",
+    title: "Avatar Generator for Online Course Instructors How to Create Professional Instructor Profiles Without a Photoshoot",
+    description: "Your online course needs an instructor profile photo. You do not have a professional headshot. An AI avatar generator creates one from any photo. Here's the instructor profile creation guide.",
+    date: "2026-08-03",
     category: "Generate",
-    tags: ["AI image generator", "YouTube", "thumbnail", "CTR", "design"],
-    relatedTools: ["ai-image-generator", "background-remover", "style-transfer"],
-    content: `<p>Your YouTube channel has 50 videos. The average CTR (click-through rate) is 3%. The top creators in your niche average 8-12%. The difference is not the content. It is the thumbnail. The thumbnail is the first thing viewers see. It is the deciding factor between a click and a scroll. Hiring a designer for 50 custom thumbnails costs $25-50 each — $1,250-2,500 total. An <a href="/en/tools/ai-image-generator">AI image generator</a> creates custom thumbnails for every video for a fraction of the cost.</p>
+    tags: ["avatar generator", "online course", "instructor", "profile", "headshot"],
+    relatedTools: ["avatar-generator", "background-remover", "ai-image-generator"],
+    content: `<p>You are launching an online course on Udemy. The platform requires an instructor profile photo. Your options: a selfie on your phone (looks unprofessional), a friend's photo from a wedding (wrong context), or hiring a professional photographer ($300-500 for a session). Most instructors choose the selfie. Most students judge the course by the instructor photo. The selfie signals amateur. The professional headshot signals credibility. An <a href="/en/tools/avatar-generator">AI avatar generator</a> creates a professional headshot from any photo — for free, in minutes.</p>
 
-<h2>The YouTube Thumbnail Formula</h2>
+<h2>The Online Instructor Profile Photo Workflow</h2>
 
-<p>The research on YouTube thumbnails is consistent. High-CTR thumbnails share 4 elements: <strong>a face</strong> (showing emotion — surprised, excited, or concerned faces outperform neutral faces), <strong>bright colors</strong> (yellow, red, and green backgrounds stand out against YouTube's white and dark interfaces), <strong>contrast</strong> (the subject pops from the background — use the <a href="/en/tools/background-remover">background remover</a> to isolate subjects and place them on high-contrast backgrounds), and <strong>minimal text</strong> (3-5 words max, large font, readable at mobile size).</p>
-
-<p>Use the <a href="/en/tools/ai-image-generator">AI image generator</a> to create thumbnail concepts: generate a subject with an expressive face, place them on a bright contrasting background, and add 3-5 words of text. Test 2-3 thumbnail variations per video. YouTube Studio shows CTR data by thumbnail. The AI generates the thumbnails. You test and optimize. The combination produces thumbnails that compete with professionally designed ones — at a fraction of the cost.</p>`
+<p><strong>Step 1: Start with a good source photo.</strong> Take a photo in good lighting — natural window light is best. Face forward. Smile naturally. Avoid sunglasses, hats, and busy backgrounds. The AI works best with a clear, well-lit face. <strong>Step 2: Generate the avatar.</strong> Use the <a href="/en/tools/avatar-generator">avatar generator</a>. Upload your source photo. Choose a professional style — corporate headshot, clean background, business attire. The AI generates a polished avatar. <strong>Step 3: Clean up.</strong> Use the <a href="/en/tools/background-remover">background remover</a> to replace the background with a solid color (blue, gray, or white — standard for professional headshots). <strong>Step 4: Upload.</strong> The generated avatar is your instructor profile photo. It is professional. It is consistent. It cost nothing. The AI <a href="/en/tools/avatar-generator">avatar generator</a> removed the barrier between you and a professional instructor profile. The photo signals credibility. The course gets enrolled.</p>`
   },
   {
-    slug: "object-remover-real-estate-photography-staging-declutter",
-    title: "Object Remover for Real Estate Photography How to Declutter and Virtually Stage Property Photos Without Physical Staging",
-    description: "Real estate photos with personal clutter sell homes slower. Physical staging costs $2,000-5,000. An AI object remover cleans photos in minutes. Here's the real estate photo cleanup workflow.",
-    date: "2026-08-01",
-    category: "Edit",
-    tags: ["object remover", "real estate", "photography", "staging", "declutter"],
-    relatedTools: ["object-remover", "background-remover", "image-upscaler"],
-    content: `<p>A real estate agent photographs a $450,000 home. The photos show: family photos on the mantle, a refrigerator covered in children's artwork, personal toiletries on the bathroom counter, and a cluttered garage. The home is beautiful. The photos are not. The agent has two options: hire a professional stager to declutter and redecorate ($2,000-5,000 including furniture rental), or use an <a href="/en/tools/object-remover">AI object remover</a> to clean the photos digitally. The AI option costs nothing and takes minutes per photo.</p>
-
-<h2>The Real Estate Photo Cleanup Workflow</h2>
-
-<p><strong>Shoot first.</strong> Photograph the property as-is. Do not spend hours decluttering before the shoot. The AI handles the cleanup. <strong>Remove personal items.</strong> Use the <a href="/en/tools/object-remover">object remover</a> to eliminate family photos, personal documents, toiletries, pet items, and fridge magnets. Buyers need to imagine themselves in the home. Personal items prevent that. <strong>Remove small clutter.</strong> Remote controls, cables, mail piles, and kitchen counter appliances. Each item is small. Together they make the home feel messy. <strong>Enhance.</strong> Use the <a href="/en/tools/image-upscaler">image upscaler</a> to increase resolution for listing sites that require high-resolution images. The final photos show a clean, depersonalized home. Buyers can imagine their own belongings in the space. The AI <a href="/en/tools/object-remover">object remover</a> does the work of a professional stager — digitally, in minutes, for free.</p>`
-  },
-  {
-    slug: "pdf-to-word-academic-systematic-review-literature-extraction",
-    title: "PDF to Word for Academic Research How to Extract and Organize Content from 100 PDFs for a Systematic Literature Review",
-    description: "Your systematic review requires reading 100 academic papers. Each is a locked PDF. A PDF to Word converter extracts the text for annotation, analysis, and synthesis. Here's the academic research workflow.",
-    date: "2026-08-01",
-    category: "Document",
-    tags: ["PDF to Word", "academic", "systematic review", "literature", "extraction"],
-    relatedTools: ["pdf-to-word", "text-polish", "translate"],
-    content: `<p>You are conducting a systematic literature review for your thesis. Your search returned 100 papers. You need to: screen each paper for relevance, extract key findings and methodologies, code the extracted data for analysis, and synthesize the results into a coherent review. Each paper is a PDF. Many are two-column with figures and tables. Copying text from PDFs is unreliable — line breaks, column confusion, and formatting artifacts corrupt the extracted text. You cannot spend 15 minutes per paper on manual extraction. That is 25 hours of work.</p>
-
-<p>A <a href="/en/tools/pdf-to-word">PDF to Word converter</a> extracts the text from each PDF into an editable Word document. The conversion preserves the text structure. You can then: annotate the Word document with highlights and comments, copy key passages into your review matrix, and search across all converted documents for themes and patterns. The converter handles the text extraction. You handle the analysis. The workflow reduces extraction time from 15 minutes per paper to 3 minutes. 100 papers = 5 hours instead of 25. The <a href="/en/tools/pdf-to-word">PDF to Word converter</a> is the bridge between the locked PDF and the analyzable text. The researcher still does the thinking. The AI does the extraction.</p>`
-  },
-  {
-    slug: "image-upscaler-vs-photo-restorer-resolution-vs-damage-enhancement-pipeline",
-    title: "Image Upscaler vs Photo Restorer Resolution Enhancement vs Damage Repair — Which Tool to Use First in Your Photo Restoration Pipeline",
-    description: "Image upscaler increases resolution. Photo restorer fixes damage. Both improve old photos. But the order in your pipeline changes the result. Here's the correct sequence.",
-    date: "2026-08-01",
-    category: "Edit",
-    tags: ["image upscaler", "photo restorer", "resolution", "damage", "pipeline"],
-    relatedTools: ["image-upscaler", "photo-restorer", "colorizer"],
-    content: `<p>You have a scanned photo from 1965. It has two problems: the resolution is low (300 DPI from an old print), and it has visible damage (scratches, a crease, and fading). You have an <a href="/en/tools/image-upscaler">image upscaler</a> and a <a href="/en/tools/photo-restorer">photo restorer</a>. Which tool do you use first? The answer: <strong>restore first, then upscale</strong>. The order matters for a specific reason.</p>
-
-<h2>Why Restore Before Upscaling</h2>
-
-<p>If you upscale first, the AI enhances the scratches and creases along with the good parts of the image. The damage becomes sharper, more detailed, and harder to remove. The photo restorer then has to work on a larger, more detailed image — and the damage is more deeply embedded in the pixel data. The correct pipeline: <strong>scan → restore → upscale → colorize</strong>. Scan at the highest resolution available. Restore with the <a href="/en/tools/photo-restorer">photo restorer</a> — remove scratches, creases, and dust. The restoration is cleaner on the original resolution because the damage is less detailed. Then upscale with the <a href="/en/tools/image-upscaler">image upscaler</a> — enhance the clean image to a higher resolution. The upscaler works on a clean image and produces a clean high-resolution result. Then colorize with the <a href="/en/tools/colorizer">colorizer</a> if desired. The pipeline is sequential. Each tool does its job on the best possible input. The order produces the best possible output.</p>
-
-<p>Both the <a href="/en/tools/image-upscaler">image upscaler</a> and <a href="/en/tools/photo-restorer">photo restorer</a> are essential. But they are not interchangeable. One fixes damage. One increases resolution. The pipeline is: damage first, resolution second. The result is a photo that looks like it was taken yesterday — not 60 years ago.</p>`
-  },
-  {
-    slug: "text-to-speech-brain-neuroscience-synthetic-vs-human-voice-processing",
-    title: "The Neuroscience of Synthetic Voices How Your Brain Processes AI-Generated Speech Differently From Human Speech — and Why It Matters",
-    description: "fMRI studies show that your brain processes synthetic voices differently from human voices. The difference is subtle but measurable. Here's what neuroscience reveals about listening to AI speech.",
-    date: "2026-08-01",
+    slug: "text-polish-grant-writing-nonprofit-fundraising-proposals",
+    title: "Text Polish for Nonprofit Grant Writing How to Refine Funding Proposals That Stand Out to Reviewers and Win Grants",
+    description: "A grant proposal is 10 pages of dense text competing against 100 other applicants. AI text polish refines clarity, impact, and persuasiveness. Here's the grant writing refinement guide.",
+    date: "2026-08-03",
     category: "Content",
-    tags: ["text to speech", "neuroscience", "brain", "synthetic voice", "cognition"],
-    relatedTools: ["text-to-speech", "text-polish", "article-generator"],
-    content: `<p>You listen to a podcast. The narrator has a warm, natural voice. You listen to an audiobook generated by <a href="/en/tools/text-to-speech">AI text to speech</a>. The voice is clear, professional, and pleasant. But something feels different. You cannot articulate what it is. The content is the same. The voice quality is high. But your brain knows the difference. fMRI research confirms it.</p>
+    tags: ["text polish", "grant writing", "nonprofit", "fundraising", "proposal"],
+    relatedTools: ["text-polish", "article-generator", "translate"],
+    content: `<p>A nonprofit organization needs $50,000 for a community program. The grant application is 10 pages. The reviewer reads 100 applications. Your proposal has 10 pages to make the case. Every sentence must earn its place. Weak writing loses the grant. Strong writing wins it. A <a href="/en/tools/text-polish">text polisher</a> refines the proposal to maximize impact.</p>
 
-<h2>What the Brain Sees</h2>
+<h2>How to Polish a Grant Proposal</h2>
 
-<p>In a 2023 study, researchers played human and synthetic speech to participants in an fMRI scanner. Both types of speech activated the primary auditory cortex — the brain region that processes sound. But human speech additionally activated the <strong>right temporoparietal junction</strong> (rTPJ) — a region associated with theory of mind, the ability to attribute mental states to others. The brain treats a human voice as a signal from another mind. It treats a synthetic voice as sound — processed, understood, but not attributed to a conscious agent.</p>
+<p><strong>Write the full draft first.</strong> Do not edit while writing. Get the content down. The first draft is for substance. The polish is for impact. <strong>Run through the text polisher.</strong> Paste each section of the proposal into the <a href="/en/tools/text-polish">text polisher</a>. The AI identifies: passive voice (replace with active), long sentences (break into shorter ones), jargon (replace with plain language), and weak verbs (replace with strong alternatives). <strong>Review the changes.</strong> The AI does not know your organization's voice. You do. Accept changes that strengthen the message. Reject changes that change the meaning. <strong>Read aloud.</strong> The final polish is a human check. Read the proposal aloud. If a sentence is awkward to speak, it is awkward to read. The <a href="/en/tools/text-polish">text polisher</a> is the editor. The grant writer is the author. Together, they produce a proposal that stands out to reviewers.</p>`
+  },
+  {
+    slug: "article-generator-newsletter-content-curation-creation",
+    title: "Article Generator for Newsletter Content How to Create Engaging Newsletters from Raw Links and Bullet Points in Minutes",
+    description: "Your weekly newsletter takes 4 hours to write. An AI article generator cuts it to 30 minutes. Here's the newsletter content curation and creation workflow for busy creators.",
+    date: "2026-08-03",
+    category: "Content",
+    tags: ["article generator", "newsletter", "curation", "content", "creation"],
+    relatedTools: ["article-generator", "text-polish", "text-to-speech"],
+    content: `<p>Your weekly newsletter has 2,000 subscribers. It takes 4 hours to write: 1 hour collecting links, 2 hours writing the commentary, and 1 hour editing and formatting. The newsletter is your most important marketing channel. But 4 hours per week is expensive. An <a href="/en/tools/article-generator">AI article generator</a> cuts the writing time to 30 minutes.</p>
 
-<p>The rTPJ activation difference is small — a few percentage points. But it is consistent across studies. Your brain is not fooled by a realistic synthetic voice. It detects the absence of a mind behind the sound. This does not mean synthetic speech is worse. It means it is processed differently. Audiobooks, navigation systems, and virtual assistants all use synthetic speech effectively. The brain understands the content. It just does not attribute the content to a person. The <a href="/en/tools/text-to-speech">AI text to speech</a> tool produces speech that is clear, natural, and professional. Your brain processes it fully. It just knows — at a neural level — that it is listening to a machine. The practical implication: for content where human connection matters (therapy, coaching, intimate storytelling), human voices may still have an edge. For content where information delivery matters (news, tutorials, documentation), synthetic voices are effectively equivalent.</p>`
+<h2>The Newsletter Curation Workflow</h2>
+
+<p><strong>Step 1: Collect links.</strong> Throughout the week, save interesting articles, tools, and resources. Use a bookmarking tool or a simple document. The collection takes 1 hour per week. <strong>Step 2: Write bullet points.</strong> For each link, write 2-3 bullet points: what it is, why it matters, and what readers should do with it. The bullet points take 30 minutes. <strong>Step 3: Generate the newsletter.</strong> Paste the bullet points into the <a href="/en/tools/article-generator">article generator</a>. The AI expands each bullet point into a short paragraph — 2-3 sentences of commentary. The AI generates an introduction paragraph and a closing section. The generation takes 2 minutes. <strong>Step 4: Polish.</strong> Run the generated content through the <a href="/en/tools/text-polish">text polisher</a> to refine the tone. The newsletter should sound like you — not like an AI. Review and personalize. The polish takes 15 minutes. <strong>Step 5: Send.</strong> The total time: 1 hour (collection throughout the week) + 30 minutes (bullet points) + 15 minutes (polish) = 1 hour 45 minutes. The <a href="/en/tools/article-generator">AI article generator</a> saved 2 hours. The weekly newsletter continues. The creator's time is freed.</p>`
+  },
+  {
+    slug: "background-remover-etsy-product-photography-optimization",
+    title: "Background Remover for Etsy Sellers How to Create Professional Product Photos That Convert Browsers into Buyers",
+    description: "Your Etsy shop has 50 products. The photos are taken on a kitchen counter. Professional product photography costs $500. AI background removal creates clean, professional product photos. Here's the Etsy shop optimization guide.",
+    date: "2026-08-03",
+    category: "Edit",
+    tags: ["background remover", "Etsy", "product photography", "seller", "conversion"],
+    relatedTools: ["background-remover", "object-remover", "ai-image-generator"],
+    content: `<p>You have an Etsy shop with 50 products. You photographed each product on your kitchen counter. The photos show: the countertop (distracting), a coffee mug in the corner (unprofessional), and uneven lighting (amateur). Your products are good. Your photos are not. Customers judge products by photos. A product with a clean, professional photo converts at 2-3x the rate of a product with a cluttered, amateur photo. Professional product photography costs $500-1,000 for 50 products. An <a href="/en/tools/background-remover">AI background remover</a> creates clean product photos from your existing photos — for free.</p>
+
+<h2>The Etsy Product Photo Workflow</h2>
+
+<p><strong>Step 1: Shoot with a clean background.</strong> Even with AI removal, starting with a cleaner background produces better results. Use a white wall or a plain sheet as a backdrop. Natural light from a window is best. <strong>Step 2: Remove the background.</strong> Upload each photo to the <a href="/en/tools/background-remover">background remover</a>. The AI removes the background and isolates the product. The result is a clean product image with a transparent background. <strong>Step 3: Add a consistent background.</strong> Place the isolated product on a consistent background for all 50 products — white (clean, professional), a soft gradient (modern), or a lifestyle scene (contextual). <strong>Step 4: Add thumbnail optimization.</strong> Etsy displays square thumbnails. Crop the final image to a square. The product should fill 70-80% of the frame. The <a href="/en/tools/background-remover">background remover</a> handles the hard part. The seller handles the composition. The result: 50 professional product photos. Zero photography cost. Higher conversion rates.</p>`
+  },
+  {
+    slug: "style-transfer-vs-colorizer-artistic-transformation-vs-historical-reconstruction",
+    title: "Style Transfer vs Colorizer Artistic Transformation vs Historical Reconstruction — Two Creative AI Tools with Opposite Goals",
+    description: "Style transfer applies Van Gogh's brushstrokes to your photo. Colorizer adds estimated color to a black-and-white photo. Both transform images. But one creates art. One restores history.",
+    date: "2026-08-03",
+    category: "Edit",
+    tags: ["style transfer", "colorizer", "comparison", "artistic", "historical"],
+    relatedTools: ["style-transfer", "colorizer", "photo-restorer"],
+    content: `<p>You take a photo of a city skyline. You use <a href="/en/tools/style-transfer">style transfer</a> with Van Gogh's "Starry Night" as the reference. The AI applies Van Gogh's swirling brushstrokes, vibrant colors, and expressive textures to the skyline. The photo becomes a painting. The goal is <strong>artistic transformation</strong> — making something new and creative. The original photo is a starting point. The result is art.</p>
+
+<p>Now you have a black-and-white photo of your grandmother from 1952. You use the <a href="/en/tools/colorizer">colorizer</a>. The AI adds color — estimating what the original colors might have been based on the scene, the era, and the context. The goal is <strong>historical reconstruction</strong> — bringing the past to life as it looked. The original photo is the record. The result is restoration.</p>
+
+<p>Both tools transform images. Both use AI. But the goals are opposite. Style transfer creates something that never existed — a Van Gogh-style city skyline. The colorizer reconstructs something that did exist — the colors of a 1952 moment. Style transfer is expressive. The colorizer is reconstructive. One is an artist. One is a historian. The <a href="/en/tools/style-transfer">style transfer</a> tool is for creative expression. The <a href="/en/tools/colorizer">colorizer</a> is for historical preservation. Use the right tool for the right goal.</p>`
+  },
+  {
+    slug: "image-description-ai-accessibility-visually-impaired-users",
+    title: "AI Image Description for Accessibility How Computer Vision Helps Visually Impaired Users Understand Images on the Web",
+    description: "Every image on the web is a barrier for visually impaired users. AI image description creates alt text automatically. Here's how computer vision is making the web accessible — and why it still needs human verification.",
+    date: "2026-08-03",
+    category: "Content",
+    tags: ["image description", "accessibility", "visually impaired", "alt text", "screen reader"],
+    relatedTools: ["image-description", "text-to-speech", "face-blur"],
+    content: `<p>A visually impaired user visits a website. The site has 12 images. Each image has a screen reader description. The descriptions are: "image1.jpg," "image2.jpg," "image3.jpg." The screen reader reads the filenames. The user hears "image1.jpg" and has no idea what the image shows. The image is a barrier — not an enhancement. Over 90% of images on the web lack meaningful alt text. For visually impaired users, these images are invisible. An <a href="/en/tools/image-description">AI image description</a> tool generates alt text for every image — making the web accessible at scale.</p>
+
+<h2>How AI Generates Image Descriptions for Accessibility</h2>
+
+<p>The AI analyzes the image using computer vision: it identifies objects (a dog, a tree, a person), actions (running, sitting, smiling), and context (a park, a kitchen, a beach). It generates a natural language description: "A golden retriever running across a grassy field with a red ball in its mouth." The description is accurate for common scenes. It is less accurate for complex scenes, abstract art, or images with multiple overlapping elements. The AI-generated description is a starting point. The human reviewer verifies accuracy and adds context that the AI missed. The <a href="/en/tools/text-to-speech">text-to-speech</a> tool reads the description aloud to the user. The combination of AI image description and human verification makes images accessible. The web becomes usable for everyone. The <a href="/en/tools/image-description">AI image description</a> tool is the bridge between the visual web and the visually impaired user. The human reviewer is the quality check. Together, they make the web accessible.</p>`
   },
 ];
 
@@ -106,4 +102,4 @@ content = content.replace(old, new_blogs)
 with open(BLOG_FILE, "w", encoding="utf-8") as f:
     f.write(content)
 
-print("AI station: 256->262 static done.")
+print("AI station: 262->268 static done.")
