@@ -1,4 +1,4 @@
-"""Add 6 blogs to AI station (286→292 static) — August 7, 2026"""
+"""Add 6 blogs to AI station (292→298 static) — August 8, 2026"""
 import os, sys
 
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
@@ -10,88 +10,88 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "ai-image-generator-marketing-campaign-brand-visuals",
-    title: "AI Image Generator for Marketing Campaigns How to Create Consistent Brand Visuals at Scale Without a Design Team",
-    description: "Your campaign needs 50 social media visuals in different sizes. A design agency quotes $5,000. An AI image generator produces the visuals in an afternoon. Here's the marketing campaign workflow.",
-    date: "2026-08-07",
+    slug: "image-upscaler-print-preparation-large-format",
+    title: "AI Image Upscaler for Print Preparation How to Prepare Low-Resolution Images for Large-Format Printing Without Pixelation",
+    description: "Your client sends a 800x600 logo for a 4-foot banner. At print size it will look blurry. An AI image upscaler quadruples the resolution. Here's the print preparation workflow for designers.",
+    date: "2026-08-08",
+    category: "Edit",
+    tags: ["image upscaler", "print", "large format", "resolution", "design"],
+    relatedTools: ["image-upscaler", "background-remover", "photo-restorer"],
+    content: `<p>Your client needs a 4-foot banner for a trade show. They send a logo that is 800x600 pixels. The banner needs at least 300 DPI. At 48 inches wide and 300 DPI, that is 14,400 pixels. The client's logo has 800. The gap is enormous. Printing the logo as-is would produce a blurry, pixelated mess. An <a href="/en/tools/image-upscaler">AI image upscaler</a> bridges the gap. Here is the print preparation workflow.</p>
+
+<h2>The Large-Format Print Preparation Workflow</h2>
+
+<p><strong>Step 1: Calculate the target resolution.</strong> Print quality depends on DPI (dots per inch). 300 DPI for close viewing, 150 DPI for banners viewed from a distance. A 4-foot (48-inch) banner at 150 DPI needs 7,200 pixels. The <a href="/en/tools/image-upscaler">AI image upscaler</a> targets the required dimension. <strong>Step 2: Upscale the image.</strong> Upload the low-resolution image to the <a href="/en/tools/image-upscaler">image upscaler</a>. The AI increases the resolution — 2x, 4x, or higher. The AI adds detail that was not in the original. The upscaled image holds up at print size. The logo is sharp at 4 feet. <strong>Step 3: Prepare the print file.</strong> Upscale to a size slightly larger than needed. The printer can crop without losing quality. Use the <a href="/en/tools/background-remover">background remover</a> if the design needs a transparent background for the print. <strong>Step 4: Check for quality issues.</strong> The AI upscaler is excellent. It can introduce artifacts on some textures. Review the upscaled image at 100% zoom. Use the <a href="/en/tools/photo-restorer">photo restorer</a> to fix any artifacts. The <a href="/en/tools/image-upscaler">image upscaler</a> is the resolution engine. The designer is the quality gate. The combination turns a tiny client logo into a sharp, print-ready banner.</p>`
+  },
+  {
+    slug: "colorizer-family-photo-black-and-white-portrait-restoration",
+    title: "AI Colorizer for Family Photos How to Colorize Your Grandparents' Black-and-White Portraits for a Living Family Album",
+    description: "Your grandfather's 1948 portrait is black and white. You want to see him in color — the way the family remembers him. An AI colorizer adds realistic color. Here's the family portrait colorization guide.",
+    date: "2026-08-08",
+    category: "Edit",
+    tags: ["colorizer", "family photos", "black and white", "portrait", "colorize"],
+    relatedTools: ["colorizer", "photo-restorer", "image-upscaler"],
+    content: `<p>Your grandfather's 1948 portrait hangs in the family home. It is black and white. His navy uniform, his dark hair, his warm skin tone — all rendered in shades of gray. The family remembers the color. The photograph never captured it. An <a href="/en/tools/colorizer">AI colorizer</a> can reconstruct the color. Here is the family portrait colorization guide.</p>
+
+<h2>The Family Portrait Colorization Workflow</h2>
+
+<p><strong>Step 1: Restore first, then colorize.</strong> If the photo has scratches, fading, or creases, restore it before colorizing. Use the <a href="/en/tools/photo-restorer">photo restorer</a> first. The colorizer works best on a clean image. A clean black-and-white image produces cleaner color. <strong>Step 2: Colorize the portrait.</strong> Upload the restored photo to the <a href="/en/tools/colorizer">colorizer</a>. The AI analyzes the grayscale values — the brightness of the skin, the hair, the uniform. It predicts the original colors. The result is a colorized portrait. <strong>Step 3: Verify the colors.</strong> The AI makes educated guesses. A navy uniform is likely navy. But was it actually navy? Ask older family members. Adjust if the tool allows. The AI's estimate is a starting point. The family memory is the verification. <strong>Step 4: Upscale and share.</strong> Use the <a href="/en/tools/image-upscaler">image upscaler</a> to increase resolution for printing. Print the colorized portrait for the family album. The <a href="/en/tools/colorizer">colorizer</a> is the color engine. The <a href="/en/tools/photo-restorer">photo restorer</a> is the repair tool. The family album is the legacy. The combination brings a 1948 portrait to life.</p>`
+  },
+  {
+    slug: "pdf-to-word-research-papers-academic-notes",
+    title: "AI PDF to Word for Research Papers How to Convert Academic PDFs into Editable Notes for Literature Reviews",
+    description: "You are writing a literature review. You have 30 research papers as PDFs. Copying quotes by hand takes days. A PDF to Word converter with OCR makes the text editable. Here's the academic research workflow.",
+    date: "2026-08-08",
+    category: "Document",
+    tags: ["PDF to Word", "research papers", "academic", "literature review", "notes"],
+    relatedTools: ["pdf-to-word", "text-polish", "article-generator"],
+    content: `<p>You are writing a literature review. Your supervisor gave you 30 research papers in PDF format. Some are digitally created. Some are scanned. You need to: extract key findings, copy exact quotes, and compare methodologies across papers. Copying quotes by hand from 30 papers takes days. A <a href="/en/tools/pdf-to-word">PDF to Word converter</a> with OCR makes the text editable in minutes. Here is the academic research workflow.</p>
+
+<h2>The Literature Review Workflow</h2>
+
+<p><strong>Step 1: Convert the papers.</strong> Upload each PDF to the <a href="/en/tools/pdf-to-word">PDF to Word converter</a>. The tool extracts the text. For scanned papers, the OCR (optical character recognition) reads the text from the images. The output is an editable Word document. <strong>Step 2: Build your notes file.</strong> Combine the converted papers into a master notes document. Use Word's search to find themes: "methodology," "sample size," "limitations," "findings." The search across 30 papers takes minutes instead of days. <strong>Step 3: Extract and organize quotes.</strong> Copy the key quotes into a quotes table with the source, year, and page number. This becomes the foundation of your literature review. The <a href="/en/tools/text-polish">text polisher</a> cleans up any OCR errors in the extracted text. <strong>Step 4: Draft the review.</strong> Use the <a href="/en/tools/article-generator">article generator</a> to help structure the review from your organized notes. The <a href="/en/tools/pdf-to-word">PDF to Word converter</a> is the extraction tool. The researcher is the analyst. The combination turns 30 PDFs into a structured literature review in days — not weeks.</p>`
+  },
+  {
+    slug: "style-transfer-interior-design-room-visualization",
+    title: "AI Style Transfer for Interior Design How to Preview Your Room in Different Art Styles Before You Buy a Single Piece of Furniture",
+    description: "You are redecorating your living room. You are torn between mid-century modern and industrial. An AI style transfer tool shows you your room in both styles. Here's the interior design visualization workflow.",
+    date: "2026-08-08",
     category: "Generate",
-    tags: ["AI image generator", "marketing", "campaign", "brand", "visuals"],
-    relatedTools: ["ai-image-generator", "background-remover", "image-upscaler"],
-    content: `<p>You are launching a product campaign. You need: a hero image for the landing page, 30 social media posts in various formats, 10 email banners, and 5 ad creatives. A design agency quotes $5,000 and needs two weeks. An <a href="/en/tools/ai-image-generator">AI image generator</a> produces the visuals in an afternoon. Here is the marketing campaign workflow.</p>
+    tags: ["style transfer", "interior design", "visualization", "room", "decorating"],
+    relatedTools: ["style-transfer", "ai-image-generator", "image-upscaler"],
+    content: `<p>You are redecorating your living room. You have a photo of the current room. You are torn between two styles: mid-century modern (warm wood, clean lines, retro furniture) and industrial (exposed brick, dark metal, minimalist). Buying furniture is expensive. Choosing the wrong style is a $5,000 mistake. An <a href="/en/tools/style-transfer">AI style transfer</a> tool shows you your room in both styles first. Here is the interior design visualization workflow.</p>
 
-<h2>The Marketing Visual Production Workflow</h2>
+<h2>The Interior Design Visualization Workflow</h2>
 
-<p><strong>Step 1: Define the visual language.</strong> Before generating, define the style: color palette, mood, and composition. "Warm tones, minimalist, soft natural light, a product shot with ample whitespace." The clearer the style, the more consistent the output. The <a href="/en/tools/ai-image-generator">AI image generator</a> follows the description. <strong>Step 2: Generate the core visuals.</strong> Generate the hero image first. It is the anchor of the campaign. Then generate variations: different angles, different backgrounds, different crops. The AI produces each in seconds. <strong>Step 3: Prepare for different formats.</strong> Social media needs square (1:1), story (9:16), and landscape (16:9) formats. Use the <a href="/en/tools/image-upscaler">image upscaler</a> to increase resolution for high-quality exports. Use the <a href="/en/tools/background-remover">background remover</a> to isolate subjects for placement on brand backgrounds. <strong>Step 4: Review and curate.</strong> The AI generates many options. Choose the best. Curate the final set. The <a href="/en/tools/ai-image-generator">AI image generator</a> is the production engine. The marketer is the creative director. The combination produces a full campaign visual set — 50 assets, one afternoon, zero design agency.</p>`
+<p><strong>Step 1: Photograph the room.</strong> Take a clean, well-lit photo of the empty room. Straight-on angles work best. The <a href="/en/tools/style-transfer">style transfer</a> tool applies styles to the room photo. <strong>Step 2: Choose your style references.</strong> Pick a style reference image: a mid-century modern living room, an industrial loft, a Scandinavian space. The style transfer tool applies the chosen style's aesthetic to your room photo. The furniture, colors, and materials shift to match the style. <strong>Step 3: Compare the options.</strong> Generate both styles. Compare side by side. The mid-century version shows your room with retro furniture and warm tones. The industrial version shows your room with dark metal and exposed surfaces. The comparison is instant. The <a href="/en/tools/ai-image-generator">AI image generator</a> can create furniture mockups to place in the styled room. <strong>Step 4: Upscale for reference.</strong> Use the <a href="/en/tools/image-upscaler">image upscaler</a> to enlarge the winning style for printing or sharing with the family. The <a href="/en/tools/style-transfer">style transfer</a> tool is the visualization engine. The homeowner is the decision-maker. The combination prevents a $5,000 decorating mistake.</p>`
   },
   {
-    slug: "photo-restorer-family-archive-damaged-photos-restoration",
-    title: "AI Photo Restorer for Family Archives How to Restore Precious Damaged Photos from the 1950s Without Sending Them Away",
-    description: "Your grandmother's wedding photo from 1954 is torn, faded, and creased. A restoration service charges $150 and takes weeks. An AI photo restorer fixes it in minutes. Here's the family archive restoration workflow.",
-    date: "2026-08-07",
-    category: "Edit",
-    tags: ["photo restorer", "family archive", "restoration", "old photos", "damage"],
-    relatedTools: ["photo-restorer", "colorizer", "image-upscaler"],
-    content: `<p>Your grandmother's wedding photo from 1954 is the only copy. It is faded, torn at the corner, and creased across the middle. The faces are barely visible. A professional restoration service charges $150 and needs two weeks. An <a href="/en/tools/photo-restorer">AI photo restorer</a> fixes the photo in minutes. Here is the family archive restoration workflow.</p>
+    slug: "avatar-generator-vs-ai-image-generator-personalized-vs-generic",
+    title: "Avatar Generator vs AI Image Generator Personalized Characters vs Generic Artwork — Two AI Generation Tools for Different Creative Needs",
+    description: "Avatar generator creates a character that looks like you. AI image generator creates any artwork from a prompt. Both generate images. But one is personal. One is unlimited.",
+    date: "2026-08-08",
+    category: "Generate",
+    tags: ["avatar generator", "AI image generator", "comparison", "personalized", "creative"],
+    relatedTools: ["avatar-generator", "ai-image-generator", "style-transfer"],
+    content: `<p>You need a profile picture for your new gaming account. You want it to look like you — same hairstyle, same features — but as a stylized character. You use an <a href="/en/tools/avatar-generator">avatar generator</a>. You upload a photo of yourself. The AI creates a character with your likeness in a chosen style. The result is personal. It is you, stylized. The avatar generator is a <strong>personalized</strong> tool. It is built around the user's identity.</p>
 
-<h2>The Family Photo Restoration Workflow</h2>
+<p>Now you need a background image for your website hero. It should be a futuristic cityscape at sunset. It does not need to look like anyone. You use an <a href="/en/tools/ai-image-generator">AI image generator</a>. You type a prompt: "futuristic city skyline at sunset, purple and orange sky, cinematic lighting." The AI creates the artwork from the prompt. The result is unlimited. It can generate anything described in words. The AI image generator is a <strong>generic</strong> creation tool. It is built around imagination.</p>
 
-<p><strong>Step 1: Scan the photo properly.</strong> The restoration quality depends on the scan. Use a flatbed scanner at 600 DPI. Higher resolution gives the AI more data to work with. A phone photo of the photo is worse than a scan. Scan first, then restore. <strong>Step 2: Restore the damage.</strong> Upload the scan to the <a href="/en/tools/photo-restorer">photo restorer</a>. The AI detects the tears, creases, scratches, and fading. It fills the tears with surrounding context, smooths the creases, and corrects the faded color. The faces become visible again. <strong>Step 3: Add color (optional).</strong> If the original is black and white, use the <a href="/en/tools/colorizer">colorizer</a> to add color. The AI estimates the original colors from the era and context. The grandmother's dress gets a plausible color. <strong>Step 4: Upscale and share.</strong> Use the <a href="/en/tools/image-upscaler">image upscaler</a> to increase resolution for printing. Print a restored copy for the family. The <a href="/en/tools/photo-restorer">photo restorer</a> is the repair tool. The family historian is the guardian. The combination preserves a precious memory — without the $150 service and two-week wait.</p>`
+<p>Both are AI generation tools. Both produce images in seconds. But the inputs and outputs differ. The <a href="/en/tools/avatar-generator">avatar generator</a> takes a <strong>photo of a person</strong> and produces a <strong>character of that person</strong>. It maintains likeness and identity. The <a href="/en/tools/ai-image-generator">AI image generator</a> takes a <strong>text prompt</strong> and produces <strong>any artwork</strong>. It is limited only by the prompt. The <a href="/en/tools/style-transfer">style transfer</a> tool applies a style to an existing image. Use the avatar generator for profiles and identity. Use the AI image generator for scenes and concepts. Different inputs. Different outputs. Both powerful.</p>`
   },
   {
-    slug: "text-polish-email-marketing-newsletter-copy-refinement",
-    title: "AI Text Polish for Email Marketing How to Refine Newsletter Copy for Higher Open and Click-Through Rates",
-    description: "Your newsletter has a 14% open rate. The industry average is 21%. The subject line is bland and the copy is wordy. An AI text polisher refines the copy. Here's the email marketing refinement workflow.",
-    date: "2026-08-07",
+    slug: "text-to-speech-technology-neural-networks-natural-speech",
+    title: "The Technology Behind AI Text to Speech How Neural Networks Turn Written Text into Natural Human Speech",
+    description: "You type a sentence. The AI speaks it with natural pacing, intonation, and emotion. The technology is neural text to speech. Here's how it transforms text into human-sounding audio.",
+    date: "2026-08-08",
     category: "Content",
-    tags: ["text polish", "email marketing", "newsletter", "copywriting", "open rate"],
-    relatedTools: ["text-polish", "article-generator", "translate"],
-    content: `<p>Your weekly newsletter has a 14% open rate. The industry average is 21%. The subject line is "Our weekly update." The body is a wall of text. The calls to action are buried. You know the content is good. The presentation is the problem. An <a href="/en/tools/text-polish">AI text polisher</a> refines the copy. Here is the email marketing refinement workflow.</p>
+    tags: ["text to speech", "technology", "neural network", "speech synthesis", "TTS"],
+    relatedTools: ["text-to-speech", "text-polish", "article-generator"],
+    content: `<p>You paste a paragraph into an <a href="/en/tools/text-to-speech">AI text to speech</a> tool. You press play. A human-sounding voice reads the paragraph with natural pacing, correct intonation, and believable emphasis. The voice pauses at commas, rises at questions, and lands at periods. The technology behind this is neural text to speech. Here is how it works.</p>
 
-<h2>The Email Copy Refinement Workflow</h2>
+<h2>How Neural Text to Speech Works</h2>
 
-<p><strong>Step 1: Write your draft.</strong> Write the newsletter as you normally would. Subject line, opening, main content, and call to action. Do not worry about polish yet. The <a href="/en/tools/text-polish">text polisher</a> will handle that. <strong>Step 2: Refine the subject line.</strong> The subject line determines the open rate. Run the subject line through the <a href="/en/tools/text-polish">text polisher</a>. The AI tightens it, makes it specific, and adds urgency. "Our weekly update" becomes "5 tools that save you 2 hours this week." Specificity beats vagueness. <strong>Step 3: Refine the body.</strong> Run the full body through the text polisher. The AI breaks long sentences into short ones, replaces jargon with plain language, and strengthens weak verbs. The wall of text becomes scannable copy. <strong>Step 4: Refine the call to action.</strong> The CTA drives the click-through rate. The <a href="/en/tools/text-polish">text polisher</a> makes the CTA clear and direct. "Click here" becomes "Get the free tool list." The <a href="/en/tools/article-generator">article generator</a> can expand a short tip into a full newsletter section. The <a href="/en/tools/translate">translator</a> handles multilingual subscribers. The <a href="/en/tools/text-polish">text polisher</a> is the refinement engine. The marketer is the strategist. The combination lifts open rates and click-through rates.</p>`
-  },
-  {
-    slug: "article-generator-seo-content-scale-blog-production",
-    title: "AI Article Generator for SEO Content How to Scale Blog Production While Keeping Quality and Avoiding Duplicate Content",
-    description: "Your SEO strategy needs 50 new articles this quarter. Writing them all manually is impossible. An AI article generator produces drafts at scale. Here's how to scale content without tripping the duplicate-content filter.",
-    date: "2026-08-07",
-    category: "Content",
-    tags: ["article generator", "SEO", "content marketing", "blog", "scale"],
-    relatedTools: ["article-generator", "text-polish", "image-description"],
-    content: `<p>Your SEO strategy needs 50 new articles this quarter. You have one writer. One writer produces 8 articles a month — 24 in a quarter. The gap is 26 articles. An <a href="/en/tools/article-generator">AI article generator</a> produces drafts at scale. The writer reviews and refines each draft. The combination fills the gap. Here is how to scale content without tripping the duplicate-content filter.</p>
-
-<h2>The SEO Content Scaling Workflow</h2>
-
-<p><strong>Step 1: Plan the topics with intent.</strong> Do not generate random articles. Build a topic plan around search intent: informational, commercial, and transactional queries. Each article targets one primary keyword and a cluster of secondary keywords. The <a href="/en/tools/article-generator">article generator</a> works best with a clear topic. <strong>Step 2: Give the AI a unique angle.</strong> The duplicate-content filter penalizes content that is nearly identical to existing pages. Give each article a unique angle: a specific use case, a specific audience, a specific data point. "How to choose a project management tool" is generic. "How a 3-person design agency evaluates project management tools" is unique. The <a href="/en/tools/article-generator">AI article generator</a> produces the draft around your angle. <strong>Step 3: Human review is non-negotiable.</strong> The AI produces a structured draft. The human writer verifies facts, adds real examples, and adjusts the tone. Use the <a href="/en/tools/text-polish">text polisher</a> to refine the final draft. <strong>Step 4: Add original visuals.</strong> Search engines reward original images. Use the <a href="/en/tools/image-description">image describer</a> to generate accurate alt text for your images. The <a href="/en/tools/article-generator">article generator</a> is the scaling engine. The human writer is the quality gate. The combination produces 50 SEO articles a quarter — without duplicate-content penalties.</p>`
-  },
-  {
-    slug: "background-remover-vs-object-remover-remove-everything-vs-remove-one-thing",
-    title: "Background Remover vs Object Remover Remove Everything vs Remove One Thing — Two AI Removal Tools for Different Editing Problems",
-    description: "Background remover removes the entire background behind a subject. Object remover removes a specific object within the frame. Both are removal tools. But one clears the stage. One edits the play.",
-    date: "2026-08-07",
-    category: "Edit",
-    tags: ["background remover", "object remover", "comparison", "removal", "editing"],
-    relatedTools: ["background-remover", "object-remover", "photo-restorer"],
-    content: `<p>You photograph a product on a cluttered desk. You want to use the product photo on your website. The desk is distracting. You use a <a href="/en/tools/background-remover">background remover</a>. The AI detects the product as the subject and removes everything behind it. The result is the product on a transparent background. You can place it on any background — a brand color, a gradient, or a scene. The background remover is a <strong>whole-background</strong> tool. It clears the entire stage.</p>
-
-<p>Now you photograph a family at a park. The photo is great except one thing: a passerby walked into the corner of the frame. You do not want to remove the whole background — the park is the setting. You want to remove just the passerby. You use an <a href="/en/tools/object-remover">object remover</a>. You circle the passerby. The AI removes the person and fills the gap with the park background. The rest of the photo is untouched. The object remover is a <strong>single-object</strong> tool. It edits the play without clearing the stage.</p>
-
-<p>Both are AI removal tools. Both make unwanted content disappear. But the problems are different. The <a href="/en/tools/background-remover">background remover</a> solves a <strong>separation</strong> problem — isolate the subject from its environment. The <a href="/en/tools/object-remover">object remover</a> solves a <strong>distraction</strong> problem — remove one element while keeping everything else. Use the background remover for product shots and profile photos. Use the object remover for cleaning up otherwise-good photos. The <a href="/en/tools/photo-restorer">photo restorer</a> handles damage repair. Different tools for different removal tasks. Both essential in a modern editing workflow.</p>`
-  },
-  {
-    slug: "image-description-technology-vision-language-models",
-    title: "The Technology Behind AI Image Description How Vision-Language Models See Pixels and Generate Accurate Text Captions",
-    description: "You upload a photo of a red bicycle leaning against a brick wall. The AI describes it precisely. The technology is a vision-language model. Here's how it understands pixels and generates captions.",
-    date: "2026-08-07",
-    category: "Content",
-    tags: ["image description", "vision language model", "AI", "technology", "caption"],
-    relatedTools: ["image-description", "article-generator", "text-polish"],
-    content: `<p>You upload a photo to an <a href="/en/tools/image-description">AI image describer</a>. The photo shows a red bicycle leaning against a brick wall, with a wooden crate beside it. The AI responds: "A red bicycle is leaning against a brick wall. A wooden crate sits beside it." The description is accurate. The technology behind it is a vision-language model. Here is how it works.</p>
-
-<h2>How Vision-Language Models Work</h2>
-
-<p><strong>Step 1: Convert pixels to tokens.</strong> An image is a grid of pixels — millions of numbers. The model does not see the image like a human does. It splits the image into patches. Each patch is converted into a numerical token — the same kind of token used for words. The image becomes a sequence of tokens the model can process. <strong>Step 2: Cross-reference visual and language patterns.</strong> The model was trained on millions of image-text pairs. It learned the relationship between visual features and words: a set of two circular shapes on a wheeled frame means "bicycle," a flat red vertical surface means "wall." The <a href="/en/tools/image-description">image describer</a> uses these learned patterns to identify what is in the image. <strong>Step 3: Generate the caption.</strong> The model generates text token by token. It predicts the next word based on the visual tokens and the words already generated. The output is a coherent description. <strong>Step 4: Specialized tasks.</strong> Beyond captions, the same technology powers alt-text generation, product descriptions, and accessibility. The <a href="/en/tools/article-generator">article generator</a> expands descriptions into articles. The <a href="/en/tools/text-polish">text polisher</a> refines them. The <a href="/en/tools/image-description">image describer</a> is the bridge between pixels and words. The technology is remarkable. The output is accurate captions in seconds.</p>`
+<p><strong>Step 1: Convert text to phonemes.</strong> The text is not read letter by letter. The system first converts the text into phonemes — the individual sounds of speech. "Photo" becomes f-o-t-o. The <a href="/en/tools/text-to-speech">text to speech</a> engine handles pronunciation rules for each word. <strong>Step 2: Predict the acoustic features.</strong> A neural network trained on thousands of hours of human speech predicts the acoustic features for each phoneme: pitch, duration, and energy. The network learned that a question rises in pitch, that a comma creates a pause, and that emphasis changes loudness. The prediction creates a speech-like signal. <strong>Step 3: Synthesize the audio.</strong> The predicted features are converted into an audio waveform. The result is the natural-sounding voice. Modern systems use neural vocoders to produce audio that is nearly indistinguishable from human speech. <strong>Step 4: Add expressiveness.</strong> The <a href="/en/tools/text-to-speech">text to speech</a> tool can adjust speed, pitch, and emphasis. The <a href="/en/tools/text-polish">text polisher</a> helps prepare text for better narration. The <a href="/en/tools/article-generator">article generator</a> produces the content to narrate. The <a href="/en/tools/text-to-speech">text to speech</a> tool is the voice. The technology is the neural network. The result is audio that sounds human.</p>`
   },
 ];
 
@@ -102,4 +102,4 @@ content = content.replace(old, new_blogs)
 with open(BLOG_FILE, "w", encoding="utf-8") as f:
     f.write(content)
 
-print("AI station: 286->292 static done.")
+print("AI station: 292->298 static done.")
