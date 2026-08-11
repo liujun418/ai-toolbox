@@ -1,4 +1,4 @@
-"""Add 6 blogs to AI station (298→304 static) — August 10, 2026"""
+"""Add 6 blogs to AI station (304→310 static) — August 11, 2026"""
 import os, sys
 
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
@@ -10,88 +10,88 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "watermark-remover-portfolio-photography-test-shots",
-    title: "AI Watermark Remover for Portfolio Photography How to Clean Up Watermarked Test Shots for Client Presentations",
-    description: "You shot test frames for a client and the camera applied a watermark. The client wants to see the clean version. An AI watermark remover cleans the test shots in seconds. Here's the portfolio workflow.",
-    date: "2026-08-10",
+    slug: "background-remover-professional-portraits-studio-look",
+    title: "AI Background Remover for Professional Portraits How to Replace a Cluttered Background with a Clean Studio Look",
+    description: "Your resume photo has a cluttered home office behind you. A clean studio background would look far more professional. An AI background remover replaces the background in seconds. Here's the portrait upgrade workflow.",
+    date: "2026-08-11",
     category: "Edit",
-    tags: ["watermark remover", "portfolio", "photography", "test shots", "client"],
-    relatedTools: ["watermark-remover", "photo-restorer", "image-upscaler"],
-    content: `<p>You are a photographer. You shot a test session with a client. The camera or editing software applied a watermark across the test frames — your name in the corner, a semi-transparent logo. The client wants to see the clean version before booking the full session. You cannot re-shoot. An <a href="/en/tools/watermark-remover">AI watermark remover</a> cleans the test shots in seconds. Here is the portfolio workflow.</p>
+    tags: ["background remover", "portrait", "professional", "studio", "resume"],
+    relatedTools: ["background-remover", "image-upscaler", "photo-restorer"],
+    content: `<p>You need a professional headshot for your resume. The best photo you have was taken in your home office — bookshelf, lamp, and laundry basket visible behind you. The face is good. The background is not. A studio session costs $200. An <a href="/en/tools/background-remover">AI background remover</a> replaces the cluttered background with a clean studio look in seconds. Here is the portrait upgrade workflow.</p>
 
-<h2>The Portfolio Cleanup Workflow</h2>
+<h2>The Portrait Background Replacement Workflow</h2>
 
-<p><strong>Step 1: Understand the watermark.</strong> Test-shot watermarks are usually consistent — the same logo, the same position, the same transparency. The <a href="/en/tools/watermark-remover">watermark remover</a> analyzes the watermark pattern. It identifies the overlay and reconstructs the image underneath. <strong>Step 2: Remove the watermark.</strong> Upload the watermarked test shot to the <a href="/en/tools/watermark-remover">watermark remover</a>. The AI removes the watermark. The result is a clean version of the shot. The removal takes seconds. <strong>Step 3: Check the edges.</strong> The watermark remover is accurate. On complex backgrounds — busy textures, gradients — it may leave subtle artifacts. Review the cleaned image at 100% zoom. Use the <a href="/en/tools/photo-restorer">photo restorer</a> to fix any remaining artifacts. <strong>Step 4: Present the clean portfolio.</strong> The cleaned shots go into the client presentation. Use the <a href="/en/tools/image-upscaler">image upscaler</a> to prepare high-resolution versions for the presentation. The <a href="/en/tools/watermark-remover">watermark remover</a> is the cleanup tool. The photographer is the presenter. The combination turns watermarked test frames into a professional client presentation.</p>`
+<p><strong>Step 1: Choose the best photo.</strong> Pick the sharpest, best-lit photo of yourself. The face should be in focus and evenly lit. The <a href="/en/tools/background-remover">background remover</a> works best when the subject is clearly separated from the background. <strong>Step 2: Remove the background.</strong> Upload the photo to the <a href="/en/tools/background-remover">background remover</a>. The AI detects you as the subject and removes everything behind you. The result is you on a transparent background. The detection is precise — hair, glasses, and edges are handled. <strong>Step 3: Add a studio background.</strong> Choose a clean, professional background: a neutral gray, a soft blue, or a blurred office scene. Place the transparent subject on the new background. The result is a studio-quality portrait. <strong>Step 4: Enhance the final image.</strong> Use the <a href="/en/tools/image-upscaler">image upscaler</a> to increase resolution for print. Use the <a href="/en/tools/photo-restorer">photo restorer</a> to fix any imperfections. The <a href="/en/tools/background-remover">background remover</a> is the extraction tool. The photo editor is the designer. The combination turns a cluttered home office photo into a professional portrait — without the $200 studio session.</p>`
   },
   {
-    slug: "face-blur-real-estate-photography-home-listings-privacy",
-    title: "AI Face Blur for Real Estate Photography How to Protect Privacy in Home Listings with Visible People",
-    description: "Your home listing photos show the previous owners' family photos on the wall. Publishing them raises privacy concerns. An AI face blur tool protects identities. Here's the real estate photography workflow.",
-    date: "2026-08-10",
-    category: "Edit",
-    tags: ["face blur", "real estate", "home listing", "privacy", "photography"],
-    relatedTools: ["face-blur", "object-remover", "photo-restorer"],
-    content: `<p>You are a real estate agent. You photographed a home for sale. The photos are excellent — bright, wide, and inviting. But two photos show a family portrait on the wall. The previous owners are identifiable. Publishing the listing without blurring the faces raises privacy concerns. An <a href="/en/tools/face-blur">AI face blur</a> tool protects the identities. Here is the real estate photography workflow.</p>
-
-<h2>The Real Estate Listing Privacy Workflow</h2>
-
-<p><strong>Step 1: Scan the photos for faces.</strong> Walk through the listing photos. Look for visible people — family portraits, personal photos, and mirrors that catch reflections. The <a href="/en/tools/face-blur">face blur</a> tool detects faces automatically. <strong>Step 2: Blur the faces.</strong> Upload the affected photos to the <a href="/en/tools/face-blur">face blur</a> tool. The AI detects every face in the photo — in portraits, in reflections, and in the background. It applies a blur to each face. The blur is strong enough to make the identity unrecognizable. <strong>Step 3: Review the results.</strong> The AI is accurate. Check that every face is blurred and the blur does not distract from the room. If a face is missed, use the <a href="/en/tools/object-remover">object remover</a> to blur it manually. <strong>Step 4: Publish the listing.</strong> The faces are blurred. The privacy is protected. The listing is ready. The <a href="/en/tools/face-blur">face blur</a> tool is the privacy tool. The real estate agent is the publisher. The <a href="/en/tools/photo-restorer">photo restorer</a> handles any other image fixes. The combination produces a compliant, professional listing.</p>`
-  },
-  {
-    slug: "article-generator-ecommerce-product-copy-scale",
-    title: "AI Article Generator for E-Commerce How to Scale Product Copy Across Hundreds of Products Without Losing Consistency",
-    description: "Your store has 500 products. Each needs a description, a title, and a value proposition. Writing 500 unique descriptions takes weeks. An AI article generator scales the copy. Here's the e-commerce workflow.",
-    date: "2026-08-10",
+    slug: "text-polish-resume-writing-achievement-statements",
+    title: "AI Text Polish for Resume Writing How to Refine Bullet Points into Strong Achievement Statements That Recruiters Notice",
+    description: "Your resume says 'Responsible for sales.' A recruiter reads it in two seconds and moves on. An AI text polisher turns it into 'Grew regional sales 34% year over year.' Here's the resume refinement workflow.",
+    date: "2026-08-11",
     category: "Content",
-    tags: ["article generator", "e-commerce", "product copy", "scale", "consistency"],
-    relatedTools: ["article-generator", "text-polish", "image-description"],
-    content: `<p>Your e-commerce store has 500 products. Each product needs: a title, a description, and a value proposition. A copywriter writes 10 product descriptions a day. Filling 500 products takes 50 working days — ten weeks. The season will be over. An <a href="/en/tools/article-generator">AI article generator</a> scales the copy production. Here is the e-commerce product copy workflow.</p>
+    tags: ["text polish", "resume", "achievement", "bullet points", "job search"],
+    relatedTools: ["text-polish", "article-generator", "translate"],
+    content: `<p>Your resume has a bullet point: "Responsible for sales at a regional office." A recruiter spends two seconds on it. The phrase is weak. It describes a duty, not a result. A stronger version: "Grew regional sales 34% year over year by launching a referral program and retraining the sales team." The difference is specificity and impact. An <a href="/en/tools/text-polish">AI text polisher</a> helps you refine your bullet points. Here is the resume refinement workflow.</p>
 
-<h2>The E-Commerce Copy Scaling Workflow</h2>
+<h2>The Resume Bullet Point Workflow</h2>
 
-<p><strong>Step 1: Build a product brief for each item.</strong> The AI needs input. Create a brief per product: the product name, key features, materials, and target audience. The brief does not need to be long — 5 bullets is enough. The <a href="/en/tools/article-generator">article generator</a> uses the brief to produce the copy. <strong>Step 2: Generate the copy.</strong> Upload the brief to the <a href="/en/tools/article-generator">article generator</a>. The AI produces a product title, a description, and a value proposition. The generation takes seconds per product. 500 products take an afternoon. <strong>Step 3: Standardize the format.</strong> The AI is consistent by design — it follows the same structure for every product. This consistency is valuable. Customers learn the format. The <a href="/en/tools/text-polish">text polisher</a> refines any variations in tone. <strong>Step 4: Review and verify.</strong> The AI is accurate for features it knows. It may hallucinate details on niche products. Review each description against the product facts. The <a href="/en/tools/image-description">image describer</a> verifies that descriptions match the product photos. The <a href="/en/tools/article-generator">article generator</a> is the scale engine. The human reviewer is the quality gate. The combination fills 500 product pages in days — not weeks.</p>`
+<p><strong>Step 1: Write your raw drafts.</strong> Write down what you did in plain language. "I handled customer complaints." "I organized team meetings." "I used Excel for reports." Do not worry about polish yet. The <a href="/en/tools/text-polish">text polisher</a> will refine them. <strong>Step 2: Refine for action and impact.</strong> Run each bullet through the <a href="/en/tools/text-polish">text polisher</a>. The AI strengthens the verbs, removes passive voice, and highlights results. "I handled customer complaints" becomes "Resolved 40+ customer escalations weekly, improving retention by 12%." Strong verbs open each bullet: led, grew, launched, reduced, built. <strong>Step 3: Add numbers.</strong> Recruiters notice metrics. The <a href="/en/tools/text-polish">text polisher</a> structures the sentence so the numbers land. Add the specific figures you have: percentages, counts, amounts. <strong>Step 4: Tailor for each application.</strong> The <a href="/en/tools/article-generator">article generator</a> helps expand a polished bullet into a full accomplishment story. The <a href="/en/tools/translate">translator</a> handles international applications. The <a href="/en/tools/text-polish">text polisher</a> is the refinement engine. The job seeker is the source of facts. The combination turns "Responsible for sales" into an achievement recruiters notice.</p>`
   },
   {
-    slug: "image-description-accessibility-alt-text-visually-impaired",
-    title: "AI Image Description for Accessibility How to Write Meaningful Alt Text for Visually Impaired Users",
-    description: "Your website has 200 images without alt text. Screen readers can't describe them. Visually impaired users hear nothing. An AI image describer generates accurate alt text. Here's the accessibility workflow.",
-    date: "2026-08-10",
-    category: "Content",
-    tags: ["image description", "accessibility", "alt text", "screen reader", "WCAG"],
-    relatedTools: ["image-description", "article-generator", "text-polish"],
-    content: `<p>Your website has 200 images. None have alt text. A visually impaired user opens your site. The screen reader reaches an image and reads nothing — or worse, reads the filename. The image content is lost. The Web Content Accessibility Guidelines (WCAG) require text alternatives for images. An <a href="/en/tools/image-description">AI image describer</a> generates accurate alt text for all 200 images. Here is the accessibility workflow.</p>
-
-<h2>The Alt Text Generation Workflow</h2>
-
-<p><strong>Step 1: Understand what good alt text says.</strong> Alt text describes the image's <strong>content and function</strong> — not just what it looks like. A photo of a dog playing fetch becomes "A golden retriever fetching a tennis ball in a park." Decorative images need empty alt text (<code>alt=""</code>) so screen readers skip them. The <a href="/en/tools/image-description">AI image describer</a> generates the content description. <strong>Step 2: Generate alt text for each image.</strong> Upload each image to the <a href="/en/tools/image-description">image describer</a>. The AI produces a concise, accurate description. The output is the alt text. The generation takes seconds per image. <strong>Step 3: Add context where needed.</strong> Some images need more than a description. A chart needs the data it shows. An infographic needs the key message. The <a href="/en/tools/image-description">image describer</a> provides the visual description. The human adds the functional context. <strong>Step 4: Integrate and verify.</strong> Add the alt text to the HTML. Test with a screen reader to confirm the experience. The <a href="/en/tools/article-generator">article generator</a> can expand a description into a full caption. The <a href="/en/tools/text-polish">text polisher</a> refines the wording. The <a href="/en/tools/image-description">image describer</a> is the accessibility tool. The combination makes the web usable for everyone.</p>`
-  },
-  {
-    slug: "photo-restorer-vs-colorizer-repair-damage-vs-add-color",
-    title: "AI Photo Restorer vs AI Colorizer Repair Damage vs Add Color — Two AI Tools for Preserving Old Family Photographs",
-    description: "Photo restorer fixes scratches and fading. Colorizer adds color to black-and-white. Both preserve old photos. But one repairs the surface. One restores the era.",
-    date: "2026-08-10",
-    category: "Edit",
-    tags: ["photo restorer", "colorizer", "comparison", "old photos", "preservation"],
-    relatedTools: ["photo-restorer", "colorizer", "image-upscaler"],
-    content: `<p>Your family has a photograph from 1940. It is scratched, faded, and torn at the corner. The photo is black and white. You want to preserve it. You use a <a href="/en/tools/photo-restorer">photo restorer</a> first. The AI detects the scratches and fills them in. It removes the fading and corrects the contrast. The result is a clean, clear version of the original photo. The photo restorer is a <strong>surface repair</strong> tool. It fixes the damage that time caused.</p>
-
-<p>Now you want to see the photo the way it looked in 1940 — in color. The original is black and white. You use a <a href="/en/tools/colorizer">colorizer</a>. The AI analyzes the grayscale values and predicts the original colors. The woman's dress, the man's suit, the sky behind them — all get plausible colors. The result is a colorized version of the restored photo. The colorizer is an <strong>era restoration</strong> tool. It adds the color that photography could not capture.</p>
-
-<p>Both tools preserve old photos. Both are powered by AI. But the order and purpose differ. The <a href="/en/tools/photo-restorer">photo restorer</a> repairs <strong>damage</strong> — scratches, fading, tears, and creases. The <a href="/en/tools/colorizer">colorizer</a> adds <strong>color</strong> — the vibrancy that black-and-white film lacked. The best workflow: restore first, then colorize. A clean black-and-white image produces cleaner color. The <a href="/en/tools/image-upscaler">image upscaler</a> increases the resolution for printing. The <a href="/en/tools/photo-restorer">photo restorer</a> is the repair tool. The <a href="/en/tools/colorizer">colorizer</a> is the era tool. Different problems. Sequential solutions. Both essential for photo preservation.</p>`
-  },
-  {
-    slug: "ai-image-generator-technology-diffusion-models",
-    title: "The Technology Behind AI Image Generation How Diffusion Models Turn Random Noise into Photorealistic Images",
-    description: "You type 'a red fox in a snowy forest.' Seconds later, a photorealistic image appears. The technology is a diffusion model. Here's how it transforms noise into art.",
-    date: "2026-08-10",
+    slug: "avatar-generator-virtual-meetings-professional-video-call",
+    title: "AI Avatar Generator for Virtual Meetings How to Create a Professional Video-Call Avatar for Busy Professionals",
+    description: "You have back-to-back video calls. You do not want to show your home office. A professional avatar presents you consistently. An AI avatar generator creates it. Here's the virtual meeting workflow.",
+    date: "2026-08-11",
     category: "Generate",
-    tags: ["AI image generator", "diffusion model", "technology", "noise", "photorealistic"],
-    relatedTools: ["ai-image-generator", "style-transfer", "image-upscaler"],
-    content: `<p>You type a prompt into an <a href="/en/tools/ai-image-generator">AI image generator</a>: "a red fox in a snowy forest at dawn, photorealistic." Seconds later, the tool produces an image of exactly that — a red fox, snow, forest, and dawn light. The image is detailed and convincing. The technology behind it is a diffusion model. Here is how it works.</p>
+    tags: ["avatar generator", "virtual meeting", "video call", "professional", "profile"],
+    relatedTools: ["avatar-generator", "background-remover", "ai-image-generator"],
+    content: `<p>Your calendar has seven video calls today. Your home office is behind you — laundry basket, cat, and all. You could blur the background. But a blurred background still shows you in a less-than-professional setting. An alternative: use a professional avatar for meetings where video is optional. An <a href="/en/tools/avatar-generator">AI avatar generator</a> creates a consistent, professional version of you. Here is the virtual meeting workflow.</p>
 
-<h2>How Diffusion Models Work</h2>
+<h2>The Virtual Meeting Avatar Workflow</h2>
 
-<p><strong>Step 1: Understand the training process.</strong> The model was trained on billions of images paired with text descriptions. During training, the model learned to add and remove noise. It learned that a fox has a pointed snout, a bushy tail, and orange fur. It learned that snow is white and light. The <a href="/en/tools/ai-image-generator">AI image generator</a> stores this knowledge. <strong>Step 2: Start with pure noise.</strong> Generation begins with random static — pure noise, like a scrambled TV signal. There is no image yet. <strong>Step 3: Denoise guided by the prompt.</strong> The model iteratively removes the noise. At each step, it uses the text prompt ("red fox, snowy forest, dawn") to guide the denoising. The noise gradually forms structure — a shape appears, then edges, then details, then texture. After many steps, the noise has been transformed into the image. <strong>Step 4: Refine the details.</strong> The final steps sharpen details and correct artifacts. The result is the photorealistic image. The <a href="/en/tools/ai-image-generator">AI image generator</a> is the tool. The diffusion model is the technology. The <a href="/en/tools/style-transfer">style transfer</a> tool applies artistic styles. The <a href="/en/tools/image-upscaler">image upscaler</a> increases resolution. The <a href="/en/tools/ai-image-generator">AI image generator</a> turns words into images. The technology is remarkable. The result is art from noise.</p>`
+<p><strong>Step 1: Create your avatar.</strong> Upload a clear photo of yourself to the <a href="/en/tools/avatar-generator">avatar generator</a>. Choose a professional style: business attire, neutral background, confident expression. The AI creates a consistent avatar that looks like you. <strong>Step 2: Use it consistently.</strong> Use the same avatar across your meeting profile, your email, and your internal directory. Consistency builds recognition. Colleagues recognize you instantly. The <a href="/en/tools/avatar-generator">avatar generator</a> ensures the avatar looks professional in every context. <strong>Step 3: Blend with real video.</strong> For meetings where video is required, you can use the avatar as your presence. Some platforms let you set an avatar or virtual persona. The <a href="/en/tools/background-remover">background remover</a> isolates your avatar for placement in different meeting backgrounds. <strong>Step 4: Keep it updated.</strong> Update the avatar as your appearance changes. The <a href="/en/tools/ai-image-generator">AI image generator</a> can create matching avatars for team branding. The <a href="/en/tools/avatar-generator">avatar generator</a> is the identity tool. The busy professional is the user. The combination presents a consistent, professional image across every meeting.</p>`
+  },
+  {
+    slug: "text-to-speech-language-learning-pronunciation-practice",
+    title: "AI Text to Speech for Language Learning How to Practice Pronunciation with Natural-Sounding Audio",
+    description: "You are learning French. You know how the word looks but not how it sounds. An AI text to speech tool speaks it naturally. Here's the language learning pronunciation workflow.",
+    date: "2026-08-11",
+    category: "Content",
+    tags: ["text to speech", "language learning", "pronunciation", "French", "audio"],
+    relatedTools: ["text-to-speech", "translate", "text-polish"],
+    content: `<p>You are learning French. You open your vocabulary list. The word is "bibliothèque" — library. You know the spelling. You have no idea how it sounds. A textbook can't help. An <a href="/en/tools/text-to-speech">AI text to speech</a> tool speaks the word naturally. You hear the pronunciation. You repeat it. Here is the language learning pronunciation workflow.</p>
+
+<h2>The Pronunciation Practice Workflow</h2>
+
+<p><strong>Step 1: Generate the audio.</strong> Paste the word or phrase into the <a href="/en/tools/text-to-speech">text to speech</a> tool. The AI speaks it with natural pacing and intonation. Choose the language and voice if the tool supports it. The output is a natural-sounding pronunciation. <strong>Step 2: Listen and repeat.</strong> Listen to the audio. Repeat the word aloud. Compare your pronunciation to the AI's. Repeat until they match. The <a href="/en/tools/text-to-speech">text to speech</a> tool is your pronunciation coach. <strong>Step 3: Practice full sentences.</strong> Pronunciation matters most in sentences. Paste a full sentence into the tool. Hear how words connect, where the stress falls, and how intonation rises and falls. The <a href="/en/tools/translate">translator</a> helps you build sentences in your target language. <strong>Step 4: Slow it down.</strong> Many <a href="/en/tools/text-to-speech">text to speech</a> tools let you slow the speech. Start slow, then speed up as you improve. The <a href="/en/tools/text-polish">text polisher</a> helps you clean up your written practice text. The <a href="/en/tools/text-to-speech">text to speech</a> tool is the audio coach. The learner is the practice engine. The combination turns vocabulary lists into spoken fluency.</p>`
+  },
+  {
+    slug: "style-transfer-vs-colorizer-artistic-styles-vs-original-colors",
+    title: "AI Style Transfer vs AI Colorizer Apply Artistic Styles vs Restore Original Colors — Two AI Color Tools for Different Visions",
+    description: "Style transfer paints your photo like Van Gogh. Colorizer restores the original colors of a black-and-white photo. Both transform color. But one adds artistry. One restores reality.",
+    date: "2026-08-11",
+    category: "Generate",
+    tags: ["style transfer", "colorizer", "comparison", "artistic style", "original color"],
+    relatedTools: ["style-transfer", "colorizer", "photo-restorer"],
+    content: `<p>You took a photo of a city street. You want to turn it into a piece of art. You use a <a href="/en/tools/style-transfer">style transfer</a> tool. You choose a style reference — a Van Gogh painting, a Japanese woodblock print, a pop art piece. The AI applies the chosen style to your photo. The street becomes a Van Gogh street — swirling brushstrokes, vibrant colors, painterly texture. The style transfer tool is an <strong>artistry</strong> tool. It imposes a new artistic vision on the image.</p>
+
+<p>Now you have a black-and-white photo from 1948. You want to see it as it originally looked. You use a <a href="/en/tools/colorizer">colorizer</a>. The AI analyzes the grayscale values and reconstructs the original colors — the red dress, the blue sky, the skin tones. The result is a colorized version that reflects the reality of the moment. The colorizer is a <strong>restoration</strong> tool. It brings back the colors the camera could not capture.</p>
+
+<p>Both tools change the color of an image. Both are powered by AI. But the visions differ fundamentally. The <a href="/en/tools/style-transfer">style transfer</a> tool <strong>imposes</strong> an artistic style — the result is interpretive, expressive, and new. The <a href="/en/tools/colorizer">colorizer</a> <strong>reconstructs</strong> the original colors — the result is historical, realistic, and accurate. Use the <a href="/en/tools/style-transfer">style transfer</a> tool when you want creative artwork. Use the <a href="/en/tools/colorizer">colorizer</a> when you want historical accuracy. The <a href="/en/tools/photo-restorer">photo restorer</a> fixes damage before colorization. The <a href="/en/tools/style-transfer">style transfer</a> tool is the artist. The <a href="/en/tools/colorizer">colorizer</a> is the historian. Different visions. Both transformative.</p>`
+  },
+  {
+    slug: "pdf-to-word-technology-ocr-optical-character-recognition",
+    title: "The Technology Behind OCR How Optical Character Recognition Turns Scanned Pages into Editable Text",
+    description: "You scan a 20-year-old contract. The text is locked in an image. OCR extracts it as editable text. Here's how optical character recognition works — the technology inside every PDF to Word converter.",
+    date: "2026-08-11",
+    category: "Document",
+    tags: ["PDF to Word", "OCR", "technology", "optical character recognition", "scanned"],
+    relatedTools: ["pdf-to-word", "text-polish", "image-description"],
+    content: `<p>You scan a 20-year-old contract. The scanner produces a PDF — but the text is not text. It is a photograph of text. You cannot search it. You cannot edit it. You cannot copy a quote from it. The solution is OCR — optical character recognition. A <a href="/en/tools/pdf-to-word">PDF to Word converter</a> with OCR extracts the text. Here is how the technology works.</p>
+
+<h2>How Optical Character Recognition Works</h2>
+
+<p><strong>Step 1: Analyze the image.</strong> The OCR system looks at the scanned page as an image — a grid of pixels. It identifies the regions that contain text: lines, then words, then individual characters. The <a href="/en/tools/pdf-to-word">PDF to Word converter</a> applies OCR to each page. <strong>Step 2: Recognize the characters.</strong> The system compares each character's shape to known patterns. A round shape with a tail is an "a." A vertical line with a crossbar is a "t." Modern OCR uses neural networks trained on millions of character images. They recognize fonts, handwriting, and even noisy scans. <strong>Step 3: Assemble the text.</strong> The recognized characters are assembled into words, lines, and paragraphs. The layout — headings, columns, lists — is reconstructed. The output is editable, searchable text. <strong>Step 4: Handle imperfect scans.</strong> Faded text, creases, and shadows reduce accuracy. The OCR makes its best guess. The <a href="/en/tools/text-polish">text polisher</a> cleans up OCR errors. The <a href="/en/tools/image-description">image describer</a> helps verify content in non-text elements. The <a href="/en/tools/pdf-to-word">PDF to Word converter</a> is the extraction tool. The OCR technology is the reader. The result is a scanned page transformed into editable text — searchable, copyable, and useful.</p>`
   },
 ];
 
@@ -102,4 +102,4 @@ content = content.replace(old, new_blogs)
 with open(BLOG_FILE, "w", encoding="utf-8") as f:
     f.write(content)
 
-print("AI station: 298->304 static done.")
+print("AI station: 304->310 static done.")
