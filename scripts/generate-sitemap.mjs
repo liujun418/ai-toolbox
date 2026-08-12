@@ -17,7 +17,7 @@ while ((m = toolRe.exec(src))) tools.push(m[1]);
 
 // Blog slugs: collect every `slug: "..."` entry, deduplicated.
 const blogSlugs = [];
-const slugRe = /slug:\s*"([^"]+)"/g;
+const slugRe = /slug:\s*["']([^"']+)["']/g;
 let sm;
 while ((sm = slugRe.exec(blogSrc))) blogSlugs.push(sm[1]);
 const uniqueBlogSlugs = [...new Set(blogSlugs)];
