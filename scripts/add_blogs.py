@@ -1,4 +1,4 @@
-"""Add 6 blogs to AI station (317->323) - August 14, 2026"""
+"""Add 6 blogs to AI station (323->329) - August 15, 2026"""
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
 
 with open(BLOG_FILE, "r", encoding="utf-8") as f:
@@ -8,148 +8,140 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "avatar-generator-pet-portraits-owners-guide",
-    title: "How to Turn Your Pet Into an AI Avatar (Pet Portraits for Owners)",
-    description: "Your dog has a personality and your profile picture is a generic icon. Pet owners turn photos of their pets into stylized AI avatars. Here's the workflow that works.",
-    date: "2026-08-14",
+    slug: "image-upscaler-print-resolution-guide",
+    title: "Upscaling Images for Print: Getting Sharp Business Cards, Banners, and Posters",
+    description: "A 900px logo upscaled to print looks like mush. Here's how to upscale for print at the right resolution \u2014 and what the printer actually needs.",
+    date: "2026-08-15",
+    category: "Edit",
+    tags: ["image upscaler", "print resolution", "dpi", "print design", "high resolution"],
+    relatedTools: ["image-upscaler", "photo-restorer", "background-remover"],
+    content: `<p>You designed a flyer for a 300&nbsp;dpi press run and the logo you pulled from the web is 900&nbsp;by&nbsp;900 pixels. At the size the printer wants, that's about 3&nbsp;inches \u2014 and it needs to fill 8. Scaling it up in the design tool produces a soft, pixelated mess. The fix is to upscale the image before it goes into the layout, and to understand what resolution the job actually requires.</p>
+
+<h2>What the Printer Actually Needs</h2>
+
+<p>Print is measured in dpi \u2014 dots per inch. A photo-heavy poster wants 300&nbsp;dpi; a large banner viewed from a distance can get away with 72&ndash;150&nbsp;dpi because your eyes forgive it. The math is simple: a 6-inch-wide print at 300&nbsp;dpi needs 1800&nbsp;pixels across. Work out the target size first, then upscale with the <a href="/en/tools/image-upscaler">AI image upscaler</a> to that exact dimension \u2014 don't upscale first and crop later.</p>
+
+<h2>The Upscaling Workflow</h2>
+
+<p>Step 1: decide the final physical size and required dpi, and compute the pixel target. Step 2: run the image through the <a href="/en/tools/image-upscaler">upscaler</a> to that dimension \u2014 AI upscalers do much better than the bicubic resize your design tool uses. Step 3: zoom to 100% and check the edges. Hard edges like text and logos are where upscaling artifacts show first. Step 4: if the source was an old, damaged scan, run the <a href="/en/tools/photo-restorer">photo restorer</a> first to clean the noise, then upscale \u2014 fixing the source before enlarging beats enlarging the problems.</p>
+
+<h2>The Counter-Intuitive Part</h2>
+
+<p>Bigger isn't always the goal. A logo destined for a business card doesn't need 4x upscaling \u2014 it needs the right number of pixels for the card, nothing more. And an upscaler can't invent detail that was never captured; it hallucinates plausible texture. That's fine for photographic grain and terrible for a printed logo with a specific weight. When the subject is stuck on a busy background, strip it first with the <a href="/en/tools/background-remover">background remover</a> and place it clean \u2014 a transparent subject upscales more honestly than one locked into a textured scene.</p>
+
+<p>We covered what upscaling can and can't do in our <a href="/en/blog/image-upscaler-480p-to-4k-reality-check">480p to 4K reality check</a>. Compute the pixels you need, upscale to that exact size, and inspect the edges before the job goes to press.</p>`
+  },
+  {
+    slug: "watermark-remover-vs-object-remover-text-vs-stuff",
+    title: "Watermark Remover vs Object Remover: Removing Text vs Removing Things",
+    description: "Both tools clean up a photo. One removes the text overlay, the other removes an object in the scene. Here's how to tell which you need \u2014 and when you need both.",
+    date: "2026-08-15",
+    category: "Edit",
+    tags: ["watermark remover", "object remover", "photo cleanup", "inpainting", "comparison"],
+    relatedTools: ["watermark-remover", "object-remover", "background-remover"],
+    content: `<p>You have a photo with a diagonal <code>&copy; Example Studio</code> banner running across it, and a separate shot with an ugly fire hydrant in the corner. Two tools look interchangeable: a <a href="/en/tools/watermark-remover">watermark remover</a> and an <a href="/en/tools/object-remover">object remover</a>. They're not. One handles text layered on top of the image; the other handles things inside the scene. Picking the right one is the difference between a clean edit and a smeared patch.</p>
+
+<h2>Watermark Remover: Text Over the Image</h2>
+
+<p>A watermark is an overlay \u2014 text, a logo, a translucent strip \u2014 sitting on top of the photo, often across a region where the background is busy. Removing it means recreating the image behind the text: sampling the surrounding texture and inpainting the gap. That's the <a href="/en/tools/watermark-remover">watermark remover</a>'s job, and it's only legitimate when you have the right to use the image \u2014 the licensing question matters, and we covered it in our guide to <a href="/en/blog/watermark-remover-copyright-fair-use">watermarks and fair use</a>.</p>
+
+<h2>Object Remover: Things Inside the Scene</h2>
+
+<p>An object remover deals with elements that are part of the photograph \u2014 a tourist in the background, a wire across the sky, that hydrant. The tool identifies the object's region and replaces it with inferred content that fits the scene. It's the same inpainting idea, but the target is physical, not a text layer, so the inference has to match the scene's lighting, perspective, and texture.</p>
+
+<h2>When You Need Both</h2>
+
+<p>The counter-intuitive part: photos often need both passes, in the right order. A photo with a watermark AND a distracting object \u2014 the watermark first, because its transparent strip interferes with the object inference; then the object. Run the watermark through the <a href="/en/tools/watermark-remover">watermark remover</a>, then the object through the <a href="/en/tools/object-remover">object remover</a>. If the whole background is the problem, that's a third tool: the <a href="/en/tools/background-remover">background remover</a> cuts the scene entirely rather than patching it.</p>
+
+<p>Start by naming what's wrong: is it text on top, or something in the scene? The answer picks the tool \u2014 and when both are present, the order matters as much as the choice.</p>`
+  },
+  {
+    slug: "style-transfer-brand-consistency-guide",
+    title: "Style Transfer for Brand Consistency: Matching Every Social Post to Your Look",
+    description: "Your feed has three filters, five backgrounds, and no identity. Style transfer imposes one consistent look across every visual. Here's the workflow.",
+    date: "2026-08-15",
     category: "Generate",
-    tags: ["AI avatar", "pet portrait", "dog avatar", "pet photography", "profile picture"],
-    relatedTools: ["avatar-generator", "ai-image-generator", "style-transfer"],
-    content: `<p>Your dog Max has a better social presence than you. He's the family joke, the reunion hero, the reason your camera roll is 90% animal. Yet your profile picture is a generic icon. Turning a good photo of Max into a stylized <a href="/en/tools/avatar-generator">AI avatar</a> takes minutes, and the result is a profile people recognize instantly. Here's the workflow that works.</p>
+    tags: ["style transfer", "brand consistency", "social media", "visual identity", "content design"],
+    relatedTools: ["style-transfer", "ai-image-generator", "avatar-generator"],
+    content: `<p>Your feed is a mess of visual identities: photo A has a warm filter, photo B a white background, photo C a graphic nobody remembers. Consistency is what makes a brand recognizable \u2014 the same look, post after post \u2014 and <a href="/en/tools/style-transfer">style transfer</a> is the fastest way to impose it. Feed it a reference style and it re-renders each photo in that look.</p>
 
-<h2>The Pet Avatar Workflow in Four Steps</h2>
+<h2>The Brand-Style Workflow</h2>
 
-<p><strong>Step 1: Pick the sharpest, closest photo.</strong> The AI works from what it can see. A sharp, front-facing photo where your pet's eyes are visible beats a distant or blurry shot every time. Good lighting matters more than a fancy camera. <strong>Step 2: Choose a style that matches the photo.</strong> Flat illustration hides awkward fur. Cartoon exaggerates the face. 3D keeps it realistic. If your pet has a distinctive marking \u2014 a white patch, one floppy ear \u2014 pick a style that preserves it, because that's what makes the avatar look like YOUR pet and not every pet. <strong>Step 3: Crop to the face.</strong> An avatar generator works best on a face-centered image. Crop out the body before you upload. <strong>Step 4: Generate a few variations.</strong> The <a href="/en/tools/avatar-generator">avatar generator</a> produces several options. Pick the one where Max still looks like Max \u2014 same coloring, same expression \u2014 and use that as your avatar.</p>
+<p>Step 1: define the reference. One hero image that captures your look \u2014 the palette, the texture, the mood. That single image becomes the style anchor. Step 2: run your content photos through the <a href="/en/tools/style-transfer">style transfer</a> tool using that anchor. The result is a batch of images that share the same visual DNA instead of competing looks. Step 3: generate any missing visuals in the matching style with the <a href="/en/tools/ai-image-generator">AI image generator</a>, referencing the same style, so new pieces land in the same family. Step 4: for profile imagery \u2014 avatars, author photos \u2014 keep the look consistent too, using the <a href="/en/tools/avatar-generator">avatar generator</a> with the same reference.</p>
 
-<p>If you want the pet as a character rather than a portrait \u2014 Max as a knight, Max at a desk job \u2014 the <a href="/en/tools/ai-image-generator">AI image generator</a> expands a single reference into scenes. The <a href="/en/tools/style-transfer">style transfer</a> tool imposes a consistent artistic style across all the generated versions so your profile, your header, and your stickers match.</p>
+<h2>The Mistake That Breaks the Look</h2>
 
-<h2>What Goes Wrong With Pet Avatars</h2>
+<p>The common mistake: applying style transfer and calling it done without checking the edges. A transfer that saturates the subject's face or bleeds a pattern over the product defeats the purpose. The counter-intuitive part: consistency doesn't mean identical. If every photo is forced into the same heavy style, the feed becomes monotonous and the product disappears into the aesthetic. Transfer the palette and texture, but let the subject stay readable \u2014 and keep the anchor image stable between batches so the look doesn't drift.</p>
 
-<p><strong>The common mistake: uploading a photo where the eyes are hidden.</strong> Eyes are the feature the AI uses to identify a face. If Max is looking away or his eyes are closed, the avatar comes back with a generic dog face that could be anyone's. The fix: wait for a photo where both eyes are visible, even if the composition is otherwise imperfect.</p>
-
-<p><strong>The counter-intuitive part: fewer pixels can be better.</strong> A small, sharp, face-first photo produces a better avatar than a huge scenic photo where the dog is a third of the frame. The generator cares about the face, not the background.</p>
-
-<p>For the basics of getting a good headshot input, our guide to <a href="/en/blog/ai-avatar-generator-selfie-to-headshot-guide">AI avatar headshots</a> covers the input requirements in detail. When Max is ready for his close-up, <a href="/en/tools/avatar-generator">our avatar generator</a> turns the photo into the profile picture he deserves.</p>`
+<p>Style transfer has more uses than turning photos into paintings \u2014 our guide to <a href="/en/blog/style-transfer-creative-uses-beyond-painting">creative uses beyond painting</a> covers the range. Define one reference, apply it across every visual, and your feed starts looking like one brand instead of five experiments.</p>`
   },
   {
-    slug: "face-blur-wedding-event-photography-consent",
-    title: "Blurring Unconsenting Guests in Wedding and Event Photos (A Host's Privacy Checklist)",
-    description: "The couple wants every photo. But a guest in the background didn't consent to being published. Here's how hosts blur faces in event photos before sharing.",
-    date: "2026-08-14",
-    category: "Edit",
-    tags: ["face blur", "wedding photography", "event photography", "guest consent", "privacy checklist"],
-    relatedTools: ["face-blur", "object-remover", "background-remover"],
-    content: `<p>Your wedding photographer sends the gallery link. The ceremony shots are gorgeous \u2014 including the cousin who ducked into the background of the vows photo, the one who asked you not to post pictures of them. Publishing that shot violates their request. A <a href="/en/tools/face-blur">face blur</a> tool lets you keep the photo and respect the guest. Here's the privacy checklist for event photos.</p>
-
-<h2>The Event Photo Privacy Checklist</h2>
-
-<p><strong>Step 1: Find the faces, including the small ones.</strong> The <a href="/en/tools/face-blur">face blur</a> tool detects faces automatically \u2014 the sharp ones in the front and the soft ones in the background at the edge of the frame. <strong>Step 2: Decide who gets blurred, not just who is visible.</strong> Anyone who didn't sign a photo release or didn't consent gets anonymized. The couple, the wedding party, and the guests who posed willingly stay sharp. <strong>Step 3: Blur strong enough to be real.</strong> A light blur that leaves the face recognizable doesn't protect anyone. The blur must be heavy enough that the person can't be identified, because the point is the guest's request, not a stylistic effect.</p>
-
-<p><strong>Step 4: Handle the identifiable extras.</strong> A face is not the only way to identify a person. A distinctive outfit, a visible tattoo, a recognizable silhouette in a bright doorway also identifies people. For those, use the <a href="/en/tools/object-remover">object remover</a> on the specific item, or the <a href="/en/tools/background-remover">background remover</a> if you want to crop the person out entirely. <strong>Step 5: Check the published versions.</strong> Before the gallery goes live, re-scan the final exports. Cropping a photo can move a face into frame, and a previously clean corner can become someone's face after a format change.</p>
-
-<h2>The Mistake Most Hosts Make</h2>
-
-<p>The common mistake: blurring after publishing, when someone complains. By then the photo has been downloaded, screenshotted, and shared. <strong>Blur before you publish, not after.</strong> The counter-intuitive part: it's not just about legal liability. A guest who sees an unconsenting photo posted will remember it for years. Respecting the request is what keeps you invited back to the next event.</p>
-
-<p>Privacy law and guest consent overlap more than people think \u2014 our guide to the <a href="/en/blog/face-blur-right-to-be-forgotten-gdpr">right to be forgotten and face blur</a> explains the legal side. When the gallery is ready, <a href="/en/tools/face-blur">our face blur tool</a> anonymizes the guests in seconds and keeps the photo exactly as the couple wants it.</p>`
-  },
-  {
-    slug: "pdf-to-word-editable-format-collaboration-teams",
-    title: "Why Teams Convert PDFs to Word (And When You Should Keep the PDF)",
-    description: "Your team gets a contract as a PDF and needs to edit three clauses. Here's why converting to Word makes collaboration work \u2014 and when a PDF is still the right format.",
-    date: "2026-08-14",
-    category: "Document",
-    tags: ["pdf to word", "document collaboration", "editable documents", "team workflow", "version control"],
-    relatedTools: ["pdf-to-word", "text-polish", "article-generator"],
-    content: `<p>A colleague sends the final spec as a PDF. Three of you need to edit different clauses, add comments, and hand it back. Editing a PDF in place is a fight \u2014 the text boxes shift, the comments live in a separate tool, and the review trail is a mess. The fix your team already knows: convert the PDF to Word, edit in the familiar editor, export back to PDF when it's final. A <a href="/en/tools/pdf-to-word">PDF to Word converter</a> does the conversion cleanly.</p>
-
-<h2>When Converting PDFs to Word Helps Your Team</h2>
-
-<p><strong>Contracts and proposals.</strong> A sales team edits a proposal template every week. The PDF is the deliverable, but the edits happen in Word: version history, tracked changes, reviewer comments. Convert the template once, edit in Word, export the final PDF. <strong>Internal documentation.</strong> A spec, a runbook, a process doc that three teams maintain. If it starts as a PDF, every edit is someone re-exporting from a tool that isn't the source of truth. Converting to Word keeps one editable master. <strong>Reports that need formatting fixes.</strong> A 40-page report with a broken table reads badly. Word gives you the tools to fix the layout, and the <a href="/en/tools/pdf-to-word">PDF to Word converter</a> preserves the structure \u2014 headings, tables, lists \u2014 so you're not rebuilding it from scratch.</p>
-
-<h2>The Conversion Workflow That Works</h2>
-
-<p><strong>Step 1: Check the source.</strong> A digital PDF with a real text layer converts cleanly. A scanned PDF is an image \u2014 it needs OCR before it becomes editable. <strong>Step 2: Convert and spot-check.</strong> Run the PDF through the <a href="/en/tools/pdf-to-word">converter</a>, then open the result and check the sections that matter: tables, footnotes, headers. <strong>Step 3: Edit, then export.</strong> Make the changes in Word, then export to PDF for the final version. The <a href="/en/tools/article-generator">article generator</a> helps draft the new sections you're adding, and the <a href="/en/tools/text-polish">text polish</a> tool tightens the language before the document goes back out.</p>
-
-<h2>When You Should NOT Convert</h2>
-
-<p>The common mistake: converting every PDF that touches your desk. Some PDFs should stay PDFs. Final signed contracts, legal exhibits, anything where the content must not change \u2014 those are PDFs on purpose. <strong>Convert when you need to edit or collaborate; keep the PDF when you need the record to be fixed.</strong></p>
-
-<p>The counter-intuitive part: converting a large PDF and finding the text layer was missing. The document "converts" to empty pages because there was nothing to extract. Check for a real text layer first, and if it's a scan, use the OCR route. For the difference between extracting text and refining it, our comparison of <a href="/en/blog/pdf-to-word-vs-text-polish-extraction-vs-refinement">PDF to Word and text polish</a> is worth a read. When you need an editable copy, <a href="/en/tools/pdf-to-word">our converter</a> gets your team back into the document.</p>`
-  },
-  {
-    slug: "background-remover-infographics-presentation-slides",
-    title: "How to Remove Image Backgrounds for Presentation Slides and Infographics",
-    description: "Your slide has a product photo on a white box background that clashes with the design. Removing the background makes it sit naturally in the slide. Here's the workflow.",
-    date: "2026-08-14",
-    category: "Edit",
-    tags: ["background remover", "presentation slides", "infographics", "transparent PNG", "pitch deck"],
-    relatedTools: ["background-remover", "image-description", "ai-image-generator"],
-    content: `<p>You're building a pitch deck. The product photo is decent, but it's on a plain white box background that looks pasted onto the dark slide. Every slide with a logo, a product shot, or a person has the same problem. A <a href="/en/tools/background-remover">background remover</a> strips the background so the subject sits naturally in the layout. It's the same skill for infographics, where icons and subjects have to float over colored panels.</p>
-
-<h2>The Slide-Building Workflow</h2>
-
-<p><strong>Step 1: Remove the background from the subject.</strong> Upload the product photo to the <a href="/en/tools/background-remover">background remover</a>. It isolates the subject and outputs a transparent PNG. <strong>Step 2: Check the edges.</strong> The AI does a good first pass, but zoom in on the hair or the logo edges. If a sliver of the old background survives, run it through once more or crop tighter. <strong>Step 3: Place it in the slide.</strong> Drop the transparent PNG onto the slide. Without a box, it blends with the background color and the layout. <strong>Step 4: Keep the source.</strong> Keep the original photo and the transparent version. When the brand color changes, you re-export without re-shooting.</p>
-
-<p>For infographics, consistency matters. The <a href="/en/tools/ai-image-generator">AI image generator</a> can produce matching illustration styles for the panels, and the <a href="/en/tools/image-description">image description</a> tool reads what each visual actually shows so you can write accurate captions beside it.</p>
-
-<h2>The Mistakes That Ruin Slides</h2>
-
-<p><strong>The common mistake: removing the background and calling it done without checking the subject.</strong> A transparent PNG with fuzzy edges looks worse than the box you removed. Check the hair, the product outline, the drop shadow. <strong>The counter-intuitive part: don't remove every background.</strong> A photo with a textured background \u2014 wood, fabric, a gradient \u2014 can add depth to a slide. Remove the background when it clashes with the layout, not automatically.</p>
-
-<p>The second mistake: exporting at low resolution. A tiny transparent PNG upscales to a blurry blob on a projector. Export at the slide's resolution. Our guide to <a href="/en/blog/background-remover-unexpected-uses-guide">unexpected uses for background removers</a> has more real workflows. When the subject is ready, <a href="/en/tools/background-remover">our background remover</a> produces the transparent PNG in seconds.</p>`
-  },
-  {
-    slug: "background-remover-vs-face-blur-remove-context-vs-protect-identity",
-    title: "Background Remover vs Face Blur: Removing Context vs Protecting Identity",
-    description: "Both tools remove visual information from a photo. One cuts the scene away, the other hides a person. Here's when each is the right call.",
-    date: "2026-08-14",
-    category: "Edit",
-    tags: ["background remover", "face blur", "privacy", "photo editing", "comparison"],
-    relatedTools: ["background-remover", "face-blur", "object-remover"],
-    content: `<p>You have a photo of a colleague at a conference booth. You need the photo for the company deck, but the colleague asked not to be shown publicly. Two tools look like they could solve it. A <a href="/en/tools/background-remover">background remover</a> cuts the background away. A <a href="/en/tools/face-blur">face blur</a> keeps everything and hides the face. Both remove visual information from a photo, but they answer different questions.</p>
-
-<h2>Background Remover: Removing the Context</h2>
-
-<p>The background remover takes a subject and strips everything around it, outputting a transparent PNG. You use it when <strong>the background is the problem</strong> \u2014 a cluttered office, a branded wall you don't own, a box that clashes with your layout. It keeps the subject and removes the scene. The subject becomes an asset you can place anywhere.</p>
-
-<h2>Face Blur: Protecting the Person</h2>
-
-<p>The face blur tool keeps the whole scene and anonymizes the person. You use it when <strong>the person is the problem</strong> \u2014 a guest who didn't consent, a witness, a child. The scene stays meaningful; the identity disappears. This is a privacy decision, not a design decision.</p>
-
-<h2>When to Reach for Which</h2>
-
-<p>The common mistake: using the background remover when the real issue is a person. Crop or remove the background and the person is still identifiable from the clothing, the stance, or the location. <strong>If the person must not be recognized, blur the face.</strong> If the scene must not be shown, remove the background.</p>
-
-<p>The counter-intuitive part: sometimes you need both. A photo where the background identifies the location AND a face is in frame \u2014 blur the face, then remove the background. The <a href="/en/tools/object-remover">object remover</a> covers the middle ground: it removes a specific object, like a license plate or a logo, without touching the person or the scene.</p>
-
-<p>We compared the object remover and background remover in <a href="/en/blog/object-remover-vs-background-remover-comparison">that head-to-head</a>. When you need a transparent subject, <a href="/en/tools/background-remover">our background remover</a> isolates it in seconds. When you need an anonymous person, <a href="/en/tools/face-blur">our face blur tool</a> keeps the scene and hides the identity.</p>`
-  },
-  {
-    slug: "article-generator-technology-large-language-models-explained",
-    title: "How AI Article Generators Actually Work: A Plain-English Guide to Large Language Models",
-    description: "You paste a topic and get an article. It's not magic and it's not thinking. Here's how a large language model produces text, and what that means for the quality you should expect.",
-    date: "2026-08-14",
+    slug: "text-to-speech-elearning-language-learning",
+    title: "Text to Speech for E-Learning and Language Practice: Pronunciation Without a Tutor",
+    description: "Your course audio is dated and your language practice lacks a native speaker. TTS gives you narration on demand and endless pronunciation examples. Here's how to use them well.",
+    date: "2026-08-15",
     category: "Content",
-    tags: ["article generator", "large language model", "LLM explained", "AI writing", "how it works"],
-    relatedTools: ["article-generator", "text-polish", "text-to-speech"],
-    content: `<p>You paste a topic into an <a href="/en/tools/article-generator">AI article generator</a> and it returns a full article. The sentences are grammatical, the structure holds together, and somehow it's... not terrible. How does a computer do this? The short answer: it predicts the next word, over and over, millions of times during training and a few hundred times when you hit generate. Here's the plain-English version.</p>
+    tags: ["text to speech", "elearning", "language learning", "pronunciation", "course audio"],
+    relatedTools: ["text-to-speech", "article-generator", "text-polish"],
+    content: `<p>You're building an online course and the "professional narration" budget is zero. Or you're learning a language and your only practice partner won't correct you. In both cases, a <a href="/en/tools/text-to-speech">text to speech</a> tool covers the gap: it reads any text aloud in a natural voice, on demand, as many times as you need.</p>
 
-<h2>What a Language Model Actually Does</h2>
+<h2>TTS for E-Learning</h2>
 
-<p>A large language model is a statistical predictor of text. During training, it reads enormous amounts of text and learns patterns: "after 'the quick brown,' the next word is usually 'fox.'" That's the whole mechanism \u2014 <strong>predict the most likely next token</strong>, given everything before it. What makes modern models powerful is scale and context: they've seen so much text that the pattern extends to sentences, paragraphs, and whole arguments, not just adjacent words.</p>
+<p>Courses die on silent slides. Instead of recording yourself reading a script \u2014 and re-recording every time the script changes \u2014 paste each lesson's narration into the <a href="/en/tools/text-to-speech">TTS tool</a> and export the audio. The workflow that keeps quality up: write the script, tighten it with the <a href="/en/tools/text-polish">text polish</a> tool so the sentences are clear and short, generate the audio, and read along once to catch words the voice mispronounced. When you need the draft script to be longer or restructured first, the <a href="/en/tools/article-generator">article generator</a> expands an outline into the narration text you feed to TTS.</p>
 
-<h2>Why the Output Reads So Naturally</h2>
+<h2>TTS for Language Practice</h2>
 
-<p>The model isn't copying. It learned the shape of good writing \u2014 openings that hook, paragraphs that develop a point, conclusions that wrap up \u2014 from the volume of examples. When you give it "a guide to budgeting for freelancers," it generates the kind of text that usually follows that kind of prompt. That's why it reads naturally: <strong>natural text is, statistically, the text that follows this prompt.</strong></p>
+<p>For language learners, TTS is an infinite pronunciation drill. Generate the sentence, play it, repeat it, compare. Slow down the playback where the voice supports it. The value is repetition \u2014 the same phrase produced identically every time, which is what your ear needs to lock in a pattern. Cross-check the pronunciation against a dictionary when the voice sounds off; TTS is consistent, not infallible.</p>
 
-<h2>What This Means for the Quality You Should Expect</h2>
+<h2>The Counter-Intuitive Part</h2>
 
-<p>The common mistake: treating the output as facts. The model predicts likely text, not verified truth. It can state something confidently and be wrong, because confidence in its prediction isn't the same as knowledge. <strong>Treat the first draft as a draft, not a source.</strong></p>
+<p>The natural-sounding voice is the trap. A voice that reads fluently hides its mistakes \u2014 a name, a loanword, a number read wrong can sound convincing. The common error: publishing course audio without proofing it. Listen once while reading the text, fix the words that failed, and re-export. We compared voice selection in depth in our guide to <a href="/en/blog/tts-voice-selection-natural-speech-guide">picking natural TTS voices</a>.</p>
 
-<p>The counter-intuitive part: the model's biggest weakness is also its biggest strength. Because it predicts what usually comes next, it produces bland, expected prose by default. That's why the best workflow is generation, then refinement \u2014 run the output through the <a href="/en/tools/text-polish">text polish</a> tool to tighten it, and add your own specifics, numbers, and voice. The <a href="/en/tools/text-to-speech">text to speech</a> tool reads the draft aloud so you hear the awkward parts your eyes skip.</p>
+<p>TTS won't replace a coach or a studio, but it turns any text into spoken practice on demand. Write clean scripts, proof the output, and the voice in your course \u2014 or your ear \u2014 gets better every iteration.</p>`
+  },
+  {
+    slug: "image-description-education-museum-guide",
+    title: "Image Descriptions for Education: Making Charts, Art, and Museum Photos Accessible",
+    description: "A diagram does nothing for a screen-reader user. Writing a real description of what a chart or artwork shows is a teachable skill \u2014 and AI gets you a strong first draft.",
+    date: "2026-08-15",
+    category: "Content",
+    tags: ["image description", "accessibility", "education", "museum", "screen reader"],
+    relatedTools: ["image-description", "text-polish", "ai-image-generator"],
+    content: `<p>An instructor emails a slide deck with a complex diagram and the alt text says "chart." A museum posts a painting photo and the only description is the title. For a screen-reader user, both images are invisible. Writing a description of what an image actually shows is a skill \u2014 and the <a href="/en/tools/image-description">image description</a> tool produces a strong first draft in seconds.</p>
 
-<p>Models improve, but the workflow stays: generate a strong base, then verify and sharpen it with human judgment. For a deeper look at where the generated output stands against human writing, our comparison of <a href="/en/blog/ai-article-generator-vs-human-writer-comparison">AI and human writing</a> lays it out. When you need a first draft, <a href="/en/tools/article-generator">our article generator</a> produces one in seconds \u2014 and you make it yours from there.</p>`
+<h2>The Description Workflow for Educators</h2>
+
+<p>Step 1: run the image through the <a href="/en/tools/image-description">image description tool</a> to get a baseline draft \u2014 it reads the visual and lists the elements it detects. Step 2: edit it for teaching context. A chart description should name the axes, the trend, and the takeaway, not just "a line graph." An artwork description should include what's depicted, where, and any text in the image. Step 3: run the draft through the <a href="/en/tools/text-polish">text polish</a> tool to make the language simple and concrete \u2014 descriptions are read aloud, so short sentences win. Step 4: if you're generating the visual itself, like an illustration for a worksheet, use the <a href="/en/tools/ai-image-generator">AI image generator</a> and describe it in the same voice you just practiced.</p>
+
+<h2>The Mistake That Breaks Accessibility</h2>
+
+<p>The common mistake: describing what the image shows instead of what it means. For a screen-reader user, "a blue circle overlapping a red square" is data with no point. The counter-intuitive part: the description's job is to carry the information the image holds, which sometimes means it looks nothing like "alt text" \u2014 it's a sentence or two that teaches the concept. Accessibility goes beyond just adding alt tags, which we covered in our guide to <a href="/en/blog/image-description-accessibility-beyond-alt-text">accessibility beyond alt text</a>.</p>
+
+<p>Images in education are information, not decoration. Generate a draft, sharpen it for the lesson, and the same image finally teaches the student who can't see it.</p>`
+  },
+  {
+    slug: "background-remover-how-ai-works-explained",
+    title: "How AI Background Removal Actually Works: Segmentation, Not Scissors",
+    description: "The AI removed your background in a second \u2014 no magic wand, no lasso. Here's the machine-learning pipeline that decides which pixels are the subject.",
+    date: "2026-08-15",
+    category: "Edit",
+    tags: ["background remover", "image segmentation", "machine learning", "how it works", "image editing"],
+    relatedTools: ["background-remover", "image-description", "ai-image-generator"],
+    content: `<p>You upload a photo of a person, click once, and the background disappears \u2014 hair strands included. It's easy to assume the tool is doing the same thing you'd do with a lasso, only faster. It isn't. A <a href="/en/tools/background-remover">background remover</a> runs a machine-learning model that predicts, pixel by pixel, whether each one belongs to the subject. That task has a name: image segmentation.</p>
+
+<h2>Segmentation: The Pixel-by-Pixel Decision</h2>
+
+<p>The model was trained on millions of images with known subject boundaries. Given a new photo, it processes the whole image and outputs a mask \u2014 a map marking each pixel as subject or background. What makes it feel like magic is the learned understanding: the model has seen enough photos of people, animals, and objects to know that a shoulder is part of the person and the wall behind it is not, even when the colors are nearly identical.</p>
+
+<h2>The Delicate Work: Boundaries</h2>
+
+<p>The hard part isn't finding the subject, it's finding the edge. Hair against a matching background, a glass rim, a logo on a t-shirt \u2014 these are the boundary cases where the mask needs sub-pixel precision. That's why a good <a href="/en/tools/background-remover">background remover</a> produces output you can zoom into, and why the tool still misses on translucent or camouflage-like subjects.</p>
+
+<h2>The Counter-Intuitive Part</h2>
+
+<p>Removal is a model, not a filter \u2014 so its failures are predictable, not random. It fails on the cases the training data resembles least: translucent objects, busy scenes where the subject blends in, and fine hair against a matching tone. Knowing that tells you when to fix the output manually and when to start with a different photo. The model isn't "seeing" like you do; it's predicting probabilities, and the <a href="/en/tools/image-description">image description</a> tool shows just how differently a model reads a photo versus a person.</p>
+
+<p>The other surprise: it's easier to generate the composition than to remove the background well. We've covered the practical range of the tool in our guide to <a href="/en/blog/background-remover-unexpected-uses-guide">unexpected uses for background removers</a>. The <a href="/en/tools/background-remover">background remover</a> isn't a smarter eraser \u2014 it's a segmentation model, and that's why it's so much better than one.</p>`
   },
 ];
 
@@ -160,4 +152,4 @@ content = content.replace(old, new_blogs)
 with open(BLOG_FILE, "w", encoding="utf-8", newline="\n") as f:
     f.write(content)
 
-print("AI station: 317->323 objects done.")
+print("AI station: 323->329 objects done.")
