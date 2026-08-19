@@ -1,4 +1,4 @@
-"""Add 6 blogs to AI station (335->341 static) - August 18, 2026"""
+"""Add 6 blogs to AI station (341->347 static) - August 19, 2026"""
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
 
 with open(BLOG_FILE, "r", encoding="utf-8") as f:
@@ -8,146 +8,148 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "pdf-to-word-accessibility-screen-readers-guide",
-    title: "PDF Accessibility: Converting Documents So Screen Readers Can Actually Read Them",
-    description: "A scanned PDF is a picture of words to a screen reader. Converting it to an accessible document changes who can use it — here's the workflow for accessible PDF conversion.",
-    date: "2026-08-18",
+    slug: "pdf-to-word-tables-formatting-fix-guide",
+    title: "Why Tables Break When You Convert PDF to Word (and How to Fix Them)",
+    description: "Columns drift, headers repeat, numbers become text. Table-heavy PDFs are the hardest conversion job. Here's what happens and how to get usable spreadsheets out.",
+    date: "2026-08-19",
     category: "Document",
-    tags: ["pdf accessibility", "pdf to word", "screen reader", "accessible documents", "ocr documents"],
+    tags: ["pdf tables", "table extraction", "pdf to word", "spreadsheet", "data extraction"],
     relatedTools: ["pdf-to-word", "text-polish", "image-description"],
-    content: `<p>You send a colleague a PDF with the training schedule. They reply, politely, that they can't read it. Not "won't" — can't. They use a screen reader, and the PDF is a stack of scanned images with no text layer. To assistive technology, your document is a picture of words. Converting it to an accessible format is the difference between a document that exists and a document that works.</p>
+    content: `<p>It's the first of the month, and the finance report just arrived as a PDF. Twelve columns: account, client, region, three cost lines, four forecast columns. You convert it to Word, and what comes back is a disaster — the header row repeats on page three, a column split into two, and the numbers that were once aligned under "Total" are now floating after the client name. Converting a table-heavy PDF is a different job than converting a text page, and knowing why is the difference between a salvageable file and a rebuild.</p>
 
-<h2>Why PDFs Fail Screen Readers</h2>
+<h2>Why Tables Are the Hardest Part of a PDF</h2>
 
-<p>A screen reader reads text, not pixels. If a PDF was created from typed text with proper tags, assistive tools can usually navigate it. If it was scanned, emailed, or flattened, the document contains an image of every page and nothing else. A <a href="/en/tools/pdf-to-word">PDF to Word converter</a> that runs OCR first gives that PDF a real text layer — the single biggest accessibility improvement you can make to a legacy document.</p>
+<p>A PDF stores a table as lines and positioned text, not as rows and cells. Text extraction sees words and coordinates; the structure — which cell belongs to which column — has to be reconstructed. When a table has merged cells, split columns, or text that wraps, the reconstruction guesses, and the guess shows up as a misplaced decimal or a header that belongs to the row above. This is why a <a href="/en/tools/pdf-to-word">PDF to Word converter</a> handles a letter page flawlessly and stumbles on a dense budget sheet.</p>
 
-<h2>The Conversion Workflow</h2>
+<h2>The Fixes That Actually Work</h2>
 
-<p>Convert, then verify, then clean. Step 1: convert the scanned PDF so the text is extractable. Step 2: open the result and confirm the reading order is logical — OCR on a two-column page often scrambles columns, and a screen reader announces sentences in the wrong sequence. Step 3: fix heading structure and alt text. That last part matters most: a document with proper headings is a document a screen reader user can navigate the way you skim. The <a href="/en/tools/text-polish">text polish</a> tool cleans up the run-on sentences OCR loves to produce, and the <a href="/en/tools/image-description">image description</a> tool writes alt text for any figure that needs one.</p>
+<p>Convert, then treat the result as a draft, not a deliverable. First, check the header row: if it repeated or shifted, select the rows and set them as a repeating header again. Second, reconcile the columns — a converter often splits one column into two when the text was close together; merging them back is usually enough. Third, and most importantly, check the numbers: text extraction can turn a figure into "12.3 0" or drop the trailing zero. Run the table through a clean-up pass with the <a href="/en/tools/text-polish">text polish</a> tool for the wording, and read the figures column by column before you trust them.</p>
+
+<h2>When the Table Won't Convert</h2>
+
+<p>The counter-intuitive part: sometimes the smartest move is not to convert the table at all. If the table is a scanned image with no text layer, no converter can rebuild the columns reliably — it's guessing from pixels. If the table is deeply formatted (colored cells, merged blocks, cross-row totals), the reconstruction cost outweighs the retyping cost. And if the layout is beyond saving, the <a href="/en/tools/image-description">image description</a> tool can at least turn the figure into readable content while you rebuild the structure.</p>
+
+<p>We covered why converted documents look wrong in our guide to <a href="/en/blog/pdf-to-word-formatting-survival-guide">PDF to Word formatting</a>. Tables fail because the structure is a guess, not because the tool is broken. Convert, verify the columns, read the numbers — and the monthly report stops being a Monday project.</p>`
+  },
+  {
+    slug: "face-blur-license-plate-vehicle-privacy-guide",
+    title: "Blurring License Plates in Photos and Video: Vehicle Privacy Beyond Faces",
+    description: "A parked car with a visible plate is a data trail. Here's how to blur license plates — and why your car's privacy often matters more than your face's.",
+    date: "2026-08-19",
+    category: "Edit",
+    tags: ["license plate blur", "vehicle privacy", "face blur", "photo privacy", "anonymize"],
+    relatedTools: ["face-blur", "object-remover", "background-remover"],
+    content: `<p>You're selling your car, so you take a photo of it in the driveway and post it to a marketplace. The plate is perfectly legible. In the background, the neighbors' cars are visible too, plates included. A few days later you realize what you handed out: your plate number, your neighbors' plate numbers, your address, and a timestamp — packaged as a single image that anyone can download. Faces blur easily. License plates are the privacy leak nobody thinks about.</p>
+
+<h2>Why Plates Are a Privacy Problem</h2>
+
+<p>A license plate is a public identifier tied to a person. Run a plate through the right lookup and you can find registration details, addresses, and a vehicle's history. That's why rental listings, sale ads, and social posts blur them. The <a href="/en/tools/face-blur">face blur</a> tool handles this as easily as it handles a face — the same anonymization applies to the metal rectangle on the bumper.</p>
+
+<h2>Blur vs Remove: Which Is Right</h2>
+
+<p>Here's the decision the <a href="/en/tools/object-remover">object remover</a> helps with. If the plate is incidental — a background car in a street shot — blurring keeps the scene intact while removing the identifier. If the plate is the subject (you're selling the car, the ad is about the car), you might remove it entirely so the image is clean. Blur keeps context, removal changes the image; the ethical default is to blur what you must hide and leave the scene alone.</p>
 
 <h2>The Counter-Intuitive Part</h2>
 
-<p>Accessibility is not a lossy compromise — it improves the document for everyone. The same text layer that helps a screen reader makes the document searchable, copyable, and translatable. The common mistake is treating an "accessible version" as a separate deliverable you'll get to someday. Convert the source once, keep it accessible, and the PDF stops being a wall.</p>
+<p>Plates are often easier to hide than faces — and far more legally sensitive. A blurred face is usually a courtesy; a visible plate can be a compliance problem, especially in photos used commercially or for listings, and on public roads where the <a href="/en/tools/background-remover">background remover</a> might strip the whole scene anyway. Also remember: a blur that's too light is a blur AI can undo — use a strong blur or a solid block, not a pixel-thin smudge.</p>
 
-<p>Why extracting text from PDFs stayed hard for three decades is covered in our guide to <a href="/en/blog/pdf-to-word-hidden-complexity-30-years">the hidden complexity of PDF</a>. A document no one can read isn't a document — it's a formality. Convert it, verify it, and let everyone in.</p>`
+<p>We covered the legal side of street photography in our guide to <a href="/en/blog/face-blur-street-photography-legal-guide">face blur for street photography</a>. Your face is one identifier; your plates are another. Blur the plates, keep the scene, and the photo you share stops leaking the things you didn't mean to share.</p>`
   },
   {
-    slug: "watermark-remover-camera-timestamp-date-stamp-guide",
-    title: "Removing Date Stamps and Timestamps From Photos: The Marks Your Camera Added",
-    description: "Your camera burned the date into the corner of every photo — and on half of them it's wrong. Here's how to remove date stamps and timestamps cleanly, and when to keep them.",
-    date: "2026-08-18",
+    slug: "colorizer-vs-color-grading-accuracy-aesthetic",
+    title: "AI Colorizer vs Color Grading: Accuracy vs Aesthetic in Film and Photography",
+    description: "Colorizing an old photo tries to reconstruct what was there; color grading decides how a shot should feel. Same palette, opposite goals.",
+    date: "2026-08-19",
     category: "Edit",
-    tags: ["date stamp", "remove timestamp", "camera watermark", "photo cleanup", "watermark remover"],
-    relatedTools: ["watermark-remover", "photo-restorer", "object-remover"],
-    content: `<p>You find the box of family photos from 1998 and every single one has a glowing orange date burned into the corner. Somewhere in there is a real memory, partially covered by a stamp your camera decided you couldn't live without. Worse, on half the photos the date is wrong. Removing that stamp is a classic AI edit job — but the technique depends on what's under it.</p>
+    tags: ["colorizer", "color grading", "AI colorization", "film color", "photo editing"],
+    relatedTools: ["colorizer", "photo-restorer", "style-transfer"],
+    content: `<p>You find a black-and-white photo of your grandfather's café in 1962. One tool colorizes it, adding believable reds to the sign and skin tones to the faces. Another tool lets you "grade" it — shifting the whole image toward warm amber, making the same café feel nostalgic. Both operate on the same pixels. Both change what you see. But they are solving opposite problems, and mixing them up produces images that are neither accurate nor aesthetic.</p>
 
-<h2>The Date Stamp Problem</h2>
+<h2>Colorizer: Reconstructing the Past</h2>
 
-<p>Date stamps and timestamps sit on top of the image like a watermark, and unlike a logo, they're usually placed over content — a sky, a wall, a face, a table full of cake. A simple crop works only when the stamp sits in a blank corner. The <a href="/en/tools/watermark-remover">watermark remover</a> tool handles the common case: a small region it can reconstruct from the surrounding pixels. The common mistake is cropping into the photo to hide the stamp and losing part of the scene forever.</p>
+<p>The <a href="/en/tools/colorizer">AI colorizer</a> is a reconstruction machine. It reads grayscale values and predicts the colors that were probably there — skin, sky, signage — using patterns learned from millions of color photos. Its goal is accuracy, or as close as an algorithm can get. The common mistake is treating a colorized photo as historical truth; the colors are confident guesses, not recordings. That's fine for a family album and dangerous for a documentary.</p>
 
-<h2>When Removal Works Cleanly</h2>
+<h2>Color Grading: Directing Emotion</h2>
 
-<p>The counter-intuitive part: the more consistent the background behind the stamp, the better the reconstruction. A date over an empty sky or a plain wall is nearly invisible after removal; a date over a busy pattern of leaves is a gamble. Run the removal and zoom in — a clean result leaves no edge, no smear, and no ghost of the digits. If the photo itself is old and worn, pair the removal with the <a href="/en/tools/photo-restorer">photo restorer</a> to fix scratches and fading in the same pass.</p>
+<p>Color grading is not about what was there; it's about how you want the viewer to feel. A teal-and-orange grade on a street shot signals action. A desaturated, cool grade signals grief. Every film and most photography do this deliberately — the palette is a directorial choice. The <a href="/en/tools/style-transfer">style transfer</a> tool lives in the same neighborhood: it imposes an aesthetic across an image rather than recovering one. Where the colorizer answers "what color was this?", grading answers "what should this image communicate?"</p>
 
-<h2>When You Should Keep It</h2>
+<h2>Which One Is Your Job</h2>
 
-<p>Not every timestamp deserves to die. On a scanned document, a receipt, or a signed form, the date is evidence — removing it changes the meaning. On a genuine historical record, the stamp is part of the artifact. And when the thing in the way is bigger than a stamp, the <a href="/en/tools/object-remover">object remover</a> is the right call. For a corner date on a personal photo, targeted watermark removal is usually enough.</p>
+<p>The counter-intuitive part: the two tools are complementary, and the pipeline matters. Restore first, then decide. A damaged black-and-white photo should be repaired with the <a href="/en/tools/photo-restorer">photo restorer</a>, colorized for accuracy if that's the goal, then graded only if you want the final image to carry an emotional direction. Colorize for truth, grade for mood — and know which one you're doing before you touch the slider.</p>
 
-<p>We covered general photo mark cleanup in our guide to <a href="/en/blog/watermark-remover-image-cleanup-guide">AI watermark removal for image cleanup</a>. The date stamp is the watermark you never chose. Remove it cleanly, keep it when it's evidence, and get the real photo back.</p>`
+<p>We covered the restoration pipeline order in our guide to <a href="/en/blog/colorizer-vs-photo-restorer-which-first">colorizer vs photo restorer</a>. A colorized café is a reconstruction; a graded café is a statement. Pick the tool by the question you're answering.</p>`
   },
   {
-    slug: "text-to-speech-kids-bedtime-stories-guide",
-    title: "Using Text to Speech for Kids' Bedtime Stories: Voices, Pacing, and When a Human Voice Wins",
-    description: "A bedtime story at the right pace ends a day; the wrong one restarts it. Here's how to use text to speech for children's stories — voice choice, speed, and the limits.",
-    date: "2026-08-18",
+    slug: "text-to-speech-meditation-mindfulness-audio-guide",
+    title: "Text to Speech for Guided Meditation: Building a Calm Voice Library",
+    description: "A meditation track needs a voice that never rushes. Here's how to use text to speech to build guided meditations and mindfulness audio that actually relax.",
+    date: "2026-08-19",
     category: "Content",
-    tags: ["text to speech", "bedtime stories", "kids audiobooks", "tts for kids", "story time"],
+    tags: ["text to speech", "meditation audio", "guided meditation", "mindfulness", "calm voice"],
     relatedTools: ["text-to-speech", "article-generator", "text-polish"],
-    content: `<p>It's 8:47 p.m. and the child who was supposed to be asleep at 8:30 has an urgent request: a story. You've read the same book forty-one times. A text to speech voice could take over — but a bedtime story is not a lecture. Get the voice, speed, and pacing wrong and you've produced a lullaby that wakes everyone up.</p>
+    content: `<p>You keep a journal, you've been meditating on and off for two years, and you want to record your own guided sessions. Your voice feels wrong for it, and a studio is out of the question. So you load your script into a text to speech tool, expecting a robot. Instead you get a voice that doesn't rush, doesn't yawn, and doesn't judge. The obstacle isn't the technology — it's writing a script that a synthetic voice can turn into calm.</p>
 
-<h2>Voice and Pacing Matter More Than You Think</h2>
+<h2>What a Meditation Voice Needs</h2>
 
-<p>The voice you'd choose for a work narration — crisp, neutral, fast — is wrong for a bedroom. A good <a href="/en/tools/text-to-speech">text to speech</a> tool lets you slow the rate, and slower is not just softer, it's clearer: at a relaxed pace a child can follow the story instead of chasing it. Pick a warm-sounding voice if the tool offers choices, and keep the volume low. The common mistake is treating TTS like a podcast — energetic, quick — and turning a wind-down into a warm-up.</p>
+<p>A good meditation track runs at a pace that feels slow on purpose. The <a href="/en/tools/text-to-speech">text to speech</a> tool gives you control over that pace, and slowing it down is not just stylistic — it's structural. The voice needs to drop to a near-monotone on the instructions and soften on the prompts to breathe. The common mistake is writing meditation scripts the way you'd write blog posts: dense sentences, vivid words, information. A meditation script is mostly pauses wearing words.</p>
 
-<h2>How to Set Up a Story Session</h2>
+<h2>Scripting for Slow Delivery</h2>
 
-<p>Keep stories short, with clear beats. A two-page picture book text is ideal; a 4,000-word chapter is a marathon that ends in "one more chapter." Read the story aloud once to find the natural pauses, then let the tool follow them — short sentences make synthetic speech sound human. If you're out of books, the <a href="/en/tools/article-generator">article generator</a> can draft a simple original story, and the <a href="/en/tools/text-polish">text polish</a> tool smooths the sentences so the voice reads them naturally.</p>
+<p>Write short lines and let the silence work. "Breathe in. Feel the air at the top of your lungs. Breathe out. Feel your shoulders drop." The <a href="/en/tools/text-polish">text polish</a> tool helps strip the script to its essentials — every word that doesn't earn its place is a word that breaks the calm. Use the <a href="/en/tools/article-generator">article generator</a> if you need a starting draft: ask it to write a ten-minute body-scan script, then slow it down by hand. The counter-intuitive part is that simpler text produces the better track.</p>
 
-<h2>The Limits: When the Human Voice Wins</h2>
+<h2>The Limits of the Voice</h2>
 
-<p>The counter-intuitive part: a synthetic voice is often great at the story and helpless at the ritual. The questions — "why is the bear sad?", "what happens tomorrow?" — are the actual bedtime experience, and no TTS can answer them. Use the voice for the reading; stay in the room for the conversation. The narration can be perfect and the moment still needs you.</p>
+<p>The voice can carry the instructions, but it can't do the listening. A session is a relationship: the guide notices, responds, adapts. A static track can't answer "what if my mind won't stop?" — so structure the script to handle the most common interruptions, then accept that the recording is a floor, not the whole practice. The best use of TTS here is production, not presence: build the track, and let the presence come from the person pressing play.</p>
 
-<p>We covered producing full audio chapters from articles in our guide to <a href="/en/blog/tts-audiobook-production-articles-to-audio">TTS audiobook production</a>. A bedtime story isn't a production, it's a pace. Slow it down, keep it short, and let the voice read while you stay for the questions.</p>`
+<p>We covered how your brain processes synthetic voices in our guide to <a href="/en/blog/text-to-speech-brain-neuroscience-synthetic-vs-human-voice-processing">the neuroscience of synthetic voices</a>. Slow it down, strip the words, leave the pauses — and the voice that never rushes becomes the calmest part of the session.</p>`
   },
   {
-    slug: "object-remover-vs-face-blur-people-in-photos-guide",
-    title: "Removing People vs Blurring Faces: Which Photo Tool Should You Reach For?",
-    description: "A stranger walked into your travel photo. Do you remove them or blur them? AI object removal and face blur solve different problems — here's how to choose.",
-    date: "2026-08-18",
-    category: "Edit",
-    tags: ["object remover", "face blur", "remove people from photos", "photo privacy", "photo editing"],
-    relatedTools: ["object-remover", "face-blur", "background-remover"],
-    content: `<p>You came home from vacation with a perfect photo of a street in Lisbon — and a stranger standing directly in the middle of it. Now you have a choice: remove the person entirely, or keep them in the scene but hide their face. Both are one click in modern AI tools, but they answer completely different questions, and picking wrong can turn a cleanup into an ethical problem.</p>
-
-<h2>Removal: When the Person Has No Business Being There</h2>
-
-<p>Use the <a href="/en/tools/object-remover">object remover</a> when the person is accidental — a passerby, a tourist, a photobomb — and removing them restores the scene you actually wanted. The AI reconstructs the background where they stood, which works beautifully when the backdrop is repeatable (a sidewalk, a wall, a street) and struggles when the person was standing in front of something unique. The common mistake is using removal on someone whose presence you're trying to hide, like a colleague at a work event — that's not a cleanup, it's a deletion with intent.</p>
-
-<h2>Blurring: When the Person Stays but Their Identity Doesn't</h2>
-
-<p>Use <a href="/en/tools/face-blur">face blur</a> when the person is legitimately part of the scene — a crowd at a market, a participant in a group photo — but you shouldn't publish their identity. Blur keeps the context and removes the identification. This is the privacy default for real-world photography: streets, events, schools, workplaces. The counter-intuitive part: blurring a face keeps the photo honest about the moment, while removal rewrites what happened.</p>
-
-<h2>The Middle Ground</h2>
-
-<p>Not every stranger needs either treatment. A figure far in the background is often unidentifiable and can stay. And when the whole scene needs its context stripped, the <a href="/en/tools/background-remover">background remover</a> handles a different job entirely — isolating the subject instead of editing who's around them.</p>
-
-<p>We compared removal and anonymization in our guide to <a href="/en/blog/object-remover-vs-face-blur-remove-vs-anonymize">object remover vs face blur</a>. Ask the question before you click: is this person noise to remove, or context to keep? The right tool follows the answer.</p>`
-  },
-  {
-    slug: "avatar-generator-author-press-kit-guide",
-    title: "Authors and Creators: Build a Consistent Avatar for Your Press Kit and Social Profiles",
-    description: "One author photo, six platforms, three books — and a brand. Here's how to generate a consistent author avatar for press kits, book jackets, and social profiles.",
-    date: "2026-08-18",
+    slug: "avatar-generator-tabletop-rpg-character-portraits-guide",
+    title: "Avatar Generator for Tabletop RPG Characters: Bringing Your Character Sheet to Life",
+    description: "Your D&D character has a backstory but no face. Here's how to generate a character portrait that matches the sheet — class, vibe, and style consistent.",
+    date: "2026-08-19",
     category: "Generate",
-    tags: ["avatar generator", "author photo", "press kit", "personal brand", "creator avatar"],
+    tags: ["avatar generator", "tabletop RPG", "D&D character", "character portrait", "dungeons and dragons"],
     relatedTools: ["avatar-generator", "ai-image-generator", "style-transfer"],
-    content: `<p>You're a writer with a book coming out. Your publisher needs an author photo for the jacket, a headshot for the press kit, a profile image for the events page, and a thumbnail for your newsletter — and every one of them should look like the same person. You have one decent photo and no budget for a shoot. This is exactly the problem a consistent avatar workflow solves.</p>
+    content: `<p>Session zero of your new campaign. The dungeon master hands you a character sheet: a tiefling bard with a stolen lute, a talent for lying, and a tragic backstory about a burned-down theater. The sheet is full of numbers and a blank square where the portrait should be. You want a face for this character — the kind that makes the table gasp when you flip the card. An avatar generator can do it, if you feed it the right brief.</p>
 
-<h2>The Consistency Problem</h2>
+<h2>Building the Character Brief</h2>
 
-<p>An <a href="/en/tools/avatar-generator">avatar generator</a> is great at producing a flattering portrait and terrible at producing the same face twice if you don't anchor it. The common mistake is generating one image, loving it, and then discovering the second generation is a cousin instead of you. The fix is the same as for any AI portrait: start from a single reference photo, keep the prompt identical, and lock the seed when the tool offers one. Generate the whole set in one session, not across three separate moods.</p>
+<p>Before you generate, write the portrait brief like a casting call: species and class (tiefling bard), style (fantasy oil painting), palette (deep purple and gold), expression (charming, a little dangerous), and one telling detail (a silver earring, the stolen lute). The <a href="/en/tools/avatar-generator">avatar generator</a> needs those specifics; a prompt that says "fantasy character" returns a generic hero. The common mistake is describing the mood without describing the features — the machine can't know your character's violet eyes unless you say so.</p>
 
-<h2>Building the Press Kit Set</h2>
+<h2>Generating the Portrait</h2>
 
-<p>Now vary only what needs to vary. One neutral headshot for the jacket, one smiling version for the press kit, one casual version for social — change the expression, keep everything else fixed. If you need a scene or a specific background, generate that version with the <a href="/en/tools/ai-image-generator">AI image generator</a> using the avatar as the reference, and the <a href="/en/tools/style-transfer">style transfer</a> tool imposes the same aesthetic across the whole set. The result is a brand: every platform shows the same face, same tone, same person.</p>
+<p>One reference image of the style you want goes a long way. Lock the composition — head and shoulders, centered — and generate a few variants, then pick the one that matches the sheet. The <a href="/en/tools/ai-image-generator">AI image generator</a> is the bigger tool if you need a full scene (the bard on stage, fire behind him), while the avatar generator handles the portrait itself. If you want a consistent look across the whole party — same painter, same palette — the <a href="/en/tools/style-transfer">style transfer</a> tool can unify the set afterward.</p>
 
-<h2>The Trust Question</h2>
+<h2>The Consistency Trap</h2>
 
-<p>The counter-intuitive part: an author photo is not just marketing, it's a promise about the person who wrote the book. An avatar that looks obviously AI-generated — airbrushed skin, a face that can't be pinned down — undermines trust before anyone reads a page. Keep the avatar close to your real appearance, and if the platform or the audience values honesty over polish (a memoir, a personal essay), consider the real photo. The tools are there to make you consistent, not to make you up.</p>
+<p>The counter-intuitive part: the hardest part isn't making the portrait, it's keeping it the same character. Generate the portrait, the token, and the scene in one session, from the same brief, with the same reference — otherwise your bard's face drifts into a cousin's. And remember the sheet: the portrait should look like the character, not like a cool image that happens to be attached to your name. A portrait that matches the numbers is a character the table can believe in.</p>
 
-<p>We covered consistent headshots for professional profiles in our guide to <a href="/en/blog/avatar-generator-professional-profile-headshots-linkedin">AI headshots for professional profiles</a>. One reference, one prompt, one session — and the press kit looks like a single person from every angle.</p>`
+<p>We covered keeping an AI portrait consistent in our guide to <a href="/en/blog/avatar-generator-likeness-stability-guide">avatar likeness stability</a>. Write the brief, lock the style, generate the set — and the blank square on your sheet becomes the character the table remembers.</p>`
   },
   {
-    slug: "article-generator-hallucination-fact-checking-guide",
-    title: "When AI Articles Make Things Up: Why Hallucination Happens and How to Fact-Check",
-    description: "Your AI article confidently cited a study that doesn't exist. Hallucination isn't a bug you can prompt away — here's why it happens and the fact-checking workflow that catches it.",
-    date: "2026-08-18",
+    slug: "image-description-dating-profile-photos-guide",
+    title: "Image Description for Dating Profile Photos: What Your Photos Say About You",
+    description: "Your profile pictures are being read like captions — by apps, by bots, and by people. Here's what image description reveals about how others see you.",
+    date: "2026-08-19",
     category: "Content",
-    tags: ["article generator", "ai hallucination", "fact checking", "ai writing", "ai accuracy"],
-    relatedTools: ["article-generator", "text-polish", "text-to-speech"],
-    content: `<p>You asked an AI to draft a section about workplace surveys. It produced four solid paragraphs and one citation: a journal, a year, two author names. It sounds real. It's not — that study does not exist. This is hallucination, the model confidently fabricating, and it's the single most dangerous failure mode in AI writing, because the fake thing is dressed like a real thing.</p>
+    tags: ["image description", "dating profile", "photo analysis", "alt text", "first impressions"],
+    relatedTools: ["image-description", "avatar-generator", "background-remover"],
+    content: `<p>You're updating your dating profile and a friend suggests an experiment: run one of your photos through an image description tool and see what a machine says about it. You choose the one you thought was good — you at a rooftop party, glass in hand, laughing. The tool returns: "A young man at a crowded rooftop party in the evening, holding a drink, smiling at someone off-camera. The background is dark and the lighting is low." You stare at it. The model just described your photo the way a stranger would see it. And strangers are exactly who's looking.</p>
 
-<h2>Why Models Hallucinate</h2>
+<h2>What the Model Sees Is What Others See</h2>
 
-<p>An <a href="/en/tools/article-generator">article generator</a> doesn't retrieve facts; it predicts the next likely word. When the training data doesn't include the answer, the model doesn't say "I don't know" — it produces the most plausible-sounding string it can. That's why hallucinated citations look perfect: the model has seen thousands of real ones and learned their shape. The counter-intuitive part: adding "be accurate" to the prompt changes nothing, because the model was already trying to be accurate. Confident prompting doesn't reduce hallucination — verification does.</p>
+<p>An <a href="/en/tools/image-description">image description</a> tool doesn't judge; it reports. "Dark background. Low lighting. Crowd. You're smiling at someone out of frame." Every element it lists is an element a real person scanning your profile registers in a second and a half. The description is a checklist of first impressions, and it's usually more honest than your own read of the photo, because you're not describing the photo — you're describing the memory.</p>
 
-<h2>The Fact-Checking Workflow</h2>
+<h2>Why the Description Matters</h2>
 
-<p>Every AI draft gets a verification pass before it's published. Step 1: flag every specific claim — names, dates, numbers, citations — and check each one against a source you can open. A citation you can't find is a citation that doesn't exist. Step 2: read the draft out loud; the <a href="/en/tools/text-to-speech">text to speech</a> tool catches claims that sound confident but say nothing. Step 3: rewrite the unverifiable sentences in your own words with the <a href="/en/tools/text-polish">text polish</a> tool, or cut them. The workflow isn't optional — it's the part of the job the model can't do.</p>
+<p>The counter-intuitive part: a dating profile photo is a caption whether you write one or not. People infer from the pixels — the kind of events you attend, whether you're a group person, whether you look approachable. A description that says "dimly lit bar, hard to see your face" tells you why that photo keeps getting ignored even though you look good in it. A description that says "bright daylight, you're clearly visible, relaxed posture, genuine smile" is the photo that does the work.</p>
 
-<h2>The Roles AI Can Safely Play</h2>
+<h2>Using It to Improve Your Profile</h2>
 
-<p>Hallucination is manageable when you know the material and fatal when you don't. Use AI for structure, phrasing, and synthesis of facts you provide; don't use it as a search engine. If a draft makes a claim that surprises you, treat the surprise as the alarm it is — the same reflex we covered in our guide to <a href="/en/blog/article-generator-edit-ai-drafts-human">turning AI drafts into human writing</a>. Verify before you publish, and the confident lie never reaches a reader.</p>`
+<p>Run all your candidates, then act on the report. Replace the dark group shot with one the model reads as "bright, warm, you at the center." Swap a photo where the description mentions a distracting background for one where the subject is clearly you — the <a href="/en/tools/background-remover">background remover</a> can clean up the noise if the photo is otherwise good. And if you want consistency across your set, the <a href="/en/tools/avatar-generator">avatar generator</a> produces portraits with a uniform look. Your profile isn't judged by your best memory of a photo; it's judged by what a stranger's eyes and an algorithm's words actually find in it.</p>
+
+<p>We covered how AI describes images for accessibility in our guide to <a href="/en/blog/image-description-ai-accessibility-visually-impaired-users">AI image description</a>. The same technology that writes alt text can read your dating profile back to you. Listen to what it says — the photo you love may not be the photo that works.</p>`
   },
 ];
 
@@ -158,4 +160,4 @@ content = content.replace(old, new_blogs)
 with open(BLOG_FILE, "w", encoding="utf-8", newline="\n") as f:
     f.write(content)
 
-print("AI station: 335->341 static objects done.")
+print("AI station: 341->347 static objects done.")
