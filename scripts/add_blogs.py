@@ -1,4 +1,4 @@
-"""Add 6 blogs to AI station (341->347 static) - August 19, 2026"""
+"""Add 6 blogs to AI station (347->353 static) - August 20, 2026"""
 BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
 
 with open(BLOG_FILE, "r", encoding="utf-8") as f:
@@ -8,148 +8,148 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "pdf-to-word-tables-formatting-fix-guide",
-    title: "Why Tables Break When You Convert PDF to Word (and How to Fix Them)",
-    description: "Columns drift, headers repeat, numbers become text. Table-heavy PDFs are the hardest conversion job. Here's what happens and how to get usable spreadsheets out.",
-    date: "2026-08-19",
-    category: "Document",
-    tags: ["pdf tables", "table extraction", "pdf to word", "spreadsheet", "data extraction"],
-    relatedTools: ["pdf-to-word", "text-polish", "image-description"],
-    content: `<p>It's the first of the month, and the finance report just arrived as a PDF. Twelve columns: account, client, region, three cost lines, four forecast columns. You convert it to Word, and what comes back is a disaster — the header row repeats on page three, a column split into two, and the numbers that were once aligned under "Total" are now floating after the client name. Converting a table-heavy PDF is a different job than converting a text page, and knowing why is the difference between a salvageable file and a rebuild.</p>
-
-<h2>Why Tables Are the Hardest Part of a PDF</h2>
-
-<p>A PDF stores a table as lines and positioned text, not as rows and cells. Text extraction sees words and coordinates; the structure — which cell belongs to which column — has to be reconstructed. When a table has merged cells, split columns, or text that wraps, the reconstruction guesses, and the guess shows up as a misplaced decimal or a header that belongs to the row above. This is why a <a href="/en/tools/pdf-to-word">PDF to Word converter</a> handles a letter page flawlessly and stumbles on a dense budget sheet.</p>
-
-<h2>The Fixes That Actually Work</h2>
-
-<p>Convert, then treat the result as a draft, not a deliverable. First, check the header row: if it repeated or shifted, select the rows and set them as a repeating header again. Second, reconcile the columns — a converter often splits one column into two when the text was close together; merging them back is usually enough. Third, and most importantly, check the numbers: text extraction can turn a figure into "12.3 0" or drop the trailing zero. Run the table through a clean-up pass with the <a href="/en/tools/text-polish">text polish</a> tool for the wording, and read the figures column by column before you trust them.</p>
-
-<h2>When the Table Won't Convert</h2>
-
-<p>The counter-intuitive part: sometimes the smartest move is not to convert the table at all. If the table is a scanned image with no text layer, no converter can rebuild the columns reliably — it's guessing from pixels. If the table is deeply formatted (colored cells, merged blocks, cross-row totals), the reconstruction cost outweighs the retyping cost. And if the layout is beyond saving, the <a href="/en/tools/image-description">image description</a> tool can at least turn the figure into readable content while you rebuild the structure.</p>
-
-<p>We covered why converted documents look wrong in our guide to <a href="/en/blog/pdf-to-word-formatting-survival-guide">PDF to Word formatting</a>. Tables fail because the structure is a guess, not because the tool is broken. Convert, verify the columns, read the numbers — and the monthly report stops being a Monday project.</p>`
-  },
-  {
-    slug: "face-blur-license-plate-vehicle-privacy-guide",
-    title: "Blurring License Plates in Photos and Video: Vehicle Privacy Beyond Faces",
-    description: "A parked car with a visible plate is a data trail. Here's how to blur license plates — and why your car's privacy often matters more than your face's.",
-    date: "2026-08-19",
+    slug: "watermark-remover-invisible-ai-watermarks-guide",
+    title: "Invisible Watermarks in AI Images: Why Cropping Can't Remove Them",
+    description: "You can crop a visible logo out of an AI image. The watermark you can't see is another story — it's baked into the pixels, and it's not going anywhere.",
+    date: "2026-08-20",
     category: "Edit",
-    tags: ["license plate blur", "vehicle privacy", "face blur", "photo privacy", "anonymize"],
-    relatedTools: ["face-blur", "object-remover", "background-remover"],
-    content: `<p>You're selling your car, so you take a photo of it in the driveway and post it to a marketplace. The plate is perfectly legible. In the background, the neighbors' cars are visible too, plates included. A few days later you realize what you handed out: your plate number, your neighbors' plate numbers, your address, and a timestamp — packaged as a single image that anyone can download. Faces blur easily. License plates are the privacy leak nobody thinks about.</p>
+    tags: ["invisible watermark", "AI watermark", "C2PA", "image provenance", "watermark remover"],
+    relatedTools: ["watermark-remover", "background-remover", "image-description"],
+    content: `<p>You generate an image with an AI tool and a small logo sits in the corner. Fine — you run it through a <a href="/en/tools/watermark-remover">watermark remover</a>, or crop the corner off, and the image is clean. Then a friend who works in content safety asks whether the image still carries a watermark. You zoom in, squint, find nothing. "Because it's invisible," she says. "It's in the pixels." This is the watermark argument everyone is having in 2026, and it's really two different arguments wearing the same name.</p>
 
-<h2>Why Plates Are a Privacy Problem</h2>
+<h2>Two Kinds of Watermark, Two Jobs</h2>
 
-<p>A license plate is a public identifier tied to a person. Run a plate through the right lookup and you can find registration details, addresses, and a vehicle's history. That's why rental listings, sale ads, and social posts blur them. The <a href="/en/tools/face-blur">face blur</a> tool handles this as easily as it handles a face — the same anonymization applies to the metal rectangle on the bumper.</p>
+<p>The visible watermark is a deterrent. It's a name or a logo slapped across a corner so people don't claim the image as their own — and it's removable, by cropping, by inpainting, or by the <a href="/en/tools/watermark-remover">watermark remover tool</a>. The invisible watermark is a provenance stamp. The generator that made the image encodes a signature directly into the pixel values — tiny patterns you can't see with your eyes but that a detector can read. It survives cropping, resizing, and recompression. You can remove the corner logo and the image is still silently labeled with where it came from.</p>
 
-<h2>Blur vs Remove: Which Is Right</h2>
+<h2>Why Cropping Can't Fix It</h2>
 
-<p>Here's the decision the <a href="/en/tools/object-remover">object remover</a> helps with. If the plate is incidental — a background car in a street shot — blurring keeps the scene intact while removing the identifier. If the plate is the subject (you're selling the car, the ad is about the car), you might remove it entirely so the image is clean. Blur keeps context, removal changes the image; the ethical default is to blur what you must hide and leave the scene alone.</p>
+<p>The counter-intuitive part: the two techniques are used for opposite reasons. Visible marks stop casual copying; invisible marks answer the question "which model made this?" That's the point of schemes like C2PA and the pixel-signatures used by major image generators. The signature is spread across the whole image, so there's no single place to remove — and scrubbing it means destroying the image. Worse, for images you generated yourself, actively removing the invisible mark can violate the tool's terms of service, because that signature is the link between the image and your account.</p>
 
-<h2>The Counter-Intuitive Part</h2>
+<h2>What You Can and Can't Clean</h2>
 
-<p>Plates are often easier to hide than faces — and far more legally sensitive. A blurred face is usually a courtesy; a visible plate can be a compliance problem, especially in photos used commercially or for listings, and on public roads where the <a href="/en/tools/background-remover">background remover</a> might strip the whole scene anyway. Also remember: a blur that's too light is a blur AI can undo — use a strong blur or a solid block, not a pixel-thin smudge.</p>
+<p>So the honest workflow is: if a visible logo is the problem, clean it — that's exactly what the <a href="/en/tools/watermark-remover">watermark remover</a> is for, and the <a href="/en/tools/background-remover">background remover</a> handles the cases where the mark sits on a flat area you'd rather replace. If you want to know what an image actually contains and whether it looks doctored, an <a href="/en/tools/image-description">image description</a> tool reads the content the way a detector reads the provenance. The invisible watermark isn't a fight you're meant to win; it's a receipt. Knowing the difference — that visible marks are removable deterrents and invisible marks are permanent signatures — keeps you from breaking the terms you agreed to while trying to tidy a corner.</p>
 
-<p>We covered the legal side of street photography in our guide to <a href="/en/blog/face-blur-street-photography-legal-guide">face blur for street photography</a>. Your face is one identifier; your plates are another. Blur the plates, keep the scene, and the photo you share stops leaking the things you didn't mean to share.</p>`
+<p>We covered visible watermark removal strategy in our guide to <a href="/en/blog/watermark-remover-transparent-vs-solid-strategies">transparent vs solid watermarks</a>. The invisible layer is the sequel: the mark you can't see at all, and the one that was never meant to come off.</p>`
   },
   {
-    slug: "colorizer-vs-color-grading-accuracy-aesthetic",
-    title: "AI Colorizer vs Color Grading: Accuracy vs Aesthetic in Film and Photography",
-    description: "Colorizing an old photo tries to reconstruct what was there; color grading decides how a shot should feel. Same palette, opposite goals.",
-    date: "2026-08-19",
+    slug: "object-remover-shadow-leftover-guide",
+    title: "Object Remover and the Shadow Problem: Why the Object Goes but the Shadow Stays",
+    description: "You remove the bottle from the photo. The bottle is gone — but a faint gray ghost where it sat isn't. Here's why shadows survive removal and how to clean them.",
+    date: "2026-08-20",
     category: "Edit",
-    tags: ["colorizer", "color grading", "AI colorization", "film color", "photo editing"],
-    relatedTools: ["colorizer", "photo-restorer", "style-transfer"],
-    content: `<p>You find a black-and-white photo of your grandfather's café in 1962. One tool colorizes it, adding believable reds to the sign and skin tones to the faces. Another tool lets you "grade" it — shifting the whole image toward warm amber, making the same café feel nostalgic. Both operate on the same pixels. Both change what you see. But they are solving opposite problems, and mixing them up produces images that are neither accurate nor aesthetic.</p>
+    tags: ["object remover", "shadow removal", "inpainting", "photo cleanup", "image editing"],
+    relatedTools: ["object-remover", "background-remover", "watermark-remover"],
+    content: `<p>You're shooting product photos on a shelf at home. In the background, a bottle of water keeps appearing in the frame. You drag it into the <a href="/en/tools/object-remover">object remover</a>, select it, and let the AI do its thing. The bottle vanishes. And where it stood, there's a faint gray patch — a ghost of the bottle, exactly the shape of the shadow it used to cast. You remove it again. The ghost gets a little lighter but doesn't disappear. This is the most common complaint people have with object removal, and it's not a bug — it's how inpainting sees shadows.</p>
 
-<h2>Colorizer: Reconstructing the Past</h2>
+<h2>Why the Shadow Survives</h2>
 
-<p>The <a href="/en/tools/colorizer">AI colorizer</a> is a reconstruction machine. It reads grayscale values and predicts the colors that were probably there — skin, sky, signage — using patterns learned from millions of color photos. Its goal is accuracy, or as close as an algorithm can get. The common mistake is treating a colorized photo as historical truth; the colors are confident guesses, not recordings. That's fine for a family album and dangerous for a documentary.</p>
+<p>An object remover reconstructs the area you selected using the pixels around it. It's very good at guessing "what texture belongs on a shelf," and it's much less good at "there was a broad lighting gradient here caused by the thing I'm removing." A shadow is a gradual darkening across a wide region, not a clean shape with edges — so the AI often fills in the area with the surrounding shelf texture and leaves the tone slightly wrong. The darkening registers as a patch, and because the model thinks it already rebuilt that region, it doesn't reach back to fix the lighting.</p>
 
-<h2>Color Grading: Directing Emotion</h2>
+<h2>The Fix: Include the Shadow in the Selection</h2>
 
-<p>Color grading is not about what was there; it's about how you want the viewer to feel. A teal-and-orange grade on a street shot signals action. A desaturated, cool grade signals grief. Every film and most photography do this deliberately — the palette is a directorial choice. The <a href="/en/tools/style-transfer">style transfer</a> tool lives in the same neighborhood: it imposes an aesthetic across an image rather than recovering one. Where the colorizer answers "what color was this?", grading answers "what should this image communicate?"</p>
+<p>The counter-intuitive trick is to select more, not less. The instinct is to trace tightly around the object so you don't remove anything else — but a tight selection leaves the shadow outside it, exactly where the algorithm won't touch it. Select the object <em>and</em> its shadow as one region, and the inpainter has the whole visual problem in front of it: it has to rebuild the shelf where the shadow used to be, and it uses the brighter pixels around it to do it. That single change turns most ghost-shadow removals into clean ones.</p>
 
-<h2>Which One Is Your Job</h2>
+<h2>When It's Too Stubborn</h2>
 
-<p>The counter-intuitive part: the two tools are complementary, and the pipeline matters. Restore first, then decide. A damaged black-and-white photo should be repaired with the <a href="/en/tools/photo-restorer">photo restorer</a>, colorized for accuracy if that's the goal, then graded only if you want the final image to carry an emotional direction. Colorize for truth, grade for mood — and know which one you're doing before you touch the slider.</p>
+<p>If the shadow spans a big area or crosses into other objects, the shadow is doing more than sitting there — it's carrying the photo's lighting, and rebuilding it is a bigger job. On a plain backdrop, the shortcut is the <a href="/en/tools/background-remover">background remover</a>: remove the whole background and re-add a clean one, and the shadow disappears with it. And when the leftover is a faint mark rather than a lighting change, the <a href="/en/tools/watermark-remover">watermark remover</a> uses the same inpainting in a tighter mode — a second pass with it often finishes what the first pass started.</p>
 
-<p>We covered the restoration pipeline order in our guide to <a href="/en/blog/colorizer-vs-photo-restorer-which-first">colorizer vs photo restorer</a>. A colorized café is a reconstruction; a graded café is a statement. Pick the tool by the question you're answering.</p>`
+<p>We covered transparent objects and complex backgrounds in our guide to <a href="/en/blog/object-remover-advanced-techniques-edge-cases">object remover edge cases</a>. The shadow is the case people write to us about most. Select the shadow with the object, and the ghost finally leaves the frame.</p>`
   },
   {
-    slug: "text-to-speech-meditation-mindfulness-audio-guide",
-    title: "Text to Speech for Guided Meditation: Building a Calm Voice Library",
-    description: "A meditation track needs a voice that never rushes. Here's how to use text to speech to build guided meditations and mindfulness audio that actually relax.",
-    date: "2026-08-19",
-    category: "Content",
-    tags: ["text to speech", "meditation audio", "guided meditation", "mindfulness", "calm voice"],
-    relatedTools: ["text-to-speech", "article-generator", "text-polish"],
-    content: `<p>You keep a journal, you've been meditating on and off for two years, and you want to record your own guided sessions. Your voice feels wrong for it, and a studio is out of the question. So you load your script into a text to speech tool, expecting a robot. Instead you get a voice that doesn't rush, doesn't yawn, and doesn't judge. The obstacle isn't the technology — it's writing a script that a synthetic voice can turn into calm.</p>
-
-<h2>What a Meditation Voice Needs</h2>
-
-<p>A good meditation track runs at a pace that feels slow on purpose. The <a href="/en/tools/text-to-speech">text to speech</a> tool gives you control over that pace, and slowing it down is not just stylistic — it's structural. The voice needs to drop to a near-monotone on the instructions and soften on the prompts to breathe. The common mistake is writing meditation scripts the way you'd write blog posts: dense sentences, vivid words, information. A meditation script is mostly pauses wearing words.</p>
-
-<h2>Scripting for Slow Delivery</h2>
-
-<p>Write short lines and let the silence work. "Breathe in. Feel the air at the top of your lungs. Breathe out. Feel your shoulders drop." The <a href="/en/tools/text-polish">text polish</a> tool helps strip the script to its essentials — every word that doesn't earn its place is a word that breaks the calm. Use the <a href="/en/tools/article-generator">article generator</a> if you need a starting draft: ask it to write a ten-minute body-scan script, then slow it down by hand. The counter-intuitive part is that simpler text produces the better track.</p>
-
-<h2>The Limits of the Voice</h2>
-
-<p>The voice can carry the instructions, but it can't do the listening. A session is a relationship: the guide notices, responds, adapts. A static track can't answer "what if my mind won't stop?" — so structure the script to handle the most common interruptions, then accept that the recording is a floor, not the whole practice. The best use of TTS here is production, not presence: build the track, and let the presence come from the person pressing play.</p>
-
-<p>We covered how your brain processes synthetic voices in our guide to <a href="/en/blog/text-to-speech-brain-neuroscience-synthetic-vs-human-voice-processing">the neuroscience of synthetic voices</a>. Slow it down, strip the words, leave the pauses — and the voice that never rushes becomes the calmest part of the session.</p>`
-  },
-  {
-    slug: "avatar-generator-tabletop-rpg-character-portraits-guide",
-    title: "Avatar Generator for Tabletop RPG Characters: Bringing Your Character Sheet to Life",
-    description: "Your D&D character has a backstory but no face. Here's how to generate a character portrait that matches the sheet — class, vibe, and style consistent.",
-    date: "2026-08-19",
+    slug: "style-transfer-portrait-face-distortion-guide",
+    title: "Why Style Transfer Ruins Faces (and the Portrait-Safe Workflow)",
+    description: "Run a selfie through style transfer and the face comes out looking melted. Here's why portraits break the tool — and how to stylize a photo without destroying the person.",
+    date: "2026-08-20",
     category: "Generate",
-    tags: ["avatar generator", "tabletop RPG", "D&D character", "character portrait", "dungeons and dragons"],
-    relatedTools: ["avatar-generator", "ai-image-generator", "style-transfer"],
-    content: `<p>Session zero of your new campaign. The dungeon master hands you a character sheet: a tiefling bard with a stolen lute, a talent for lying, and a tragic backstory about a burned-down theater. The sheet is full of numbers and a blank square where the portrait should be. You want a face for this character — the kind that makes the table gasp when you flip the card. An avatar generator can do it, if you feed it the right brief.</p>
+    tags: ["style transfer", "face distortion", "portrait style", "photo to art", "AI art"],
+    relatedTools: ["style-transfer", "ai-image-generator", "avatar-generator"],
+    content: `<p>You take a great photo of yourself at a café and run it through a <a href="/en/tools/style-transfer">style transfer</a> tool with the watercolor preset. The output comes back and the café looks beautiful — the light, the table, the color. Then you look at your face, and your face looks like it was drawn by someone who has only heard descriptions of faces. The nose is wrong. The eyes have drifted. It's not a bad filter; it's that style transfer is doing something your face specifically can't survive.</p>
 
-<h2>Building the Character Brief</h2>
+<h2>Why Faces Break First</h2>
 
-<p>Before you generate, write the portrait brief like a casting call: species and class (tiefling bard), style (fantasy oil painting), palette (deep purple and gold), expression (charming, a little dangerous), and one telling detail (a silver earring, the stolen lute). The <a href="/en/tools/avatar-generator">avatar generator</a> needs those specifics; a prompt that says "fantasy character" returns a generic hero. The common mistake is describing the mood without describing the features — the machine can't know your character's violet eyes unless you say so.</p>
+<p>Style transfer works on whole-image statistics — it takes the textures and color patterns of one image and forces them onto another. That's great for a landscape, where texture <em>is</em> the content. But a face is a collection of precise, small landmarks — the eye spacing, the jawline, the mouth — and forcing a painterly texture across them displaces those landmarks. The algorithm has no concept of "this blob is a nose," so it treats the nose as just another region to smear. Landscapes can tolerate the smearing. Faces can't, which is why every failed style-transfer image you've seen was a portrait.</p>
 
-<h2>Generating the Portrait</h2>
+<h2>The Portrait-Safe Workflow</h2>
 
-<p>One reference image of the style you want goes a long way. Lock the composition — head and shoulders, centered — and generate a few variants, then pick the one that matches the sheet. The <a href="/en/tools/ai-image-generator">AI image generator</a> is the bigger tool if you need a full scene (the bard on stage, fire behind him), while the avatar generator handles the portrait itself. If you want a consistent look across the whole party — same painter, same palette — the <a href="/en/tools/style-transfer">style transfer</a> tool can unify the set afterward.</p>
+<p>The fix is to stop fighting the tool and change what you ask it to do. First, if the tool has a "portrait mode" or "face preservation" option, use it — that's the whole point of the setting. Second, dial the style strength down from 100%. The failure isn't binary: at lower intensity, the texture reads as a subtle effect and the landmarks survive. Third, and most reliably: don't style the face at all. Stylize the scene, then composite your original, un-stylized face back over the result — most editors make this a two-minute job.</p>
 
-<h2>The Consistency Trap</h2>
+<h2>When the Tool Is the Wrong Tool</h2>
 
-<p>The counter-intuitive part: the hardest part isn't making the portrait, it's keeping it the same character. Generate the portrait, the token, and the scene in one session, from the same brief, with the same reference — otherwise your bard's face drifts into a cousin's. And remember the sheet: the portrait should look like the character, not like a cool image that happens to be attached to your name. A portrait that matches the numbers is a character the table can believe in.</p>
+<p>The counter-intuitive part: if you want a painterly <em>portrait</em> — not just a painterly photo of a person — the transfer is fighting the hardest possible input. The <a href="/en/tools/ai-image-generator">AI image generator</a> builds a face-aware painting from scratch, and it understands anatomy better than a transfer does. And for consistent, face-accurate results, the <a href="/en/tools/avatar-generator">avatar generator</a> was built around keeping likeness — that's the tool to reach for when the person has to stay recognizable. Style transfer is for scenes, textures, and moods. The moment you point it at a face, you're asking it to do the one thing it can't.</p>
 
-<p>We covered keeping an AI portrait consistent in our guide to <a href="/en/blog/avatar-generator-likeness-stability-guide">avatar likeness stability</a>. Write the brief, lock the style, generate the set — and the blank square on your sheet becomes the character the table remembers.</p>`
+<p>We covered realistic versus artistic modes in our guide to <a href="/en/blog/style-transfer-realistic-vs-artistic-modes">style transfer modes</a>. Faces are where the artistic mode shows its limits — stylize the scene, protect the face, and the portrait keeps looking like someone.</p>`
   },
   {
-    slug: "image-description-dating-profile-photos-guide",
-    title: "Image Description for Dating Profile Photos: What Your Photos Say About You",
-    description: "Your profile pictures are being read like captions — by apps, by bots, and by people. Here's what image description reveals about how others see you.",
-    date: "2026-08-19",
+    slug: "article-generator-youtube-video-scripts-guide",
+    title: "Article Generator for Video Scripts: From Topic to Full YouTube Script",
+    description: "The blank document at 11pm, the cursor blinking. An article generator won't write your video — but it will build the outline, hooks, and sections that make one.",
+    date: "2026-08-20",
     category: "Content",
-    tags: ["image description", "dating profile", "photo analysis", "alt text", "first impressions"],
-    relatedTools: ["image-description", "avatar-generator", "background-remover"],
-    content: `<p>You're updating your dating profile and a friend suggests an experiment: run one of your photos through an image description tool and see what a machine says about it. You choose the one you thought was good — you at a rooftop party, glass in hand, laughing. The tool returns: "A young man at a crowded rooftop party in the evening, holding a drink, smiling at someone off-camera. The background is dark and the lighting is low." You stare at it. The model just described your photo the way a stranger would see it. And strangers are exactly who's looking.</p>
+    tags: ["video script", "YouTube script", "article generator", "script writing", "content creation"],
+    relatedTools: ["article-generator", "text-polish", "text-to-speech"],
+    content: `<p>It's 11pm and you're staring at a blank document. The channel is about budget cooking, and you've had the video idea for two weeks: "Meal prepping on $30 a week." You type a sentence, delete it. Type another, delete it. You know the material — you've been doing this exact thing for years — but the words won't come out in the right order, and you're not sure they ever did. The <a href="/en/tools/article-generator">article generator</a> sitting in your bookmarks isn't the answer to this problem. It's the answer to a much better one.</p>
 
-<h2>What the Model Sees Is What Others See</h2>
+<h2>Use It as an Outline Machine, Not a Writer</h2>
 
-<p>An <a href="/en/tools/image-description">image description</a> tool doesn't judge; it reports. "Dark background. Low lighting. Crowd. You're smiling at someone out of frame." Every element it lists is an element a real person scanning your profile registers in a second and a half. The description is a checklist of first impressions, and it's usually more honest than your own read of the photo, because you're not describing the photo — you're describing the memory.</p>
+<p>Ask the generator for a structure, not a script: "Write an outline for a 10-minute YouTube video on meal prepping for $30 a week. Hook first, then the problem, three concrete sections, the payoff, and a call to action." What comes back is a skeleton — the hook, the three beats, the ending — and that skeleton is the 90% of the work you were stuck on. The counter-intuitive part is to stop right there. Don't ask it to write the finished script, because a generated script reads like writing, and a video script needs to sound like talking.</p>
 
-<h2>Why the Description Matters</h2>
+<h2>The Editing Pass That Makes It Speak</h2>
 
-<p>The counter-intuitive part: a dating profile photo is a caption whether you write one or not. People infer from the pixels — the kind of events you attend, whether you're a group person, whether you look approachable. A description that says "dimly lit bar, hard to see your face" tells you why that photo keeps getting ignored even though you look good in it. A description that says "bright daylight, you're clearly visible, relaxed posture, genuine smile" is the photo that does the work.</p>
+<p>Video scripts are spoken, not written, and the gap is bigger than you think. An 800-word written article is roughly five minutes of speech. So run the draft through the <a href="/en/tools/text-polish">text polish</a> tool with an eye for cutting: shorten every sentence, remove every clause you could live without, then cut another 30%. Read it aloud — any sentence you stumble over is a sentence that will trip you on camera. And if you want to hear the pacing before you record, the <a href="/en/tools/text-to-speech">text to speech</a> tool gives you a rough-cut of the timing, so you can see where the video drags before you've spent an afternoon filming it.</p>
 
-<h2>Using It to Improve Your Profile</h2>
+<h2>The Parts to Write Yourself</h2>
 
-<p>Run all your candidates, then act on the report. Replace the dark group shot with one the model reads as "bright, warm, you at the center." Swap a photo where the description mentions a distracting background for one where the subject is clearly you — the <a href="/en/tools/background-remover">background remover</a> can clean up the noise if the photo is otherwise good. And if you want consistency across your set, the <a href="/en/tools/avatar-generator">avatar generator</a> produces portraits with a uniform look. Your profile isn't judged by your best memory of a photo; it's judged by what a stranger's eyes and an algorithm's words actually find in it.</p>
+<p>The best use of the generator is the bits that are hardest to invent cold: five versions of the hook, asked for and picked from, and the transition sentences that move the viewer between sections. The rest — the actual tips, the specific numbers, the mistakes you've made — has to be yours, because that's what makes a cooking channel watchable. A script is a scaffold for your knowledge, not a replacement for it.</p>
 
-<p>We covered how AI describes images for accessibility in our guide to <a href="/en/blog/image-description-ai-accessibility-visually-impaired-users">AI image description</a>. The same technology that writes alt text can read your dating profile back to you. Listen to what it says — the photo you love may not be the photo that works.</p>`
+<p>We covered the editing workflow for AI drafts in our guide to <a href="/en/blog/article-generator-edit-ai-drafts-human">turning AI drafts into human-readable content</a>. Scripts are that workflow's most demanding case — outline with the generator, polish the prose, and keep the voice that only you have.</p>`
+  },
+  {
+    slug: "image-upscaler-logos-line-art-vector-guide",
+    title: "Upscaling Logos and Line Art: Why They Turn to Mush (and When Vector Wins)",
+    description: "Your client's logo is a 200px PNG and they need a banner. The upscaler returns a bigger blur. Logos aren't photos — here's when to upscale and when to redraw.",
+    date: "2026-08-20",
+    category: "Edit",
+    tags: ["image upscaler", "logo upscaling", "vector graphics", "line art", "SVG"],
+    relatedTools: ["image-upscaler", "ai-image-generator", "background-remover"],
+    content: `<p>Your client sends a logo for the new banner: a 200px PNG. "Can you make it bigger?" they ask, the way people ask for impossible things. You run it through an <a href="/en/tools/image-upscaler">image upscaler</a>, get a 1600px PNG, open it, and stare. The text is fuzzy. The edges are blobby. The curves look like they were drawn by a shaky hand. The upscaler did its job — and its job is the wrong job for a logo.</p>
+
+<h2>Photos and Logos Are Different Animals</h2>
+
+<p>An upscaler invents detail. Feed it a photo and it has texture to work with — grain, gradients, soft edges — so when it "reconstructs" a sharper version, the invention is invisible and often looks great. Feed it a logo and the whole image is hard edges and flat color, and there is no texture to invent. The AI has to decide where every edge goes, and at 4x it hallucinates: halos around letters, bumps on curves, little smears where a crisp corner used to be. Text is the worst case — small letterforms turn to mush because the upscaler can't tell a serif from a smudge.</p>
+
+<h2>The Wrong Move Most People Make</h2>
+
+<p>The mistake isn't using the upscaler — it's using the upscaler and sending the result to print, or accepting the smeared 1600px PNG as "good enough." A logo that's been upscaled will always look worse than it did, just larger. The counter-intuitive truth: if it's a logo, a diagram, or line art, you don't want more pixels at all. You want a vector. A vector file — SVG, or a redrawn version in any vector tool — is resolution-independent: it's not enlarged, it's redrawn from math, so it's equally crisp at 200px and 20,000px.</p>
+
+<h2>When to Use What</h2>
+
+<p>Use the <a href="/en/tools/image-upscaler">image upscaler</a> on the photographic parts of a design — the product shot, the texture, the background — where invented detail is fine. For the logo itself, isolate the mark with the <a href="/en/tools/background-remover">background remover</a>, then either trace it in a vector tool or ask an <a href="/en/tools/ai-image-generator">AI image generator</a> to redraw it as a clean vector-style version. It's slightly more work than one click — and it's the difference between a banner that looks stretched and one that looks designed.</p>
+
+<p>We checked whether upscalers really turn 480p into 4K in our guide to <a href="/en/blog/image-upscaler-480p-to-4k-reality-check">the upscaling reality check</a>. Logos are the case where even the best upscaler is the wrong tool — redraw, don't enlarge.</p>`
+  },
+  {
+    slug: "photo-restorer-blurry-photos-deblur-guide",
+    title: "Photo Restorer and Blurry Photos: What AI Deblurring Can (and Can't) Recover",
+    description: "That blurry photo of your parents from 1987 — can AI make it sharp? Sometimes. The answer depends on which kind of blur it is, and what you're willing to accept.",
+    date: "2026-08-20",
+    category: "Edit",
+    tags: ["deblur", "blurry photos", "photo restorer", "motion blur", "photo restoration"],
+    relatedTools: ["photo-restorer", "image-upscaler", "face-blur"],
+    content: `<p>Your favorite photo of your parents is also your worst copy of it. Taken in 1987 at a cousin's wedding, it's soft — their faces are there, the smiles are visible, but everything has a slightly dreamy, out-of-focus quality that the photographer never intended. You've tried everything: no amount of sharpening makes it crisp. Then you hear about AI deblurring and you wonder, for the hundredth time, whether the one photo you actually care about can finally be fixed. The answer is a qualified yes — and it depends entirely on what "blurry" means in this particular photo.</p>
+
+<h2>Two Kinds of Blur, Two Outcomes</h2>
+
+<p>There are two blur families. Motion blur happens when the camera or the subject moved during the shot — it smears pixels in a direction, leaving a trail. Out-of-focus blur happens when the lens wasn't focused — everything softens equally, spreading each point of light into a disk. AI handles motion blur dramatically better, because a directional smear is a predictable pattern that reconstruction can partially reverse. Out-of-focus blur is a much harder problem: the information was never captured, and the AI has to invent what a focused version would have looked like.</p>
+
+<h2>What the AI Actually Does</h2>
+
+<p>An AI photo restorer trained on sharp/blurry pairs doesn't undo blur the way you'd un-splash water. It looks at the blurred region and guesses the most likely sharp detail — edges, texture, the probable shape of an eye — and draws it in. The <a href="/en/tools/photo-restorer">photo restorer</a> will make a blurry photo look noticeably sharper, but the sharpness it adds to a face is a confident guess, not a recovered fact. That's fine for a family album and a serious problem if you need to identify someone. The counter-intuitive part: check the face first. If the deblurred person looks like the person, you've won; if the nose looks different, that's the invention showing.</p>
+
+<h2>The Order of Operations</h2>
+
+<p>One rule makes the biggest difference: deblur first, upscale second — never the reverse. If you enlarge a blurry photo first, the upscaler invents detail on top of a mess, and the deblur tool has less to work with. Run the <a href="/en/tools/photo-restorer">photo restorer</a> on the original, then the <a href="/en/tools/image-upscaler">image upscaler</a> on the result. And if you're torn between preserving and anonymizing an old face, the <a href="/en/tools/face-blur">face blur</a> tool is the mirror image of this problem — the same facial technology, pointed in the opposite direction.</p>
+
+<p>We covered what AI can and can't fix in our guide to <a href="/en/blog/photo-restorer-damage-types-repair-guide">photo restorer damage types</a>. Blur is its own category. Deblur motion, sharpen cautiously, and accept that some photos are soft forever — the memory they hold doesn't depend on the focus.</p>`
   },
 ];
 
@@ -160,4 +160,4 @@ content = content.replace(old, new_blogs)
 with open(BLOG_FILE, "w", encoding="utf-8", newline="\n") as f:
     f.write(content)
 
-print("AI station: 341->347 static objects done.")
+print("AI station: 347->353 static objects done.")
