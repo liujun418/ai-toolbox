@@ -10911,6 +10911,138 @@ An <a href="/en/tools/ai-image-generator">AI image generator</a> checks all thes
 
 <p>We covered generating alt text for product images in our guide to <a href="/en/blog/image-description-ecommerce-product-alt-text">e-commerce image description</a>. Real estate runs on the same engine, one category up. Describe the room, the light, and the selling detail — and the listing speaks to every buyer who visits it.</p>`
   },
+  {
+    slug: "pdf-to-word-special-characters-guide",
+    title: "PDF to Word and Special Characters: Why Emoji Become Boxes (and How to Fix It)",
+    description: "Convert a PDF and the emoji turn into boxes, the quotes become question marks, and the dashes break. Here's what happens to special characters and how to rescue them.",
+    date: "2026-08-22",
+    category: "Document",
+    tags: ["PDF special characters", "emoji in PDF", "character encoding", "OCR cleanup", "pdf to word"],
+    relatedTools: ["pdf-to-word", "text-polish", "article-generator"],
+    content: `<p>You convert a report that has a few emoji, some smart quotes, and an en dash in a date range. The Word file comes back with little boxes where the emoji were, curly quotes turned into question marks, and the "2018–2021" range now reads "2018?2021." You've just hit the special-character wall — the single most common reason a converted document needs manual fixing. The good news: it's predictable, and most of it is fixable before you start editing. Here's what actually happens under the hood.</p>
+
+<h2>Why Characters Break in the First Place</h2>
+
+<p>PDFs store glyphs, not text — each character is drawn as a shape, and the mapping back to Unicode is only as good as the original file's embedded font information. Emoji are the worst case: they're multibyte Unicode, frequently missing from the font the PDF used, and the converter has to decide what to do with a glyph it can't identify. The result is the classic replacement box, or a drop to a fallback font that changes the whole line's spacing. The <a href="/en/tools/pdf-to-word">PDF to Word converter</a> handles the standard set — Latin letters, common punctuation — reliably; the trouble starts where the document got creative with its characters.</p>
+
+<h2>The Three Characters That Almost Always Break</h2>
+
+<p>Three families cause ninety percent of the damage. Smart quotes and apostrophes (U+2018–U+2019) break when the source font maps them oddly and the converter falls back to ASCII — they arrive as straight quotes or question marks. Dashes — the en dash and em dash — get mistaken for hyphens or split into "?" because they're separate glyphs from the hyphen key. And any character outside the document's declared encoding, from a bullet to a currency symbol, is a lottery. The fix for all three is the same: after converting, run a find-and-replace pass for the specific characters you know were in the original. Pass the whole thing through the <a href="/en/tools/text-polish">text polish</a> tool afterwards and it will catch the strays you missed — the doubled spaces, the orphaned punctuation, the artifacts sitting mid-sentence.</p>
+
+<h2>When OCR Is the Culprit</h2>
+
+<p>If the PDF is a scan rather than a born-digital file, the character errors aren't a font issue — they're an OCR misread. An OCR engine reads "2018–2021" and occasionally emits "2018-2021" or worse, especially in small print. The counter-intuitive part: for scanned documents, don't try to fix every misread character by hand. Instead, verify the fields that matter — numbers, dates, email addresses, prices — and use the rest of the document as a working draft. If the document needs to be clean enough to publish, retype the critical lines rather than trusting the OCR, and run the <a href="/en/tools/article-generator">article generator</a> only on the structure, not the recovered text. We covered when a conversion is even worth doing in our guide to <a href="/en/blog/pdf-to-word-when-not-to-convert-guide">when you should NOT convert a PDF</a> — a heavily typographic brochure is a good candidate for staying a PDF. For everything else, convert, sweep for the three character families, and polish the residue away.</p>`
+  },
+  {
+    slug: "avatar-generator-social-series-guide",
+    title: "Avatar Generator for Social Media: Building a Consistent 5-Avatar Series",
+    description: "One avatar per platform fragments your identity. Here's how to generate a series of five avatars that read as the same person everywhere you post.",
+    date: "2026-08-22",
+    category: "Generate",
+    tags: ["avatar series", "social media branding", "avatar generator", "consistent identity", "content creator"],
+    relatedTools: ["avatar-generator", "background-remover", "image-upscaler"],
+    content: `<p>Your YouTube avatar is one image, your Twitter profile is another, your newsletter uses a third, and your podcast is a fourth — and they all show the same face, roughly, in different lighting and colors. Followers who cross your platforms have a nagging "is this the same person?" feeling. The fix isn't one avatar; it's a series: five versions of the same persona, each tuned for a platform's shape and mood, that all share one underlying identity. An <a href="/en/tools/avatar-generator">avatar generator</a> can produce the whole set in one sitting — if you lock the variables.</p>
+
+<h2>Design One Base, Then Vary Deliberately</h2>
+
+<p>Generate the base avatar first and treat it as the anchor: the same face, same palette, same background concept. Everything after that is a controlled variation — a square crop for profiles, a wide crop for banners, a brighter version for dark UIs, a simpler version that survives at 32 pixels. The counter-intuitive part is what you don't vary: expression and composition stay constant, because the brain recognizes identity from the arrangement of features, not the color scheme. Change the colors and your series feels like a brand; change the face and it feels like a new person every week.</p>
+
+<h2>Keep the Set Renderable at Every Size</h2>
+
+<p>Different platforms render differently: some crush profiles to a circle, some to a tiny corner thumbnail, some show the full image only on hover. Design each variant for its smallest display, not its largest. The <a href="/en/tools/image-upscaler">image upscaler</a> keeps small crops sharp when you need a bigger export, and the <a href="/en/tools/background-remover">background remover</a> isolates the subject so the same avatar sits cleanly on any platform's banner art. Your library then becomes: base + square + wide + tiny + banner, five files, one person.</p>
+
+<h2>Version the Series, Don't Churn It</h2>
+
+<p>The series only works if it persists — the recognition payoff compounds over months, not days. Set a version number for the set and change it deliberately (a seasonal variant, a rebrand) rather than regenerating a new face whenever you feel like a refresh. We covered the same consistency logic for channel avatars in our guide to <a href="/en/blog/avatar-generator-youtube-channel-avatar-guide">building a recognizable channel identity</a>. A social series is that principle applied across platforms: one base, five deliberate variants, and a version you don't tinker with every week.</p>`
+  },
+  {
+    slug: "face-blur-group-photo-consent-guide",
+    title: "Face Blur in Group Photos: The Consent Problem Class Photos and Team Photos Don't Solve",
+    description: "A group photo has faces everywhere — and blurring them all destroys the memory. Here's how to handle consent in group photos without ruining them.",
+    date: "2026-08-22",
+    category: "Edit",
+    tags: ["group photo", "face blur", "consent", "class photo", "team photo"],
+    relatedTools: ["face-blur", "object-remover", "background-remover"],
+    content: `<p>You're the parent coordinator for the school play, and the photographer just shared the group shot of all thirty kids in costume. Ten parents signed the media release; twenty didn't answer; three explicitly said no photos of their child online. Now the group photo sits in your drafts, and every solution feels wrong: posting it leaks the three kids, blurring every face destroys the picture, and asking again starts a group-chat war. Group photos are the hardest consent problem in photography, because the answer to "whose face is in this picture?" is "everyone's." Here's how to work through it.</p>
+
+<h2>First, Understand What Consent Actually Requires</h2>
+
+<p>The default for minors is: no permission, no publication. That's not a preference, it's a legal baseline, and a group photo doesn't get a pass — an identifiable child is an identifiable child whether they're front row center or standing third from the left in the back. So before you decide how to blur, decide what the photo is for: a private class group (usually fine to share inside the community), a public post, or a school newsletter. The purpose changes the bar. We covered the public-space legal side in our guide to <a href="/en/blog/face-blur-wedding-event-photography-consent">blurring unconsenting guests at events</a> — group photos are the same problem with more faces.</p>
+
+<h2>Targeted Blur Beats Blanket Blur</h2>
+
+<p>The counter-intuitive part: you don't blur the whole photo, you blur the few faces that need it. A <a href="/en/tools/face-blur">face blur</a> tool with per-face control lets you anonymize exactly the three non-consenting kids while the other twenty-seven stay recognizable — and the picture keeps its value as a class memory instead of becoming a smudge field. Use a strong blur or a solid block, not a thin Gaussian filter, because weak blur can be partially undone by AI — the reversible-blur problem we documented in our guide to <a href="/en/blog/face-blur-reversible-blur-protection-guide">mosaic vs Gaussian blur</a>. And if a child is turning away, head partially hidden, or wearing a face cover, the safest treatment is a clear overlay on that face regardless of whether the blur tool detected it.</p>
+
+<h2>The Rules That Prevent Next Year's Problem</h2>
+
+<p>The real fix is structural, not per-photo. Add a media-release line to the permission form, so consent is collected once at the start of the year instead of negotiated per picture. State what you'll publish and where, and offer a no-photo option that's easy to choose. Then the group photo becomes a routine workflow: shoot, identify the non-consenting faces, blur them with the <a href="/en/tools/face-blur">face blur</a> tool, and publish with confidence. When you need to remove a whole person rather than blur them — a parent who photo-bombed in the background and isn't part of the group — the <a href="/en/tools/object-remover">object remover</a> or a <a href="/en/tools/background-remover">background remover</a> pass handles it. Blur for identity, remove for clutter, and collect consent before the shutter clicks — that's the whole playbook.</p>`
+  },
+  {
+    slug: "watermark-remover-software-capture-guide",
+    title: "Removing Software Watermarks: Cleaning Screenshot Stamps From Free-Tier Captures",
+    description: "Your screen recorder stamped 'Trial Version' across every capture. Here's how to clean those stamps, and when you're better off re-recording instead.",
+    date: "2026-08-22",
+    category: "Edit",
+    tags: ["software watermark", "screen recording", "trial stamp", "screenshot cleanup", "watermark removal"],
+    relatedTools: ["watermark-remover", "object-remover", "background-remover"],
+    content: `<p>You recorded a demo with the free tier of a screen recorder, and every frame carries a "Trial Version — www.example.com" stamp in the corner. The video is exactly what you need: the clicking, the right steps, the perfect pacing. Re-recording means redoing all of it; removing the stamp means the <a href="/en/tools/watermark-remover">watermark remover</a> has to reconstruct the pixels under a logo that's on top of whatever you were demonstrating. This is the classic free-tier trap, and the honest answer has three branches: clean it, crop it, or redo it.</p>
+
+<h2>When Cleaning Actually Works</h2>
+
+<p>The stamp is removable when it sits over clean, repetitive content — a solid background, a flat UI color, a blank corner. The watermark remover rebuilds the covered area from the surrounding pixels, and on a uniform background the result is indistinguishable. Run a single frame through the <a href="/en/tools/watermark-remover">watermark remover</a> first as a test: if the corner comes back clean, batch the same treatment across the frames that matter. The counter-intuitive part is that video stamps are usually the same logo at the same position every frame, so you clean one clean frame and the rest follows — you don't have to repair every second of footage separately.</p>
+
+<h2>When Cropping Beats Cleaning</h2>
+
+<p>If the stamp sits over busy content — text scrolling, a moving cursor, a live graph — reconstruction gets patchy, and the artifact becomes more noticeable than the stamp ever was. Before you fight the tool, check whether the video still works cropped: many recordings have a comfortable margin, and cutting 10% off the corner removes the stamp entirely with zero artifacts. A <a href="/en/tools/object-remover">object remover</a> pass handles a stray cursor or a small UI glitch that cropping leaves behind, and the <a href="/en/tools/background-remover">background remover</a> is the right call only if you're isolating a subject rather than fixing a frame. Cropping is the cheapest fix that a reviewer will never notice.</p>
+
+<h2>When You Should Just Re-Record</h2>
+
+<p>The honest branch: if the demo is for clients or a public tutorial, and the stamp sits mid-frame or over key content, re-recording takes twenty minutes and a clean copy beats any repair. A patched watermark over a price you're quoting looks worse than a retake, and the license question cuts the other way — removing a stamp from footage your software added is cleaning your own work, but stripping a third-party watermark to pass work off as yours is a different story, the copyright boundary we mapped in our guide to <a href="/en/blog/watermark-remover-invisible-ai-watermarks-guide">watermark removal and copyright</a>. Test the clean, try the crop, and keep the retake in your back pocket. Your own stamp, clean frame, honest footage — that's the demo that sells.</p>`
+  },
+  {
+    slug: "text-to-speech-speech-rehearsal-guide",
+    title: "Text to Speech for Speech Rehearsal: Hearing Your Own Talk Before You Give It",
+    description: "Reading your own speech doesn't catch the stumbles — hearing it does. Here's how to use TTS to rehearse, time, and tighten a talk before an audience hears it.",
+    date: "2026-08-22",
+    category: "Content",
+    tags: ["speech rehearsal", "text to speech", "presentation prep", "public speaking", "talk timing"],
+    relatedTools: ["text-to-speech", "text-polish", "article-generator"],
+    content: `<p>You wrote a ten-minute talk, you've read it three times, and it feels airtight. Then you present it and discover the sentence that trips you, the transition that hangs, and the section that runs three minutes over. Reading a speech is a lie detector that doesn't go off — your brain fills in the delivery gaps as it reads. Hearing the same words aloud, even in a synthetic voice, exposes the actual rhythm. A <a href="/en/tools/text-to-speech">text to speech</a> tool turns rehearsal from a silent reread into an audible run-through you can do anywhere. Here's the workflow.</p>
+
+<h2>Listen at the Speed Your Audience Will Hear</h2>
+
+<p>Generate the talk and listen to it once at normal speed, all the way through, without notes. You're not checking content — you're checking timing and flow: where the recording drags, where the ideas crowd each other, where a sentence is too long to say in one breath. Then listen again at a slightly slower pace, the way a live delivery actually lands with pauses and emphasis. The counter-intuitive part: the synthetic voice doesn't need to sound like you for this to work. It needs to have the same syllable count and the same sentence boundaries, because those are what determine where a human voice stumbles.</p>
+
+<h2>Use the Recording to Trim, Not Just to Check</h2>
+
+<p>When you hear a section that feels overlong, cut words, not ideas — shorten the sentences and let the meaning breathe. Run the revised draft through the <a href="/en/tools/text-polish">text polish</a> tool to strip the filler, then regenerate and re-listen. This is where the loop pays off: each pass tightens the talk measurably, and you're rehearsing at the same time. If you need a stronger opening or a clearer summary, the <a href="/en/tools/article-generator">article generator</a> can draft a hook or a closer from your outline, which you then fold into the spoken draft and test the same way.</p>
+
+<h2>Time It With a Stopwatch in Your Head</h2>
+
+<p>The recording gives you a reliable total runtime — write the talk at your normal speaking pace and it runs close to the reading time, which means the ten-minute talk that reads as 13 minutes is already over before you start. We covered listening to your own writing in our guide to <a href="/en/blog/text-to-speech-ivr-phone-menu-guide">why automated voices sound robotic</a> — the same principle that makes IVR menus painful is what makes TTS a brutal, honest rehearsal partner: it has no charisma to cover the weak lines. Let it read your talk once, mark where your own delivery would improve, and walk in having already heard the whole thing. The audience hears it for the first time; you won't.</p>`
+  },
+  {
+    slug: "colorizer-vintage-ads-retro-marketing-guide",
+    title: "Colorizer vs Keeping Ads Black-and-White: When Retro Marketing Should Stay Monochrome",
+    description: "Colorizing a vintage ad can revive it — or strip the era's charm. Here's the honest comparison of when to colorize old marketing and when to leave it in black and white.",
+    date: "2026-08-22",
+    category: "Edit",
+    tags: ["vintage ads", "colorizer", "retro marketing", "black and white", "brand nostalgia"],
+    relatedTools: ["colorizer", "photo-restorer", "image-description"],
+    content: `<p>Your brand's throwback post uses a 1962 print ad, and it's getting mixed reactions. Half the comments love the "authentic old feel"; the other half say it looks washed out next to your modern feed. The obvious answer — colorize it — isn't obviously right, because a vintage ad's value isn't just its content, it's its era. Colorizing can make an old ad feel new, or it can strip the exact charm people came for. Here's the honest comparison.</p>
+
+<h2>What Colorizing a Vintage Ad Adds</h2>
+
+<p>Color returns an old ad's selling power. A 1950s car ad in a modern feed reads as history; the same ad with accurate period color reads as a product. The <a href="/en/tools/colorizer">colorizer</a> recovers the palette the original consumers saw — the reds of the packaging, the blues of the sky, the skin tones — and that recovered color is what makes a throwback land as marketing rather than as a museum piece. When the goal is "bring the old campaign back," colorize it, and pair the result with the <a href="/en/tools/photo-restorer">photo restorer</a> first so scratches and fading don't get colorized along with the image. We covered the restore-before-colorize order in our guide to <a href="/en/blog/colorizer-verify-accuracy-historical-guide">checking a colorized photo against history</a> — the same checks apply to ads, where a wrong brand red or a wrong uniform shade is instantly visible to anyone who remembers the era.</p>
+
+<h2>What Black and White Preserves</h2>
+
+<p>Monochrome keeps the ad's honesty. A black-and-white 1960s print reads as an artifact — the grain, the contrast, the absence of color all signal "this is from another time," which is precisely the nostalgia a throwback is selling. The counter-intuitive part: for most brand-nostalgia posts, the black-and-white original is the better asset, because colorizing it makes it compete on accuracy with the era's real colors, and a colorizer's confident guess is easy to get wrong. When you're marketing nostalgia itself — an anniversary post, a heritage series — keep the monochrome and let the era do the work.</p>
+
+<h2>Decide By the Ad's Job, Not Its Age</h2>
+
+<p>Ask what the image is doing. Is it selling a current product with retro styling? Colorize it, carefully, and keep the era's spirit in the palette. Is it selling the brand's history? Keep it black and white and caption it honestly. Is it a mood-setter in a campaign? Either works if the tone stays consistent. The same discipline that governs <a href="/en/tools/image-description">image descriptions</a> — say what the image is, don't invent what it isn't — applies here: colorize when the color serves the message, stay monochrome when the era is the message, and never let a plausible guess pass for documented history.</p>`
+  },
 ];
 
 // Synchronous static accessors — used at build time (generateStaticParams)
