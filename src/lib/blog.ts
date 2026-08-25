@@ -11043,6 +11043,138 @@ An <a href="/en/tools/ai-image-generator">AI image generator</a> checks all thes
 
 <p>Ask what the image is doing. Is it selling a current product with retro styling? Colorize it, carefully, and keep the era's spirit in the palette. Is it selling the brand's history? Keep it black and white and caption it honestly. Is it a mood-setter in a campaign? Either works if the tone stays consistent. The same discipline that governs <a href="/en/tools/image-description">image descriptions</a> — say what the image is, don't invent what it isn't — applies here: colorize when the color serves the message, stay monochrome when the era is the message, and never let a plausible guess pass for documented history.</p>`
   },
+  {
+    slug: "pdf-to-word-password-locked-files-guide",
+    title: "PDFs With Passwords and Permission Locks: What Can Actually Be Converted",
+    description: "Some PDFs let you read but not copy, and some need a password just to open. Here's what those locks mean for conversion — and what to do about them.",
+    date: "2026-08-25",
+    category: "Document",
+    tags: ["password protected PDF", "PDF permissions", "encrypted PDF", "PDF conversion", "OCR"],
+    relatedTools: ["pdf-to-word", "image-description", "text-polish"],
+    content: `<p>You download a contract, open it fine, and then try to convert it to Word — and it refuses, or asks for a password. Some PDFs you can open but not copy; some need a password just to view; some do both. The locks aren't one thing, and understanding which kind you're dealing with tells you whether conversion is even possible. Here's the practical map of locked PDFs and what a converter can and can't do with each.</p>
+
+<h2>Two Different Kinds of Locks</h2>
+
+<p>PDF protection comes in two layers, and people mix them up constantly. The "owner" password is a permission lock: the file opens for anyone, but copy, print, or edit are disabled. The "user" password is real encryption: the file won't open at all without the password, because the content itself is scrambled. This matters enormously for conversion. A permission-locked PDF still has its text layer intact, so a converter reads it the same way it reads any digital PDF — the lock stops copy-paste in a reader, not extraction by a tool. A user-password PDF, by contrast, is genuinely encrypted, and no converter is getting in without the password.</p>
+
+<h2>Scanned PDFs Add a Third Layer</h2>
+
+<p>Here's the trap: many "locked" PDFs are also scans, and scanning is a separate problem from encryption. A scanned permission-locked document contains no text at all — just pictures of pages — so even with the lock lifted, conversion needs OCR, and OCR on a scan needs a decent-quality image to work with. We covered how special characters survive this journey in our guide to <a href="/en/blog/pdf-to-word-special-characters-guide">emoji and smart quotes in conversion</a>; the scan adds the same fragility to every letter. If a document is both encrypted and scanned, you need the password first, then OCR, then cleanup — three steps, each with its own failure mode.</p>
+
+<h2>What to Do If It's Your Document</h2>
+
+<p>The counter-intuitive part: if you own the document or have the rights, most permission locks are negotiable. Many are set by the tool that created the file, and the person who created it often has the unlock, even if the reader doesn't. Ask for an unlocked copy, or for the password, before you fight the file. If the content is genuinely yours and the text layer is digital, conversion is routine; if you only have a print or a scan, route it through the <a href="/en/tools/image-description">image description</a> pipeline to check what the scan actually contains, then convert and run the result through <a href="/en/tools/text-polish">text polish</a> to catch the OCR noise. The <a href="/en/tools/pdf-to-word">PDF to Word</a> tool handles all of this — you just need to know which lock you're facing. Permission lock: convert. Real encryption: get the password. Locked scan: password, then OCR. Know the layer, and the file stops being a mystery.</p>`
+  },
+  {
+    slug: "avatar-generator-podcast-cover-art-guide",
+    title: "Podcast Cover Art With AI Avatars: A Consistent Host Face at 3000 x 3000",
+    description: "Spotify wants a 3000 x 3000 square, Apple crops the edges, and your host needs to be recognizable. Here's how to build podcast cover art around an AI avatar.",
+    date: "2026-08-25",
+    category: "Generate",
+    tags: ["podcast cover art", "podcast artwork", "AI avatar", "Spotify size", "branding"],
+    relatedTools: ["avatar-generator", "background-remover", "image-upscaler"],
+    content: `<p>You're launching a podcast and someone reminds you the cover art needs to be 3000 x 3000 pixels. You also need it to actually say something, at thumbnail size, in a feed full of other covers. That's where an AI avatar earns its keep: one consistent host face that looks designed rather than selfie'd. But podcast art is a specific discipline, and the usual avatar advice only gets you partway. Here's how to build a cover that survives the crop, the shrink, and the feed.</p>
+
+<h2>Design for a Circle, Then a Square</h2>
+
+<p>Apple Podcasts renders covers as circles, Spotify uses squares, and both shrink your artwork to a few hundred pixels in search results. The counter-intuitive part: the most important test of your cover is what it looks like at 150 pixels — roughly the size of a thumb — because that's where a listener decides. Faces win here, but small faces need room: a single strong portrait with the eyes around the top third of the artwork reads clearly in a circle crop, while a wide scene or lots of text collapses into noise. Build at 3000 x 3000, but design the layout so the essential 80 percent survives both a circle and a tiny square.</p>
+
+<h2>One Face, Consistent Across Episodes</h2>
+
+<p>Your cover should stay stable while you produce episodes — that's what makes it a brand. Generate one avatar that represents the host, lock the identity with the same prompt and settings, and resist redrawing it every few weeks. We covered exactly this discipline in our guide to <a href="/en/blog/avatar-generator-social-series-guide">building a consistent avatar series</a>; podcast covers are the same idea with a different canvas. Keep the face consistent, and vary only what varies for real — a season color, a guest slot — so the artwork signals change without breaking recognition.</p>
+
+<h2>Make It Read as Designed</h2>
+
+<p>The tell of amateur podcast art is that it looks like a photo with a title slapped on. Give the cover a designed feel: put the avatar on a clean background with <a href="/en/tools/background-remover">background removal</a> and a deliberate backdrop, add the show name in a typeface that survives shrinking, and check the contrast so the title doesn't vanish at thumbnail size. If you generate lower-res and need it bigger, an <a href="/en/tools/image-upscaler">image upscaler</a> can help, but it won't invent detail — so generate the <a href="/en/tools/avatar-generator">avatar</a> as close to final size as you can. One face, one palette, a title that reads small, and your cover works in the feed, the circle, and the big square. That's the whole job.</p>`
+  },
+  {
+    slug: "face-blur-gym-workout-video-guide",
+    title: "Filming at the Gym: Blurring Other Members Out of Your Workout Videos",
+    description: "You're recording a set for your coach or your channel, and the guy next to you is in the frame. Here's the privacy math of gym filming — and the red lines.",
+    date: "2026-08-25",
+    category: "Edit",
+    tags: ["gym video", "workout filming", "face blur", "fitness content", "privacy"],
+    relatedTools: ["face-blur", "object-remover", "background-remover"],
+    content: `<p>You set up your phone to film a set, and the person on the bench behind you walks into frame. Do you keep filming and blur them later, or kill the clip? Gym filming is the most common privacy gray zone in fitness content, and it's not just about faces — it's about gyms being semi-public spaces where people very reasonably don't want to be on camera. Here's how to film workouts without becoming the person everyone stops going to the gym at the same time as.</p>
+
+<h2>Gyms Are Public Enough to Be a Problem</h2>
+
+<p>A gym floor isn't a public street, and it isn't your living room — it's a space with a membership, a contract, and people who paid for privacy while sweating. The counter-intuitive part: you're usually in the clear to film yourself, and almost never in the clear to film everyone else. Other members didn't sign your content release, and in many places the floor is covered by the gym's own camera policy. So treat the frame as something you control: pick a spot and an angle where others don't appear, film during quiet hours, or ask the people near you if it's okay. A conversation takes ten seconds; an apology after the video is posted takes a lot longer.</p>
+
+<h2>When People Do Appear, Blur and Remove</h2>
+
+<p>Sometimes you can't avoid it — a mirror, a walk-through, a background row of machines. For people who linger in frame, use the <a href="/en/tools/face-blur">face blur</a> tool to anonymize recognizable faces, and be thorough: a blurred face with a distinctive shirt, tattoo, or voice is still recognizable, so when someone stays in the frame, consider blurring more than the face or cutting the shot. For passersby who cross the frame briefly, an <a href="/en/tools/object-remover">object remover</a> can often lift them out entirely — and remember gyms are full of reflections, so check mirrors and glass for faces you didn't notice while recording.</p>
+
+<h2>The Red Lines That Never Blur</h2>
+
+<p>Three places have no workaround. Locker rooms and changing areas: absolute no, no exceptions, no "it was an accident" that makes it to the internet. Filming someone without consent while they're changing or vulnerable: never. And if the gym has a policy against filming, the policy wins — you're a guest. We covered the consent math for group photos in our guide to <a href="/en/blog/face-blur-group-photo-consent-guide">class photos and team photos</a>, and it's the same logic under barbells. Film yourself, protect everyone else, and make the <a href="/en/tools/background-remover">background remover</a> your cleanup layer for mirrors and racks. The best gym content respects the room it was filmed in.</p>`
+  },
+  {
+    slug: "watermark-remover-tiled-vs-single-watermarks-guide",
+    title: "Tiled vs Single Watermarks: Which Ones AI Can Remove (and Which Should Stay)",
+    description: "One small corner logo is easy to remove; a repeating diagonal pattern is a different beast. Here's the honest comparison of watermark styles and removal.",
+    date: "2026-08-25",
+    category: "Edit",
+    tags: ["tiled watermark", "repeating watermark", "watermark removal", "photo copyright", "image cleanup"],
+    relatedTools: ["watermark-remover", "object-remover", "image-upscaler"],
+    content: `<p>A corner logo and a full-image repeating pattern feel like the same problem until you try to remove them. The corner mark comes off in seconds; the tiled one turns into a messy game of guessing what was underneath. The difference isn't just difficulty — it's a clue about what the watermark is for. Here's the honest comparison between the two styles, what AI can actually do to each, and which watermarks you should probably leave alone.</p>
+
+<h2>The Single Corner Mark: Easy Pickings</h2>
+
+<p>A small, semi-transparent logo in the corner sits on top of a mostly-uniform patch of image — sky, wall, background — so the AI has a straightforward job: sample the surrounding texture and paint the mark away. The result is usually clean, which is exactly why corner watermarks are weak protection: anyone with a basic tool can erase them in under a minute. That's fine when the mark's job is attribution rather than theft-prevention — a photographer's signature in the corner tells viewers who made the shot, and the <a href="/en/tools/watermark-remover">watermark remover</a> handles cleanup only when you have the right to do it.</p>
+
+<h2>The Tiled Pattern: A Different Beast</h2>
+
+<p>A repeating diagonal watermark is designed for one purpose: to make the image useless if stolen, by covering the whole thing with the brand. And it works — which is exactly why it's hard to remove. The pattern isn't a small patch of uniform background; it's woven into the texture everywhere, so the AI isn't filling one hole, it's reconstructing large regions it never saw. The result often looks plausible and subtly wrong: smeared texture, ghostly diagonal lines, details the model invented because it had to invent something. It's the same gap we covered in our guide to <a href="/en/blog/watermark-remover-software-capture-guide">cleaning trial stamps off screenshots</a> — uniform spots clean well, full-pattern damage doesn't.</p>
+
+<h2>Which Should You Even Attempt?</h2>
+
+<p>The honest answer: if it's a tiled watermark, your own content, or a licensed image, the cleanup is often more work than re-sourcing. Ask what the watermark is protecting. A corner mark on your own archived work, or on an image you own — clean it and keep a clean master. A tiled watermark on someone else's content — that's the copyright system working; don't fight it. And when a tiled pattern is genuinely yours and you want a clean version, go back to the original file or re-export from the source, because reconstructing an image the model never saw is worse than redoing it. An <a href="/en/tools/object-remover">object remover</a> can handle scattered small marks, and an <a href="/en/tools/image-upscaler">image upscaler</a> can't undo a watermark — only rebuild it. Know the difference, and you'll stop losing afternoons to watermarks that were never meant to come off.</p>`
+  },
+  {
+    slug: "colorizer-colorblind-images-guide",
+    title: "Colorblind Eyes and Black-and-White Photos: What AI Colorization Actually Adds",
+    description: "About 300 million people see color differently. For them, a colorized photo isn't decoration — it can be information. Here's how colorization changes what a photo says.",
+    date: "2026-08-25",
+    category: "Edit",
+    tags: ["colorblind", "color vision deficiency", "AI colorization", "accessibility", "photography"],
+    relatedTools: ["colorizer", "image-description", "photo-restorer"],
+    content: `<p>About 300 million people have some form of color vision deficiency, most commonly red-green. Most accessibility advice treats them as an edge case to design around. But there's a quieter, more interesting story: black-and-white photographs have always been a kind of equalizer for colorblind viewers — nobody sees the colors in a monochrome shot — and now AI colorization is quietly changing what those photos communicate to them. Here's what colorization adds, what it can't, and why it matters more than you'd think.</p>
+
+<h2>Black and White Was the Fair Medium</h2>
+
+<p>In a color photo, a red-green colorblind viewer sees two objects that look identical where everyone else sees red and green. In a black-and-white photo, everyone is in the same boat: the information is carried by tone, texture, and contrast, and colorblind viewers read those exactly like anyone else. That's a real advantage of monochrome that nobody celebrates — the same argument we made for keeping retro marketing black-and-white in our guide to <a href="/en/blog/colorizer-vintage-ads-retro-marketing-guide">vintage ads and the monochrome aesthetic</a>. The counter-intuitive part: when you colorize a black-and-white photo with the <a href="/en/tools/colorizer">colorizer</a>, you're not just adding decoration — you're adding information in a channel that up to one in twelve men and one in two hundred women can't reliably read.</p>
+
+<h2>What Colorization Can Still Add</h2>
+
+<p>That doesn't mean colorizing is pointless for colorblind viewers — it's more useful than it looks. Color vision deficiency almost never means "no color at all": most people distinguish blue from yellow perfectly, and many can read brightness and saturation differences even when hue is confusing. A colorized photo puts sky, skin, grass, and clothing into a blue-yellow structure that most colorblind viewers can parse, even if reds and greens blur together. More importantly, color carries secondary cues — a colorized shot reveals a red object against a green background as a tonal difference that was invisible in the original black and white. So colorization can make a photo more legible, not less, as long as the hues are chosen to separate well rather than to look pretty in isolation.</p>
+
+<h2>The Danger Is Confidence, Not Color</h2>
+
+<p>What colorization can't do is guarantee accuracy. The <a href="/en/tools/colorizer">colorizer</a>'s guesses are plausible, not documented — and for a colorblind viewer, a confidently wrong hue is undetectable, since they can't check it against their own perception. That's exactly why the human-readable layer matters most: a colorized photo should be paired with an <a href="/en/tools/image-description">image description</a> that states the facts ("a man in a red jacket stands beside a green tractor") so the color is verified in words, not left to the image. And if the goal is historical accuracy over effect, run the <a href="/en/tools/photo-restorer">photo restorer</a> first and keep the color conservative. Color is information — for colorblind viewers, it's information that needs a caption to be trustworthy.</p>`
+  },
+  {
+    slug: "text-to-speech-tiktok-shorts-narration-guide",
+    title: "TikTok and Shorts Narration With Text to Speech: Pacing, Subtitles, and the Script",
+    description: "Short videos live or die on the first three seconds and the pacing after. Here's how to script and set up TTS narration that keeps viewers watching.",
+    date: "2026-08-25",
+    category: "Content",
+    tags: ["TikTok voiceover", "YouTube Shorts", "TTS narration", "short video script", "subtitles"],
+    relatedTools: ["text-to-speech", "text-polish", "article-generator"],
+    content: `<p>You wrote a 500-word explanation that would make a great short — then you paste it into a text to speech tool, and the result is a wall of words racing at the viewer for two minutes. Short video narration is a different animal from a blog post read aloud. The script is shorter, the pacing is tighter, and the viewer can leave at any second. Here's how to use text to speech for shorts in a way that actually keeps people watching.</p>
+
+<h2>Write the Script to Be Heard, Not Read</h2>
+
+<p>A 60-second short at comfortable narration speed holds roughly 150 to 170 words — about a third of what a blog paragraph covers. Cut to one idea, one example, and one payoff. The counter-intuitive part: the first two or three seconds decide the video, so the hook has to be in the first sentence, not the first ten. "Nobody tells you this about X" lands; "In this video, we're going to explore X in detail" loses the viewer before the TTS finishes the intro. Write for the ear: short sentences, concrete nouns, and let the <a href="/en/tools/text-polish">text polish</a> tool tighten the draft before it ever reaches the voice.</p>
+
+<h2>Control Pacing With Punctuation</h2>
+
+<p>Text to speech reads your punctuation as rhythm, so punctuation is your directing tool. A period is a breath; a comma is a pause; an ellipsis is a beat. The mistake is feeding it a comma-spliced run-on and getting a breathless wall of sound. Add pauses at the punchlines, slow the rate for emphasis, and use line breaks so the engine doesn't merge sentences. Numbers and dates are a classic trap — the engine may read "1,500" as "one thousand five hundred" or fumble a date, so spell out anything where the phrasing matters. Keep the delivery consistent enough that the viewer trusts the voice, and resist cranking the speed past what a human would speak; <a href="/en/tools/text-to-speech">text to speech</a> is a narrator, not a race.</p>
+
+<h2>Subtitles Do Half the Work</h2>
+
+<p>Most shorts are watched on mute, which means your subtitles are carrying the script. Match the on-screen text to the narration, keep each caption to a line or two so it stays in the safe zone, and let the pacing of the subtitles follow the pacing of the voice. If you're adapting longer material, an <a href="/en/tools/article-generator">article generator</a> can outline the original into a short-format structure, but the final tightening is yours. We covered hearing your own script in our guide to <a href="/en/blog/text-to-speech-speech-rehearsal-guide">rehearsing a talk with TTS</a> — shorts are the same skill at high speed: one idea, a hook in the first sentence, punctuation as pacing, and subtitles that carry the mute crowd.</p>`
+  },
 ];
 
 // Synchronous static accessors — used at build time (generateStaticParams)
