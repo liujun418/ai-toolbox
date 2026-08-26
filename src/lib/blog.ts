@@ -11175,6 +11175,142 @@ An <a href="/en/tools/ai-image-generator">AI image generator</a> checks all thes
 
 <p>Most shorts are watched on mute, which means your subtitles are carrying the script. Match the on-screen text to the narration, keep each caption to a line or two so it stays in the safe zone, and let the pacing of the subtitles follow the pacing of the voice. If you're adapting longer material, an <a href="/en/tools/article-generator">article generator</a> can outline the original into a short-format structure, but the final tightening is yours. We covered hearing your own script in our guide to <a href="/en/blog/text-to-speech-speech-rehearsal-guide">rehearsing a talk with TTS</a> — shorts are the same skill at high speed: one idea, a hook in the first sentence, punctuation as pacing, and subtitles that carry the mute crowd.</p>`
   },
+  {
+    slug: "style-transfer-architectural-render-concept-guide",
+    title: "Style Transfer on Architectural Renders: Turning a 3D Scene Into a Concept Sketch",
+    description: "Your 3D render is technically perfect and emotionally flat. Here's how to run it through style transfer for that hand-drawn concept look — and the settings that keep the building recognizable.",
+    date: "2026-08-26",
+    category: "Generate",
+    tags: ["style transfer", "architectural rendering", "concept art", "3D visualization", "presentation"],
+    relatedTools: ["style-transfer", "ai-image-generator", "image-description"],
+    content: `<p>You've got a finished 3D render of a building — accurate geometry, good lighting, correct materials — and it lands flat in the client meeting. The client wants "concept" energy, the kind of loose, hand-drawn feel that sells an idea before it's built. Style transfer is the fastest way there: it repaints your render in the texture of a pencil sketch, watercolor, or charcoal study. But the settings matter, because the goal isn't to destroy the architecture — it's to make it feel like a vision.</p>
+
+<h2>Style Transfer Repaints, It Doesn't Rebuild</h2>
+
+<p>The first thing to understand: style transfer takes what's already in your image and re-renders it with another image's texture. It can't invent a new wing, fix the roofline, or fill in a facade that's not there. If your render has a blank wall, the sketch version will have a blank wall — just sketchy. The counter-intuitive part: that's actually the strength. Because the geometry is preserved, a client can still read the massing and the floor plan while the presentation feels loose and exploratory. You're adding tone, not fabricating architecture.</p>
+
+<p>For the classic architectural result — a pencil or charcoal study — the texture comes through the stroke direction and line weight. Run the render through a <a href="/en/tools/style-transfer">style transfer</a> tool with a sketch reference, and pay attention to the intensity setting. Too weak and it looks like a weird filter; too strong and the building dissolves into scribbles. Start around medium and adjust in small steps — the recognizable massing is the whole point, so check each result against the original for legibility before you commit.</p>
+
+<h2>The Presentation Workflow</h2>
+
+<p>The practical flow is: render your base image at full resolution, apply the style transfer, then present the pair. The sketch version sells the concept; the clean render shows the actual design intent. Clients read that contrast as "here's where we're going, and here's the real thing behind it." Before you present the sketch, check what it actually says about your building with an <a href="/en/tools/image-description">image description</a> — the narrator's-eye view catches a style that quietly bent something load-bearing, which your own eyes will gloss over. And if you need to generate a variation that never existed in the render — a context shot, a moody streetscape — that's where an <a href="/en/tools/ai-image-generator">AI image generator</a> takes over from style transfer.</p>
+
+<h2>When Style Transfer Isn't the Tool</h2>
+
+<p>There's a line between repainting and generating, and crossing it changes the honesty of the presentation. If you need an image that shows a building that was never modeled — a massing study from a new angle, or a variant facade — that's generation, not style transfer, and it comes with all the hallucination risk we covered in our guide to <a href="/en/blog/style-transfer-portrait-face-distortion-guide">style transfer distorting faces and fine landmarks</a>. The same principle applies to buildings: fine details like window mullions and signage will bend under a heavy style. Keep the render clean, keep the style moderate, and the concept sketch will sell the idea without lying about the building.</p>`
+  },
+  {
+    slug: "image-description-ai-generated-image-check-guide",
+    title: "Use AI Image Description to Check AI-Generated Images Before You Use Them",
+    description: "The sixth finger was invisible until someone described the photo out loud. Here's how a description model becomes your quality gate for AI-generated images.",
+    date: "2026-08-26",
+    category: "Content",
+    tags: ["AI image description", "AI image quality", "image check", "hallucination", "visual verification"],
+    relatedTools: ["image-description", "ai-image-generator", "text-polish"],
+    content: `<p>You generated an image of a person holding a mug, and it looked fine — at a glance. Then someone pointed at the right hand and said "there are six fingers," and suddenly you can't unsee it. This is the quiet problem with AI-generated images: the errors are often in places your eye skips, because your brain fills in what it expects to see. The fix is counter-intuitive and cheap: run the image through a description model, and let the machine tell you what's actually there.</p>
+
+<h2>A Second Set of Eyes That Reads Everything</h2>
+
+<p>An <a href="/en/tools/image-description">image description</a> model looks at the image the way a narrator would — object by object, position by position. It doesn't have your expectations, so it will report a "six-fingered hand" or "four legs on the cat" in plain words. That's the quality gate: read the description, and any sentence that doesn't match your intent is a bug. The counter-intuitive part: the model is less biased than you are. You know what the image was supposed to be, so you gloss over errors; the description model has no such loyalty, and its errors are usually in the opposite direction — it might call a glass a bottle — which is still useful signal.</p>
+
+<p>The workflow is simple. Generate the image, then immediately feed it to a description tool before you use it anywhere. Skim the output for anything that doesn't match the prompt. A correct description reads like a checklist of what you asked for; a wrong one names the thing you were trying to avoid. Do this for every image that matters — the ones going on a landing page, a product shot, a report — and you'll catch the fifth finger before it ships.</p>
+
+<h2>Description Won't Tell You If It's Good</h2>
+
+<p>The honest limit: description models verify what's present, not whether it's good. An image can be perfectly described and still be compositionally dead, or stylistically off. What the description gives you is factual ground truth — count, position, presence — the stuff that's embarrassing when wrong and invisible when you're the one staring at the image. Pair it with an aesthetic pass you do yourself, and the two checks cover different failure modes.</p>
+
+<p>If the description catches a problem you want to fix, you have two honest options. Regenerate with a tightened prompt that names the issue — "five fingers," "no extra legs" — and re-check. Or, if it's a small fix, refine the prompt through an <a href="/en/tools/ai-image-generator">AI image generator</a> rather than trying to hand-edit the pixels. And when a description surfaces a caption you'll actually publish — the alt text, the social caption — run it through <a href="/en/tools/text-polish">text polish</a> so the words are as clean as the image. The pattern here is the same one we used for describing photos people send us in our guide to <a href="/en/blog/image-description-dating-profile-photos-guide">reading a photo like a stranger does</a>; now you're applying that stranger's eyes before anyone else sees the image.</p>`
+  },
+  {
+    slug: "object-remover-urban-photography-cleanup-guide",
+    title: "Cleaning Up City Photos: Removing Wires, Pedestrians, and Street Clutter With an Object Remover",
+    description: "The skyline is perfect except for the power lines, the trash can, and the tourist in the corner. Here's the order of operations that cleans a city photo without destroying it.",
+    date: "2026-08-26",
+    category: "Edit",
+    tags: ["urban photography", "object removal", "street photography cleanup", "photo editing", "inpainting"],
+    relatedTools: ["object-remover", "background-remover", "image-upscaler"],
+    content: `<p>You framed the shot, waited for the light, and the result has one problem: reality. A tangle of power lines cuts across the sky, a dumpster parks itself in the foreground, and a pedestrian decided to stand exactly on the horizon. City photos are like this — the subjects are great, the background is chaos. An object remover can clean it all, but the order you remove things in matters more than the tool.</p>
+
+<h2>Remove the Big Stuff First, Then the Small</h2>
+
+<p>The rule that keeps your photo intact: start with the largest objects, then work down to the finest. A dumpster or a parked car is a big region with consistent surroundings — the AI has plenty of context to rebuild from, and the fill will be clean. Save the thin wires and the tiny specks for last, because they need the surrounding texture to be stable. The counter-intuitive part: if you remove the thin lines first, the AI's fill leaves faint artifacts that then get baked into every later removal. Clean the foreground clutter first, and the sky repairs stay invisible.</p>
+
+<p>In an <a href="/en/tools/object-remover">object remover</a>, select the largest offender first — trace it generously so you don't leave a sliver of it behind, because a leftover edge is a re-selection. Then step down to the next size, and re-check after each pass. The model rebuilds from what it sees around the selection, so every removal changes the context for the next one.</p>
+
+<h2>Wires and Reflections Are the Hard Cases</h2>
+
+<p>Power lines deserve their own warning: they cross large areas and leave ghost lines even after removal, because the AI guesses a smooth sky and the wire's slight curve contradicts it. Work in segments — select one stretch of wire at a time, not the whole span — and check each segment before moving on. For people, the rule is different: a distant pedestrian is easy, but someone mid-stride who's larger in frame will leave a smeared ghost of motion. Select the whole person, not just the body, or the shadow becomes the next removal.</p>
+
+<p>If the clutter is everywhere rather than a few objects — a busy street that reads as noise — the better move is often to cut the subject out entirely and rebuild the background, which is exactly what a <a href="/en/tools/background-remover">background remover</a> does: isolate your building or person, then place it on a clean backdrop. And after the cleanup, if the image shrank or needs to be larger for print or a hero slot, an <a href="/en/tools/image-upscaler">image upscaler</a> restores resolution without re-inventing the cleaned areas. The technique of keeping selections tight and checking each fill is the same discipline we walked through in our guide to <a href="/en/blog/object-remover-shadow-leftover-guide">removing objects without leaving shadows behind</a> — city scenes just give you more chances to practice it.</p>`
+  },
+  {
+    slug: "article-generator-long-content-repurpose-guide",
+    title: "Turn One Long Report Into Ten Blog Posts Without Losing the Thread",
+    description: "You wrote a 5,000-word whitepaper and nobody reads it. Here's how to repurpose it into a content series with an article generator — without scattering the argument into noise.",
+    date: "2026-08-26",
+    category: "Content",
+    tags: ["content repurposing", "article generator", "long-form content", "blog series", "content marketing"],
+    relatedTools: ["article-generator", "text-polish", "background-remover"],
+    content: `<p>You spent weeks on a 5,000-word report, published it, and the analytics say four people finished it. The work isn't bad — it's just shaped wrong. Long reports get read in pieces, if at all, and the way to get the ideas read is to cut the report into a series of focused posts, each one a self-contained argument. An article generator makes that fast; the discipline comes from how you slice the original, not from the typing.</p>
+
+<h2>Slice by Argument, Not by Section</h2>
+
+<p>The temptation is to convert each chapter of the report into one post, so a 10-chapter report becomes 10 posts. That's wrong, because chapters carry connective tissue — they reference each other, repeat context, and assume the reader came before. The counter-intuitive part: each post should stand alone as a complete argument, which means you slice the report by claim, not by heading. A report on remote work might yield "the meeting tax," "asynchronous writing," and "the office as a place for depth" — three arguments that happened to live across chapters, now each a readable post.</p>
+
+<p>Start by listing the claims your report actually makes — the findings, the recommendations, the counter-intuitive observations. Each becomes a post topic. Then feed each topic to an <a href="/en/tools/article-generator">article generator</a> as a focused brief: "explain this argument, using the data on page 14, for an audience that hasn't read the report." The generator produces a draft that re-argues the point from scratch, which is exactly what a standalone post needs.</p>
+
+<h2>The Generator Drafts, You Own the Argument</h2>
+
+<p>The generated draft is a starting point, not the post. It'll have the structure and the phrasing, but it won't have your report's specific evidence unless you paste it in — so paste the key numbers and examples into the brief, and then edit the output to keep only what supports your actual argument. Run the tightened draft through <a href="/en/tools/text-polish">text polish</a> to remove the AI-flavored filler and even out the voice, and read it once out loud to make sure it still sounds like you. The report's authority lives in its evidence, and that has to come from you.</p>
+
+<p>Work through the claims one at a time, and don't try to publish all ten at once — a series that drips out weekly keeps the report relevant for a quarter instead of a week. Each post links back to the full report as the "source," which routes your casual readers to the deep version. If a post is a strong idea that needs a visual — a chart from the report, a clean header image — prep it the way we discussed for building a research outline in our guide to <a href="/en/blog/article-generator-research-essay-outline-guide">structuring an essay from an outline</a>, and drop it into a <a href="/en/tools/background-remover">background remover</a> to make the image pop. One report, ten angles, and the ideas finally get read.</p>`
+  },
+  {
+    slug: "photo-restorer-faded-color-photos-guide",
+    title: "Faded Color Photos: Why Old Prints Lose Their Color and How Restoration Brings Them Back",
+    description: "That 1980s family photo has gone pink and pale. It's not magic — dyes degrade over time. Here's what's happening and how a photo restorer rebuilds the original tone.",
+    date: "2026-08-26",
+    category: "Edit",
+    tags: ["faded photos", "color restoration", "photo restorer", "dye degradation", "old photos"],
+    relatedTools: ["photo-restorer", "colorizer", "image-upscaler"],
+    content: `<p>You find a family photo from the 1980s and the faces are washed out, the sky is a sickly pink, and everyone looks slightly sunburned. The classic response is "old photos fade" — which is true but unhelpful, because understanding what actually faded changes how you fix it. Color prints don't age uniformly; they lose dye unevenly, and the pink cast you see is a specific chemical story you can reverse with the right tool.</p>
+
+<h2>Dyes Fade at Different Speeds</h2>
+
+<p>A color print is three layers of dye — cyan, magenta, yellow — laid on top of each other to make every hue. Light, heat, and humidity break down these dye molecules over years, and they don't degrade at the same rate. The result is the signature of old photos: the whole image shifts toward whatever dyes survived. A pink or red cast usually means the cyan layer faded fastest — the cooler colors went first and the warmer ones remain. A yellow cast means the opposite. That cast isn't random damage; it's a predictable chemical equation, and reversing it means putting back the missing dye density, not inventing color.</p>
+
+<h2>Restoration Rebuilds Tone, Not Detail</h2>
+
+<p>The counter-intuitive part: a photo restorer working on a faded print is doing something different from colorization. Colorization invents plausible color for a black-and-white photo — it's a guess with a purpose. Restoration, by contrast, recovers the color that's still in the faded print — the dye is there, just weakened — so the tool balances the channels and restores the original distribution. Run the faded photo through a <a href="/en/tools/photo-restorer">photo restorer</a> and it will lift the cyan back up, calm the magenta, and return the white balance to something neutral. The difference matters for accuracy: restoration is reconstruction, colorization is invention.</p>
+
+<p>The order of operations matters. Restore the tone first, while the image is still a color photo, and only then consider any creative pass. If you restore first and then decide the image is too far gone to trust the color, you can still convert to black and white cleanly. But if you colorize a faded print directly, you're guessing on top of a guess — the tool has to invent the hue that's actually still sitting there under the cast. And when the print is small or grainy, the restoration itself needs enough resolution to work with: scan at a high setting, run the restorer, then finish with an <a href="/en/tools/image-upscaler">image upscaler</a> only after the color is balanced, so you never enlarge the artifacts of the fade.</p>
+
+<h2>Prevent the Next Decade of Fading</h2>
+
+<p>The last step is storage. Faded prints keep fading as long as they sit in sunlight or a warm closet — archive the restored version as a digital master, store the original in the dark, and print a copy if you want it on the wall. The same tool that recovered your 1980s print can handle the older black-and-white shots too, where the damage is scratches rather than dye — we covered the before-and-after workflow in our guide to <a href="/en/blog/photo-restorer-blurry-photos-deblur-guide">recovering blurry and out-of-focus photos</a>. And if a photo has faded past the point of recoverable color — so pale the channels are flat — a <a href="/en/tools/colorizer">colorizer</a> becomes a reasonable second choice, because now you're rebuilding rather than restoring. Know which one you're doing, and the photo gets its face back.</p>`
+  },
+  {
+    slug: "image-upscaler-ai-generated-small-images-guide",
+    title: "AI Images Are Too Small: When to Upscale and When to Regenerate at a Higher Size",
+    description: "Your AI-generated hero image is 1024px and the layout wants 2000px. Upscaling can stretch it — but regenerating with the right size settings is often the smarter move. Here's the honest comparison.",
+    date: "2026-08-26",
+    category: "Edit",
+    tags: ["AI image upscaling", "image resolution", "AI generation size", "high resolution", "image quality"],
+    relatedTools: ["image-upscaler", "ai-image-generator", "photo-restorer"],
+    content: `<p>Your AI image generator hands you a 1024 by 1024 square, and the page hero wants 2000 pixels wide. You have two moves: upscale what you have, or regenerate at a higher size. Most people reach for the upscaler without thinking, and often that's the wrong call — because AI upscaling and AI generation both "invent" pixels, and stacking invention on top of invention has a cost. Here's the honest comparison so you pick the right one per image.</p>
+
+<h2>Upscaling Stretches What's There</h2>
+
+<p>An <a href="/en/tools/image-upscaler">image upscaler</a> looks at the 1024px image and produces a larger one by inferring detail from the existing pixels. For a photo of a real scene — a tree, a face, a texture — that inference is grounded, because real photos have predictable structure, and the result is a convincing larger version. The counter-intuitive part: AI-generated images are different. The 1024px output is already a model's invention — every blade of grass is a plausible guess — and upscaling invents a second layer on top of that guess. Detail multiplies in the direction of "more of the same texture," which is usually fine for textures and often wrong for hard edges like text, logos, and fine structures.</p>
+
+<p>So the decision starts with what's in the image. Texture-heavy, organic content — landscapes, portraits, fabric, smoke — upscales beautifully, and the upscaler is your friend. Anything with crisp lines, lettering, or architecture that must stay sharp — a sign, a product with a label, a building facade — upscaling softens it, and you can't un-soften. For those, regenerating is the better path.</p>
+
+<h2>Regenerating Gets Real Resolution</h2>
+
+<p>Most modern <a href="/en/tools/ai-image-generator">AI image generators</a> accept a target size or aspect ratio, and generating directly at 2048 or 2560 gives you real resolution — the model draws at that size from the start, so hard edges and text come out sharp instead of stretched. The trade-off is cost and speed: higher sizes take longer and use more credits, and on some models the extra size means slightly less compositional control. But for anything that's going to be large on screen or printed, that's money well spent.</p>
+
+<p>The honest workflow: if you already have a generated image and you're happy with everything except the size, try the upscaler first — it's free and instant, and for organic content it's often indistinguishable. If the result looks soft, or the image has text and crisp lines, regenerate at the target size instead of layering more invention. If the source itself is a small or damaged scan rather than a generation, restoration comes before enlargement — run a <a href="/en/tools/photo-restorer">photo restorer</a> first so the upscaler isn't amplifying damage — the same pipeline logic we outlined in our guide to <a href="/en/blog/image-upscaler-print-resolution-guide">preparing images for print resolution</a>. Upscale the organic, regenerate the geometric, restore before you enlarge, and your hero image stops being a pixel-count compromise.</p>`
+  },
 ];
 
 // Synchronous static accessors — used at build time (generateStaticParams)
