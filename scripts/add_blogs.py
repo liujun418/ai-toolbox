@@ -1,171 +1,151 @@
-"""Add 6 blogs to AI station (353->359 static) - August 21, 2026"""
-BLOG_FILE = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
+# -*- coding: utf-8 -*-
+import io
 
-with open(BLOG_FILE, "r", encoding="utf-8") as f:
+path = r"C:\Users\jun\ai-toolbox\src\lib\blog.ts"
+with io.open(path, encoding="utf-8") as f:
     content = f.read()
 
 old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "pdf-to-word-resume-cv-editing-guide",
-    title: "PDF to Word for Job Applications: Editing Your Resume Without Retyping It",
-    description: "Your resume is a polished PDF and the job portal wants a Word file. Don't retype it — here's how to convert without breaking the layout or the ATS parser.",
-    date: "2026-08-21",
-    category: "Document",
-    tags: ["resume conversion", "CV to word", "pdf to word", "ATS resume", "job application"],
-    relatedTools: ["pdf-to-word", "text-polish", "article-generator"],
-    content: `<p>You spent an hour tweaking your resume, exported it as a PDF, and it looks perfect. Then the job portal says "please upload your resume in Word format." You open a blank document and stare at it — you are not retyping that. The good news: you don't have to. The <a href="/en/tools/pdf-to-word">PDF to Word converter</a> turns the file into an editable document in seconds. The bad news: how it comes out decides whether you get past the filters, and most people skip the three checks that matter.</p>
-
-<h2>What the Conversion Preserves</h2>
-
-<p>A well-made resume PDF converts cleanly: headings, bullet points, and the two-column layout usually survive, because the converter rebuilds the structure from the text positions. The common failure is a resume with text boxes, tables, or graphics — an infographic-style resume, a photo, or a custom-designed header — where the layout becomes floating boxes that a recruiter's reader can't parse. The counter-intuitive part: for job applications, a "plain" resume converts far better than a pretty one, because the ATS that screens your application reads the text structure, not the design.</p>
-
-<h2>The Three Checks Before You Upload</h2>
-
-<p>After converting, run three checks. First, the order: does the work history read top to bottom in the right sequence? Converters occasionally reorder two-column resumes. Second, the dates: "2018–2021" can lose its en dash or split oddly — scan every date range. Third, the contact block: email, phone, and links sometimes drop their hyperlink or merge into one line. Fix any of these, then pass the whole thing through the <a href="/en/tools/text-polish">text polish</a> tool so no spelling or spacing errors ride along into the application.</p>
-
-<h2>When Word Is the Wrong Target</h2>
-
-<p>The counter-intuitive advice: before you convert, ask whether the portal actually needs Word or just accepts it. Many portals accept PDF and some prefer it — a PDF keeps your layout and your fonts intact. If you must send Word, convert, fix, and re-export. And if the portal's form is asking for a "summary" or "achievements," the <a href="/en/tools/article-generator">article generator</a> can draft bullet points from your raw history that you then tailor — a different kind of conversion, from experience into language.</p>
-
-<p>We covered when to keep a file as PDF in our guide to <a href="/en/blog/pdf-to-word-when-not-to-convert-guide">when not to convert to Word</a>. Resumes are the classic gray zone. Convert when the portal insists, check the order, the dates, and the contact block — and your twenty minutes of formatting survives the round trip.</p>`
-  },
-  {
-    slug: "avatar-generator-youtube-channel-avatar-guide",
-    title: "Avatar Generator for YouTube Channels: Building a Recognizable Channel Identity",
-    description: "Your channel needs a face people remember. Here's how to generate a channel avatar that stays consistent across your profile, banner, and thumbnails.",
-    date: "2026-08-21",
+    slug: "ai-image-generator-product-mockup-catalog-guide",
+    title: "Consistent Product Mockups: One AI Image Recipe for a Whole Catalog",
+    description: "A catalog where every product shot has different lighting and angle looks amateur. Here's how to lock one AI image recipe and generate consistent mockups across a whole line.",
+    date: "2026-08-27",
     category: "Generate",
-    tags: ["youtube avatar", "channel art", "avatar generator", "channel branding", "content creator"],
-    relatedTools: ["avatar-generator", "background-remover", "image-upscaler"],
-    content: `<p>You started a channel about woodworking, and the first thing viewers see is a default silhouette in a gray circle. Every channel you look up to has a face — a stylized mark, a mascot, a consistent portrait — and you can spot their content across the home page without reading a title. That recognition isn't luck; it's a character built once and applied everywhere. An <a href="/en/tools/avatar-generator">avatar generator</a> can build that face for you in an afternoon — if you feed it the right brief and keep the outputs consistent.</p>
+    tags: ["AI image generator", "product mockups", "ecommerce", "catalog", "consistency"],
+    relatedTools: ["ai-image-generator", "background-remover", "image-upscaler"],
+    content: `<p>You need product shots for a new line, and you've got an AI image generator ready to go. So you prompt one product, it looks great, you move to the next, and the lighting shifted, the angle drifted, and the background decided to become a forest. Side by side in a catalog, the two shots look like they came from different stores. The generator isn't the problem — the drift is. The trick is to treat the first good image as a recipe and change only the product, never the camera.</p>
 
-<h2>Design the Mark, Not the Headshot</h2>
+<h2>Lock the Scene, Vary Only the Product</h2>
 
-<p>The mistake is generating one pretty portrait and calling it a day. A channel avatar works as a mark: it has to be recognizable at 98 pixels — the size it renders in comments and search — and still hold up at 800 pixels on your channel page. So brief the generator for a strong, simple composition: one subject, one clear element (the tool in your hand, the saw, the workshop), a limited palette. A face that's detailed and busy at full size becomes a blurry mess at avatar size. The <a href="/en/tools/avatar-generator">avatar generator</a> handles the portrait; you make the decisions about what has to survive at tiny sizes.</p>
+<p>Consistency comes from reusing the exact same prompt skeleton, not from writing fresh descriptions each time. Write one master prompt that nails the fixed parts: the camera angle, the lighting direction, the background, the distance, the framing. Keep those tokens identical in every run, and vary only the product's name and the details that describe it. The counter-intuitive part: the more specific your fixed tokens are, the more stable the output gets. "Studio product photography, softbox from the left, seamless white background, eye-level shot" will reproduce across a hundred products in a way that "nice product photo" never will. A shared angle and light are what make a line read as a line.</p>
 
-<h2>The Consistency System</h2>
+<h2>Generate a Master, Then Work From It</h2>
 
-<p>Here's the part that makes a channel feel professional: the same character across your profile, banner, and thumbnails. Generate the avatar once, then reuse it. For the banner, the <a href="/en/tools/background-remover">background remover</a> isolates your mark so it sits cleanly on any banner art. For older or reused thumbnails, the <a href="/en/tools/image-upscaler">image upscaler</a> keeps the small avatar crisp when you blow it up for a watermark. The counter-intuitive part: the fewer versions you generate, the more consistent the brand. One avatar, one palette, applied everywhere, beats a new face every month.</p>
+<p>It's tempting to regenerate every product from scratch, but your best move is to generate one hero product until the recipe is dialed in, then reuse that exact prompt for the rest. When a shot comes back slightly off — the bottle is the wrong color or the angle crept — adjust the product-specific tokens and keep the fixed ones untouched. For each good result, use a <a href="/en/tools/ai-image-generator">AI image generator</a> to produce a few variations and pick the cleanest, rather than settling for the first pass. If a product keeps coming back with a messy background or a stray edge, clean it up after generation with a <a href="/en/tools/background-remover">background remover</a> so every shot lands on the same seamless backdrop. And since a catalog's smallest images still need to hold up on a phone screen, run the final shots through an <a href="/en/tools/image-upscaler">image upscaler</a> before you upload them anywhere.</p>
 
-<h2>When to Rethink the Avatar</h2>
+<h2>The Batch Workflow That Holds Up</h2>
 
-<p>Revisit the mark when your channel changes direction, not every few weeks. And remember the platform constraint: YouTube wants a square image, and it renders your avatar as a circle — so keep the subject centered with safe padding on the edges. The moment a new viewer sees your thumbnail, your avatar, and your banner side by side and knows it's all you — that's the system working.</p>
-
-<p>We covered consistent team headshots in our guide to <a href="/en/blog/avatar-generator-corporate-team-headshots">corporate team avatars</a>. A channel is the solo version of the same problem. Build one mark, keep it consistent, and viewers will start finding you by sight alone.</p>`
+<p>Work in batches and check consistency in pairs: put two products side by side and ask if they could be from the same photoshoot. When you find drift, go back to the master prompt — the fix is usually one fixed token that's too vague. We covered keeping visuals on-brand in our guide to <a href="/en/blog/ai-image-generator-marketing-campaign-brand-visuals">AI visuals for marketing campaigns</a>; the catalog recipe is the same discipline applied to a product line instead of a campaign. One prompt, one camera, one background, and every new product drops into place.</p>`
   },
   {
-    slug: "face-blur-stock-photo-model-release-guide",
-    title: "Face Blur for Stock Photos: Model Releases, Recognizable People, and the Legal Reason Sites Blur Faces",
-    description: "That street photo with a stranger in it can't go on your stock account without a release. Blurring the face is the loophole — here's when it works and when it doesn't.",
-    date: "2026-08-21",
+    slug: "background-remover-scanned-documents-signatures-guide",
+    title: "Clean Scanned Documents and Signatures Without Re-scanning",
+    description: "A scanned page comes back gray, and a signature looks like it lives on a photocopy of a photocopy. Here's how a background remover cleans both without you touching the scanner.",
+    date: "2026-08-27",
     category: "Edit",
-    tags: ["face blur", "stock photography", "model release", "recognizable person", "photo licensing"],
-    relatedTools: ["face-blur", "background-remover", "object-remover"],
-    content: `<p>You're a hobbyist photographer building a stock portfolio. You have a beautiful shot of a market in the morning light — and a woman in the foreground whose face is clearly visible. When you upload it, the stock site asks for a model release, which you don't have. But a friend says you can just blur the face and upload it anyway. That's technically true, and it's also legally loaded — because a blurred face isn't the same as an anonymous subject, and the rules depend on why the face was recognizable in the first place.</p>
+    tags: ["background remover", "scanned documents", "signatures", "scan cleanup", "digitization"],
+    relatedTools: ["background-remover", "object-remover", "image-description"],
+    content: `<p>You need a clean digital copy of a signed contract, but the scan came back with a gray paper background and a watermark that you can't fully avoid, or you've got a hand-drawn logo sitting on yellowing paper and you want it as a crisp PNG. Re-scanning won't help — the scanner isn't the problem, the paper is. A background remover is the shortcut: it separates the content from the paper itself, and it does it in one pass.</p>
 
-<h2>Why Stock Sites Ask for Releases</h2>
+<h2>Why Scans Need a Background Remover</h2>
 
-<p>Stock platforms license images for commercial use: ads, brochures, websites. Commercial use can imply someone endorses a product, so the person in the photo needs to have agreed — that's the model release. The standard workaround: if the person isn't recognizable, no release is needed. Blurring or pixelating a face usually does that. The <a href="/en/tools/face-blur">face blur</a> tool exists for exactly this: anonymize the identifiable person, keep the scene, and the image moves from "needs a release" to "editorial-compatible."</p>
+<p>Scanned paper rarely comes out pure white. Office scanners add a gray cast, old paper has yellowed, and receipts are practically beige. That tint rides along into every file you produce from the scan. A background remover doesn't lighten the page — it makes a decision: everything that isn't the foreground content gets cut away. The counter-intuitive part is that this often works <em>better</em> than "whitening" filters, because instead of lifting the gray toward white (which also lifts the faint content toward invisible), it removes the background entirely and leaves you with a clean subject on a true white or transparent backdrop.</p>
 
-<h2>When Blurring Isn't Enough</h2>
+<h2>Clean Signatures, Logos, and Forms</h2>
 
-<p>The counter-intuitive part is what "recognizable" means. A blurred face solves the identity problem for most platforms — but not always. If the person's clothing, posture, or the context makes them identifiable anyway (a distinctive jacket, a name badge, a known location with them standing in front of their shop), a blur may not satisfy a reviewer. And if the photo contains any identifying detail beyond the face — a license plate, a house number, a visible badge — the <a href="/en/tools/background-remover">background remover</a> won't fix that by itself; you need targeted anonymization of each element. Stock sites differ in their policies; some require blurring even for editorial use, some are stricter than the law.</p>
+<p>The most useful trick is turning a scanned signature into a reusable asset. Scan the signed page once, run it through a <a href="/en/tools/background-remover">background remover</a>, and the signature comes out as a clean mark you can drop onto any document — no more cutting it out of a gray rectangle by hand. The same move works for a hand-drawn logo, a stamped seal, or a small diagram you need on a presentation slide. When a scan has extra specks — dust, smudges, the edge of a sticky note — clean those up with an <a href="/en/tools/object-remover">object remover</a> after the background is gone, so your final asset is genuinely clean rather than just background-free.</p>
 
-<h2>The Legal Floor and the Practical Ceiling</h2>
+<h2>Verify Before You Send It</h2>
 
-<p>Legally, a strong blur is usually sufficient to make a person unrecognizable, which is the practical test most jurisdictions use. The same logic that justifies the <a href="/en/tools/object-remover">object remover</a> for objects applies to people when the goal is anonymization rather than deception. But remember the difference: stock platforms review images at human scale, and a pixel-thin blur that an AI could undo — the kind we warned about in the privacy guide — is a fast rejection. Use a strong blur or a solid block, not a decorative smudge, and keep the release for any shot where a real person's identity still matters.</p>
-
-<p>We covered the public-space legal side in our guide to <a href="/en/blog/face-blur-street-photography-legal-guide">face blur for street photography</a>. Stock adds the release dimension: blur when you must, keep the scene, and check the platform's policy before you rely on it.</p>`
+<p>Aggressive background removal can quietly eat faint content — a light pencil note, a low-contrast stamp — and you won't notice until the other side asks where it went. Before you use a cleaned scan for anything official, run the result through an <a href="/en/tools/image-description">image description</a> and read back what it thinks the document contains. If the description misses something you can see, the cleanup clipped it, and you need the original scan after all. We covered prepping visuals for documents in our guide to <a href="/en/blog/background-remover-infographics-presentation-slides">backgrounds for slides and infographics</a>; scanned documents follow the same rule — clean the background, keep every piece of content that matters, and only then call it finished.</p>`
   },
   {
-    slug: "colorizer-verify-accuracy-historical-guide",
-    title: "Is the AI Color Right? 5 Ways to Check a Colorized Photo Against History",
-    description: "AI colorization is a confident guess. Before you frame it or publish it, run these five checks — the details that tell you whether the colors are history or invention.",
-    date: "2026-08-21",
+    slug: "text-polish-sound-like-you-voice-guide",
+    title: "Make It Sound Like You: Killing the AI-Flat Voice",
+    description: "Rewritten text that sounds 'professional' often sounds like nobody in particular. Here's how to polish your writing so it keeps your voice instead of trading it for corporate fluff.",
+    date: "2026-08-27",
+    category: "Content",
+    tags: ["text polish", "writing voice", "tone", "AI writing", "personal style"],
+    relatedTools: ["text-polish", "article-generator", "text-to-speech"],
+    content: `<p>You run a draft through a rewriting tool and it comes back grammatically perfect — and completely flat. The sentences are correct, the words are fine, and yet it reads like it was written by a very polite committee. Most polish tools default to a corporate voice: longer words, passive constructions, and a careful distance that strips out everything that sounds like a human. The fix isn't to stop using the tool. It's to give it your voice as the reference instead of letting it default to "professional."</p>
+
+<h2>Why "Professional" Reads as Nobody</h2>
+
+<p>Generic professional language is designed to be inoffensive, and inoffensive is the enemy of memorable. It replaces "we messed up" with "an error occurred," and "we think you'll love it" with "we believe this will be well received." The counter-intuitive part: your rough draft, with its contractions and its slightly weird phrasing, is closer to your voice than the polished version will ever be. The polish tool shouldn't be smoothing you toward neutral — it should be smoothing toward clear, and then you put the personality back in.</p>
+
+<h2>Feed It Your Voice, Not a Style Guide</h2>
+
+<p>Start with a sample of writing that already sounds like you — an email you're proud of, a post you wrote fast, anything that a reader would recognize as yours. Use it as the style reference for your next pass, so the <a href="/en/tools/text-polish">text polish</a> tool reshapes the draft toward that register instead of toward generic business prose. If you're starting from nothing, use a <a href="/en/tools/article-generator">article generator</a> to produce a first draft and then polish it yourself — you keep the structure the tool gives you and swap its vocabulary for your own. The tell you're on the right track: you can read the result aloud and it sounds like you talking, not like a manual.</p>
+
+<h2>The Listen Test</h2>
+
+<p>The fastest quality check is audio. Run your polished text through a <a href="/en/tools/text-to-speech">text to speech</a> tool and listen to how it lands — if it sounds like a robot reading a memo, the polish drifted toward the flat zone and you need to put some rhythm back in. Real voice lives in the contractions, the short sentences, the occasional sentence fragment. We covered the difference between flat and sharp copy in our guide to <a href="/en/blog/text-polish-before-after-examples-guide">before-and-after polish examples</a>; the upgrade this time is direction. Polish to sound like you, not like a brand manual — the tool writes the clean version, and you write the human one.</p>`
+  },
+  {
+    slug: "image-description-photo-library-organizing-guide",
+    title: "Describe Your Photo Library: Finding Photos You Can't See",
+    description: "You have ten thousand photos and searchable filenames. You also have no way to find 'that red dress on the beach.' Here's how image descriptions turn a photo dump into a searchable archive.",
+    date: "2026-08-27",
+    category: "Content",
+    tags: ["image description", "photo library", "archiving", "search", "organization"],
+    relatedTools: ["image-description", "ai-image-generator", "photo-restorer"],
+    content: `<p>Your photo library has ten thousand files, and the filenames are the best search you've got — which means finding "that photo of grandma's kitchen with the red dress on the chair" requires scrolling for twenty minutes. The problem isn't the volume. It's that nobody described what's actually in the photos. An image description fixes that: it turns every picture into searchable text, so you can find the moment by what was in it, not by what you happened to name it.</p>
+
+<h2>Describe Once, Find It Forever</h2>
+
+<p>The habit that pays off: describe photos at archive time, while the context is still fresh, instead of years later when the location is a mystery. For each keeper, capture the people, the place, and the small details you'd search for later — the red dress, the beach, the summer of 2019. The counter-intuitive part is that you don't need perfect descriptions, just useful ones. A phrase like "siblings on the dock" will resurface the shot ten years from now in a way that "IMG_4412.jpg" never will. The <a href="/en/tools/image-description">image description</a> tool does the heavy lifting of turning each photo into that text, and you just verify the details it got right.</p>
+
+<h2>An Archive You Can Actually Search</h2>
+
+<p>Once your library is described, you can search it like a database instead of a pile. Looking for every photo where the dog appears, every shot from the trip to the coast, every picture of the old house? The descriptions give you those answers in seconds. Descriptions also catch what you'd otherwise lose: a batch of photos from a camera you rarely used, a folder of scans from a relative's album — the moments you'd never have remembered to look for. When a described photo is too damaged to keep as-is, run it through a <a href="/en/tools/photo-restorer">photo restorer</a> first so the description is describing the good version, then file it with the rest. And if a scene is missing from your archive entirely — a place or an era you wish you'd captured — a <a href="/en/tools/ai-image-generator">AI image generator</a> can produce a reference image that fits the story, though the real memory always beats the recreation.</p>
+
+<h2>Descriptions Are the New Folders</h2>
+
+<p>Folders organize by where you think things belong; descriptions organize by what's actually in them. We covered describing at scale in our guide to <a href="/en/blog/image-description-ecommerce-bulk-product-catalog">bulk descriptions for product catalogs</a>, and your photo library runs on the same logic — describe in bulk, search in seconds. Spend ten minutes a week describing what you shot, and the archive you have becomes the archive you can actually use.</p>`
+  },
+  {
+    slug: "object-remover-text-signs-logo-removal-guide",
+    title: "Removing Text, Signs, and Logos From Photos",
+    description: "A billboard ruins a skyline shot and a date stamp ruins an old photo. Text in images is a whole category of cleanup — here's when the object remover is the right tool, and when it isn't.",
+    date: "2026-08-27",
     category: "Edit",
-    tags: ["colorizer", "colorization accuracy", "historical photos", "AI color check", "photo verification"],
-    relatedTools: ["colorizer", "photo-restorer", "image-description"],
-    content: `<p>You colorize a 1940s family photo and the result is beautiful — warm skin tones, a believable blue sky, the brick wall a pleasant red-brown. Then you show it to someone who actually lived through that decade, and they frown. "The uniforms weren't that green." You zoom in and, sure enough, the colorizer guessed. AI colorization is a confident guess, and most of the time it's a good guess — but "good" isn't "true," and the difference matters when the photo goes beyond your family album. Here are five checks that separate plausible from accurate.</p>
+    tags: ["object remover", "text removal", "signage", "logos", "photo cleanup"],
+    relatedTools: ["object-remover", "watermark-remover", "background-remover"],
+    content: `<p>You take a clean shot of a city street and a billboard owns the whole frame. You scan an old family photo and a handwritten date across the corner ruins it. Text in photos is its own category of cleanup: it's not a background problem, it's an object problem, and the right tool depends on where the text lives. The object remover handles most of it — but knowing when a different tool wins saves you a lot of frustrating retries.</p>
 
-<h2>1. Check the Uniforms and Badges</h2>
+<h2>Text as an Object: What the Object Remover Does</h2>
 
-<p>Military and service uniforms are the fastest accuracy test, because their colors were standardized and documented. A colorizer sees "people in matching clothes" and invents a shade; the record says what that shade actually was. Before you accept a colorized service photo, verify the branch, the era, and the uniform color — one wrong green tells every expert you didn't check. This is where the <a href="/en/tools/colorizer">colorizer</a> is at its weakest and human research at its most decisive.</p>
+<p>When text is part of the scene — a storefront sign, an ad on the side of a building, a date stamped onto a print, a sticker on a laptop — it's an object sitting in the image, and the <a href="/en/tools/object-remover">object remover</a> is built for exactly that. Select the text region and it paints over it with a plausible reconstruction of what's underneath: the wall, the sky, the street behind the sign. The counter-intuitive part is that it works best on clean, repeating textures. A logo on a smooth sky gets removed invisibly; the same logo on a busy patterned sweater will leave a telltale blur where the pattern couldn't be reconstructed. For those hard cases, remove in small segments and check each one before moving on.</p>
 
-<h2>2. Look for Period Signposts</h2>
+<h2>When the Watermark Remover Wins</h2>
 
-<p>Signs, vehicles, and packaging carry fixed colors: a red Coca-Cola logo, a yellow taxi, the blue of a specific milk bottle. If the colorizer gives the period sign a plausible-but-wrong shade, the whole image reads as invented. Cross-check one recognizable brand or object against a known reference photo from the same era. One correct anchor makes the rest of the image far more believable.</p>
+<p>Not all text is an object. Text that sits <em>on top of</em> the image as an overlay — a watermark, a timestamp burned into the corner, a trial-version stamp — behaves differently, and that's the <a href="/en/tools/watermark-remover">watermark remover</a>'s specialty. It knows the text is a layer and removes it while protecting the image underneath, which is the opposite of how you'd handle signage. The rule of thumb: text that's part of the scene goes to the object remover; text laid over the scene goes to the watermark remover. Mixing them up is the most common reason a cleanup job fails.</p>
 
-<h2>3. Question Skin Tones and Skin Exposure</h2>
+<h2>The Whole-Frame Pass</h2>
 
-<p>Faces are the colorizer's best guess — and the hardest to verify. The common mistake is expecting the AI to recover the exact tone under the original lighting. It can't; it infers. The honest approach: treat skin color as an approximation and say so when the image is published.</p>
-
-<h2>4. Use the Restorer Before the Colorizer</h2>
-
-<p>The order matters more than people expect. A damaged photo colorizes worse than a clean one — the model bases its guess on scratch-affected areas too. Run the <a href="/en/tools/photo-restorer">photo restorer</a> first, colorize second. And when you need a written record of what the image actually shows — a caption, an alt text, a museum note — an <a href="/en/tools/image-description">image description</a> tool gives you the objective content to pair with the colorized version, so the "what" and the "what color" stay distinct.</p>
-
-<h2>5. Decide What This Photo Is For</h2>
-
-<p>The counter-intuitive part: accuracy thresholds differ by use. A family album can embrace a confident guess; a documentary, an archive, or a publication cannot. Ask what the image is for before you invest in verification. The same photo that's fine on your wall would need documented sourcing on a museum label.</p>
-
-<p>We covered how the AI arrives at its guesses in our guide to <a href="/en/blog/colorizer-how-ai-guesses-colors-guide">how AI colorizers guess colors</a>. Verification is the second half of that story. Colorize with delight, publish with diligence — and check the uniforms before you frame it.</p>`
+<p>After the text is gone, check the rest of the frame — removing a billboard often exposes a messy background around it. A quick pass with a <a href="/en/tools/background-remover">background remover</a> on the affected area, or a re-select of the leftover artifacts, finishes the job so the cleaned spot doesn't stand out. One honest warning: removing a company's logo or watermark from a photo you didn't take can be a copyright or ethical problem, so keep this for your own photos and your own archives. We covered the wider street-cleanup workflow in our guide to <a href="/en/blog/object-remover-urban-photography-cleanup-guide">cleaning up city photos</a>; text is just the most visible member of the same family. Pick the right remover, do a final pass, and the text disappears without a trace.</p>`
   },
   {
-    slug: "text-to-speech-ivr-phone-menu-guide",
-    title: "Text to Speech for Phone Menus: Why IVR Systems Sound Robotic (and How to Fix It)",
-    description: "Call any big company and you're listening to a text-to-speech menu. Most are painful by accident — here's what makes an automated phone voice tolerable.",
-    date: "2026-08-21",
-    category: "Content",
-    tags: ["text to speech", "IVR", "phone menu", "call center", "automated voice"],
-    relatedTools: ["text-to-speech", "text-polish", "article-generator"],
-    content: `<p>You call your bank and a voice says: "For billing, press one. For account, press two. For all other in-QUIR-ies, press zero." The word "inquiries" lands on the wrong syllable, the pace is a nervous rush, and by the time the options end you've already forgotten option three. You've just experienced an IVR — an interactive voice response system — and most of them sound exactly like that. They don't have to. The worst IVR voices are written by people who never listened to them, and the fix is a mix of better writing and better tool settings.</p>
+    slug: "image-upscaler-scanned-documents-screenshots-guide",
+    title: "Upscaling Scanned Documents and Screenshots: Readable or Just Bigger?",
+    description: "Photos upscale beautifully, but text-dense images behave differently. Here's the honest look at what upscaling does to scans and screenshots — and when OCR is the better move.",
+    date: "2026-08-27",
+    category: "Edit",
+    tags: ["image upscaler", "scanned documents", "screenshots", "OCR", "readability"],
+    relatedTools: ["image-upscaler", "background-remover", "pdf-to-word"],
+    content: `<p>You've got a screenshot that's too small to read and a scan that's slightly blurry, and you've heard an upscaler makes low-res images sharp. So you run them through it and... the text is still fuzzy, just bigger and fuzzier. The disappointment isn't the tool's fault. Photos and text-dense images upscale by different rules, and text mostly doesn't cooperate with the tricks that make photos look great.</p>
 
-<h2>The Voice Is Only Half the Problem</h2>
+<h2>Why Text Upscales Worse Than Photos</h2>
 
-<p>An automated phone menu is text to speech, but the suffering is rarely the voice model — it's the script. IVR copy is usually written like a written document: full sentences, big words, no rhythm. A spoken menu wants short, numbered, parallel options: "Press one for billing. Press two for support. Press three to repeat." Run the script through the <a href="/en/tools/text-polish">text polish</a> tool with an ear for spoken English — cut every word that wouldn't survive a voicemail. The counter-intuitive part: shorter menus don't just sound better, they measurably reduce caller frustration, because fatigue is what makes people press zero.</p>
+<p>An upscaler reconstructs missing detail by guessing what should be there, and it's very good at guessing <em>texture</em> — the grain of skin, the weave of fabric, the smooth gradient of a sky. Text is different: it's sharp edges on a uniform background, and a wrong guess on an edge turns a crisp letter into a smudge. The counter-intuitive part is that the problem gets worse the more you zoom: each interpolation step adds a little blur around every character stroke, and by 4x your readable text has become a gray smear with letter-shaped holes. A photo at 4x looks like a better photo. Text at 4x just looks like bigger, softer text.</p>
 
-<h2>What the Tool Settings Do</h2>
+<h2>When Upscaling Actually Helps a Scan</h2>
 
-<p>The same script sounds dramatically different depending on three settings in the <a href="/en/tools/text-to-speech">text to speech</a> tool: pace, pronunciation, and pauses. Slow the pace below your default — phone menus need the extra beat for listeners who are distracted, driving, or holding the phone away from their ear. If the engine lets you add pauses between options, add them generously; a pause is what separates one choice from the next, and a menu with no breathing room is a menu nobody can follow. Some engines also let you spell a word phonetically to fix a mispronunciation — that "in-QUIR-ies" moment is a fixable script issue, not a hardware problem.</p>
+<p>Upscaling does help when the text is legible and you want it <em>cleaner and larger for presentation</em> — not to read more, but to display better. A signed contract, a certificate, a scanned logo at the top of a document: running those through an <a href="/en/tools/image-upscaler">image upscaler</a> gives you a file that prints and displays nicely. Pair it with a <a href="/en/tools/background-remover">background remover</a> first if the scan has a gray cast, so you're upscaling a clean image rather than amplifying the paper tint along with the text. But if the goal is to actually <em>read</em> the content — a blurry scan you need to quote, a receipt you need the numbers from — no amount of upscaling recovers letters that were never captured. That's an OCR problem, and it's the wrong tool for an upscaler.</p>
 
-<h2>Write the Script the Way a Human Would Read It</h2>
+<h2>The Honest Decision: Upscale or OCR</h2>
 
-<p>If you're building the menu, a helpful pattern is to draft the options as plain text first — "Billing. Support. Store hours." — then expand each into a spoken line. The <a href="/en/tools/article-generator">article generator</a> can produce a full script draft from your list of departments and actions, which you then shorten by half. And test by listening, not by reading: play the output while your eyes are closed, and mark every place you'd miss an option. The voice that sounds robotic by accident is almost always a script that was never heard before it shipped.</p>
-
-<p>We covered choosing a natural-sounding voice in our guide to <a href="/en/blog/tts-voice-selection-natural-speech-guide">TTS voice selection</a>. Phone menus are the highest-stakes use of the same tools. Slow it down, strip the words, add the pauses — and the caller who used to press zero will actually listen.</p>`
-  },
-  {
-    slug: "image-description-real-estate-listings-guide",
-    title: "Image Description for Real Estate: Turning Listing Photos Into Searchable, Accessible Content",
-    description: "Every listing photo deserves a description — for accessibility, for SEO, and for buyers who can't see the image. Here's how agents generate them at scale.",
-    date: "2026-08-21",
-    category: "Content",
-    tags: ["real estate listing", "image description", "property photos", "alt text", "MLS"],
-    relatedTools: ["image-description", "background-remover", "text-polish"],
-    content: `<p>You're a listing agent and you've just photographed a three-bedroom home: forty-two photos from the entryway to the backyard. Now the listing platform asks for a description of every image — not for search engines, though it helps there, but for the buyers who can't see the photos: the screen-reader users, the ones on slow connections, and the accessibility checks that more and more MLS platforms run. Writing forty-two descriptions by hand is a dead afternoon. Generating them with an image description tool takes minutes, and the result is better than you'd write yourself.</p>
-
-<h2>What a Good Listing Description Says</h2>
-
-<p>A useful property description names the room, the light, and the selling detail: "Sunlit open kitchen with white quartz island and stainless appliances." Not "a photo of a kitchen." The <a href="/en/tools/image-description">image description</a> tool reads the visual content and returns exactly that kind of caption — and the counter-intuitive part is that its neutral eye is often more effective than yours. You'd describe the house the way you see it after years in the business; the model describes what a first-time buyer actually sees, which is the buyer you're selling to.</p>
-
-<h2>Clean the Photos First</h2>
-
-<p>Before you generate descriptions, clean the raw captures. A listing photo with a reflection, a clutter streak, or a photobombing agent in a mirror produces a description that mentions the clutter. Run the batch through the <a href="/en/tools/background-remover">background remover</a> to isolate the selling subject, or at least flag the frames with obvious problems. Garbage in, garbage out applies to captions as much as to listings — a clean photo describes well, a messy one describes messily.</p>
-
-<h2>Turn Descriptions Into More Than Alt Text</h2>
-
-<p>The descriptions don't have to stop at accessibility. The same captions feed the listing's SEO, power photo galleries, and populate social posts. And when you run the generated text through the <a href="/en/tools/text-polish">text polish</a> tool, you get marketing-ready lines you can drop straight into the listing copy. The workflow that pays off: generate, clean, polish, publish — and every photo on the MLS finally says something.</p>
-
-<p>We covered generating alt text for product images in our guide to <a href="/en/blog/image-description-ecommerce-product-alt-text">e-commerce image description</a>. Real estate runs on the same engine, one category up. Describe the room, the light, and the selling detail — and the listing speaks to every buyer who visits it.</p>`
+<p>So the rule is short. Want the document to look better on screen or in print? Upscale. Want to extract the words so you can search, edit, or quote them? Go the OCR route and convert it to editable text — the <a href="/en/tools/pdf-to-word">PDF to Word</a> converter reads the characters and hands you real text instead of a sharper picture. We covered upscaling line-art and graphics in our guide to <a href="/en/blog/image-upscaler-logos-line-art-vector-guide">logos and line art</a>, and text-dense documents live in the same category: they're built from edges, not texture. Use the upscaler for presentation, use OCR for reading, and you'll stop expecting one tool to do the other's job.</p>`
   },
 ];
 
 // Synchronous static accessors"""
 
+assert content.count(old) == 1, "marker not found or not unique"
 content = content.replace(old, new_blogs)
-
-with open(BLOG_FILE, "w", encoding="utf-8", newline="\n") as f:
+with io.open(path, "w", encoding="utf-8", newline="\n") as f:
     f.write(content)
-
-print("AI station: 353->359 static objects done.")
+print("OK AI station blogs inserted")
