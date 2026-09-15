@@ -9,136 +9,136 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "watermark-remover-when-it-works-guide",
-    title: "Why Watermark Removal Works on Some Images and Not Others",
-    description: "A watermark over a plain wall disappears cleanly, but the same mark over a brick wall leaves a blur. Here's the mechanic behind when removal works — and when it can't.",
-    date: "2026-08-28",
-    category: "Edit",
-    tags: ["watermark remover", "inpainting", "image cleanup", "texture", "expectations"],
-    relatedTools: ["watermark-remover", "object-remover", "background-remover"],
-    content: `<p>You take a photo that carries a test watermark and run it through a remover. The mark stamped over the plain sky vanishes completely. The identical mark stamped over a brick wall comes back soft and smudged, like the bricks forgot how to be bricks. The tool didn't fail — it hit a limit that's baked into how watermark removal works, and knowing that limit tells you where a clean result is actually possible.</p>
-
-<h2>The Tool Invents What's Underneath</h2>
-
-<p>A watermark remover doesn't erase. It looks at the area under the mark and reconstructs what it thinks should be there, pattern by pattern. Where the background is smooth — a clear sky, a bare wall, a flat studio backdrop — the reconstruction is easy, because there's only one plausible thing under the mark, and it fills in cleanly. The counter-intuitive part is that the opposite is true of busy scenes: the more texture the background has, the more the tool has to invent, and the more it guesses, the more likely it smudges. A brick wall has a repeating pattern the model has to reproduce exactly, and one wrong brick breaks the illusion.</p>
-
-<h2>Easy vs Hard Backgrounds</h2>
-
-<p>So the practical read is simple: plain background, expect a clean removal; busy texture, expect a fight. Logos on seamless product shots, timestamps on flat corners, trial stamps on clean gradients — these are the easy cases. A <a href="/en/tools/watermark-remover">watermark remover</a> handles them in one pass. Watermarks crossing a patterned shirt, a brick facade, or dense foliage are the hard cases, and no amount of retrying fixes a background the model can't reconstruct. When the mark sits on texture you need to keep, remove it in small segments instead — select a piece at a time so the model reconstructs a smaller area per pass, and check each segment before moving on.</p>
-
-<h2>The Full Cleanup Sequence</h2>
-
-<p>For the cases where removal does work, finish the job properly. Once the mark is gone, the cleaned region often carries a faint tint where the background and the restored area don't quite match. A quick pass with a <a href="/en/tools/background-remover">background remover</a> can resurface a genuinely uniform backdrop, and if a stray object is sitting in the frame where the mark used to be, an <a href="/en/tools/object-remover">object remover</a> handles it. We compared tiled versus single watermarks in our guide to <a href="/en/blog/watermark-remover-tiled-vs-single-watermarks-guide">watermark design and removal difficulty</a>; the working rule is the same. Plain background, expect a win. Busy texture, expect a blur, and set the expectation before you start — then the tool never feels like it broke.</p>`
-  },
-  {
-    slug: "text-to-speech-commute-article-listening-guide",
-    title: "Turn Any Long Article Into Audio for Your Commute",
-    description: "Your reading list keeps growing and your commute keeps happening. Generate audio of the articles you meant to read and turn forty dead minutes into your best reading time.",
-    date: "2026-08-28",
+    slug: "article-generator-cluster-content-seo-guide",
+    title: "Cluster Content Strategy: Write More Posts Without Spinning Your Wheels",
+    description: "Writing one blog post at a time is slow. A cluster strategy uses one article generator to produce ten related posts in the time it takes to plan two — done right.",
+    date: "2026-09-15",
     category: "Content",
-    tags: ["text to speech", "commute listening", "reading list", "audio articles", "podcast"],
-    relatedTools: ["text-to-speech", "article-generator", "text-polish"],
-    content: `<p>Your reading list has forty items on it and it's been growing since spring. Every article you meant to read, every report you bookmarked, every long post that deserves more than a skim — they sit there while your commute eats forty minutes a day doing nothing. The fix is to stop reading those articles in your head and start listening to them. A text-to-speech tool turns any article into audio, and your commute becomes the reading time you never had.</p>
+    tags: ["article generator", "content clusters", "SEO", "topic clusters", "content strategy"],
+    relatedTools: ["article-generator", "text-polish", "image-description"],
+    content: `<p>Writing one blog post a week feels productive until you realize your main keyword has twenty sub-topics and you've only covered two. A cluster strategy fixes this: you pick one pillar topic, break it into ten sub-posts, and generate them all in one batch instead of planning each one separately. An article generator does the heavy lifting — as long as you control the structure instead of letting the tool decide it.</p>
 
-<h2>The Commute Is Prime Listening Time</h2>
+<h2>One Pillar, Ten Posts</h2>
 
-<p>Walking to the station, driving to work, folding laundry — these are low-attention minutes that a text-to-speech tool can fill with your actual reading list. Paste the article into a <a href="/en/tools/text-to-speech">text to speech</a> tool, generate the audio, and listen on the way. The counter-intuitive part is that this works better for articles you'd otherwise skip than for ones you'd savor: the commute is the perfect medium for the "should read but never get to" pile, because nothing is competing with it. The dead minutes were the bottleneck, not your interest.</p>
+<p>Start with a single big topic — say, "growing herbs indoors" — and list every sub-question someone might ask. Best soil? How much light? Which herbs are easiest? Each question is its own post. Use an <a href="/en/tools/article-generator">article generator</a> to produce the first draft of each one, all in the same batch, with the same structure and the same voice. The counter-intuitive part is that planning them all at once is faster than planning them one at a time, because you only have to do the research and outline work once instead of ten times.</p>
 
-<h2>Match Speed to the Material</h2>
+<h2>Polish Before You Publish</h2>
 
-<p>The one setting that decides whether this works is speed, and the right speed depends on what you're listening to. For a familiar-topic news article, 1.5x is comfortable and keeps your attention moving. For a dense technical report or a piece in a subject you don't know well, slow down to 1x — the words come faster than comprehension, and you'll rewind constantly instead of absorbing anything. We covered the science of listening speed in our guide to <a href="/en/blog/text-to-speech-listening-speed-sweet-spot">the right playback speed</a>; the rule is simple. Match the tempo to the material, and don't treat 1.5x as a default.</p>
+<p>A batch draft is a first draft, not a final one. Run each post through a <a href="/en/tools/text-polish">text polish</a> tool in the same batch to clean up phrasing and keep the tone consistent across the cluster — nothing reads more like AI than ten posts with slightly different voices on the same site. For the hero images, describe each one with an <a href="/en/tools/image-description">image description</a> to make sure the visual matches the content, or generate them in the same batch to keep the style consistent. The goal is a cluster that reads like it was written by one person, not ten different bots.</p>
 
-<h2>The Reading Workflow</h2>
+<h2>The Cluster That Ranks Together</h2>
 
-<p>Make it a habit rather than a task. When you bookmark something you won't have time to read properly, run it through the converter and drop the audio file into a "commute" playlist — the generation takes seconds. For pieces you want to <em>respond</em> to, polish the text first with a <a href="/en/tools/text-polish">text polish</a> pass so you're hearing the clean version, and when an article triggers an idea you want to write about, let an <a href="/en/tools/article-generator">article generator</a> draft the first version while your commute is still fresh in your head. The reading list doesn't have to keep winning. Turn it into audio, match the speed to the material, and the forty minutes that used to be dead become the best reading slot you have.</p>`
+<p>The SEO benefit is real — related posts linking to each other tell search engines you cover the topic deeply, and deep coverage beats isolated posts. We covered long-tail SEO in our guide to <a href="/en/blog/article-generator-long-tail-seo-content">long-tail SEO content</a>; the cluster strategy is the same idea scaled up. One pillar, ten sub-posts, batch generation, one polish pass — and you're done with a month of content in an afternoon.</p>`
   },
   {
-    slug: "colorizer-vs-monochrome-keep-black-white-guide",
-    title: "Colorize or Keep It Black and White? A Real Decision",
-    description: "Every old photo asks the same question: add color or leave it alone? Color isn't automatically better — it can make a photo more misleading. Here's how to actually decide.",
-    date: "2026-08-28",
+    slug: "photo-restorer-scratches-vs-fading-guide",
+    title: "Scratches vs Fading: Why Old Photos Need Different Fixes",
+    description: "A photo with scratches and a photo that's faded look equally broken, but they need completely different fixes. Use the right tool first and you'll save yourself a lot of rework.",
+    date: "2026-09-15",
     category: "Edit",
-    tags: ["colorizer", "black and white", "monochrome", "photo decision", "archival accuracy"],
-    relatedTools: ["colorizer", "photo-restorer", "image-upscaler"],
-    content: `<p>You digitize a box of family photos and hit the same question on every one: colorize it or leave it black and white? The default instinct is to add color, because color looks modern and alive. But that instinct is exactly backwards for a lot of photographs. Colorization can turn an honest record into a colorful guess, and the decision deserves more thought than "color is better."</p>
+    tags: ["photo restorer", "scratches", "fading", "photo repair", "restoration workflow"],
+    relatedTools: ["photo-restorer", "image-upscaler", "colorizer"],
+    content: `<p>You pull out two old family photos. One is covered in scratches but the colors are still strong. The other is smooth as glass but so faded you can barely make out the faces. They both look broken, and it's tempting to run them through the same tool and hope for the best. They need completely different fixes, though — and using the wrong one first makes the second one harder.</p>
 
-<h2>When Color Adds</h2>
+<h2>Scratches Are Local, Fading Is Global</h2>
 
-<p>Color earns its place when it helps someone <em>connect</em> with the image rather than decode it. A great-grandmother's portrait on the wall of a living room feels more like family history when it reads as a person instead of a relic — the warm skin tones and the worn fabric of a favorite chair pull a modern viewer in. For this use, a <a href="/en/tools/colorizer">colorizer</a> does something valuable: it trades a little historical certainty for a lot of emotional presence, and for a family keepsake that's a fair trade.</p>
+<p>Scratches are a local problem: a line of damage that needs surrounding texture to fill it in. Fading is a global problem: the whole image has lost contrast and color, and the fix is about bringing back what was there instead of inventing what's missing. A <a href="/en/tools/photo-restorer">photo restorer</a> handles both, but the settings matter — heavy scratch repair on a faded photo can invent detail that wasn't there, and light settings on a scratched photo won't touch the scratches. The counter-intuitive part: you often want to fix the biggest problem first, not just run a single pass and call it done.</p>
 
-<h2>When Color Lies</h2>
+<h2>The Right Order</h2>
 
-<p>The trouble starts when you don't know the real colors, and you present a guess as fact. A uniform that was actually olive drab, a dress that was navy, a room that was pale yellow — the AI fills in plausible colors, and "plausible" isn't "true." The counter-intuitive part: colorizing an unverifiable photo makes it <em>more</em> misleading than leaving it black and white, because now it carries invented facts with the authority of a photograph. If the image will be used for documentation — a history project, an archive, a legal record — the honest move is to keep it monochrome and say what you actually know.</p>
+<p>For a scratched photo, fix the scratches first, then bring the colors back if they're also faded. For a faded photo, bring the contrast and color back first, then fix whatever minor scratches remain. When you're not sure how much detail is real, run an <a href="/en/tools/image-upscaler">image upscaler</a> afterward to see the result at a larger size — a fake detail that's invisible at 4x6 becomes obvious at double the size. If the photo is black and white and you're considering color, do the repair first and only then run it through a <a href="/en/tools/colorizer">colorizer</a> — adding color to a scratched photo just makes the scratches harder to see.</p>
 
-<h2>The Decision Rule</h2>
+<h2>Start With the Biggest Problem</h2>
 
-<p>So the rule is short. Colorize when the goal is connection and feeling, and the audience won't read the colors as evidence. Keep it black and white when accuracy matters or the true colors are unknown. Whichever path you take, do the restoration first: run the damaged original through a <a href="/en/tools/photo-restorer">photo restorer</a> to fix scratches and fading, then decide about color on the clean image, and finish with an <a href="/en/tools/image-upscaler">image upscaler</a> if the print will be large. We covered color accuracy in our guide to <a href="/en/blog/colorizer-vs-color-grading-accuracy-aesthetic">colorizer versus color grading</a>; the decision here is simpler. Ask what the photo is for — a keepsake wants color, a record wants honesty, and a monochrome original is never the wrong answer for a document.</p>`
+<p>We covered the full pipeline order in our guide to <a href="/en/blog/photo-restorer-vs-colorizer-pipeline-order">restorer versus colorizer workflows</a>; the scratches-versus-fading distinction is the same logic applied to a single photo. Identify the main problem, fix it first, then fix the next biggest one — and you'll get a better result in less time than one auto-pass can deliver.</p>`
   },
   {
-    slug: "face-blur-screen-recording-course-privacy-guide",
-    title: "Blur Faces in Screen Recordings and Online Courses",
-    description: "You recorded a workshop and realized six faces were visible that nobody agreed to share. Screen recordings carry faces too — here's the pre-publish blur checklist.",
-    date: "2026-08-28",
-    category: "Edit",
-    tags: ["face blur", "screen recording", "online course", "privacy", "zoom"],
-    relatedTools: ["face-blur", "background-remover", "object-remover"],
-    content: `<p>You record a two-hour workshop, and three days later you realize six faces were visible that nobody agreed to share — participants in the webcam grid, someone walking past in the background, a face reflected in a monitor. The recording is a valuable piece of content, but it's also a document full of other people's faces. Screen recordings and course videos carry the same privacy weight as any photo, and blurring faces before you publish is a non-negotiable step.</p>
-
-<h2>The Recording Is Personal Data</h2>
-
-<p>A recording of a meeting isn't just a file — it's personal data about everyone who appears in it, even people who only showed up in a webcam thumbnail for thirty seconds. If you're going to publish, share, or sell that recording, the faces that weren't part of the deal need to go. A <a href="/en/tools/face-blur">face blur</a> pass handles the obvious ones: every participant thumbnail, every head that entered the frame. The counter-intuitive part is that the faces you forget are the ones that matter most — the reflections, the background walkers, the person on a second screen — because they're the ones nobody consented to.</p>
-
-<h2>What to Blur Beyond Faces</h2>
-
-<p>Faces are the headline, but the checklist is broader. Scan for anything identifiable: a name badge, a phone screen, a document with a name on it, a face reflected in a window or a monitor. These get the same treatment — blur the region, keep the context. When a face sits in a busy background and the blur leaves a telltale shape, use an <a href="/en/tools/background-remover">background remover</a> to clean the surrounding area so the blurred region doesn't stand out, or use an <a href="/en/tools/object-remover">object remover</a> for small identifiable details you want gone entirely rather than merely soft.</p>
-
-<h2>The Publishing Checklist</h2>
-
-<p>Run this before you hit publish on any recording. Watch the video once and note every identifiable face or detail. Blur the faces with enough strength that they're genuinely unrecognizable — a light blur can be reversed, which we covered in our guide to <a href="/en/blog/face-blur-live-streaming-real-time-privacy">real-time face blur and privacy</a>. Then re-watch the final export at the worst quality you'll ship, because a blur that looks fine in the editor can soften into readability after compression. When in doubt, blur more, not less. The recording is yours to use; the faces in it aren't.</p>`
-  },
-  {
-    slug: "avatar-generator-streamer-twitch-branding-guide",
-    title: "One Consistent Avatar for Streams, Emotes, and Badges",
-    description: "A stream channel needs a profile picture, emotes, badges, and panels — and viewers recognize the channel by consistency, not by how good each asset looks alone.",
-    date: "2026-08-28",
+    slug: "style-transfer-filter-instagram-vs-real-guide",
+    title: "Style Transfer vs Instagram Filters: What's Actually Different?",
+    description: "A filter is one click, and style transfer is also one click. So why does one look like a phone app and the other feel like real art?",
+    date: "2026-09-15",
     category: "Generate",
-    tags: ["avatar generator", "streaming", "Twitch", "emotes", "brand consistency"],
-    relatedTools: ["avatar-generator", "ai-image-generator", "background-remover"],
-    content: `<p>You're starting a stream channel and you quickly realize it needs a whole family of images: a profile picture, a set of emotes, channel badges, and overlay art — and they all need to look like the same person. The easy path is generating each one separately and hoping they match. They won't. Viewers recognize a channel by consistency, and the channel you build in one sitting, from one character, will read as a brand instead of a random collection.</p>
+    tags: ["style transfer", "filters", "Instagram", "photo effects", "artistic style"],
+    relatedTools: ["style-transfer", "ai-image-generator", "photo-restorer"],
+    content: `<p>You've got a photo and you want it to look more artistic. An Instagram filter takes one second and gets you most of the way. Style transfer takes one click too and somehow looks completely different. The difference isn't the number of buttons — it's what the tool is actually doing to your image.</p>
 
-<h2>Recognition Comes From Consistency</h2>
+<h2>Filters Adjust, Transfer Re-renders</h2>
 
-<p>Think about how you spot a channel you follow in a clip: it's the same face, same colors, same mood across every asset. That's the whole trick. When a <a href="/en/tools/avatar-generator">avatar generator</a> produces your base character — same hairstyle, same outfit colors, same expression — you lock that look and reuse it everywhere. The counter-intuitive part is that consistency beats quality: a moderately drawn character used everywhere beats a gorgeous character that changes between the profile pic and the emotes. The viewer's brain files "that person" as the channel, and the faster that file is stable, the faster you're recognizable.</p>
+<p>A filter tweaks colors and contrast. It brightens the highlights, warms the tones, shifts the saturation, and maybe adds a little grain. It's a set of knobs, and every filter is just someone's favorite knob settings saved as a preset. A <a href="/en/tools/style-transfer">style transfer</a> tool does something completely different — it re-renders the whole image in the style of another image, pixel by pixel. The counter-intuitive part is that a style transfer doesn't know what a "warm tone" is. It just knows what pattern of brushstrokes and colors the style image has, and it tries to make your photo match that pattern. That's why the result looks painted instead of filtered.</p>
 
-<h2>One Base, Controlled Variations</h2>
+<h2>When One Beats the Other</h2>
 
-<p>The workflow that keeps everything coherent: generate the base character once, with the face and outfit you're committing to, and then create every other asset as a variation of that same base. Lock the composition and expression first, then change only the props — a thumbs-up pose for the cheer emote, a sleeping version for the away badge. If you need an extra character or a scene for overlay art, generate it with the same palette and style through an <a href="/en/tools/ai-image-generator">AI image generator</a> so the whole kit matches. And because the base character will appear in every asset, clean each output with a <a href="/en/tools/background-remover">background remover</a> so the character is the same floating subject on every transparent PNG, not a different crop each time.</p>
+<p>Filters are fast, predictable, and never break the photo — they just nudge it. Style transfer is unpredictable, can produce amazing results, and can also produce garbage. If you want a photo that still looks like a photo, use a filter. If you want something that looks like art, use style transfer. For product photos or headshots, an <a href="/en/tools/ai-image-generator">AI image generator</a> might be the better starting point — you get the style you want built in from the first pixel, not added on top afterward. And if the photo is old or damaged, fix it with a <a href="/en/tools/photo-restorer">photo restorer</a> first — style transfer on a low-quality source just stylizes the damage along with everything else.</p>
 
-<h2>The Streaming Asset Kit</h2>
+<h2>The Real Difference</h2>
 
-<p>Do the whole kit in one session instead of one asset per week: base character, three to five emotes, a badge set, and a panel portrait. We covered building a consistent social series in our guide to <a href="/en/blog/avatar-generator-social-series-guide">avatar series that stay on-brand</a>; streaming just adds more asset slots to the same system. Generate everything from one locked base, keep the palette fixed, and ship the set together. New viewers will see the same face in your profile, your chat, and your panels — and that sameness is exactly what makes you feel like a real channel from day one.</p>`
+<p>We covered artistic control in our guide to <a href="/en/blog/style-transfer-vs-ai-generator-creative-control">style transfer versus generation</a>; the filter comparison is a simpler version of the same idea. Filters are a gentle nudge. Style transfer is a full transformation. Pick the one that matches what you're actually trying to do — and don't blame the tool when you used the wrong one.</p>`
   },
   {
-    slug: "pdf-to-word-user-manuals-guide",
-    title: "User Manuals Are the Worst PDFs: Why They Convert Badly",
-    description: "Appliance manuals are scanned pages, tiny text, and a diagram on every other page. Here's the honest picture of why they convert so badly — and what still works.",
-    date: "2026-08-28",
-    category: "Document",
-    tags: ["PDF to Word", "user manuals", "scanned PDF", "diagrams", "OCR"],
-    relatedTools: ["pdf-to-word", "image-upscaler", "background-remover"],
-    content: `<p>You need to translate or rewrite an appliance manual, so you open the PDF and it's a scan: gray pages, text in a font that's seen better days, and a diagram on every other page. You feed it to a converter expecting editable text, and what comes back is a wall of half-recognized words with the diagrams either missing or rendered as broken images. The converter isn't broken. User manuals are genuinely the worst kind of PDF, and knowing why tells you what's actually worth converting.</p>
+    slug: "ai-image-generator-character-consistency-guide",
+    title: "Keep Your AI Character Looking Like the Same Person",
+    description: "Your main character looks perfect in the first image and like a stranger in the second. Character consistency is the hardest part of AI generation — here's what actually works.",
+    date: "2026-09-15",
+    category: "Generate",
+    tags: ["AI image generator", "character consistency", "character design", "reference images", "comics"],
+    relatedTools: ["ai-image-generator", "avatar-generator", "image-upscaler"],
+    content: `<p>You generate a character for a story — the face is perfect, the hair is exactly right, the expression sells the moment. Then you generate the next panel and they're a different person. Same prompt, same seed, same model, different face. Character consistency is the hardest thing to get right with AI images, and most tricks people try don't actually work. Here's what does.</p>
 
-<h2>Why Manuals Convert Worse Than Reports</h2>
+<h2>Why It Breaks</h2>
 
-<p>A well-made digital PDF stores text as text, so conversion is straightforward. Most older manuals were printed and then scanned, which means the converter is doing full OCR on low-quality pages — and OCR on small, condensed print makes mistakes that a report with normal type size never triggers. The counter-intuitive part: the most important pages in a manual, the diagrams and exploded views, are exactly what a text converter cares about least. The <a href="/en/tools/pdf-to-word">PDF to Word</a> converter is built to extract words; it will happily deliver the caption under a diagram while the diagram itself stays as a flat image or disappears.</p>
+<p>Every generation is a roll of the dice, and the model has no memory of who your character was in the last image. The same prompt produces a similar result, not an identical one — and "similar" falls apart when it's a face, because human faces are something we're incredibly good at noticing differences in. An <a href="/en/tools/ai-image-generator">AI image generator</a> is inventing the face each time, and even a tiny shift in the random seed can move the nose, change the jawline, or make the eyes a different shape. The counter-intuitive part is that adding more description often makes it worse — more words give the model more ways to drift.</p>
 
-<h2>The Diagram Problem</h2>
+<h2>What Actually Works</h2>
 
-<p>Diagrams are where realistic expectations matter most. If the manual's value is in its figures — the assembly steps, the wiring, the parts callouts — no text extraction will ever recover them, because they were never text. What you can do is rescue the scan quality first: run the pages through an <a href="/en/tools/image-upscaler">image upscaler</a> so the diagrams are at least legible when you keep them as images in your edited document, and clean the gray paper cast with a <a href="/en/tools/background-remover">background remover</a> so the pages don't look like photocopies of photocopies. Then convert, and accept that the deliverable is edited text plus rescued images, not a perfect reflow.</p>
+<p>Three things reliably help. First, use a reference image of the character as an input, so the model has something concrete to match instead of reinventing the face each time. Second, keep the description short and specific — focus on the things that define the character (hair color, face shape, age) and skip the rest, because every extra word is another way to drift. Third, for a full cast or a comic, generate each character once and reuse that reference everywhere — an <a href="/en/tools/avatar-generator">avatar generator</a> is actually a great way to create the master reference, because it's optimized for producing a consistent-looking character portrait. Once you have the master, run each new scene through the generator with that reference locked in, and finish with an <a href="/en/tools/image-upscaler">image upscaler</a> so the final result is crisp enough to print or post.</p>
 
-<h2>The Realistic Manual Workflow</h2>
+<h2>Consistency Takes Discipline</h2>
 
-<p>So the honest workflow looks like this. If the manual is a born-digital PDF, convert it and edit normally. If it's a scan, expect to verify every number — model numbers, torque specs, part codes are where OCR errors hide — and plan to re-insert the diagrams from the cleaned images yourself. If the manual is mostly diagrams with a few sentences of text, converting is the wrong tool entirely; we covered when not to convert in our guide to <a href="/en/blog/pdf-to-word-when-not-to-convert-guide">PDFs that should stay PDFs</a>. Text converts, images get rescued, and the diagrams you keep are the diagrams you scan twice. Set that expectation and the manual stops feeling like the converter's fault.</p>`
+<p>We covered mockup consistency in our guide to <a href="/en/blog/ai-image-generator-product-mockup-catalog-guide">product catalog generation</a>; character consistency is the same idea applied to people. Lock your reference, keep the prompt tight, reuse the same seed when you can, and the character will feel like the same person from panel to panel.</p>`
+  },
+  {
+    slug: "background-remover-product-photo-lookbook-guide",
+    title: "From Product Shots to a Lookbook: Background Remover as a Style Tool",
+    description: "A background remover isn't just for product photos on white. Use it to drop products into lifestyle scenes and you've got a whole lookbook in an afternoon.",
+    date: "2026-09-15",
+    category: "Edit",
+    tags: ["background remover", "product photography", "lookbook", "lifestyle photos", "ecommerce"],
+    relatedTools: ["background-remover", "ai-image-generator", "image-upscaler"],
+    content: `<p>You've got ten product photos on a white background and you need lifestyle imagery for a lookbook. A photoshoot would cost thousands and take weeks. A background remover plus an image generator gets you the same result in an afternoon — if you know how to make the composite look real instead of pasted on.</p>
+
+<h2>Cutout Is the First Step, Not the Last</h2>
+
+<p>Run your product through a <a href="/en/tools/background-remover">background remover</a> and you've got a clean PNG. Drop it onto a random lifestyle background and you've got a composite that looks like a sticker. The difference between amateur and professional is in the details: matching the lighting, matching the perspective, matching the shadows. The counter-intuitive part is that the background image matters more than the product cutout. If the background has the right lighting and the right angle, the eye accepts the product as part of the scene. If the background is wrong, no amount of cutout quality will save it.</p>
+
+<h2>The Lookbook Workflow</h2>
+
+<p>Start by generating the background scenes you want — a kitchen counter, a living room shelf, a desk — with an <a href="/en/tools/ai-image-generator">AI image generator</a>. Match the lighting direction to your product photo, roughly. Then cut out the product, drop it in, and match the brightness and color of the product to the scene. Add a soft shadow on the surface it's sitting on, and maybe a subtle reflection. Run the final composite through an <a href="/en/tools/image-upscaler">image upscaler</a> so everything is crisp and the edges don't read as cut-and-paste. Do this for ten products and you've got a full lookbook without a single camera.</p>
+
+<h2>Realism Is in the Edges</h2>
+
+<p>We covered product photo standards in our guide to <a href="/en/blog/background-remover-ecommerce-platform-requirements">ecommerce background removal</a>; the lookbook version is the same tool used for a different goal. Cut it out, drop it in, match the light, add the shadow — and nobody will know the photo never happened.</p>`
+  },
+  {
+    slug: "image-upscaler-phone-screenshots-guide",
+    title: "Upscaling Phone Screenshots: When Bigger Is Not Sharper",
+    description: "A phone screenshot that looks fine on your phone turns blurry when you put it in a presentation. Upscaling helps — but only up to a point, because the detail was never there.",
+    date: "2026-09-15",
+    category: "Edit",
+    tags: ["image upscaler", "screenshots", "phone screenshots", "presentation", "image quality"],
+    relatedTools: ["image-upscaler", "background-remover", "pdf-to-word"],
+    content: `<p>You take a phone screenshot for a presentation. On the phone it's crisp. Blown up to slide size, it's soft and slightly blurry. Running it through an upscaler helps — but only up to a point, because the detail you're missing was never in the original. The fix isn't just to upscale more. It's to understand what an upscaler can actually do with a screenshot.</p>
+
+<h2>What Upscaling Does and Doesn't Do</h2>
+
+<p>An upscaler adds pixels by guessing what should be between the existing ones. For a photo, that guesswork looks natural because photos have texture. For a screenshot — sharp edges, solid colors, clean text — the guesswork often adds a halo or a slight blur around every edge, because the model expects texture and finds none. A <a href="/en/tools/image-upscaler">image upscaler</a> can make a screenshot bigger without making it worse, but it can't invent detail that wasn't captured. The counter-intuitive part is that a 2x upscale of a screenshot is usually fine, but 4x starts to look weird because the edges get too much attention from a model trained on photos.</p>
+
+<h2>When to Upscale and When to Redo</h2>
+
+<p>Use an upscaler when the screenshot is mostly right and just needs to be a bit bigger for a slide or a document. Use 2x, check the result, and stop there if it looks good. If the screenshot has text you want people to actually read, consider whether you can reproduce the content instead. If the screenshot is of a document, use a <a href="/en/tools/pdf-to-word">PDF to Word</a> converter to get real text instead of a picture of text. If it's a UI element you need to show cleanly, recreate the element at a high resolution — it'll look crisper than any upscale can. And if you're dropping the screenshot into a design with a colored background, run it through a <a href="/en/tools/background-remover">background remover</a> first so the white or gray border doesn't stick out.</p>
+
+<h2>Know the Limit</h2>
+
+<p>We covered the difference between upscaling and OCR for scans in our guide to <a href="/en/blog/image-upscaler-scanned-documents-screenshots-guide">screenshots and document upscaling</a>; the phone screenshot version is the same principle. Upscale for size, recreate for readability, and don't blame the upscaler when the original just didn't have enough pixels.</p>`
   },
 ];
 
