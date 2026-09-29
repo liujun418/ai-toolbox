@@ -9,136 +9,136 @@ old = '\n];\n\n// Synchronous static accessors'
 
 new_blogs = r"""
   {
-    slug: "article-generator-cluster-content-seo-guide",
-    title: "Cluster Content Strategy: Write More Posts Without Spinning Your Wheels",
-    description: "Writing one blog post at a time is slow. A cluster strategy uses one article generator to produce ten related posts in the time it takes to plan two — done right.",
-    date: "2026-09-15",
+    slug: "text-polish-creative-writing-fiction-guide",
+    title: "Polishing Fiction Without Killing Your Voice — What AI Text Polish Can and Can't Do",
+    description: "AI polish works great for business writing. Fiction is different — it has rhythm, voice, and deliberate roughness. Use it wrong and you'll sand the personality right off the page.",
+    date: "2026-09-29",
     category: "Content",
-    tags: ["article generator", "content clusters", "SEO", "topic clusters", "content strategy"],
-    relatedTools: ["article-generator", "text-polish", "image-description"],
-    content: `<p>Writing one blog post a week feels productive until you realize your main keyword has twenty sub-topics and you've only covered two. A cluster strategy fixes this: you pick one pillar topic, break it into ten sub-posts, and generate them all in one batch instead of planning each one separately. An article generator does the heavy lifting — as long as you control the structure instead of letting the tool decide it.</p>
+    tags: ["text polish", "fiction writing", "creative writing", "AI editing", "writer voice"],
+    relatedTools: ["text-polish", "article-generator", "text-to-speech"],
+    content: `<p>You've written a short story and you want it tighter. You run it through a text polish tool and it comes back cleaner — smoother sentences, better grammar, fewer awkward phrases. And somehow it also feels flatter, like the edges got sanded off along with the mistakes. That's the central problem with using a <a href="/en/tools/text-polish">text polish</a> tool on fiction: what's a bug in business writing is sometimes a feature in creative writing. Done right, AI polishing still saves hours. Done wrong, it turns every story into the same story.</p>
 
-<h2>One Pillar, Ten Posts</h2>
+<h2>What Polish Can Fix and What It Can't</h2>
 
-<p>Start with a single big topic — say, "growing herbs indoors" — and list every sub-question someone might ask. Best soil? How much light? Which herbs are easiest? Each question is its own post. Use an <a href="/en/tools/article-generator">article generator</a> to produce the first draft of each one, all in the same batch, with the same structure and the same voice. The counter-intuitive part is that planning them all at once is faster than planning them one at a time, because you only have to do the research and outline work once instead of ten times.</p>
+<p>AI polish is great at the mechanical stuff — catching repeated words, fixing awkward grammar, tightening sentences that run too long, spotting pacing issues in paragraphs. It's terrible at the creative stuff — tone, voice, rhythm, deliberate awkwardness, the rough edges that make a character sound like a person instead of a textbook. The counter-intuitive part is that the better the polish tool is, the more likely it is to accidentally smooth out the things that make your writing yours. A distinctive voice is full of small bad decisions that add up to something good — and a polish tool can't tell the difference between a bad sentence and a deliberate one.</p>
 
-<h2>Polish Before You Publish</h2>
+<h2>How to Use It Without Ruining the Voice</h2>
 
-<p>A batch draft is a first draft, not a final one. Run each post through a <a href="/en/tools/text-polish">text polish</a> tool in the same batch to clean up phrasing and keep the tone consistent across the cluster — nothing reads more like AI than ten posts with slightly different voices on the same site. For the hero images, describe each one with an <a href="/en/tools/image-description">image description</a> to make sure the visual matches the content, or generate them in the same batch to keep the style consistent. The goal is a cluster that reads like it was written by one person, not ten different bots.</p>
+<p>Three rules. First, never polish the whole story at once — work scene by scene so you can compare before and after and catch where the voice shifted. Second, always keep the original and run a side-by-side, line by line. For a faster comparison, read both versions out loud — or use a <a href="/en/tools/text-to-speech">text to speech</a> tool to listen to them back to back; the ear catches rhythm changes that the eye misses. Third, if you're using an <a href="/en/tools/article-generator">article generator</a> for first drafts of scenes or outlines, polish only the parts you'd polish anyway — the prose, not the structure or the voice. The tool is your line editor, not your rewrite partner. Accept the fixes that make it cleaner, reject the ones that make it blander, and you'll save hours without losing what makes the story yours.</p>
 
-<h2>The Cluster That Ranks Together</h2>
+<h2>Polish Is a Tool, Not a Co-Author</h2>
 
-<p>The SEO benefit is real — related posts linking to each other tell search engines you cover the topic deeply, and deep coverage beats isolated posts. We covered long-tail SEO in our guide to <a href="/en/blog/article-generator-long-tail-seo-content">long-tail SEO content</a>; the cluster strategy is the same idea scaled up. One pillar, ten sub-posts, batch generation, one polish pass — and you're done with a month of content in an afternoon.</p>`
+<p>We covered voice preservation in our guide to <a href="/en/blog/text-polish-sound-like-you-voice-guide">keeping your voice in AI polishing</a>; the fiction version is the same idea with higher stakes. Use the tool for the mechanical work, keep the creative decisions for yourself, and your story will come out cleaner — and still yours.</p>`
   },
   {
-    slug: "photo-restorer-scratches-vs-fading-guide",
-    title: "Scratches vs Fading: Why Old Photos Need Different Fixes",
-    description: "A photo with scratches and a photo that's faded look equally broken, but they need completely different fixes. Use the right tool first and you'll save yourself a lot of rework.",
-    date: "2026-09-15",
+    slug: "object-remover-food-photography-styling-guide",
+    title: "Food Photography Cleanup: Object Remover for Styling Your Best Shots",
+    description: "The best food photos look effortless — they also usually have a crumb here, a smudge there, a stray utensil you didn't notice. An object remover fixes all of it without reshooting.",
+    date: "2026-09-29",
     category: "Edit",
-    tags: ["photo restorer", "scratches", "fading", "photo repair", "restoration workflow"],
-    relatedTools: ["photo-restorer", "image-upscaler", "colorizer"],
-    content: `<p>You pull out two old family photos. One is covered in scratches but the colors are still strong. The other is smooth as glass but so faded you can barely make out the faces. They both look broken, and it's tempting to run them through the same tool and hope for the best. They need completely different fixes, though — and using the wrong one first makes the second one harder.</p>
+    tags: ["object remover", "food photography", "photo styling", "food styling", "inpainting"],
+    relatedTools: ["object-remover", "background-remover", "photo-restorer"],
+    content: `<p>You set up the perfect food shot — the lighting is right, the plating took twenty minutes, everything is where it should be. You take the photo and notice a crumb on the plate edge, a smudge on the table, a finger barely in frame at the corner. You can reshoot and spend another twenty minutes, or you can use an <a href="/en/tools/object-remover">object remover</a> and be done in thirty seconds. Food photography is full of tiny distractions that nobody notices in real life and everyone notices in a photo — and cleanup is where the good shots become great ones.</p>
 
-<h2>Scratches Are Local, Fading Is Global</h2>
+<h2>The Kinds of Things You'll Actually Remove</h2>
 
-<p>Scratches are a local problem: a line of damage that needs surrounding texture to fill it in. Fading is a global problem: the whole image has lost contrast and color, and the fix is about bringing back what was there instead of inventing what's missing. A <a href="/en/tools/photo-restorer">photo restorer</a> handles both, but the settings matter — heavy scratch repair on a faded photo can invent detail that wasn't there, and light settings on a scratched photo won't touch the scratches. The counter-intuitive part: you often want to fix the biggest problem first, not just run a single pass and call it done.</p>
+<p>It's never the big things. It's the small stuff: a stray herb leaf that fell the wrong way, a sauce drip at the edge of the plate, a reflection of your phone in a metal bowl, a napkin corner you didn't see, crumbs, smudges, the edge of the cutting board under the plate. These are invisible while you're shooting because you're looking at the food — not at everything around it. The counter-intuitive part is that removing these small things has a bigger impact on how professional the photo feels than fixing the big things. A perfect plate with one crumb reads as sloppy. An imperfect plate with no distractions reads as intentional.</p>
 
-<h2>The Right Order</h2>
+<h2>Styling by Subtraction</h2>
 
-<p>For a scratched photo, fix the scratches first, then bring the colors back if they're also faded. For a faded photo, bring the contrast and color back first, then fix whatever minor scratches remain. When you're not sure how much detail is real, run an <a href="/en/tools/image-upscaler">image upscaler</a> afterward to see the result at a larger size — a fake detail that's invisible at 4x6 becomes obvious at double the size. If the photo is black and white and you're considering color, do the repair first and only then run it through a <a href="/en/tools/colorizer">colorizer</a> — adding color to a scratched photo just makes the scratches harder to see.</p>
+<p>Work from biggest to smallest. Remove the obvious distractions first — fingers, phone reflections, background clutter. Then zoom in and look for the tiny stuff — specks, smudges, uneven drips. If the background is busy or messy, use a <a href="/en/tools/background-remover">background remover</a> first to isolate the plate, then remove objects from the food area — or add a clean background entirely. For older photos with scratches or film grain, run a <a href="/en/tools/photo-restorer">photo restorer</a> first so the object remover isn't also filling around texture artifacts. The goal isn't a fake-perfect photo. It's a photo where nothing distracts from the food — the same thing a food stylist does on set, just in post.</p>
 
-<h2>Start With the Biggest Problem</h2>
+<h2>Cleanup Is Part of Styling</h2>
 
-<p>We covered the full pipeline order in our guide to <a href="/en/blog/photo-restorer-vs-colorizer-pipeline-order">restorer versus colorizer workflows</a>; the scratches-versus-fading distinction is the same logic applied to a single photo. Identify the main problem, fix it first, then fix the next biggest one — and you'll get a better result in less time than one auto-pass can deliver.</p>`
+<p>We covered wedding photography cleanup in our guide to <a href="/en/blog/object-remover-wedding-photography-guide">object removal for weddings</a>; food photography is the same idea with a different subject. Remove the distractions, keep the character, and the food does all the work.</p>`
   },
   {
-    slug: "style-transfer-filter-instagram-vs-real-guide",
-    title: "Style Transfer vs Instagram Filters: What's Actually Different?",
-    description: "A filter is one click, and style transfer is also one click. So why does one look like a phone app and the other feel like real art?",
-    date: "2026-09-15",
-    category: "Generate",
-    tags: ["style transfer", "filters", "Instagram", "photo effects", "artistic style"],
-    relatedTools: ["style-transfer", "ai-image-generator", "photo-restorer"],
-    content: `<p>You've got a photo and you want it to look more artistic. An Instagram filter takes one second and gets you most of the way. Style transfer takes one click too and somehow looks completely different. The difference isn't the number of buttons — it's what the tool is actually doing to your image.</p>
-
-<h2>Filters Adjust, Transfer Re-renders</h2>
-
-<p>A filter tweaks colors and contrast. It brightens the highlights, warms the tones, shifts the saturation, and maybe adds a little grain. It's a set of knobs, and every filter is just someone's favorite knob settings saved as a preset. A <a href="/en/tools/style-transfer">style transfer</a> tool does something completely different — it re-renders the whole image in the style of another image, pixel by pixel. The counter-intuitive part is that a style transfer doesn't know what a "warm tone" is. It just knows what pattern of brushstrokes and colors the style image has, and it tries to make your photo match that pattern. That's why the result looks painted instead of filtered.</p>
-
-<h2>When One Beats the Other</h2>
-
-<p>Filters are fast, predictable, and never break the photo — they just nudge it. Style transfer is unpredictable, can produce amazing results, and can also produce garbage. If you want a photo that still looks like a photo, use a filter. If you want something that looks like art, use style transfer. For product photos or headshots, an <a href="/en/tools/ai-image-generator">AI image generator</a> might be the better starting point — you get the style you want built in from the first pixel, not added on top afterward. And if the photo is old or damaged, fix it with a <a href="/en/tools/photo-restorer">photo restorer</a> first — style transfer on a low-quality source just stylizes the damage along with everything else.</p>
-
-<h2>The Real Difference</h2>
-
-<p>We covered artistic control in our guide to <a href="/en/blog/style-transfer-vs-ai-generator-creative-control">style transfer versus generation</a>; the filter comparison is a simpler version of the same idea. Filters are a gentle nudge. Style transfer is a full transformation. Pick the one that matches what you're actually trying to do — and don't blame the tool when you used the wrong one.</p>`
-  },
-  {
-    slug: "ai-image-generator-character-consistency-guide",
-    title: "Keep Your AI Character Looking Like the Same Person",
-    description: "Your main character looks perfect in the first image and like a stranger in the second. Character consistency is the hardest part of AI generation — here's what actually works.",
-    date: "2026-09-15",
-    category: "Generate",
-    tags: ["AI image generator", "character consistency", "character design", "reference images", "comics"],
-    relatedTools: ["ai-image-generator", "avatar-generator", "image-upscaler"],
-    content: `<p>You generate a character for a story — the face is perfect, the hair is exactly right, the expression sells the moment. Then you generate the next panel and they're a different person. Same prompt, same seed, same model, different face. Character consistency is the hardest thing to get right with AI images, and most tricks people try don't actually work. Here's what does.</p>
-
-<h2>Why It Breaks</h2>
-
-<p>Every generation is a roll of the dice, and the model has no memory of who your character was in the last image. The same prompt produces a similar result, not an identical one — and "similar" falls apart when it's a face, because human faces are something we're incredibly good at noticing differences in. An <a href="/en/tools/ai-image-generator">AI image generator</a> is inventing the face each time, and even a tiny shift in the random seed can move the nose, change the jawline, or make the eyes a different shape. The counter-intuitive part is that adding more description often makes it worse — more words give the model more ways to drift.</p>
-
-<h2>What Actually Works</h2>
-
-<p>Three things reliably help. First, use a reference image of the character as an input, so the model has something concrete to match instead of reinventing the face each time. Second, keep the description short and specific — focus on the things that define the character (hair color, face shape, age) and skip the rest, because every extra word is another way to drift. Third, for a full cast or a comic, generate each character once and reuse that reference everywhere — an <a href="/en/tools/avatar-generator">avatar generator</a> is actually a great way to create the master reference, because it's optimized for producing a consistent-looking character portrait. Once you have the master, run each new scene through the generator with that reference locked in, and finish with an <a href="/en/tools/image-upscaler">image upscaler</a> so the final result is crisp enough to print or post.</p>
-
-<h2>Consistency Takes Discipline</h2>
-
-<p>We covered mockup consistency in our guide to <a href="/en/blog/ai-image-generator-product-mockup-catalog-guide">product catalog generation</a>; character consistency is the same idea applied to people. Lock your reference, keep the prompt tight, reuse the same seed when you can, and the character will feel like the same person from panel to panel.</p>`
-  },
-  {
-    slug: "background-remover-product-photo-lookbook-guide",
-    title: "From Product Shots to a Lookbook: Background Remover as a Style Tool",
-    description: "A background remover isn't just for product photos on white. Use it to drop products into lifestyle scenes and you've got a whole lookbook in an afternoon.",
-    date: "2026-09-15",
+    slug: "colorizer-vs-recreate-vintage-product-photos-guide",
+    title: "Colorize Old Product Photos vs Recreate Them: When Fixing Is Faster Than Shooting",
+    description: "You have an old black-and-white product photo you need in color. You could reshoot it — or you could AI colorize it and be done in a minute. The answer isn't always what you think.",
+    date: "2026-09-29",
     category: "Edit",
-    tags: ["background remover", "product photography", "lookbook", "lifestyle photos", "ecommerce"],
-    relatedTools: ["background-remover", "ai-image-generator", "image-upscaler"],
-    content: `<p>You've got ten product photos on a white background and you need lifestyle imagery for a lookbook. A photoshoot would cost thousands and take weeks. A background remover plus an image generator gets you the same result in an afternoon — if you know how to make the composite look real instead of pasted on.</p>
+    tags: ["colorizer", "vintage photos", "product photography", "recreate vs colorize", "photo restoration"],
+    relatedTools: ["colorizer", "photo-restorer", "ai-image-generator"],
+    content: `<p>You find an old black-and-white product photo in the archives — a classic item, great composition, perfect lighting. You need it in color for the website. The first instinct is to reshoot it: same product, same angle, same lighting. The second thought is: just run it through a <a href="/en/tools/colorizer">colorizer</a> tool and see what comes out. Sometimes it works and sometimes it doesn't, and the deciding factor isn't the quality of the colorizer — it's what you're going to use the photo for.</p>
 
-<h2>Cutout Is the First Step, Not the Last</h2>
+<h2>What Colorizing Gets Right (and Wrong)</h2>
 
-<p>Run your product through a <a href="/en/tools/background-remover">background remover</a> and you've got a clean PNG. Drop it onto a random lifestyle background and you've got a composite that looks like a sticker. The difference between amateur and professional is in the details: matching the lighting, matching the perspective, matching the shadows. The counter-intuitive part is that the background image matters more than the product cutout. If the background has the right lighting and the right angle, the eye accepts the product as part of the scene. If the background is wrong, no amount of cutout quality will save it.</p>
+<p>Colorizing is fast — one upload, one click, you have a color version in a minute. It also isn't real. The AI is guessing colors based on what it knows about similar objects, and for product photos, that guess can be very wrong — a product that was navy blue might come back black, a logo in the exact brand red might come back orange. The counter-intuitive part is that for some uses, "close enough" actually is good enough. If the photo is for a history page or a throwback social media post, the color just needs to feel plausible. If it's for the product page where people are deciding whether to buy, it needs to be accurate — and a colorizer can't guarantee that.</p>
 
-<h2>The Lookbook Workflow</h2>
+<h2>How to Decide</h2>
 
-<p>Start by generating the background scenes you want — a kitchen counter, a living room shelf, a desk — with an <a href="/en/tools/ai-image-generator">AI image generator</a>. Match the lighting direction to your product photo, roughly. Then cut out the product, drop it in, and match the brightness and color of the product to the scene. Add a soft shadow on the surface it's sitting on, and maybe a subtle reflection. Run the final composite through an <a href="/en/tools/image-upscaler">image upscaler</a> so everything is crisp and the edges don't read as cut-and-paste. Do this for ten products and you've got a full lookbook without a single camera.</p>
+<p>For anything nostalgic — throwback posts, about-us pages, historical content — colorize first. Clean up the photo with a <a href="/en/tools/photo-restorer">photo restorer</a> first if it's scratched or faded, then colorize, and you've got a usable image in minutes. For anything selling the actual product — product pages, ads, catalogs — reshoot or generate a new version with an <a href="/en/tools/ai-image-generator">AI image generator</a> using the old photo as reference, because color accuracy matters when someone is about to spend money. The middle ground: colorize it, then use the colorized version as a reference for a generated version — you get the composition of the original with the color accuracy of a fresh shot. The wrong answer is to colorize and then put it on a product page like it's the real thing.</p>
 
-<h2>Realism Is in the Edges</h2>
+<h2>Pick the Right Tool for the Job</h2>
 
-<p>We covered product photo standards in our guide to <a href="/en/blog/background-remover-ecommerce-platform-requirements">ecommerce background removal</a>; the lookbook version is the same tool used for a different goal. Cut it out, drop it in, match the light, add the shadow — and nobody will know the photo never happened.</p>`
+<p>We covered historical accuracy in our guide to <a href="/en/blog/colorizer-verify-accuracy-historical-guide">verifying colorizer accuracy</a>; the product photo version is the same question with a commercial answer. Colorize for nostalgia, recreate for commerce — and don't confuse the two.</p>`
   },
   {
-    slug: "image-upscaler-phone-screenshots-guide",
-    title: "Upscaling Phone Screenshots: When Bigger Is Not Sharper",
-    description: "A phone screenshot that looks fine on your phone turns blurry when you put it in a presentation. Upscaling helps — but only up to a point, because the detail was never there.",
-    date: "2026-09-15",
+    slug: "watermark-remover-scanned-document-stamps-guide",
+    title: "Removing Watermarks and Stamps from Scanned Documents: Clean Copies Without Rescanning",
+    description: "A scanned document with a diagonal \"COPY\" watermark or a rubber stamp obscuring text is frustrating. A watermark remover can usually clean it up — if you know the limits.",
+    date: "2026-09-29",
     category: "Edit",
-    tags: ["image upscaler", "screenshots", "phone screenshots", "presentation", "image quality"],
-    relatedTools: ["image-upscaler", "background-remover", "pdf-to-word"],
-    content: `<p>You take a phone screenshot for a presentation. On the phone it's crisp. Blown up to slide size, it's soft and slightly blurry. Running it through an upscaler helps — but only up to a point, because the detail you're missing was never in the original. The fix isn't just to upscale more. It's to understand what an upscaler can actually do with a screenshot.</p>
+    tags: ["watermark remover", "scanned documents", "stamp removal", "document cleanup", "PDF"],
+    relatedTools: ["watermark-remover", "photo-restorer", "pdf-to-word"],
+    content: `<p>You scan an old contract and there's a big diagonal \"CONFIDENTIAL\" stamp across the middle, or a faded \"PAID\" rubber stamp partially covering a signature line. You can't read what's underneath, and the original is locked in a filing cabinet three states away. A <a href="/en/tools/watermark-remover">watermark remover</a> tool can help — not by making the text magically appear, but by removing the stamp pattern so whatever was underneath becomes readable. It works better than you'd expect, as long as you know what it can and can't do.</p>
 
-<h2>What Upscaling Does and Doesn't Do</h2>
+<h2>How It Works on Documents</h2>
 
-<p>An upscaler adds pixels by guessing what should be between the existing ones. For a photo, that guesswork looks natural because photos have texture. For a screenshot — sharp edges, solid colors, clean text — the guesswork often adds a halo or a slight blur around every edge, because the model expects texture and finds none. A <a href="/en/tools/image-upscaler">image upscaler</a> can make a screenshot bigger without making it worse, but it can't invent detail that wasn't captured. The counter-intuitive part is that a 2x upscale of a screenshot is usually fine, but 4x starts to look weird because the edges get too much attention from a model trained on photos.</p>
+<p>Digital watermarks on photos are usually semi-transparent overlays — the AI can see what's underneath and fill accordingly. Stamps on scanned documents are different — the ink physically covers whatever was on the paper, so there's no information there to recover. The tool fills in the gap based on the surrounding text and lines, like a good guess. The counter-intuitive part is that this works surprisingly well for printed documents, because printed text is predictable — same font, same size, same line spacing. The tool can usually infer a missing letter or word from context and get it right. It gets much worse for handwriting, because handwriting is unique and there's no pattern to infer from.</p>
 
-<h2>When to Upscale and When to Redo</h2>
+<h2>Workflow for Best Results</h2>
 
-<p>Use an upscaler when the screenshot is mostly right and just needs to be a bit bigger for a slide or a document. Use 2x, check the result, and stop there if it looks good. If the screenshot has text you want people to actually read, consider whether you can reproduce the content instead. If the screenshot is of a document, use a <a href="/en/tools/pdf-to-word">PDF to Word</a> converter to get real text instead of a picture of text. If it's a UI element you need to show cleanly, recreate the element at a high resolution — it'll look crisper than any upscale can. And if you're dropping the screenshot into a design with a colored background, run it through a <a href="/en/tools/background-remover">background remover</a> first so the white or gray border doesn't stick out.</p>
+<p>First, if the scan is low quality or has scratches, run it through a <a href="/en/tools/photo-restorer">photo remover/</a> restorer first — cleaner input gives cleaner output. Second, if the stamp is solid rather than semi-transparent, expect reconstruction, not recovery — the text underneath is a guess, not a reveal, so cross-check against other copies if you can. Third, if what you really need is the text content rather than a clean image, run the document through a <a href="/en/tools/pdf-to-word">PDF to Word</a> converter instead — OCR will get you searchable text faster than a watermark remover will get you a clean image, and you can fix any OCR errors manually. The right tool depends on whether you need the document to look clean or you just need the words.</p>
 
-<h2>Know the Limit</h2>
+<h2>Know What You're Actually Trying to Do</h2>
 
-<p>We covered the difference between upscaling and OCR for scans in our guide to <a href="/en/blog/image-upscaler-scanned-documents-screenshots-guide">screenshots and document upscaling</a>; the phone screenshot version is the same principle. Upscale for size, recreate for readability, and don't blame the upscaler when the original just didn't have enough pixels.</p>`
+<p>We covered how well removal works in our guide to <a href="/en/blog/watermark-remover-when-it-works-guide">when watermark removal actually works</a>; the scanned document version is the same logic applied to paper. Use the right tool for what you actually need — readable text, or a clean image — and stop wasting time trying to get a perfect image when you just need the words.</p>`
+  },
+  {
+    slug: "face-blur-school-photos-student-privacy-guide",
+    title: "School Photos and Student Privacy: Why Face Blur Is Non-Negotiable for Yearbooks and Social Media",
+    description: "A school posts a photo of students at an event and a parent pulls their child out. Face blur was once an extra step — now it's a basic privacy expectation, and the rules are only getting stricter.",
+    date: "2026-09-29",
+    category: "Edit",
+    tags: ["face blur", "student privacy", "school photos", "COPPA", "yearbook photos"],
+    relatedTools: ["face-blur", "object-remover", "watermark-remover"],
+    content: `<p>A school posts a photo from a field trip on its Facebook page. Twenty smiling kids, a teacher, a beautiful day. Then a parent emails asking for their child to be taken down. Then another. Then the school realizes it doesn't actually have permission to post any of those faces online. Schools run into this constantly — the photo is harmless, the intent is good, and the privacy risk is real. A <a href="/en/tools/face-blur">face blur</a> tool fixes the whole problem in a minute, and it's fast becoming a standard step before any photo of kids gets posted anywhere.</p>
+
+<h2>Why Schools Are a Special Case</h2>
+
+<p>Kids can't consent to having their face online. Parents can, but getting consent from every parent in every photo is logistically impossible — especially for events like field trips, sports games, assemblies, and performances. The counter-intuitive part is that the risk isn't just about strangers on the internet. It's also about custody disputes, restraining orders, bullying, and kids who have good reasons not to be findable by a parent or a classmate. A blurred face doesn't ruin a photo — you can still see the activity, the energy, the moment — but it protects every kid in it without anyone having to opt out.</p>
+
+<h2>Best Practices for School Photos</h2>
+
+<p>Three rules. First, blur before you post — always. Don't wait for a parent to ask. Second, use a solid blur or pixelation, not a light blur — light blur can be reversed with AI tools, and kids deserve better than a privacy measure that doesn't actually work. Third, for things like yearbook photos where parents expect to see faces, get written consent at the start of the year and keep a list — and for anything public on social media or the school website, blur anyway. For extra cleanup, if there are name tags or signs with student names visible, use an <a href="/en/tools/object-remover">object remover</a> to take those out too. And if the photo has a school logo or watermark that shouldn't be there, a <a href="/en/tools/watermark-remover">watermark remover</a> cleans it up before blurring. The principle is simple: the default is privacy, not the other way around.</p>
+
+<h2>Blur First, Ask Never</h2>
+
+<p>We covered children's privacy in our guide to <a href="/en/blog/face-blur-children-privacy-social-media">face blur for children on social media</a>; the school version is the same idea with institutional responsibility. Blur the faces, post the photo, and nobody has to have the awkward conversation.</p>`
+  },
+  {
+    slug: "image-description-prompt-engineering-best-results-guide",
+    title: "Better AI Image Descriptions: Prompt Engineering for Vision Models",
+    description: "You upload the same image to two description tools and get completely different results. The model is the same — the difference is what you ask it to do. Prompt engineering isn't just for text generation.",
+    date: "2026-09-29",
+    category: "Content",
+    tags: ["image description", "prompt engineering", "vision models", "alt text", "image captioning"],
+    relatedTools: ["image-description", "text-polish", "ai-image-generator"],
+    content: `<p>You upload a product photo to an image description tool and get back a generic caption that sounds like it could be any product. You add a simple instruction — "describe this for an e-commerce product page, focus on materials and color" — and suddenly the description is exactly what you needed. An <a href="/en/tools/image-description">image description</a> tool isn't a magic black box you just feed images to. The quality of the output depends on what you ask for, just like with text generation — and a few small changes to what you request can make the difference between a useless caption and one you can use directly.</p>
+
+<h2>Why Default Descriptions Are Generic</h2>
+
+<p>Default mode tries to be everything to everyone — it describes what's in the image in a neutral way, no specific audience, no specific purpose. That's fine for basic alt text. It's bad for product descriptions, social media captions, accessibility notes, or anything else where you have a specific use case. The counter-intuitive part is that you're not limited to just uploading an image. Most description tools let you add a prompt or context — what kind of description you want, who it's for, what details matter, what to leave out. The model sees everything in the image either way. The prompt just tells it which pieces to put in the output.</p>
+
+<h2>Prompts That Actually Help</h2>
+
+<p>For alt text: "describe this image concisely for screen reader users, focus on what matters for understanding the content." For product pages: "describe this product for an e-commerce listing, include material, color, shape, and visible features, 80-120 words." For social media: "write an Instagram caption based on this image, friendly and enthusiastic, one sentence plus three hashtags." After you get the description back, run it through a <a href="/en/tools/text-polish">text polish</a> tool to clean up phrasing and match your brand voice — the same way you'd polish any other copy. And if you're generating images with an <a href="/en/tools/ai-image-generator">AI image generator</a> first, use the description prompt as part of a feedback loop — generate, describe, compare, adjust. The prompt doesn't have to be long. It just has to be specific.</p>
+
+<h2>Ask for What You Actually Want</h2>
+
+<p>We covered SEO alt text in our guide to <a href="/en/blog/image-description-seo-alt-text-google">image description for SEO</a>; the prompt engineering version is the same idea with more control. Don't accept the default output when you can get exactly the description you need by telling the tool what you're looking for.</p>`
   },
 ];
 
